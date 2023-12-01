@@ -1,0 +1,138 @@
+--------------------------------------------------------------------------------------------------
+Release notes version 1.9.2_beta : Enhancements, modifications and corrected bugs since version 1.9.1 :
+--------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+Release notes version 1.9.1 : Enhancements, modifications and corrected bugs since version 1.9.0 :
+--------------------------------------------------------------------------------------------------
+09/12/22 (TrioCFD) Enhancement : Aposteriori estimator takes now into account equation's source terms
+19/11/22 (TrioCFD) Bug fixed   : Fix Wilke's viscosity formula + documentation for Multi-species QC
+18/11/22 (TrioCFD) New feature : New Baltik Fluid_structure_interaction: Partitioned explicit serial coupling between the ALE module and the Beam model.
+18/11/22 (TrioCFD) New features: Reduced mechanical model (Beam model): Euler-Bernoulli model with a resolution based on a modal analysis and Newmark temporal discretization.
+03/11/22 (TrioCFD) Change      : IJK_Kernel (multigrid + simd) are moved to TRUST
+03/11/22 (TrioCFD) New feature : Activation of TCL module (to include singular heat flux and contact angle at Triple Contact Line)
+03/11/22 (TrioCFD) Enhancement : Improvement in FTD 2D_Axi calculations (contact angle, interpolation,...)
+03/11/22 (TrioCFD) Enhancement : Keywords for phase-change : modification of volume_correction keywords, Option New mass source term
+03/11/22 (TrioCFD) Bug fix     : Fix of phase indicator calculation and remeshing
+30/06/22 (TrioCFD) New feature : Front_Tracking_IJK (TrioIJK) is now activated in TrioCFD.
+19/10/22 (TRUST)   Tool        : Syntax in datafile for medium, gravity, porosity, champ_fonc_MED* and Read_MED can be updated using command: trust -convert_data <datafile>
+18/10/22 (TRUST)   Syntax      : Champ_Fonc_MED* keywords have a new syntax using { } and key/value pairs. See reference manual. Old syntax supported until 1.9.3.
+13/10/22 (TRUST)   Syntax      : Read_MED/Lire_MED has a new syntax using { } and key/value pairs. See reference manual. Old syntax supported until 1.9.3.
+12/10/22 (TrioCFD) Change      : postraitement_ft_lata syntax changed since it uses Lata_V2 instead of Lata_V1 format. Syntaxe has also evolved for this particular post-processing.
+12/10/22 (TrioCFD) Change      : Lata_V1 is not supported anymore. Only Lata_V2 (option 'lata') remains. Domain and Zone postprocessing in Lata_V2.
+04/10/22 (TrioCFD) Major Change: Previous Phases interpret is no more available in Pb_multiphase and Pb_HEM. Milieu_composite class should now be used and should be placed as well in the problem.
+04/10/22 (TrioCFD) Major Change: Medium (Fluid, solid, constituent, ...) is no more read and associated to a problem for non Front-Tracking problems. It should be read at the begining of each problem bloc.
+04/10/22 (TrioCFD) Major Change: Gravity is no more read and associated to a medium for non Front-Tracking datafiles. It is read directly in the medium.
+04/10/22 (TrioCFD) Syntax      : For Rayonnement datafiles, the problem name should now contain _Rayo (ex: Pb_Thermohydraulique -> Pb_Rayo_Thermohydraulique) 
+--------------------------------------------------------------------------------------------------
+Release notes version 1.9.0 : Enhancements, modifications and corrected bugs since version 1.8.4 :
+--------------------------------------------------------------------------------------------------
+04/07/22 (TrioCFD) New feature : Add new Turbulence model "combinaison" in EF discretization with standard wall law and WW hydraulics
+30/06/22 (TrioCFD) New feature : Integration of TrioIJK as a new Baltik of TrioCFD in Multiphase Baltik under the name Front_Tracking_IJK
+29/06/22 (TrioCFD) Enhancement : Improvement of Front-Tracking remesh
+19/06/22 (TrioCFD) New feature : New Baltik Optimisation/Aposteriori - First version for stationnary cases
+16/06/22 (TrioCFD) New feature : Add validation sheet to validate the new Pb_HEM
+03/06/22 (TrioCFD) New feature : Multiphase CFD (CMFD baltik) ; still a work in progress
+20/05/22 (TrioCFD) New feature : Adams Bashforth time scheme on a mobile (ALE context)
+20/05/22 (TrioCFD) New feature : LES model on a mobile gird (ALE context)
+20/04/22 (TrioCFD) Enhancement : Adaptation of the nonlinear Reichardt wall law for the turbulence models to a mobile grid (ALE context)
+28/03/22 (TrioCFD) Bug fixed   : Update the Turbulence_synthetique validation sheet following the correction of the BC in TRUST
+21/02/22 (TrioCFD) Major Change: TRUST VDF face Diff/Dift operators changed : the transpose term of the velocity gradient is always used ! We use the good formulation now !
+12/01/22 (TrioCFD) Major Change: No more scalar methods for VDF flux iterators/evaluators
+12/01/22 (TrioCFD) Major Change: SingleDouble/ArrOfDouble for VDF elem/face fluxes and not DoubleVect (no // structure required !)
+12/01/22 (TrioCFD) Major Change: Class and Substitution Failure Is Not An Error (SFINAE) templates are extensively used for the VDF evaluators, iterators and operators
+--------------------------------------------------------------------------------------------------
+Release notes version 1.8.4 : Enhancements, modifications and corrected bugs since version 1.8.3 :
+--------------------------------------------------------------------------------------------------
+07/12/21 (TrioCFD) New feature : New documentation available: Configuration Management Plan (PGC)
+03/12/21 (TrioCFD) Enhancement : Improvement of the k-epsilon Bicephale model
+22/10/21 (TrioCFD) New feature : New model for weakly compressible flow
+--------------------------------------------------------------------------------------------------
+Release notes version 1.8.3 : Enhancements, modifications and corrected bugs since version 1.8.2 :
+--------------------------------------------------------------------------------------------------
+22/06/21 (TrioCFD) New feature : PHASE_FIELD: generalization of the thermodynamic landscape, the density law and so on of this binary Cahn-Hilliard model coupled with the Navier-Stokes equations (isothermal)
+18/06/21 (TrioCFD) Validation  : Add a validation sheets for a new BC which create synthetic fluctuations as inlet boundary
+09/06/21 (TrioCFD) Bug fixed   : Trust fix to globally conserve the mass of constituents by accepting small local erros in QC (ex baltik GRAINS)
+02/06/21 (TrioCFD) New feature : New problem added which allows simulating binary mixture flows at iso-bar and iso-thermal conditions using a low Mach number approximation 
+17/05/21 (TrioCFD) New feature : k-epsilon Bicephale model : New decoupled management of the evolution equations of k and epsilon for the Bas-Reynolds models - WARNING model under validation
+31/03/21 (TrioCFD) New feature : triocfd -baltik BALTIK_NAME creates an empty baltik that depends on TrioCFD.
+31/03/21 (TrioCFD) New feature : triocfd -xcheck allows now to check the syntaxe of triocfd datafiles using XDATA.
+31/03/21 (TrioCFD) New feature : Add possibility to post-process k-eps diffusive and convective terms in definition_champs block
+17/03/21 (TrioCFD) New feature : Add possibility to post-process k-eps source terms in definition_champs block with "operateur_eqn { numero_source 0 sources { refChamp { pb_champ pb K_EPS } }"
+03/03/21 (TrioCFD) Doc         : Update of models description (Phase Field, ALE and Sensitivity Analysis)
+05/02/21 (TrioCFD) New keyword : Boundary_field_keps_from_ud to specify a K-Eps inlet field with hydraulic diameter, speed, and turbulence intensity (VDF only)
+27/01/21 (TrioCFD) Major change: Restructuration - Rayonnement contains now Rayonnement (milieu transparent) + Rayonnement_semi_transparent
+27/01/21 (TrioCFD) Major change: Restructuration - Turbulence contains now LES validation sheets and Bas_Reynolds
+15/01/21 (TrioCFD) New feature : New documentation available: development plan and models description
+--------------------------------------------------------------------------------------------------
+Release notes version 1.8.2 : Enhancements, modifications and corrected bugs since version 1.8.1 :
+--------------------------------------------------------------------------------------------------
+11/12/20 (TrioCFD) New feature : New documentation available: validation report - first version
+19/11/20 (TrioCFD) Validation  : Update test cases after syntax change for Champ_Fonc_Fonction, Champ_Fonc_Fonction_txyz, Champ_Fonc_Tabule,Champ_Fonc_Fonction_txyz_Morceaux in TRUST
+17/11/20 (TrioCFD) New feature : triocfd -index gives now access to html index of TrioCFD.
+17/11/20 (TrioCFD) New feature : Adding triocfd script that overloads trust script.
+16/11/20 (TrioCFD) New feature : New baltik Sensitivity_analysis : provide an estimate of the variance of the velocity field in NS
+10/11/20 (TrioCFD) Validation  : Add 2 validation sheets for ALE Baltik : DIVA and TwoOscillatingCylindersALE
+05/11/20 (TrioCFD) New feature : Adding postprocessing the residues of all the unknown factors of the problem
+03/11/20 (TrioCFD) Bug fixed   : Disabling a loop vectorization in Shih_Zhu_Lumley_VDF model to avoid crash on intel compilers
+30/10/20 (TrioCFD) Change      : Add a missing term in the deformation tensor for non-uniform viscosity in VDF (laminar or turbulent flow)
+30/10/20 (TrioCFD) Change      : Remove -2/3*k remaining terms in the previous operators to be conform for all diffusive operators (VDF, VEF, uniform or not, axi or not) 
+30/10/20 (TrioCFD) Conception  : Diffusive operators coding turbulent shear stress come back from TrioCFD to TRUST
+16/10/20 (TrioCFD) New feature : Add possibility to post-process ustar with negligeable wall law in VDF discretization
+25/09/20 (TrioCFD) New feature : Add tenseur_Reynolds_externe option into Navier Stokes source and diffusion (viscosity) terms to enable a turbulence model built by a machine learning method
+24/09/20 (TrioCFD) Bug fixed   : Tasks when post-processing turbulent Quasi-compressible problem could be incomplete
+01/09/20 (TrioCFD) New feature : Add possibility to post-process ustar with negligeable wall law in VEF discretization
+--------------------------------------------------------------------------------------------------
+Release notes version 1.8.1 : Enhancements, modifications and corrected bugs since version 1.8.0 :
+--------------------------------------------------------------------------------------------------
+01/04/20 (TrioCFD) Enhancement : ALE improvements
+30/01/20 (TrioCFD) Validation  : Add DirectionalPressureLoss validation sheet
+09/12/19 (TrioCFD) Portability : Add 64 bits integers possibility to configure (experimental)
+--------------------------------------------------------------------------------------------------
+Release notes version 1.8.0 : Enhancements, modifications and corrected bugs since version 1.7.9 :
+--------------------------------------------------------------------------------------------------
+25/10/19 (TrioCFD) Major change: Turbulence features (turbulent problems, wall laws, turbulence models and associated boundary conditions) are moved from TRUST to TrioCFD baltik.
+--------------------------------------------------------------------------------------------------
+Release notes version 1.7.9 : Enhancements, modifications and corrected bugs since version 1.7.8 :
+--------------------------------------------------------------------------------------------------
+11/07/19 (TrioCFD) Enhancement : Arbitrary Lagrangian Eulerian frame of the NS equations (mesh moves along moving boundaries)
+02/05/19 (TrioCFD) Minor change: FTD. New key word for mu average calculation : standard, arithmetic or harmonic
+--------------------------------------------------------------------------------------------------
+Release notes version 1.7.8 : Enhancements, modifications and corrected bugs since version 1.7.7 :
+--------------------------------------------------------------------------------------------------
+30/11/18 (TRUST)   Portability: Update from TRUST (PETSC 3.10 version)
+19/11/18 (TrioCFD) New feature: Linke's scheme available.
+--------------------------------------------------------------------------------------------------
+Release notes version 1.7.7 : Enhancements, modifications and corrected bugs since version 1.7.6 :
+--------------------------------------------------------------------------------------------------
+22/02/18 (TrioCFD) Validation  : Adding prm for the bench FVCA_test_EF_stab
+--------------------------------------------------------------------------------------------------
+Release notes version 1.7.6 : Enhancements, modifications and corrected bugs since version 1.7.5 :
+--------------------------------------------------------------------------------------------------
+06/09/17 (TrioCFD) Validation  : Schema_Euler_Implicite_Stationnaire: two physical tests cases added
+--------------------------------------------------------------------------------------------------
+Release notes version 1.7.5 : Enhancements, modifications and corrected bugs since version 1.7.4 :
+--------------------------------------------------------------------------------------------------
+18/05/17 (TrioCFD) Minor change: New Schema_Euler_Implicite_Stationnaire dependency: local time step
+17/05/17 (TRUST)   Portability : Update with modifications from TRUST 1.7.5
+28/03/17 (TrioCFD) New feature : FTD. Contact angle hysteresis available in test (via #define PATCH_HYSTERESIS_V3)
+28/03/17 (TrioCFD) Minor change: FTD. Equilateral option available + preserve FT elements in corners (without remeshing)
+28/03/17 (TrioCFD) New feature : FTD. Thermal coupling : solid + liquid + vapour (with phase-change)
+31/01/17 (TrioCFD) Bug fixed   : FTD. Backup to the first time step if resumed a Front-Tracking calculation
+--------------------------------------------------------------------------------------------------
+Release notes version 1.7.4 : Enhancements, modifications and corrected bugs since version 1.7.3 :
+--------------------------------------------------------------------------------------------------
+09/12/16 (Tools)   Announcement: New Documentation Reference Guide
+25/11/16 (TRUST)   Portability : Update with modifications from TRUST 1.7.4
+--------------------------------------------------------------------------------------------------
+Release notes version 1.7.3 : Enhancements, modifications and corrected bugs since version 1.7.2 :
+--------------------------------------------------------------------------------------------------
+03/06/16 (TrioCFD) Optimization: New low-Reynolds turbulence model available
+03/06/16 (TrioCFD) New feature : Nonlinear k-epsilon turbulence model added
+26/05/16 (TrioCFD) Minor change: New CEG dependency: Critere_Entrainement_Gaz
+03/02/16 (TrioCFD) Bug fixed   : Resume a Front-Tracking calculation is now ok
+--------------------------------------------------------------------------------------------------
+Release notes version 1.7.2 : Enhancements, modifications and corrected bugs since version 1.7.1 :
+--------------------------------------------------------------------------------------------------
+12/11/15 (TrioCFD) Major change: Disable low Reynolds number turbulence model 
+14/10/15 (TrioCFD) Minor change: UtilitairesAssemblages dependency deleted because not used by this baltik
+18/06/15 (TrioCFD) Major change: Trio_U code becomes TRUST platform + TrioCFD baltilk
