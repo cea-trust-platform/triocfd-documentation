@@ -23,3 +23,9 @@ To produce a pdf, one must have `latexmk` installed and run `make latexpdf`.
 
 ## Edition
 Two formats can be used in Sphinx, [reStructuredText](https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html) and [Markdown](https://www.markdownguide.org/).
+
+To add math in markdown, one must write
+```
+{math}`k-\varepsilon`
+```
+to produce $k-\varepsilon$.
