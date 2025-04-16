@@ -17,6 +17,8 @@ pip install sphinx sphinx_material myst_parser
 cd doc
 make html
 ```
+Use your web browser to open the index file located at `build/html/index.html`.
+
 To produce a pdf, one must have `latexmk` installed and run `make latexpdf`.
 
 ## Edition
