@@ -14,6 +14,8 @@ git clone git@github.com:cea-trust-platform/triocfd-documentation.git
 python -m venv .venv
 source .venv/bin/activate
 pip install sphinx sphinx_material myst_parser
+# or
+pip install -r doc/requirements.txt
 cd doc
 make html
 ```
