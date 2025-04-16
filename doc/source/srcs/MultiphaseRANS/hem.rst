@@ -1,0 +1,2 @@
+Homogeneous equilibrium model
+=============================
