@@ -32,6 +32,7 @@ extensions = [
     'sphinx.ext.napoleon',          # Support for Google style docstrings
     'myst_parser'                   # Allows you to use Markdown in your Sphinx documentation.
 ]
+myst_enable_extensions = ["dollarmath", "amsmath"]
 
 htmlhelp_basename = 'TrioCFD_Documentation'
 
