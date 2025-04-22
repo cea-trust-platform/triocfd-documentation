@@ -31,3 +31,10 @@ For instance, to add math in markdown, one can write
 {math}`k-\varepsilon`
 ```
 to produce $k-\varepsilon$. The dollar separated syntax from LaTeX also works. An environment like `\begin{align}` will work between two `$$`.
+
+## ReadTheDocs
+The website is deployed on readthedocs.
+
+Build and deploy is triggered automatically when pushing on master branch.
+
+Build status is available at https://app.readthedocs.org/projects/triocfd-documentation/builds/.
