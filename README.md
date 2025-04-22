@@ -24,10 +24,10 @@ Use your web browser to open the index file located at `build/html/index.html`.
 To produce a pdf, one must have `latexmk` installed and run `make latexpdf`.
 
 ## Edition
-Two formats can be used in Sphinx, [reStructuredText](https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html) and [Markdown](https://www.markdownguide.org/).
+Two formats can be used in Sphinx, [reStructuredText](https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html) and [Markdown](https://www.markdownguide.org/). The complete markdown syntax is described by the [MyST Syntaxe Guide](https://myst-parser.readthedocs.io/en/v0.13.7/using/syntax.html).
 
-To add math in markdown, one must write
+For instance, to add math in markdown, one can write
 ```
 {math}`k-\varepsilon`
 ```
-to produce $k-\varepsilon$.
+to produce $k-\varepsilon$. The dollar separated syntax from LaTeX also works. An environment like `\begin{align}` will work between two `$$`.
