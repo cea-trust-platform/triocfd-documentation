@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 project = 'TrioCFD'
-author = 'TrioCFD'
+author = 'TrioCFD Team'
 copyright = f'{datetime.now().year}, CEA'
 
 # -- General configuration ---------------------------------------------------
@@ -34,7 +34,7 @@ extensions = [
 ]
 myst_enable_extensions = ["dollarmath", "amsmath"]
 
-htmlhelp_basename = 'TrioCFD_Documentation'
+htmlhelp_basename = 'TrioCFD'
 
 # To show or not private members
 autodoc_default_options = {"members": True,
@@ -65,7 +65,10 @@ language = "en"
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinx_material'
+#
+
+# html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinx_book_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
