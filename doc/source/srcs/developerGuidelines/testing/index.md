@@ -14,6 +14,8 @@ These tests are detailed in the two following sections:
 ./validation.md
 ```
 
-For information, it should be noted that validation tests are automatically converted to verification tests by extracting the simulation cases defined in the validation test, and reducing the number of iteration (to 3). This means that in a lot of cases, writing validation tests will be enough to cover both verification and validation.
+:::{tip}
+Validation tests are automatically converted to verification tests by extracting the simulation cases defined in the validation test, and reducing the number of iteration (to 3). This means that in a lot of cases, writing validation tests will be enough to cover both verification and validation.
+:::
 
 However, verification tests are easier to write than validation tests. Thus, it is common during development to start by writing simple test cases that will ensure you don't break your previous develpments, then at the end, before integration, replace these small verification tests by a validation test properly documented.
