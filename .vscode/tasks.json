@@ -1,0 +1,27 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "source ./.venv/bin/activate && cd doc && make clean html",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "configure",
+            "type": "shell",
+            "command": "python -m venv .venv && source ./.venv/bin/activate && pip install -r doc/requirements.txt"
+        },
+        {
+            "label": "open",
+            "type": "shell",
+            "command": "sensible-browser build/html/index.html"
+        }
+    ]
+}
