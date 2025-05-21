@@ -1,10 +1,14 @@
+:::{index} single: testing
+:::
 # Test your code !
 
 Test cases are separated in two categories, each covering a distinct need:
 
 * [verification tests](./tests.md): those are very short tests that will only serve to check basic functionality of the code, and can be lauched often (multiple times a day by everyone) or in debug mode (a lot slower). They are meant to check that the code can run without crashing, and that no drastical regression in computations has been introduced.
 
-* [validation tests](./validation.md): those are langer test cases that will produce results with physical meaning, which can then be compared to analytical solutions or experimental data.
+* [validation tests](./validation.md): those are longer test cases that will produce results with physical meaning, which can then be compared to analytical solutions or experimental data. They also serve a documentation purpose and provide a starting point for users.
+
+* Unit tests will be added in the future
 
 These tests are detailed in the two following sections:
 ```{toctree}

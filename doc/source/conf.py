@@ -33,7 +33,7 @@ extensions = [
     'myst_parser'                   # Allows you to use Markdown in your Sphinx documentation.
 ]
 myst_enable_extensions = ["dollarmath", "amsmath", "colon_fence",]
-
+myst_heading_anchors=3
 htmlhelp_basename = 'TrioCFD'
 
 # To show or not private members

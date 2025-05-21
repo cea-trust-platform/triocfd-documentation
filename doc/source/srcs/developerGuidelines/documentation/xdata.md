@@ -1,4 +1,4 @@
-:::{index} single: XDATA
+:::{index} single: documentation; XDATA
 :::
 # XDATA
 

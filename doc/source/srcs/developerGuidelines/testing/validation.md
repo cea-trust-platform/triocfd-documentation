@@ -1,7 +1,8 @@
-:::{index} single: Validation
+:::{index} single: validation
 :::
-
-:::{index} single: Jupyter
+:::{index} single: documentation; validation reports
+:::
+:::{index} single: jupyter
 :::
 
 # Validation reports: Jupyter Notebooks

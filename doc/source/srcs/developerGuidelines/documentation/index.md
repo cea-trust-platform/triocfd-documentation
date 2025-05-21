@@ -1,4 +1,4 @@
-:::{index} single: Documentation
+:::{index} single: documentation
 :::
 # Writing documentation
 
