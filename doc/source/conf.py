@@ -70,6 +70,18 @@ language = "en"
 # html_theme = 'sphinx_rtd_theme'
 html_theme = 'sphinx_book_theme'
 
+
+html_logo = "images/tcfd.png"
+html_favicon = "images/tcfd.png"
+
+html_theme_options = {
+    "home_page_in_toc": True,
+    "announcement": (
+        "Welcome to the new TrioCFD documentation !"
+    ),
+}
+
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".

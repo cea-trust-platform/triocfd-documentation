@@ -1,5 +1,6 @@
-# Basic Usage
+# Get started
 
+Welcome to the TrioCFD user guide !
 
 TrioCFD is provided as source code only meaning that you will need to compile it yourself in order to use it. 
 Build instructions can be found at the [Github repository](https://github.com/cea-trust-platform/TrioCFD-code).

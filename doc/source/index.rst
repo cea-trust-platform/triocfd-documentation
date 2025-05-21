@@ -1,10 +1,10 @@
-.. image:: images/tcfd.png
-   :alt: TrioCFD official logo
-   :width: 600px
-   :align: center
+.. .. image:: images/tcfd.png
+..    :alt: TrioCFD official logo
+..    :width: 600px
+..    :align: center
 
 TrioCFD Documentation
-=====================
+---------------------
 
 
 **TrioCFD** is an open-source software for numerical simulation in fluid mechanics based on the TRUST software platform. It has been developed by the Thermohydraulics and Fluid Mechanics Department (STMF) of ISAS at the Energy Department (DES) of the CEA since 1995. TrioCFD is an object-oriented code, implemented in C++, massively parallel, dedicated to various scientific and industrial studies, as well as research applications.
@@ -12,7 +12,7 @@ TrioCFD Documentation
 
 This page provides details on the physical models available in TrioCFD. Useful guidelines are provided for the beginners.
 
-- :ref:`User Guidelines<User Guide>`
+- :ref:`Get started with TrioCFD<Get started>`
 - :ref:`Turbulence modeling<Turbulence modeling in TrioCFD>`
 - :ref:`Multiphase RANS modeling<Multiphase CFD>`
 - :ref:`Tutorials<Tutorials>`
@@ -34,14 +34,24 @@ Table Of Contents
 
 .. toctree::
    :maxdepth: 2
+   :caption: User Guide
 
-   srcs/userGuidelines/index
-   srcs/developerGuidelines/index
+   srcs/userGuidelines/get-started.md
+   srcs/userGuidelines/howto/index
+   srcs/userGuidelines/Tutorials/index
+   srcs/userGuidelines/physicalModels/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Developer Guidelines
+
+   srcs/developerGuidelines/gitUsage/index.rst
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Navigation
+
    srcs/Bibliography/index
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
+   genindex
+   search
