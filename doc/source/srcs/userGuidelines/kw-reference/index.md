@@ -1,6 +1,8 @@
 :::{index} single: keywords
 :::
-# Keyword Reference Manual
+
+(keywords-target)=
+# Keywords Reference Manual
 
 This page lists all available TrioCFD keywords available to use in data files.
 
