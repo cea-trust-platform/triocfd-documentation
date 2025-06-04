@@ -39,6 +39,7 @@ Table Of Contents
    srcs/userGuidelines/howto/index
    srcs/userGuidelines/Tutorials/index
    srcs/userGuidelines/physicalModels/index
+   srcs/userGuidelines/kw-reference/index
 
 .. toctree::
    :maxdepth: 2

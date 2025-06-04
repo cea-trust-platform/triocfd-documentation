@@ -10,4 +10,4 @@ This will allow you to start a TrioCFD simulation from the command line by using
 
 The triocfd executable must be provided a data file describing the physical problem you want to simulate and the numerical tools you want to use. This file uses an in-house format which allows to interface with the C++ implementation by specifying directives to execute and objects to instanciate.
 
-See in Section [How to write a data file](./howto/index) for some guidelines on writing this file.
+See in Section [How to write a data file](./howto/index) for some guidelines on writing this file. The [Keyword Reference Manual](keywords) lists all valid keywords that can be used in a .data file, and describes the arguments they must be given.
