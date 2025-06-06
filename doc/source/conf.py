@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 project = 'TrioCFD'
-author = 'TrioCFD'
+author = 'The TrioCFD team'
 copyright = f'{datetime.now().year}, CEA'
 
 # -- General configuration ---------------------------------------------------
@@ -30,9 +30,11 @@ extensions = [
     'sphinx.ext.ifconfig',          # Allows conditional inclusion of content based on configuration values.
     'sphinx.ext.autosectionlabel',  # Automatically adds section labels to all sections.
     'sphinx.ext.napoleon',          # Support for Google style docstrings
+    'sphinxcontrib.bibtex',         # To manage citations with bibtex
     'myst_parser'                   # Allows you to use Markdown in your Sphinx documentation.
 ]
 myst_enable_extensions = ["dollarmath", "amsmath"]
+bibtex_bibfiles = ['bibliography.bib']
 
 htmlhelp_basename = 'TrioCFD_Documentation'
 
@@ -65,7 +67,12 @@ language = "en"
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinx_material'
+html_theme = 'sphinx_book_theme'
+
+tml_theme_options = {
+    "repository_url": "https://github.com/cea-trust-platform/triocfd-documentation",
+    "use_repository_button": True,
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
