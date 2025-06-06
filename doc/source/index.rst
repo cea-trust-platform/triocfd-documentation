@@ -9,11 +9,12 @@ TrioCFD Documentation
 This page provides details on the physical models available in TrioCFD. Useful guidelines are provided for the beginners.
 
 - :ref:`User Guidelines<Welcome to TrioCFD's User Guidelines !>`
-- :ref:`Turbulence modeling<Turbulence modeling in TrioCFD>`
+- :ref:`Turbulence modeling<Turbulence modeling>`
 - :ref:`Multiphase RANS modeling<Multiphase CFD>`
 - :ref:`Tutorials<Tutorials>`
 
-A history of PhD thesis is given in the :ref:`Bibliography` page.
+..
+   A history of PhD thesis is given in the :ref:`Bibliography` page.
 
 
 Here are some useful links that you can visit too:
@@ -29,7 +30,7 @@ Table Of Contents
 -----------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    srcs/userGuidelines/index
    srcs/Turbulence/index
