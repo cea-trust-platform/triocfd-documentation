@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 project = 'TrioCFD'
-author = 'TrioCFD Team'
+author = 'The TrioCFD team'
 copyright = f'{datetime.now().year}, CEA'
 
 # -- General configuration ---------------------------------------------------
@@ -30,11 +30,13 @@ extensions = [
     'sphinx.ext.ifconfig',          # Allows conditional inclusion of content based on configuration values.
     'sphinx.ext.autosectionlabel',  # Automatically adds section labels to all sections.
     'sphinx.ext.napoleon',          # Support for Google style docstrings
+    'sphinxcontrib.bibtex',         # To manage citations with bibtex
     'myst_parser'                   # Allows you to use Markdown in your Sphinx documentation.
 ]
 myst_enable_extensions = ["dollarmath", "amsmath", "colon_fence",]
 myst_heading_anchors=3
 htmlhelp_basename = 'TrioCFD'
+bibtex_bibfiles = ['bibliography.bib']
 
 # To show or not private members
 autodoc_default_options = {"members": True,
@@ -79,6 +81,8 @@ html_theme_options = {
     "announcement": (
         "Welcome to the new TrioCFD documentation !"
     ),
+    "repository_url": "https://github.com/cea-trust-platform/triocfd-documentation",
+    "use_repository_button": True,
 }
 
 
