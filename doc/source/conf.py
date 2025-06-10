@@ -30,8 +30,13 @@ extensions = [
     'sphinx.ext.ifconfig',          # Allows conditional inclusion of content based on configuration values.
     'sphinx.ext.autosectionlabel',  # Automatically adds section labels to all sections.
     'sphinx.ext.napoleon',          # Support for Google style docstrings
-    'myst_parser'                   # Allows you to use Markdown in your Sphinx documentation.
+    'myst_parser',                  # Allows you to use Markdown in your Sphinx documentation.
+    'breathe'                       # To include doxygen.
 ]
+
+breathe_projects = {"triocfd": "/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/build/xml"}
+breathe_default_project = "triocfd"
+
 myst_enable_extensions = ["dollarmath", "amsmath", "colon_fence",]
 myst_heading_anchors=3
 htmlhelp_basename = 'TrioCFD'

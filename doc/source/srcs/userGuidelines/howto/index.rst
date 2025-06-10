@@ -3,7 +3,8 @@ How to write a data file
 
 .. toctree::
    :maxdepth: 1
-
+   :titlesonly:
+   
    ./HowToDefMesh.rst
    ./HowToDefPressSolver.rst
    ./HowToDefBC.rst
@@ -14,11 +15,6 @@ How to write a data file
    ./HowToDefUnsteadyCase.rst
    ./HowToDefTimeSchRANSkeps.rst
    ./HowToDefConvSchRANSkeps.rst
-
-
-.. toctree::
-   :maxdepth: 1
-
    ./WhatConvectionSchemes.rst
    ./WhatkEpsModels.rst
    ./WhatVDFMesh.rst

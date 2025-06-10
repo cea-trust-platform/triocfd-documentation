@@ -16,3 +16,4 @@ You can use the [search](search) feature (on the left menu or shortcut {kbd}`Ctr
 :maxdepth: 1
 
 ./all.rst
+```

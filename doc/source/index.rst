@@ -34,16 +34,20 @@ Table Of Contents
 .. toctree::
    :maxdepth: 2
    :caption: User Guide
+   :titlesonly:
+   :includehidden:
+   :numbered:
 
    srcs/userGuidelines/get-started.md
-   srcs/userGuidelines/howto/index
-   srcs/userGuidelines/Tutorials/index
-   srcs/userGuidelines/physicalModels/index
-   srcs/userGuidelines/kw-reference/index
+   srcs/userGuidelines/howto/index.rst
+   srcs/userGuidelines/Tutorials/index.rst
+   srcs/userGuidelines/physicalModels/index.rst
 
 .. toctree::
    :maxdepth: 2
    :caption: Developer Guidelines
+   :titlesonly:
+   :numbered:
 
    srcs/developerGuidelines/setup-git.md
    srcs/developerGuidelines/testing/index.md
@@ -52,10 +56,17 @@ Table Of Contents
    srcs/developerGuidelines/git-tutorial/index.rst
    srcs/developerGuidelines/FAQ/index.md
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Generated Documentation
+
+   srcs/generated/kw-reference/index.md
+   srcs/generated/doxygen/index.rst
 
 .. toctree::
    :maxdepth: 2
    :caption: Navigation
+   :includehidden:
 
    srcs/Bibliography/index
    genindex

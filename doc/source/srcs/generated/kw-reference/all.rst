@@ -1,3 +1,10 @@
+.. _objet_u:
+
+**Objet_u**
+===================================
+
+The base class from which all TRUST Keywords are derived.
+
 **Keywords derived from algo_base**
 ===================================
 
@@ -703,7 +710,7 @@ Parameters are:
 
 - **solveur1**  (*type:* :ref:`solveur_sys_base`) Solver type.
 
-- **seuil**  (*type:* float) Value of the final residue. The gradient ceases iteration when the Euclidean residue standard ||Ax-B|| is less than this value.
+- **seuil**  (*type:* float) Value of the final residue. The gradient ceases iteration when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than this value.
 
 - **[nb_it_max]**  (*type:* int) Keyword to set the maximum iterations number for the Gcp.
 
@@ -711,7 +718,7 @@ Parameters are:
 
 - **[quiet]**  (*type:* flag) To not displaying any outputs of the solver.
 
-- **[save_matrice | save_matrix]**  (*type:* flag) to save the matrix in a file.
+- **[save_matrice \\\\| save_matrix]**  (*type:* flag) to save the matrix in a file.
 
 - **[precond]**  (*type:* :ref:`precond_base`) Keyword to define system preconditioning in order to accelerate resolution by the conjugated gradient. Many parallel preconditioning methods are not equivalent to their sequential counterpart, and you should therefore expect differences, especially when you select a high value of the final residue (seuil). The result depends on the number of processors and on the mesh splitting. It is sometimes useful to run the solver with no preconditioning at all. In particular:  - when the solver does not converge during initial projection,  - when comparing sequential and parallel computations.  With no preconditioning, except in some particular cases (no open boundary), the sequential and the parallel computations should provide exactly the same results within fpu accuracy. If not, there might be a coding error or the system of equations is singular.
 
@@ -739,11 +746,11 @@ Parameters are:
 
 - **precond**  (*type:* :ref:`precond_base`) The only preconditionner that we can specify is ilu.
 
-- **[seuil]**  (*type:* float) Value of the final residue. The solver ceases iterations when the Euclidean residue standard ||Ax-B|| is less than this value. default value 1e-12.
+- **[seuil]**  (*type:* float) Value of the final residue. The solver ceases iterations when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than this value. default value 1e-12.
 
 - **[impr]**  (*type:* flag) Keyword which is used to request display of the Euclidean residue standard each time this iterates through the conjugated gradient (display to the standard outlet).
 
-- **[save_matrice | save_matrix]**  (*type:* flag) To save the matrix in a file.
+- **[save_matrice \\\\| save_matrix]**  (*type:* flag) To save the matrix in a file.
 
 - **[quiet]**  (*type:* flag) To not displaying any outputs of the solver.
 
@@ -777,7 +784,7 @@ Parameters are:
 
 - **[controle_residu]**  (*type:* int into [0, 1]) Keyword of Boolean type (by default 0). If set to 1, the convergence occurs if the residu suddenly increases.
 
-- **[save_matrice | save_matrix]**  (*type:* flag) to save the matrix in a file.
+- **[save_matrice \\\\| save_matrix]**  (*type:* flag) to save the matrix in a file.
 
 - **[dim_espace_krilov]**  (*type:* int) not_set
 
@@ -829,7 +836,7 @@ Parameters are:
 
 - **[quiet]**  (*type:* flag) To disable printing of information
 
-- **[save_matrice | save_matrix]**  (*type:* flag) To save the linear system (A, x, B) into a file
+- **[save_matrice \\\\| save_matrix]**  (*type:* flag) To save the linear system (A, x, B) into a file
 
 - **[frequence_recalc]**  (*type:* int) To set a time step period (by default, 100) for re-checking the fatest solver
 
@@ -925,7 +932,7 @@ Preconditioned conjugated gradient.
 
 Parameters are:
 
-- **seuil**  (*type:* float) Value of the final residue. The gradient ceases iteration when the Euclidean residue standard ||Ax-B|| is less than this value.
+- **seuil**  (*type:* float) Value of the final residue. The gradient ceases iteration when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than this value.
 
 - **[nb_it_max]**  (*type:* int) Keyword to set the maximum iterations number for the Gcp.
 
@@ -933,7 +940,7 @@ Parameters are:
 
 - **[quiet]**  (*type:* flag) To not displaying any outputs of the solver.
 
-- **[save_matrice | save_matrix]**  (*type:* flag) to save the matrix in a file.
+- **[save_matrice \\\\| save_matrix]**  (*type:* flag) to save the matrix in a file.
 
 - **[precond]**  (*type:* :ref:`precond_base`) Keyword to define system preconditioning in order to accelerate resolution by the conjugated gradient. Many parallel preconditioning methods are not equivalent to their sequential counterpart, and you should therefore expect differences, especially when you select a high value of the final residue (seuil). The result depends on the number of processors and on the mesh splitting. It is sometimes useful to run the solver with no preconditioning at all. In particular:  - when the solver does not converge during initial projection,  - when comparing sequential and parallel computations.  With no preconditioning, except in some particular cases (no open boundary), the sequential and the parallel computations should provide exactly the same results within fpu accuracy. If not, there might be a coding error or the system of equations is singular.
 
@@ -2027,7 +2034,7 @@ Parameters are:
 
 - **[tsup]**  (*type:* float) Outlet fluid temperature of the 1D model (oC or K).
 
-- **[lambda_ | lambda]**  (*type:* string) Thermal conductivity of the fluid (W.m-1.K-1).
+- **[lambda_ \\\\| lambda]**  (*type:* string) Thermal conductivity of the fluid (W.m-1.K-1).
 
 - **[rho]**  (*type:* string) Mass density of the fluid (kg.m-3) which may be a function of the temperature T.
 
@@ -2071,7 +2078,7 @@ Parameters are:
 
 - **[tsup]**  (*type:* float) Outlet fluid temperature of the 1D model (oC or K).
 
-- **[lambda_ | lambda]**  (*type:* string) Thermal conductivity of the fluid (W.m-1.K-1).
+- **[lambda_ \\\\| lambda]**  (*type:* string) Thermal conductivity of the fluid (W.m-1.K-1).
 
 - **[rho]**  (*type:* string) Mass density of the fluid (kg.m-3) which may be a function of the temperature T.
 
@@ -2205,11 +2212,11 @@ temperature in the case of zoom (fine).
 
 Parameters are:
 
-- **h_or_t | h_imp**  (*type:* string into ['h_imp', 't_ext']) Heat exchange coefficient value (expressed in W.m-2.K-1).
+- **h_or_t \\\\| h_imp**  (*type:* string into ['h_imp', 't_ext']) Heat exchange coefficient value (expressed in W.m-2.K-1).
 
 - **himpc**  (*type:* :ref:`front_field_base`) Boundary field type.
 
-- **t_or_h | text**  (*type:* string into ['t_ext', 'h_imp']) External temperature value (expressed in oC or K).
+- **t_or_h \\\\| text**  (*type:* string into ['t_ext', 'h_imp']) External temperature value (expressed in oC or K).
 
 - **ch**  (*type:* :ref:`front_field_base`) Boundary field type.
 
@@ -2228,11 +2235,11 @@ temperature in the case of zoom (coarse).
 
 Parameters are:
 
-- **h_or_t | h_imp**  (*type:* string into ['h_imp', 't_ext']) Heat exchange coefficient value (expressed in W.m-2.K-1).
+- **h_or_t \\\\| h_imp**  (*type:* string into ['h_imp', 't_ext']) Heat exchange coefficient value (expressed in W.m-2.K-1).
 
 - **himpc**  (*type:* :ref:`front_field_base`) Boundary field type.
 
-- **t_or_h | text**  (*type:* string into ['t_ext', 'h_imp']) External temperature value (expressed in oC or K).
+- **t_or_h \\\\| text**  (*type:* string into ['t_ext', 'h_imp']) External temperature value (expressed in oC or K).
 
 - **ch**  (*type:* :ref:`front_field_base`) Boundary field type.
 
@@ -2251,11 +2258,11 @@ temperature.
 
 Parameters are:
 
-- **h_or_t | h_imp**  (*type:* string into ['h_imp', 't_ext']) Heat exchange coefficient value (expressed in W.m-2.K-1).
+- **h_or_t \\\\| h_imp**  (*type:* string into ['h_imp', 't_ext']) Heat exchange coefficient value (expressed in W.m-2.K-1).
 
 - **himpc**  (*type:* :ref:`front_field_base`) Boundary field type.
 
-- **t_or_h | text**  (*type:* string into ['t_ext', 'h_imp']) External temperature value (expressed in oC or K).
+- **t_or_h \\\\| text**  (*type:* string into ['t_ext', 'h_imp']) External temperature value (expressed in oC or K).
 
 - **ch**  (*type:* :ref:`front_field_base`) Boundary field type.
 
@@ -2273,11 +2280,11 @@ Particular case of class paroi_echange_externe_impose for enthalpy equation.
 
 Parameters are:
 
-- **h_or_t | h_imp**  (*type:* string into ['h_imp', 't_ext']) Heat exchange coefficient value (expressed in W.m-2.K-1).
+- **h_or_t \\\\| h_imp**  (*type:* string into ['h_imp', 't_ext']) Heat exchange coefficient value (expressed in W.m-2.K-1).
 
 - **himpc**  (*type:* :ref:`front_field_base`) Boundary field type.
 
-- **t_or_h | text**  (*type:* string into ['t_ext', 'h_imp']) External temperature value (expressed in oC or K).
+- **t_or_h \\\\| text**  (*type:* string into ['t_ext', 'h_imp']) External temperature value (expressed in oC or K).
 
 - **ch**  (*type:* :ref:`front_field_base`) Boundary field type.
 
@@ -2296,11 +2303,11 @@ gas.
 
 Parameters are:
 
-- **h_or_t | h_imp**  (*type:* string into ['h_imp', 't_ext']) Heat exchange coefficient value (expressed in W.m-2.K-1).
+- **h_or_t \\\\| h_imp**  (*type:* string into ['h_imp', 't_ext']) Heat exchange coefficient value (expressed in W.m-2.K-1).
 
 - **himpc**  (*type:* :ref:`front_field_base`) Boundary field type.
 
-- **t_or_h | text**  (*type:* string into ['t_ext', 'h_imp']) External temperature value (expressed in oC or K).
+- **t_or_h \\\\| text**  (*type:* string into ['t_ext', 'h_imp']) External temperature value (expressed in oC or K).
 
 - **ch**  (*type:* :ref:`front_field_base`) Boundary field type.
 
@@ -2318,11 +2325,11 @@ External type exchange condition for a coupled problem with radiation in transpa
 
 Parameters are:
 
-- **h_or_t | h_imp**  (*type:* string into ['h_imp', 't_ext']) Heat exchange coefficient value (expressed in W.m-2.K-1).
+- **h_or_t \\\\| h_imp**  (*type:* string into ['h_imp', 't_ext']) Heat exchange coefficient value (expressed in W.m-2.K-1).
 
 - **himpc**  (*type:* :ref:`front_field_base`) Boundary field type.
 
-- **t_or_h | text**  (*type:* string into ['t_ext', 'h_imp']) External temperature value (expressed in oC or K).
+- **t_or_h \\\\| text**  (*type:* string into ['t_ext', 'h_imp']) External temperature value (expressed in oC or K).
 
 - **ch**  (*type:* :ref:`front_field_base`) Boundary field type.
 
@@ -3212,7 +3219,7 @@ Parameters are:
 
 - **[fonction]**  (*type:* :ref:`fonction_champ_reprise`) Optional keyword to apply a function on the field being read in the save file (e.g. to read a temperature field in Celsius units and convert it for the calculation on Kelvin units, you will use: fonction 1 273.+val )
 
-- **temps | time**  (*type:* string) Time of the saved field in the save file or last_time. If you give the keyword last_time instead, the last time saved in the save file will be used.
+- **temps \\\\| time**  (*type:* string) Time of the saved field in the save file or last_time. If you give the keyword last_time instead, the last time saved in the save file will be used.
 
 
 
@@ -3884,7 +3891,7 @@ Parameters are:
 
 - **nb_comp**  (*type:* int) Number of field components.
 
-- **bloc**  (*type:* :ref:`bloc_lecture`) { [N val L val ] Moyenne m_1.....[m_i ] Amplitude A_1.....[A_ i ]}: Random nois: If N and L are not defined, the ith component of the field varies randomly around an average value m_i with a maximum amplitude A_i.  White noise: If N and L are defined, these two additional parameters correspond to L, the domain length and N, the number of nodes in the domain. Noise frequency will be between 2*Pi/L and 2*Pi*N/(4*L).  For example, formula for velocity: u=U0(t) v=U1(t)Uj(t)=Mj+2*Aj*bruit_blanc where bruit_blanc (white_noise) is the formula given in the mettre_a_jour (update) method of the Champ_front_bruite (noise_boundary_field) (Refer to the Champ_front_bruite.cpp file).
+- **bloc**  (*type:* :ref:`bloc_lecture`) { [N val L val ] Moyenne m_1.....[m_i ] Amplitude A_1.....[A_i ]}: Random nois: If N and L are not defined, the ith component of the field varies randomly around an average value m_i with a maximum amplitude A_i.  White noise: If N and L are defined, these two additional parameters correspond to L, the domain length and N, the number of nodes in the domain. Noise frequency will be between 2*Pi/L and 2*Pi*N/(4*L).  For example, formula for velocity: u=U0(t) v=U1(t)Uj(t)=Mj+2*Aj*bruit_blanc where bruit_blanc (white_noise) is the formula given in the mettre_a_jour (update) method of the Champ_front_bruite (noise_boundary_field) (Refer to the Champ_front_bruite.cpp file).
 
 
 
@@ -4048,7 +4055,7 @@ discretization. The flow rate is kept constant during a transient.
 
 Parameters are:
 
-- **dimension | dim**  (*type:* int) Problem dimension
+- **dimension \\\\| dim**  (*type:* int) Problem dimension
 
 - **liste**  (*type:* :ref:`bloc_lecture`) List of the mass flow rate values [kg/s/m2] with the following syntaxe: { val1 ... valdim }
 
@@ -4071,7 +4078,7 @@ discretization. The flow rate could be constant or time-dependent.
 
 Parameters are:
 
-- **dimension | dim**  (*type:* int) Problem dimension
+- **dimension \\\\| dim**  (*type:* int) Problem dimension
 
 - **liste**  (*type:* :ref:`bloc_lecture`) List of the mass flow rate values [kg/s/m2] with the following syntaxe: { val1 ... valdim } where val1 ... valdim are constant or function of time.
 
@@ -4209,7 +4216,7 @@ entree frontiere_ouverte_K_Eps_impose Champ_Front_lu dom 2pb_K_EPS_PERIO_1006.30
 
 Parameters are:
 
-- **domaine | domain**  (*type:* string) Name of domain
+- **domaine \\\\| domain**  (*type:* string) Name of domain
 
 - **dim**  (*type:* int) number of components
 
@@ -4324,11 +4331,11 @@ Parameters are:
 
 - **[distance_plan]**  (*type:* list of float) Vector which gives the distance between the boundary and the plane from where the field F will be extracted. By default, the vector is zero, that should imply the two domains have coincident boundaries.
 
-- **[ampli_moyenne_imposee]**  (*type:* list of float) 2|3 alpha(0) alpha(1) [alpha(2)]: alpha_i coefficients (by default =1)
+- **[ampli_moyenne_imposee]**  (*type:* list of float) 2\\\\|3 alpha(0) alpha(1) [alpha(2)]: alpha_i coefficients (by default =1)
 
-- **[ampli_moyenne_recyclee]**  (*type:* list of float) 2|3 beta(0) beta(1) [beta(2)]}: beta_i coefficients (by default =1)
+- **[ampli_moyenne_recyclee]**  (*type:* list of float) 2\\\\|3 beta(0) beta(1) [beta(2)]}: beta_i coefficients (by default =1)
 
-- **[ampli_fluctuation]**  (*type:* list of float) 2|3 gamma(0) gamma(1) [gamma(2)]}: gamma_i coefficients (by default =1)
+- **[ampli_fluctuation]**  (*type:* list of float) 2\\\\|3 gamma(0) gamma(1) [gamma(2)]}: gamma_i coefficients (by default =1)
 
 - **[direction_anisotrope]**  (*type:* int into [1, 2, 3]) If an integer is given for direction (X:1, Y:2, Z:3, by default, direction is negative), the imposed field g will be 0 for the 2 other directions.
 
@@ -4542,7 +4549,7 @@ Basic class for a liquid-gas interface (used in pb_multiphase)
 
 Parameters are:
 
-- **[tension_superficielle | surface_tension]**  (*type:* float) surface tension
+- **[tension_superficielle \\\\| surface_tension]**  (*type:* float) surface tension
 
 
 
@@ -4558,7 +4565,7 @@ Liquid-gas interface with a constant surface tension sigma
 
 Parameters are:
 
-- **[tension_superficielle | surface_tension]**  (*type:* float) surface tension
+- **[tension_superficielle \\\\| surface_tension]**  (*type:* float) surface tension
 
 
 
@@ -4578,7 +4585,7 @@ Parameters are:
 
 - **[t_ref]**  (*type:* float) not_set
 
-- **[tension_superficielle | surface_tension]**  (*type:* float) surface tension
+- **[tension_superficielle \\\\| surface_tension]**  (*type:* float) surface tension
 
 
 
@@ -4608,7 +4615,7 @@ Parameters are:
 
 - **[t_ref]**  (*type:* float) not_set
 
-- **[tension_superficielle | surface_tension]**  (*type:* float) surface tension
+- **[tension_superficielle \\\\| surface_tension]**  (*type:* float) surface tension
 
 
 
@@ -4628,7 +4635,7 @@ Parameters are:
 
 - **[t_ref]**  (*type:* float) Use to fix the temperature value in the closure law. If not specified, the value of the temperature unknown will be used
 
-- **[tension_superficielle | surface_tension]**  (*type:* float) surface tension
+- **[tension_superficielle \\\\| surface_tension]**  (*type:* float) surface tension
 
 
 
@@ -5055,7 +5062,7 @@ Parameters are:
 
 - **[domaine_final]**  (*type:* string) new domain in which faces are stored
 
-- **[par_sous_zone | par_sous_dom]**  (*type:* string) a sub-area (a group in a MED file) allowing to choose the elements
+- **[par_sous_zone \\\\| par_sous_dom]**  (*type:* string) a sub-area (a group in a MED file) allowing to choose the elements
 
 - **domaine_init**  (*type:* string) initial domain
 
@@ -5111,9 +5118,9 @@ Parameters are:
 
 - **pb**  (*type:* string) Name of the problem to debug.
 
-- **fichier1 | file1**  (*type:* string) Name of the file where domain will be written in sequential calculation.
+- **fichier1 \\\\| file1**  (*type:* string) Name of the file where domain will be written in sequential calculation.
 
-- **fichier2 | file2**  (*type:* string) Name of the file where faces will be written in sequential calculation.
+- **fichier2 \\\\| file2**  (*type:* string) Name of the file where faces will be written in sequential calculation.
 
 - **seuil**  (*type:* float) Minimal value (by default 1.e-20) for the differences between the two codes.
 
@@ -5559,7 +5566,7 @@ Parameters are:
 
 - **[condition_elements]**  (*type:* string) not_set
 
-- **[sous_domaine | sous_zone]**  (*type:* string) not_set
+- **[sous_domaine \\\\| sous_zone]**  (*type:* string) not_set
 
 
 
@@ -5697,7 +5704,7 @@ Class to generate an extruded mesh from a boundary of a tetrahedral or an hexahe
 Warning: If the initial domain is a tetrahedral mesh, the boundary will be moved in the
 XY plane then extrusion will be applied (you should maybe use the Transformer keyword on
 the final domain to have the domain you really want). You can use the keyword
-Postraiter_domaine to generate a lata|med|... file to visualize your initial and final
+Postraiter_domaine to generate a lata\\\\|med\\\\|... file to visualize your initial and final
 meshes.
 
 This keyword can be used for example to create a periodic box extracted from a boundary
@@ -5766,7 +5773,7 @@ triangular/quadrangular mesh.
 
 Parameters are:
 
-- **domaine | domain_name**  (*type:* string) Name of the domain.
+- **domaine \\\\| domain_name**  (*type:* string) Name of the domain.
 
 - **nb_tranches**  (*type:* int) Number of elements in the extrusion direction.
 
@@ -5788,7 +5795,7 @@ change these names with the keyword RegroupeBord.
 
 Parameters are:
 
-- **domaine | domain_name**  (*type:* string) Name of the domain.
+- **domaine \\\\| domain_name**  (*type:* string) Name of the domain.
 
 - **nb_tranches**  (*type:* int) Number of elements in the extrusion direction.
 
@@ -5814,7 +5821,7 @@ is recommended to extrude all the domains at the same time.
 
 Parameters are:
 
-- **domaine | domain_name**  (*type:* list of str) List of the domains
+- **domaine \\\\| domain_name**  (*type:* list of str) List of the domains
 
 - **[nom_cl_devant]**  (*type:* string) New name of the first boundary.
 
@@ -6289,7 +6296,7 @@ defined and to run a coupled calculation.
 
 Parameters are:
 
-- **domaine | domain**  (*type:* string) Name of domain
+- **domaine \\\\| domain**  (*type:* string) Name of domain
 
 - **nom_bord**  (*type:* string) Name of the boundary to transform.
 
@@ -6545,7 +6552,7 @@ Class for interpolation fields using MEDCoupling.
 
 Parameters are:
 
-- **[sans_dec | without_dec]**  (*type:* flag) Use remapper even for a parallel calculation
+- **[sans_dec \\\\| without_dec]**  (*type:* flag) Use remapper even for a parallel calculation
 
 - **[sharing_algo]**  (*type:* int) Setting the DEC sharing algo : 0,1,2
 
@@ -6565,7 +6572,7 @@ Parameters are:
 
 - **[use_osqp]**  (*type:* flag) Flag to use the old formulation of the M2 matrix provided by the OSQP library. Only useful for PolyMAC version.
 
-- **[maillage_vdf | vdf_mesh]**  (*type:* flag) Flag used to force the calculation of the equiv tab.
+- **[maillage_vdf \\\\| vdf_mesh]**  (*type:* flag) Flag used to force the calculation of the equiv tab.
 
 - **[interp_ve1]**  (*type:* flag) Flag to enable a first-order face-to-element velocity interpolation. By default, it is not activated which means a second order interpolation. Only useful for PolyMAC_P0 version.
 
@@ -6591,7 +6598,7 @@ Parameters are:
 
 - **[p_imposee_aux_faces]**  (*type:* string into ['oui', 'non']) Pressure imposed at the faces (yes or no).
 
-- **[all_options | toutes_les_options]**  (*type:* flag) Activates all Option_VDF options. If used, must be used alone without specifying the other options, nor combinations.
+- **[all_options \\\\| toutes_les_options]**  (*type:* flag) Activates all Option_VDF options. If used, must be used alone without specifying the other options, nor combinations.
 
 
 
@@ -6748,11 +6755,11 @@ Parameters are:
 
 - **[dual]**  (*type:* int into [0, 1]) This option indicates whether the original mesh (default) or the dual one (the one used for postprocessing of field faces) is to be written.
 
-- **[fichier | file]**  (*type:* string) The file name can be changed with the fichier option.
+- **[fichier \\\\| file]**  (*type:* string) The file name can be changed with the fichier option.
 
 - **[joints_non_postraites]**  (*type:* int into [0, 1]) The joints_non_postraites (1 by default) will not write the boundaries between the partitioned mesh.
 
-- **[domaine | domain]**  (*type:* string) Name of domain
+- **[domaine \\\\| domain]**  (*type:* string) Name of domain
 
 - **[domaines]**  (*type:* :ref:`bloc_lecture`) Names of domains : { name1 name2 }
 
@@ -6909,9 +6916,9 @@ Refine parallel mesh in parallel
 
 Parameters are:
 
-- **name_of_initial_domaines | name_of_initial_zones**  (*type:* string) name of initial Domaines
+- **name_of_initial_domaines \\\\| name_of_initial_zones**  (*type:* string) name of initial Domaines
 
-- **name_of_new_domaines | name_of_new_zones**  (*type:* string) name of new Domaines
+- **name_of_new_domaines \\\\| name_of_new_zones**  (*type:* string) name of new Domaines
 
 - **[ascii]**  (*type:* flag) writing Domaines in ascii format
 
@@ -7027,15 +7034,15 @@ Parameters are:
 
 - **[convertalltopoly]**  (*type:* flag) Option to convert mesh with mixed cells into polyhedral/polygonal cells
 
-- **domain | domaine**  (*type:* string) Corresponds to the domain name.
+- **domain \\\\| domaine**  (*type:* string) Corresponds to the domain name.
 
-- **file | fichier**  (*type:* string) File (written in the MED format, with extension '.med') containing the mesh
+- **file \\\\| fichier**  (*type:* string) File (written in the MED format, with extension '.med') containing the mesh
 
-- **[mesh | maillage]**  (*type:* string) Name of the mesh in med file. If not specified, the first mesh will be read.
+- **[mesh \\\\| maillage]**  (*type:* string) Name of the mesh in med file. If not specified, the first mesh will be read.
 
-- **[exclude_groups | exclure_groupes]**  (*type:* list of str) List of face groups to skip in the MED file.
+- **[exclude_groups \\\\| exclure_groupes]**  (*type:* list of str) List of face groups to skip in the MED file.
 
-- **[include_additional_face_groups | inclure_groupes_faces_additionnels]**  (*type:* list of str) List of face groups to read and register in the MED file.
+- **[include_additional_face_groups \\\\| inclure_groupes_faces_additionnels]**  (*type:* list of str) List of face groups to read and register in the MED file.
 
 
 
@@ -7142,7 +7149,7 @@ domaine.
 
 Parameters are:
 
-- **domaine | domain**  (*type:* string) Name of domain
+- **domaine \\\\| domain**  (*type:* string) Name of domain
 
 - **new_bord**  (*type:* string) Name of the new boundary
 
@@ -7217,7 +7224,7 @@ decribed below :
 
 Parameters are:
 
-- **domaine | domain**  (*type:* string) Name of domain
+- **domaine \\\\| domain**  (*type:* string) Name of domain
 
 - **bloc**  (*type:* :ref:`remove_elem_bloc`) not_set
 
@@ -7470,7 +7477,7 @@ domain_name.
 
 Parameters are:
 
-- **domaine | domain**  (*type:* string) Name of domain
+- **domaine \\\\| domain**  (*type:* string) Name of domain
 
 - **bords**  (*type:* list of Nom_anonyme) List of name.
 
@@ -7484,7 +7491,7 @@ Parameters are:
 ----------
 
 
-To run Unix commands from the data file. Example: System \'echo The End | mail
+To run Unix commands from the data file. Example: System \'echo The End \\\\| mail
 trust@cea.fr\'
 
 Parameters are:
@@ -7521,7 +7528,7 @@ Parameters are:
 
 - **[genere_fichier_solveur]**  (*type:* float) To create a file of the solver with a threshold convergence
 
-- **[seuil_verification]**  (*type:* float) Check if the solution satisfy ||Ax-B||<precision
+- **[seuil_verification]**  (*type:* float) Check if the solution satisfy \\\\|\\\\|Ax-B\\\\|\\\\|<precision
 
 - **[pas_de_solution_initiale]**  (*type:* flag) Resolution isn\'t initialized with the solution x
 
@@ -7576,7 +7583,7 @@ Parameters are:
 
 - **pb_name**  (*type:* string) Name of domain.
 
-- **field_name | filed_name**  (*type:* string) Name of domain.
+- **field_name \\\\| filed_name**  (*type:* string) Name of domain.
 
 
 
@@ -7644,8 +7651,8 @@ Parameters are:
 
 This new discretization generates tetrahedral elements from cartesian or non-cartesian
 hexahedral elements. The process cut each hexahedral in 6 pyramids, each of them being cut
-then in 4 tetrahedral. So, in comparison with tetra_homogene, less elements (*24 instead
-of*40) with more homogeneous volumes are generated. Moreover, this process is done in a
+then in 4 tetrahedral. So, in comparison with tetra_homogene, less elements (\\\\*24 instead
+of\*40) with more homogeneous volumes are generated. Moreover, this process is done in a
 faster way. Initial block is divided in 24 tetrahedra:
 
 
@@ -7794,10 +7801,8 @@ rectangle in 8 triangles (against 4, previously). This cutting ensures :
 
 - a better isotropy of elements than with Trianguler_h option.
 
-- a better alignment of summits (this could have a benefit effect on calculation near
-walls since first elements in contact with it are all contained in the same constant
-thickness, and, by this way, a 2D cartesian grid based on summits can be engendered and
-used to realize statistical analysis in plane channel configuration for instance).
+- a better alignment of summits (this could have a benefit effect on calculation near walls since first elements in contact with it are all contained in the same constant thickness, and, by this way, a 2D cartesian grid based on summits can be engendered and used to realize statistical analysis in plane channel configuration for instance).
+
 Principle:
 
 
@@ -7892,7 +7897,7 @@ inconsistent cells.
 
 Parameters are:
 
-- **domain_name | dom**  (*type:* string) Name of the domaine
+- **domain_name \\\\| dom**  (*type:* string) Name of the domaine
 
 - **bloc**  (*type:* :ref:`verifiercoin_bloc`) not_set
 
@@ -8339,7 +8344,7 @@ Parameters are:
 
 - **[coefficient_diffusion]**  (*type:* :ref:`field_base`) Constituent diffusion coefficient value (m2.s-1). If a multi-constituent problem is being processed, the diffusivite will be a vectorial and each components will be the diffusion of the constituent.
 
-- **[is_multi_scalar | is_multi_scalar_diffusion]**  (*type:* flag) Flag to activate the multi_scalar diffusion operator
+- **[is_multi_scalar \\\\| is_multi_scalar_diffusion]**  (*type:* flag) Flag to activate the multi_scalar diffusion operator
 
 - **[gravite]**  (*type:* :ref:`field_base`) Gravity field (optional).
 
@@ -8351,7 +8356,7 @@ Parameters are:
 
 - **[rho]**  (*type:* :ref:`field_base`) Density (kg.m-3).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
@@ -8383,7 +8388,7 @@ Parameters are:
 
 - **[rho]**  (*type:* :ref:`field_base`) Density (kg.m-3).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
@@ -8415,7 +8420,7 @@ Parameters are:
 
 - **[rho]**  (*type:* :ref:`field_base`) Density (kg.m-3).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
@@ -8435,11 +8440,11 @@ Parameters are:
 
 - **sigma**  (*type:* :ref:`champ_don_base`) surfacic tension (J/m2)
 
-- **fluide0 | phase0**  (*type:* :ref:`fluid_diph_lu`) first phase fluid
+- **fluide0 \\\\| phase0**  (*type:* :ref:`fluid_diph_lu`) first phase fluid
 
-- **fluide1 | phase1**  (*type:* :ref:`fluid_diph_lu`) second phase fluid
+- **fluide1 \\\\| phase1**  (*type:* :ref:`fluid_diph_lu`) second phase fluid
 
-- **[chaleur_latente]**  (*type:* :ref:`champ_don_base`) phase changement enthalpy h(phase1_) - h(phase0_) (J/kg/K)
+- **[chaleur_latente]**  (*type:* :ref:`champ_don_base`) phase changement enthalpy h(phase1\_) - h(phase0\_) (J/kg/K)
 
 - **[formule_mu]**  (*type:* string) (into=[standard,arithmetic,harmonic]) formula used to calculate average
 
@@ -8453,7 +8458,7 @@ Parameters are:
 
 - **[rho]**  (*type:* :ref:`field_base`) Density (kg.m-3).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
@@ -8481,7 +8486,7 @@ Parameters are:
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[porosites]**  (*type:* :ref:`bloc_lecture`) Porosity (optional)
 
@@ -8532,7 +8537,7 @@ Parameters are:
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[porosites]**  (*type:* :ref:`bloc_lecture`) Porosity (optional)
 
@@ -8569,13 +8574,13 @@ Parameters are:
 
 - **[traitement_pth]**  (*type:* string into ['edo', 'constant', 'conservation_masse']) Particular treatment for the thermodynamic pressure Pth ; there are three possibilities:  1) with the keyword \'edo\' the code computes Pth solving an O.D.E. ; in this case, the mass is not strictly conserved (it is the default case for quasi compressible computation):  2) the keyword \'conservation_masse\' forces the conservation of the mass (closed geometry or with periodic boundaries condition)  3) the keyword \'constant\' makes it possible to have a constant Pth ; it\'s the good choice when the flow is open (e.g. with pressure boundary conditions).  It is possible to monitor the volume averaged value for temperature and density, plus Pth evolution in the .evol_glob file.
 
-- **[traitement_rho_gravite]**  (*type:* string into ['standard', 'moins_rho_moyen']) It may be :1) \`standard\` : the gravity term is evaluted with rho*g (It is the default). 2) \`moins_rho_moyen\` : the gravity term is evaluated with (rho-rhomoy) *g. Unknown pressure is then P*=P+rhomoy*g*z. It is useful when you apply uniforme pressure boundary condition like P*=0.
+- **[traitement_rho_gravite]**  (*type:* string into ['standard', 'moins_rho_moyen']) It may be :1) \`standard\` : the gravity term is evaluted with rho*g (It is the default). 2) \`moins_rho_moyen\` : the gravity term is evaluated with (rho-rhomoy) \\\\*g. Unknown pressure is then P*=P+rhomoy*g*z. It is useful when you apply uniforme pressure boundary condition like P*=0.
 
 - **[temps_debut_prise_en_compte_drho_dt]**  (*type:* float) While time<value, dRho/dt is set to zero (Rho, volumic mass). Useful for some calculation during the first time steps with big variation of temperature and volumic mass.
 
 - **[omega_relaxation_drho_dt]**  (*type:* float) Optional option to have a relaxed algorithm to solve the mass equation. value is used (1 per default) to specify omega.
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[mu]**  (*type:* :ref:`field_base`) Dynamic viscosity (kg.m-1.s-1).
 
@@ -8623,7 +8628,7 @@ Parameters are:
 
 - **[rho]**  (*type:* :ref:`field_base`) Density (kg.m-3).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
@@ -8659,7 +8664,7 @@ Parameters are:
 
 - **[rho]**  (*type:* :ref:`field_base`) Density (kg.m-3).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
@@ -8695,7 +8700,7 @@ Parameters are:
 
 - **[rho]**  (*type:* :ref:`field_base`) Density (kg.m-3).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
@@ -8719,7 +8724,7 @@ Parameters are:
 
 - **[mu]**  (*type:* float) Dynamic viscosity
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* float) Thermal conductivity
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* float) Thermal conductivity
 
 - **[cv]**  (*type:* float) Thermal capacity at constant volume
 
@@ -8764,7 +8769,7 @@ Parameters are:
 
 - **[traitement_pth]**  (*type:* string into ['constant']) Particular treatment for the thermodynamic pressure Pth ; there is currently one possibility:  1) the keyword \'constant\' makes it possible to have a constant Pth but not uniform in space ; it\'s the good choice when the flow is open (e.g. with pressure boundary conditions).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[mu]**  (*type:* :ref:`field_base`) Dynamic viscosity (kg.m-1.s-1).
 
@@ -8820,7 +8825,7 @@ Parameters are:
 
 - **[rho]**  (*type:* :ref:`field_base`) Density (kg.m-3).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
@@ -8850,7 +8855,7 @@ Parameters are:
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[porosites]**  (*type:* :ref:`bloc_lecture`) Porosity (optional)
 
@@ -8892,7 +8897,7 @@ Parameters are:
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[porosites]**  (*type:* :ref:`bloc_lecture`) Porosity (optional)
 
@@ -8936,7 +8941,7 @@ Parameters are:
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[porosites]**  (*type:* :ref:`bloc_lecture`) Porosity (optional)
 
@@ -8968,7 +8973,7 @@ Parameters are:
 
 - **[cp]**  (*type:* :ref:`field_base`) Specific heat (J.kg-1.K-1).
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* :ref:`field_base`) Conductivity (W.m-1.K-1).
 
 - **[user_field]**  (*type:* :ref:`field_base`) user defined field.
 
@@ -9024,7 +9029,7 @@ thermohydraulics coupled problem in VDF or VEF.
 
 Parameters are:
 
-- **bloc**  (*type:* :ref:`bloc_lecture`) Modele_Rayonnement_Milieu_Transparent mod  Read mod {  nom_pb_rayonnant  problem_name  fichier_fij  file_name  fichier_face_rayo  file_name  [fichier_matrice | fichier_matrice_binaire file_name]  }   nom_pb_rayonnant problem_name : problem_name is the name of the radiating fluid problem  fichier_fij file_name : file_name is the name of the file which contains the shape factor matrix between all the faces.  fichier_face_rayo file_name : file_name is the name of the file which contains the radiating faces characteristics (area, emission value ...)  fichier_matrice|fichier_matrice_binaire file_name : file_name is the name of the ASCII (or binary) file which contains the inverted shape factor matrix. It is an optional keyword, if not defined, the inverted shape factor matrix will be calculated and written in a file.  The two first files can be generated by a preprocessor, they allow the radiating face characteristics to be entered (set of faces considered to be uniform with respect to radiation for emission value, flux, etc.) and the form factors for these various faces. These files have the following format:  File on radiating faces:  N M			-> N is the number of radiating faces (=edges) and M equals the number of non-zero emission radiating faces  Nom(i) S(i) E(i)	-> Name of the edge i, surface area of the edge i -> emission value (between 0 an 1)  Exemple:  13 4  Gauche 50.0 0.0  Droit1 50.0 0.5  Bas 10.0 0.0  Haut 10.0 0.0  Arriere 5.0 0.0  Avant 5.0 0.0  Droit2 30.0 0.5  Bas1 40.0 0.0  Haut1 20.0 0.0  Avant1 20.0 0.0  Arriere1 20.0 0.0  Entree 20.0 0.5  Sortie 20.0 0.5   File on form factors:  N -> Number of radiating faces  Fij -> Matrix of form factors where i, j between 1 and N   Example:  13  1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00  0.00 0.00 0.00 0.00 0.00 0.00 0.24 0.20 0.10 0.10 0.10 0.10 0.16  0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00  0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00  0.00 0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00  0.00 0.00 0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00  0.00 0.40 0.00 0.00 0.00 0.00 0.00 0.20 0.10 0.10 0.10 0.10 0.00  0.00 0.25 0.00 0.00 0.00 0.00 0.15 0.00 0.15 0.10 0.10 0.15 0.10  0.00 0.25 0.00 0.00 0.00 0.00 0.15 0.30 0.00 0.10 0.10 0.00 0.10  0.00 0.25 0.00 0.00 0.00 0.00 0.15 0.20 0.10 0.00 0.10 0.10 0.10  0.00 0.25 0.00 0.00 0.00 0.00 0.15 0.20 0.10 0.10 0.00 0.10 0.10  0.00 0.25 0.00 0.00 0.00 0.00 0.15 0.30 0.00 0.10 0.10 0.00 0.10  0.00 0.40 0.00 0.00 0.00 0.00 0.00 0.20 0.10 0.10 0.10 0.10 0.00   Caution:  a) The radiation model\'s precision is decided by the user when he/she names the domain edges. In fact, a radiating face is recognised by the preprocessor as the set of domain edges faces bearing the same name. Thus, if the user subdivides the edge into two edges which are named differently, he/she thus creates two radiating faces instead of one.  b) The form factors are entered by the user, the preprocessor carries out no calculations other than checking preservation relationships on form factors.  c) The fluid is considered to be a transparent gas.
+- **bloc**  (*type:* :ref:`bloc_lecture`) Modele_Rayonnement_Milieu_Transparent mod  Read mod {  nom_pb_rayonnant  problem_name  fichier_fij  file_name  fichier_face_rayo  file_name  [fichier_matrice \\\\| fichier_matrice_binaire file_name]  }   nom_pb_rayonnant problem_name : problem_name is the name of the radiating fluid problem  fichier_fij file_name : file_name is the name of the file which contains the shape factor matrix between all the faces.  fichier_face_rayo file_name : file_name is the name of the file which contains the radiating faces characteristics (area, emission value ...)  fichier_matrice\\\\|fichier_matrice_binaire file_name : file_name is the name of the ASCII (or binary) file which contains the inverted shape factor matrix. It is an optional keyword, if not defined, the inverted shape factor matrix will be calculated and written in a file.  The two first files can be generated by a preprocessor, they allow the radiating face characteristics to be entered (set of faces considered to be uniform with respect to radiation for emission value, flux, etc.) and the form factors for these various faces. These files have the following format:  File on radiating faces:  N M			-> N is the number of radiating faces (=edges) and M equals the number of non-zero emission radiating faces  Nom(i) S(i) E(i)	-> Name of the edge i, surface area of the edge i -> emission value (between 0 an 1)  Exemple:  13 4  Gauche 50.0 0.0  Droit1 50.0 0.5  Bas 10.0 0.0  Haut 10.0 0.0  Arriere 5.0 0.0  Avant 5.0 0.0  Droit2 30.0 0.5  Bas1 40.0 0.0  Haut1 20.0 0.0  Avant1 20.0 0.0  Arriere1 20.0 0.0  Entree 20.0 0.5  Sortie 20.0 0.5   File on form factors:  N -> Number of radiating faces  Fij -> Matrix of form factors where i, j between 1 and N   Example:  13  1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00  0.00 0.00 0.00 0.00 0.00 0.00 0.24 0.20 0.10 0.10 0.10 0.10 0.16  0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00  0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00  0.00 0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00  0.00 0.00 0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00  0.00 0.40 0.00 0.00 0.00 0.00 0.00 0.20 0.10 0.10 0.10 0.10 0.00  0.00 0.25 0.00 0.00 0.00 0.00 0.15 0.00 0.15 0.10 0.10 0.15 0.10  0.00 0.25 0.00 0.00 0.00 0.00 0.15 0.30 0.00 0.10 0.10 0.00 0.10  0.00 0.25 0.00 0.00 0.00 0.00 0.15 0.20 0.10 0.00 0.10 0.10 0.10  0.00 0.25 0.00 0.00 0.00 0.00 0.15 0.20 0.10 0.10 0.00 0.10 0.10  0.00 0.25 0.00 0.00 0.00 0.00 0.15 0.30 0.00 0.10 0.10 0.00 0.10  0.00 0.40 0.00 0.00 0.00 0.00 0.00 0.20 0.10 0.10 0.10 0.10 0.00   Caution:  a) The radiation model\'s precision is decided by the user when he/she names the domain edges. In fact, a radiating face is recognised by the preprocessor as the set of domain edges faces bearing the same name. Thus, if the user subdivides the edge into two edges which are named differently, he/she thus creates two radiating faces instead of one.  b) The form factors are entered by the user, the preprocessor carries out no calculations other than checking preservation relationships on form factors.  c) The fluid is considered to be a transparent gas.
 
 
 
@@ -9171,9 +9176,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9183,7 +9188,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9207,9 +9212,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9219,7 +9224,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9243,9 +9248,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9255,7 +9260,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9282,9 +9287,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9294,7 +9299,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9316,9 +9321,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9328,7 +9333,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9350,7 +9355,7 @@ Parameters are:
 
 - **[masse_molaire]**  (*type:* float) not_set
 
-- **[is_multi_scalar | is_multi_scalar_diffusion]**  (*type:* flag) Flag to activate the multi_scalar diffusion operator
+- **[is_multi_scalar \\\\| is_multi_scalar_diffusion]**  (*type:* flag) Flag to activate the multi_scalar diffusion operator
 
 - **[disable_equation_residual]**  (*type:* string) The equation residual will not be used for the problem residual used when checking time convergence or computing dynamic time-step
 
@@ -9358,9 +9363,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9370,7 +9375,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9398,7 +9403,7 @@ Parameters are:
 
 - **[masse_molaire]**  (*type:* float) not_set
 
-- **[is_multi_scalar | is_multi_scalar_diffusion]**  (*type:* flag) Flag to activate the multi_scalar diffusion operator
+- **[is_multi_scalar \\\\| is_multi_scalar_diffusion]**  (*type:* flag) Flag to activate the multi_scalar diffusion operator
 
 - **[disable_equation_residual]**  (*type:* string) The equation residual will not be used for the problem residual used when checking time convergence or computing dynamic time-step
 
@@ -9406,9 +9411,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9418,7 +9423,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9443,7 +9448,7 @@ Parameters are:
 
 - **[masse_molaire]**  (*type:* float) not_set
 
-- **[is_multi_scalar | is_multi_scalar_diffusion]**  (*type:* flag) Flag to activate the multi_scalar diffusion operator
+- **[is_multi_scalar \\\\| is_multi_scalar_diffusion]**  (*type:* flag) Flag to activate the multi_scalar diffusion operator
 
 - **[disable_equation_residual]**  (*type:* string) The equation residual will not be used for the problem residual used when checking time convergence or computing dynamic time-step
 
@@ -9451,9 +9456,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9463,7 +9468,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9501,7 +9506,7 @@ Parameters are:
 
 - **[masse_molaire]**  (*type:* float) not_set
 
-- **[is_multi_scalar | is_multi_scalar_diffusion]**  (*type:* flag) Flag to activate the multi_scalar diffusion operator
+- **[is_multi_scalar \\\\| is_multi_scalar_diffusion]**  (*type:* flag) Flag to activate the multi_scalar diffusion operator
 
 - **[disable_equation_residual]**  (*type:* string) The equation residual will not be used for the problem residual used when checking time convergence or computing dynamic time-step
 
@@ -9509,9 +9514,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9521,7 +9526,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9543,9 +9548,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9555,7 +9560,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9580,9 +9585,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9592,7 +9597,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9614,9 +9619,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9626,7 +9631,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9650,9 +9655,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9662,7 +9667,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9688,9 +9693,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9700,7 +9705,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9722,9 +9727,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9734,7 +9739,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9767,7 +9772,7 @@ Parameters are:
 
 - **[masse_molaire]**  (*type:* float) not_set
 
-- **[is_multi_scalar | is_multi_scalar_diffusion]**  (*type:* flag) Flag to activate the multi_scalar diffusion operator
+- **[is_multi_scalar \\\\| is_multi_scalar_diffusion]**  (*type:* flag) Flag to activate the multi_scalar diffusion operator
 
 - **[disable_equation_residual]**  (*type:* string) The equation residual will not be used for the problem residual used when checking time convergence or computing dynamic time-step
 
@@ -9775,9 +9780,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9787,7 +9792,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9811,9 +9816,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9823,7 +9828,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9861,9 +9866,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9873,7 +9878,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9899,9 +9904,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9911,7 +9916,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9936,9 +9941,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9948,7 +9953,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -9964,7 +9969,7 @@ Energy sensitivity equation (temperature diffusion convection)
 
 Parameters are:
 
-- **[convection_sensibility | sensibility]**  (*type:* :ref:`convection_deriv`) Choice between: amont and muscl  Example: convection { Sensibility { amont } }
+- **[convection_sensibility \\\\| sensibility]**  (*type:* :ref:`convection_deriv`) Choice between: amont and muscl  Example: convection { Sensibility { amont } }
 
 - **[velocity_state]**  (*type:* :ref:`bloc_lecture`) Block to indicate the state problem. Between the braces, you must specify the key word 'pb_champ_evaluateur' then the name of the state problem and the velocity unknown  Example: velocity_state { pb_champ_evaluateur pb_state velocity }
 
@@ -9982,9 +9987,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -9994,7 +9999,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10019,9 +10024,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10031,7 +10036,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10054,9 +10059,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10066,7 +10071,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10089,9 +10094,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10101,7 +10106,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10124,9 +10129,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10136,7 +10141,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10159,9 +10164,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10171,7 +10176,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10196,9 +10201,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10208,7 +10213,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10230,9 +10235,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10242,7 +10247,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10265,9 +10270,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10277,7 +10282,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10314,7 +10319,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -10330,9 +10335,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10342,7 +10347,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10396,7 +10401,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -10412,9 +10417,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10424,7 +10429,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10490,7 +10495,7 @@ Parameters are:
 
 - **[upstream_dir]**  (*type:* int) Direction to prescribe the velocity
 
-- **[vitesse_upstream]**  (*type:* float) Velocity to prescribe at 'nb_diam_upstream_' before bubble 0.
+- **[vitesse_upstream]**  (*type:* float) Velocity to prescribe at 'nb_diam_upstream\_' before bubble 0.
 
 - **[expression_vitesse_upstream]**  (*type:* string) Analytical expression to set the upstream velocity
 
@@ -10564,9 +10569,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10576,7 +10581,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10616,7 +10621,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -10632,9 +10637,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10644,7 +10649,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10668,7 +10673,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -10684,9 +10689,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10696,7 +10701,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10724,7 +10729,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -10740,9 +10745,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10752,7 +10757,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10774,7 +10779,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -10790,9 +10795,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10802,7 +10807,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10824,7 +10829,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -10840,9 +10845,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10852,7 +10857,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10880,7 +10885,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -10896,9 +10901,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10908,7 +10913,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10930,7 +10935,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -10946,9 +10951,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -10958,7 +10963,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -10982,7 +10987,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -10998,9 +11003,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11010,7 +11015,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11034,7 +11039,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -11050,9 +11055,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11062,7 +11067,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11087,7 +11092,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -11103,9 +11108,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11115,7 +11120,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11139,7 +11144,7 @@ Parameters are:
 
 - **[traitement_particulier]**  (*type:* :ref:`traitement_particulier`) Keyword to post-process particular values.
 
-- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual ||Ax-B||<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( |max(DivU)*dt|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
+- **[seuil_divu]**  (*type:* :ref:`floatfloat`) value factor : this keyword is intended to minimise the number of iterations during the pressure system resolution. The convergence criteria during this step (\'seuil\' in solveur_pression) is dynamically adapted according to the mass conservation. At tn , the linear system Ax=B is considered as solved if the residual \\\\|\\\\|Ax-B\\\\|\\\\|<seuil(tn). For tn+1, the threshold value seuil(tn+1) will be evualated as:  If ( \\\\|max(DivU)*dt\\\\|<value )  Seuil(tn+1)= Seuil(tn)*factor  Else  Seuil(tn+1)= Seuil(tn)*factor  Endif  The first parameter (value) is the mass evolution the user is ready to accept per timestep, and the second one (factor) is the factor of evolution for \'seuil\' (for example 1.1, so 10% per timestep). Investigations has to be lead to know more about the effects of these two last parameters on the behaviour of the simulations.
 
 - **[solveur_bar]**  (*type:* :ref:`solveur_sys_base`) This keyword is used to define when filtering operation is called (typically for EF convective scheme, standard diffusion operator and Source_Qdm_lambdaup ). A file (solveur.bar) is then created and used for inversion procedure. Syntax is the same then for pressure solver (GCP is required for multi-processor calculations and, in a general way, for big meshes).
 
@@ -11155,9 +11160,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11167,7 +11172,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11193,9 +11198,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11205,7 +11210,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11228,9 +11233,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11240,7 +11245,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11262,9 +11267,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11274,7 +11279,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11290,7 +11295,7 @@ Interface tracking equation for Front-Tracking problem in the discontinuous vers
 
 Parameters are:
 
-- **[conditions_initiales | initial_conditions]**  (*type:* :ref:`bloc_lecture`) The keyword conditions_initiales is used to define the shape of the initial interfaces through the zero level-set of a function, or through a mesh fichier_geom. Indicator function is set to 0, that is fluide0, where the function is negative; indicator function is set to 1, that is fluide1, where the function is positive; the interfaces are the level-set 0 of that function:   conditions_initiales { fonction  $(-((x-0.002)^2+(y-0.002)^2+z^2-(0.00125)^2))*((x-0.005)^2+(y-0.007)^2+z^2 (0.00150)^2))*(0.020-z))$  }   In the above example, there are three interfaces: two bubbles in a liquid with a free surface. One bubble has a radius of 0.00125, i.e. 1.25 mm, and its center is {0.002, 0.002, 0.000}. The other bubble has a radius of 0.00150, i.e. 1.5 mm, and its center is {0.005, 0.007, 0.000}. The free surface is above the two bubble, at a level z=0.02.   Additional feature in this block concerns the keywords ajout_phase0 and ajout_phase1. They can be used to simplify the composition of different interfaces. When using these keywords, the initial function defines the indicator function; ajout_phase0 and ajout_phase1 are used to modify this initial field. Each time ajout_phase0 is used, the field is untouched where the function is positive whereas the indicator field is set to 0 where the function is negative. The keyword ajout_phase1 has the symmetrical use, keeping the field value where the function is negative and setting the indicator field to 1 where the function is positive. The previous example can also be written:   conditions_initiales {  fonction z-0.020 , NL fonction ajout_phase1 $(x-0.002)^2+(y-0.002)^2+z^2-(0.00125)^2$ ,  fonction ajout_phase1 $(x-0.005)^2+(y-0.007)^2+z^2-(0.00150)^2$  }
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* :ref:`bloc_lecture`) The keyword conditions_initiales is used to define the shape of the initial interfaces through the zero level-set of a function, or through a mesh fichier_geom. Indicator function is set to 0, that is fluide0, where the function is negative; indicator function is set to 1, that is fluide1, where the function is positive; the interfaces are the level-set 0 of that function:   conditions_initiales { fonction  $(-((x-0.002)^2+(y-0.002)^2+z^2-(0.00125)^2))*((x-0.005)^2+(y-0.007)^2+z^2 (0.00150)^2))*(0.020-z))$  }   In the above example, there are three interfaces: two bubbles in a liquid with a free surface. One bubble has a radius of 0.00125, i.e. 1.25 mm, and its center is {0.002, 0.002, 0.000}. The other bubble has a radius of 0.00150, i.e. 1.5 mm, and its center is {0.005, 0.007, 0.000}. The free surface is above the two bubble, at a level z=0.02.   Additional feature in this block concerns the keywords ajout_phase0 and ajout_phase1. They can be used to simplify the composition of different interfaces. When using these keywords, the initial function defines the indicator function; ajout_phase0 and ajout_phase1 are used to modify this initial field. Each time ajout_phase0 is used, the field is untouched where the function is positive whereas the indicator field is set to 0 where the function is negative. The keyword ajout_phase1 has the symmetrical use, keeping the field value where the function is negative and setting the indicator field to 1 where the function is positive. The previous example can also be written:   conditions_initiales {  fonction z-0.020 , NL fonction ajout_phase1 $(x-0.002)^2+(y-0.002)^2+z^2-(0.00125)^2$ ,  fonction ajout_phase1 $(x-0.005)^2+(y-0.007)^2+z^2-(0.00150)^2$  }
 
 - **[methode_transport]**  (*type:* :ref:`methode_transport_deriv`) Method of transport of interface.
 
@@ -11346,7 +11351,7 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11356,7 +11361,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11378,9 +11383,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11390,7 +11395,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11412,9 +11417,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11424,7 +11429,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11454,9 +11459,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11466,7 +11471,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11490,9 +11495,9 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
-- **[conditions_initiales | initial_conditions]**  (*type:* list of Condinit) Initial conditions.
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* list of Condinit) Initial conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11502,7 +11507,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11518,7 +11523,7 @@ not_set
 
 Parameters are:
 
-- **[conditions_initiales | initial_conditions]**  (*type:* :ref:`bloc_lecture`) ne semble pas standard
+- **[conditions_initiales \\\\| initial_conditions]**  (*type:* :ref:`bloc_lecture`) ne semble pas standard
 
 - **[injection]**  (*type:* :ref:`injection_marqueur`) The keyword injection can be used to inject periodically during the calculation some other particles. The syntax for ensemble_points and proprietes_particles is the same than the initial conditions for the particles. The keyword t_debut_injection give the injection initial time (by default, given by t_debut_integration) and dt_injection gives the injection time period (by default given by dt_min).
 
@@ -11542,7 +11547,7 @@ Parameters are:
 
 - **[diffusion]**  (*type:* :ref:`bloc_diffusion`) Keyword to specify the diffusion operator.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
 - **[sources]**  (*type:* list of Source_base) The sources.
 
@@ -11552,7 +11557,7 @@ Parameters are:
 
 - **[equation_non_resolue]**  (*type:* string) The equation will not be solved while condition(t) is verified if equation_non_resolue keyword is used. Exemple: The Navier-Stokes equations are not solved between time t0 and t1.  Navier_Sokes_Standard  { equation_non_resolue (t>t0)*(t<t1) }
 
-- **[renommer_equation | rename_equation]**  (*type:* string) Rename the equation with a specific name.
+- **[renommer_equation \\\\| rename_equation]**  (*type:* string) Rename the equation with a specific name.
 
 
 
@@ -11662,7 +11667,7 @@ Parameters are:
 
 - **u_tau**  (*type:* string into ['u_tau']) not_set
 
-- **val_u_tau | val_u_taul**  (*type:* float) value of u_tau
+- **val_u_tau \\\\| val_u_taul**  (*type:* float) value of u_tau
 
 - **visco_cin**  (*type:* string into ['visco_cin']) not_set
 
@@ -11688,7 +11693,7 @@ To specify analytic profile for the imposed g field.
 
 Parameters are:
 
-- **profile**  (*type:* list of str) specifies the analytic profile: 2|3 valx(x,y,z,t) valy(x,y,z,t) [valz(x,y,z,t)]
+- **profile**  (*type:* list of str) specifies the analytic profile: 2\\\\|3 valx(x,y,z,t) valy(x,y,z,t) [valz(x,y,z,t)]
 
 
 
@@ -11783,7 +11788,7 @@ Parameters are:
 
 - **[rho_2]**  (*type:* float) value of rho
 
-- **[rho_fonc_c | rho_fonc_c_]**  (*type:* :ref:`bloc_rho_fonc_c`) to use for define a general form for rho
+- **[rho_fonc_c \\\\| rho_fonc_c_]**  (*type:* :ref:`bloc_rho_fonc_c`) to use for define a general form for rho
 
 
 
@@ -11821,7 +11826,7 @@ Parameters are:
 
 - **name**  (*type:* string into ['origine']) Keyword to define the center of the circle.
 
-- **origin | origine**  (*type:* list of float) Center of the circle.
+- **origin \\\\| origine**  (*type:* list of float) Center of the circle.
 
 - **name3**  (*type:* string into ['ri']) Keyword to define the interior radius.
 
@@ -11861,11 +11866,11 @@ Auxiliary class to cut a domain.
 
 Parameters are:
 
-- **[partitionneur | partition_tool]**  (*type:* :ref:`partitionneur_deriv`) Defines the partitionning algorithm (the effective C++ object used is \'Partitionneur_ALGORITHM_NAME\').
+- **[partitionneur \\\\| partition_tool]**  (*type:* :ref:`partitionneur_deriv`) Defines the partitionning algorithm (the effective C++ object used is \'Partitionneur_ALGORITHM_NAME\').
 
 - **[larg_joint]**  (*type:* int) This keyword specifies the thickness of the virtual ghost domaine (data known by one processor though not owned by it). The default value is 1 and is generally correct for all algorithms except the QUICK convection scheme that require a thickness of 2. Since the 1.5.5 version, the VEF discretization imply also a thickness of 2 (except VEF P0). Any non-zero positive value can be used, but the amount of data to store and exchange between processors grows quickly with the thickness.
 
-- **[nom_zones | zones_name]**  (*type:* string) Name of the files containing the different partition of the domain. The files will be :  name_0001.Zones  name_0002.Zones  ...  name_000n.Zones. If this keyword is not specified, the geometry is not written on disk (you might just want to generate a \'ecrire_decoupage\' or \'ecrire_lata\').
+- **[nom_zones \\\\| zones_name]**  (*type:* string) Name of the files containing the different partition of the domain. The files will be :  name_0001.Zones  name_0002.Zones  ...  name_000n.Zones. If this keyword is not specified, the geometry is not written on disk (you might just want to generate a \'ecrire_decoupage\' or \'ecrire_lata\').
 
 - **[ecrire_decoupage]**  (*type:* string) After having called the partitionning algorithm, the resulting partition is written on disk in the specified filename. See also partitionneur Fichier_Decoupage. This keyword is useful to change the partition numbers: first, you write the partition into a file with the option ecrire_decoupage. This file contains the domaine number for each element\'s mesh. Then you can easily permute domaine numbers in this file. Then read the new partition to create the .Zones files with the Fichier_Decoupage keyword.
 
@@ -11997,7 +12002,7 @@ Block containing the name of the file
 
 Parameters are:
 
-- **fichier | file**  (*type:* string) File name
+- **fichier \\\\| file**  (*type:* string) File name
 
 
 
@@ -12101,13 +12106,13 @@ Parameters are:
 
 - **nb_beam_val**  (*type:* int) Number of beams
 
-- **name | beamname**  (*type:* string into ['name']) keyword to specify the Name of the beam (the name must match with the name of the edge in the fluid domain)
+- **name \\\\| beamname**  (*type:* string into ['name']) keyword to specify the Name of the beam (the name must match with the name of the edge in the fluid domain)
 
 - **name_of_beam**  (*type:* string) keyword to specify the Name of the beam (the name must match with the name of the edge in the fluid domain)
 
 - **bloc**  (*type:* :ref:`bloc_poutre`) not_set
 
-- **[name2 | beamname2]**  (*type:* string into ['name']) keyword to specify the Name of the beam (the name must match with the name of the edge in the fluid domain)
+- **[name2 \\\\| beamname2]**  (*type:* string into ['name']) keyword to specify the Name of the beam (the name must match with the name of the edge in the fluid domain)
 
 - **[name_of_beam2]**  (*type:* string) keyword to specify the Name of the beam (the name must match with the name of the edge in the fluid domain)
 
@@ -12197,13 +12202,13 @@ Parameters are:
 
 - **mfront_library**  (*type:* string into ['mfront_library']) Keyword to specify the path_to_libBehaviour.so
 
-- **mfront_model_name | mfront_model**  (*type:* string into ['mfront_model_name']) keyword to specify the Mfront model. Choice between Ogden and SaintVenantKirchhoffElasticity.
+- **mfront_model_name \\\\| mfront_model**  (*type:* string into ['mfront_model_name']) keyword to specify the Mfront model. Choice between Ogden and SaintVenantKirchhoffElasticity.
 
-- **mfront_material_property**  (*type:* string into ['mfront_material_property']) keyword to specify the material property. Eg. Ogden_alpha_, Ogden_mu_, Ogden_K
+- **mfront_material_property**  (*type:* string into ['mfront_material_property']) keyword to specify the material property. Eg. Ogden_alpha\_, Ogden_mu\_, Ogden_K
 
-- **[youngmodulus | young]**  (*type:* float) Young Module
+- **[youngmodulus \\\\| young]**  (*type:* float) Young Module
 
-- **[density | rho]**  (*type:* float) fictitious structural density
+- **[density \\\\| rho]**  (*type:* float) fictitious structural density
 
 - **[inertial_damping]**  (*type:* float) fictitious structural inertial damping
 
@@ -12227,7 +12232,7 @@ Parameters are:
 
 - **moyenne**  (*type:* list of float) components of the average velocity fields
 
-- **lenghtscale | lengthscale**  (*type:* float) turbulent length scale
+- **lenghtscale \\\\| lengthscale**  (*type:* float) turbulent length scale
 
 - **nbmodes**  (*type:* int) number of Fourier modes
 
@@ -12283,7 +12288,7 @@ Parameters are:
 
 - **name**  (*type:* string into ['origine']) Keyword to define the origin of the rectangle (or the box).
 
-- **origin | origine**  (*type:* list of float) Coordinates of the origin of the rectangle (or the box).
+- **origin \\\\| origine**  (*type:* list of float) Coordinates of the origin of the rectangle (or the box).
 
 - **name2**  (*type:* string into ['cotes']) Keyword to define the length along the axes.
 
@@ -12397,9 +12402,9 @@ Read poutre bloc
 
 Parameters are:
 
-- **nb_modes | n**  (*type:* int) Number of modes
+- **nb_modes \\\\| n**  (*type:* int) Number of modes
 
-- **direction | dir**  (*type:* int) x=0, y=1, z=2
+- **direction \\\\| dir**  (*type:* int) x=0, y=1, z=2
 
 - **newmarktimescheme**  (*type:* :ref:`newmarktimescheme_deriv`) Solve the beam dynamics. Time integration scheme: choice between MA (Newmark mean acceleration), FD (Newmark finite differences), and HHT alpha (Hilber-Hughes-Taylor, alpha usually -0.1 )
 
@@ -12409,19 +12414,19 @@ Parameters are:
 
 - **modal_deformation_file_name**  (*type:* list of str) Name of the file containing the modal deformation of the Beam (mandatory if different from 0. 0. 0.)
 
-- **[young_module | young]**  (*type:* float) Young Module
+- **[young_module \\\\| young]**  (*type:* float) Young Module
 
-- **[rho_beam | rho]**  (*type:* float) Beam density
+- **[rho_beam \\\\| rho]**  (*type:* float) Beam density
 
-- **[basecentercoordinates | pos_center]**  (*type:* list of float) position of the base center coordinates on the Beam
+- **[basecentercoordinates \\\\| pos_center]**  (*type:* list of float) position of the base center coordinates on the Beam
 
 - **[ci_file_name]**  (*type:* string) Name of the file containing the initial condition of the Beam
 
 - **[restart_file_name]**  (*type:* string) SaveBeamForRestart.txt file to restart the calculation
 
-- **[output_position_1d | pt1d]**  (*type:* list of float) nb_points position Post-traitement of specific points on the Beam
+- **[output_position_1d \\\\| pt1d]**  (*type:* list of float) nb_points position Post-traitement of specific points on the Beam
 
-- **[output_position_3d | pt3d]**  (*type:* list of Un_point) Points.
+- **[output_position_3d \\\\| pt3d]**  (*type:* list of Un_point) Points.
 
 
 
@@ -12502,7 +12507,7 @@ Parameters are:
 
 - **name**  (*type:* string into ['origine']) Keyword to define the center of the tube.
 
-- **origin | origine**  (*type:* list of float) Center of the tube.
+- **origin \\\\| origine**  (*type:* list of float) Center of the tube.
 
 - **name2**  (*type:* string into ['dir']) Keyword to define the direction of the main axis.
 
@@ -12540,7 +12545,7 @@ Parameters are:
 
 - **[mu_2]**  (*type:* float) value of mu
 
-- **[mu_fonc_c | mu_fonc_c_]**  (*type:* :ref:`bloc_mu_fonc_c`) to use for define a general form for mu
+- **[mu_fonc_c \\\\| mu_fonc_c_]**  (*type:* :ref:`bloc_mu_fonc_c`) to use for define a general form for mu
 
 
 
@@ -12719,7 +12724,7 @@ Parameters are:
 
 - **[period]**  (*type:* string) Value of the period which can be like (2.*t).
 
-- **champs | fields**  (*type:* list of Champ_a_post) Fields to be post-processed.
+- **champs \\\\| fields**  (*type:* list of Champ_a_post) Fields to be post-processed.
 
 
 
@@ -12741,7 +12746,7 @@ Parameters are:
 
 - **[period]**  (*type:* string) Value of the period which can be like (2.*t).
 
-- **fichier | file**  (*type:* :ref:`bloc_fichier`) name of file
+- **fichier \\\\| file**  (*type:* :ref:`bloc_fichier`) name of file
 
 
 
@@ -13324,35 +13329,35 @@ Parameters are:
 
 - **[domaine]**  (*type:* string) This optional parameter specifies the domain on which the data should be interpolated before it is written in the output file. The default is to write the data on the domain of the current problem (no interpolation).
 
-- **[sous_domaine | sous_zone]**  (*type:* string) This optional parameter specifies the sub_domaine on which the data should be interpolated before it is written in the output file. It is only available for sequential computation.
+- **[sous_domaine \\\\| sous_zone]**  (*type:* string) This optional parameter specifies the sub_domaine on which the data should be interpolated before it is written in the output file. It is only available for sequential computation.
 
 - **[parallele]**  (*type:* string into ['simple', 'multiple', 'mpi-io']) Select simple (single file, sequential write), multiple (several files, parallel write), or mpi-io (single file, parallel write) for LATA format
 
 - **[definition_champs]**  (*type:* list of Definition_champ) List of definition champ
 
-- **[definition_champs_fichier | definition_champs_file]**  (*type:* :ref:`definition_champs_fichier`) Definition_champs read from file.
+- **[definition_champs_fichier \\\\| definition_champs_file]**  (*type:* :ref:`definition_champs_fichier`) Definition_champs read from file.
 
-- **[sondes | probes]**  (*type:* list of Sonde) List of probes.
+- **[sondes \\\\| probes]**  (*type:* list of Sonde) List of probes.
 
-- **[sondes_fichier | probes_file]**  (*type:* :ref:`sondes_fichier`) Probe read from a file.
+- **[sondes_fichier \\\\| probes_file]**  (*type:* :ref:`sondes_fichier`) Probe read from a file.
 
-- **[sondes_mobiles | mobile_probes]**  (*type:* list of Sonde) List of probes.
+- **[sondes_mobiles \\\\| mobile_probes]**  (*type:* list of Sonde) List of probes.
 
-- **[sondes_mobiles_fichier | mobile_probes_file]**  (*type:* :ref:`sondes_fichier`) Mobile probes read in a file
+- **[sondes_mobiles_fichier \\\\| mobile_probes_file]**  (*type:* :ref:`sondes_fichier`) Mobile probes read in a file
 
 - **[deprecatedkeepduplicatedprobes]**  (*type:* int) Flag to not remove duplicated probes in .son files (1: keep duplicate probes, 0: remove duplicate probes)
 
-- **[champs | fields]**  (*type:* :ref:`champs_posts`) Field\'s write mode.
+- **[champs \\\\| fields]**  (*type:* :ref:`champs_posts`) Field\'s write mode.
 
-- **[champs_fichier | fields_file]**  (*type:* :ref:`champs_posts_fichier`) Fields read from file.
+- **[champs_fichier \\\\| fields_file]**  (*type:* :ref:`champs_posts_fichier`) Fields read from file.
 
-- **[statistiques | statistics]**  (*type:* :ref:`stats_posts`) Statistics between two points fixed : start of integration time and end of integration time.
+- **[statistiques \\\\| statistics]**  (*type:* :ref:`stats_posts`) Statistics between two points fixed : start of integration time and end of integration time.
 
-- **[statistiques_fichier | statistics_file]**  (*type:* :ref:`stats_posts_fichier`) Statistics read from file.
+- **[statistiques_fichier \\\\| statistics_file]**  (*type:* :ref:`stats_posts_fichier`) Statistics read from file.
 
-- **[statistiques_en_serie | serial_statistics]**  (*type:* :ref:`stats_serie_posts`) Statistics between two points not fixed : on period of integration.
+- **[statistiques_en_serie \\\\| serial_statistics]**  (*type:* :ref:`stats_serie_posts`) Statistics between two points not fixed : on period of integration.
 
-- **[statistiques_en_serie_fichier | serial_statistics_file]**  (*type:* :ref:`stats_serie_posts_fichier`) Serial_statistics read from a file
+- **[statistiques_en_serie_fichier \\\\| serial_statistics_file]**  (*type:* :ref:`stats_serie_posts_fichier`) Serial_statistics read from a file
 
 - **[suffix_for_reset]**  (*type:* string) Suffix used to modify the postprocessing file name if the ICoCo resetTime() method is invoked.
 
@@ -13469,7 +13474,7 @@ Keyword to read definition_champs from a file
 
 Parameters are:
 
-- **fichier | file**  (*type:* string) name of file
+- **fichier \\\\| file**  (*type:* string) name of file
 
 
 
@@ -13811,7 +13816,7 @@ Parameters are:
 
 - **solveur**  (*type:* :ref:`solveur_sys_base`) Solver of the irradiancy equation.
 
-- **[conditions_limites | boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
+- **[conditions_limites \\\\| boundary_conditions]**  (*type:* list of Condlimlu) Boundary conditions.
 
 
 
@@ -15168,35 +15173,35 @@ Parameters are:
 
 - **[domaine]**  (*type:* string) This optional parameter specifies the domain on which the data should be interpolated before it is written in the output file. The default is to write the data on the domain of the current problem (no interpolation).
 
-- **[sous_domaine | sous_zone]**  (*type:* string) This optional parameter specifies the sub_domaine on which the data should be interpolated before it is written in the output file. It is only available for sequential computation.
+- **[sous_domaine \\\\| sous_zone]**  (*type:* string) This optional parameter specifies the sub_domaine on which the data should be interpolated before it is written in the output file. It is only available for sequential computation.
 
 - **[parallele]**  (*type:* string into ['simple', 'multiple', 'mpi-io']) Select simple (single file, sequential write), multiple (several files, parallel write), or mpi-io (single file, parallel write) for LATA format
 
 - **[definition_champs]**  (*type:* list of Definition_champ) List of definition champ
 
-- **[definition_champs_fichier | definition_champs_file]**  (*type:* :ref:`definition_champs_fichier`) Definition_champs read from file.
+- **[definition_champs_fichier \\\\| definition_champs_file]**  (*type:* :ref:`definition_champs_fichier`) Definition_champs read from file.
 
-- **[sondes | probes]**  (*type:* list of Sonde) List of probes.
+- **[sondes \\\\| probes]**  (*type:* list of Sonde) List of probes.
 
-- **[sondes_fichier | probes_file]**  (*type:* :ref:`sondes_fichier`) Probe read from a file.
+- **[sondes_fichier \\\\| probes_file]**  (*type:* :ref:`sondes_fichier`) Probe read from a file.
 
-- **[sondes_mobiles | mobile_probes]**  (*type:* list of Sonde) List of probes.
+- **[sondes_mobiles \\\\| mobile_probes]**  (*type:* list of Sonde) List of probes.
 
-- **[sondes_mobiles_fichier | mobile_probes_file]**  (*type:* :ref:`sondes_fichier`) Mobile probes read in a file
+- **[sondes_mobiles_fichier \\\\| mobile_probes_file]**  (*type:* :ref:`sondes_fichier`) Mobile probes read in a file
 
 - **[deprecatedkeepduplicatedprobes]**  (*type:* int) Flag to not remove duplicated probes in .son files (1: keep duplicate probes, 0: remove duplicate probes)
 
-- **[champs | fields]**  (*type:* :ref:`champs_posts`) Field\'s write mode.
+- **[champs \\\\| fields]**  (*type:* :ref:`champs_posts`) Field\'s write mode.
 
-- **[champs_fichier | fields_file]**  (*type:* :ref:`champs_posts_fichier`) Fields read from file.
+- **[champs_fichier \\\\| fields_file]**  (*type:* :ref:`champs_posts_fichier`) Fields read from file.
 
-- **[statistiques | statistics]**  (*type:* :ref:`stats_posts`) Statistics between two points fixed : start of integration time and end of integration time.
+- **[statistiques \\\\| statistics]**  (*type:* :ref:`stats_posts`) Statistics between two points fixed : start of integration time and end of integration time.
 
-- **[statistiques_fichier | statistics_file]**  (*type:* :ref:`stats_posts_fichier`) Statistics read from file.
+- **[statistiques_fichier \\\\| statistics_file]**  (*type:* :ref:`stats_posts_fichier`) Statistics read from file.
 
-- **[statistiques_en_serie | serial_statistics]**  (*type:* :ref:`stats_serie_posts`) Statistics between two points not fixed : on period of integration.
+- **[statistiques_en_serie \\\\| serial_statistics]**  (*type:* :ref:`stats_serie_posts`) Statistics between two points not fixed : on period of integration.
 
-- **[statistiques_en_serie_fichier | serial_statistics_file]**  (*type:* :ref:`stats_serie_posts_fichier`) Serial_statistics read from a file
+- **[statistiques_en_serie_fichier \\\\| serial_statistics_file]**  (*type:* :ref:`stats_serie_posts_fichier`) Serial_statistics read from a file
 
 - **[suffix_for_reset]**  (*type:* string) Suffix used to modify the postprocessing file name if the ICoCo resetTime() method is invoked.
 
@@ -15573,7 +15578,7 @@ Keyword to read probes from a file
 
 Parameters are:
 
-- **fichier | file**  (*type:* string) name of file
+- **fichier \\\\| file**  (*type:* string) name of file
 
 
 
@@ -15873,8 +15878,7 @@ Parameters are:
 This is the WALE-model. It is a new sub-grid scale model for eddy-viscosity in LES that
 has the following properties :
 
-- it goes naturally to 0 at the wall (it doesn\'t need any information on the wall
-position or geometry)
+- it goes naturally to 0 at the wall (it doesn\'t need any information on the wall position or geometry)
 
 - it has the proper wall scaling in o(y3) in the vicinity of the wall
 
@@ -16106,7 +16110,7 @@ Parameters are:
 
 - **[period]**  (*type:* string) Value of the period which can be like (2.*t).
 
-- **champs | fields**  (*type:* list of Stat_post_deriv) Post-processing for statistics
+- **champs \\\\| fields**  (*type:* list of Stat_post_deriv) Post-processing for statistics
 
 
 
@@ -16156,7 +16160,7 @@ Parameters are:
 
 - **period**  (*type:* string) Value of the period which can be like (2.*t).
 
-- **fichier | file**  (*type:* :ref:`bloc_fichier`) name of file
+- **fichier \\\\| file**  (*type:* :ref:`bloc_fichier`) name of file
 
 
 
@@ -16228,7 +16232,7 @@ Parameters are:
 
 - **dt_integr**  (*type:* float) Average on dt_integr time interval is post-processed every dt_integr seconds.
 
-- **fichier | file**  (*type:* :ref:`bloc_fichier`) name of file
+- **fichier \\\\| file**  (*type:* :ref:`bloc_fichier`) name of file
 
 
 
@@ -16557,7 +16561,7 @@ not_set
 
 Parameters are:
 
-- **[limiter | limiteur]**  (*type:* string) not_set
+- **[limiter \\\\| limiteur]**  (*type:* string) not_set
 
 - **[sigma]**  (*type:* float) not_set
 
@@ -16581,7 +16585,7 @@ not_set
 
 Parameters are:
 
-- **[limiter | limiteur]**  (*type:* string) not_set
+- **[limiter \\\\| limiteur]**  (*type:* string) not_set
 
 - **[sigma]**  (*type:* float) not_set
 
@@ -16678,7 +16682,7 @@ Scalar Prandtl model.
 
 Parameters are:
 
-- **[pr_t | prandtl_turbulent]**  (*type:* float) Prandtl's model constant. By default it is se to 0.9.
+- **[pr_t \\\\| prandtl_turbulent]**  (*type:* float) Prandtl's model constant. By default it is se to 0.9.
 
 
 
@@ -16696,9 +16700,9 @@ not_set
 
 Parameters are:
 
-- **[pr_t | prandtl_turbulent]**  (*type:* float) not_set
+- **[pr_t \\\\| prandtl_turbulent]**  (*type:* float) not_set
 
-- **[sigma | sigma_turbulent]**  (*type:* float) not_set
+- **[sigma \\\\| sigma_turbulent]**  (*type:* float) not_set
 
 - **[no_alpha]**  (*type:* flag) not_set
 
@@ -16969,7 +16973,7 @@ not_set
 
 Parameters are:
 
-- **[read_file | filename | lire_fichier]**  (*type:* string) name of the *.decoupage_som file
+- **[read_file \\\\| filename \\\\| lire_fichier]**  (*type:* string) name of the \\\\*.decoupage_som file
 
 - **[expert_only]**  (*type:* flag) to not check the mesh
 
@@ -17392,9 +17396,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17428,9 +17432,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17466,9 +17470,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17502,9 +17506,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17540,9 +17544,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17578,9 +17582,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17659,9 +17663,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17710,9 +17714,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17748,9 +17752,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17787,9 +17791,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17827,9 +17831,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17868,9 +17872,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17908,9 +17912,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17951,9 +17955,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -17992,9 +17996,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18035,9 +18039,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18073,9 +18077,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18111,9 +18115,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18151,9 +18155,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18192,9 +18196,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18241,9 +18245,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18282,9 +18286,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18335,9 +18339,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18373,9 +18377,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18411,9 +18415,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18449,9 +18453,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18516,9 +18520,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18556,7 +18560,7 @@ Parameters are:
 
 - **masse_multiphase**  (*type:* :ref:`masse_multiphase`) Mass consevation equation for a multi-phase problem where the unknown is the alpha (void fraction)
 
-- **energie_multiphase_h | energie_multiphase_enthalpie**  (*type:* :ref:`energie_multiphase_enthalpie`) Internal energy conservation equation for a multi-phase problem where the unknown is the enthalpy
+- **energie_multiphase_h \\\\| energie_multiphase_enthalpie**  (*type:* :ref:`energie_multiphase_enthalpie`) Internal energy conservation equation for a multi-phase problem where the unknown is the enthalpy
 
 - **[milieu_musig]**  (*type:* :ref:`bloc_lecture`) The composite medium associated with the problem.
 
@@ -18574,9 +18578,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18633,9 +18637,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18675,9 +18679,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18709,9 +18713,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18747,9 +18751,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18785,9 +18789,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18823,9 +18827,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18871,9 +18875,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18911,9 +18915,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18951,9 +18955,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -18991,9 +18995,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19039,9 +19043,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19081,9 +19085,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19124,9 +19128,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19166,9 +19170,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19211,9 +19215,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19254,9 +19258,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19299,9 +19303,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19341,9 +19345,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19384,9 +19388,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19426,9 +19430,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19468,9 +19472,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19508,9 +19512,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19550,9 +19554,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19593,9 +19597,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19643,9 +19647,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19685,9 +19689,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19717,7 +19721,7 @@ Parameters are:
 
 - **fluide_incompressible**  (*type:* :ref:`fluide_incompressible`) The fluid medium associated with the problem.
 
-- **convection_diffusion_temperature_sensibility | convection_diffusion_temperature**  (*type:* :ref:`convection_diffusion_temperature_sensibility`) Convection diffusion temperature sensitivity equation
+- **convection_diffusion_temperature_sensibility \\\\| convection_diffusion_temperature**  (*type:* :ref:`convection_diffusion_temperature_sensibility`) Convection diffusion temperature sensitivity equation
 
 - **navier_stokes_standard_sensibility**  (*type:* :ref:`navier_stokes_standard_sensibility`) Navier Stokes sensitivity equation
 
@@ -19737,9 +19741,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19777,9 +19781,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19819,9 +19823,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19862,9 +19866,9 @@ Parameters are:
 
 - **[milieu]**  (*type:* :ref:`milieu_base`) The medium associated with the problem.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19914,9 +19918,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -19968,9 +19972,9 @@ Parameters are:
 
 - **[constituant]**  (*type:* :ref:`constituant`) Constituent.
 
-- **[postraitement | post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
+- **[postraitement \\\\| post_processing]**  (*type:* :ref:`corps_postraitement`) One post-processing (without name).
 
-- **[postraitements | post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
+- **[postraitements \\\\| post_processings]**  (*type:* list of Un_postraitement) Keyword to use several results files. List of objects of post-processing (with name).
 
 - **[liste_de_postraitements]**  (*type:* list of Nom_postraitement) Keyword to use several results files. List of objects of post-processing (with name)
 
@@ -20025,8 +20029,7 @@ Porosity was only usable in VDF discretization, and now available for VEF P1NC/P
 
 Observations :
 
-- Surface porosity values must be given in every direction in space (set this value to 1
-if there is no porosity),
+- Surface porosity values must be given in every direction in space (set this value to 1 if there is no porosity),
 
 - Prior to defining porosity, the problem must have been discretized.
 
@@ -20036,7 +20039,7 @@ Parameters are:
 
 - **aco**  (*type:* string into ['{']) Opening curly bracket.
 
-- **sous_zone | sous_zone1**  (*type:* string) Name of the sub-area to which porosity are allocated.
+- **sous_zone \\\\| sous_zone1**  (*type:* string) Name of the sub-area to which porosity are allocated.
 
 - **bloc**  (*type:* :ref:`bloc_lecture_poro`) Surface and volume porosity values.
 
@@ -20063,7 +20066,7 @@ This preconditionner can be only used with the generic GEN solver.
 
 Parameters are:
 
-- **[type]**  (*type:* int) values can be 0|1|2|3 for null|left|right|left-and-right preconditionning (default value = 2)
+- **[type]**  (*type:* int) values can be 0\\\\|1\\\\|2\\\\|3 for null\\\\|left\\\\|right\\\\|left-and-right preconditionning (default value = 2)
 
 - **[filling]**  (*type:* int) default value = 1.
 
@@ -21204,7 +21207,7 @@ Parameters are:
 
 - **[omega]**  (*type:* float) relaxation factor (0.1 by default)
 
-- **[seuil]**  (*type:* float) criteria for ending iterative process (Max( || u(p) - u(p-1)||/Max || u(p) ||) < seuil) (0.001 by default)
+- **[seuil]**  (*type:* float) criteria for ending iterative process (Max( \\\\|\\\\| u(p) - u(p-1)\\\\|\\\\|/Max \\\\|\\\\| u(p) \\\\|\\\\|) < seuil) (0.001 by default)
 
 - **[niter_min]**  (*type:* int) minimal number of p-iterations to satisfy convergence criteria (2 by default)
 
@@ -21291,7 +21294,7 @@ instabilities.
 
 Parameters are:
 
-- **[seuil]**  (*type:* float) criteria for ending iterative process (Max( || u(p) - u(p-1)||/Max || u(p) ||) < seuil) (0.001 by default)
+- **[seuil]**  (*type:* float) criteria for ending iterative process (Max( \\\\|\\\\| u(p) - u(p-1)\\\\|\\\\|/Max \\\\|\\\\| u(p) \\\\|\\\\|) < seuil) (0.001 by default)
 
 - **[niter_min]**  (*type:* int) minimal number of p-iterations to satisfy convergence criteria (2 by default)
 
@@ -22258,7 +22261,7 @@ Parameters are:
 
 - **[pression_degeneree]**  (*type:* int) Set to 1 if the pressure field is degenerate (ex. : incompressible fluid with no imposed-pressure BCs). Default: autodetected
 
-- **[reduction_pression | pressure_reduction]**  (*type:* int) Set to 1 if the user wants a resolution with a pressure reduction. Otherwise, the flag is to be set to 0 so that the complete matrix is considered. The default value of this flag is 1.
+- **[reduction_pression \\\\| pressure_reduction]**  (*type:* int) Set to 1 if the user wants a resolution with a pressure reduction. Otherwise, the flag is to be set to 0 so that the complete matrix is considered. The default value of this flag is 1.
 
 - **[criteres_convergence]**  (*type:* :ref:`bloc_criteres_convergence`) Set the convergence thresholds for each unknown (i.e: alpha, temperature, velocity and pressure). The default values are respectively 0.01, 0.1, 0.01 and 100
 
@@ -22274,11 +22277,11 @@ Parameters are:
 
 - **[seuil_convergence_solveur]**  (*type:* float) value of the convergence criteria for the resolution of the implicit system build by solving several times per time step the Navier_Stokes equation and the scalar equations if any. This value MUST be used when a coupling between problems is considered (should be set to a value typically of 0.1 or 0.01).
 
-- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error ||Ax-B|| is lesser than vrel).
+- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel).
 
-- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error ||Ax-B|| is lesser than vrel after the implicit linear system Ax=B has been solved.
+- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel after the implicit linear system Ax=B has been solved.
 
-- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error ||Ax-B|| is bigger than vrel.
+- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error \\\\|\\\\|Ax-B\\\\|\\\\| is bigger than vrel.
 
 - **[solveur]**  (*type:* :ref:`solveur_sys_base`) Method (different from the default one, Gmres with diagonal preconditioning) to solve the linear system.
 
@@ -22309,11 +22312,11 @@ Parameters are:
 
 - **[seuil_convergence_solveur]**  (*type:* float) value of the convergence criteria for the resolution of the implicit system build by solving several times per time step the Navier_Stokes equation and the scalar equations if any. This value MUST be used when a coupling between problems is considered (should be set to a value typically of 0.1 or 0.01).
 
-- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error ||Ax-B|| is lesser than vrel).
+- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel).
 
-- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error ||Ax-B|| is lesser than vrel after the implicit linear system Ax=B has been solved.
+- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel after the implicit linear system Ax=B has been solved.
 
-- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error ||Ax-B|| is bigger than vrel.
+- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error \\\\|\\\\|Ax-B\\\\|\\\\| is bigger than vrel.
 
 - **[solveur]**  (*type:* :ref:`solveur_sys_base`) Method (different from the default one, Gmres with diagonal preconditioning) to solve the linear system.
 
@@ -22345,11 +22348,11 @@ Parameters are:
 
 - **[seuil_convergence_solveur]**  (*type:* float) value of the convergence criteria for the resolution of the implicit system build by solving several times per time step the Navier_Stokes equation and the scalar equations if any. This value MUST be used when a coupling between problems is considered (should be set to a value typically of 0.1 or 0.01).
 
-- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error ||Ax-B|| is lesser than vrel).
+- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel).
 
-- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error ||Ax-B|| is lesser than vrel after the implicit linear system Ax=B has been solved.
+- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel after the implicit linear system Ax=B has been solved.
 
-- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error ||Ax-B|| is bigger than vrel.
+- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error \\\\|\\\\|Ax-B\\\\|\\\\| is bigger than vrel.
 
 - **[solveur]**  (*type:* :ref:`solveur_sys_base`) Method (different from the default one, Gmres with diagonal preconditioning) to solve the linear system.
 
@@ -22379,11 +22382,11 @@ Parameters are:
 
 - **[seuil_convergence_solveur]**  (*type:* float) value of the convergence criteria for the resolution of the implicit system build by solving several times per time step the Navier_Stokes equation and the scalar equations if any. This value MUST be used when a coupling between problems is considered (should be set to a value typically of 0.1 or 0.01).
 
-- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error ||Ax-B|| is lesser than vrel).
+- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel).
 
-- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error ||Ax-B|| is lesser than vrel after the implicit linear system Ax=B has been solved.
+- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel after the implicit linear system Ax=B has been solved.
 
-- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error ||Ax-B|| is bigger than vrel.
+- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error \\\\|\\\\|Ax-B\\\\|\\\\| is bigger than vrel.
 
 - **[solveur]**  (*type:* :ref:`solveur_sys_base`) Method (different from the default one, Gmres with diagonal preconditioning) to solve the linear system.
 
@@ -22413,11 +22416,11 @@ Parameters are:
 
 - **[seuil_convergence_solveur]**  (*type:* float) value of the convergence criteria for the resolution of the implicit system build by solving several times per time step the Navier_Stokes equation and the scalar equations if any. This value MUST be used when a coupling between problems is considered (should be set to a value typically of 0.1 or 0.01).
 
-- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error ||Ax-B|| is lesser than vrel).
+- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel).
 
-- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error ||Ax-B|| is lesser than vrel after the implicit linear system Ax=B has been solved.
+- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel after the implicit linear system Ax=B has been solved.
 
-- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error ||Ax-B|| is bigger than vrel.
+- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error \\\\|\\\\|Ax-B\\\\|\\\\| is bigger than vrel.
 
 - **[solveur]**  (*type:* :ref:`solveur_sys_base`) Method (different from the default one, Gmres with diagonal preconditioning) to solve the linear system.
 
@@ -22457,11 +22460,11 @@ Parameters are:
 
 - **[seuil_convergence_solveur]**  (*type:* float) value of the convergence criteria for the resolution of the implicit system build by solving several times per time step the Navier_Stokes equation and the scalar equations if any. This value MUST be used when a coupling between problems is considered (should be set to a value typically of 0.1 or 0.01).
 
-- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error ||Ax-B|| is lesser than vrel).
+- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel).
 
-- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error ||Ax-B|| is lesser than vrel after the implicit linear system Ax=B has been solved.
+- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel after the implicit linear system Ax=B has been solved.
 
-- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error ||Ax-B|| is bigger than vrel.
+- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error \\\\|\\\\|Ax-B\\\\|\\\\| is bigger than vrel.
 
 - **[solveur]**  (*type:* :ref:`solveur_sys_base`) Method (different from the default one, Gmres with diagonal preconditioning) to solve the linear system.
 
@@ -22493,11 +22496,11 @@ Parameters are:
 
 - **[seuil_convergence_solveur]**  (*type:* float) value of the convergence criteria for the resolution of the implicit system build by solving several times per time step the Navier_Stokes equation and the scalar equations if any. This value MUST be used when a coupling between problems is considered (should be set to a value typically of 0.1 or 0.01).
 
-- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error ||Ax-B|| is lesser than vrel).
+- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel).
 
-- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error ||Ax-B|| is lesser than vrel after the implicit linear system Ax=B has been solved.
+- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel after the implicit linear system Ax=B has been solved.
 
-- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error ||Ax-B|| is bigger than vrel.
+- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error \\\\|\\\\|Ax-B\\\\|\\\\| is bigger than vrel.
 
 - **[solveur]**  (*type:* :ref:`solveur_sys_base`) Method (different from the default one, Gmres with diagonal preconditioning) to solve the linear system.
 
@@ -22525,11 +22528,11 @@ Parameters are:
 
 - **[seuil_convergence_solveur]**  (*type:* float) value of the convergence criteria for the resolution of the implicit system build by solving several times per time step the Navier_Stokes equation and the scalar equations if any. This value MUST be used when a coupling between problems is considered (should be set to a value typically of 0.1 or 0.01).
 
-- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error ||Ax-B|| is lesser than vrel).
+- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel).
 
-- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error ||Ax-B|| is lesser than vrel after the implicit linear system Ax=B has been solved.
+- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel after the implicit linear system Ax=B has been solved.
 
-- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error ||Ax-B|| is bigger than vrel.
+- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error \\\\|\\\\|Ax-B\\\\|\\\\| is bigger than vrel.
 
 - **[solveur]**  (*type:* :ref:`solveur_sys_base`) Method (different from the default one, Gmres with diagonal preconditioning) to solve the linear system.
 
@@ -22589,11 +22592,11 @@ Parameters are:
 
 - **[seuil_convergence_solveur]**  (*type:* float) value of the convergence criteria for the resolution of the implicit system build by solving several times per time step the Navier_Stokes equation and the scalar equations if any. This value MUST be used when a coupling between problems is considered (should be set to a value typically of 0.1 or 0.01).
 
-- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error ||Ax-B|| is lesser than vrel).
+- **[seuil_generation_solveur]**  (*type:* float) Option to create a GMRES solver and use vrel as the convergence threshold (implicit linear system Ax=B will be solved if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel).
 
-- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error ||Ax-B|| is lesser than vrel after the implicit linear system Ax=B has been solved.
+- **[seuil_verification_solveur]**  (*type:* float) Option to check if residual error \\\\|\\\\|Ax-B\\\\|\\\\| is lesser than vrel after the implicit linear system Ax=B has been solved.
 
-- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error ||Ax-B|| is bigger than vrel.
+- **[seuil_test_preliminaire_solveur]**  (*type:* float) Option to decide if the implicit linear system Ax=B should be solved by checking if the residual error \\\\|\\\\|Ax-B\\\\|\\\\| is bigger than vrel.
 
 - **[solveur]**  (*type:* :ref:`solveur_sys_base`) Method (different from the default one, Gmres with diagonal preconditioning) to solve the linear system.
 
@@ -22624,7 +22627,7 @@ Parameters are:
 
 - **[precond]**  (*type:* :ref:`preconditionneur_petsc_deriv`) not_set
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -22682,7 +22685,7 @@ cluster nodes with only 4GB/core (6.2GB*0.42~2.6GB) :
 
 Parameters are:
 
-- **[save_matrice | save_matrix]**  (*type:* flag) not_set
+- **[save_matrice \\\\| save_matrix]**  (*type:* flag) not_set
 
 - **[save_matrix_petsc_format]**  (*type:* flag) not_set
 
@@ -22692,7 +22695,7 @@ Parameters are:
 
 - **[cli]**  (*type:* :ref:`solveur_petsc_option_cli`) not_set
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -22726,7 +22729,7 @@ Parameters are:
 
 - **[cli]**  (*type:* :ref:`solveur_petsc_option_cli`) not_set
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -22755,7 +22758,7 @@ add an extra CPU cost during Ax=B solve).
 
 Parameters are:
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -22783,7 +22786,7 @@ Parallelized Cholesky from PASTIX library.
 
 Parameters are:
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -22812,7 +22815,7 @@ previous one)
 
 Parameters are:
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -22840,7 +22843,7 @@ Sequential Cholesky from UMFPACK library (seems fast).
 
 Parameters are:
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -22963,7 +22966,7 @@ https://petsc.org/release/manual/
 
 Parameters are:
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -23003,9 +23006,9 @@ Parameters are:
 
 - **[reorder_matrix]**  (*type:* int) not_set
 
-- **[read_matrix]**  (*type:* flag) save_matrix|read_matrix are the keywords to save|read into a file the constant matrix A of the linear system Ax=B solved (eg: matrix from the pressure linear system for an incompressible flow). It is useful when you want to minimize the MPI communications on massive parallel calculation. Indeed, in VEF discretization, the overlapping width (generaly 2, specified with the largeur_joint option in the partition keyword partition) can be reduced to 1, once the matrix has been properly assembled and saved. The cost of the MPI communications in TRUST itself (not in PETSc) will be reduced with length messages divided by 2. So the strategy is:  I) Partition your VEF mesh with a largeur_joint value of 2  II) Run your parallel calculation on 0 time step, to build and save the matrix with the save_matrix option. A file named Matrix_NBROWS_rows_NCPUS_cpus.petsc will be saved to the disk (where NBROWS is the number of rows of the matrix and NCPUS the number of CPUs used).  III) Partition your VEF mesh with a largeur_joint value of 1  IV) Run your parallel calculation completly now and substitute the save_matrix option by the read_matrix option. Some interesting gains have been noticed when the cost of linear system solve with PETSc is small compared to all the other operations.
+- **[read_matrix]**  (*type:* flag) save_matrix\\\\|read_matrix are the keywords to save\\\\|read into a file the constant matrix A of the linear system Ax=B solved (eg: matrix from the pressure linear system for an incompressible flow). It is useful when you want to minimize the MPI communications on massive parallel calculation. Indeed, in VEF discretization, the overlapping width (generaly 2, specified with the largeur_joint option in the partition keyword partition) can be reduced to 1, once the matrix has been properly assembled and saved. The cost of the MPI communications in TRUST itself (not in PETSc) will be reduced with length messages divided by 2. So the strategy is:  I) Partition your VEF mesh with a largeur_joint value of 2  II) Run your parallel calculation on 0 time step, to build and save the matrix with the save_matrix option. A file named Matrix_NBROWS_rows_NCPUS_cpus.petsc will be saved to the disk (where NBROWS is the number of rows of the matrix and NCPUS the number of CPUs used).  III) Partition your VEF mesh with a largeur_joint value of 1  IV) Run your parallel calculation completly now and substitute the save_matrix option by the read_matrix option. Some interesting gains have been noticed when the cost of linear system solve with PETSc is small compared to all the other operations.
 
-- **[save_matrice | save_matrix]**  (*type:* flag) see read_matrix
+- **[save_matrice \\\\| save_matrix]**  (*type:* flag) see read_matrix
 
 - **[petsc_decide]**  (*type:* int) not_set
 
@@ -23013,7 +23016,7 @@ Parameters are:
 
 - **[aij]**  (*type:* flag) not_set
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -23047,7 +23050,7 @@ Parameters are:
 
 - **[nb_it_max]**  (*type:* int) In order to specify a given number of iterations instead of a condition on the residue with the keyword seuil. May be useful when defining a PETSc solver for the implicit time scheme where convergence is very fast: 5 or less iterations seems enough.
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -23078,7 +23081,7 @@ Parameters are:
 
 - **[precond]**  (*type:* :ref:`preconditionneur_petsc_deriv`) not_set
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -23133,7 +23136,7 @@ The BICGSTAB/DIAG solver seems to offer the best performances.
 
 Parameters are:
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -23163,7 +23166,7 @@ MPI-3 implementation)... no example in TRUST
 
 Parameters are:
 
-- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard ||Ax-B|| is less than seuil.
+- **[seuil]**  (*type:* float) corresponds to the iterative solver convergence value. The iterative solver converges when the Euclidean residue standard \\\\|\\\\|Ax-B\\\\|\\\\| is less than seuil.
 
 - **[quiet]**  (*type:* flag) is a keyword which is used to not displaying any outputs of the solver.
 
@@ -23466,7 +23469,7 @@ Parameters are:
 
 - **surface**  (*type:* string into ['surface']) not_set
 
-- **bloc_surface**  (*type:* :ref:`bloc_lecture`) Three syntaxes are possible for the surface definition block:  For VDF and VEF: { X|Y|Z = location subzone_name }  Only for VEF: { Surface surface_name }.  For polymac { Surface surface_name Orientation champ_uniforme }.
+- **bloc_surface**  (*type:* :ref:`bloc_lecture`) Three syntaxes are possible for the surface definition block:  For VDF and VEF: { X\\\\|Y\\\\|Z = location subzone_name }  Only for VEF: { Surface surface_name }.  For polymac { Surface surface_name Orientation champ_uniforme }.
 
 - **acof**  (*type:* string into ['}']) Closing curly bracket.
 
@@ -23558,7 +23561,7 @@ Anisotropic pressure loss.
 
 Parameters are:
 
-- **lambda_ | lambda_u | lambda**  (*type:* string) Function for loss coefficient which may be Reynolds dependant (Ex: 64/Re).
+- **lambda_ \\\\| lambda_u \\\\| lambda**  (*type:* string) Function for loss coefficient which may be Reynolds dependant (Ex: 64/Re).
 
 - **lambda_ortho**  (*type:* string) Function for loss coefficient in transverse direction which may be Reynolds dependant (Ex: 64/Re).
 
@@ -23582,7 +23585,7 @@ New pressure loss.
 
 Parameters are:
 
-- **lambda_ | lambda_u | lambda**  (*type:* string) Function f(Re_tot, Re_long, t, x, y, z) for loss coefficient in the longitudinal direction
+- **lambda_ \\\\| lambda_u \\\\| lambda**  (*type:* string) Function f(Re_tot, Re_long, t, x, y, z) for loss coefficient in the longitudinal direction
 
 - **diam_hydr**  (*type:* :ref:`champ_don_base`) Hydraulic diameter value.
 
@@ -23608,7 +23611,7 @@ Directional pressure loss (available in VEF and PolyMAC).
 
 Parameters are:
 
-- **lambda_ | lambda_u | lambda**  (*type:* string) Function for loss coefficient which may be Reynolds dependant (Ex: 64/Re).
+- **lambda_ \\\\| lambda_u \\\\| lambda**  (*type:* string) Function for loss coefficient which may be Reynolds dependant (Ex: 64/Re).
 
 - **diam_hydr**  (*type:* :ref:`champ_don_base`) Hydraulic diameter value.
 
@@ -23630,7 +23633,7 @@ Isotropic pressure loss (available in VEF and PolyMAC).
 
 Parameters are:
 
-- **lambda_ | lambda_u | lambda**  (*type:* string) Function for loss coefficient which may be Reynolds dependant (Ex: 64/Re).
+- **lambda_ \\\\| lambda_u \\\\| lambda**  (*type:* string) Function for loss coefficient which may be Reynolds dependant (Ex: 64/Re).
 
 - **diam_hydr**  (*type:* :ref:`champ_don_base`) Hydraulic diameter value.
 
@@ -23652,7 +23655,7 @@ Parameters are:
 
 - **spec**  (*type:* :ref:`spec_pdcr_base`) Description of longitudinale or transversale type.
 
-- **zone_name | name_of_zone**  (*type:* string) Name of the sub-area occupied by the tube bundle. A Sous_Zone (Sub-area) type object called zone_name should have been previously created.
+- **zone_name \\\\| name_of_zone**  (*type:* string) Name of the sub-area occupied by the tube bundle. A Sous_Zone (Sub-area) type object called zone_name should have been previously created.
 
 
 
@@ -23676,7 +23679,7 @@ Parameters are:
 
 - **[regul]**  (*type:* :ref:`bloc_lecture`) option to have adjustable K with flowrate target  { K0 valeur_initiale_de_k deb debit_cible eps intervalle_variation_mutiplicatif}.
 
-- **surface**  (*type:* :ref:`bloc_lecture`) Three syntaxes are possible for the surface definition block:  For VDF and VEF: { X|Y|Z = location subzone_name }  Only for VEF: { Surface surface_name }.  For polymac { Surface surface_name Orientation champ_uniforme }
+- **surface**  (*type:* :ref:`bloc_lecture`) Three syntaxes are possible for the surface definition block:  For VDF and VEF: { X\\\\|Y\\\\|Z = location subzone_name }  Only for VEF: { Surface surface_name }.  For polymac { Surface surface_name Orientation champ_uniforme }
 
 
 
@@ -24033,7 +24036,7 @@ Momentum source term in the Navier-Stokes equations.
 
 Parameters are:
 
-- **ch | champ**  (*type:* :ref:`field_base`) Field type.
+- **ch \\\\| champ**  (*type:* :ref:`field_base`) Field type.
 
 
 
@@ -24055,7 +24058,7 @@ Remark : This method requires to define a filtering operator.
 
 Parameters are:
 
-- **lambda_ | lambda_u | lambda**  (*type:* float) value of lambda
+- **lambda_ \\\\| lambda_u \\\\| lambda**  (*type:* float) value of lambda
 
 - **[lambda_min]**  (*type:* float) value of lambda_min
 
@@ -24397,11 +24400,11 @@ Parameters are:
 
 - **[segment]**  (*type:* :ref:`bloc_origine_cotes`) not_set
 
-- **[boite | box]**  (*type:* :ref:`bloc_origine_cotes`) The sub-area will include all the domain elements whose centre of gravity is within the Box (in dimension 3).
+- **[boite \\\\| box]**  (*type:* :ref:`bloc_origine_cotes`) The sub-area will include all the domain elements whose centre of gravity is within the Box (in dimension 3).
 
 - **[liste]**  (*type:* list of int) The sub-area will include n domain items, numbers No. 1 No. i No. n.
 
-- **[fichier | filename]**  (*type:* string) The sub-area is read into the file filename.
+- **[fichier \\\\| filename]**  (*type:* string) The sub-area is read into the file filename.
 
 - **[intervalle]**  (*type:* :ref:`deuxentiers`) The sub-area will include domain items whose number is between n1 and n2 (where n1<=n2).
 
@@ -24411,9 +24414,9 @@ Parameters are:
 
 - **[tube]**  (*type:* :ref:`bloc_tube`) In 3D case, to create a tube.
 
-- **[fonction_sous_zone | fonction_sous_domaine]**  (*type:* string) Keyword to build a sub-area with the the elements included into the area defined by fonction>0.
+- **[fonction_sous_zone \\\\| fonction_sous_domaine]**  (*type:* string) Keyword to build a sub-area with the the elements included into the area defined by fonction>0.
 
-- **[union | union_with]**  (*type:* string) The elements of the sub-area nom_sous_zone3 will be added to the sub-area nom_sous_zone. This keyword should be used last in the Read keyword.
+- **[union \\\\| union_with]**  (*type:* string) The elements of the sub-area nom_sous_zone3 will be added to the sub-area nom_sous_zone. This keyword should be used last in the Read keyword.
 
 
 
@@ -24448,11 +24451,11 @@ Parameters are:
 
 - **sm**  (*type:* float) Curvilinear abscissa of the point M delimiting micro/meso transition [m]
 
-- **hydraulic_equation | equation_navier_stokes**  (*type:* string) Hydraulic equation name
+- **hydraulic_equation \\\\| equation_navier_stokes**  (*type:* string) Hydraulic equation name
 
-- **thermal_equation | equation_temperature**  (*type:* string) Thermal equation name
+- **thermal_equation \\\\| equation_temperature**  (*type:* string) Thermal equation name
 
-- **interface_equation | equation_interface**  (*type:* string) Interface equation name
+- **interface_equation \\\\| equation_interface**  (*type:* string) Interface equation name
 
 - **[ymeso]**  (*type:* float) Meso region extension in wall-normal direction [m]
 
@@ -24605,7 +24608,7 @@ Parameters are:
 
 - **[stationnaire]**  (*type:* :ref:`floatfloat`) not_set
 
-- **[lambda_ | lambda_u | lambda]**  (*type:* string) not_set
+- **[lambda_ \\\\| lambda_u \\\\| lambda]**  (*type:* string) not_set
 
 - **[mu]**  (*type:* string) not_set
 
