@@ -184,7 +184,3 @@ The SST model is the way.
 
 ## Scalar models
 About temperature
-
-## References
-```{bibliography}
-```
