@@ -1,7 +1,3 @@
-```{contents} Table of Contents
-:depth: 3
-```
-
 # Reynolds-averaged Navier-Stokes modeling
 
 Generalities about the turbulence models available in TrioCFD are given in this section. The recommended model is the $k-\omega$ SST model.
