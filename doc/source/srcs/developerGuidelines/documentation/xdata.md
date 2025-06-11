@@ -1,7 +1,7 @@
 :::{index} single: documentation; XDATA
 :::
 
-
+(XDATA)=
 # XDATA
 
 Xdata is a special format used to document valid keywords useable in trust datasets (`.data` files).

@@ -1,3 +1,5 @@
+.. _turbulence_modeling:
+
 Turbulence modeling in TrioCFD
 ==============================
 

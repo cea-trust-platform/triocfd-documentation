@@ -35,7 +35,7 @@ wget ftp://ftp.cea.fr/pub/TRUST/externalpackages/externalpackages-next.tar
 tar xf externalpackages-next.tar
 ```
 :::
-
+(checkout-correct-branch)=
 ## Checkout correct branch
 When you start developing at first, you probably want to start from the branch `next`. To reach it, use 
 ```bash
