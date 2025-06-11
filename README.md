@@ -26,11 +26,13 @@ To produce a pdf, one must have `latexmk` installed and run `make latexpdf`.
 ## Edition
 Two formats can be used in Sphinx, [reStructuredText](https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html) and [Markdown](https://www.markdownguide.org/). The complete markdown syntax is described by the [MyST Syntaxe Guide](https://myst-parser.readthedocs.io/en/v0.13.7/using/syntax.html).
 
-For instance, to add math in markdown, one can write
+To write math, the dollar separated syntax from LaTeX works as well as environment like `\begin{align}`. One can also write in markdown without latex
 ```
 {math}`k-\varepsilon`
 ```
-to produce $k-\varepsilon$. The dollar separated syntax from LaTeX also works. An environment like `\begin{align}` will work between two `$$`.
+to produce $k-\varepsilon$. But the dollar separated syntax from LaTeX also works, as well as the environment like `\begin{align}`.
+
+The bibliography is managed by a [bibtex sphinx module](https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html). In markdown, one must use `{cite:t}` to produce *Author et al. [key]*.
 
 ## ReadTheDocs
 The website is deployed on readthedocs.
