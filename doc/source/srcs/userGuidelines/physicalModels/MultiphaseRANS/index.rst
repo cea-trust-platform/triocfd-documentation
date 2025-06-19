@@ -9,7 +9,11 @@ We do bubbles in rans
    :maxdepth: 1
 
    ./turbulence.rst
-   ./momentum-interfacial-models.rst
-   ./energy-interfacial-models.rst
-   ./hem.rst
+   ./fluid-properties.md
+   ./momentum-interfacial-models.md
+   ./iate.md
+   ./energy-interfacial-models.md
+   ./other-models.md
+   ./hem.md
+   ./postprocessing.md
    ./best-practices.rst
