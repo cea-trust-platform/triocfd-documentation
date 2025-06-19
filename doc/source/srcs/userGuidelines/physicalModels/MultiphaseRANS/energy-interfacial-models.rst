@@ -1,2 +1,0 @@
-Thermal modeling
-================
