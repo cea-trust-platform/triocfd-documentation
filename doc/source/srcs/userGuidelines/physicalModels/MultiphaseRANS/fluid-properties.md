@@ -362,7 +362,7 @@ liquide_eau Fluide_generique_EOS { model refprop10 fluid waterliquid }
 gaz_eau Fluide_generique_EOS { model refprop10 fluid watervapor }
 ```
 
-## Saturation proprieties A
+## Saturation proprieties (TPPI)
 The generic table of proprieties from external software is implemented in
 `Saturation_generique_TPPI_base`:
 
@@ -381,7 +381,7 @@ The saturation proprieties operator must fill following tabs:
 - `Hvs`: enthalpy of steam phase at saturation
 - `dP_Hvs`: derivative of enthalpy of steam phase at saturation regarding pressure
 
-### CoolProp (saturation)
+### CoolProp (TPPI)
 The model is implemented in `Fluide_generique_CoolProp`:
 
 ```{code} c++
@@ -397,7 +397,7 @@ param.ajouter("sigma_mano", &sigma_mano_, Param::OPTIONAL); // optional: because
 
 Default value: $\texttt{sigma_mano_}=-1.$
 
-### EOS (saturation)
+### EOS (TPPI)
 The model is implemented in `Fluide_generique_CoolProp`:
 
 ```{code} c++
