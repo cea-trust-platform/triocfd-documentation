@@ -115,7 +115,7 @@ The model implemented is:
 with $\rho_m=\sum_k \alpha_k \rho_k$ and $i \neq j$.
 
 #### Ishii-Zuber : viscous regime
-The model is described in \textcite{IshiiZuber} and is implemented in:
+The model is described in {cite:t}`IshiiZuber` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Ishii_Zuber_Deformable::set_param(Param& param)
 {
@@ -134,7 +134,7 @@ The model implemented is:
 If $\alpha_l < 10^{-6}$, then $f^D\times{}\alpha_l\times{}10^{-6}$.
 
 #### Ishii-Zuber : viscous regime and particle regime
-The model is also described in \textcite{IshiiZuber} and is implemented as:
+The model is also described in {cite:t}`IshiiZuber` and is implemented as:
 ```{code} c++
 void Frottement_interfacial_Ishii_Zuber::set_param(Param& param)
 {
@@ -153,7 +153,7 @@ The model implemented is:
 with $Re_b=\frac{\rho_l d (u_g-u_l)}{\mu_l}$.
 
 #### Tomiyama : contaminated drag coefficient
-The model is described in \textcite{Tomiyama1998} and is implemented in:
+The model is described in {cite:t}`Tomiyama1998` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Tomiyama::set_param(Param& param)
 {
@@ -179,11 +179,11 @@ with
 
 If $\alpha_l < \num{1.e-6}$, then $f^D\times{}\alpha_l\times{}\num{1e6}$.
 
-This formulation was chosen as shown in \textcite{Sugrue2017}, it yields similar results as other
+This formulation was chosen as shown in {cite:t}`Sugrue2017`, it yields similar results as other
 closures and one can adjust the level of contamination.
 
 #### Bubble critical diameter (incoming)
-The model is described partially in \textcite{KUO1988547} and is implemented in:
+The model is described partially in {cite:t}`KUO1988547` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Weber::set_param(Param& param)
 {
@@ -202,7 +202,7 @@ with $d_b^*= \frac{\sigma}{\rho_l(u_g-u_l)^2}We_c$, $Re_b=\frac{\rho_l d_b^* (u_
 {\color{red} Warning}: not homogeneous
 
 #### Wallis: annular flow
-The model is described in \textcite{wallis} and is implemented in:
+The model is described in {cite:t}`wallis` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Wallis::set_param(Param& param)
 ```
@@ -223,7 +223,7 @@ The model implemented is:
 with $\alpha_g^*=min(max(\alpha_g,0.001),0.999)$
 
 #### Garnier: bubble swarm correction
-The model is described in \textcite{GARNIER2002811} and is implemented in:
+The model is described in {cite:t}`GARNIER2002811` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Garnier::set_param(Param& param)
 ```
@@ -236,7 +236,7 @@ The model implemented is:
 {\color{red} Warning}: Validated for $\alpha_g  < 0.35$, $D_{sm} < 5.5mm$.
 
 #### Rusche: swarm correction
-The model is described in \textcite{Rusche} and is implemented in:
+The model is described in {cite:t}`Rusche` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Rusche::set_param(Param& param)
 ```
@@ -247,7 +247,7 @@ The model implemented is:
 {\color{red} Warning}: Validated for $\alpha_g  < 0.5$.
 
 #### Simonnet: bubble swarm correction
-The model is described in \textcite{SIMONNET2007858} and is implemented in:
+The model is described in {cite:t}`SIMONNET2007858` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Simonnet::set_param(Param& param)
 ```
@@ -258,7 +258,7 @@ The model implemented is:
 {\color{red} Warning}: Validated for $\alpha_g  < 0.3$, $D_{sm} < 10 mm$.
 
 #### Zenit: bubble swarm correction
-The model is described in \textcite{zenit} and is implemented in:
+The model is described in {cite:t}`zenit` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Zenit::set_param(Param& param)
 ```
@@ -356,7 +356,7 @@ with
 - the Eotvos number $\mathit{Eo}=\frac{g\parent{\rho_l-\rho_g}d_b^2}{\sigma}$
 
 #### Tomiyama: lift sign reversal
-The model is described in \textcite{Tomiyama2002} and is implemented in:
+The model is described in {cite:t}`Tomiyama2002` and is implemented in:
 ```{code} c++
 void Portance_interfaciale_Tomiyama::set_param(Param& param)
 {
@@ -453,7 +453,7 @@ For the injected mass flux $\dot{m}_{inj}$,
 If $\alpha_g< 0.0001$, no limiter part.
 
 #### Wijngaarden: two bubbles interaction
-The model is described in \textcite{Biesheuvel1984} and is implemented in:
+The model is described in {cite:t}`Biesheuvel1984` and is implemented in:
 ```{code} c++
 void Masse_ajoutee_Wijngaarden::set_param(Param& param)
 {
@@ -487,10 +487,10 @@ For the injected mass flux $\dot{m}_{inj}$,
 \end{equation}
 If $\alpha_g< 0.0001$, no limiter part.
 
-{\color{red} Warning}: Corrected value in \textcite{Biesheuvel1984} is 3.32 instead of 2.78.
+{\color{red} Warning}: Corrected value in {cite:t}`Biesheuvel1984` is 3.32 instead of 2.78.
 
 #### Zuber: swarm of compliant bubbles
-The model is described in \textcite{ZUBER1964897} and is implemented in:
+The model is described in {cite:t}`ZUBER1964897` and is implemented in:
 ```{code} c++
 void Masse_ajoutee_Zuber::set_param(Param& param)
 {
@@ -572,7 +572,7 @@ Availability of dispersion force models in TrioCFD/CMFD.
 
 
 #### Constant bubble dispersion coefficient
-The model is described in \textcite{MARFAING2016579} and is implemented in:
+The model is described in {cite:t}`MARFAING2016579` and is implemented in:
 ```{code} c++
 void Dispersion_bulles_turbulente_constante::set_param(Param& param)
 {
@@ -585,7 +585,7 @@ The model implemented is:
 \end{equation}
 
 #### Constant turbulent dispersion coefficient
-The model is described in \textcite{LOPEZDEBERTODANO1994805} and is implemented in:
+The model is described in {cite:t}`LOPEZDEBERTODANO1994805` and is implemented in:
 ```{code} c++
 void Dispersion_bulles_turbulente_constante::set_param(Param& param)
 {
@@ -601,7 +601,7 @@ The model implemented is:
 \end{equation}
 
 #### Lopez de Bertodano: Stokes regime
-The model is described in \textcite{LOPEZDEBERTODANO199865} and is implemented in:
+The model is described in {cite:t}`LOPEZDEBERTODANO199865` and is implemented in:
 ```{code} c++
 void Dispersion_bulles_turbulente_Bertodano::set_param(Param& param)
 ```
@@ -625,7 +625,7 @@ with
 with $\tau^t=C_{\mu}^{3/4}\frac{k_l}{\varepsilon_l}$.
 
 #### Burns: Favre averaged drag
-The model is described in \textcite{burns2004favre} and is implemented in:
+The model is described in {cite:t}`burns2004favre` and is implemented in:
 ```{code} c++
 void Dispersion_bulles_turbulente_constante::set_param(Param& param)
 {
@@ -661,7 +661,7 @@ with
 
 ### The Wall force
 #### Antal: wall lubrication
-The model is described in \textcite{ANTAL1991635} and is implemented in:
+The model is described in {cite:t}`ANTAL1991635` and is implemented in:
 ```{code} c++
 void Correction_Antal_PolyMAC_P0::set_param(Param& param)
 {
@@ -688,7 +688,7 @@ with
 
 WARNING: ONLY IN POLYMAC
 
-The model is partially described in \textcite{LUBCHENKO201836} and the dumping is implemented in:
+The model is partially described in {cite:t}`LUBCHENKO201836` and the dumping is implemented in:
 ```{code} c++
 void Correction_Lubchenko_PolyMAC_P0::set_param(Param& param)
 {
@@ -706,7 +706,7 @@ Default values:
 - $\texttt{portee_disp_}= 1.$
 - $\texttt{portee_lift_}= 1.$.
 
-The wall force dumping implemented is a mix between the one proposed by \textcite{Lubchenko2018} and
+The wall force dumping implemented is a mix between the one proposed by {cite:t}`Lubchenko2018` and
 BIF near-wall dumping.  The first part is a lift dumping close to the wall as:
 
 \begin{equation}
@@ -729,7 +729,7 @@ Test cases are available in TrioCFD/CoolProp and TrioCFD/Gabillet.
 ### The Tchen force
 {\color{red} Warning}: This force is a good example of implementation but we discourage its use.
 
-The general expression of the Tchen force \cite{Tchen1947} is:
+The general expression of the Tchen force {cite}`Tchen1947` is:
 \begin{equation}
 \overrightarrow{F_{l\rightarrow g}}= \alpha_g\rho_l \frac{\partial \overrightarrow{u_l}}{\partial t}
 \end{equation}

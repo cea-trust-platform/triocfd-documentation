@@ -75,7 +75,7 @@ The following table summarises the availability of drift velocity models in TRUS
 
 
 ### Constant
-The model is described in \textcite{ishii1977one} and is implemented in:
+The model is described in {cite:t}`ishii1977one` and is implemented in:
 ```{code} c++
 void Vitesse_derive_constante::set_param(Param& param)
 {
@@ -87,7 +87,7 @@ void Vitesse_derive_constante::set_param(Param& param)
 ```
 
 ### Ishii-Hibiki : Bubbly flow
-The model is described in \textcite{HIBIKI2002707} and is implemented in:
+The model is described in {cite:t}`HIBIKI2002707` and is implemented in:
 ```{code} c++
 void Vitesse_derive_Ishii::set_param(Param& param)
 {
@@ -107,7 +107,7 @@ The implemented model is:
 \end{align}
 
 ### Spelt Biesheuvel
-The model is described in \textcite{Spelt1997} and is implemented in:
+The model is described in {cite:t}`Spelt1997` and is implemented in:
 ```{code} c++
 void Vitesse_derive_Spelt_Biesheuvel::set_param(Param& param)
 ```
@@ -140,7 +140,7 @@ Default values : $\texttt{alpha_lim_}=10^{-5}$.
 
 (sec:phyical_modeling_frictionl_multiplier)=
 ### Two-phase frictional multiplier
-The frictional pressure drop in gas–liquid flow can be expressed as a function of a two-phase friction multiplier \cite{FARAJI2022111863}, based on empirical correlations and both pure liquid friction $f_l$ and pure gas friction $f_g$.
+The frictional pressure drop in gas–liquid flow can be expressed as a function of a two-phase friction multiplier {cite}`FARAJI2022111863`, based on empirical correlations and both pure liquid friction $f_l$ and pure gas friction $f_g$.
 
 The general expression of the two-phase frictional multiplier is:
 \begin{equation}
@@ -184,7 +184,7 @@ with
 - $\text{Frag}_l=1-\text{Frag}_g$
 
 ### Fridel: horizontal and vertical smooth tubes with $\mu_l/\mu_g<1000$
-The model is described in \textcite{friedel1979improved} and is implemented in:
+The model is described in {cite:t}`friedel1979improved` and is implemented in:
 ```{code} c++
 void Multiplicateur_diphasique_Friedel::set_param(Param& param)
 {
@@ -227,7 +227,7 @@ with
 - $\rho_m=\frac{1}{\frac{x}{\rho_g}+\frac{1-x}{\rho_l}}$
 
 ### Lottes and Flinn: sodium two-phase pressure drop
-The model is described in \textcite{lottes1956method} and is implemented in:
+The model is described in {cite:t}`lottes1956method` and is implemented in:
 ```{code} c++
 void Multiplicateur_diphasique_Lottes_Flinn::set_param(Param& param)
 {
@@ -247,7 +247,7 @@ The model implemented is :
 \end{equation}
 
 ### Muller-Steinhagen: air–water, water-hydrocarbons and refrigerants in pipes
-The model is described in \textcite{MULLERSTEINHAGEN1986297} and is implemented in:
+The model is described in {cite:t}`MULLERSTEINHAGEN1986297` and is implemented in:
 ```{code} c++
 void Multiplicateur_diphasique_Muhler_Steinhagen::set_param(Param& param)
 {

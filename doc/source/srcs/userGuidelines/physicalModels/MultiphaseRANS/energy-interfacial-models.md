@@ -480,7 +480,7 @@ Availability of interfacial heat flux partitioning models in TrioCFD/CMFD:
 
 
 #### Kommajosyula (to be erased)
-The model is described in \textcite{Ravik2020} and is implemented in:
+The model is described in {cite:t}`Ravik2020` and is implemented in:
 ```{code} c++
 void Flux_parietal_Kommajosyula::set_param(Param& param)
 {
@@ -491,12 +491,12 @@ void Flux_parietal_Kommajosyula::set_param(Param& param)
 {\color{red} Warning}: the model was implemented but dropped because we could not fit the original data and so is not validated.
 
 #### Kurul Podowski
-The model is described in \textcite{kurul1991modeling} and depicted in Figure~\ref{kurul}.
+The model is described in {cite:t}`kurul1991modeling` and depicted in Figure~\ref{kurul}.
 
 \begin{figure}[!ht]
     \centering
     \includegraphics{Figure/Kurul.jpg}
-    \caption{Depiction of the wall heat flux partitioning model for subcooled flow boiling from \textcite{ZHOU2021121295}.}
+    \caption{Depiction of the wall heat flux partitioning model for subcooled flow boiling from {cite:t}`ZHOU2021121295`.}
     \label{kurul}
 \end{figure}
 

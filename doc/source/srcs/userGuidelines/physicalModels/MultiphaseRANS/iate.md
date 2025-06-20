@@ -111,10 +111,10 @@ Default value:
 ### The general equation
 Two separated size-group methods are popular for the prediction of interfacial area
 concentration. One based on having an arbitrary number of groups to reproduce a distribution,
-referred as MUSIG or i-MUSIG \cite{Wang2005a,Das2010a,Liao2011} and the other reproducing the
+referred as MUSIG or i-MUSIG {cite}`Wang2005a,Das2010a,Liao2011` and the other reproducing the
 distribution thanks to the Mean Sauter diameter referred as IATE. The generalized Interfacial Area
 Transport Equation (IATE) developed by Kocamustafaogullari and Ishii
-\cite{Kocamustafaogullari,Kocamustafaogullari1994b}.
+{cite}`Kocamustafaogullari,Kocamustafaogullari1994b`.
 
 The general expression for adiabatic flows with $\psi^{internal}_{j}$ a source term and
 $\psi^{intergroup}_j$ an intergroup term is then:
@@ -213,7 +213,7 @@ For the other source terms, refer to the models.
 
 
 ### The Yao Morel model
-The model is described in \textcite{YAO2004307}.
+The model is described in {cite:t}`YAO2004307`.
 
 The equation is:
 \begin{align}
@@ -426,7 +426,7 @@ $\chi_d$ is equal to $1$ for a uniform distribution profile. Indeed, because the
 determination of the form of the solution of the distribution, the easiest from to consider is a
 uniform distribution.
 
-During the averaging process proposed in \cite{Kataoka2012} , two new terms emerged from the
+During the averaging process proposed in {cite}`Kataoka2012` , two new terms emerged from the
 instantaneous equation: a diffusion term and a lift term. For example, the diffusion term can be
 implemented as:
 
@@ -435,7 +435,7 @@ K\sqrt{u^{\prime 2}}D_{sm}\nabla a_i=K\sqrt{\frac{2k}{3}} D_{sm}\nabla a_i,
 \end{equation}
 
 with $K$ a constant equal to $1/3$. However, it is essential to note that these terms have not yet
-been fully validated in various configurations \cite{Rassame2023}. For the implementation in the
+been fully validated in various configurations {cite}`Rassame2023`. For the implementation in the
 code, we must rewrite it to get rid of $D_{sm}$. For the first group we have:
 
 \begin{equation}
@@ -478,11 +478,11 @@ break-up bubbles. The SO is a break-up phenomenon that source from the shearing-
 bubbles. The SI is due to the break-up of large bubbles due to their surface instability.
 
 The number of processes and the dimensionless coefficient can strongly differ from one model to another:
-- The \textcite{SUN2} model was developed for a $2$ group configuration with a $200 \times  10$ $mm^2$ confined rectangular channel data. The effect of the wall is then very significant. It was performed for liquid superficial velocity between $0.32$ and $2.84$ m/s and gas velocity between $0.39$ and $2.01$ m/s. It deals with cap-bubbly and churn-turbulent flows.\\
-- The \textcite{Smith1} model was developed for a $2$ group configuration with $0.102$ mm and $0.152$ mm diameter pipes. It deals with bubbly, cap-bubbly and churn-turbulent flows. \\
-- The \textcite{Schlegel1} model was developed for a $2$ group configuration with large diameter channels. It deals with bubbly and cap-bubbly flows. Several constitutive relations and correlations were used to tune this model.\\
-- The \textcite{Fu2002} model was developed for a $2$ group configuration for small round pipe.\\
-- \textcite{Dave2016a} proposed new Smith coefficient based on optimization with genetic algorithm on all TOPFLOW DN200 (pipe $195.3$ mm).
+- The {cite:t}`SUN2` model was developed for a $2$ group configuration with a $200 \times  10$ $mm^2$ confined rectangular channel data. The effect of the wall is then very significant. It was performed for liquid superficial velocity between $0.32$ and $2.84$ m/s and gas velocity between $0.39$ and $2.01$ m/s. It deals with cap-bubbly and churn-turbulent flows.
+- The {cite:t}`Smith1` model was developed for a $2$ group configuration with $0.102$ mm and $0.152$ mm diameter pipes. It deals with bubbly, cap-bubbly and churn-turbulent flows.
+- The {cite:t}`Schlegel1` model was developed for a $2$ group configuration with large diameter channels. It deals with bubbly and cap-bubbly flows. Several constitutive relations and correlations were used to tune this model.
+- The {cite:t}`Fu2002` model was developed for a $2$ group configuration for small round pipe.
+- {cite:t}`Dave2016a` proposed new Smith coefficient based on optimization with genetic algorithm on all TOPFLOW DN200 (pipe $195.3$ mm).
 
 \begin{figure}[!ht]
     \centering
@@ -493,7 +493,7 @@ The number of processes and the dimensionless coefficient can strongly differ fr
 
 The coefficients of the previous models are summarized in the following table:
 
-| Coefficient       | Sun \cite{SUN2}      | Smith \cite{Smith1}  | Schlegel \cite{Schlegel1} | Fu \cite{Fu2002} | Dave \cite{Dave2016a} |
+| Coefficient       | Sun {cite}`SUN2`      | Smith {cite}`Smith1`  | Schlegel {cite}`Schlegel1` | Fu {cite}`Fu2002` | Dave {cite}`Dave2016a` |
 |-------------------|----------------------|----------------------|---------------------------|------------------|-----------------------|
 | $C^{(1)}_{RC}$    | $0.005$              | $0.01$               | $0.01$                    | $0.0041$         | $0.26$                |
 | $C^{(12,2)}_{RC}$ | $0.005$              | $0.01$               | $0.05$                    | $0.005$          | $0.41$                |
