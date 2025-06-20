@@ -99,7 +99,7 @@ The model implemented is:
 The models are implemented in `Fluide_R12_c1_liquide`, `Fluide_R12_c1_gaz`,
 `Fluide_eau_c3_liquide` and `Fluide_eau_c3_gaz`. The low boiling of refrigerant
 R12 (dichlorodifluoromethane) mimics Pressurized water reactor dimensionless numbers. Those values
-are available in Cathare code. For example, in \textcite{KREPPER20113851}, one can find:
+are available in Cathare code. For example, in {cite:t}`KREPPER20113851`, one can find:
 
 | Fluid                      | Water                 | R12                    |
 |----------------------------|-----------------------|------------------------|
@@ -120,7 +120,7 @@ are available in Cathare code. For example, in \textcite{KREPPER20113851}, one c
 In homogeneous MUlti-SIze Group (MUSIG), a distribution of bubbles or droplets between $r_{min}$ and
 $r_{max}$ is characterized by a statistical law (linear, exponential or log) and its discretization
 in $n$ sub groups with the same velocity, as depicted in Figures \ref{msgdis} from
-\textcite{cheung}.
+{cite:t}`cheung`.
 
 \begin{figure}[!ht]
     \centering
