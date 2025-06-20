@@ -119,7 +119,7 @@ Transport Equation (IATE) developed by Kocamustafaogullari and Ishii
 The general expression for adiabatic flows with $\psi^{internal}_{j}$ a source term and
 $\psi^{intergroup}_j$ an intergroup term is then:
 
-\begin{equation}
+\begin{align}
 \definecolor{codebackground}{RGB}{245, 245, 245}         % Gris clair pour le fond
 \definecolor{codeword}{RGB}{0, 0, 0}                     % Noir pour le fond
 \definecolor{codeborder}{RGB}{100, 100, 100}             % Gris pour la bordure
@@ -128,8 +128,8 @@ $\psi^{intergroup}_j$ an intergroup term is then:
 \definecolor{codekeyword3}{RGB}{ 146, 41, 223}           % purple
 \definecolor{codekeyword4}{RGB}{255, 50, 50}             % red
 
-\frac{\partial a_{i}}{\partial t}+\underbrace{\nabla\cdot\parent{\mathbf{U} a_{i}}}_{\colorbox{codebackground}{\color{codekeyword3} convection}} = \underbrace{\frac{2}{3}\frac{a_{i}}{\alpha}\frac{D\alpha}{Dt}}_{\colorbox{codebackground}{\color{codekeyword3} source\ of\ volume\ change}}+\underbrace{\color{myteal}\sum_j \psi^{intergroup}_{j}}_{\colorbox{codebackground}{\color{codekeyword3} intergroup\ sources}}+\underbrace{\color{myteal}\sum_j \psi^{internal}_{j}}_{\colorbox{codebackground}{\color{codekeyword3} intragroup sources}}.
-\end{equation}
+\frac{\partial a_{i}}{\partial t} + \underbrace{\nabla\cdot\parent{\mathbf{U} a_{i}}}_{\text{convection}} = &\underbrace{\frac{2}{3}\frac{a_{i}}{\alpha}\frac{D\alpha}{Dt}}_{\text{source of volume change}}\\\quad & + \underbrace{\sum_j \psi^{\text{intergroup}}_{j}}_{\text{intergroup sources}} + \underbrace{\sum_j \psi^{\text{internal}}_{j}}_{\text{intragroup sources}}.
+\end{align}
 
 The terms in green need new modeling linked to coalescence and break-up.
 
@@ -142,24 +142,29 @@ Let's remind that:
 Then we can substitute:
 
 \begin{equation}
- \frac{D\alpha}{Dt}=\frac{1}{\rho_g}(\Gamma_{transfer}+\Gamma_{nucleation}-\alpha\frac{d\rho_g}{dt})
+ \frac{D\alpha}{Dt}=\frac{1}{\rho_g}\parent{\Gamma_{\text{transfer}}+\Gamma_{\text{nucleation}}-\alpha\frac{d\rho_g}{dt}}
  \end{equation}
 
 It gives the following equation:
 
 \begin{equation}
 \begin{aligned}
-\frac{\partial a_{i}}{\partial t}+\underbrace{\nabla.(\mathbf{U} a_{i})}_{\colorbox{codebackground}{\color{codekeyword3} convection}}=\underbrace{-\frac{2}{3}\frac{a_{i}}{\rho_g}\frac{d\rho_g}{dt}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ change}}+\underbrace{\frac{2}{3}\frac{a_{i}}{\alpha}\frac{\Gamma_{transfer}}{\rho_g}}_{\colorbox{codebackground}{\color{codekeyword3} Condensation}}+\underbrace{\frac{2}{3}\frac{a_{i}}{\alpha}\frac{\Gamma_{nucleation}}{\rho_g}}_{\colorbox{codebackground}{\color{codekeyword3} Nucleation}}&+ & \\\underbrace{\color{myteal} \sum_j \psi^{intergroup}_{j}}_{\colorbox{codebackground}{\color{codekeyword3} intergroup\ sources}}+\underbrace{\color{myteal} \sum_j \psi^{internal}_{j}}_{\colorbox{codebackground}{\color{codekeyword3} intragroup sources}}.
+\frac{\partial a_{i}}{\partial t} + \underbrace{\nabla\cdot(\mathbf{U} a_{i})}_{\text{convection}} = \underbrace{-\frac{2}{3}\frac{a_{i}}{\rho_g}\frac{d\rho_g}{dt}}_{\text{Density change}}
++ \underbrace{\frac{2}{3}\frac{a_{i}}{\alpha}\frac{\Gamma_{\text{transfer}}}{\rho_g}}_{\text{Condensation}}
++ \underbrace{\frac{2}{3}\frac{a_{i}}{\alpha}\frac{\Gamma_{\text{nucleation}}}{\rho_g}}_{\text{Nucleation}}&
++ & \\
+\underbrace{\sum_j \psi^{\text{intergroup}}_{j}}_{\text{intergroup sources}}
++ \underbrace{\sum_j \psi^{\text{internal}}_{j}}_{\text{intragroup sources}}.
 \end{aligned}
 \end{equation}
 
-The {\colorbox{codebackground}{\color{codekeyword3} Density\ change}} model is:
+The density change model is:
 
 \begin{equation}
     -\frac{2}{3}\frac{a_{i}}{\rho_g}\frac{d\rho_g}{dt}
 \end{equation}
 
-The {\colorbox{codebackground}{\color{codekeyword3} Density\ change}} is implemented in \texttt{Variation_rho_Elem_PolyMAC_P0}:
+It is implemented in \texttt{Variation_rho_Elem_PolyMAC_P0}:
 ```{code} c++
 Void Variation_rho::set_param(Param& param)
 ```
@@ -174,31 +179,33 @@ It fills the following matrices:
 
 For example, the chain rule for the temperature gives:
 
-\begin{equation}
-    \frac{d(\frac{1}{\rho_g}\frac{d\rho_g}{dt})}{dT}=\frac{d\rho_g}{dT}\Bigg(\frac{d}{d\rho_g}(\frac{1}{\rho_g})\frac{d\rho_g}{dt}+\frac{1}{\rho_g}\frac{d}{d\rho_g}(\frac{d\rho_g}{dt}) \Bigg)=\frac{d\rho_g}{dT}\Bigg(-(\frac{1}{\rho_g^2})\frac{d\rho_g}{dt}+\frac{1}{\rho_g}\frac{d}{d\rho_g}(\frac{d\rho_g}{dt}) \Bigg)
-\end{equation}
+\begin{align}
+    \frac{d\parent{\frac{1}{\rho_g}\frac{d\rho_g}{dt}}}{dT}
+    & = \frac{d\rho_g}{dT} \parent{\frac{d}{d\rho_g} \parent{\frac{1}{\rho_g}} \frac{d\rho_g}{dt} + \frac{1}{\rho_g} \frac{d}{d\rho_g} \parent{\frac{d\rho_g}{dt}}}\\
+& = \frac{d\rho_g}{dT} \parent{-\parent{\frac{1}{\rho_g^2}} \frac{d\rho_g}{dt} + \frac{1}{\rho_g} \frac{d}{d\rho_g} \parent{\frac{d\rho_g}{dt}}}
+\end{align}
 
 Regarding the discret form, it gives:
 \begin{equation}
-   \frac{d\rho_g}{dT}\Bigg(-(\frac{1}{(\rho_g^n)^2})\frac{\rho_g^n-\rho_g^{n-1}}{\Delta t}+\frac{1}{\rho_g^n\Delta t}\Bigg)=\frac{1}{\Delta t}\frac{d\rho_g}{dT}\Bigg(\frac{\rho_g^{n-1}}{(\rho_g^n)^2}\Bigg)
+   \frac{d\rho_g}{dT}\parent{-\parent{\frac{1}{\parent{\rho_g^n}^2}} \frac{\rho_g^n - \rho_g^{n-1}}{\Delta t} + \frac{1}{\rho_g^n\Delta t}} = \frac{1}{\Delta t} \frac{d\rho_g}{dT} \parent{\frac{\rho_g^{n-1}}{(\rho_g^n)^2}}
 \end{equation}
 
-The {\colorbox{codebackground}{\color{codekeyword3} Condensation}} model is:
+The Condensation model is:
 \begin{equation}
  \frac{2}{3}\frac{a_i}{\alpha \rho_g} G,
 \end{equation}
 with G given by a correlation.
 
-The {\colorbox{codebackground}{\color{codekeyword3} Condensation}} term is implemented in \texttt{Source_Flux_interfacial_base} as:
+The Condensation term is implemented in \texttt{Source_Flux_interfacial_base} as:
 \begin{equation}
-\texttt{secmem}  \pluseq  \frac{2}{3}\frac{a_i^n}{\alpha^n\rho_g^n} G^n
+\texttt{secmem} \pluseq \frac{2}{3}\frac{a_i^n}{\alpha^n\rho_g^n} G^n
 \end{equation}
 
 If the condensation is not making the phase evanescent then:
 \begin{align}
     &M_\alpha  \minuseq  \frac{-2}{3}\frac{a_i^n}{(\alpha^n)^2}\rho_g^n G^n\\
-    &M_T  \minuseq  \frac{-2}{3}\frac{a_i^n}{\alpha^n(\rho_g^n)^2} G^n \frac{d\rho_l}{dT}+\frac{2}{3}\frac{a_i^n}{\alpha^n\rho_g} \frac{dG}{dT}\\
-    &M_P  \minuseq  \frac{-2}{3}\frac{a_i^n}{\alpha^n(\rho_g^n)^2} G^n \frac{d\rho_g}{dP}+\frac{2}{3}\frac{a_i^n}{\alpha^n\rho_g} \frac{dG}{dP}\\
+    &M_T  \minuseq  \frac{-2}{3}\frac{a_i^n}{\alpha^n\parent{\rho_g^n}^2} G^n \frac{d\rho_l}{dT}+\frac{2}{3}\frac{a_i^n}{\alpha^n\rho_g} \frac{dG}{dT}\\
+    &M_P  \minuseq  \frac{-2}{3}\frac{a_i^n}{\alpha^n\parent{\rho_g^n}^2} G^n \frac{d\rho_g}{dP}+\frac{2}{3}\frac{a_i^n}{\alpha^n\rho_g} \frac{dG}{dP}\\
     &M_{a_i}  \minuseq  \frac{2}{3}\frac{1}{\alpha^n\rho_g^n} G^n
 \end{align}
 
@@ -209,16 +216,22 @@ For the other source terms, refer to the models.
 The model is described in \textcite{YAO2004307}.
 
 The equation is:
-\begin{equation}
-\frac{\partial a_{i}}{\partial t}+\underbrace{\nabla.(\mathbf{U} a_{i})}_{\colorbox{codebackground}{\color{codekeyword3} convection}}=\underbrace{\frac{2}{3}\frac{a_{i}}{\alpha}(\frac{\Gamma_{condensation}}{\rho_g}-\frac{\alpha_g}{\rho_g} \frac{d \rho_g}{d t})}_{\colorbox{codebackground}{\color{codekeyword3} source\ of\ volume\ change}}+\underbrace{\pi d_{dep}^2\Phi_N}_{\colorbox{codebackground}{\color{codekeyword3} Nucleation}}+\underbrace{\frac{36\pi}{3}(\frac{\alpha}{a_i})^2{\color{myteal}\Phi_{coal}}}_{\colorbox{codebackground}{\color{codekeyword3} Coalescence}}+\underbrace{\frac{36\pi}{3}(\frac{\alpha}{a_i})^2{\color{myteal}\Phi_{breakup}}}_{\colorbox{codebackground}{\color{codekeyword3}  Break-up}}.
-\end{equation}
+\begin{align}
+\frac{\partial a_{i}}{\partial t}
++ \underbrace{\nabla\cdot(\mathbf{U} a_{i})}_{\text{convection}}
+&= \underbrace{\frac{2}{3} \frac{a_{i}}{\alpha} \parent{\frac{\Gamma_{\text{condensation}}}{\rho_g}
+- \frac{\alpha_g}{\rho_g} \frac{d \rho_g}{d t}}}_{\text{source of volume change}}\\
+&+ \underbrace{\pi d_{\text{dep}}^2\Phi_N}_{\text{Nucleation}}
++ \underbrace{\frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2{\Phi_{\text{coal}}}}_{\text{Coalescence}}
++ \underbrace{\frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2{\Phi_{\text{breakup}}}}_{\text{Break-up}}.
+\end{align}
 
-The {\colorbox{codebackground}{\color{codekeyword3} Coalescence}} model is:
-\begin{equation}
-\begin{aligned}
-		\frac{36\pi}{3}(\frac{\alpha}{a_i})^2\Phi_{Coal} =- \frac{36\pi}{3}(\frac{\alpha}{a_i})^2 (\varepsilon d_b)^{1/3} \cdot \frac{\alpha^2}{d_b^4} \cdot K_{c1} \cdot \frac{1}{g(\alpha) + K_{c2}\alpha \sqrt{We/We_{cr}}} \cdot \text{exp}\left(-K_{c3} \sqrt{\frac{We}{We_{cr}}}\right)& & \\ = {\color{mydarkorchid} \frac{\pi}{3\times 6^{5/3}}\alpha^{1/3}a_i^{5/3}\varepsilon^{1/3}} \cdot {\color{myslateblue} K_{c1} \frac{-1}{g(\alpha) + K_{c2}\alpha \sqrt{We/We_{cr}}} \cdot \text{exp}\left(-K_{c3} \sqrt{\frac{We}{We_{cr}}}\right)},
-\end{aligned}
-\end{equation}
+The Coalescence model is:
+\begin{align}
+\frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2\Phi_{\text{Coal}}
+&=- \frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2 \parent{\varepsilon d_b}^{1/3} \cdot \frac{\alpha^2}{d_b^4} \cdot K_{c1} \cdot \frac{1}{g\parent{\alpha} + K_{c2}\alpha \sqrt{We/We_{cr}}} \cdot \exp\parent{-K_{c3} \sqrt{\frac{We}{We_{cr}}}} \\
+&= {\color{mydarkorchid} \frac{\pi}{3\times 6^{5/3}}\alpha^{1/3}a_i^{5/3}\varepsilon^{1/3}} \cdot {\color{myslateblue} K_{c1} \frac{-1}{g\parent{\alpha} + K_{c2}\alpha \sqrt{We/We_{cr}}} \cdot \exp\parent{-K_{c3} \sqrt{\frac{We}{We_{cr}}}}},
+\end{align}
 
 with
 - $K_{c1} = 2.86$
@@ -228,7 +241,16 @@ with
 - $g(\alpha) = \frac{\alpha_\text{max}^{1/3}-\alpha^{1/3}}{\alpha_\text{max}^{1/3}}$
 - $\alpha_\text{max} = \frac{\pi}{6}$.
 
-The {\colorbox{codebackground}{\color{codekeyword3} Coalescence}} model is implemented as $\frac{36\pi}{3}(\frac{\alpha}{a_i})^2\Phi_{Coal}={\color{mydarkorchid}f_1(\alpha,ai,k,\varepsilon)}{\color{myslateblue} f_2(\alpha,ai,k,\varepsilon)}$ so that for the sake of simplicity $d({\color{mydarkorchid}f_1}{\color{myslateblue} f_2})={\color{myslateblue} f_2}d{\color{mydarkorchid} f_1}$  in {\color{mydarkorchid} Coalescence_bulles_1groupe_PolyMAC_P0}:
+The Coalescence model is implemented as
+
+\begin{equation}
+\frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2\Phi_{\text{Coal}} = f_1\parent{\alpha,\ ai,\ k,\ \varepsilon}} f_2\parent{\alpha,\ ai,\ k,\ \varepsilon}}
+\end{equation}
+so that for the sake of simplicity
+\begin{equation}
+\mathrm{d}\parent{f_1 f_2} = f_2 \mathrm{d} f_1
+\end{equation}
+in `Coalescence_bulles_1groupe_PolyMAC_P0`:
 ```{code} c++
 void Coalescence_bulles_1groupe_PolyMAC_P0::set_param(Param& param)
 {
@@ -236,7 +258,7 @@ void Coalescence_bulles_1groupe_PolyMAC_P0::set_param(Param& param)
   param.ajouter("beta_k", &beta_k_);
 }
 ```
-and {\color{myslateblue} Coalescence_bulles_1groupe_Yao_Morel}:
+and `Coalescence_bulles_1groupe_Yao_Morel`:
 ```{code} c++
 void Coalescence_bulles_1groupe_Yao_Morel::set_param(Param& param)
 ```
@@ -269,15 +291,26 @@ If the $k-\omega$ turbulence model is used,
 \varepsilon = k \times \omega \times\text{beta_k_}.
 \end{equation}
 
-The {\colorbox{codebackground}{\color{codekeyword3}  Break-up}} model is:
-\begin{equation}
-\begin{aligned}
-		\frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2\Phi_{\text{breakup}} =- \frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2 \parent{\varepsilon d_b}^{1/3} \cdot \frac{\alpha(1-\alpha)}{d_b^4} \cdot K_{b1} \cdot \frac{1}{1 + K_{b2}\alpha_l \sqrt{We/We_{cr}}} \cdot \text{exp}\left(- \frac{We}{We_{cr}}\right)& & \\ = {\color{mydarkorchid} \frac{\pi}{3\times 6^{5/3}}\alpha^{-2/3}(1-\alpha)a_i^{5/3}\varepsilon^{1/3}} \cdot {\color{myslateblue} K_{b1} \cdot \frac{1}{1 + K_{b2}(1-\alpha) \sqrt{We/We_{cr}}} \cdot \text{exp}\left(- \frac{We}{We_{cr}}\right)},
-\end{aligned}
-\end{equation}
-with $K_{b1} = 1.6$, $K_{b2} = 0.42$, $We_{cr} = 1.24$.
+The Break-up model is:
+\begin{aligne}
+\frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2\Phi_{\text{breakup}}
+&=- \frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2 \parent{\varepsilon d_b}^{1/3} \cdot \frac{\alpha(1-\alpha)}{d_b^4} \cdot K_{b1} \cdot \frac{1}{1 + K_{b2}\alpha_l \sqrt{We/We_{cr}}} \cdot \text{exp}\parent{- \frac{We}{We_{cr}}}\\
+& = {\color{mydarkorchid} \frac{\pi}{3\times 6^{5/3}}\alpha^{-2/3}(1-\alpha)a_i^{5/3}\varepsilon^{1/3}} \cdot K_{b1} \cdot \frac{1}{1 + K_{b2}(1-\alpha) \sqrt{We/We_{cr}}} \cdot \text{exp}\parent{- \frac{We}{We_{cr}}},
+\end{align}
+with
+- $K_{b1} = 1.6$,
+- $K_{b2} = 0.42$,
+- $We_{cr} = 1.24$.
 
-The {\colorbox{codebackground}{\color{codekeyword3}  Break-up}} model is implemented as $\frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2\Phi_{\text{breakup}}={\color{mydarkorchid}f_1(\alpha,ai,k,\varepsilon)}{\color{myslateblue} f_2(\alpha,ai,k,\varepsilon)}$ so that for the sake of simplicity $d({\color{mydarkorchid}f_1}{\color{myslateblue} f_2})={\color{myslateblue} f_2}d{\color{mydarkorchid} f_1}$  in {\color{mydarkorchid} Rupture_bulles_1groupe_PolyMAC_P0}:
+The Break-up model is implemented as
+\begin{equation}
+\frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2\Phi_{\text{breakup}}={\color{mydarkorchid}f_1(\alpha,ai,k,\varepsilon)}{\color{myslateblue} f_2(\alpha,ai,k,\varepsilon)}
+\end{equation}
+so that for the sake of simplicity
+\begin{equation}
+d({\color{mydarkorchid}f_1}{\color{myslateblue} f_2})={\color{myslateblue} f_2}d{\color{mydarkorchid} f_1}
+\end{equation}
+in `Rupture_bulles_1groupe_PolyMAC_P0`:
 ```{code} c++
 void Rupture_bulles_1groupe_PolyMAC_P0::set_param(Param& param)
 {
@@ -285,7 +318,7 @@ void Rupture_bulles_1groupe_PolyMAC_P0::set_param(Param& param)
   param.ajouter("beta_k", &beta_k_);
 }
 ```
-and {\color{myslateblue} Rupture_bulles_1groupe_Yao_Morel}:
+and `Rupture_bulles_1groupe_Yao_Morel`:
 ```{code} c++
 void Rupture_bulles_1groupe_Yao_Morel::set_param(Param& param)
 ```
@@ -311,21 +344,21 @@ For the $k-\varepsilon$ model:
 
 If the $k-\tau$ turbulence model is used,
 \begin{equation}
-\varepsilon=\frac{k^2}{\text{max}(k\tau,\ \texttt{visc_turb.limiteur()} \nu_l)}\times beta_ k _.
+\varepsilon=\frac{k^2}{\max(k\tau,\ \text{visc_turb.limiteur()} \nu_l)}\times beta\_k\_.
 \end{equation}
 
 If the $k-\omega$ turbulence model is used
 \begin{equation}
-\varepsilon=k\times \omega\times beta_ k _.
+\varepsilon=k\times \omega\times beta\_k\_.
 \end{equation}
 
-The {\colorbox{codebackground}{\color{codekeyword3}  Nucleation}} model is:
+The Nucleation model is:
 \begin{equation}
 \pi d_{dep}^2\Phi_N = \pi d_{dep}^2\frac{\Phi_{e}}{L_{\text{vap}} \rho_g \frac{\pi}{6}d_\text{dep}^3}=6\frac{\Phi_{\text{nucleation}}}{\text{max}(d_{\text{nuc}},10^{-8})\rho_g L_{\text{vap}}}
 \end{equation}
 with $\Phi_{e}$ wall heat transfer.
 
-The {\colorbox{codebackground}{\color{codekeyword3}  Nucleation}} model is implemented in `Nucleation_paroi_PolyMAC_P0`:
+The Nucleation model is implemented in `Nucleation_paroi_PolyMAC_P0`:
 ```{code} c++
 void Nucleation_paroi_PolyMAC_P0::set_param(Param& param)
 ```
@@ -340,39 +373,52 @@ This terms injected only on boundary elements and is fully explicit:
 A particular case of the solution can be obtained if we consider two groups of bubbles. For example,
 experimentally a limit can be observed between quasi-spherical and distorted bubbles. Then we can
 separate the distribution of those groups into 2 distinct distributions on either side of the
-critical diameter $Dsmc=4\sqrt{\tfrac{\sigma}{g(\rho_l-\rho_g)}}$, with $\sigma$ the surface
-tension, $g$ gravity and $\rho_g$ and $\rho_l$ respectively the densities of the gas and the
-liquid. For the first group we get:
+critical diameter $\mathit{Dsmc}=4\sqrt{\tfrac{\sigma}{g\parent{\rho_l - \rho_g}}}$, with $\sigma$
+the surface tension, $g$ gravity and $\rho_g$ and $\rho_l$ respectively the densities of the gas and
+the liquid. For the first group we get:
 
 \begin{equation}
 \begin{aligned}
-\frac{\partial a_{i1}}{\partial t}+\underbrace{\nabla\parent{a_{i1}\mathbf{U}_{g1}}}_{\colorbox{codebackground}{\color{codekeyword3} convection}}=&\underbrace{\frac{2}{3}\frac{a_{i1}}{\alpha_{g1}}\parent{-\frac{\alpha_{g1}}{\rho_g}\frac{d \rho_g}{dt}}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ change}}-\underbrace{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^2\frac{a_{i1}}{\alpha_{g1}}\parent{-\frac{\alpha_{g1}}{\rho_g}\frac{d \rho_g}{dt}}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ sliding}}  \\
-&+\underbrace{\frac{2}{3}\frac{a_{i1}}{\alpha_{g1}}\parent{\frac{\color{myteal}\Gamma_{g1}}{\rho_g}}}_{\colorbox{codebackground}{\color{codekeyword3} Mass\ transfer}}-\underbrace{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^2\frac{a_{i1}}{\alpha_{g1}}\parent{\frac{\color{myteal}\Gamma_{g1}}{\rho_g}}}_{\colorbox{codebackground}{\color{codekeyword3} Mass\ transfer\ sliding}} \\
-&+\underbrace{\color{myteal}\sum_j \psi^{\text{intergroup}}_{1j}}_{\colorbox{codebackground}{\color{codekeyword3} intergroup\ sources}}+\underbrace{\color{myteal}\sum_j \psi^{\text{internal}}_{1j}}_{\colorbox{codebackground}{\color{codekeyword3} intragroup sources}}.
+\frac{\partial a_{i1}}{\partial t}
++ \underbrace{\nabla\parent{a_{i1}\mathbf{U}_{g1}}}_{\text{convection}}
+=&\underbrace{\frac{2}{3}\frac{a_{i1}}{\alpha_{g1}}\parent{-\frac{\alpha_{g1}}{\rho_g}\frac{d \rho_g}{dt}}}_{\text{Density change}}
+- \underbrace{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^2\frac{a_{i1}}{\alpha_{g1}}\parent{-\frac{\alpha_{g1}}{\rho_g}\frac{d \rho_g}{dt}}}_{\text{Density sliding}}\\
+&+ \underbrace{\frac{2}{3}\frac{a_{i1}}{\alpha_{g1}}\parent{\frac{\color{myteal}\Gamma_{g1}}{\rho_g}}}_{\text{Mass transfer}}
+- \underbrace{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^2\frac{a_{i1}}{\alpha_{g1}}\parent{\frac{\color{myteal}\Gamma_{g1}}{\rho_g}}}_{\text{Mass transfer sliding}} \\
+& + \underbrace{\color{myteal}\sum_j \psi^{\text{intergroup}}_{1j}}_{\text{intergroup sources}}
++ \underbrace{\color{myteal}\sum_j \psi^{\text{internal}}_{1j}}_{\text{intragroup sources}}.
 \end{aligned}
 \end{equation}
 
 For the second group, we get:
 \begin{equation}
 \begin{aligned}
-\frac{\partial a_{i2}}{\partial t}+\underbrace{\nabla\parent{a_{i2}\mathbf{U}_{g2}}}_{\colorbox{codebackground}{\color{codekeyword3} convection}}=\underbrace{\frac{2}{3}\frac{a_{i2}}{\alpha_{g2}}\parent{-\frac{\alpha_{g2}}{\rho_g}\frac{d \rho_g}{dt}}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ change}}+\underbrace{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^2\frac{a_{i1}}{\alpha_{g1}}\parent{-\frac{\alpha_{g1}}{\rho_g}\frac{d \rho_g}{dt}}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ sliding}}&+ & \\
-\underbrace{\frac{2}{3}\frac{a_{i2}}{\alpha_{g2}}\parent{\frac{\color{myteal}\Gamma_{g2}}{\rho_g}}}_{\colorbox{codebackground}{\color{codekeyword3} Mass\ transfer}} +\underbrace{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^2\frac{a_{i1}}{\alpha_{g1}}\parent{\frac{\color{myteal}\Gamma_{g1}}{\rho_g} }}_{\colorbox{codebackground}{\color{codekeyword3} Mass\ transfer\ sliding}} +& \\
-\underbrace{\color{myteal}\sum_j \psi^{\text{intergroup}}_{2j}}_{\colorbox{codebackground}{\color{codekeyword3} intergroup\ sources}}+\underbrace{\color{myteal}\sum_j \psi^{\text{internal}}_{2j}}_{\colorbox{codebackground}{\color{codekeyword3} intragroup sources}}.
+\frac{\partial a_{i2}}{\partial t}
++ \underbrace{\nabla\parent{a_{i2}\mathbf{U}_{g2}}}_{\text{convection}}=\underbrace{\frac{2}{3}\frac{a_{i2}}{\alpha_{g2}}\parent{-\frac{\alpha_{g2}}{\rho_g}\frac{d \rho_g}{dt}}}_{\text{Density change}}
++ \underbrace{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^2\frac{a_{i1}}{\alpha_{g1}}\parent{-\frac{\alpha_{g1}}{\rho_g}\frac{d \rho_g}{dt}}}_{\text{Density sliding}}&+ & \\
+\underbrace{\frac{2}{3}\frac{a_{i2}}{\alpha_{g2}}\parent{\frac{\color{myteal}\Gamma_{g2}}{\rho_g}}}_{\text{Mass transfer}}
++\underbrace{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^2 \frac{a_{i1}}{\alpha_{g1}} \parent{\frac{\color{myteal}\Gamma_{g1}}{\rho_g}}}_{\text{Mass transfer sliding}} +& \\
+\underbrace{\sum_j \psi^{\text{intergroup}}_{2j}}_{\text{intergroup sources}}
++ \underbrace{\sum_j \psi^{\text{internal}}_{2j}}_{\text{intragroup sources}}.
 \end{aligned}
 \end{equation}
 
 The different mass transfer are:
 \begin{equation}
 \begin{aligned}
-\Gamma_{g1}=\underbrace{-\frac{\rho_g}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}{\color{myteal}\sum_j \eta^{inter}_j}}_{\colorbox{codebackground}{\color{codekeyword3} Intergroup}}+ \underbrace{\frac{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^3}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}\alpha_{g1}\parent{\frac{d\rho_{g}}{dt}}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ group\ shift}}&+& \\
-\underbrace{\frac{1}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}\Gamma_{\text{condensation g1}}}_{\colorbox{codebackground}{\color{codekeyword3} Condensation}}+\underbrace{\frac{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^3}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}\Gamma_{\text{Nucleation g1}}}_{\colorbox{codebackground}{\color{codekeyword3} Nucleation}}.
+\Gamma_{g1} = \underbrace{-\frac{\rho_g}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}{\color{myteal}\sum_j \eta^{\text{inter}}_j}}_{\text{Intergroup}}
++ \underbrace{\frac{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^3}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}\alpha_{g1}\parent{\frac{d\rho_{g}}{dt}}}_{\text{Density group shift}}&+& \\
+\underbrace{\frac{1}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}\Gamma_{\text{condensation g1}}}_{\text{Condensation}}
++ \underbrace{\frac{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^3}{1+\chi_d \parent{\frac{\mathit{Dsmc}}{\mathit{Dsm1}}}^3}\Gamma_{\text{Nucleation g1}}}_{\text{Nucleation}}.
 \end{aligned}
 \end{equation}
 
 \begin{equation}
 \begin{aligned}
-\Gamma_{g2}=\underbrace{\frac{\rho_g}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}{\color{myteal}\sum_j \eta^{inter}_j}}_{\colorbox{codebackground}{\color{codekeyword3} Intergroup}}- \underbrace{\frac{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^3}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}\alpha_{g1}\parent{\frac{d\rho_{g}}{dt}}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ group\ shift}}&+& \\
-\underbrace{\Gamma_{\text{condensation\ g2}}+\frac{\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}\Gamma_{\text{condensation g1}}}_{\colorbox{codebackground}{\color{codekeyword3} Condensation}}-\underbrace{\frac{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^3}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}\Gamma_{\text{Nucleation g1}}}_{\colorbox{codebackground}{\color{codekeyword3} Nucleation}}.
+\Gamma_{g2} = \underbrace{\frac{\rho_g}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}{\color{myteal}\sum_j \eta^{\text{inter}}_j}}_{\text{Intergroup}}
+- \underbrace{\frac{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^3}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}\alpha_{g1}\parent{\frac{d\rho_{g}}{dt}}}_{\text{Density group shift}}&+& \\
+\underbrace{\Gamma_{\text{condensation\ g2}}+\frac{\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}\Gamma_{\text{condensation g1}}}_{\text{Condensation}}
+- \underbrace{\frac{\chi_d\parent{\frac{D_{smc}}{D_{sm1}}}^3}{1+\chi_d \parent{\frac{Dsmc}{Dsm1}}^3}\Gamma_{\text{Nucleation g1}}}_{\text{Nucleation}}.
 \end{aligned}
 \end{equation}
 
@@ -394,31 +440,31 @@ code, we must rewrite it to get rid of $D_{sm}$. For the first group we have:
 
 \begin{equation}
 \begin{aligned}
-\frac{\partial a_{i1}}{\partial t}+\underbrace{\nabla\parent{a_{i1}\mathbf{U}_{g1}}}_{\colorbox{codebackground}{\color{codekeyword3} convection}}=\underbrace{\frac{2}{3}\frac{a_{i1}}{\alpha_{g1}}\parent{-\frac{\alpha_{g1}}{\rho_g}\frac{d \rho_g}{dt}}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ change}}-\underbrace{\frac{\chi_d}{36}D_{smc}^2\parent{\frac{a_{i1}}{\alpha_{g1}}}^3\parent{-\frac{\alpha_{g1}}{\rho_g}\frac{d \rho_g}{dt}}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ sliding}} &+& \\\underbrace{\frac{2}{3}\frac{a_{i1}}{\alpha_{g1}}\parent{\frac{\color{myteal}\Gamma_{g1}}{\rho_g}}}_{\colorbox{codebackground}{\color{codekeyword3} Mass\ transfer}}-\underbrace{\frac{\chi_d}{36}D_{smc}^2\parent{\frac{a_{i1}}{\alpha_{g1}}}^3\parent{\frac{\color{myteal}\Gamma_{g1}}{\rho_g}}}_{\colorbox{codebackground}{\color{codekeyword3} Mass\ transfer\ sliding}}+& \\\underbrace{\color{myteal}\sum_j \psi^{intergroup}_{1j}}_{\colorbox{codebackground}{\color{codekeyword3} intergroup\ sources}}+\underbrace{\color{myteal}\sum_j \psi^{internal}_{1j}}_{\colorbox{codebackground}{\color{codekeyword3} intragroup sources}}.
+\frac{\partial a_{i1}}{\partial t}+\underbrace{\nabla\parent{a_{i1}\mathbf{U}_{g1}}}_{\colorbox{codebackground}{convection}}=\underbrace{\frac{2}{3}\frac{a_{i1}}{\alpha_{g1}}\parent{-\frac{\alpha_{g1}}{\rho_g}\frac{d \rho_g}{dt}}}_{\colorbox{codebackground}{Density\ change}}-\underbrace{\frac{\chi_d}{36}D_{smc}^2\parent{\frac{a_{i1}}{\alpha_{g1}}}^3\parent{-\frac{\alpha_{g1}}{\rho_g}\frac{d \rho_g}{dt}}}_{\colorbox{codebackground}{Density\ sliding}} &+& \\\underbrace{\frac{2}{3}\frac{a_{i1}}{\alpha_{g1}}\parent{\frac{\color{myteal}\Gamma_{g1}}{\rho_g}}}_{\colorbox{codebackground}{Mass\ transfer}}-\underbrace{\frac{\chi_d}{36}D_{smc}^2\parent{\frac{a_{i1}}{\alpha_{g1}}}^3\parent{\frac{\color{myteal}\Gamma_{g1}}{\rho_g}}}_{\colorbox{codebackground}{Mass\ transfer\ sliding}}+& \\\underbrace{\color{myteal}\sum_j \psi^{intergroup}_{1j}}_{\colorbox{codebackground}{intergroup\ sources}}+\underbrace{\color{myteal}\sum_j \psi^{internal}_{1j}}_{\colorbox{codebackground}{intragroup sources}}.
 \end{aligned}
 \end{equation}
 
 For the second group, we obtain:
 \begin{equation}
 \begin{aligned}
-\frac{\partial a_{i2}}{\partial t}+\underbrace{\nabla\parent{a_{i2}\mathbf{U}_{g2}}}_{\colorbox{codebackground}{\color{codekeyword3} convection}}=\underbrace{\frac{2}{3}\frac{a_{i2}}{\alpha_{g2}}\parent{-\frac{\alpha_{g2}}{\rho_g}\frac{d \rho_g}{dt}}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ change}}+\underbrace{\frac{\chi_d}{36}D_{smc}^2\parent{\frac{a_{i1}}{\alpha_{g1}}}^3\parent{-\frac{\alpha_{g1}}{\rho_g}\frac{d \rho_g}{dt}}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ sliding}}&+ & \\
-\underbrace{\frac{2}{3}\frac{a_{i2}}{\alpha_{g2}}\parent{\frac{\color{myteal}\Gamma_{g2}}{\rho_g}}}_{\colorbox{codebackground}{\color{codekeyword3} Mass\ transfer}} +\underbrace{\frac{\chi_d}{36}D_{smc}^2\parent{\frac{a_{i1}}{\alpha_{g1}}}^3\parent{\frac{\color{myteal}\Gamma_{g1}}{\rho_g} }}_{\colorbox{codebackground}{\color{codekeyword3} Mass\ transfer\ sliding}} +& \\
-\underbrace{\color{myteal}\sum_j \psi^{\text{intergroup}}_{2j}}_{\colorbox{codebackground}{\color{codekeyword3} intergroup\ sources}} + \underbrace{\color{myteal}\sum_j \psi^{\text{internal}}_{2j}}_{\colorbox{codebackground}{\color{codekeyword3} intragroup sources}}.
+\frac{\partial a_{i2}}{\partial t}+\underbrace{\nabla\parent{a_{i2}\mathbf{U}_{g2}}}_{\colorbox{codebackground}{convection}}=\underbrace{\frac{2}{3}\frac{a_{i2}}{\alpha_{g2}}\parent{-\frac{\alpha_{g2}}{\rho_g}\frac{d \rho_g}{dt}}}_{\colorbox{codebackground}{Density\ change}}+\underbrace{\frac{\chi_d}{36}D_{smc}^2\parent{\frac{a_{i1}}{\alpha_{g1}}}^3\parent{-\frac{\alpha_{g1}}{\rho_g}\frac{d \rho_g}{dt}}}_{\colorbox{codebackground}{Density\ sliding}}&+ & \\
+\underbrace{\frac{2}{3}\frac{a_{i2}}{\alpha_{g2}}\parent{\frac{\color{myteal}\Gamma_{g2}}{\rho_g}}}_{\colorbox{codebackground}{Mass\ transfer}} +\underbrace{\frac{\chi_d}{36}D_{smc}^2\parent{\frac{a_{i1}}{\alpha_{g1}}}^3\parent{\frac{\color{myteal}\Gamma_{g1}}{\rho_g} }}_{\colorbox{codebackground}{Mass\ transfer\ sliding}} +& \\
+\underbrace{\color{myteal}\sum_j \psi^{\text{intergroup}}_{2j}}_{\colorbox{codebackground}{intergroup\ sources}} + \underbrace{\color{myteal}\sum_j \psi^{\text{internal}}_{2j}}_{\colorbox{codebackground}{intragroup sources}}.
 \end{aligned}
 \end{equation}
 
 The different mass transfer are:
 \begin{equation}
 \begin{aligned}
-\Gamma_{g1} = \underbrace{-\frac{\rho_g}{1+\frac{\chi_d}{216}Dsmc^3\parent{\frac{a_{i1}}{\alpha_{g1}}}^3}{\color{myteal}\sum_j \eta^{inter}_j}}_{\colorbox{codebackground}{\color{codekeyword3} Intergroup}}+ \underbrace{\frac{\frac{\chi_d}{216}Dsmc^3\parent{\frac{a_{i1}}{\alpha_{g1}}}^3}{1+\frac{\chi_d}{216}Dsmc^3\parent{\frac{a_{i1}}{\alpha_{g1}}}^3}\alpha_{g1}\parent{\frac{d\rho_{g}}{dt}}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ group\ shift}}&+& \\
-\underbrace{\frac{1}{1+\frac{\chi_d}{216}Dsmc^3\parent{\frac{a_{i1}}{\alpha_{g1}}}^3}\Gamma_{\text{condensation g1}}}_{\colorbox{codebackground}{\color{codekeyword3} Condensation}}+\underbrace{\frac{\frac{\chi_d}{216}Dsmc^3\parent{\frac{a_{i1}}{\alpha_{g1}}}^3}{1+\frac{\chi_d}{216}Dsmc^3\parent{\frac{a_{i1}}{\alpha_{g1}}}^3}\Gamma_{\text{Nucleation g1}}}_{\colorbox{codebackground}{\color{codekeyword3} Nucleation}}.
+\Gamma_{g1} = \underbrace{-\frac{\rho_g}{1+\frac{\chi_d}{216}Dsmc^3\parent{\frac{a_{i1}}{\alpha_{g1}}}^3}{\color{myteal}\sum_j \eta^{inter}_j}}_{\colorbox{codebackground}{Intergroup}}+ \underbrace{\frac{\frac{\chi_d}{216}Dsmc^3\parent{\frac{a_{i1}}{\alpha_{g1}}}^3}{1+\frac{\chi_d}{216}Dsmc^3\parent{\frac{a_{i1}}{\alpha_{g1}}}^3}\alpha_{g1}\parent{\frac{d\rho_{g}}{dt}}}_{\colorbox{codebackground}{Density\ group\ shift}}&+& \\
+\underbrace{\frac{1}{1+\frac{\chi_d}{216}Dsmc^3\parent{\frac{a_{i1}}{\alpha_{g1}}}^3}\Gamma_{\text{condensation g1}}}_{\colorbox{codebackground}{Condensation}}+\underbrace{\frac{\frac{\chi_d}{216}Dsmc^3\parent{\frac{a_{i1}}{\alpha_{g1}}}^3}{1+\frac{\chi_d}{216}Dsmc^3\parent{\frac{a_{i1}}{\alpha_{g1}}}^3}\Gamma_{\text{Nucleation g1}}}_{\colorbox{codebackground}{Nucleation}}.
 \end{aligned}
 \end{equation}
 
 \begin{equation}
 \begin{aligned}
-\Gamma_{g2}=\underbrace{\frac{\rho_g}{1+\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}{\color{myteal}\sum_j \eta^{inter}_j}}_{\colorbox{codebackground}{\color{codekeyword3} Intergroup}}- \underbrace{\frac{\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}{1+\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}\alpha_{g1}\parent{\frac{d\rho_{g}}{dt}}}_{\colorbox{codebackground}{\color{codekeyword3} Density\ group\ shift}}&+& \\
-\underbrace{\Gamma_{\text{condensation g2}} + \frac{\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}{1+\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}\Gamma_{\text{condensation g1}}}_{\colorbox{codebackground}{\color{codekeyword3} Condensation}}-\underbrace{\frac{\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}{1+\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}\Gamma_{\text{Nucleation g1}}}_{\colorbox{codebackground}{\color{codekeyword3} Nucleation}}.
+\Gamma_{g2}=\underbrace{\frac{\rho_g}{1+\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}{\color{myteal}\sum_j \eta^{inter}_j}}_{\colorbox{codebackground}{Intergroup}}- \underbrace{\frac{\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}{1+\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}\alpha_{g1}\parent{\frac{d\rho_{g}}{dt}}}_{\colorbox{codebackground}{Density\ group\ shift}}&+& \\
+\underbrace{\Gamma_{\text{condensation g2}} + \frac{\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}{1+\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}\Gamma_{\text{condensation g1}}}_{\colorbox{codebackground}{Condensation}}-\underbrace{\frac{\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}{1+\frac{\chi_d}{216}Dsmc^3(\frac{a_{i1}}{\alpha_{g1}})^3}\Gamma_{\text{Nucleation g1}}}_{\colorbox{codebackground}{Nucleation}}.
 \end{aligned}
 \end{equation}
 
