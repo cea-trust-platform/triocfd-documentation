@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Frontiere__Ouverte__temperature__imposee__Rayo__transp_8cpp" kind="file" language="C++">
+    <compoundname>Frontiere_Ouverte_temperature_imposee_Rayo_transp.cpp</compoundname>
+    <includes refid="Frontiere__Ouverte__temperature__imposee__Rayo__transp_8h" local="no">Frontiere_Ouverte_temperature_imposee_Rayo_transp.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Modele__Rayonnement__Milieu__Transparent_8h" local="no">Modele_Rayonnement_Milieu_Transparent.h</includes>
+    <includes refid="Domaine__VF_8h" local="no">Domaine_VF.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Frontiere__Ouverte__temperature__imposee__Rayo__transp_8cpp_1a10ff01665423fccfba2cfd2544666a48" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Frontiere_Ouverte_temperature_imposee_Rayo_transpbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Frontiere_Ouverte_temperature_imposee_Rayo_transpbases</name>
+        <initializer>={   &amp;( <ref refid="classEntree__fluide__temperature__imposee" kindref="compound">Entree_fluide_temperature_imposee</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Rayonnement/Rayonnement_milieu_transparent/Frontiere_Ouverte_temperature_imposee_Rayo_transp.cpp" line="28" column="237" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Rayonnement/Rayonnement_milieu_transparent/Frontiere_Ouverte_temperature_imposee_Rayo_transp.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Frontiere_Ouverte_temperature_imposee_Rayo_transp.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TRUST_ROOT/../Composants/TrioCFD/Rayonnement/src</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version:<sp/><sp/><sp/><sp/><sp/>/main/11</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Frontiere_Ouverte_temperature_imposee_Rayo_transp.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Modele_Rayonnement_Milieu_Transparent.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp_1a14fdf39eace48f585d6b0931bfd4f6da" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp" kindref="compound">Frontiere_Ouverte_temperature_imposee_Rayo_transp</ref>,</highlight><highlight class="stringliteral">&quot;Frontiere_Ouverte_temperature_imposee_Rayo_transp&quot;</highlight><highlight class="normal">,<ref refid="classEntree__fluide__temperature__imposee" kindref="compound">Entree_fluide_temperature_imposee</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>printOn<sp/>et<sp/>readOn</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp_1a7fd3a85e6355ee8602b29f212322f030" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp_1a7fd3a85e6355ee8602b29f212322f030" kindref="member">Frontiere_Ouverte_temperature_imposee_Rayo_transp::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>is<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="34"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp_1a036df76f673f4fb802f95d355e4e58dc" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp_1a036df76f673f4fb802f95d355e4e58dc" kindref="member">Frontiere_Ouverte_temperature_imposee_Rayo_transp::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s<sp/>)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/>le_champ_front.typer(&quot;Champ_front_uniforme&quot;);</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/><sp/>Motcle<sp/>motlu;</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/>Motcles<sp/>les_motcles(1);</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/>les_motcles[0]<sp/>=<sp/>&quot;T_ext&quot;;</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/>s<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/>int<sp/>rang<sp/>=<sp/>les_motcles.search(motlu);</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/>switch(rang)</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/>case<sp/>0:</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/>s<sp/>&gt;&gt;<sp/>le_champ_ext;</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/>default:</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;Erreur<sp/>a<sp/>la<sp/>lecture<sp/>de<sp/>la<sp/>condition<sp/>aux<sp/>limites<sp/>de<sp/>type:<sp/>&quot;<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>que_suis_je()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;On<sp/>attendait<sp/>&quot;<sp/>&lt;&lt;<sp/>les_motcles<sp/>&lt;&lt;<sp/>&quot;<sp/>a<sp/>la<sp/>place<sp/>de<sp/>&quot;<sp/>&lt;&lt;<sp/><sp/>motlu<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/>Process::exit();</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/>return<sp/>s;</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEntree__fluide__temperature__imposee_1a430a2edcca2db6e1ee25f59519eed085" kindref="member">Entree_fluide_temperature_imposee::readOn</ref>(s);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp_1a6224595aded2c8d25dcb4aa5b4f4ee91" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp_1a6224595aded2c8d25dcb4aa5b4f4ee91" kindref="member">Frontiere_Ouverte_temperature_imposee_Rayo_transp::completer</ref>()</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Paroi_Rayo_transp::completer();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><ref refid="classCond__lim__base_1ac3d1bcf8652b65f67a1c201082536c2f" kindref="member">Entree_fluide_temperature_imposee::completer</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="classCond__Lim__Rayo_1a2d695c51c60192c408e55e7f90255402" kindref="member">preparer_surface</ref>(<ref refid="classCond__lim__base_1ad88b3b516351146c85e8fce1df0f691a" kindref="member">frontiere_dis</ref>(),<ref refid="classCond__lim__base_1a93140daa237cd8eb86ae561272af7042" kindref="member">domaine_Cl_dis</ref>());</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp_1a6d74ec51d18cc94610a32a5c28ed8d45" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp_1a6d74ec51d18cc94610a32a5c28ed8d45" kindref="member">Frontiere_Ouverte_temperature_imposee_Rayo_transp::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="classCond__lim__base_1a3bf89c4b0385ced140851050ae02395c" kindref="member">Entree_fluide_temperature_imposee::mettre_a_jour</ref>(temps);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><ref refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp_1a97c6c8b15dfe55e1f61c53747193a453" kindref="member">calculer_Teta_i</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp_1a97c6c8b15dfe55e1f61c53747193a453" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFrontiere__Ouverte__temperature__imposee__Rayo__transp_1a97c6c8b15dfe55e1f61c53747193a453" kindref="member">Frontiere_Ouverte_temperature_imposee_Rayo_transp::calculer_Teta_i</ref>()</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFront__VF" kindref="compound">Front_VF</ref>&amp;<sp/>front_vf<sp/>=<sp/>ref_cast(<ref refid="classFront__VF" kindref="compound">Front_VF</ref>,<ref refid="classCond__lim__base_1ad88b3b516351146c85e8fce1df0f691a" kindref="member">frontiere_dis</ref>());</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_faces_bord<sp/>=<sp/>front_vf.<ref refid="classFront__VF_1a48eadf1b57ddc0d16e4953d19f259a9e" kindref="member">nb_faces</ref>();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numfa=0;<sp/>numfa&lt;nb_faces_bord;<sp/>numfa++)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCond__Lim__Rayo_1a6888dc32d63d34be8ce9a21b7c233c3a" kindref="member">Teta_i</ref>[numfa]=<ref refid="classDirichlet_1a17c60f9779ca455b5ab2b0e09643449c" kindref="member">val_imp</ref>(numfa);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Rayonnement/Rayonnement_milieu_transparent/Frontiere_Ouverte_temperature_imposee_Rayo_transp.cpp"/>
+  </compounddef>
+</doxygen>

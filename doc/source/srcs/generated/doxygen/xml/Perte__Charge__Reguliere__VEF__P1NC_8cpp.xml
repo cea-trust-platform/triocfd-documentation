@@ -1,0 +1,330 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Perte__Charge__Reguliere__VEF__P1NC_8cpp" kind="file" language="C++">
+    <compoundname>Perte_Charge_Reguliere_VEF_P1NC.cpp</compoundname>
+    <includes refid="Perte__Charge__Reguliere__VEF__P1NC_8h" local="no">Perte_Charge_Reguliere_VEF_P1NC.h</includes>
+    <includes refid="Domaine__VEF_8h" local="no">Domaine_VEF.h</includes>
+    <includes refid="Sous__Domaine_8h" local="no">Sous_Domaine.h</includes>
+    <includes refid="Fluide__Incompressible_8h" local="no">Fluide_Incompressible.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Champ__Uniforme_8h" local="no">Champ_Uniforme.h</includes>
+    <includes refid="Matrice__Morse_8h" local="no">Matrice_Morse.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Perte__Charge__Reguliere__VEF__P1NC_8cpp_1a3998594f5e432631bc05afdbbb866fa9" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Perte_Charge_Reguliere_VEF_P1NCbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Perte_Charge_Reguliere_VEF_P1NCbases</name>
+        <initializer>={   &amp;( <ref refid="classPerte__Charge__VEF__Face" kindref="compound">Perte_Charge_VEF_Face</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Sources/PDC/Perte_Charge_Reguliere_VEF_P1NC.cpp" line="26" column="165" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Sources/PDC/Perte_Charge_Reguliere_VEF_P1NC.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Perte_Charge_Reguliere_VEF_P1NC.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VEF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Sous_Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Incompressible.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Uniforme.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Morse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classPerte__Charge__Reguliere__VEF__P1NC_1a3834bf18af68cf1775fae58ff2b1d016" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classPerte__Charge__Reguliere__VEF__P1NC" kindref="compound">Perte_Charge_Reguliere_VEF_P1NC</ref>,</highlight><highlight class="stringliteral">&quot;Perte_Charge_Reguliere_VEF_P1NC&quot;</highlight><highlight class="normal">,<ref refid="classPerte__Charge__VEF__Face" kindref="compound">Perte_Charge_VEF_Face</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="30"><highlight class="comment">////<sp/>printOn</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classPerte__Charge__Reguliere__VEF__P1NC_1aa9645bd767bdaa6c4858ffcdf41269a4" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1aa9645bd767bdaa6c4858ffcdf41269a4" kindref="member">Perte_Charge_Reguliere_VEF_P1NC::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="34"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="39"><highlight class="comment">////<sp/>readOn</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classPerte__Charge__Reguliere__VEF__P1NC_1a788162b99cf1f818bc4f60979cc78d5c" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1a788162b99cf1f818bc4f60979cc78d5c" kindref="member">Perte_Charge_Reguliere_VEF_P1NC::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s<sp/>)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Perte_Charge_Reguliere_VEF_P1NC::readOn<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl<sp/><sp/>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="classPerte__Charge__Reguliere_1a86184a4c931770ab3332e1734d901f77" kindref="member">Perte_Charge_Reguliere::lire_donnees</ref>(s);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Nom<sp/>nom_sous_domaine;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>s<sp/>&gt;&gt;<sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1a6c1893d7939b416b947b025e9f834517" kindref="member">nom_sous_domaine</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="53"><highlight class="comment">/////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Implementation<sp/>des<sp/>fonctions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>de<sp/>la<sp/>classe<sp/>Perte_Charge_Reguliere_VEF_P1NC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment">////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classPerte__Charge__Reguliere__VEF__P1NC_1a996598d4a4eca8ca24e06ee526e3c62d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1a996598d4a4eca8ca24e06ee526e3c62d" kindref="member">Perte_Charge_Reguliere_VEF_P1NC::remplir_num_faces</ref>(<ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>un_nom_sous_domaine)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Perte_Charge_Reguliere_VEF_P1NC::remplir_num_faces<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>le_domaine<sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1aa8151a96f63719523bf50ddd832e0f8f" kindref="member">probleme</ref>().<ref refid="classProbleme__base_1a568d2900df6cf99cfe0cb15e92e2f08d" kindref="member">domaine</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VEF" kindref="compound">Domaine_VEF</ref>&amp;<sp/>domaine_VEF<sp/>=<sp/><ref refid="classPerte__Charge__VEF__Face_1abe88273dc34f531fbb99f533964bedf5" kindref="member">le_dom_VEF</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>elem_faces<sp/>=<sp/>domaine_VEF.<ref refid="classDomaine__VF_1aa67059b226a41e89c7de2132c53e6bda" kindref="member">elem_faces</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>face_voisins<sp/>=<sp/>domaine_VEF.<ref refid="classDomaine__VF_1ad19ad4b9679367115cbbc7036257aa51" kindref="member">face_voisins</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>volumes<sp/>=<sp/>domaine_VEF.<ref refid="classDomaine__VF_1a72d89d7c6778a2b8a7a5199bede0297a" kindref="member">volumes</ref>();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSous__Domaine__32__64" kindref="compound">Sous_Domaine</ref>&amp;<sp/>le_sous_domaine<sp/>=<sp/>le_domaine.<ref refid="classDomaine__32__64_1a1434b6902657fbf2a09b891acaafc28a" kindref="member">ss_domaine</ref>(un_nom_sous_domaine);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_poly_ss_domaine<sp/>=<sp/>le_sous_domaine.<ref refid="classSous__Domaine__32__64_1a968a7b1da5870848f9545b8d289b05ba" kindref="member">nb_elem_tot</ref>();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nfe=domaine_VEF.<ref refid="classDomaine__dis__base_1a8effce5ffccf506b8908ba79119b6832" kindref="member">domaine</ref>().<ref refid="classDomaine__32__64_1aa92c4f09480b82c75ee1a573765c33cd" kindref="member">nb_faces_elem</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nfac;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_poly;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1aa9d5ad2116c023c726c43f02b0c385bf" kindref="member">num_faces</ref>.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(nb_poly_ss_domaine*4);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1ad15461c4b93d8a90ff10a22abacbee2c" kindref="member">corr_front_ss</ref>.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(nb_poly_ss_domaine*4);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1ad15461c4b93d8a90ff10a22abacbee2c" kindref="member">corr_front_ss</ref><sp/>=<sp/>1.<sp/>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>nfac<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">IntVect</ref><sp/>num_loc(domaine_VEF.<ref refid="classDomaine__dis__base_1a33e55ca05b2a53a3a5e1f844e2551824" kindref="member">nb_elem_tot</ref>());</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">IntVect</ref><sp/>fait(domaine_VEF.<ref refid="classDomaine__VF_1a419a6173248d7516a6a36ffcc2835cf0" kindref="member">nb_faces_tot</ref>());</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>fait<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>num_loc<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_poly_vois;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_elem,num_face,<sp/>face_loc;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(num_elem=0;<sp/>num_elem&lt;nb_poly_ss_domaine;<sp/>num_elem++)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>num_loc[le_sous_domaine(num_elem)]<sp/>=<sp/>num_elem;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(num_elem=0;<sp/>num_elem&lt;nb_poly_ss_domaine;<sp/>num_elem++)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>num_poly<sp/>=<sp/>le_sous_domaine(num_elem);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/><sp/>(face_loc<sp/>=<sp/>0;<sp/>face_loc<sp/>&lt;<sp/>nfe<sp/>;<sp/>face_loc++)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num_face<sp/>=<sp/><sp/>elem_faces(num_poly,face_loc);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fait(num_face)<sp/>==-1)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fait(num_face)<sp/>=<sp/>1<sp/>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1aa9d5ad2116c023c726c43f02b0c385bf" kindref="member">num_faces</ref>[nfac++]<sp/>=<sp/>num_face;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;2;<sp/>i++<sp/>)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num_poly_vois<sp/>=<sp/>face_voisins(num_face,i);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(num_poly_vois<sp/>!=<sp/>-1)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(num_loc[num_poly_vois]<sp/>==<sp/>-1)<sp/><sp/></highlight><highlight class="comment">//<sp/>le<sp/>poly<sp/>voisin<sp/>n&apos;est<sp/>pas<sp/>dans<sp/>le<sp/>sous_domaine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1ad15461c4b93d8a90ff10a22abacbee2c" kindref="member">corr_front_ss</ref>[nfac-1]<sp/>=<sp/>volumes(num_poly)/(volumes(num_poly)+volumes(num_poly_vois))<sp/>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1aa9d5ad2116c023c726c43f02b0c385bf" kindref="member">num_faces</ref>.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(nfac);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1ad15461c4b93d8a90ff10a22abacbee2c" kindref="member">corr_front_ss</ref>.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(nfac);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classPerte__Charge__Reguliere__VEF__P1NC_1ad3835a6e3d764b2b4ef21261c0b2496f" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1ad3835a6e3d764b2b4ef21261c0b2496f" kindref="member">Perte_Charge_Reguliere_VEF_P1NC::ajouter</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>resu)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="123"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;<sp/>Perte_Charge_Reguliere_VEF_P1NC::ajouter<sp/>&quot;<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VEF" kindref="compound">Domaine_VEF</ref>&amp;<sp/>domaine_VEF<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VEF" kindref="compound">Domaine_VEF</ref>,<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().domaine_dis());</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>volumes_entrelaces<sp/>=<sp/>domaine_VEF.<ref refid="classDomaine__VF_1a3feb55fc2f6c55d61d249f14ba658494" kindref="member">volumes_entrelaces</ref>();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>porosite_face<sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a1ca88930cf00c12a910ad27ac840719c" kindref="member">milieu</ref>().<ref refid="classMilieu__base_1ad0f188ec813919d8223e259a8818ad04" kindref="member">porosite_face</ref>();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>vit<sp/>=<sp/><ref refid="classPerte__Charge__VEF__Face_1af1a13bd82cffc4a6415ebaa431f3adc5" kindref="member">la_vitesse</ref>-&gt;valeurs();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>face_voisins<sp/>=<sp/>domaine_VEF.<ref refid="classDomaine__VF_1ad19ad4b9679367115cbbc7036257aa51" kindref="member">face_voisins</ref>();</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>U_abs;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Cf,CK,Reynolds;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numfa,n0,n1;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Don__base" kindref="compound">Champ_Don_base</ref>&amp;<sp/>nu<sp/>=<sp/><ref refid="classPerte__Charge__VEF__Face_1a161c958f6869d02633f22606e675e685" kindref="member">le_fluide</ref>-&gt;viscosite_cinematique();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>visco<sp/>=<sp/>nu.<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d_visco=-1;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>l_visco_unif=0;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Uniforme" kindref="compound">Champ_Uniforme</ref>,nu))</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Uniforme" kindref="compound">Champ_Uniforme</ref>&amp;<sp/>ch_nu<sp/>=<sp/>ref_cast(<ref refid="classChamp__Uniforme" kindref="compound">Champ_Uniforme</ref>,nu);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>d_visco<sp/>=<sp/>ch_nu.<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>()(0,0);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_visco_unif<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPerte__Charge__Reguliere_1a656eb6606af5238dcd6659b40577093b" kindref="member">couronne_tube</ref><sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>PQ<sp/>:<sp/>17/06/08<sp/>:<sp/>Cette<sp/>option<sp/>a<sp/>ete<sp/>supprimee<sp/>dans<sp/>Perte_Charge_Reguliere_VEF_P1NC&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Possibilite<sp/>de<sp/>retrouver<sp/>la<sp/>meme<sp/>fonctionnalite<sp/>a<sp/>l&apos;aide<sp/>du<sp/>mot<sp/>cle<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>Perte_charge_anisotrope<sp/>(voir<sp/>doc)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>premiere_face_int=domaine_VEF.<ref refid="classDomaine__VF_1ad11d37a7ca15cd43713bcc083f8753b7" kindref="member">premiere_face_int</ref>();</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>direction<sp/>=<sp/><ref refid="classPerte__Charge_1ae3a98b42f18198b321b117569da8d756" kindref="member">direction_perte_charge</ref>();</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_faces<sp/>=<sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1aa9d5ad2116c023c726c43f02b0c385bf" kindref="member">num_faces</ref>.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb_faces;<sp/>i++)</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>numfa<sp/>=<sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1aa9d5ad2116c023c726c43f02b0c385bf" kindref="member">num_faces</ref>[i];</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!l_visco_unif)</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n0<sp/>=<sp/>face_voisins(numfa,0);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n1<sp/>=<sp/>face_voisins(numfa,1);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(numfa<sp/>&lt;<sp/>premiere_face_int)</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n0<sp/>!=<sp/>-1)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d_visco<sp/>=<sp/>visco[n0];</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d_visco<sp/>=<sp/>visco[n1];</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d_visco<sp/>=<sp/>0.5*(visco[n0]+visco[n1]);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GF<sp/>La<sp/>vitesse<sp/>pour<sp/>caluler<sp/>le<sp/>Rey<sp/>ne<sp/>depend<sp/>pas<sp/>de<sp/>la<sp/>porosite</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>et<sp/>on<sp/>utilise<sp/>la<sp/>norme</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>U_abs=0;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=0;<sp/>j&lt;<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>;<sp/>j++<sp/>)</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>U_abs<sp/>+=<sp/>vit(numfa,j)*vit(numfa,j);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>U_abs<sp/>=<sp/>sqrt(U_abs)<sp/>;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Reynolds<sp/>=<sp/>U_abs*<ref refid="classPerte__Charge__Reguliere_1a916f1e2dbe77a5a7ed11b6aafb29a5cc" kindref="member">D</ref>()/d_visco;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPerte__Charge__Reguliere_1a86cd9078ac5a87c17fa6be4515f3bc21" kindref="member">Cf_utilisateur</ref>)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cf<sp/>=<sp/><ref refid="classPerte__Charge__Reguliere_1a60a77ef82e1d2ef924ab8184eef71e5d" kindref="member">calculer_Cf_blasius</ref>(Reynolds);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cf<sp/>=<sp/><ref refid="classPerte__Charge__Reguliere_1a2a5aaa3b49894b573b8bee1474492bd3" kindref="member">CF</ref>();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CK<sp/>=<sp/>-0.5*Cf/<ref refid="classPerte__Charge__Reguliere_1a916f1e2dbe77a5a7ed11b6aafb29a5cc" kindref="member">D</ref>();</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>resu(numfa,direction)<sp/>+=<sp/>CK*U_abs*vit(numfa,direction)*volumes_entrelaces(numfa)*porosite_face(numfa)*<ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1ad15461c4b93d8a90ff10a22abacbee2c" kindref="member">corr_front_ss</ref>(i);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resu;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="classPerte__Charge__Reguliere__VEF__P1NC_1a784106443858c4b774dd9c21b5dacc82" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1a784106443858c4b774dd9c21b5dacc82" kindref="member">Perte_Charge_Reguliere_VEF_P1NC::contribuer_a_avec</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;,<sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matrice)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="204"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;<sp/>Perte_Charge_Reguliere_VEF_P1NC::ajouter<sp/>&quot;<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VEF" kindref="compound">Domaine_VEF</ref>&amp;<sp/>domaine_VEF<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VEF" kindref="compound">Domaine_VEF</ref>,<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().domaine_dis());</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>volumes_entrelaces<sp/>=<sp/>domaine_VEF.<ref refid="classDomaine__VF_1a3feb55fc2f6c55d61d249f14ba658494" kindref="member">volumes_entrelaces</ref>();</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>porosite_face<sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a1ca88930cf00c12a910ad27ac840719c" kindref="member">milieu</ref>().<ref refid="classMilieu__base_1ad0f188ec813919d8223e259a8818ad04" kindref="member">porosite_face</ref>();</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>vit<sp/>=<sp/><ref refid="classPerte__Charge__VEF__Face_1af1a13bd82cffc4a6415ebaa431f3adc5" kindref="member">la_vitesse</ref>-&gt;valeurs();</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>face_voisins<sp/>=<sp/>domaine_VEF.<ref refid="classDomaine__VF_1ad19ad4b9679367115cbbc7036257aa51" kindref="member">face_voisins</ref>();</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>U_abs;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Cf,CK,Reynolds;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numfa,n0,n1;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Don__base" kindref="compound">Champ_Don_base</ref>&amp;<sp/>nu<sp/>=<sp/><ref refid="classPerte__Charge__VEF__Face_1a161c958f6869d02633f22606e675e685" kindref="member">le_fluide</ref>-&gt;viscosite_cinematique();</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>visco<sp/>=<sp/>nu.<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d_visco=-1;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>l_visco_unif=0;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Uniforme" kindref="compound">Champ_Uniforme</ref>,nu))</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Uniforme" kindref="compound">Champ_Uniforme</ref>&amp;<sp/>ch_nu<sp/>=<sp/>ref_cast(<ref refid="classChamp__Uniforme" kindref="compound">Champ_Uniforme</ref>,nu);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>d_visco<sp/>=<sp/>ch_nu.<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>()(0,0);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>l_visco_unif<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPerte__Charge__Reguliere_1a656eb6606af5238dcd6659b40577093b" kindref="member">couronne_tube</ref><sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>PQ<sp/>:<sp/>17/06/08<sp/>:<sp/>Cette<sp/>option<sp/>a<sp/>ete<sp/>supprimee<sp/>dans<sp/>Perte_Charge_Reguliere_VEF_P1NC&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Possibilite<sp/>de<sp/>retrouver<sp/>la<sp/>meme<sp/>fonctionnalite<sp/>a<sp/>l&apos;aide<sp/>du<sp/>mot<sp/>cle<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>Perte_charge_anisotrope<sp/>(voir<sp/>doc)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>premiere_face_int=domaine_VEF.<ref refid="classDomaine__VF_1ad11d37a7ca15cd43713bcc083f8753b7" kindref="member">premiere_face_int</ref>();</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>direction<sp/>=<sp/><ref refid="classPerte__Charge_1ae3a98b42f18198b321b117569da8d756" kindref="member">direction_perte_charge</ref>();</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_faces<sp/>=<sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1aa9d5ad2116c023c726c43f02b0c385bf" kindref="member">num_faces</ref>.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb_faces;<sp/>i++)</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>numfa<sp/>=<sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1aa9d5ad2116c023c726c43f02b0c385bf" kindref="member">num_faces</ref>[i];</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!l_visco_unif)</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n0<sp/>=<sp/>face_voisins(numfa,0);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n1<sp/>=<sp/>face_voisins(numfa,1);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(numfa<sp/>&lt;<sp/>premiere_face_int)</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n0<sp/>!=<sp/>-1)</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d_visco<sp/>=<sp/>visco[n0];</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d_visco<sp/>=<sp/>visco[n1];</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d_visco<sp/>=<sp/>0.5*(visco[n0]+visco[n1]);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GF<sp/>La<sp/>vitesse<sp/>pour<sp/>caluler<sp/>le<sp/>Rey<sp/>ne<sp/>depend<sp/>pas<sp/>de<sp/>la<sp/>porosite</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>et<sp/>on<sp/>utilise<sp/>la<sp/>norme</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>U_abs=0;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=0;<sp/>j&lt;<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>;<sp/>j++<sp/>)</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>U_abs<sp/>+=<sp/>vit(numfa,j)*vit(numfa,j);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>U_abs<sp/>=<sp/>sqrt(U_abs)<sp/>;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Reynolds<sp/>=<sp/>U_abs*<ref refid="classPerte__Charge__Reguliere_1a916f1e2dbe77a5a7ed11b6aafb29a5cc" kindref="member">D</ref>()/d_visco;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPerte__Charge__Reguliere_1a86cd9078ac5a87c17fa6be4515f3bc21" kindref="member">Cf_utilisateur</ref>)</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cf<sp/>=<sp/><ref refid="classPerte__Charge__Reguliere_1a60a77ef82e1d2ef924ab8184eef71e5d" kindref="member">calculer_Cf_blasius</ref>(Reynolds);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cf<sp/>=<sp/><ref refid="classPerte__Charge__Reguliere_1a2a5aaa3b49894b573b8bee1474492bd3" kindref="member">CF</ref>();</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CK<sp/>=<sp/>-0.5*Cf/<ref refid="classPerte__Charge__Reguliere_1a916f1e2dbe77a5a7ed11b6aafb29a5cc" kindref="member">D</ref>();</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>resu(numfa,dir)<sp/>+=<sp/>CK*U_abs*vit(numfa,dir)*volumes_entrelaces(numfa)*porosite_face(numfa)*corr_front_ss(i);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n0bis=numfa*<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>+direction;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>matrice.<ref refid="classMatrice__Morse_1acdbacb66fea3875664eadd117c24ed07" kindref="member">coef</ref>(n0bis,n0bis)-=CK*U_abs*volumes_entrelaces(numfa)*porosite_face(numfa)*<ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1ad15461c4b93d8a90ff10a22abacbee2c" kindref="member">corr_front_ss</ref>(i);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286" refid="classPerte__Charge__Reguliere__VEF__P1NC_1a749399534a2c646c9d3b929e2f0fec7b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1a749399534a2c646c9d3b929e2f0fec7b" kindref="member">Perte_Charge_Reguliere_VEF_P1NC::completer</ref>()</highlight></codeline>
+<codeline lineno="287"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><ref refid="classSource__base_1ab78e5efb7493861ded5a6ae9a9a23683" kindref="member">Source_base::completer</ref>();</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1a996598d4a4eca8ca24e06ee526e3c62d" kindref="member">remplir_num_faces</ref>(<ref refid="classPerte__Charge__Reguliere__VEF__P1NC_1a6c1893d7939b416b947b025e9f834517" kindref="member">nom_sous_domaine</ref>);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Sources/PDC/Perte_Charge_Reguliere_VEF_P1NC.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Modele__turbulence__hyd__2__eq__base_8cpp" kind="file" language="C++">
+    <compoundname>Modele_turbulence_hyd_2_eq_base.cpp</compoundname>
+    <includes refid="Modele__turbulence__hyd__2__eq__base_8h" local="no">Modele_turbulence_hyd_2_eq_base.h</includes>
+    <includes refid="TRUST__2__PDI_8h" local="no">TRUST_2_PDI.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Modele__turbulence__hyd__2__eq__base_8cpp_1a58a2a15aa3409648d51815fa98136cbb" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Modele_turbulence_hyd_2_eq_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Modele_turbulence_hyd_2_eq_basebases</name>
+        <initializer>={   &amp;( <ref refid="classModele__turbulence__hyd__base" kindref="compound">Modele_turbulence_hyd_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Turbulence/Modeles/hyd/Modele_turbulence_hyd_2_eq_base.cpp" line="21" column="165" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Turbulence/Modeles/hyd/Modele_turbulence_hyd_2_eq_base.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Modele_turbulence_hyd_2_eq_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUST_2_PDI.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classModele__turbulence__hyd__2__eq__base_1a3d827491ab654c8987dac20a0d58bc15" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classModele__turbulence__hyd__2__eq__base" kindref="compound">Modele_turbulence_hyd_2_eq_base</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Modele_turbulence_hyd_2_eq_base&quot;</highlight><highlight class="normal">,<sp/><ref refid="classModele__turbulence__hyd__base" kindref="compound">Modele_turbulence_hyd_base</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>mod_turb_hyd_rans<sp/>modele_turbulence_hyd_deriv<sp/>mod_turb_hyd_rans<sp/>-1<sp/>Class<sp/>for<sp/>RANS<sp/>turbulence<sp/>model<sp/>for<sp/>Navier-Stokes<sp/>equations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classModele__turbulence__hyd__2__eq__base_1a63aabd0ff2881403fa5ca30daf08973f" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__2__eq__base_1a63aabd0ff2881403fa5ca30daf08973f" kindref="member">Modele_turbulence_hyd_2_eq_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>is)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__base_1ae9d23728184ac1c0b7e8b2e0efe2d6af" kindref="member">Modele_turbulence_hyd_base::printOn</ref>(is);<sp/>}</highlight></codeline>
+<codeline lineno="25" refid="classModele__turbulence__hyd__2__eq__base_1a9847b56948f5aa1abffee46c45747af7" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__2__eq__base_1a9847b56948f5aa1abffee46c45747af7" kindref="member">Modele_turbulence_hyd_2_eq_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__base_1a3f39bceb45617d24ec405b63be6daa1c" kindref="member">Modele_turbulence_hyd_base::readOn</ref>(is);<sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classModele__turbulence__hyd__2__eq__base_1a5f453028a88c0af23a29418a26c2d476" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__2__eq__base_1a5f453028a88c0af23a29418a26c2d476" kindref="member">Modele_turbulence_hyd_2_eq_base::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__base_1a2508b1a8fcf933252e69b3bae183d2a7" kindref="member">Modele_turbulence_hyd_base::set_param</ref>(param);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;k_min&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classModele__turbulence__hyd__2__eq__base_1a2d9c886c1ce80cfc7a989dbc8cea1a75" kindref="member">K_MIN_</ref>);<sp/></highlight><highlight class="comment">//<sp/>XD_ADD_P<sp/>floattant<sp/>Lower<sp/>limitation<sp/>of<sp/>k<sp/>(default<sp/>value<sp/>1.e-10).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1ae3d50612a0014a9d58e6e035a65f20e5" kindref="member">ajouter_flag</ref>(</highlight><highlight class="stringliteral">&quot;quiet&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classModele__turbulence__hyd__2__eq__base_1a8399b35f6d79ad500b003144545e6316" kindref="member">lquiet_</ref>);<sp/></highlight><highlight class="comment">//<sp/>XD_ADD_P<sp/>flag<sp/>To<sp/>disable<sp/>printing<sp/>of<sp/>information<sp/>about<sp/>K<sp/>and<sp/>Epsilon/Omega.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classModele__turbulence__hyd__2__eq__base_1a2df78bd41e64bebd7b4478b7975b915b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__2__eq__base_1a2df78bd41e64bebd7b4478b7975b915b" kindref="member">Modele_turbulence_hyd_2_eq_base::verifie_loi_paroi</ref>()</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>lp<sp/>=<sp/><ref refid="classModele__turbulence__hyd__base_1a44f22783c484b1154e9a6d76525a84dd" kindref="member">loipar_</ref>-&gt;<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(lp<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;negligeable_VEF&quot;</highlight><highlight class="normal"><sp/>||<sp/>lp<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;negligeable_VDF&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>turbulence<sp/>model<sp/>of<sp/>type<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;must<sp/>not<sp/>be<sp/>used<sp/>with<sp/>a<sp/>wall<sp/>law<sp/>of<sp/>type<sp/>negligeable.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Another<sp/>wall<sp/>law<sp/>must<sp/>be<sp/>selected<sp/>with<sp/>this<sp/>kind<sp/>of<sp/>turbulence<sp/>model.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classModele__turbulence__hyd__2__eq__base_1ab321179cf88febc419e1abaf095b31da" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__2__eq__base_1ab321179cf88febc419e1abaf095b31da" kindref="member">Modele_turbulence_hyd_2_eq_base::reprendre_generique</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classTRUST__2__PDI_1abf2cc0e15286e61cc1506bda28cea966" kindref="member">TRUST_2_PDI::is_PDI_restart</ref>())</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Problem<sp/>in<sp/>the<sp/>resumption<sp/>of<sp/>Modele_turbulence_hyd_2_eq_base&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;PDI<sp/>format<sp/>does<sp/>not<sp/>require<sp/>to<sp/>navigate<sp/>through<sp/>file...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dbidon;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>bidon;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>tab_bidon;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>bidon<sp/>&gt;&gt;<sp/>bidon;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>dbidon;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>tab_bidon.<ref refid="classTRUSTTab_1a18951412e837c583b2d6ab2cbf8a20cc" kindref="member">jump</ref>(is);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Turbulence/Modeles/hyd/Modele_turbulence_hyd_2_eq_base.cpp"/>
+  </compounddef>
+</doxygen>

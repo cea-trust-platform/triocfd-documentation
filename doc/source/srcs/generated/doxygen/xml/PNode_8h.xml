@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="PNode_8h" kind="file" language="C++">
+    <compoundname>PNode.h</compoundname>
+    <includes refid="arch_8h" local="no">arch.h</includes>
+    <includedby refid="PNode_8cpp" local="no">PNode.cpp</includedby>
+    <includedby refid="Stack_8h" local="no">Stack.h</includedby>
+    <innerclass refid="classPNode" prot="public">PNode</innerclass>
+    <innerclass refid="classPNodePod" prot="public">PNodePod</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="PNode_8h_1ab1adee38edbaf1dc56254c418c4bdb93" prot="public" static="no" strong="no">
+        <type></type>
+        <name>PNode_type</name>
+        <enumvalue id="PNode_8h_1ab1adee38edbaf1dc56254c418c4bdb93acfe24a7b308a82835c8a9a9a89bc4ca2" prot="public">
+          <name>NOTHING</name>
+          <initializer>=-1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="PNode_8h_1ab1adee38edbaf1dc56254c418c4bdb93a86ff59343d6f8b574ad85da295bed34c" prot="public">
+          <name>OP</name>
+          <initializer>=1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="PNode_8h_1ab1adee38edbaf1dc56254c418c4bdb93ad3a10aa8b647d6a6db651ef882ff8bff" prot="public">
+          <name>VALUE</name>
+          <initializer>=2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="PNode_8h_1ab1adee38edbaf1dc56254c418c4bdb93aab8c4d8135967b887502fda4f76deaa6" prot="public">
+          <name>FUNCTION</name>
+          <initializer>=3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="PNode_8h_1ab1adee38edbaf1dc56254c418c4bdb93af68346ce0bfce7ab2ca0a240f5132863" prot="public">
+          <name>VAR</name>
+          <initializer>=4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="PNode_8h_1ab1adee38edbaf1dc56254c418c4bdb93a194cde856bd2d79eac8adb9741c55940" prot="public">
+          <name>PARAMETER</name>
+          <initializer>=5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/PNode.h" line="19" column="1" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/PNode.h" bodystart="19" bodyend="19"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>PNode_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PNode_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;arch.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>PNode_type<sp/>{<sp/>NOTHING=-1,<sp/>OP=1,<sp/>VALUE=2,<sp/>FUNCTION=3,<sp/>VAR=4,<sp/>PARAMETER=5<sp/>};</highlight></codeline>
+<codeline lineno="20" refid="classPNode" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPNode" kindref="compound">PNode</ref></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">public<sp/>:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>static<sp/>variables<sp/>are<sp/>on<sp/>host,<sp/>enum<sp/>are<sp/>constant<sp/>expressions<sp/>available<sp/>host&amp;device</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/><sp/>static<sp/>const<sp/>int<sp/>NOTHING;</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/><sp/>static<sp/>const<sp/>int<sp/>OP;</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/><sp/>static<sp/>const<sp/>int<sp/>VALUE;</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/><sp/>static<sp/>const<sp/>int<sp/>FUNCTION;</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/>static<sp/>const<sp/>int<sp/>VAR;</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/><sp/>static<sp/>const<sp/>int<sp/>PARAMETER;</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classPNode_1a3d5312c8c3ef5e8f6079ecd8cab9553e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classPNode" kindref="compound">PNode</ref>*<sp/><ref refid="classPNode_1a3d5312c8c3ef5e8f6079ecd8cab9553e" kindref="member">left</ref>;</highlight></codeline>
+<codeline lineno="34" refid="classPNode_1aa3ceaca187dbd9520f5f6837a8a47c84" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classPNode" kindref="compound">PNode</ref>*<sp/><ref refid="classPNode_1aa3ceaca187dbd9520f5f6837a8a47c84" kindref="member">right</ref>;</highlight></codeline>
+<codeline lineno="35" refid="classPNode_1a0917d1a51959847f0949ba8ae5934ee8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPNode_1a0917d1a51959847f0949ba8ae5934ee8" kindref="member">type</ref>;</highlight></codeline>
+<codeline lineno="36" refid="classPNode_1ae5ffee8c7db419092cabb8a10db633f9" refkind="member"><highlight class="normal"><sp/><sp/>True_int<sp/><ref refid="classPNode_1ae5ffee8c7db419092cabb8a10db633f9" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="37" refid="classPNode_1a6e45a5164dd6ac5e87214494acd1083b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPNode_1a6e45a5164dd6ac5e87214494acd1083b" kindref="member">nvalue</ref><sp/>=<sp/>-100.;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><ref refid="classPNode_1ada9b427385b753a8350a96e6ad7bb480" kindref="member">PNode</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="classPNode_1ada9b427385b753a8350a96e6ad7bb480" kindref="member">PNode</ref>(<ref refid="classPNode" kindref="compound">PNode</ref>*);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPNode_1adafd83e5e5aed8e8c4777921d6ba482b" kindref="member">replace</ref>(<ref refid="classPNode" kindref="compound">PNode</ref>*);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">private<sp/>:</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classPNodePod" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPNodePod" kindref="compound">PNodePod</ref></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">public<sp/>:</highlight></codeline>
+<codeline lineno="49" refid="classPNodePod_1ab47b6236564e20e45c58094a067adcd4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPNodePod_1ab47b6236564e20e45c58094a067adcd4" kindref="member">left</ref>;</highlight></codeline>
+<codeline lineno="50" refid="classPNodePod_1a533d45ab58351a7c0cf31a66c86ed83b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPNodePod_1a533d45ab58351a7c0cf31a66c86ed83b" kindref="member">right</ref>;</highlight></codeline>
+<codeline lineno="51" refid="classPNodePod_1ab4aa7b7111e8ec91d5fd7208975414be" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPNodePod_1ab4aa7b7111e8ec91d5fd7208975414be" kindref="member">type</ref>;</highlight></codeline>
+<codeline lineno="52" refid="classPNodePod_1a0e9e727dddce3b98522f7625e9d4a7a9" refkind="member"><highlight class="normal"><sp/><sp/>True_int<sp/><ref refid="classPNodePod_1a0e9e727dddce3b98522f7625e9d4a7a9" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="53" refid="classPNodePod_1a945d2f2839c1b7d6d867263b221b5cfa" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPNodePod_1a945d2f2839c1b7d6d867263b221b5cfa" kindref="member">nvalue</ref><sp/>=<sp/>-100.;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>PNodePod();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>PNodePod(PNodePod*);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>void<sp/>replace(PNodePod*);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">private<sp/>:</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/PNode.h"/>
+  </compounddef>
+</doxygen>

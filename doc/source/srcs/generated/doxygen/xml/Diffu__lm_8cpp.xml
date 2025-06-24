@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Diffu__lm_8cpp" kind="file" language="C++">
+    <compoundname>Diffu_lm.cpp</compoundname>
+    <includes refid="Diffu__lm_8h" local="no">Diffu_lm.h</includes>
+    <includes refid="Fluide__base_8h" local="no">Fluide_base.h</includes>
+    <includes refid="MuLambda__TBLE__base_8h" local="no">MuLambda_TBLE_base.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Diffu__lm_8cpp_1aaa0a4c9410bcca3341f5835d973053f0" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Diffu_lmbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Diffu_lmbases</name>
+        <initializer>={   &amp;( <ref refid="classDiffu__totale__hyd__base" kindref="compound">Diffu_totale_hyd_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Lois_Paroi/TBLE/Diffu/Diffu_lm.cpp" line="26" column="73" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Lois_Paroi/TBLE/Diffu/Diffu_lm.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Diffu_lm.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TURBULENCE_ROOT/src/ThHyd/Lois_Paroi/TBLE/Diffu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Diffu_lm.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;MuLambda_TBLE_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classDiffu__lm_1a8dce2497ce0a65dfe8f87205a685a14c" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classDiffu__lm" kindref="compound">Diffu_lm</ref>,</highlight><highlight class="stringliteral">&quot;Diffu_lm&quot;</highlight><highlight class="normal">,<ref refid="classDiffu__totale__hyd__base" kindref="compound">Diffu_totale_hyd_base</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Diffu_lm::A_plus=25.;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classDiffu__lm_1ad1e6a4f3622f4a80e2c3c5a02d4490ef" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classDiffu__lm_1ad1e6a4f3622f4a80e2c3c5a02d4490ef" kindref="member">Diffu_lm::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="32"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classDiffu__lm_1af29354bee14be61d3eb130cc37dfbbcb" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classDiffu__lm_1af29354bee14be61d3eb130cc37dfbbcb" kindref="member">Diffu_lm::readOn</ref>(<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is<sp/>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">////<sp/>Cette<sp/>methode<sp/>determine<sp/>la<sp/>diffusivite<sp/>totale<sp/>a<sp/>en<sp/>un<sp/>point<sp/>donne<sp/>du<sp/>maillage<sp/>fin<sp/>de<sp/>Eq_couch_lim<sp/>///</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Si<sp/>la<sp/>composante<sp/>du<sp/>cisaillement<sp/>a<sp/>la<sp/>paroi<sp/>est<sp/>dans<sp/>le<sp/>sens<sp/>de<sp/>l&apos;ecoulement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classDiffu__lm_1aaf1c7e7c9a9368034ad0c5dfac10c648" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classDiffu__lm_1aaf1c7e7c9a9368034ad0c5dfac10c648" kindref="member">Diffu_lm::calculer_a_local</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ind)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>OC<sp/>:<sp/>02/2006<sp/>;<sp/>on<sp/>pourrait<sp/>peut<sp/>etre<sp/>remplacer<sp/>ce<sp/>&quot;calculer_a_local&quot;<sp/>par<sp/>un<sp/>&quot;calculer_a_global&quot;,<sp/>ce<sp/>qui<sp/>eviterait<sp/>de<sp/>multiples<sp/>appels,<sp/>surement<sp/>couteux,<sp/>a<sp/>cette<sp/>methode.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>yw,<sp/>y_plus,<sp/>a,<sp/>Damp,<sp/>S_norm<sp/>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>yw_N,<sp/>y_plus_N,<sp/>S_norm_N,<sp/>Damp_N<sp/>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//S_norm<sp/>est<sp/>la<sp/>norme<sp/>de<sp/>Sij<sp/>sur<sp/>le<sp/>maillage<sp/>fin</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Damp<sp/>est<sp/>une<sp/>fonction<sp/>de<sp/>damping</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//u_tau<sp/>:<sp/>vitesse<sp/>de<sp/>frottement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>kappa<sp/>=<sp/>-123;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="classEq__couch__lim" kindref="compound">Eq_couch_lim</ref>&amp;<sp/>leq<sp/>=<sp/><ref refid="classDiffu__totale__base_1a34d07a14eee172a73b5d96e84dc22592" kindref="member">eq_couch_lim</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>visco_cin<sp/>=<sp/><ref refid="classDiffu__totale__base_1a0818ea921e579900c98ed5d563267a7a" kindref="member">mu_lambda</ref>-&gt;getNu(<ref refid="classDiffu__totale__hyd__base_1a5315c3c7293ef0f8f6e1ce992a81590c" kindref="member">eq_couch_lim_T</ref>,<sp/>ind);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>visco_cin2<sp/>=<sp/><ref refid="classDiffu__totale__base_1a0818ea921e579900c98ed5d563267a7a" kindref="member">mu_lambda</ref>-&gt;getNu(<ref refid="classDiffu__totale__hyd__base_1a5315c3c7293ef0f8f6e1ce992a81590c" kindref="member">eq_couch_lim_T</ref>,<sp/>ind+1);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>visco_turb<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_comp<sp/>=<sp/>leq.<ref refid="classEq__couch__lim_1abca90d5f1e565c27bea5c8383625fb4e" kindref="member">get_N_comp</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>N<sp/>=<sp/>leq.<ref refid="classEq__couch__lim_1a1bc9cc5d6c380ce4b5c85c91708e1ba2" kindref="member">get_N</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>yw<sp/>=<sp/>0.5*(leq.<ref refid="classEq__couch__lim_1a5de3643fbb127ed12cfbee4cbdca260d" kindref="member">get_y</ref>(ind+1)+leq.<ref refid="classEq__couch__lim_1a5de3643fbb127ed12cfbee4cbdca260d" kindref="member">get_y</ref>(ind));</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>y_plus<sp/>=<sp/>yw*leq.<ref refid="classEq__couch__lim_1a91b392b5f1fa03ec76fc933e28062eb5" kindref="member">get_utau_old</ref>()/(0.5*(visco_cin+visco_cin2));</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>Damp<sp/>=<sp/>1-exp(pow(-y_plus/A_plus,3));<sp/></highlight><highlight class="comment">//<sp/>Damp1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Damp<sp/>=<sp/>pow(1-exp(-y_plus/A_plus),2);<sp/>//<sp/>Damp2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(leq.<ref refid="classEq__couch__lim_1a894c6a8f764b58bab73f81f29a7bdd96" kindref="member">get_nu_t_dyn</ref>()<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>kappa=<ref refid="classDiffu__totale__base_1af22daa0f7518dd4be04f58926af6f523" kindref="member">getKappa</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>visco_cin_N<sp/>=<sp/>0.5*(<ref refid="classDiffu__totale__base_1a0818ea921e579900c98ed5d563267a7a" kindref="member">mu_lambda</ref>-&gt;getNu(<ref refid="classDiffu__totale__hyd__base_1a5315c3c7293ef0f8f6e1ce992a81590c" kindref="member">eq_couch_lim_T</ref>,<sp/>N-1)+<ref refid="classDiffu__totale__base_1a0818ea921e579900c98ed5d563267a7a" kindref="member">mu_lambda</ref>-&gt;getNu(<ref refid="classDiffu__totale__hyd__base_1a5315c3c7293ef0f8f6e1ce992a81590c" kindref="member">eq_couch_lim_T</ref>,<sp/>N));</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>yw_N<sp/>=<sp/>0.5*(leq.<ref refid="classEq__couch__lim_1a5de3643fbb127ed12cfbee4cbdca260d" kindref="member">get_y</ref>(N)+leq.<ref refid="classEq__couch__lim_1a5de3643fbb127ed12cfbee4cbdca260d" kindref="member">get_y</ref>(N-1));</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>y_plus_N<sp/>=<sp/>yw_N*leq.<ref refid="classEq__couch__lim_1a91b392b5f1fa03ec76fc933e28062eb5" kindref="member">get_utau_old</ref>()/visco_cin_N;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Damp_N<sp/>=<sp/>1-exp(pow(-y_plus_N/A_plus,3));<sp/>//<sp/>Damp1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Damp_N<sp/>=<sp/>pow(1-exp(-y_plus_N/A_plus),2);<sp/></highlight><highlight class="comment">//<sp/>Damp2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S_norm_N<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tmp=0.;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>icomp=0;<sp/>icomp&lt;nb_comp;<sp/>icomp++)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tmp<sp/>=<sp/>(leq.<ref refid="classEq__couch__lim_1a87b5f65148a51840f12060a1528e16f4" kindref="member">get_Unp1</ref>(icomp,N)<sp/>-<sp/>leq.<ref refid="classEq__couch__lim_1a87b5f65148a51840f12060a1528e16f4" kindref="member">get_Unp1</ref>(icomp,N-1))/(leq.<ref refid="classEq__couch__lim_1a5de3643fbb127ed12cfbee4cbdca260d" kindref="member">get_y</ref>(N)-leq.<ref refid="classEq__couch__lim_1a5de3643fbb127ed12cfbee4cbdca260d" kindref="member">get_y</ref>(N-1));</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>S_norm_N<sp/>+=<sp/>tmp*tmp;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S_norm_N=sqrt(S_norm_N);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>kappa<sp/>=<sp/>(1./yw_N)*sqrt(leq.get_nu_t_yn()/(Damp_N*S_norm_N));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>kappa<sp/>=<sp/>leq.<ref refid="classEq__couch__lim_1a1367fc5ee01897dbe75e217cb83ce263" kindref="member">get_nu_t_yn</ref>()/(y_plus_N*visco_cin_N*Damp_N);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(kappa<sp/>&gt;<sp/><ref refid="classDiffu__totale__base_1af22daa0f7518dd4be04f58926af6f523" kindref="member">getKappa</ref>())</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kappa<sp/>=<sp/><ref refid="classDiffu__totale__base_1af22daa0f7518dd4be04f58926af6f523" kindref="member">getKappa</ref>();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(kappa<sp/>&lt;<sp/>0.)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kappa<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ind==0)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>=<sp/>visco_cin;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Norme<sp/>de<sp/>Sij</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S_norm<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tmp=0.;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>icomp=0;<sp/>icomp&lt;nb_comp;<sp/>icomp++)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tmp<sp/>=<sp/>(leq.<ref refid="classEq__couch__lim_1a87b5f65148a51840f12060a1528e16f4" kindref="member">get_Unp1</ref>(icomp,ind+1)<sp/>-<sp/>leq.<ref refid="classEq__couch__lim_1a87b5f65148a51840f12060a1528e16f4" kindref="member">get_Unp1</ref>(icomp,ind))/(leq.<ref refid="classEq__couch__lim_1a5de3643fbb127ed12cfbee4cbdca260d" kindref="member">get_y</ref>(ind+1)-leq.<ref refid="classEq__couch__lim_1a5de3643fbb127ed12cfbee4cbdca260d" kindref="member">get_y</ref>(ind));</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>S_norm<sp/>+=<sp/>tmp*tmp;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S_norm=sqrt(S_norm);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>visco_turb<sp/>=<sp/>kappa*kappa*yw*yw*S_norm*Damp;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//visco_turb<sp/>=<sp/>kappa*y_plus*visco_cin*Damp;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>=<sp/>visco_cin<sp/>+<sp/>visco_turb;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="126"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>La<sp/>viscosite<sp/>turbulente<sp/>est<sp/>calculee<sp/>grace<sp/>a<sp/>un<sp/>modele<sp/>de<sp/>longueur<sp/>de<sp/>melange<sp/>://</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>nu_t<sp/>=<sp/>(kappa*y)^2*Damp*|S|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Cette<sp/>formulation<sp/>est<sp/>proposee<sp/>dans<sp/>l&apos;article<sp/>de<sp/>Balaras<sp/>et<sp/>al.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>AIAA<sp/>journal<sp/>vol.<sp/>34,<sp/>no<sp/>6,<sp/>1996<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="133"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="135"><highlight class="comment">//////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"></highlight><highlight class="comment">//Calcul<sp/>de<sp/>la<sp/>fonction<sp/>de<sp/>damping<sp/>uniquement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">//Attention<sp/>:<sp/>Ne<sp/>pas<sp/>integrer<sp/>!!!</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="138"><highlight class="comment">//////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="139" refid="classDiffu__lm_1ad26a73089aac9a15bf8a36ab3a6c4d4e" refkind="member"><highlight class="comment"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classDiffu__lm_1ad26a73089aac9a15bf8a36ab3a6c4d4e" kindref="member">Diffu_lm::calculer_D_local</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ind)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>yw,<sp/>y_plus,<sp/>Damp<sp/>;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Damp<sp/>est<sp/>une<sp/>fonction<sp/>de<sp/>damping</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//u_tau<sp/>:<sp/>vitesse<sp/>de<sp/>frottement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><ref refid="classEq__couch__lim" kindref="compound">Eq_couch_lim</ref>&amp;<sp/>leq<sp/>=<sp/><ref refid="classDiffu__totale__base_1a34d07a14eee172a73b5d96e84dc22592" kindref="member">eq_couch_lim</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/>le_milieu<sp/>=<sp/>leq.<ref refid="classEq__couch__lim_1abab874757f34fdcd43106845f764b7b4" kindref="member">get_milieu</ref>();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFluide__base" kindref="compound">Fluide_base</ref>&amp;<sp/>le_fluide<sp/>=<sp/>ref_cast(<ref refid="classFluide__base" kindref="compound">Fluide_base</ref>,<sp/>le_milieu);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Don__base" kindref="compound">Champ_Don_base</ref>&amp;<sp/>ch_visco_cin<sp/>=<sp/>le_fluide.<ref refid="classFluide__base_1a7b96f9ca54737fbd3a3f26cc7b6631a2" kindref="member">viscosite_cinematique</ref>();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab_visco<sp/>=<sp/>ch_visco_cin.<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>visco_cin<sp/>=<sp/>std::max(tab_visco(0,0),DMINFLOAT);</highlight><highlight class="comment">//visco<sp/>cinematique<sp/>supposee<sp/>cste</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/>yw<sp/>=<sp/>0.5*(leq.<ref refid="classEq__couch__lim_1a5de3643fbb127ed12cfbee4cbdca260d" kindref="member">get_y</ref>(ind+1)+leq.<ref refid="classEq__couch__lim_1a5de3643fbb127ed12cfbee4cbdca260d" kindref="member">get_y</ref>(ind));</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>y_plus<sp/>=<sp/>yw*leq.<ref refid="classEq__couch__lim_1a91b392b5f1fa03ec76fc933e28062eb5" kindref="member">get_utau_old</ref>()/visco_cin;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>Damp<sp/>=<sp/>1-exp(pow(-y_plus/A_plus,3));<sp/></highlight><highlight class="comment">//<sp/>Damp1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Damp;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Lois_Paroi/TBLE/Diffu/Diffu_lm.cpp"/>
+  </compounddef>
+</doxygen>

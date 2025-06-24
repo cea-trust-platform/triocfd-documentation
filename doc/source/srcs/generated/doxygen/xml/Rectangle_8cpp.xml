@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Rectangle_8cpp" kind="file" language="C++">
+    <compoundname>Rectangle.cpp</compoundname>
+    <includes refid="Rectangle_8h" local="no">Rectangle.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Rectangle_8cpp_1a78c1d71f202223c6e00ba805d1054c8e" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int faces_sommets_rectangle[4][2]</definition>
+        <argsstring>[4][2]</argsstring>
+        <name>faces_sommets_rectangle</name>
+        <initializer>=
+{
+  { 0, 2 },
+  { 0, 1 },
+  { 1, 3 },
+  { 2, 3 }
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Rectangle.cpp" line="19" column="12" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Rectangle.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Rectangle_8cpp_1a870a2d1b4205ddc33cf65da309489b7f" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename _T_</type>
+          </param>
+        </templateparamlist>
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Rectangle_32_64bases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Rectangle_32_64bases</name>
+        <initializer>= { &amp;( <ref refid="classElem__geom__base__32__64" kindref="compound">Elem_geom_base_32_64</ref>&lt;_T_&gt; ::info_obj) }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Rectangle.cpp" line="27" column="139" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Rectangle.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Rectangle.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>faces_sommets_rectangle[4][2]<sp/>=</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>2<sp/>},</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>{<sp/>1,<sp/>3<sp/>},</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>{<sp/>2,<sp/>3<sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classRectangle__32__64_1ace584caf6b73800f8f59e589967454a6" refkind="member"><highlight class="normal">Implemente_instanciable_32_64(<ref refid="classRectangle__32__64" kindref="compound">Rectangle_32_64</ref>,</highlight><highlight class="stringliteral">&quot;Rectangle&quot;</highlight><highlight class="normal">,<ref refid="classElem__geom__base__32__64" kindref="compound">Elem_geom_base_32_64&lt;_T_&gt;</ref>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="30" refid="classRectangle__32__64_1a6c02332f5e618fda1c6288c0ef7c8329" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classRectangle__32__64_1a6c02332f5e618fda1c6288c0ef7c8329" kindref="member">Rectangle_32_64&lt;_SIZE_&gt;::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="31"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="36" refid="classRectangle__32__64_1adf130873c003c7c8eea189dc64f7287f" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classRectangle__32__64_1adf130873c003c7c8eea189dc64f7287f" kindref="member">Rectangle_32_64&lt;_SIZE_&gt;::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s<sp/>)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">/*!<sp/>@brief<sp/>Reordonne<sp/>les<sp/>sommets<sp/>du<sp/>rectangle.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="45" refid="classRectangle__32__64_1ae15d73fe71fd34b647ec31f7aa3d9fa5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRectangle__32__64_1ae15d73fe71fd34b647ec31f7aa3d9fa5" kindref="member">Rectangle_32_64&lt;_SIZE_&gt;::reordonner</ref>()</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(reordonner_elem()==-1)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;It<sp/>is<sp/>expected<sp/>to<sp/>treat<sp/>rectangles<sp/>but&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;one<sp/>of<sp/>the<sp/>elements<sp/>is<sp/>not<sp/>rectangle!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Check<sp/>your<sp/>mesh.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="56"><highlight class="comment">/*!<sp/>@brief<sp/>Reordonne<sp/>et<sp/>verifie<sp/>que<sp/>l&apos;on<sp/>a<sp/>bien<sp/>des<sp/>rectangles.</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="59" refid="classRectangle__32__64_1a5d6830162409f9f951ee63974d9c5cc3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRectangle__32__64_1a5d6830162409f9f951ee63974d9c5cc3" kindref="member">Rectangle_32_64&lt;_SIZE_&gt;::reordonner_elem</ref>()</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>domaine=mon_dom.valeur();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>dom=domaine;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_t</ref>&amp;<sp/>elem=domaine.les_elems();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">SmallArrOfTID_t</ref><sp/>S(4);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">SmallArrOfTID_t</ref><sp/>NS(4);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>co(4,2);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>xmin,<sp/>ymin;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>nb_elem=domaine.nb_elem();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>num_poly=0;<sp/>num_poly&lt;nb_elem;<sp/>num_poly++)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>NS=-1;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;4;<sp/>i++)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>S[i]<sp/>=<sp/>elem(num_poly,i);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(j=0;<sp/>j&lt;2;<sp/>j++)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>co(i,j)<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(S[i],<sp/>j);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>xmin=std::min(co(0,<sp/>0),<sp/>co(1,<sp/>0));</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>xmin=std::min(xmin,<sp/>co(2,<sp/>0));</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ymin=std::min(co(0,<sp/>1),<sp/>co(1,<sp/>1));</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ymin=std::min(ymin,<sp/>co(2,<sp/>1));</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;4;<sp/>i++)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>est_egal(co(i,<sp/>0),xmin)<sp/>&amp;&amp;<sp/>est_egal(co(i,<sp/>1),ymin))</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NS[0]=S[i];</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;4;<sp/>i++)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!est_egal(co(i,<sp/>0),xmin)<sp/>&amp;&amp;<sp/>est_egal(co(i,<sp/>1),ymin))</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NS[1]=S[i];</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;4;<sp/>i++)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>est_egal(co(i,<sp/>0),xmin)<sp/>&amp;&amp;<sp/>!est_egal(co(i,<sp/>1),ymin))</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NS[2]=S[i];</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;4;<sp/>i++)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!est_egal(co(i,<sp/>0),xmin)<sp/>&amp;&amp;<sp/>!est_egal(co(i,<sp/>1),ymin))</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NS[3]=S[i];</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Si<sp/>un<sp/>sommet<sp/>vaut<sp/>-1,<sp/>ce<sp/>n&apos;est<sp/>pas<sp/>un<sp/>Rectangle<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(min_array(NS)==-1)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>element<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>num_poly<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>is<sp/>not<sp/>a<sp/>rectangle.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Sinon<sp/>on<sp/>remplit<sp/>elem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;4;<sp/>i++)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>elem(num_poly,<sp/>i)=NS[i];</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="112"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nom<sp/>LML<sp/>d&apos;un<sp/>rectangle<sp/>=<sp/>&quot;VOXEL8&quot;.</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Nom&amp;)<sp/>toujours<sp/>egal<sp/>a<sp/>&quot;VOXEL8&quot;</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="117" refid="classRectangle__32__64_1a30db9107cbef2025caaebd6133343924" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><ref refid="classRectangle__32__64_1a30db9107cbef2025caaebd6133343924" kindref="member">Rectangle_32_64&lt;_SIZE_&gt;::nom_lml</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="118"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom=</highlight><highlight class="stringliteral">&quot;VOXEL8&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dimension==3)<sp/>nom=</highlight><highlight class="stringliteral">&quot;QUADRANGLE_3D&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nom;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="125"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>1<sp/>si<sp/>l&apos;element<sp/>ielem<sp/>du<sp/>domaine<sp/>associe<sp/>a<sp/>l&apos;element<sp/>geometrique<sp/>contient<sp/>le<sp/>point</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>de<sp/>coordonnees<sp/>specifiees<sp/>par<sp/>le<sp/>parametre<sp/>&quot;pos&quot;.</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Renvoie<sp/>0<sp/>sinon.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleVect&amp;<sp/>pos)<sp/>coordonnees<sp/>du<sp/>point<sp/>que<sp/>l&apos;on<sp/>cherche<sp/>a<sp/>localiser</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>ielem)<sp/>le<sp/>numero<sp/>de<sp/>l&apos;element<sp/>du<sp/>domaine<sp/>dans<sp/>lequel<sp/>on<sp/>cherche<sp/>le<sp/>point.</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>1<sp/>si<sp/>le<sp/>point<sp/>de<sp/>coordonnees<sp/>specifiees<sp/>appartient<sp/>a<sp/>l&apos;element<sp/>ielem<sp/>0<sp/>sinon</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="135" refid="classRectangle__32__64_1a772f1d215ee4cf02a828e204b1f51f1e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRectangle__32__64_1a772f1d215ee4cf02a828e204b1f51f1e" kindref="member">Rectangle_32_64&lt;_SIZE_&gt;::contient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>pos,<sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>element<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="136"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/>assert(pos.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()==2);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>dom=mon_dom.valeur();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>som0<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1afd58e6f86a1ad8372fba4037e5a93023" kindref="member">sommet_elem</ref>(element,0),</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>som3<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1afd58e6f86a1ad8372fba4037e5a93023" kindref="member">sommet_elem</ref>(element,3);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><sp/><sp/><sp/>inf_ou_egal(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som0,0),pos[0])<sp/>&amp;&amp;<sp/>inf_ou_egal(pos[0],dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som3,0))</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>inf_ou_egal(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som0,1),pos[1])<sp/>&amp;&amp;<sp/>inf_ou_egal(pos[1],dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som3,1))<sp/>)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="148"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>1<sp/>si<sp/>les<sp/>sommets<sp/>specifies<sp/>par<sp/>le<sp/>parametre<sp/>&quot;pos&quot;<sp/>sont<sp/>les<sp/>sommets<sp/>de<sp/>l&apos;element<sp/>&quot;element&quot;<sp/>du<sp/>domaine<sp/>associe<sp/>a</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>l&apos;element<sp/>geometrique.</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/>*<sp/>@param<sp/>(IntVect&amp;<sp/>pos)<sp/>les<sp/>numeros<sp/>des<sp/>sommets<sp/>a<sp/>comparer<sp/>avec<sp/>ceux<sp/>de<sp/>l&apos;elements<sp/>&quot;element&quot;</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>element)<sp/>le<sp/>numero<sp/>de<sp/>l&apos;element<sp/>du<sp/>domaine<sp/>dont<sp/>on<sp/>veut<sp/>comparer<sp/>les<sp/>sommets</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>1<sp/>si<sp/>les<sp/>sommets<sp/>passes<sp/>en<sp/>parametre<sp/>sont<sp/>ceux<sp/>de<sp/>l&apos;element<sp/>specifie,<sp/>0<sp/>sinon</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="157" refid="classRectangle__32__64_1a15490a35ee713544bf336749d8f4dde8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRectangle__32__64_1a772f1d215ee4cf02a828e204b1f51f1e" kindref="member">Rectangle_32_64&lt;_SIZE_&gt;::contient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">SmallArrOfTID_t</ref>&amp;<sp/>som,<sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>element<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="158"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>domaine=mon_dom.valeur();</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((domaine.sommet_elem(element,0)==som[0])&amp;&amp;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(domaine.sommet_elem(element,1)==som[1])&amp;&amp;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(domaine.sommet_elem(element,2)==som[2])&amp;&amp;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(domaine.sommet_elem(element,3)==som[3]))</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="170"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>les<sp/>volumes<sp/>des<sp/>elements<sp/>du<sp/>domaine<sp/>associe.</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleVect&amp;<sp/>volumes)<sp/>le<sp/>vecteur<sp/>contenant<sp/>les<sp/>valeurs<sp/><sp/>des<sp/>des<sp/>volumes<sp/>des<sp/>elements<sp/>du<sp/>domaine</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="175" refid="classRectangle__32__64_1a4871b3677d96e2fd41f944ddfc058296" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRectangle__32__64_1a4871b3677d96e2fd41f944ddfc058296" kindref="member">Rectangle_32_64&lt;_SIZE_&gt;::calculer_volumes</ref>(<ref refid="classTRUSTVect" kindref="compound">DoubleVect_t</ref>&amp;<sp/>volumes)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="176"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dimension==3)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Rectangle_32_64&lt;_SIZE_&gt;::calculer_volumes<sp/>is<sp/>not<sp/>supported<sp/>for<sp/>3D<sp/>yet.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>dom=mon_dom.valeur();</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dx,dy;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>S1,S2,S3;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>size_tot<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1a33af8e98ae3d31533d6e4bf22842f03a" kindref="member">nb_elem_tot</ref>();</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>assert(volumes.<ref refid="classTRUSTVect_1a1918c7467e93eb90ae67d288b1519ae7" kindref="member">size_totale</ref>()==size_tot);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>num_poly=0;<sp/>num_poly&lt;size_tot;<sp/>num_poly++)</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S1<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1afd58e6f86a1ad8372fba4037e5a93023" kindref="member">sommet_elem</ref>(num_poly,0);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S2<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1afd58e6f86a1ad8372fba4037e5a93023" kindref="member">sommet_elem</ref>(num_poly,1);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S3<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1afd58e6f86a1ad8372fba4037e5a93023" kindref="member">sommet_elem</ref>(num_poly,2);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dx<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(S2,0)<sp/>-<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(S1,0);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dy<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(S3,1)<sp/>-<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(S1,1);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>volumes[num_poly]=<sp/>dx*dy;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="200"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>les<sp/>normales<sp/>aux<sp/>faces<sp/>des<sp/>elements<sp/>du<sp/>domaine<sp/>associe.</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/>*<sp/>@param<sp/>(IntTab&amp;<sp/>face_sommets)<sp/>les<sp/>numeros<sp/>des<sp/>sommets<sp/>des<sp/>faces<sp/>dans<sp/>la<sp/>liste<sp/>des<sp/>sommets<sp/>du<sp/>domaine<sp/>associe</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>face_normales)</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="206" refid="classRectangle__32__64_1a1bf895477e172b146633e0c5638c015b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRectangle__32__64_1a1bf895477e172b146633e0c5638c015b" kindref="member">Rectangle_32_64&lt;_SIZE_&gt;::calculer_normales</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_t</ref>&amp;<sp/>Face_sommets,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab_t</ref>&amp;<sp/>face_normales)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="207"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>domaine_geom<sp/>=<sp/>mon_dom.valeur();</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab_t</ref>&amp;<sp/>les_coords<sp/>=<sp/>domaine_geom.<ref refid="classDomaine__32__64_1ac38406cad4d4a168ff220bf1c3bfee72" kindref="member">coord_sommets</ref>();</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>nbfaces<sp/>=<sp/>Face_sommets.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x1,y1;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>n0,n1;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>numface=0;<sp/>numface&lt;nbfaces;<sp/>numface++)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n0<sp/>=<sp/>Face_sommets(numface,0);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n1<sp/>=<sp/>Face_sommets(numface,1);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x1<sp/>=<sp/>les_coords(n0,0)<sp/>-<sp/>les_coords(n1,0);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>y1<sp/>=<sp/>les_coords(n0,1)<sp/>-<sp/>les_coords(n1,1);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_normales(numface,0)<sp/>=<sp/>-y1;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_normales(numface,1)<sp/>=<sp/>x1;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="224"><highlight class="comment">/*!<sp/>@brief<sp/>voir<sp/>ElemGeomBase::get_tab_faces_sommets_locaux</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="228" refid="classRectangle__32__64_1a56a28055ff182a98ea913d776cf12876" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRectangle__32__64_1a56a28055ff182a98ea913d776cf12876" kindref="member">Rectangle_32_64&lt;_SIZE_&gt;::get_tab_faces_sommets_locaux</ref>(<ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>faces_som_local)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="229"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/>faces_som_local.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(4,2);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;4;<sp/>i++)</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;2;<sp/>j++)</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>faces_som_local(i,j)<sp/>=<sp/>faces_sommets_rectangle[i][j];</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRectangle__32__64" kindref="compound">Rectangle_32_64&lt;int&gt;</ref>;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>INT_is_64_<sp/>==<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRectangle__32__64" kindref="compound">Rectangle_32_64&lt;trustIdType&gt;</ref>;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Rectangle.cpp"/>
+  </compounddef>
+</doxygen>

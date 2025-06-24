@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="RegroupeBord_8h" kind="file" language="C++">
+    <compoundname>RegroupeBord.h</compoundname>
+    <includes refid="Interprete__geometrique__base_8h" local="no">Interprete_geometrique_base.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Domaine__forward_8h" local="no">Domaine_forward.h</includes>
+    <includedby refid="LireMED_8cpp" local="no">LireMED.cpp</includedby>
+    <includedby refid="RegroupeBord_8cpp" local="no">RegroupeBord.cpp</includedby>
+    <innerclass refid="classRegroupeBord__32__64" prot="public">RegroupeBord_32_64</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="RegroupeBord_8h_1ab1514d6ee35244e5dac8eb5d5034ca4b" prot="public" static="no">
+        <type><ref refid="classRegroupeBord__32__64" kindref="compound">RegroupeBord_32_64</ref>&lt; int &gt;</type>
+        <definition>using RegroupeBord =  RegroupeBord_32_64&lt;int&gt;</definition>
+        <argsstring></argsstring>
+        <name>RegroupeBord</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/RegroupeBord.h" line="57" column="1" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/RegroupeBord.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="RegroupeBord_8h_1a092db9a2adff0b24a2077468469e4f9f" prot="public" static="no">
+        <type><ref refid="classRegroupeBord__32__64" kindref="compound">RegroupeBord_32_64</ref>&lt; trustIdType &gt;</type>
+        <definition>using RegroupeBord_64 =  RegroupeBord_32_64&lt;trustIdType&gt;</definition>
+        <argsstring></argsstring>
+        <name>RegroupeBord_64</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/RegroupeBord.h" line="58" column="1" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/RegroupeBord.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>RegroupeBord_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RegroupeBord_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">/*!<sp/>@brief<sp/>class<sp/>RegroupeBord<sp/>Regroupe_bord<sp/>dom<sp/>titi<sp/>{<sp/>bord1<sp/>,<sp/>bord2<sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/><sp/>regroupe<sp/>les<sp/>frontieres<sp/>bord1<sp/>et<sp/>bord2<sp/>dans<sp/>une<sp/>frontiere<sp/>de<sp/>type<sp/>bord1</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/><sp/>et<sp/>de<sp/>nom<sp/>titi</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@sa<sp/>Interprete</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Interprete_geometrique_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_forward.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="36" refid="classRegroupeBord__32__64" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRegroupeBord__32__64" kindref="compound">RegroupeBord_32_64</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classInterprete__geometrique__base__32__64" kindref="compound">Interprete_geometrique_base_32_64</ref>&lt;_SIZE_&gt;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38" refid="classRegroupeBord__32__64_1a21823d863b15a2f467a2a64fa3a2a014" refkind="member"><highlight class="normal"><sp/><sp/>Declare_instanciable_32_64(<ref refid="classRegroupeBord__32__64" kindref="compound">RegroupeBord_32_64</ref>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">public<sp/>:</highlight></codeline>
+<codeline lineno="41" refid="classRegroupeBord__32__64_1a83f04fc9a2db6fb0fd183b088810f6d5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classInterprete__geometrique__base__32__64_1a146084030844e5cabc41bf096ec66a92" kindref="member">int_t</ref><sp/>=<sp/>_SIZE_;</highlight></codeline>
+<codeline lineno="42" refid="classRegroupeBord__32__64_1a95f49a35b13748a00d4277c913397234" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_t</ref><sp/>=<sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_T&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classRegroupeBord__32__64_1a6195a4b833e575e486a958e0b59d62a8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref><sp/>=<sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_32_64&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="45" refid="classRegroupeBord__32__64_1a4d4e70623215a37ca0127b1b4404ce3c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classFrontiere__32__64" kindref="compound">Frontiere_t</ref><sp/>=<sp/><ref refid="classFrontiere__32__64" kindref="compound">Frontiere_32_64&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="46" refid="classRegroupeBord__32__64_1aa853261e4edc61d8277a0d6244b54c3f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classFaces__32__64" kindref="compound">Faces_t</ref><sp/>=<sp/><ref refid="classFaces__32__64" kindref="compound">Faces_32_64&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="47" refid="classRegroupeBord__32__64_1a798369da8674315f878c869a76be6696" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classBords__32__64" kindref="compound">Bords_t</ref><sp/>=<sp/><ref refid="classBords__32__64" kindref="compound">Bords_32_64&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="48" refid="classRegroupeBord__32__64_1a6edc9bc522f1beebd174fe14a027b3d2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classRaccords__32__64" kindref="compound">Raccords_t</ref><sp/>=<sp/><ref refid="classRaccords__32__64" kindref="compound">Raccords_32_64&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classRegroupeBord__32__64_1abc79aa7489fa2793366899ed4657455e" kindref="member">interpreter_</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRegroupeBord__32__64_1a7bdb3c108ce028ac83e6dfb7e331d911" kindref="member">regroupe_bord</ref>(<ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>dom,<sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LIST(<ref refid="classNom" kindref="compound">Nom</ref>)&amp;<sp/>nlistbord);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>regroupe<sp/>les<sp/>bords<sp/>de<sp/>meme<sp/>nom<sp/>en<sp/>un<sp/>seul<sp/>bord<sp/>du<sp/>meme<sp/>nom</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRegroupeBord__32__64_1a51aeb93b1be27995a54c6f23dc40bfcb" kindref="member">rassemble_bords</ref>(<ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>dom);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classRegroupeBord__32__64" kindref="compound">RegroupeBord</ref><sp/>=<sp/><ref refid="classRegroupeBord__32__64" kindref="compound">RegroupeBord_32_64&lt;int&gt;</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classRegroupeBord__32__64" kindref="compound">RegroupeBord_64</ref><sp/>=<sp/><ref refid="classRegroupeBord__32__64" kindref="compound">RegroupeBord_32_64&lt;trustIdType&gt;</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/RegroupeBord.h"/>
+  </compounddef>
+</doxygen>

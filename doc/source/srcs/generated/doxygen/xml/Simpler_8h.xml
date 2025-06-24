@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Simpler_8h" kind="file" language="C++">
+    <compoundname>Simpler.h</compoundname>
+    <includes refid="Simple_8h" local="no">Simple.h</includes>
+    <includedby refid="Implicit__steady_8h" local="no">Implicit_steady.h</includedby>
+    <includedby refid="Piso_8h" local="no">Piso.h</includedby>
+    <includedby refid="SETS_8h" local="no">SETS.h</includedby>
+    <includedby refid="Simpler_8cpp" local="no">Simpler.cpp</includedby>
+    <innerclass refid="classSimpler" prot="public">Simpler</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Simpler_8h_1abe8430b7ba4f6d4d6067041c30fceefb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int inverser_par_diagonale</definition>
+        <argsstring>(const Matrice_Morse &amp;matrice, const DoubleTrav &amp;resu, const DoubleTab &amp;present, DoubleTrav &amp;correction_en_vitesse)</argsstring>
+        <name>inverser_par_diagonale</name>
+        <param>
+          <type>const <ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref> &amp;</type>
+          <declname>matrice</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref> &amp;</type>
+          <declname>resu</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref> &amp;</type>
+          <declname>present</declname>
+        </param>
+        <param>
+          <type><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref> &amp;</type>
+          <declname>correction_en_vitesse</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Schemas_Temps/Simpler.h" line="89" column="5" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Schemas_Temps/Simpler.cpp" bodystart="53" bodyend="153" declfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Schemas_Temps/Simpler.h" declline="89" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2022,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>Simpler_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>Simpler_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Simple.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//Description</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//Ref.<sp/>Numerical<sp/>heat<sp/>Transfer<sp/>Vol.<sp/>10<sp/>P.<sp/>209-228</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>D.<sp/>S.<sp/>Jang<sp/>-<sp/>R.<sp/>Jetli<sp/>-<sp/>S.<sp/>Acharya</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>La<sp/>convergence<sp/>de<sp/>la<sp/>pression<sp/>dans<sp/>l&apos;algorithme<sp/>Simple<sp/>(voir<sp/>classe<sp/>Simple)<sp/>est<sp/>faible</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>du<sp/>fait<sp/>de<sp/>la<sp/>non<sp/>prise<sp/>en<sp/>compte<sp/>des<sp/>termes<sp/>non<sp/>diagonaux<sp/>pour<sp/>resoudre<sp/>l<sp/>equation<sp/>de</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Poisson<sp/>sur<sp/>la<sp/>correction<sp/>en<sp/>pression.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>L<sp/>objectif<sp/>de<sp/>l<sp/>algorithme<sp/>Simpler<sp/>est<sp/>de<sp/>realiser<sp/>une<sp/>evaluation<sp/>plus<sp/>precise<sp/>de<sp/>la<sp/>pression</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>et<sp/>d<sp/>utiliser<sp/>celle<sp/>ci<sp/>pour<sp/>appliquer<sp/>ensuite<sp/>l<sp/>algorithme<sp/>Simple.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>=<sp/>(M/dt<sp/>+<sp/>C(Uk)<sp/>+<sp/>D)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Bt<sp/>et<sp/>-B<sp/>designent<sp/>respectivement<sp/>les<sp/>operateurs<sp/>gradient<sp/>et<sp/>divergence</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>-Estimation<sp/>de<sp/>la<sp/>pression</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>On<sp/>evalue<sp/>dans<sp/>un<sp/>premier<sp/>temps<sp/>le<sp/>champ<sp/>de<sp/>vitesse<sp/>UPk<sp/>en<sp/>resolvant<sp/>le<sp/>systeme</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(Da<sp/>partie<sp/>diagonale<sp/>de<sp/>A<sp/>et<sp/>E<sp/>partie<sp/>non<sp/>diagonale)<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Da[Uk-1]UPk<sp/>=<sp/>E[Uk-1]Uk-1<sp/>+<sp/>Sv<sp/>+<sp/>Ss<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;<sp/>UPk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>L<sp/>equation<sp/>de<sp/>q.d.m.<sp/>peut<sp/>alors<sp/>s<sp/>ecrire<sp/>sous<sp/>la<sp/>forme<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Da[Uk-1]Uk<sp/>=<sp/>Da[Uk-1]UPk<sp/>-BtPk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>En<sp/>combinant<sp/>cette<sp/>equation<sp/>de<sp/>q.d.m.<sp/>avec<sp/>celle<sp/>de<sp/>continuite<sp/>(-BUk<sp/>=<sp/>0)<sp/>on<sp/>a<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(BDa-1Bt)Pk<sp/>=<sp/>BUPk<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;<sp/>Pk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>-Application<sp/>de<sp/>l<sp/>algorithme<sp/>Simple<sp/>pour<sp/>determiner<sp/>la<sp/>solution<sp/>(Uk,Pk)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(U*k,Pk)<sp/>satisfait<sp/>l<sp/>equation<sp/>de<sp/>q.d.m.<sp/>suivante<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A[Uk-1]U*k<sp/>=<sp/>-BtPk<sp/>+<sp/>Sv<sp/>+<sp/>Ss<sp/>+<sp/>(M/dt)Uk-1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;<sp/>U*k</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>p&apos;k<sp/>est<sp/>evalue<sp/>en<sp/>resolvant<sp/>le<sp/>systeme<sp/>suivant<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>(BDa-1Bt)p&apos;k<sp/>=<sp/>BU*k<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;<sp/>p&apos;k</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>La<sp/>correction<sp/>de<sp/>vitesse<sp/>u&apos;k<sp/>est<sp/>deduite<sp/>en<sp/>resolvant<sp/>le<sp/>systeme<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Da[Uk-1]<sp/>(Uk-U*k)<sp/>=<sp/>-Btp&apos;k<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;<sp/>U&apos;k</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Le<sp/>champ<sp/>de<sp/>pression<sp/>Pk<sp/>n<sp/>est<sp/>pas<sp/>modifie<sp/>par<sp/>la<sp/>correction<sp/>p&apos;k</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>alors<sp/>que<sp/>la<sp/>vitesse<sp/>est<sp/>modifiee<sp/>par<sp/>la<sp/>relation<sp/>:<sp/>Uk<sp/>=<sp/>U*k<sp/>+<sp/>U&apos;k</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>L<sp/>algorithme<sp/>peut<sp/>etre<sp/>repete<sp/>jusqu<sp/>a<sp/>convergence<sp/>du<sp/>systeme<sp/>||Uk-Uk-1||<sp/>&lt;<sp/>seuil_convergence_implicite_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>en<sp/>pratique<sp/>on<sp/>peut<sp/>ne<sp/>faire<sp/>qu<sp/>une<sp/>seule<sp/>iteration<sp/>(seuil_convergence_implicite_<sp/>=<sp/>1e6)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>L<sp/>algorithme<sp/>code<sp/>dans<sp/>cette<sp/>classe<sp/>(iterer_NS)<sp/>differe<sp/>legerement<sp/>de<sp/>celui<sp/>rappele<sp/>ci-dessus<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Dans<sp/>l<sp/>etape<sp/>d<sp/>evaluation<sp/>UPk<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>-le<sp/>gradient<sp/>de<sp/>pression<sp/>est<sp/>pris<sp/>en<sp/>compte<sp/>et<sp/>la<sp/>relation<sp/>traitee<sp/>est</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Da[Uk-1]UPk<sp/>=<sp/>E[Uk-1]Uk-1<sp/>+<sp/>Sv<sp/>+<sp/>Ss<sp/>-BtPk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>-la<sp/>resolution<sp/>de<sp/>(BDa-1Bt)Pcor<sp/>=<sp/>BUPk<sp/>fournit<sp/>alors<sp/>une<sp/>correction<sp/>de<sp/>pression</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>et<sp/>le<sp/>champ<sp/>de<sp/>pression<sp/>est<sp/>evalue<sp/>par<sp/>:<sp/>Pk<sp/>=<sp/>Pk-1<sp/>+<sp/>Pcor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>(Pcor<sp/>remplace<sp/>la<sp/>notation<sp/>Pk<sp/>utilisee<sp/>plus<sp/>haut)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>-resu<sp/>est<sp/>reajuste<sp/>(BtPk<sp/>=<sp/>BtPk-1<sp/>+<sp/>BtPcor)<sp/>pour<sp/>contenir<sp/>-BtPk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classSimpler" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classSimpler" kindref="compound">Simpler</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classSimple" kindref="compound">Simple</ref></highlight></codeline>
+<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classSimpler_1a9893f5779c657bd604b1857888aeb753" refkind="member"><highlight class="normal"><sp/><sp/>Declare_instanciable(<ref refid="classSimpler" kindref="compound">Simpler</ref>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">public<sp/>:</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSimpler_1a1c551ffbf84d9d035f4ee3ce52910449" kindref="member">iterer_NS</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>current,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>pression,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">,<sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">,<sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref>&amp;,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_iter,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>converge,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>ok)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">protected<sp/>:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>inverser_par_diagonale(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matrice,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref>&amp;<sp/>resu,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>present,<ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref>&amp;<sp/>correction_en_vitesse);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Schemas_Temps/Simpler.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Convection__Diffusion__Espece__Fluide__Dilatable__base_8cpp" kind="file" language="C++">
+    <compoundname>Convection_Diffusion_Espece_Fluide_Dilatable_base.cpp</compoundname>
+    <includes refid="Convection__Diffusion__Espece__Fluide__Dilatable__base_8h" local="no">Convection_Diffusion_Espece_Fluide_Dilatable_base.h</includes>
+    <includes refid="Fluide__Dilatable__base_8h" local="no">Fluide_Dilatable_base.h</includes>
+    <includes refid="Neumann__sortie__libre_8h" local="no">Neumann_sortie_libre.h</includes>
+    <includes refid="Discret__Thyd_8h" local="no">Discret_Thyd.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Convection__Diffusion__Espece__Fluide__Dilatable__base_8cpp_1a55c0f6c748d7f1c074f7db3e83ac6470" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Convection_Diffusion_Espece_Fluide_Dilatable_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Convection_Diffusion_Espece_Fluide_Dilatable_basebases</name>
+        <initializer>={   &amp;( <ref refid="classConvection__Diffusion__Fluide__Dilatable__base" kindref="compound">Convection_Diffusion_Fluide_Dilatable_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Dilatable/Common/Equations/Convection_Diffusion_Espece_Fluide_Dilatable_base.cpp" line="21" column="237" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Dilatable/Common/Equations/Convection_Diffusion_Espece_Fluide_Dilatable_base.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Convection_Diffusion_Espece_Fluide_Dilatable_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Dilatable_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Neumann_sortie_libre.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discret_Thyd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1a7d9931e0a06a9c395c6c06b98cf86d7e" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base" kindref="compound">Convection_Diffusion_Espece_Fluide_Dilatable_base</ref>,</highlight><highlight class="stringliteral">&quot;Convection_Diffusion_Espece_Fluide_Dilatable_base&quot;</highlight><highlight class="normal">,<ref refid="classConvection__Diffusion__Fluide__Dilatable__base" kindref="compound">Convection_Diffusion_Fluide_Dilatable_base</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1a460100cae9da802864a216d44d930c51" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1a460100cae9da802864a216d44d930c51" kindref="member">Convection_Diffusion_Espece_Fluide_Dilatable_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>is)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="24"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Fluide__Dilatable__base_1ac3328608c5ba5568fedc7f5866e8dc3a" kindref="member">Convection_Diffusion_Fluide_Dilatable_base::printOn</ref>(is);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1ae06e28c7e093df9670d934843266306b" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1ae06e28c7e093df9670d934843266306b" kindref="member">Convection_Diffusion_Espece_Fluide_Dilatable_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Fluide__Dilatable__base_1a43339dbdd90cdbf2be01ed65ed0239bc" kindref="member">Convection_Diffusion_Fluide_Dilatable_base::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1abb0583b87636eb1b683b34fa6ced3f85" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1abb0583b87636eb1b683b34fa6ced3f85" kindref="member">Convection_Diffusion_Espece_Fluide_Dilatable_base::preparer_calcul</ref>()</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1a6ec47139247e984d286c2e13d0a92ff7" kindref="member">Convection_Diffusion_Fluide_Dilatable_base::preparer_calcul</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>remplissage<sp/>du<sp/>domaine<sp/>cl<sp/>modifiee<sp/>avec<sp/>1<sp/>partout<sp/>au<sp/>bord...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Fluide__Dilatable__base_1ac4939550787bac3b71802cb806967bab" kindref="member">zcl_modif_</ref>=(<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>());</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="classConds__lim" kindref="compound">Conds_lim</ref>&amp;<sp/>condlims=<ref refid="classConvection__Diffusion__Fluide__Dilatable__base_1ac4939550787bac3b71802cb806967bab" kindref="member">zcl_modif_</ref>-&gt;<ref refid="classDomaine__Cl__dis__base_1ac61cb62c82e3db6c4b4553538d7a6b61" kindref="member">les_conditions_limites</ref>();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb=condlims.<ref refid="classTRUST__Vector_1afae0a388de57f1ab2a0d9127f7c0a5f9" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb;<sp/>i++)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pour<sp/>chaque<sp/>condlim<sp/>on<sp/>recupere<sp/>le<sp/>champ_front<sp/>et<sp/>on<sp/>met<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>meme<sp/>si<sp/>la<sp/>cond<sp/>lim<sp/>est<sp/>un<sp/>flux<sp/>(dans<sp/>ce<sp/>cas<sp/>la<sp/>convection<sp/>restera<sp/>nullle.)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>T=condlims[i]-&gt;champ_front().valeurs();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>T=1.;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classNeumann__sortie__libre" kindref="compound">Neumann_sortie_libre</ref>,condlims[i].valeur()))</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ref_cast(<ref refid="classNeumann__sortie__libre" kindref="compound">Neumann_sortie_libre</ref>,condlims[i].valeur()).tab_ext()=1;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Fluide__Dilatable__base_1ac4939550787bac3b71802cb806967bab" kindref="member">zcl_modif_</ref>-&gt;<ref refid="classDomaine__Cl__dis__base_1ac61cb62c82e3db6c4b4553538d7a6b61" kindref="member">les_conditions_limites</ref>().set_modifier_val_imp(0);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1afadfd0e2690439af5cff874767b1049d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1afadfd0e2690439af5cff874767b1049d" kindref="member">Convection_Diffusion_Espece_Fluide_Dilatable_base::discretiser</ref>()</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_valeurs_temp<sp/>=<sp/><ref refid="classEquation__base_1abc11e51aa75b4c7aa55c27f71eb2f2c4" kindref="member">schema_temps</ref>().<ref refid="classSchema__Temps__base_1acbe9f5266e4b4267a53fdbb9157718c5" kindref="member">nb_valeurs_temporelles</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps<sp/>=<sp/><ref refid="classEquation__base_1abc11e51aa75b4c7aa55c27f71eb2f2c4" kindref="member">schema_temps</ref>().<ref refid="classSchema__Temps__base_1a1e573b93ad40c737ecb2da65b68f968a" kindref="member">temps_courant</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDiscret__Thyd" kindref="compound">Discret_Thyd</ref>&amp;<sp/>dis=ref_cast(<ref refid="classDiscret__Thyd" kindref="compound">Discret_Thyd</ref>,<sp/><ref refid="classEquation__base_1a440fc95363315082eddbef26dc76024e" kindref="member">discretisation</ref>());</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Massic<sp/>fraction<sp/>equation<sp/>discretization<sp/>...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//On<sp/>utilise<sp/>temperature<sp/>pour<sp/>la<sp/>directive<sp/>car<sp/>discretisation<sp/>identique</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>dis.<ref refid="classDiscretisation__base_1afea05efdd1484bb9c80df965627c367f" kindref="member">discretiser_champ</ref>(</highlight><highlight class="stringliteral">&quot;temperature&quot;</highlight><highlight class="normal">,<ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>(),</highlight><highlight class="stringliteral">&quot;fraction_massique&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;sans_dimension&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/></highlight><highlight class="comment">/*<sp/>nb_composantes<sp/>*/</highlight><highlight class="normal">,nb_valeurs_temp,temps,<ref refid="classConvection__Diffusion__Fluide__Dilatable__base_1a751aa070dd189fd8ad1d938a83586777" kindref="member">l_inco_ch</ref>);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1ac849b71b99dbe338b049a7728208c965" kindref="member">Equation_base::discretiser</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Convection_Diffusion_Espece_Fluide_Dilatable_base::discretiser()<sp/>ok&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1a464c4952cd1d68c15096a63f4989ee89" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1a464c4952cd1d68c15096a63f4989ee89" kindref="member">Convection_Diffusion_Espece_Fluide_Dilatable_base::calculer_div_u_ou_div_rhou</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>Div)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="69"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Fluide__Dilatable__Proto_1a121d891b16222913346f02b786fbf945" kindref="member">Convection_Diffusion_Fluide_Dilatable_Proto::calculer_div_rho_u_impl</ref>(Div,*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1a0552d2316690977446384ad8e3a167ab" refkind="member"><highlight class="normal">std::vector&lt;YAML_data&gt;<sp/><ref refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1a0552d2316690977446384ad8e3a167ab" kindref="member">Convection_Diffusion_Espece_Fluide_Dilatable_base::data_a_sauvegarder</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="74"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1a392b9c1e46ecdbbbe6c5a1025173b878" kindref="member">Equation_base::data_a_sauvegarder</ref>();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1a828288511351b564184c15b0c2fa1804" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1a828288511351b564184c15b0c2fa1804" kindref="member">Convection_Diffusion_Espece_Fluide_Dilatable_base::sauvegarder</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="79"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bytes=0;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>bytes<sp/>+=<sp/><ref refid="classEquation__base_1a9b074257155c1b095a254fa90a2447d7" kindref="member">Equation_base::sauvegarder</ref>(os);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>bytes;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1af814a31e50fd9486cf7e605ba752f045" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1af814a31e50fd9486cf7e605ba752f045" kindref="member">Convection_Diffusion_Espece_Fluide_Dilatable_base::reprendre</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1a1bf3576c178a1c2c907467a526347153" kindref="member">Convection_Diffusion_Fluide_Dilatable_base::reprendre</ref>(is);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="91"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nom<sp/>du<sp/>domaine<sp/>d&apos;application<sp/>de<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>Ici<sp/>&quot;Thermique&quot;.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Motcle&amp;)<sp/>le<sp/>nom<sp/>du<sp/>domaine<sp/>d&apos;application<sp/>de<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1afd709d1175be7171738d0de491a79a5c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/><ref refid="classConvection__Diffusion__Espece__Fluide__Dilatable__base_1afd709d1175be7171738d0de491a79a5c" kindref="member">Convection_Diffusion_Espece_Fluide_Dilatable_base::domaine_application</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="98"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>domaine<sp/>=</highlight><highlight class="stringliteral">&quot;Fraction_massique&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>domaine;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Dilatable/Common/Equations/Convection_Diffusion_Espece_Fluide_Dilatable_base.cpp"/>
+  </compounddef>
+</doxygen>

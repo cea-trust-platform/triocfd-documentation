@@ -1,0 +1,554 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Champ__implementation__P1_8cpp" kind="file" language="C++">
+    <compoundname>Champ_implementation_P1.cpp</compoundname>
+    <includes refid="Champ__implementation__P1_8h" local="no">Champ_implementation_P1.h</includes>
+    <includes refid="Domaine__Poly__base_8h" local="no">Domaine_Poly_base.h</includes>
+    <includes refid="Octree__Double_8h" local="no">Octree_Double.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Champ__implementation__P1_8cpp_1ad26ec356aba8ab167417ca9dcc365354" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double coord_barycentrique_P1</definition>
+        <argsstring>(const IntTab &amp;polys, const DoubleTab &amp;coord, double x, double y, double z, int le_poly, int i)</argsstring>
+        <name>coord_barycentrique_P1</name>
+        <param>
+          <type>const <ref refid="classTRUSTTab" kindref="compound">IntTab</ref> &amp;</type>
+          <declname>polys</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref> &amp;</type>
+          <declname>coord</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>le_poly</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Calcule la coordonnee barycentrique d&apos;un point (x,y,z) par rapport au sommet specifie d&apos;un tetraedre ou d&apos;un hexaedre (un element) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Ce calcul concerne un point 3D.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>(IntTab&amp;</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>polys) tableau contenant les numeros des elements par rapport auxquels on veut calculer une coordonnee barycentrique. polys(i,0) est l&apos;indice du sommet 0 de l&apos;element i dans le tableau des coordonnees (coord). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>(DoubleTab&amp;</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>coord) les coordonnees des sommets par auxquels on veut calculer les coordonnees barycentriques. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>(double</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>x) la premiere coordonnee cartesienne du point dont on veut calculer les coordonnees barycentriques </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>(double</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>y) la deuxieme coordonnee cartesienne du point dont on veut calculer les coordonnees barycentriques </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>(double</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>z) la troisieme coordonnee cartesienne du point dont on veut calculer les coordonnees barycentriques </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>(int</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>le_poly) le numero de l&apos;element (dans le tableau polys) par rapport auquel on calculera la coordonnee barycentrique. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>(int</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>i) le numero du sommet par rapport auquel on veut la coordonnee barycentrique. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>(double) la coordonnee barycentrique du point (x,y,z) par rapport au sommet specifie (i) dans l&apos;element specifie (le_poly) </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>un</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tetraedre n&apos;a pas plus de 4 sommets </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>un</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>hexaedre n&apos;a pas plus de 8 sommets </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>erreur</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>arithmetique, denominateur nul </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>erreur</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>de calcul, coordonnee barycentrique invalide </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs_dis/Champ_implementation_P1.cpp" line="279" column="8" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs_dis/Champ_implementation_P1.cpp" bodystart="279" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="Champ__implementation__P1_8cpp_1a101599c9532a7736fd54b962d4551f8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double coord_barycentrique_P1</definition>
+        <argsstring>(const IntTab &amp;polys, const DoubleTab &amp;coord, double x, double y, int le_poly, int i)</argsstring>
+        <name>coord_barycentrique_P1</name>
+        <param>
+          <type>const <ref refid="classTRUSTTab" kindref="compound">IntTab</ref> &amp;</type>
+          <declname>polys</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref> &amp;</type>
+          <declname>coord</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>le_poly</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Calcule la coordonnee barycentrique d&apos;un point (x,y) par rapport au sommet specifie d&apos;un triangle ou d&apos;un rectange (un element) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Ce calcul concerne un point 2D.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>(IntTab&amp;</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>polys) tableau contenant les numeros des elements par rapport auxquels on veut calculer une coordonnee barycentrique. polys(i,0) est l&apos;indice du sommet 0 de l&apos;element i dans le tableau des coordonnees (coord). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>(DoubleTab&amp;</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>coord) les coordonnees des sommets par auxquels on veut calculer les coordonnees barycentriques. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>(double</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>x) la premiere coordonnee cartesienne du point dont on veut calculer les coordonnees barycentriques </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>(double</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>y) la deuxieme coordonnee cartesienne du point dont on veut calculer les coordonnees barycentriques </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>(int</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>le_poly) le numero de l&apos;element (dans le tableau polys) par rapport auquel on calculera la coordonnee barycentrique. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>(int</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>i) le numero du sommet par rapport auquel on veut la coordonnee barycentrique. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>(double) la coordonnee barycentrique du point (x,y) par rapport au sommet specifie (i) dans l&apos;element specifie (le_poly) </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>erreur</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>arithmetique, denominateur nul </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>erreur</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>de calcul, coordonnee barycentrique invalide </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs_dis/Champ_implementation_P1.cpp" line="247" column="8" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs_dis/Champ_implementation_P1.cpp" bodystart="247" bodyend="260"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_implementation_P1.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_Poly_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Octree_Double.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Champ_implementation_P1::form_function(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>position,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>les_elems,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>nodes,<sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref>&amp;<sp/>index,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cell,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ddl)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="22"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_nodes_per_cell<sp/>=<sp/>les_elems.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>assert(ddl<sp/>&lt;<sp/>nb_nodes_per_cell);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nb_nodes_per_cell;<sp/>i++)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>index[i]<sp/>=<sp/>les_elems(cell,<sp/>(i<sp/>+<sp/>ddl)<sp/>%<sp/>nb_nodes_per_cell);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nb_nodes_per_cell<sp/>==<sp/>2)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>num<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>den<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>0;<sp/>d<sp/>&lt;<sp/><ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">Objet_U::dimension</ref>;<sp/>d++)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num<sp/>+=<sp/>(position[d]<sp/>-<sp/>nodes(index[0],<sp/>d))<sp/>*<sp/>(position[d]<sp/>-<sp/>nodes(index[0],<sp/>d));</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>den<sp/>+=<sp/>(nodes(index[1],<sp/>d)<sp/>-<sp/>nodes(index[0],<sp/>d))<sp/>*<sp/>(nodes(index[1],<sp/>d)<sp/>-<sp/>nodes(index[0],<sp/>d));</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>res<sp/>=<sp/>1.<sp/>-<sp/>sqrt(num<sp/>/<sp/>den);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cerr&lt;&lt;&quot;ii<sp/>&quot;&lt;&lt;res&lt;&lt;&quot;<sp/>&quot;&lt;&lt;index[0]&lt;&lt;&quot;<sp/>&quot;&lt;&lt;ddl&lt;&lt;&quot;<sp/>&quot;&lt;&lt;(ddl)%nb_nodes_per_cell&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>num<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>den<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">Objet_U::dimension</ref><sp/>==<sp/>2)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>den<sp/>=<sp/>(nodes(index[2],<sp/>0)<sp/>-<sp/>nodes(index[1],<sp/>0))<sp/>*<sp/>(nodes(index[0],<sp/>1)<sp/>-<sp/>nodes(index[1],<sp/>1))<sp/>-<sp/>(nodes(index[2],<sp/>1)<sp/>-<sp/>nodes(index[1],<sp/>1))<sp/>*<sp/>(nodes(index[0],<sp/>0)<sp/>-<sp/>nodes(index[1],<sp/>0));</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>num<sp/>=<sp/>(nodes(index[2],<sp/>0)<sp/>-<sp/>nodes(index[1],<sp/>0))<sp/>*<sp/>(position[1]<sp/>-<sp/>nodes(index[1],<sp/>1))<sp/>-<sp/>(nodes(index[2],<sp/>1)<sp/>-<sp/>nodes(index[1],<sp/>1))<sp/>*<sp/>(position[0]<sp/>-<sp/>nodes(index[1],<sp/>0));</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">Objet_U::dimension</ref><sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>xp<sp/>=<sp/>(nodes(index[2],<sp/>1)<sp/>-<sp/>nodes(index[1],<sp/>1))<sp/>*<sp/>(nodes(index[0],<sp/>2)<sp/>-<sp/>nodes(index[1],<sp/>2))<sp/>-<sp/>(nodes(index[2],<sp/>2)<sp/>-<sp/>nodes(index[1],<sp/>2))<sp/>*<sp/>(nodes(index[0],<sp/>1)<sp/>-<sp/>nodes(index[1],<sp/>1));</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>yp<sp/>=<sp/>(nodes(index[2],<sp/>2)<sp/>-<sp/>nodes(index[1],<sp/>2))<sp/>*<sp/>(nodes(index[0],<sp/>0)<sp/>-<sp/>nodes(index[1],<sp/>0))<sp/>-<sp/>(nodes(index[2],<sp/>0)<sp/>-<sp/>nodes(index[1],<sp/>0))<sp/>*<sp/>(nodes(index[0],<sp/>2)<sp/>-<sp/>nodes(index[1],<sp/>2));</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>zp<sp/>=<sp/>(nodes(index[2],<sp/>0)<sp/>-<sp/>nodes(index[1],<sp/>0))<sp/>*<sp/>(nodes(index[0],<sp/>1)<sp/>-<sp/>nodes(index[1],<sp/>1))<sp/>-<sp/>(nodes(index[2],<sp/>1)<sp/>-<sp/>nodes(index[1],<sp/>1))<sp/>*<sp/>(nodes(index[0],<sp/>0)<sp/>-<sp/>nodes(index[1],<sp/>0));</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>den<sp/>=<sp/>xp<sp/>*<sp/>(nodes(index[3],<sp/>0)<sp/>-<sp/>nodes(index[1],<sp/>0))<sp/>+<sp/>yp<sp/>*<sp/>(nodes(index[3],<sp/>1)<sp/>-<sp/>nodes(index[1],<sp/>1))<sp/>+<sp/>zp<sp/>*<sp/>(nodes(index[3],<sp/>2)<sp/>-<sp/>nodes(index[1],<sp/>2));</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>xp<sp/>=<sp/>(nodes(index[2],<sp/>1)<sp/>-<sp/>nodes(index[1],<sp/>1))<sp/>*<sp/>(position[2]<sp/>-<sp/>nodes(index[1],<sp/>2))<sp/>-<sp/>(nodes(index[2],<sp/>2)<sp/>-<sp/>nodes(index[1],<sp/>2))<sp/>*<sp/>(position[1]<sp/>-<sp/>nodes(index[1],<sp/>1));</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>yp<sp/>=<sp/>(nodes(index[2],<sp/>2)<sp/>-<sp/>nodes(index[1],<sp/>2))<sp/>*<sp/>(position[0]<sp/>-<sp/>nodes(index[1],<sp/>0))<sp/>-<sp/>(nodes(index[2],<sp/>0)<sp/>-<sp/>nodes(index[1],<sp/>0))<sp/>*<sp/>(position[2]<sp/>-<sp/>nodes(index[1],<sp/>2));</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>zp<sp/>=<sp/>(nodes(index[2],<sp/>0)<sp/>-<sp/>nodes(index[1],<sp/>0))<sp/>*<sp/>(position[1]<sp/>-<sp/>nodes(index[1],<sp/>1))<sp/>-<sp/>(nodes(index[2],<sp/>1)<sp/>-<sp/>nodes(index[1],<sp/>1))<sp/>*<sp/>(position[0]<sp/>-<sp/>nodes(index[1],<sp/>0));</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>num<sp/>=<sp/>xp<sp/>*<sp/>(nodes(index[3],<sp/>0)<sp/>-<sp/>nodes(index[1],<sp/>0))<sp/>+<sp/>yp<sp/>*<sp/>(nodes(index[3],<sp/>1)<sp/>-<sp/>nodes(index[1],<sp/>1))<sp/>+<sp/>zp<sp/>*<sp/>(nodes(index[3],<sp/>2)<sp/>-<sp/>nodes(index[1],<sp/>2));</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Champ_implementation_P1::form_function<sp/>:<sp/>Invalid<sp/>dimension&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>assert(den<sp/>!=<sp/>0.);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>num<sp/>/<sp/>den;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((result<sp/>&lt;<sp/>-<ref refid="classObjet__U_1a7447e25c68cc8d3a1c06cf99f0565cff" kindref="member">Objet_U::precision_geom</ref>)<sp/>||<sp/>(result<sp/>&gt;<sp/>1.<sp/>+<sp/><ref refid="classObjet__U_1a7447e25c68cc8d3a1c06cf99f0565cff" kindref="member">Objet_U::precision_geom</ref>))</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;WARNING:<sp/>The<sp/>barycentric<sp/>coordinate<sp/>of<sp/>point<sp/>:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;x=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>position[0]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>y=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>position[1];</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">Objet_U::dimension</ref><sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>z=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>position[3];</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;is<sp/>not<sp/>between<sp/>0<sp/>and<sp/>1<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>result<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;On<sp/>the<sp/>element<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cell<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>the<sp/>processor<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classProcess_1ab55ba07167ec807ed3a145cac0f5dca4" kindref="member">Process::me</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98" refid="classChamp__implementation__P1_1aeebc5c8529c26afc8dfaff077cff13c0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__implementation__P1_1aeebc5c8529c26afc8dfaff077cff13c0" kindref="member">Champ_implementation_P1::value_interpolation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>positions,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref>&amp;<sp/>cells,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>values,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>resu,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ncomp)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="99"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>domaine<sp/>=<sp/><ref refid="classChamp__implementation_1a3fec2ea8062d59ae40a96ccc417bf695" kindref="member">get_domaine_geom</ref>();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Poly__base" kindref="compound">Domaine_Poly_base</ref><sp/>*zpoly<sp/>=<sp/>sub_type(<ref refid="classDomaine__Poly__base" kindref="compound">Domaine_Poly_base</ref>,<sp/><ref refid="classChamp__implementation_1ad3adfc700c771b218b531161bec50f15" kindref="member">get_domaine_dis</ref>())<sp/>?<sp/>&amp;ref_cast(<ref refid="classDomaine__Poly__base" kindref="compound">Domaine_Poly_base</ref>,<sp/><ref refid="classChamp__implementation_1ad3adfc700c771b218b531161bec50f15" kindref="member">get_domaine_dis</ref>())<sp/>:<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>les_elems<sp/>=<sp/>domaine.les_elems();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>nodes<sp/>=<sp/>domaine.les_sommets();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_nodes_per_cell<sp/>=<sp/>domaine.nb_som_elem(),<sp/>N<sp/>=<sp/>resu.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref><sp/>index(nb_nodes_per_cell);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref><sp/>position(<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">Objet_U::dimension</ref>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>resu<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(zpoly)<sp/></highlight><highlight class="comment">//polyedred<sp/>-&gt;<sp/>interpolation<sp/>ponderee<sp/>par<sp/>les<sp/>volumes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>v_es<sp/>=<sp/>zpoly-&gt;<ref refid="classDomaine__Poly__base_1a15a9d3bc4805f9ec0f0c4dac4f2082a7" kindref="member">vol_elem_som</ref>();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>ve<sp/>=<sp/>zpoly-&gt;<ref refid="classDomaine__VF_1a72d89d7c6778a2b8a7a5199bede0297a" kindref="member">volumes</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>es_d<sp/>=<sp/>zpoly-&gt;<ref refid="classDomaine__Poly__base_1a73e42a840d470976fd9198fa11d5eeed" kindref="member">elem_som_d</ref>();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ic<sp/>=<sp/>0;<sp/>ic<sp/>&lt;<sp/>cells.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>();<sp/>ic++)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cell<sp/>=<sp/>cells[ic];</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cell<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(cell<sp/>&gt;=<sp/>0);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(cell<sp/>&lt;<sp/>les_elems.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0));</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ncomp<sp/>!=<sp/>-1)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0,<sp/>k<sp/>=<sp/>es_d(cell);<sp/>k<sp/>&lt;<sp/>es_d(cell<sp/>+<sp/>1);<sp/>j++,<sp/>k++)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resu(ic)<sp/>+=<sp/>values(les_elems(cell,<sp/>j),<sp/>ncomp)<sp/>*<sp/>v_es(k)<sp/>/<sp/>ve(cell);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(values.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>==<sp/>N);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0,<sp/>k<sp/>=<sp/>es_d(cell);<sp/>k<sp/>&lt;<sp/>es_d(cell<sp/>+<sp/>1);<sp/>k++)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0,<sp/>s<sp/>=<sp/>les_elems(cell,<sp/>j);<sp/>n<sp/>&lt;<sp/>N;<sp/>n++)</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resu(ic,<sp/>n)<sp/>+=<sp/>values(s,<sp/>n)<sp/>*<sp/>v_es(k)<sp/>/<sp/>ve(cell);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ic<sp/>=<sp/>0;<sp/>ic<sp/>&lt;<sp/>cells.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>();<sp/>ic++)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cell<sp/>=<sp/>cells[ic];</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cell<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/><ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">Objet_U::dimension</ref>;<sp/>k++)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>position[k]<sp/>=<sp/>positions(ic,<sp/>k);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(cell<sp/>&gt;=<sp/>0);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(cell<sp/>&lt;<sp/>les_elems.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0));</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ncomp<sp/>!=<sp/>-1)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>nb_nodes_per_cell;<sp/>j++)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>node<sp/>=<sp/>les_elems(cell,<sp/>j);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resu(ic)<sp/>+=<sp/>values(node,<sp/>ncomp)<sp/>*<sp/>form_function(position,<sp/>les_elems,<sp/>nodes,<sp/>index,<sp/>cell,<sp/>j);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(values.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>==<sp/>N);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>nb_nodes_per_cell;<sp/>j++)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>weight<sp/>=<sp/>form_function(position,<sp/>les_elems,<sp/>nodes,<sp/>index,<sp/>cell,<sp/>j);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>node<sp/>=<sp/>les_elems(cell,<sp/>j);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>N;<sp/>k++)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resu(ic,<sp/>k)<sp/>+=<sp/>values(node,<sp/>k)<sp/>*<sp/>weight;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="167"><highlight class="comment">/*!<sp/>@brief<sp/>Initialise<sp/>le<sp/>tableau<sp/>de<sp/>valeurs<sp/>aux<sp/>sommets<sp/>du<sp/>domaine<sp/>dom<sp/>a<sp/>partir<sp/>de<sp/>valeurs<sp/>lues<sp/>dans<sp/>&quot;input&quot;.</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/>*<sp/>(on<sp/>dimensionne,<sp/>associe<sp/>la<sp/>structure<sp/>parallele<sp/>et<sp/>remplit<sp/>les<sp/>valeurs<sp/>reelles<sp/>et<sp/>virtuelles)</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Le<sp/>fichier<sp/>doit<sp/>avoir<sp/>le<sp/>format<sp/>suivant<sp/>(n<sp/>est<sp/>le<sp/>nombre<sp/>de<sp/>valeurs<sp/>nodales</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/>*<sp/><sp/><sp/>stockees,<sp/>x,<sp/>y,<sp/>z<sp/>sont<sp/>les<sp/>coordonnees<sp/>des<sp/>sommets,<sp/>compo1...<sp/>sont<sp/>les<sp/>valeurs</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/>*<sp/><sp/><sp/>des<sp/>composantes.</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/>*<sp/><sp/><sp/>n<sp/><sp/>(int)</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/>*<sp/><sp/><sp/>x<sp/>y<sp/>[z]<sp/>compo1<sp/>[compo2<sp/>[compo3<sp/>...<sp/>]]<sp/><sp/><sp/>(type<sp/>double)</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="classChamp__implementation__P1_1aa8a7e3f20eac92f926f3f19b29076a92" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__implementation__P1_1aa8a7e3f20eac92f926f3f19b29076a92" kindref="member">Champ_implementation_P1::init_from_file</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>val,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>dom,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_comp,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tolerance,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>input)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>val.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(0,<sp/>nb_comp);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>dom.<ref refid="classDomaine__32__64_1ad9f8e3169e73ab1147a22eabfb0766de" kindref="member">creer_tableau_sommets</ref>(val,<sp/>RESIZE_OPTIONS::NOCOPY_NOINIT);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Construction<sp/>d&apos;un<sp/>octree<sp/>avec<sp/>les<sp/>sommets<sp/>du<sp/>domaine:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>coord<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ac38406cad4d4a168ff220bf1c3bfee72" kindref="member">coord_sommets</ref>();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><ref refid="classOctree__Double__32__64" kindref="compound">Octree_Double</ref><sp/>octree;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>octree.<ref refid="classOctree__Double__32__64_1a7ad0efebf5fe3572571b56795d2fcda9" kindref="member">build_nodes</ref>(coord,<sp/>0<sp/></highlight><highlight class="comment">/*<sp/>do<sp/>not<sp/>include<sp/>virtual<sp/>nodes<sp/>*/</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Lecture<sp/>des<sp/>valeurs<sp/>dans<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_val_lues;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>input<sp/>&gt;&gt;<sp/>nb_val_lues;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dim<sp/>=<sp/>coord.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tmp_size<sp/>=<sp/>dim<sp/>+<sp/>nb_comp;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref><sp/>tmp(tmp_size);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref><sp/>node_coord;<sp/></highlight><highlight class="comment">//<sp/>points<sp/>to<sp/>the<sp/>dim<sp/>first<sp/>elements<sp/>of<sp/>&quot;tmp&quot;<sp/>(coordinates<sp/>of<sp/>the<sp/>node)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/>node_coord.<ref refid="classTRUSTArray_1a70878d694b4fcbe8e81e6e9e2e3dafc8" kindref="member">ref_array</ref>(tmp,<sp/>0<sp/></highlight><highlight class="comment">/*<sp/>start<sp/>index<sp/>*/</highlight><highlight class="normal">,<sp/>dim<sp/></highlight><highlight class="comment">/*<sp/>size<sp/>*/</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref><sp/>node_list;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref><sp/>count(dom.<ref refid="classDomaine__32__64_1ae7be1a7efe0526d124745c0c5238f0a2" kindref="member">nb_som</ref>());<sp/></highlight><highlight class="comment">//<sp/>number<sp/>of<sp/>times<sp/>this<sp/>coordinate<sp/>has<sp/>been<sp/>found</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i_val<sp/>=<sp/>0;<sp/>i_val<sp/>&lt;<sp/>nb_val_lues;<sp/>i_val++)</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>input.<ref refid="classEntree_1ac51bf56d33f44cef1f366219204ff61e" kindref="member">get</ref>(tmp.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>(),<sp/>tmp_size);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>first<sp/>call<sp/>returns<sp/>more<sp/>points<sp/>(some<sp/>might<sp/>be<sp/>at<sp/>a<sp/>larger<sp/>distance)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>octree.<ref refid="classOctree__Double__32__64_1ae760e41427045909f1da5868ef8f7bcf" kindref="member">search_elements_box</ref>(node_coord,<sp/>tolerance,<sp/>node_list);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>octree.<ref refid="classOctree__Double__32__64_1a43c05b38e8f0c9e63a8f15274b98030b" kindref="member">search_nodes_close_to</ref>(node_coord,<sp/>coord,<sp/>node_list,<sp/>tolerance);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>node_list.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>();</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n<sp/>&gt;<sp/>1)</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Champ_som_lu::readOn:<sp/>point<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>node_coord<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>corresponds<sp/>to<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>node_list.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>nodes<sp/>in<sp/>the<sp/>geometry<sp/>within<sp/>the<sp/>specified<sp/>tolerance&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>node_index<sp/>=<sp/>node_list[0];</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count[node_index]++;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nb_comp;<sp/>i++)</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val(node_index,<sp/>i)<sp/>=<sp/>tmp[dim<sp/>+<sp/>i];</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ce<sp/>sommet<sp/>n&apos;est<sp/>pas<sp/>sur<sp/>ce<sp/>processeur...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dom.<ref refid="classDomaine__32__64_1ae7be1a7efe0526d124745c0c5238f0a2" kindref="member">nb_som</ref>()<sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>min_array(count)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Champ_som_lu::readOn:<sp/>some<sp/>coordinates<sp/>were<sp/>not<sp/>found<sp/>in<sp/>the<sp/>file&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/>val.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="231"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="233"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>la<sp/>coordonnee<sp/>barycentrique<sp/>d&apos;un<sp/>point<sp/>(x,y)<sp/>par<sp/>rapport<sp/>au<sp/>sommet<sp/>specifie<sp/>d&apos;un<sp/>triangle<sp/>ou<sp/>d&apos;un<sp/>rectange<sp/>(un<sp/>element)</highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="235"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Ce<sp/>calcul<sp/>concerne<sp/>un<sp/>point<sp/>2D.</highlight></codeline>
+<codeline lineno="236"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="237"><highlight class="comment"><sp/>*<sp/>@param<sp/>(IntTab&amp;<sp/>polys)<sp/>tableau<sp/>contenant<sp/>les<sp/>numeros<sp/>des<sp/>elements<sp/>par<sp/>rapport<sp/>auxquels<sp/>on<sp/>veut<sp/>calculer<sp/>une<sp/>coordonnee<sp/>barycentrique.<sp/>polys(i,0)<sp/>est<sp/>l&apos;indice<sp/>du<sp/>sommet<sp/>0<sp/>de<sp/>l&apos;element<sp/>i<sp/>dans<sp/>le<sp/>tableau<sp/>des<sp/>coordonnees<sp/>(coord).</highlight></codeline>
+<codeline lineno="238"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>coord)<sp/>les<sp/>coordonnees<sp/>des<sp/>sommets<sp/>par<sp/>auxquels<sp/>on<sp/>veut<sp/>calculer<sp/>les<sp/>coordonnees<sp/>barycentriques.</highlight></codeline>
+<codeline lineno="239"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>x)<sp/>la<sp/>premiere<sp/>coordonnee<sp/>cartesienne<sp/>du<sp/>point<sp/>dont<sp/>on<sp/>veut<sp/>calculer<sp/>les<sp/>coordonnees<sp/>barycentriques</highlight></codeline>
+<codeline lineno="240"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>y)<sp/>la<sp/>deuxieme<sp/>coordonnee<sp/>cartesienne<sp/>du<sp/>point<sp/>dont<sp/>on<sp/>veut<sp/>calculer<sp/>les<sp/>coordonnees<sp/>barycentriques</highlight></codeline>
+<codeline lineno="241"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>le_poly)<sp/>le<sp/>numero<sp/>de<sp/>l&apos;element<sp/>(dans<sp/>le<sp/>tableau<sp/>polys)<sp/>par<sp/>rapport<sp/>auquel<sp/>on<sp/>calculera<sp/>la<sp/>coordonnee<sp/>barycentrique.</highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>numero<sp/>du<sp/>sommet<sp/>par<sp/>rapport<sp/>auquel<sp/>on<sp/>veut<sp/>la<sp/>coordonnee<sp/>barycentrique.</highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/>*<sp/>@return<sp/>(double)<sp/>la<sp/>coordonnee<sp/>barycentrique<sp/>du<sp/>point<sp/>(x,y)<sp/>par<sp/>rapport<sp/>au<sp/>sommet<sp/>specifie<sp/>(i)<sp/>dans<sp/>l&apos;element<sp/>specifie<sp/>(le_poly)</highlight></codeline>
+<codeline lineno="244"><highlight class="comment"><sp/>*<sp/>@throws<sp/>erreur<sp/>arithmetique,<sp/>denominateur<sp/>nul</highlight></codeline>
+<codeline lineno="245"><highlight class="comment"><sp/>*<sp/>@throws<sp/>erreur<sp/>de<sp/>calcul,<sp/>coordonnee<sp/>barycentrique<sp/>invalide</highlight></codeline>
+<codeline lineno="246"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>coord_barycentrique_P1(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>polys,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>coord,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>le_poly,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="248"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_som_elem<sp/>=<sp/>polys.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Distinction<sp/>du<sp/>calcul<sp/>de<sp/>la<sp/>coordonnee<sp/>barycentrique<sp/>en<sp/>fonction<sp/>du<sp/>type<sp/>de<sp/>l<sp/>element</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cas<sp/>Triangle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nb_som_elem<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>coord_barycentrique_P1_triangle(polys,<sp/>coord,<sp/>x,<sp/>y,<sp/>le_poly,<sp/>i);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cas<sp/>Rectangle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nb_som_elem<sp/>==<sp/>4)</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>coord_barycentrique_P1_rectangle(polys,<sp/>coord,<sp/>x,<sp/>y,<sp/>le_poly,<sp/>i);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>number<sp/>of<sp/>nodes<sp/>by<sp/>element<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nb_som_elem<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>correspond<sp/>to<sp/>a<sp/>treated<sp/>situation<sp/>in<sp/>the<sp/>coord_barycentrique_P1<sp/>function.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="262"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>la<sp/>coordonnee<sp/>barycentrique<sp/>d&apos;un<sp/>point<sp/>(x,y,z)<sp/>par<sp/>rapport<sp/>au<sp/>sommet<sp/>specifie<sp/>d&apos;un<sp/>tetraedre<sp/>ou<sp/>d&apos;un<sp/>hexaedre<sp/>(un<sp/>element)</highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="264"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Ce<sp/>calcul<sp/>concerne<sp/>un<sp/>point<sp/>3D.</highlight></codeline>
+<codeline lineno="265"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp/>*<sp/>@param<sp/>(IntTab&amp;<sp/>polys)<sp/>tableau<sp/>contenant<sp/>les<sp/>numeros<sp/>des<sp/>elements<sp/>par<sp/>rapport<sp/>auxquels<sp/>on<sp/>veut<sp/>calculer<sp/>une<sp/>coordonnee<sp/>barycentrique.<sp/>polys(i,0)<sp/>est<sp/>l&apos;indice<sp/>du<sp/>sommet<sp/>0<sp/>de<sp/>l&apos;element<sp/>i<sp/>dans<sp/>le<sp/>tableau<sp/>des<sp/>coordonnees<sp/>(coord).</highlight></codeline>
+<codeline lineno="267"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>coord)<sp/>les<sp/>coordonnees<sp/>des<sp/>sommets<sp/>par<sp/>auxquels<sp/>on<sp/>veut<sp/>calculer<sp/>les<sp/>coordonnees<sp/>barycentriques.</highlight></codeline>
+<codeline lineno="268"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>x)<sp/>la<sp/>premiere<sp/>coordonnee<sp/>cartesienne<sp/>du<sp/>point<sp/>dont<sp/>on<sp/>veut<sp/>calculer<sp/>les<sp/>coordonnees<sp/>barycentriques</highlight></codeline>
+<codeline lineno="269"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>y)<sp/>la<sp/>deuxieme<sp/>coordonnee<sp/>cartesienne<sp/>du<sp/>point<sp/>dont<sp/>on<sp/>veut<sp/>calculer<sp/>les<sp/>coordonnees<sp/>barycentriques</highlight></codeline>
+<codeline lineno="270"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>z)<sp/>la<sp/>troisieme<sp/>coordonnee<sp/>cartesienne<sp/>du<sp/>point<sp/>dont<sp/>on<sp/>veut<sp/>calculer<sp/>les<sp/>coordonnees<sp/>barycentriques</highlight></codeline>
+<codeline lineno="271"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>le_poly)<sp/>le<sp/>numero<sp/>de<sp/>l&apos;element<sp/>(dans<sp/>le<sp/>tableau<sp/>polys)<sp/>par<sp/>rapport<sp/>auquel<sp/>on<sp/>calculera<sp/>la<sp/>coordonnee<sp/>barycentrique.</highlight></codeline>
+<codeline lineno="272"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>numero<sp/>du<sp/>sommet<sp/>par<sp/>rapport<sp/>auquel<sp/>on<sp/>veut<sp/>la<sp/>coordonnee<sp/>barycentrique.</highlight></codeline>
+<codeline lineno="273"><highlight class="comment"><sp/>*<sp/>@return<sp/>(double)<sp/>la<sp/>coordonnee<sp/>barycentrique<sp/>du<sp/>point<sp/>(x,y,z)<sp/>par<sp/>rapport<sp/>au<sp/>sommet<sp/>specifie<sp/>(i)<sp/>dans<sp/>l&apos;element<sp/>specifie<sp/>(le_poly)</highlight></codeline>
+<codeline lineno="274"><highlight class="comment"><sp/>*<sp/>@throws<sp/>un<sp/>tetraedre<sp/>n&apos;a<sp/>pas<sp/>plus<sp/>de<sp/>4<sp/>sommets</highlight></codeline>
+<codeline lineno="275"><highlight class="comment"><sp/>*<sp/>@throws<sp/>un<sp/>hexaedre<sp/>n&apos;a<sp/>pas<sp/>plus<sp/>de<sp/>8<sp/>sommets</highlight></codeline>
+<codeline lineno="276"><highlight class="comment"><sp/>*<sp/>@throws<sp/>erreur<sp/>arithmetique,<sp/>denominateur<sp/>nul</highlight></codeline>
+<codeline lineno="277"><highlight class="comment"><sp/>*<sp/>@throws<sp/>erreur<sp/>de<sp/>calcul,<sp/>coordonnee<sp/>barycentrique<sp/>invalide</highlight></codeline>
+<codeline lineno="278"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>coord_barycentrique_P1(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>polys,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>coord,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>z,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>le_poly,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_som_elem<sp/>=<sp/>polys.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Distinction<sp/>du<sp/>calcul<sp/>de<sp/>la<sp/>coordonnee<sp/>barycentrique<sp/>en<sp/>fonction<sp/>du<sp/>type<sp/>de<sp/>l<sp/>element</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cas<sp/>Tetraedre</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nb_som_elem<sp/>==<sp/>4)</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>coord_barycentrique_P1_tetraedre(polys,<sp/>coord,<sp/>x,<sp/>y,<sp/>z,<sp/>le_poly,<sp/>i);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nb_som_elem<sp/>==<sp/>8)</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>coord_barycentrique_P1_hexaedre(polys,<sp/>coord,<sp/>x,<sp/>y,<sp/>z,<sp/>le_poly,<sp/>i);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>number<sp/>of<sp/>nodes<sp/>by<sp/>element<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nb_som_elem<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>correspond<sp/>to<sp/>a<sp/>treated<sp/>situation<sp/>in<sp/>the<sp/>coord_barycentrique_P1<sp/>function.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs_dis/Champ_implementation_P1.cpp"/>
+  </compounddef>
+</doxygen>

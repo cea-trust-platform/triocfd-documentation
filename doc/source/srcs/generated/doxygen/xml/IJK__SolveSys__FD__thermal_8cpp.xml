@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="IJK__SolveSys__FD__thermal_8cpp" kind="file" language="C++">
+    <compoundname>IJK_SolveSys_FD_thermal.cpp</compoundname>
+    <includes refid="IJK__SolveSys__FD__thermal_8h" local="no">IJK_SolveSys_FD_thermal.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes refid="Solv__Gmres_8h" local="no">Solv_Gmres.h</includes>
+    <includes refid="Solv__Petsc_8h" local="no">Solv_Petsc.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="IJK__SolveSys__FD__thermal_8cpp_1a72b08dc4a13ef9a1c3326c70e8b9f78a" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* IJK_SolveSys_FD_thermalbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>IJK_SolveSys_FD_thermalbases</name>
+        <initializer>={   &amp;( <ref refid="classSolveurSys" kindref="compound">SolveurSys</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/Temperature/IJK_SolveSys_FD_thermal.cpp" line="27" column="133" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/Temperature/IJK_SolveSys_FD_thermal.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>IJK_SolveSys_FD_thermal.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory<sp/>:<sp/>$TRIOCFD_ROOT/src/Multiphase/Front_tracking_IJK/Temperature</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;IJK_SolveSys_FD_thermal.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Solv_Gmres.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Solv_Petsc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classIJK__SolveSys__FD__thermal_1af1702e2b124de58c6336fc0381d7610f" refkind="member"><highlight class="normal">Implemente_instanciable(<sp/><ref refid="classIJK__SolveSys__FD__thermal" kindref="compound">IJK_SolveSys_FD_thermal</ref>,<sp/></highlight><highlight class="stringliteral">&quot;IJK_SolveSys_FD_thermal&quot;</highlight><highlight class="normal">,<sp/><ref refid="classSolveurSys" kindref="compound">SolveurSys</ref><sp/>)<sp/>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classIJK__SolveSys__FD__thermal_1a730217a2a383774bf139d88a6818da47" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classIJK__SolveSys__FD__thermal_1a730217a2a383774bf139d88a6818da47" kindref="member">IJK_SolveSys_FD_thermal::printOn</ref>(<sp/><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="30"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><ref refid="classSolveurSys_1a8454f77eee36a16b66b031812ea128fe" kindref="member">SolveurSys::printOn</ref>(<sp/>os<sp/>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classIJK__SolveSys__FD__thermal_1a47bec42daa22f3528cd3974d13830b42" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classIJK__SolveSys__FD__thermal_1a47bec42daa22f3528cd3974d13830b42" kindref="member">IJK_SolveSys_FD_thermal::readOn</ref>(<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>solver_name;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Put<sp/>any<sp/>string<sp/>to<sp/>read<sp/>the<sp/>following<sp/>word</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;thermal_fd_solver&quot;</highlight><highlight class="normal">,&amp;solver_name,<sp/><ref refid="classParam_1aa4ad0ca1d49bc5f2ebc5fc83ee9df384aaf5b6dfac1c5970478525407cc6ac572" kindref="member">Param::REQUIRED</ref>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a5a27c9991a6e4220502cf9222ecf1796" kindref="member">lire_sans_accolade</ref>(is);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(solver_name<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;direct&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIJK__SolveSys__FD__thermal_1ab55407d9ca5430f406b1bc3988a8cff6" kindref="member">cast_direct_solver_by_default</ref>();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(solver_name<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;iterative&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIJK__SolveSys__FD__thermal_1a5d531d13a4b53824b1db599b3217cd57" kindref="member">cast_iterative_solver_by_default</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>prefix<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Solv_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(solver_name.<ref refid="classNom_1a7d94eff3b27fea7103475613072a4553" kindref="member">debute_par</ref>(prefix))</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>solver_name<sp/>=<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>((solver_name.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()).substr(prefix.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>().length()));</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type_solv_sys(prefix);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_solv_sys+=solver_name;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(type_solv_sys);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveurSys_1a8dc69a794250d2a64d5126507c2349db" kindref="member">nommer</ref>(<ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;thermal_fd_solver_&quot;</highlight><highlight class="normal">)<sp/>+<sp/>solver_name);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classIJK__SolveSys__FD__thermal_1a5d531d13a4b53824b1db599b3217cd57" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIJK__SolveSys__FD__thermal_1a5d531d13a4b53824b1db599b3217cd57" kindref="member">IJK_SolveSys_FD_thermal::cast_iterative_solver_by_default</ref>()</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(<ref refid="classIJK__SolveSys__FD__thermal_1ae4d1c4a593509eb6aa259a9c52fbd803" kindref="member">iterative_solver_by_default_</ref>);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="classSolveurSys_1a8dc69a794250d2a64d5126507c2349db" kindref="member">nommer</ref>(<ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;thermal_fd_solver_&quot;</highlight><highlight class="normal">)<sp/>+<sp/><ref refid="classIJK__SolveSys__FD__thermal_1ae4d1c4a593509eb6aa259a9c52fbd803" kindref="member">iterative_solver_by_default_</ref>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Fill<sp/>the<sp/>required<sp/>params<sp/>(example)</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Gmres" kindref="compound">Solv_Gmres</ref>&amp;<sp/>gmres_solver<sp/>=<sp/>ref_cast(<ref refid="classSolv__Gmres" kindref="compound">Solv_Gmres</ref>,<sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>gmres_solver.<ref refid="classsolv__iteratif_1a8f895c998d8b0548468b12c4cd908b2d" kindref="member">set_seuil</ref>(default_seuil);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classIJK__SolveSys__FD__thermal_1ab55407d9ca5430f406b1bc3988a8cff6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIJK__SolveSys__FD__thermal_1ab55407d9ca5430f406b1bc3988a8cff6" kindref="member">IJK_SolveSys_FD_thermal::cast_direct_solver_by_default</ref>()</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(<ref refid="classIJK__SolveSys__FD__thermal_1af92247552ef92177e3882631cdb3bd04" kindref="member">direct_solver_by_default_</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="classSolveurSys_1a8dc69a794250d2a64d5126507c2349db" kindref="member">nommer</ref>(<ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;thermal_fd_solver_&quot;</highlight><highlight class="normal">)<sp/>+<sp/><ref refid="classIJK__SolveSys__FD__thermal_1af92247552ef92177e3882631cdb3bd04" kindref="member">direct_solver_by_default_</ref><sp/>+<sp/><ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal">)<sp/>+<sp/><ref refid="classIJK__SolveSys__FD__thermal_1a596cee76a104b00b1d59cddf3da647ba" kindref="member">petsc_solver_by_default_</ref>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Petsc" kindref="compound">Solv_Petsc</ref>&amp;<sp/>petsc_solver<sp/>=<sp/>ref_cast(<ref refid="classSolv__Petsc" kindref="compound">Solv_Petsc</ref>,<sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>solver_params(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>left_bracket(</highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>right_bracket(</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>spacing(</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>solver_params<sp/>+=<sp/><ref refid="classIJK__SolveSys__FD__thermal_1a596cee76a104b00b1d59cddf3da647ba" kindref="member">petsc_solver_by_default_</ref><sp/>+<sp/>spacing<sp/>+<sp/>left_bracket<sp/>+<sp/>spacing;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Add<sp/>params<sp/>by<sp/>default</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>solver_params<sp/>+=<sp/><ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;nb_it_max&quot;</highlight><highlight class="normal">)<sp/>+<sp/>spacing<sp/>+<sp/><ref refid="classNom" kindref="compound">Nom</ref>(default_nb_iter_max)<sp/>+<sp/>spacing;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>solver_params<sp/>+=<sp/>right_bracket;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Thermal<sp/>F-D<sp/>Solver:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>solver_params<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>istringstream<sp/>solver_params_istringstream(solver_params.<ref refid="classNom_1a18849d5fc498cd087a6e1acb89dd17ff" kindref="member">getChar</ref>());</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>istream&amp;<sp/>solver_params_istream<sp/>=<sp/>solver_params_istringstream;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="classEntree" kindref="compound">Entree</ref><sp/>solver_params_entry(solver_params_istream);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Fake<sp/>a<sp/>readOn</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//solver_params_entry<sp/>&gt;&gt;<sp/>solver_params;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>petsc_solver.<ref refid="classObjet__U_1a469dbcad1d4a98a67e4246dce8e264ad" kindref="member">nommer</ref>(<ref refid="classSolveurSys_1a9823d9ecc2060408c79ae0474ba619f1" kindref="member">le_nom</ref>());</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>solver_params_entry<sp/>&gt;&gt;<sp/>petsc_solver;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/Temperature/IJK_SolveSys_FD_thermal.cpp"/>
+  </compounddef>
+</doxygen>

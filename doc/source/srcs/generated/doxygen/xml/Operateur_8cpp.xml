@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Operateur_8cpp" kind="file" language="C++">
+    <compoundname>Operateur.cpp</compoundname>
+    <includes refid="Discretisation__base_8h" local="no">Discretisation_base.h</includes>
+    <includes refid="Schema__Temps__base_8h" local="no">Schema_Temps_base.h</includes>
+    <includes refid="Operateur__base_8h" local="no">Operateur_base.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="stat__counters_8h" local="no">stat_counters.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+    <includes refid="Operateur_8h" local="no">Operateur.h</includes>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discretisation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Temps_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stat_counters.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classOperateur_1a7831381cc6a3c0b1183f00f648ba86b4" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classOperateur_1a7831381cc6a3c0b1183f00f648ba86b4" kindref="member">Operateur::ecrire</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="25"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>{<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>}<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="31"><highlight class="comment">/*!<sp/>@brief<sp/>Lit<sp/>un<sp/>operateur<sp/>sur<sp/>un<sp/>flot<sp/>d&apos;entree.</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>Type<sp/>l&apos;operateur<sp/>et<sp/>lui<sp/>associe<sp/>son<sp/>equation.</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Format:</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[UN<sp/>Motcle<sp/>REPRESENTANT<sp/>UN<sp/>TYPE]</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>le<sp/>flot<sp/>d&apos;entree<sp/>ou<sp/>lire<sp/>l&apos;operateur</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;)<sp/>le<sp/>flot<sp/>d&apos;entree<sp/>modifie</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@throws<sp/>accolade<sp/>ouvrante<sp/>attendue</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@throws<sp/>accolade<sp/>fermante<sp/>attendue</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classOperateur_1a4f23a0e4930adffe06e508d94d60e16c" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classOperateur_1a4f23a0e4930adffe06e508d94d60e16c" kindref="member">Operateur::lire</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref>=</highlight><highlight class="stringliteral">&quot;non<sp/>defini&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motlu;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu<sp/>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>assert(motlu==</highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(motlu!=</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is&gt;&gt;motlu;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu==</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref>==</highlight><highlight class="stringliteral">&quot;non<sp/>defini&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a340f6e223138a0c0db1427a790ca5e16" kindref="member">typer</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1addce89950be87e830970589f6aba37d3" kindref="member">associer_eqn</ref>(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>());</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1a75805455a9a1286fe361482dbbae0369" kindref="member">set_nb_ss_pas_de_temps</ref>(1);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1aff84ae0046179ad6c9aac58da235b8b4" kindref="member">set_decal_temps</ref>(0);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu==</highlight><highlight class="stringliteral">&quot;nb_sous_pas_de_temps&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref>==</highlight><highlight class="stringliteral">&quot;non<sp/>defini&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a340f6e223138a0c0db1427a790ca5e16" kindref="member">typer</ref>();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1addce89950be87e830970589f6aba37d3" kindref="member">associer_eqn</ref>(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>());</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_ss_pas_de_temps;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>nb_ss_pas_de_temps;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1a75805455a9a1286fe361482dbbae0369" kindref="member">set_nb_ss_pas_de_temps</ref>(nb_ss_pas_de_temps);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1aff84ae0046179ad6c9aac58da235b8b4" kindref="member">set_decal_temps</ref>(0);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu==</highlight><highlight class="stringliteral">&quot;implicite&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>XD<sp/>op_implicite<sp/>objet_lecture<sp/>nul<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>implicite<sp/>chaine(into=[&quot;implicite&quot;])<sp/>implicite<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>mot<sp/>chaine(into=[&quot;solveur&quot;])<sp/>mot<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>solveur<sp/>solveur_sys_base<sp/>solveur<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref>==</highlight><highlight class="stringliteral">&quot;non<sp/>defini&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a340f6e223138a0c0db1427a790ca5e16" kindref="member">typer</ref>();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1addce89950be87e830970589f6aba37d3" kindref="member">associer_eqn</ref>(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>());</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1aff84ae0046179ad6c9aac58da235b8b4" kindref="member">set_decal_temps</ref>(1);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1a75805455a9a1286fe361482dbbae0369" kindref="member">set_nb_ss_pas_de_temps</ref>(1);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(motlu<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;solveur&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;We<sp/>expected<sp/>the<sp/>keyword<sp/>\&quot;solveur\&quot;<sp/>instead<sp/>of<sp/>:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>motlu<sp/>&lt;&lt;<sp/>finl;;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1aaa3ae2d3c5358c1f385bb438959abb37" kindref="member">lire_solveur</ref>(is);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref>!=</highlight><highlight class="stringliteral">&quot;non<sp/>defini&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;We<sp/>must<sp/>choose<sp/>the<sp/>type<sp/>of<sp/>operator<sp/>in<sp/>beginning<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;of<sp/>reading<sp/>block<sp/>(before<sp/>implicit<sp/>in<sp/>particular)<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref>=motlu;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a340f6e223138a0c0db1427a790ca5e16" kindref="member">typer</ref>();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1addce89950be87e830970589f6aba37d3" kindref="member">associer_eqn</ref>(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>());</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1aff84ae0046179ad6c9aac58da235b8b4" kindref="member">set_decal_temps</ref>(0);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1a75805455a9a1286fe361482dbbae0369" kindref="member">set_nb_ss_pas_de_temps</ref>(1);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="120"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>champ<sp/>representant<sp/>l&apos;inconnue<sp/>de<sp/>l&apos;equation<sp/>dont<sp/>l&apos;operateur<sp/>fait<sp/>partie.</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Champ_Inc_base&amp;)<sp/>le<sp/>champ<sp/>inconuu<sp/>de<sp/>l&apos;equation<sp/>associee</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="classOperateur_1a241b66b2e115820529e942f581c5cebc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/><ref refid="classOperateur_1a241b66b2e115820529e942f581c5cebc" kindref="member">Operateur::mon_inconnue</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="125"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1aa82eadcab95728f027c965cf77109d12" kindref="member">le_champ_inco</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="129"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>la<sp/>discretisation<sp/>de<sp/>l&apos;equation<sp/>dont<sp/>l&apos;operateur<sp/>fait<sp/>partie.</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Discretisation_base&amp;)<sp/>la<sp/>discretisation<sp/>de<sp/>l&apos;equation<sp/>associee</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classOperateur_1ab1f684131ef938aedab8e58154a43473" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDiscretisation__base" kindref="compound">Discretisation_base</ref>&amp;<sp/><ref refid="classOperateur_1ab1f684131ef938aedab8e58154a43473" kindref="member">Operateur::discretisation</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="134"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMorEqn_1a82f9d0c41fe998c095a16b15648fdb38" kindref="member">mon_equation</ref>-&gt;discretisation();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="138"><highlight class="comment">/*!<sp/>@brief<sp/>Met<sp/>a<sp/>jour<sp/>les<sp/>references<sp/>des<sp/>objets<sp/>associes<sp/>a<sp/>l&apos;operateur.</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/>*<sp/>Operateur::le_champ_inco,<sp/>Operateur::champ_inco</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Appelle<sp/>Operateur_base::completer()</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="classOperateur_1ac40f77a68a1959a5d37b5b2e45b40571" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1ac40f77a68a1959a5d37b5b2e45b40571" kindref="member">Operateur::completer</ref>()</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classOperateur_1aa82eadcab95728f027c965cf77109d12" kindref="member">le_champ_inco</ref>.<ref refid="classTRUST__Ref_1ae9b0cdf7e0ca42f09d339275e0b992e3" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur_1aa82eadcab95728f027c965cf77109d12" kindref="member">le_champ_inco</ref>=<ref refid="classMorEqn_1a82f9d0c41fe998c095a16b15648fdb38" kindref="member">mon_equation</ref>-&gt;inconnue();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1a9560967884361b918b12a67813476608" kindref="member">completer</ref>();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="classOperateur_1ae3433a399f6fbe7a56f65d0a39299cce" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1ae3433a399f6fbe7a56f65d0a39299cce" kindref="member">Operateur::associer_champ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/>ch,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>nom_ch)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="classOperateur_1aa82eadcab95728f027c965cf77109d12" kindref="member">le_champ_inco</ref><sp/>=<sp/>ch;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><ref refid="classOperateur_1a00b6fa04766d9c3edcedeea8bb7496dc" kindref="member">nom_inco_</ref><sp/>=<sp/>nom_ch;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1a21ee8b399a139dd8e85ec0025d0606a5" kindref="member">associer_champ</ref>(ch,<sp/>nom_ch);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="159"><highlight class="comment">/*!<sp/>@brief<sp/>Effecttue<sp/>une<sp/>mise<sp/>a<sp/>jour<sp/>en<sp/>temps<sp/>de<sp/>l&apos;operateur.</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/>*<sp/>Appelle<sp/>Operateur_base::mettre_a_jour(double)</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>temps)<sp/>le<sp/>pas<sp/>de<sp/>temps<sp/>de<sp/>mise<sp/>a<sp/>jour</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="classOperateur_1a8117cc7d41a3c3f165b65e24133c3e41" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1a8117cc7d41a3c3f165b65e24133c3e41" kindref="member">Operateur::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1a55ee9300d78cf0d8bdf7f48c56feb7ce" kindref="member">mettre_a_jour</ref>(temps);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="169"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>le<sp/>prochain<sp/>pas<sp/>de<sp/>temps.</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172" refid="classOperateur_1a5b82a15f33589e780192eb2fda010723" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1a5b82a15f33589e780192eb2fda010723" kindref="member">Operateur::calculer_pas_de_temps</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="173"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Si<sp/>l&apos;equation<sp/>de<sp/>l&apos;operateur<sp/>n&apos;est<sp/>pas<sp/>resolue,<sp/>on<sp/>ne<sp/>calcule<sp/>pas<sp/>son<sp/>pas<sp/>de<sp/>temps<sp/>de<sp/>stabilite</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().equation_non_resolue())</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DMAXFLOAT;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1affcd058809786918ed173aaf681d0843" kindref="member">begin_count</ref>(dt_counter_);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt_stab<sp/>=<sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1a6d87cb9ef58739660975790629a55847" kindref="member">calculer_dt_stab</ref>();</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1a686ef80e162afd2fb6058c8d27175ca4" kindref="member">end_count</ref>(dt_counter_);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Verification<sp/>que<sp/>l&apos;operateur<sp/>a<sp/>bien<sp/>un<sp/>mp_min<sp/>de<sp/>fait:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/>assert(dt_stab==<ref refid="classProcess_1a05de57db7288d95f9e67046af585d5ff" kindref="member">Process::mp_min</ref>(dt_stab));</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dt_stab;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="184"><highlight class="comment">/*!<sp/>@brief<sp/>Calculate<sp/>the<sp/>next<sp/>local<sp/>time<sp/>steps</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="classOperateur_1aef645bfcaaee612992d3ba78645e7fce" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1aef645bfcaaee612992d3ba78645e7fce" kindref="member">Operateur::calculer_pas_de_temps_locaux</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>dt_locaux)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="188"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1a1f6a1b118c3b44790e9843edfc93c4a6" kindref="member">calculer_dt_local</ref>(dt_locaux);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="191"><highlight class="comment">/*!<sp/>@brief<sp/>Demande<sp/>a<sp/>l&apos;equation<sp/>si<sp/>une<sp/>impression<sp/>est<sp/>necessaire<sp/>Renvoie<sp/>1<sp/>pour<sp/>OUI,<sp/>0<sp/>sinon.</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>1<sp/>si<sp/>une<sp/>impression<sp/>est<sp/>necessaire<sp/>0<sp/>sinon</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195" refid="classOperateur_1a62730d4eb9c2dac5a27181ae874df79f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="classOperateur_1a62730d4eb9c2dac5a27181ae874df79f" kindref="member">Operateur::limpr</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="196"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMorEqn_1a82f9d0c41fe998c095a16b15648fdb38" kindref="member">mon_equation</ref>-&gt;limpr();</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="200"><highlight class="comment">/*!<sp/>@brief<sp/>Imprime<sp/>l&apos;operateur<sp/>sur<sp/>un<sp/>flot<sp/>de<sp/>sortie,<sp/>si<sp/>c&apos;est<sp/>necessaire.</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/>*<sp/>(voir<sp/>Schema_Temp_base::limpr())</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>os)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>pour<sp/>l&apos;impression</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="classOperateur_1a7b1f5204f7502cd2f0a54e996d8616fd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><ref refid="classOperateur_1a7b1f5204f7502cd2f0a54e996d8616fd" kindref="member">Operateur::imprimer</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="207"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classOperateur_1a62730d4eb9c2dac5a27181ae874df79f" kindref="member">limpr</ref>())<sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1aa851da56d060f728cce2b178ca6271da" kindref="member">impr</ref>(os);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="212"><highlight class="comment">/*!<sp/>@brief<sp/>Imprime<sp/>l&apos;operateur<sp/>sur<sp/>un<sp/>flot<sp/>de<sp/>sortie<sp/>de<sp/>facon<sp/>inconditionnelle.</highlight></codeline>
+<codeline lineno="213"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>os)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>pour<sp/>l&apos;impression</highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>code<sp/>de<sp/>Operateur_base::impr(Sortie&amp;)</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217" refid="classOperateur_1a6b9f219e27e0751d2a3a78832fe1b749" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1a6b9f219e27e0751d2a3a78832fe1b749" kindref="member">Operateur::impr</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="218"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().has_impr_file())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1aa851da56d060f728cce2b178ca6271da" kindref="member">impr</ref>(os);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="223"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>et<sp/>ajoute<sp/>la<sp/>contribution<sp/>de<sp/>l&apos;operateur<sp/>au<sp/>second<sp/>membre<sp/>de<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Appelle<sp/>Operateur::ajouter(const<sp/>DoubleTab&amp;,<sp/>DoubleTab&amp;<sp/>)</highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="227"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Champ_Inc_base&amp;<sp/>ch)<sp/>le<sp/>champ<sp/>inconnu<sp/>sur<sp/>lequel<sp/>l&apos;operateur<sp/>agit</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>(DoubleTab&amp;<sp/>resu)<sp/>le<sp/>tableau<sp/>stockant<sp/>les<sp/>valeurs<sp/>du<sp/>second<sp/>membre<sp/>auquel<sp/>on<sp/>ajoute<sp/>la<sp/>contribution<sp/>de<sp/>l&apos;operateur</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/>*<sp/>@return<sp/>(DoubleTab&amp;)<sp/>le<sp/>second<sp/>membre<sp/>auquel<sp/>on<sp/>a<sp/>ajoute<sp/>la<sp/>contribution<sp/>de<sp/>l&apos;operateur</highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="classOperateur_1acb5d2cf6c4fec3e0d51d2316385375ca" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classOperateur_1ab7e29d348dd640d30821dc3a1b18b26d" kindref="member">Operateur::ajouter</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/>ch,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>resu)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="232"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nstep=<ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1a96bd268a33abb1e77dbe1dda3dde2e71" kindref="member">get_nb_ss_pas_de_temps</ref>();</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt=<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1abc11e51aa75b4c7aa55c27f71eb2f2c4" kindref="member">schema_temps</ref>().<ref refid="classSchema__Temps__base_1a816fca9a75adfb2501a68b08652a08fb" kindref="member">pas_de_temps</ref>();</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/>dt/=nstep;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nstep==1)</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1ab7e29d348dd640d30821dc3a1b18b26d" kindref="member">ajouter</ref>(ch.<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>(),<sp/>resu);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>derivee(resu);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>inco(ch.<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>());</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/>inco=ch.<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base" kindref="compound">Solveur_Masse_base</ref>&amp;<sp/>solveur_masse=<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a4b4effb48f1841ec8c743d6eb29f8a51" kindref="member">solv_masse</ref>();</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt_inv=1./(double(nstep));</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;nstep;<sp/>i++)</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur_1a7676e43532618071d9b2670fcddc9776" kindref="member">calculer</ref>(inco,<sp/>derivee);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>derivee.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>resu.<ref refid="classTRUSTVect_1ab13a422634103e4b33357f35dd281473" kindref="member">ajoute</ref>(dt_inv,<sp/>derivee)<sp/>;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>solveur_masse.<ref refid="classSolveur__Masse__base_1acb67cf99305704c37379cda2d3a2358a" kindref="member">appliquer</ref>(derivee);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>inco.<ref refid="classTRUSTVect_1acc6ae3c7626a439cc1cad65f3f512216" kindref="member">ajoute_sans_ech_esp_virt</ref>(dt,<sp/>derivee,<sp/>VECT_ALL_ITEMS)<sp/>;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resu;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="255"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>(nom<sp/>du)<sp/>type<sp/>de<sp/>l&apos;operateur<sp/>a<sp/>creer.</highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="257"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Nom&amp;)<sp/>le<sp/>nom<sp/>du<sp/>type<sp/>de<sp/>l&apos;operateur<sp/>a<sp/>creer</highlight></codeline>
+<codeline lineno="258"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259" refid="classOperateur_1a8c0c3b5e473db28671131f6ff1a1e71f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><ref refid="classOperateur_1a8c0c3b5e473db28671131f6ff1a1e71f" kindref="member">Operateur::type</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="260"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref>;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="265"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>la<sp/>contribution<sp/>de<sp/>l&apos;operateur,<sp/>et<sp/>renvoie<sp/>le<sp/>tableau<sp/>des<sp/>valeurs.</highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="267"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Champ_Inc_base&amp;<sp/>ch)<sp/>le<sp/>champ<sp/>inconnu<sp/>sur<sp/>lequel<sp/>l&apos;operateur<sp/>agit</highlight></codeline>
+<codeline lineno="268"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>resu)<sp/>le<sp/>tableau<sp/>stockant<sp/>les<sp/>valeurs<sp/>resultant<sp/>de<sp/>l&apos;application<sp/>de<sp/>l&apos;operateur<sp/>sur<sp/>le<sp/>champ<sp/>inconnu.</highlight></codeline>
+<codeline lineno="269"><highlight class="comment"><sp/>*<sp/>@return<sp/>(DoubleTab&amp;)<sp/>le<sp/>resultat<sp/>de<sp/>l&apos;application<sp/>de<sp/>l&apos;operateur<sp/>sur<sp/>le<sp/>champ<sp/>inconnu</highlight></codeline>
+<codeline lineno="270"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271" refid="classOperateur_1a61158f170aaa4fce50974f0b72cc88ec" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classOperateur_1a7676e43532618071d9b2670fcddc9776" kindref="member">Operateur::calculer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/>ch,<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>resu)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="272"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1a7676e43532618071d9b2670fcddc9776" kindref="member">calculer</ref>(ch.<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>(),<sp/>resu);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="276"><highlight class="comment">/*!<sp/>@brief<sp/>Ajoute<sp/>la<sp/>contribution<sp/>de<sp/>l&apos;operateur<sp/>au<sp/>tableau<sp/>passe<sp/>en<sp/>parametre.</highlight></codeline>
+<codeline lineno="277"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="278"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Appelle<sp/>Operateur::ajouter(const<sp/>Champ_Inc_base&amp;,<sp/>DoubleTab&amp;<sp/>)</highlight></codeline>
+<codeline lineno="279"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="280"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>resu)<sp/>le<sp/>tableau<sp/>stockant<sp/>les<sp/>valeurs<sp/>du<sp/>second<sp/>membre<sp/>auquel<sp/>on<sp/>ajoute<sp/>la<sp/>contribution<sp/>de<sp/>l&apos;operateur</highlight></codeline>
+<codeline lineno="281"><highlight class="comment"><sp/>*<sp/>@return<sp/>(DoubleTab&amp;)<sp/>le<sp/>second<sp/>membre<sp/>auquel<sp/>on<sp/>a<sp/>ajoute<sp/>la<sp/>contribution<sp/>de<sp/>l&apos;operateur</highlight></codeline>
+<codeline lineno="282"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283" refid="classOperateur_1a36efeb90887b9ba196cfa790030f377a" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classOperateur_1ab7e29d348dd640d30821dc3a1b18b26d" kindref="member">Operateur::ajouter</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>resu)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="284"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1ab7e29d348dd640d30821dc3a1b18b26d" kindref="member">ajouter</ref>(<ref refid="classOperateur_1aa82eadcab95728f027c965cf77109d12" kindref="member">le_champ_inco</ref>-&gt;valeurs(),<sp/>resu);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="288"><highlight class="comment">/*!<sp/>@brief<sp/>Applique<sp/>l&apos;operateur<sp/>au<sp/>champ<sp/>inconnu<sp/>et<sp/>renvoie<sp/>le<sp/>resultat.</highlight></codeline>
+<codeline lineno="289"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="290"><highlight class="comment"><sp/>*<sp/>Appelle<sp/>Operateur::calculer(const<sp/>Champ_Inc_base&amp;,<sp/>DoubleTab&amp;<sp/>);</highlight></codeline>
+<codeline lineno="291"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="292"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>resu)<sp/>le<sp/>tableau<sp/>stockant<sp/>les<sp/>valeurs<sp/>resultant<sp/>de<sp/>l&apos;application<sp/>de<sp/>l&apos;operateur<sp/>sur<sp/>le<sp/>champ<sp/>inconnu.</highlight></codeline>
+<codeline lineno="293"><highlight class="comment"><sp/>*<sp/>@return<sp/>(DoubleTab&amp;)<sp/>le<sp/>resultat<sp/>de<sp/>l&apos;application<sp/>de<sp/>l&apos;operateur<sp/>sur<sp/>le<sp/>champ<sp/>inconnu</highlight></codeline>
+<codeline lineno="294"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295" refid="classOperateur_1af097a80379a7f60c0923b66f88679a75" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classOperateur_1a7676e43532618071d9b2670fcddc9776" kindref="member">Operateur::calculer</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>resu)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="296"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/>resu=0.;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1ab7e29d348dd640d30821dc3a1b18b26d" kindref="member">ajouter</ref>(<ref refid="classOperateur_1aa82eadcab95728f027c965cf77109d12" kindref="member">le_champ_inco</ref>-&gt;valeurs(),<sp/>resu);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301" refid="classOperateur_1adf6c5f02d4e0bd15282a628c4814d61f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1adf6c5f02d4e0bd15282a628c4814d61f" kindref="member">Operateur::set_fichier</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom)</highlight></codeline>
+<codeline lineno="302"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1a1079052c44f7db7615ecc24448676093" kindref="member">set_fichier</ref>(nom);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306" refid="classOperateur_1abe53b54eda0c886809a704bf79b60aa9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1abe53b54eda0c886809a704bf79b60aa9" kindref="member">Operateur::set_description</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom)</highlight></codeline>
+<codeline lineno="307"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1adc6417da22ec9fd42988d5a4103c471f" kindref="member">set_description</ref>(nom);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311" refid="classOperateur_1ab2ec9f1599da4cfb53ea6606996fd425" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1ab2ec9f1599da4cfb53ea6606996fd425" kindref="member">Operateur::ajouter_contribution_explicite_au_second_membre</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/>linconnue,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>derivee)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="312"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1ac9a953b4d76473713ee31c1d4671bf6f" kindref="member">ajouter_contribution_explicite_au_second_membre</ref><sp/>(linconnue,<sp/>derivee);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Operateur.cpp"/>
+  </compounddef>
+</doxygen>

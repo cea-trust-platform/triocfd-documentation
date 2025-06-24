@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Sortie__libre__pression__imposee__QC_8cpp" kind="file" language="C++">
+    <compoundname>Sortie_libre_pression_imposee_QC.cpp</compoundname>
+    <includes refid="Sortie__libre__pression__imposee__QC_8h" local="no">Sortie_libre_pression_imposee_QC.h</includes>
+    <includes refid="Champ__Uniforme_8h" local="no">Champ_Uniforme.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Milieu__base_8h" local="no">Milieu_base.h</includes>
+    <includes refid="Motcle_8h" local="no">Motcle.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Sortie__libre__pression__imposee__QC_8cpp_1a57c82f811a725a1d1d152303cde17210" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Sortie_libre_pression_imposee_QCbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Sortie_libre_pression_imposee_QCbases</name>
+        <initializer>={   &amp;( <ref refid="classNeumann__sortie__libre" kindref="compound">Neumann_sortie_libre</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Dilatable/Quasi_Compressible/Cond_Lim/Sortie_libre_pression_imposee_QC.cpp" line="22" column="94" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Dilatable/Quasi_Compressible/Cond_Lim/Sortie_libre_pression_imposee_QC.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Sortie_libre_pression_imposee_QC.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Uniforme.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Milieu_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Motcle.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classSortie__libre__pression__imposee__QC_1a738c234bf8eda1c2b66820932c19e63b" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<ref refid="classSortie__libre__pression__imposee__QC" kindref="compound">Sortie_libre_pression_imposee_QC</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Frontiere_ouverte_pression_totale_imposee&quot;</highlight><highlight class="normal">,<sp/><ref refid="classNeumann__sortie__libre" kindref="compound">Neumann_sortie_libre</ref>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classSortie__libre__pression__imposee__QC_1afab6b1c13af878c56ff9c5ab46579b08" refkind="member"><highlight class="normal"><ref refid="classSortie__libre__pression__imposee__QC_1afab6b1c13af878c56ff9c5ab46579b08" kindref="member">Sortie_libre_pression_imposee_QC::Sortie_libre_pression_imposee_QC</ref>()<sp/>:<sp/>Pthn(1.e5),<sp/>d_rho(-1)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classSortie__libre__pression__imposee__QC_1a650fe6cc8f5147b9b7e13b3c4f4f0c39" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie__libre__pression__imposee__QC_1a650fe6cc8f5147b9b7e13b3c4f4f0c39" kindref="member">Sortie_libre_pression_imposee_QC::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;<sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classSortie__libre__pression__imposee__QC_1aae9c1ad089a90630aebe43bdcdfd1d19" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSortie__libre__pression__imposee__QC_1aae9c1ad089a90630aebe43bdcdfd1d19" kindref="member">Sortie_libre_pression_imposee_QC::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1ad515d1c64270d631157a55d5c6795c37" kindref="member">app_domains</ref>.size()<sp/>==<sp/>0)<sp/><ref refid="classCond__lim__base_1ad515d1c64270d631157a55d5c6795c37" kindref="member">app_domains</ref><sp/>=<sp/>{<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(</highlight><highlight class="stringliteral">&quot;Hydraulique&quot;</highlight><highlight class="normal">),<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(</highlight><highlight class="stringliteral">&quot;indetermine&quot;</highlight><highlight class="normal">)<sp/>};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>s<sp/>&gt;&gt;<sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><ref refid="classNeumann__sortie__libre_1afb8a2709891b8966c91c9cd4cebea74d" kindref="member">le_champ_ext</ref>.<ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(</highlight><highlight class="stringliteral">&quot;Champ_front_uniforme&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><ref refid="classNeumann__sortie__libre_1afb8a2709891b8966c91c9cd4cebea74d" kindref="member">le_champ_ext</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>().<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(1,<sp/><ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="38"><highlight class="comment">/*!<sp/>@brief<sp/>Complete<sp/>les<sp/>conditions<sp/>aux<sp/>limites.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>Impose<sp/>la<sp/>masse<sp/>volumique<sp/>constante<sp/>du<sp/>milieu</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>physique<sp/>de<sp/>l&apos;equation<sp/>a<sp/>d_rho.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classSortie__libre__pression__imposee__QC_1ad57ef3d32052d0e2059068bcc6521586" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSortie__libre__pression__imposee__QC_1ad57ef3d32052d0e2059068bcc6521586" kindref="member">Sortie_libre_pression_imposee_QC::completer</ref>()</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/>mil<sp/>=<sp/><ref refid="classCond__lim__base_1a034b7955a580a221233b1059031694c1" kindref="member">mon_dom_cl_dis</ref>-&gt;equation().milieu();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Uniforme" kindref="compound">Champ_Uniforme</ref>,<sp/>mil.<ref refid="classMilieu__base_1ab8ce0742ed6681306999931dca88a5b9" kindref="member">masse_volumique</ref>()))</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Uniforme" kindref="compound">Champ_Uniforme</ref>&amp;<sp/>rho<sp/>=<sp/>ref_cast(<ref refid="classChamp__Uniforme" kindref="compound">Champ_Uniforme</ref>,<sp/>mil.<ref refid="classMilieu__base_1ab8ce0742ed6681306999931dca88a5b9" kindref="member">masse_volumique</ref>());</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSortie__libre__pression__imposee__QC_1a9dba9ba10c0a7a4e66a2e70c7b2bbadd" kindref="member">d_rho</ref><sp/>=<sp/>rho.<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>()(0,<sp/>0);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSortie__libre__pression__imposee__QC_1a9dba9ba10c0a7a4e66a2e70c7b2bbadd" kindref="member">d_rho</ref><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="56"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>la<sp/>valeur<sp/>du<sp/>flux<sp/>impose<sp/>sur<sp/>la<sp/>i-eme<sp/>composante<sp/>du<sp/>champ<sp/>representant<sp/>le<sp/>flux<sp/>a<sp/>la<sp/>frontiere.</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Le<sp/>champ<sp/>a<sp/>la<sp/>frontiere<sp/>est<sp/>considere<sp/>constant<sp/>sur<sp/>tous</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>les<sp/>elements<sp/>de<sp/>la<sp/>frontiere.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>La<sp/>valeur<sp/>du<sp/>flux<sp/>impose<sp/>a<sp/>la<sp/>frontiere<sp/>est<sp/>egale</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>a<sp/>la<sp/>valeur<sp/>du<sp/>champ<sp/>(considere<sp/>constant)<sp/>a<sp/>la<sp/>frontiere<sp/>divise<sp/>par<sp/>d_rho.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>indice<sp/>suivant<sp/>la<sp/>premiere<sp/>dimension<sp/>du<sp/>champ</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>@return<sp/>(double)<sp/>la<sp/>valeur<sp/>imposee<sp/>sur<sp/>la<sp/>composante<sp/>du<sp/>champ<sp/>specifiee</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@throws<sp/>deuxieme<sp/>dimension<sp/>du<sp/>champ<sp/>de<sp/>frontiere<sp/>superieur<sp/>a<sp/>1</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classSortie__libre__pression__imposee__QC_1a6b9443b1939238df19f06fd01da6bbf6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classSortie__libre__pression__imposee__QC_1a6b9443b1939238df19f06fd01da6bbf6" kindref="member">Sortie_libre_pression_imposee_QC::flux_impose</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="68"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/>mil<sp/>=<sp/><ref refid="classCond__lim__base_1a034b7955a580a221233b1059031694c1" kindref="member">mon_dom_cl_dis</ref>-&gt;equation().milieu();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/>rho<sp/>=<sp/>mil.<ref refid="classMilieu__base_1ab8ce0742ed6681306999931dca88a5b9" kindref="member">masse_volumique</ref>();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rho_;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSortie__libre__pression__imposee__QC_1a9dba9ba10c0a7a4e66a2e70c7b2bbadd" kindref="member">d_rho</ref><sp/>==<sp/>-1)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>rho_<sp/>=<sp/>rho.<ref refid="classChamp__Proto_1a87dd9bef0380e547eb00afc0a9f47b6e" kindref="member">valeurs</ref>()(i);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>rho_<sp/>=<sp/><ref refid="classSortie__libre__pression__imposee__QC_1a9dba9ba10c0a7a4e66a2e70c7b2bbadd" kindref="member">d_rho</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>().<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>()(0,<sp/>0)<sp/>-<sp/><ref refid="classSortie__libre__pression__imposee__QC_1af49ad57bf091bfa37f79c6c2476dc095" kindref="member">Pthn</ref>)<sp/>/<sp/>rho_;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>().<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1)<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>()(i,<sp/>0)<sp/>-<sp/><ref refid="classSortie__libre__pression__imposee__QC_1af49ad57bf091bfa37f79c6c2476dc095" kindref="member">Pthn</ref>)<sp/>/<sp/>rho_;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Neumann::flux_impose<sp/>erreur&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="88"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>la<sp/>valeur<sp/>du<sp/>flux<sp/>impose<sp/>sur<sp/>la<sp/>(i,j)-eme<sp/>composante<sp/>du<sp/>champ<sp/>representant<sp/>le<sp/>flux<sp/>a<sp/>la<sp/>frontiere.</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Le<sp/>champ<sp/>a<sp/>la<sp/>frontiere<sp/>n&apos;est<sp/>PAS<sp/>constant<sp/>sur<sp/>tous<sp/>les<sp/>elements</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>la<sp/>frontiere.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>indice<sp/>suivant<sp/>la<sp/>premiere<sp/>dimension<sp/>du<sp/>champ</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>j)<sp/>indice<sp/>suivant<sp/>la<sp/>deuxieme<sp/>dimension<sp/>du<sp/>champ</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>@return<sp/>(double)<sp/>la<sp/>valeur<sp/>imposee<sp/>sur<sp/>la<sp/>composante<sp/>du<sp/>champ<sp/>specifiee</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classSortie__libre__pression__imposee__QC_1a882938439e749fec44697f70435d4b57" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classSortie__libre__pression__imposee__QC_1a6b9443b1939238df19f06fd01da6bbf6" kindref="member">Sortie_libre_pression_imposee_QC::flux_impose</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="98"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/>mil<sp/>=<sp/><ref refid="classCond__lim__base_1a034b7955a580a221233b1059031694c1" kindref="member">mon_dom_cl_dis</ref>-&gt;equation().milieu();</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/>rho<sp/>=<sp/>mil.<ref refid="classMilieu__base_1ab8ce0742ed6681306999931dca88a5b9" kindref="member">masse_volumique</ref>();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rho_;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSortie__libre__pression__imposee__QC_1a9dba9ba10c0a7a4e66a2e70c7b2bbadd" kindref="member">d_rho</ref><sp/>==<sp/>-1)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>rho_<sp/>=<sp/>rho.<ref refid="classChamp__Proto_1a87dd9bef0380e547eb00afc0a9f47b6e" kindref="member">valeurs</ref>()(i);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>rho_<sp/>=<sp/><ref refid="classSortie__libre__pression__imposee__QC_1a9dba9ba10c0a7a4e66a2e70c7b2bbadd" kindref="member">d_rho</ref>;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>().<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0)<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>()(0,<sp/>j)<sp/>-<sp/><ref refid="classSortie__libre__pression__imposee__QC_1af49ad57bf091bfa37f79c6c2476dc095" kindref="member">Pthn</ref>)<sp/>/<sp/>rho_;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>()(i,<sp/>j)<sp/>-<sp/><ref refid="classSortie__libre__pression__imposee__QC_1af49ad57bf091bfa37f79c6c2476dc095" kindref="member">Pthn</ref>)<sp/>/<sp/>rho_;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Dilatable/Quasi_Compressible/Cond_Lim/Sortie_libre_pression_imposee_QC.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Polyedre__poly_8cpp" kind="file" language="C++">
+    <compoundname>Polyedre_poly.cpp</compoundname>
+    <includes refid="Polyedre__poly_8h" local="no">Polyedre_poly.h</includes>
+    <includes refid="Polyedre_8h" local="no">Polyedre.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Linear__algebra__tools__impl_8h" local="no">Linear_algebra_tools_impl.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Polyedre__poly_8cpp_1a2e0550d1a49ca67b35e7b263a7a418c5" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Polyedre_polybases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Polyedre_polybases</name>
+        <initializer>={   &amp;( <ref refid="classElem__poly__base" kindref="compound">Elem_poly_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/VF/Geometrie/Polyedre_poly.cpp" line="21" column="93" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/VF/Geometrie/Polyedre_poly.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Polyedre_poly.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Polyedre.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Linear_algebra_tools_impl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classPolyedre__poly_1a1ff80368d8b68953384e1c39c5e4ecdc" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classPolyedre__poly" kindref="compound">Polyedre_poly</ref>,</highlight><highlight class="stringliteral">&quot;Polyedre_poly&quot;</highlight><highlight class="normal">,<ref refid="classElem__poly__base" kindref="compound">Elem_poly_base</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classPolyedre__poly_1af9ad29afcb949019717a79b41f592e99" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classPolyedre__poly_1af9ad29afcb949019717a79b41f592e99" kindref="member">Polyedre_poly::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;<sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classPolyedre__poly_1a89af9432ef51ef3f2365c48e2a467db2" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classPolyedre__poly_1a89af9432ef51ef3f2365c48e2a467db2" kindref="member">Polyedre_poly::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s<sp/>)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>;<sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classPolyedre__poly_1a06ae230997e0724627f2fb6d9566079d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPolyedre__poly_1a06ae230997e0724627f2fb6d9566079d" kindref="member">Polyedre_poly::normale</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_Face,<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>Face_normales,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>Face_sommets,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>Face_voisins,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>elem_faces,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>domaine_geom)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="33"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;<sp/>num_Face<sp/>&quot;<sp/>&lt;&lt;<sp/>num_Face<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>les_coords<sp/>=<sp/>domaine_geom.<ref refid="classDomaine__32__64_1ac38406cad4d4a168ff220bf1c3bfee72" kindref="member">coord_sommets</ref>();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;les<sp/>face<sp/>sommet<sp/>&quot;<sp/>&lt;&lt;<sp/>Face_sommets<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_som_face_max=<sp/>Face_sommets.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n0<sp/>=<sp/>Face_sommets(num_Face,0);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>elem=domaine_geom.<ref refid="classDomaine__32__64_1a8f13ff77f9a9054cf5ca1df84e4e71e9" kindref="member">les_elems</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="classVecteur3" kindref="compound">Vecteur3</ref><sp/>n(0,0,0);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><ref refid="classVecteur3" kindref="compound">Vecteur3</ref><sp/>moinsS0(les_coords(n0,0),les_coords(n0,1),les_coords(n0,2));</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>moinsS0*=-1;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>s=1;<sp/>s&lt;nb_som_face_max-1<sp/>;<sp/>s++)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n1<sp/>=<sp/>Face_sommets(num_Face,s);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n2<sp/>=<sp/>Face_sommets(num_Face,s+1);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n2&lt;0)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVecteur3" kindref="compound">Vecteur3</ref><sp/>S1(les_coords(n1,0),les_coords(n1,1),les_coords(n1,2));</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVecteur3" kindref="compound">Vecteur3</ref><sp/>S2(les_coords(n2,0),les_coords(n2,1),les_coords(n2,2));</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S1+=moinsS0;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S2+=moinsS0;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVecteur3" kindref="compound">Vecteur3</ref><sp/>nTr;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVecteur3_1a5fff26b06fb58ea97cfd2e2e8f9c3d0f" kindref="member">Vecteur3::produit_vectoriel</ref>(S1,S2,nTr);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n+=nTr;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>n*=0.5;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/>int<sp/>elem1=Face_voisins(num_Face,0);</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/>DoubleVect<sp/>xp;</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/>ref_cast(Poly_geom_base,domaine_geom.type_elem().valeur()).calculer_un_centre_gravite(elem1,xp);</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/>Vecteur3<sp/>M(xp(0),xp(1),xp(2));</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>prend<sp/>un<sp/>point<sp/>a<sp/>l&apos;interieur<sp/>(pas<sp/>le<sp/>cg<sp/>trop<sp/>long)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_poly=Face_voisins(num_Face,0);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="classVecteur3" kindref="compound">Vecteur3</ref><sp/>xg(0,0,0);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_som_max=elem.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_som_reel;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(nb_som_reel=0;<sp/>nb_som_reel&lt;nb_som_max;<sp/>nb_som_reel++)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ns=elem(num_poly,nb_som_reel);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ns&lt;0)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVecteur3" kindref="compound">Vecteur3</ref><sp/>S(les_coords(ns,0),les_coords(ns,1),les_coords(ns,2));</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>xg+=S;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>xg*=1./nb_som_reel;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>xg+=moinsS0;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>prod_scal=<ref refid="classVecteur3_1a13d4a2f0fe07e384704d1917942892d0" kindref="member">Vecteur3::produit_scalaire</ref>(n,xg);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(prod_scal)<sp/>&gt;<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n*=-1;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>Face_normales(num_Face,0)<sp/>=<sp/>n[0];</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>Face_normales(num_Face,1)<sp/>=<sp/>n[1];</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>Face_normales(num_Face,2)<sp/>=<sp/>n[2];</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>double<sp/>s=sqrt(Vecteur3::produit_scalaire(n,n));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;Face_normales<sp/>&quot;<sp/>&lt;&lt;<sp/>num_Face&lt;&lt;<sp/>&quot;<sp/>s<sp/>&quot;&lt;&lt;<sp/>s<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>assert(s&gt;0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;Face_normales<sp/>&quot;<sp/>&lt;&lt;<sp/>num_Face&lt;&lt;<sp/>&quot;<sp/>s<sp/>&quot;&lt;&lt;<sp/>s<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/VF/Geometrie/Polyedre_poly.cpp"/>
+  </compounddef>
+</doxygen>

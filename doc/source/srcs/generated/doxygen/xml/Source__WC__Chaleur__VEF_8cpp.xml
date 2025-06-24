@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Source__WC__Chaleur__VEF_8cpp" kind="file" language="C++">
+    <compoundname>Source_WC_Chaleur_VEF.cpp</compoundname>
+    <includes refid="Convection__Diffusion__Chaleur__WC_8h" local="no">Convection_Diffusion_Chaleur_WC.h</includes>
+    <includes refid="Source__WC__Chaleur__VEF_8h" local="no">Source_WC_Chaleur_VEF.h</includes>
+    <includes refid="Neumann__sortie__libre_8h" local="no">Neumann_sortie_libre.h</includes>
+    <includes refid="Navier__Stokes__WC_8h" local="no">Navier_Stokes_WC.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Milieu__base_8h" local="no">Milieu_base.h</includes>
+    <includes refid="Domaine__VF_8h" local="no">Domaine_VF.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Source__WC__Chaleur__VEF_8cpp_1a42bedb01d51d0a9e75711f824650ac55" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Source_WC_Chaleur_VEFbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Source_WC_Chaleur_VEFbases</name>
+        <initializer>={   &amp;( <ref refid="classSource__WC__Chaleur" kindref="compound">Source_WC_Chaleur</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Sources/Dilatable/Source_WC_Chaleur_VEF.cpp" line="24" column="125" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Sources/Dilatable/Source_WC_Chaleur_VEF.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Convection_Diffusion_Chaleur_WC.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Source_WC_Chaleur_VEF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Neumann_sortie_libre.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_WC.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Milieu_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classSource__WC__Chaleur__VEF_1a810d8ede942cd6431df33551fafbea36" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classSource__WC__Chaleur__VEF" kindref="compound">Source_WC_Chaleur_VEF</ref>,</highlight><highlight class="stringliteral">&quot;Source_WC_Chaleur_VEF&quot;</highlight><highlight class="normal">,<ref refid="classSource__WC__Chaleur" kindref="compound">Source_WC_Chaleur</ref>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classSource__WC__Chaleur__VEF_1a0e875e459d57dfc06d66ba6d2b457b96" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSource__WC__Chaleur__VEF_1a0e875e459d57dfc06d66ba6d2b457b96" kindref="member">Source_WC_Chaleur_VEF::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="27"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classSource__WC__Chaleur__VEF_1abc6eeed1dd375be6166b907a06858dbb" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSource__WC__Chaleur__VEF_1abc6eeed1dd375be6166b907a06858dbb" kindref="member">Source_WC_Chaleur_VEF::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;<sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classSource__WC__Chaleur__VEF_1af5557fadea2b3198c89ea8b32e15dbda" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSource__WC__Chaleur__VEF_1af5557fadea2b3198c89ea8b32e15dbda" kindref="member">Source_WC_Chaleur_VEF::associer_domaines</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__dis__base" kindref="compound">Domaine_dis_base</ref>&amp;<sp/>domaine,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__dis__base" kindref="compound">Domaine_Cl_dis_base</ref>&amp;<sp/>zcl)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="classSource__Fluide__Dilatable__VEF__Proto_1a3d864cb133210cc7fef6243b856986ce" kindref="member">associer_domaines_impl</ref>(domaine,zcl);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classSource__Fluide__Dilatable__VEF__Proto_1a7ef72e05b2fa971c2b12f3f1c6aecfba" kindref="member">associer_volume_porosite_impl</ref>(domaine,<ref refid="classSource__Chaleur__Fluide__Dilatable__base_1a8ac44c3561af5586da1a0d839133ceaf" kindref="member">volumes</ref>,<ref refid="classSource__Chaleur__Fluide__Dilatable__base_1a609a84be27585f17555e3b9d17371cd3" kindref="member">porosites</ref>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classSource__WC__Chaleur__VEF_1afbd7f8e77f3f903a190b9d6e0a07c74d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSource__WC__Chaleur__VEF_1afbd7f8e77f3f903a190b9d6e0a07c74d" kindref="member">Source_WC_Chaleur_VEF::compute_interpolate_gradP</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>UgradP_face,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>Ptot)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="41"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/>*<sp/>NOTA<sp/>BENE<sp/>:</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/>*<sp/>On<sp/>a<sp/>discretise<sp/>P_EOS<sp/>avec<sp/>une<sp/>directive<sp/>=<sp/>temperature<sp/>qui<sp/>donne<sp/>en<sp/>VEF<sp/>:</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Ptot<sp/>=&gt;<sp/>aux<sp/>faces</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/>*<sp/>la_vitesse<sp/>=&gt;<sp/>faces<sp/>car<sp/>vef</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/>*<sp/>grad_Ptot<sp/>=&gt;<sp/>elem</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/>*<sp/>L&apos;equation<sp/>est<sp/>une<sp/>equation<sp/>de<sp/>scalaire<sp/>=&gt;<sp/>aux<sp/>faces<sp/>car<sp/>vef</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/>*<sp/>On<sp/>a<sp/>d<sp/>P_tot<sp/>/<sp/>d<sp/>t<sp/>=<sp/>del<sp/>P<sp/>/<sp/>del<sp/>t<sp/>+<sp/>u.grad(P_tot)</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/>*<sp/>del<sp/>P<sp/>/<sp/>del<sp/>t<sp/>=&gt;<sp/>aux<sp/>faces</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/>*<sp/>u.grad(P_tot)<sp/>!!!<sp/>faut<sp/>interpoler<sp/>grad(P_tot)<sp/>aux<sp/>faces</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNavier__Stokes__WC" kindref="compound">Navier_Stokes_WC</ref>&amp;<sp/>eqHyd<sp/>=<sp/>ref_cast(<ref refid="classNavier__Stokes__WC" kindref="compound">Navier_Stokes_WC</ref>,<ref refid="classMorEqn_1a82f9d0c41fe998c095a16b15648fdb38" kindref="member">mon_equation</ref>-&gt;probleme().equation(0));</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>la_vitesse<sp/>=<sp/>eqHyd.<ref refid="classNavier__Stokes__std_1a52dfdb6d846afc49cb0ee9d32f9eec07" kindref="member">vitesse</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>sait<sp/>que<sp/>grad_Ptot<sp/>est<sp/>un<sp/>champ<sp/>elem<sp/>=&gt;<sp/>on<sp/>pense<sp/>a<sp/>la<sp/>conductivite<sp/>(elem<sp/>en<sp/>vef<sp/>!!<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>grad_Ptot;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>lambda<sp/>=<sp/>eqHyd.<ref refid="classNavier__Stokes__std_1a1b86014b53c283d1871d6e50a9489c7c" kindref="member">milieu</ref>().<ref refid="classMilieu__base_1a9e026ba2b472be7943d787591c1c72ee" kindref="member">conductivite</ref>().<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb<sp/>=<sp/>lambda.<ref refid="classTRUSTVect_1a1918c7467e93eb90ae67d288b1519ae7" kindref="member">size_totale</ref>(),<sp/>nbcomp<sp/>=<sp/>la_vitesse.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>assert<sp/>(nb<sp/>==<sp/>lambda.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0)<sp/>&amp;&amp;<sp/>lambda.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>grad_Ptot.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(nb,nbcomp);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Chaleur__WC" kindref="compound">Convection_Diffusion_Chaleur_WC</ref>&amp;<sp/>eq_chal<sp/>=<sp/>ref_cast(<ref refid="classConvection__Diffusion__Chaleur__WC" kindref="compound">Convection_Diffusion_Chaleur_WC</ref>,<ref refid="classMorEqn_1a82f9d0c41fe998c095a16b15648fdb38" kindref="member">mon_equation</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Grad" kindref="compound">Operateur_Grad</ref>&amp;<sp/>Op_Grad<sp/>=<sp/>eq_chal.<ref refid="classConvection__Diffusion__Chaleur__WC_1ad423b234f4ec5fb9dd620221cd216cc6" kindref="member">operateur_gradient_WC</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>Op_Grad.<ref refid="classOperateur__Grad_1a48b8660fed0e8067d4e66a0b66140502" kindref="member">calculer</ref>(Ptot,grad_Ptot);<sp/></highlight><highlight class="comment">//<sp/>compute<sp/>grad(P_tot)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__dis__base" kindref="compound">Domaine_dis_base</ref>&amp;<sp/>domaine_dis<sp/>=<sp/><ref refid="classMorEqn_1a82f9d0c41fe998c095a16b15648fdb38" kindref="member">mon_equation</ref>-&gt;inconnue().domaine_dis_base();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>&amp;<sp/>domaine<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>,<sp/>domaine_dis);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>assert<sp/>(domaine_dis.<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;Domaine_VEF&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>grad<sp/>should<sp/>be<sp/>zero<sp/>at<sp/>boundary</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><ref refid="classSource__WC__Chaleur_1a2e3e7ecf27d8b3f21488de0c6831c02b" kindref="member">correct_grad_boundary</ref>(domaine,grad_Ptot);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>compute<sp/>u*grad(P_tot)<sp/>on<sp/>each<sp/>face</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>grad_Ptot_face(la_vitesse);<sp/></highlight><highlight class="comment">//<sp/>champs<sp/>sur<sp/>les<sp/>faces</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>grad_Ptot<sp/>on<sp/>faces</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>elem_to_face(domaine,grad_Ptot,grad_Ptot_face);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>la_vitesse.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>assert<sp/>(UgradP_face.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0)<sp/>==<sp/>n<sp/>&amp;&amp;<sp/>grad_Ptot_face.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0)<sp/>==<sp/>n);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>assert<sp/>(UgradP_face.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>==<sp/>1<sp/>&amp;&amp;<sp/>n<sp/>==<sp/>domaine.nb_faces_tot());</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0<sp/>;<sp/>i<sp/>&lt;n<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>UgradP_face(i,0)<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0<sp/>;<sp/>j<sp/>&lt;nbcomp<sp/>;<sp/>j++)<sp/>UgradP_face(i,0)<sp/>+=<sp/>la_vitesse(i,j)<sp/>*<sp/>grad_Ptot_face(i,j);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//<sp/>On<sp/>peut<sp/>utiliser<sp/>les<sp/>methodes<sp/>statics<sp/>de<sp/>Discretisation_tools...<sp/>mais<sp/>faut<sp/>creer<sp/>de<sp/>Champ_base<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Source_WC_Chaleur_VEF::elem_to_face(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>&amp;<sp/>domaine,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>grad_Ptot,<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>grad_Ptot_face)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="95"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>vol<sp/>=<sp/>domaine.volumes();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>elem_faces<sp/>=<sp/>domaine.elem_faces();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_face_elem<sp/>=<sp/>elem_faces.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>(),<sp/>nb_elem_tot<sp/>=<sp/>domaine.nb_elem_tot(),<sp/>nb_comp<sp/>=<sp/>grad_Ptot_face.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>assert<sp/>(grad_Ptot.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0)<sp/>==<sp/>nb_elem_tot<sp/>&amp;&amp;<sp/>grad_Ptot_face.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0)<sp/>==<sp/>domaine.nb_faces_tot());</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>assert<sp/>(grad_Ptot.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>==<sp/>nb_comp);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>grad_Ptot_face<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ele<sp/>=<sp/>0;<sp/>ele<sp/>&lt;<sp/>nb_elem_tot;<sp/>ele++)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>0;<sp/>s<sp/>&lt;<sp/>nb_face_elem;<sp/>s++)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>face<sp/>=<sp/>elem_faces(ele,s);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>comp<sp/>=<sp/>0;<sp/>comp<sp/>&lt;<sp/>nb_comp;<sp/>comp++)<sp/>grad_Ptot_face(face,comp)<sp/>+=<sp/>grad_Ptot(ele,comp)*vol(ele);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>f=0;<sp/>f&lt;domaine.nb_faces_tot();<sp/>f++)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>comp=0;<sp/>comp&lt;nb_comp;<sp/>comp++)<sp/>grad_Ptot_face(f,comp)<sp/>/=<sp/><ref refid="classSource__Chaleur__Fluide__Dilatable__base_1a8ac44c3561af5586da1a0d839133ceaf" kindref="member">volumes</ref>(f)*nb_face_elem;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Sources/Dilatable/Source_WC_Chaleur_VEF.cpp"/>
+  </compounddef>
+</doxygen>

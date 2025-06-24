@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Lire__Fichier_8cpp" kind="file" language="C++">
+    <compoundname>Lire_Fichier.cpp</compoundname>
+    <includes refid="Lire__Fichier_8h" local="no">Lire_Fichier.h</includes>
+    <includes refid="Interprete__bloc_8h" local="no">Interprete_bloc.h</includes>
+    <includes refid="EFichierBin_8h" local="no">EFichierBin.h</includes>
+    <includes refid="LecFicDiffuse__JDD_8h" local="no">LecFicDiffuse_JDD.h</includes>
+    <includes refid="LecFicDiffuse_8h" local="no">LecFicDiffuse.h</includes>
+    <includes refid="Read__unsupported__ASCII__file__from__ICEM_8h" local="no">Read_unsupported_ASCII_file_from_ICEM.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Lire__Fichier_8cpp_1a390fb0eb45b5390d632114e892705e7c" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Lire_Fichierbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Lire_Fichierbases</name>
+        <initializer>={   &amp;( <ref refid="classInterprete" kindref="compound">Interprete</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Lire_Fichier.cpp" line="23" column="89" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Lire_Fichier.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Lire_Fichier.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Interprete_bloc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EFichierBin.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;LecFicDiffuse_JDD.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;LecFicDiffuse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Read_unsupported_ASCII_file_from_ICEM.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classLire__Fichier_1acd261fa21051bbcfdc256d4d1d24151b" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classLire__Fichier" kindref="compound">Lire_Fichier</ref>,</highlight><highlight class="stringliteral">&quot;Lire_Fichier|Read_file&quot;</highlight><highlight class="normal">,<ref refid="classInterprete" kindref="compound">Interprete</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>read_file<sp/>interprete<sp/>lire_fichier<sp/>-1<sp/>Keyword<sp/>to<sp/>read<sp/>the<sp/>object<sp/>name_obj<sp/>contained<sp/>in<sp/>the<sp/>file<sp/>filename.<sp/>NL2<sp/>This<sp/>is<sp/>notably<sp/>used<sp/>when<sp/>the<sp/>calculation<sp/>domain<sp/>has<sp/>already<sp/>been<sp/>meshed<sp/>and<sp/>the<sp/>mesh<sp/>contains<sp/>the<sp/>file<sp/>filename,<sp/>simply<sp/>write<sp/>read_file<sp/>dom<sp/>filename<sp/>(where<sp/>dom<sp/>is<sp/>the<sp/>name<sp/>of<sp/>the<sp/>meshed<sp/>domain).<sp/>NL2<sp/>If<sp/>the<sp/>filename<sp/>is<sp/>;,<sp/>is<sp/>to<sp/>execute<sp/>a<sp/>data<sp/>set<sp/>given<sp/>in<sp/>the<sp/>file<sp/>of<sp/>name<sp/>name_obj<sp/>(a<sp/>space<sp/>must<sp/>be<sp/>entered<sp/>between<sp/>the<sp/>semi-colon<sp/>and<sp/>the<sp/>file<sp/>name).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/>attr<sp/>name_obj<sp/>chaine<sp/>name_obj<sp/>0<sp/>Name<sp/>of<sp/>the<sp/>object<sp/>to<sp/>be<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/>attr<sp/>filename<sp/>chaine<sp/>filename<sp/>0<sp/>Name<sp/>of<sp/>the<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="28"><highlight class="comment">/*!<sp/>@brief<sp/>Pas<sp/>code:<sp/>exit()</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classLire__Fichier_1a6acbbbfbabc60d539e11a48e8f5fe58d" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classLire__Fichier_1a6acbbbfbabc60d539e11a48e8f5fe58d" kindref="member">Lire_Fichier::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="32"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Lire_Fichier::printOn()&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="38"><highlight class="comment">/*!<sp/>@brief<sp/>Pas<sp/>code:<sp/>exit()</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classLire__Fichier_1ab011960db238dba4210d20dafef283cd" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLire__Fichier_1ab011960db238dba4210d20dafef283cd" kindref="member">Lire_Fichier::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Lire_Fichier::readOn()&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="48"><highlight class="comment">/*!<sp/>@brief<sp/>Deux<sp/>syntaxes<sp/>possibles<sp/>dans<sp/>le<sp/>jeu<sp/>de<sp/>donnees:<sp/>Lire_fichier<sp/>NOM_OBJET<sp/>NOM_FICHIER</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(lit<sp/>le<sp/>contenu<sp/>du<sp/>fichier<sp/>dans<sp/>l&apos;objet<sp/>avec<sp/>readOn<sp/>de<sp/>l&apos;objet)</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>Lire_fichier<sp/>NOM_FICHIER<sp/>;</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(interprete<sp/>le<sp/>fichier<sp/>dans<sp/>un<sp/>interprete<sp/>local:<sp/>les<sp/>objets<sp/>declares</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>dans<sp/>le<sp/>fichier<sp/>sont<sp/>detruits<sp/>a<sp/>la<sp/>fin<sp/>de<sp/>la<sp/>lecture<sp/>du<sp/>fichier)</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classLire__Fichier_1a19eaf5ebab3849d171c147eeb6d90168" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLire__Fichier_1a19eaf5ebab3849d171c147eeb6d90168" kindref="member">Lire_Fichier::interpreter</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom1,<sp/>nom2;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>nom1<sp/>&gt;&gt;<sp/>nom2;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom2<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;;&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(is_a_binary_file(nom2))</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>check_ICEM_binary_file(nom2,nom1);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Lire_Fichier:<sp/>reading<sp/>binary<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom2<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>to<sp/>object<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom1<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObjet__U" kindref="compound">Objet_U</ref>&amp;<sp/>ob1=<ref refid="classInterprete_1a3ca248609f0b72eac68baca14621b4ee" kindref="member">objet</ref>(nom1);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEFichierBin" kindref="compound">EFichierBin</ref><sp/>fic(nom2);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!fic.<ref refid="classEntree__Fichier__base_1a9e5abc201d0864efb7e22b593556f432" kindref="member">get_ifstream</ref>())</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unable<sp/>to<sp/>open<sp/>the<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom2<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Enter<sp/>a<sp/>different<sp/>file<sp/>name<sp/>please<sp/>...<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fic<sp/>&gt;&gt;<sp/>ob1;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>check_ICEM_ascii_file(nom2,*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Lire_Fichier:<sp/>reading<sp/>ASCII<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom2<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>to<sp/>object<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom1<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLecFicDiffuse" kindref="compound">LecFicDiffuse</ref><sp/>fic(nom2);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>ne<sp/>peut<sp/>pas<sp/>activer<sp/>check_types<sp/>car<sp/>certains<sp/>fichiers<sp/>geom<sp/>ont<sp/>un<sp/>format<sp/>louche</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ou<sp/>tout<sp/>est<sp/>colle<sp/>comme<sp/>ceci<sp/>:<sp/>-0.12000000E+01-0.25000000E+00-0.25000000E+00</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(exemple<sp/>croix.geom)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fic.<ref refid="classLec__Diffuse__base_1a5e603c621344297142584d5cfc31ea4e" kindref="member">set_check_types</ref>(0);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObjet__U" kindref="compound">Objet_U</ref>&amp;<sp/>ob1<sp/>=<sp/><ref refid="classInterprete_1a3ca248609f0b72eac68baca14621b4ee" kindref="member">objet</ref>(nom1);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fic<sp/>&gt;&gt;<sp/>ob1;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Lire_Fichier:<sp/>interpreting<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom1<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Not<sp/>counting<sp/>lines<sp/>inside<sp/>this<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLecFicDiffuse__JDD" kindref="compound">LecFicDiffuse_JDD</ref><sp/>data_file(nom1);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>data_file.<ref refid="classLecFicDiffuse__JDD_1ad34ca7503516a2e9490b291089d1ac36" kindref="member">track_lines</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>data_file.<ref refid="classLec__Diffuse__base_1a5e603c621344297142584d5cfc31ea4e" kindref="member">set_check_types</ref>(1);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>cree<sp/>un<sp/>nouvel<sp/>interprete.<sp/>A<sp/>la<sp/>fin<sp/>de<sp/>la<sp/>lecture</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>les<sp/>objets<sp/>seront<sp/>detruits.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classInterprete__bloc" kindref="compound">Interprete_bloc</ref><sp/>interp;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>interp.<ref refid="classInterprete__bloc_1a30e3dd349fa1745d8024cdd7399a014e" kindref="member">interpreter_bloc</ref>(data_file,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classInterprete__bloc_1a807531b5c02ef81c528d31d963474997a2940e6dc338c0c6755aa5198f9f0f90d" kindref="member">Interprete_bloc::BLOC_EOF</ref><sp/></highlight><highlight class="comment">/*<sp/>fin<sp/>du<sp/>bloc<sp/>a<sp/>la<sp/>fin<sp/>du<sp/>fichier<sp/>*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0<sp/></highlight><highlight class="comment">/*<sp/>verifie_sans_interpreter=0<sp/>*/</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Lire_Fichier:<sp/>end<sp/>of<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom1<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Lire_Fichier:<sp/>end<sp/>of<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom1<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Lire_Fichier.cpp"/>
+  </compounddef>
+</doxygen>

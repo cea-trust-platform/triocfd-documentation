@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Champ__Input__Proto_8cpp" kind="file" language="C++">
+    <compoundname>Champ_Input_Proto.cpp</compoundname>
+    <includes refid="Convert__ICoCoTrioField_8h" local="no">Convert_ICoCoTrioField.h</includes>
+    <includes refid="Champ__Input__Proto_8h" local="no">Champ_Input_Proto.h</includes>
+    <includes refid="Schema__Temps__base_8h" local="no">Schema_Temps_base.h</includes>
+    <includes local="no">ICoCoExceptions.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Interprete_8h" local="no">Interprete.h</includes>
+    <includes refid="TRUSTTab_8h" local="no">TRUSTTab.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Champ_Input_Proto.cpp</label>
+        <link refid="Champ__Input__Proto_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ICoCoExceptions.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Convert_ICoCoTrioField.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Input_Proto.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Temps_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ICoCoExceptions.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Interprete.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTab.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ICoCo::WrongArgument;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="27"><highlight class="comment">/*!<sp/>@brief<sp/>Lecture<sp/>d&apos;un<sp/>champ<sp/>input<sp/>dans<sp/>un<sp/>flot<sp/>d&apos;entree<sp/>Factorisation<sp/>des<sp/>readOn<sp/>des<sp/>differents<sp/>Champ_input</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Format:</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>nb_comp<sp/>nombre_de_composantes_du_champ</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nom<sp/>nom_du_champ</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>probleme<sp/>nom_du_probleme_base_associe</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[sous_domaine<sp/>nom_du_sous_domaine_associe]<sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@return<sp/>le<sp/>flot<sp/>d&apos;entre<sp/>modifie</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@throws<sp/>pas<sp/>d&apos;accolade<sp/>ouvrante<sp/>en<sp/>debut<sp/>de<sp/>format</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>Exception<sp/>:<sp/>un<sp/>des<sp/>3<sp/>motcles<sp/>absent,<sp/>autre<sp/>motcle<sp/>non<sp/>compris</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@throws<sp/>pas<sp/>d&apos;accolade<sp/>fermante<sp/>en<sp/>fin<sp/>de<sp/>jeu<sp/>de<sp/>donnee</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classChamp__Input__Proto_1a8af88eb42b6b3d257614b227d1899b7b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Input__Proto_1a8af88eb42b6b3d257614b227d1899b7b" kindref="member">Champ_Input_Proto::read</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_champ;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_pb;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_sous_domaine;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbc=-1;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Lire<sp/>nom_champ<sp/>et<sp/>nom_pb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>accolade_ouverte(</highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>accolade_fermee(</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motlu;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu<sp/>!=<sp/>accolade_ouverte)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;It<sp/>was<sp/>expected<sp/>{<sp/>to<sp/>start<sp/>to<sp/>read<sp/>the<sp/>Champ_Input&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(1)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;nb_comp&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>nbc;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__Input__Proto_1a3c19091d41203314fab82b31162c6656" kindref="member">set_nb_comp</ref>(nbc);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;nom&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>nom_champ;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;initial_value&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classChamp__Input__Proto_1ae117db3b53886a605c4b525423b6cfb0" kindref="member">initial_value_</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu==</highlight><highlight class="stringliteral">&quot;probleme&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>nom_pb;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu==</highlight><highlight class="stringliteral">&quot;sous_domaine&quot;</highlight><highlight class="normal"><sp/>||<sp/>motlu==</highlight><highlight class="stringliteral">&quot;sous_zone&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>nom_sous_domaine;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu<sp/>==<sp/>accolade_fermee)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Ch_front_input_uniforme::readOn&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;We<sp/>expected<sp/>a<sp/>}<sp/>instead<sp/>of<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>motlu<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom_champ==</highlight><highlight class="stringliteral">&quot;??&quot;</highlight><highlight class="normal"><sp/>||<sp/>nom_pb==</highlight><highlight class="stringliteral">&quot;??&quot;</highlight><highlight class="normal"><sp/>||<sp/>nbc==-1)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Ch_front_input_uniforme::readOn&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;It<sp/>must<sp/>be<sp/>define<sp/>the<sp/>name,<sp/>problem<sp/>and<sp/>number<sp/>of<sp/>components&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>motlu<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Nommer<sp/>le<sp/>champ</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Input__Proto_1a13deff9db2e710c5c72e3c45150f1ad7" kindref="member">set_name</ref>(nom_champ);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Retrouver<sp/>le<sp/>probleme<sp/>et<sp/>s&apos;inscrire<sp/>dans<sp/>sa<sp/>liste</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Input__Proto_1a8fffd9966ebe508eba045f861313bf00" kindref="member">mon_pb</ref>=ref_cast(<ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>,<ref refid="classInterprete_1a3ca248609f0b72eac68baca14621b4ee" kindref="member">Interprete::objet</ref>(nom_pb));</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Input__Proto_1a83b5004c836058a3cf872e714bf2ca3b" kindref="member">mon_sous_domaine</ref>.reset();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom_sous_domaine!=</highlight><highlight class="stringliteral">&quot;??&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classChamp__Input__Proto_1ae998d04ea5e92178bf432fbf4ae6f342" kindref="member">sous_domaine_ok</ref>)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Ch_front_input_uniforme::readOn&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>sous_domaines<sp/>are<sp/>not<sp/>managed<sp/>by<sp/>this<sp/>field&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__Input__Proto_1a83b5004c836058a3cf872e714bf2ca3b" kindref="member">mon_sous_domaine</ref>=<ref refid="classChamp__Input__Proto_1a8fffd9966ebe508eba045f861313bf00" kindref="member">mon_pb</ref>-&gt;domaine().ss_domaine(nom_sous_domaine);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classChamp__Input__Proto_1a836b74149918c637cbac43c705570ad7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Input__Proto_1a836b74149918c637cbac43c705570ad7" kindref="member">Champ_Input_Proto::setValueOnTab</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TrioField&amp;<sp/>afield,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(afield._type==0)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((afield._nb_elems!=tab.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0))&amp;&amp;(afield._nb_elems!=tab.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0)))</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>WrongArgument(<ref refid="classChamp__Input__Proto_1a8fffd9966ebe508eba045f861313bf00" kindref="member">mon_pb</ref>-&gt;<ref refid="classTRUST__Ref_1af37eb79d01c9df1bbf5322d07338c481" kindref="member">le_nom</ref>().<ref refid="classNom_1a18849d5fc498cd087a6e1acb89dd17ff" kindref="member">getChar</ref>(),</highlight><highlight class="stringliteral">&quot;setInputField&quot;</highlight><highlight class="normal">,afield.getCharName(),</highlight><highlight class="stringliteral">&quot;should<sp/>have<sp/>the<sp/>same<sp/>_nb_elems<sp/>as<sp/>returned<sp/>by<sp/>getInputFieldTemplate&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(afield._nbnodes!=tab.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0))</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>WrongArgument(<ref refid="classChamp__Input__Proto_1a8fffd9966ebe508eba045f861313bf00" kindref="member">mon_pb</ref>-&gt;<ref refid="classTRUST__Ref_1af37eb79d01c9df1bbf5322d07338c481" kindref="member">le_nom</ref>().<ref refid="classNom_1a18849d5fc498cd087a6e1acb89dd17ff" kindref="member">getChar</ref>(),</highlight><highlight class="stringliteral">&quot;setInputField&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;afield&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;should<sp/>have<sp/>the<sp/>same<sp/>_nb_elems<sp/>as<sp/>returned<sp/>by<sp/>getInputFieldTemplate&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(afield._nb_field_components!=tab.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1))</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>WrongArgument(<ref refid="classChamp__Input__Proto_1a8fffd9966ebe508eba045f861313bf00" kindref="member">mon_pb</ref>-&gt;<ref refid="classTRUST__Ref_1af37eb79d01c9df1bbf5322d07338c481" kindref="member">le_nom</ref>().<ref refid="classNom_1a18849d5fc498cd087a6e1acb89dd17ff" kindref="member">getChar</ref>(),</highlight><highlight class="stringliteral">&quot;setInputField&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;afield&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;should<sp/>have<sp/>the<sp/>same<sp/>_nb_field_components<sp/>as<sp/>returned<sp/>by<sp/>getInputFieldTemplate&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>order<sp/>is<sp/><sp/><sp/>c1<sp/>c2<sp/>c3<sp/><sp/><sp/>c1<sp/>c2<sp/>c3<sp/><sp/><sp/>c1<sp/>c2<sp/>c3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>memcpy(tab.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>(),afield._field,tab.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()*</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/>tab.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="classChamp__Input__Proto_1aaec489506e45b38ad15655b950c2334a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Input__Proto_1aaec489506e45b38ad15655b950c2334a" kindref="member">Champ_Input_Proto::setInitialValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>vo)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Input__Proto_1ae117db3b53886a605c4b525423b6cfb0" kindref="member">initial_value_</ref>=vo;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="classChamp__Input__Proto_1abde264beeef8ffe06cffe259f4a1dc95" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Input__Proto_1abde264beeef8ffe06cffe259f4a1dc95" kindref="member">Champ_Input_Proto::setDoubleValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>val)</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>Cerr&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>need<sp/>to<sp/>override<sp/>setDoubleValue()<sp/>in<sp/>derived<sp/>class<sp/>of<sp/>Champ_Input_Proto&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Champ_Input_Proto.cpp"/>
+  </compounddef>
+</doxygen>

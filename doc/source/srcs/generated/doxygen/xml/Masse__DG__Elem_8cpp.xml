@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Masse__DG__Elem_8cpp" kind="file" language="C++">
+    <compoundname>Masse_DG_Elem.cpp</compoundname>
+    <includes refid="Masse__DG__Elem_8h" local="no">Masse_DG_Elem.h</includes>
+    <includes refid="Champ__Elem__DG_8h" local="no">Champ_Elem_DG.h</includes>
+    <includes refid="TRUSTTab__parts_8h" local="no">TRUSTTab_parts.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Matrix__tools_8h" local="no">Matrix_tools.h</includes>
+    <includes refid="Array__tools_8h" local="no">Array_tools.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Masse__DG__Elem_8cpp_1adba7d0beea67ed2aa44dca2bac9e3625" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Masse_DG_Elembases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Masse_DG_Elembases</name>
+        <initializer>={   &amp;( <ref refid="classMasse__DG__base" kindref="compound">Masse_DG_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/DG/Solveurs/Masse_DG_Elem.cpp" line="23" column="93" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/DG/Solveurs/Masse_DG_Elem.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Masse_DG_Elem.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Elem_DG.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTab_parts.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrix_tools.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Array_tools.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classMasse__DG__Elem_1abaa3693c4850de862eeab1b4917005cb" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classMasse__DG__Elem" kindref="compound">Masse_DG_Elem</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Masse_DG_Elem&quot;</highlight><highlight class="normal">,<sp/><ref refid="classMasse__DG__base" kindref="compound">Masse_DG_base</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classMasse__DG__Elem_1ae37b3ff0094a5fb3689c1ee31bf01507" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classMasse__DG__Elem_1ae37b3ff0094a5fb3689c1ee31bf01507" kindref="member">Masse_DG_Elem::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classMasse__DG__Elem_1a1ddc0fbdb19200636e7639fffa877c3b" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classMasse__DG__Elem_1a1ddc0fbdb19200636e7639fffa877c3b" kindref="member">Masse_DG_Elem::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;<sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classMasse__DG__Elem_1a09f86396ee856f8a1e19122a1e100e47" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classMasse__DG__Elem_1a09f86396ee856f8a1e19122a1e100e47" kindref="member">Masse_DG_Elem::appliquer_impl</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>sm)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="30"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMasse__DG__base_1a70f571c200759496f245fe570749cdea" kindref="member">le_dom_dg_</ref>-&gt;gram_schmidt())</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>volume<sp/>=<sp/><ref refid="classMasse__DG__base_1a70f571c200759496f245fe570749cdea" kindref="member">le_dom_dg_</ref>-&gt;volumes();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tab_divide_any_shape(sm,<sp/>volume);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Elem__DG" kindref="compound">Champ_Elem_DG</ref>&amp;<sp/>ch<sp/>=<sp/>ref_cast(<ref refid="classChamp__Elem__DG" kindref="compound">Champ_Elem_DG</ref>,<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().inconnue());</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classQuadrature__base" kindref="compound">Quadrature_base</ref>&amp;<sp/>quad<sp/>=<sp/><ref refid="classMasse__DG__base_1a70f571c200759496f245fe570749cdea" kindref="member">le_dom_dg_</ref>-&gt;get_quadrature();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>res,<sp/>loc;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>invMsm,<sp/>temp_sm;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>invMsm.<ref refid="classTRUSTTab_1ad11af5ab9d36aed04231fbafd88c2bfa" kindref="member">copy</ref>(sm,<sp/>RESIZE_OPTIONS::COPY_INIT);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>temp_sm.<ref refid="classTRUSTTab_1ad11af5ab9d36aed04231fbafd88c2bfa" kindref="member">copy</ref>(sm,<sp/>RESIZE_OPTIONS::COPY_INIT);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_elem<sp/>=<sp/>0;<sp/>num_elem<sp/>&lt;<sp/><ref refid="classMasse__DG__base_1a70f571c200759496f245fe570749cdea" kindref="member">le_dom_dg_</ref>-&gt;nb_elem();<sp/>num_elem++)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMatrice__Dense" kindref="compound">Matrice_Dense</ref><sp/>invM<sp/>=<sp/>ch.<ref refid="classChamp__Elem__DG_1ad449a23f1eb33b9bd4d29f7671b6096b" kindref="member">eval_invMassMatrix</ref>(quad,<sp/>num_elem);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.<ref refid="classTRUSTTab_1affa9ebd2e0fbcb3db7bfe24b388c5611" kindref="member">ref_tab</ref>(temp_sm,<sp/>num_elem,<sp/>1);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>loc.<ref refid="classTRUSTTab_1affa9ebd2e0fbcb3db7bfe24b388c5611" kindref="member">ref_tab</ref>(invMsm,<sp/>num_elem,<sp/>1);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>invM.<ref refid="classMatrice__Base_1a632b5cf52398b1b2cd1a62c1be985cd3" kindref="member">multvect_</ref>(loc,<sp/>res);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sm.<ref refid="classTRUSTTab_1ad11af5ab9d36aed04231fbafd88c2bfa" kindref="member">copy</ref>(temp_sm,<sp/>RESIZE_OPTIONS::COPY_INIT);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>sm.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sm;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/DG/Solveurs/Masse_DG_Elem.cpp"/>
+  </compounddef>
+</doxygen>

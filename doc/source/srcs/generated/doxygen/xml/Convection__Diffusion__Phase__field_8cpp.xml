@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Convection__Diffusion__Phase__field_8cpp" kind="file" language="C++">
+    <compoundname>Convection_Diffusion_Phase_field.cpp</compoundname>
+    <includes refid="Convection__Diffusion__Phase__field_8h" local="no">Convection_Diffusion_Phase_field.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Discret__Thyd_8h" local="no">Discret_Thyd.h</includes>
+    <includes refid="Matrice__Morse__Sym_8h" local="no">Matrice_Morse_Sym.h</includes>
+    <includes refid="Navier__Stokes__phase__field_8h" local="no">Navier_Stokes_phase_field.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+    <includes refid="Frontiere__dis__base_8h" local="no">Frontiere_dis_base.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes refid="Constituant_8h" local="no">Constituant.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Convection__Diffusion__Phase__field_8cpp_1a6c7dad80057130e221cedb77973f6fdf" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Convection_Diffusion_Phase_fieldbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Convection_Diffusion_Phase_fieldbases</name>
+        <initializer>={   &amp;( <ref refid="classConvection__Diffusion__Concentration" kindref="compound">Convection_Diffusion_Concentration</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Phase_field/Convection_Diffusion_Phase_field.cpp" line="35" column="94" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Phase_field/Convection_Diffusion_Phase_field.cpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2021,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Convection_Diffusion_Phase_field.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TRUST_ROOT/../Composants/TrioCFD/Multiphase/Phase_field/src</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version:<sp/><sp/><sp/><sp/><sp/>/main/22</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Convection_Diffusion_Phase_field.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discret_Thyd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Morse_Sym.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_phase_field.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Frontiere_dis_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Constituant.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&lt;Mass_Redistribution_Phase_Field.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classConvection__Diffusion__Phase__field_1aeec825e2420003845ca117ed110e92b4" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<ref refid="classConvection__Diffusion__Phase__field" kindref="compound">Convection_Diffusion_Phase_field</ref>,</highlight><highlight class="stringliteral">&quot;Convection_Diffusion_Phase_field&quot;</highlight><highlight class="normal">,<ref refid="classConvection__Diffusion__Concentration" kindref="compound">Convection_Diffusion_Concentration</ref>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>convection_diffusion_phase_field<sp/>convection_diffusion_concentration<sp/>convection_diffusion_phase_field<sp/>-1<sp/>Cahn-Hilliard<sp/>equation<sp/>of<sp/>the<sp/>Phase<sp/>Field<sp/>problem.<sp/>The<sp/>unknown<sp/>of<sp/>this<sp/>equation<sp/>is<sp/>the<sp/>concentration<sp/>C.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>mu_1<sp/>floattant<sp/>mu_1<sp/>1<sp/>Dynamic<sp/>viscosity<sp/>of<sp/>the<sp/>first<sp/>phase.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>mu_2<sp/>floattant<sp/>mu_2<sp/>1<sp/>Dynamic<sp/>viscosity<sp/>of<sp/>the<sp/>second<sp/>phase.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>rho_1<sp/>floattant<sp/>rho_1<sp/>1<sp/>Density<sp/>of<sp/>the<sp/>first<sp/>phase.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>rho_2<sp/>floattant<sp/>rho_2<sp/>1<sp/>Density<sp/>of<sp/>the<sp/>second<sp/>phase.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>potentiel_chimique_generalise<sp/>chaine(into=[&quot;avec_energie_cinetique&quot;,&quot;sans_energie_cinetique&quot;])<sp/>potentiel_chimique_generalise<sp/>0<sp/>To<sp/>define<sp/>(chaine<sp/>set<sp/>to<sp/>avec_energie_cinetique)<sp/>or<sp/>not<sp/>(chaine<sp/>set<sp/>to<sp/>sans_energie_cinetique)<sp/>if<sp/>the<sp/>Cahn-Hilliard<sp/>equation<sp/>contains<sp/>the<sp/>cinetic<sp/>energy<sp/>term.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classConvection__Diffusion__Phase__field_1ae04c45f14af71c0e2fff43780d32cdec" refkind="member"><highlight class="normal"><ref refid="classConvection__Diffusion__Phase__field_1ae04c45f14af71c0e2fff43780d32cdec" kindref="member">Convection_Diffusion_Phase_field::Convection_Diffusion_Phase_field</ref>()</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1a649c3084adc2e132d4d997c5f9cce487" kindref="member">mutype_</ref>=0;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/>Noms&amp;<sp/>nom=champs_compris_.liste_noms_compris();</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/>nom.dimensionner(1);</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/>nom[0]=&quot;potentiel_chimique_generalise&quot;;</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classConvection__Diffusion__Phase__field_1a8576647423e804eaff5810915cd697b1" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classConvection__Diffusion__Phase__field_1a8576647423e804eaff5810915cd697b1" kindref="member">Convection_Diffusion_Phase_field::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>is)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="54"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Concentration_1a36905857a09216c469414876a2b17706" kindref="member">Convection_Diffusion_Concentration::printOn</ref>(is);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classConvection__Diffusion__Phase__field_1a4f39e05aedeaeb68870e4fd3f2f4f0e3" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classConvection__Diffusion__Phase__field_1a4f39e05aedeaeb68870e4fd3f2f4f0e3" kindref="member">Convection_Diffusion_Phase_field::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Concentration_1a9f92f4c5f5de56f7e7ea65c670186a10" kindref="member">Convection_Diffusion_Concentration::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classConvection__Diffusion__Phase__field_1a94f8b5129ca51c3e08b2cddcfc3d414c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Phase__field_1a94f8b5129ca51c3e08b2cddcfc3d414c" kindref="member">Convection_Diffusion_Phase_field::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Concentration_1a6b11d2ccbb3af6049f711a77393ebf2c" kindref="member">Convection_Diffusion_Concentration::set_param</ref>(param);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;potentiel_chimique_generalise&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keyword">this</highlight><highlight class="normal">),<ref refid="classParam_1aa4ad0ca1d49bc5f2ebc5fc83ee9df384aaf5b6dfac1c5970478525407cc6ac572" kindref="member">Param::REQUIRED</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classConvection__Diffusion__Phase__field_1a868488d23b4ebedc16e940c56f6c8c88" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Phase__field_1a868488d23b4ebedc16e940c56f6c8c88" kindref="member">Convection_Diffusion_Phase_field::lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot==</highlight><highlight class="stringliteral">&quot;potentiel_chimique_generalise&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>temp_mutype_;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>temp_mutype_;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(temp_mutype_==</highlight><highlight class="stringliteral">&quot;avec_energie_cinetique&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1a649c3084adc2e132d4d997c5f9cce487" kindref="member">mutype_</ref>=1;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(temp_mutype_==</highlight><highlight class="stringliteral">&quot;sans_energie_cinetique&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1a649c3084adc2e132d4d997c5f9cce487" kindref="member">mutype_</ref>=0;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Allowed<sp/>keywords<sp/>for<sp/>potentiel_chimique_generalise<sp/>are<sp/>:&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;avec_energie_cinetique<sp/>or<sp/>sans_energie_cinetique&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Concentration_1a9ca119a9231e71840eba3737334bb66f" kindref="member">Convection_Diffusion_Concentration::lire_motcle_non_standard</ref>(mot,is);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="97"><highlight class="comment">/*!<sp/>@brief<sp/>Discretise<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classConvection__Diffusion__Phase__field_1a02a8d108c94e8324ecb39d17acd3ad5d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Phase__field_1a02a8d108c94e8324ecb39d17acd3ad5d" kindref="member">Convection_Diffusion_Phase_field::discretiser</ref>()</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDiscret__Thyd" kindref="compound">Discret_Thyd</ref>&amp;<sp/>dis=ref_cast(<ref refid="classDiscret__Thyd" kindref="compound">Discret_Thyd</ref>,<sp/><ref refid="classEquation__base_1a440fc95363315082eddbef26dc76024e" kindref="member">discretisation</ref>());</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Discretisation<sp/>de<sp/>mutilde<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;mutilde<sp/>discretization&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//dis.mutilde(schema_temps(),<sp/>domaine_dis(),<sp/>ch_mutilde);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//dis.discretiser_champ(&quot;temperature&quot;,domaine_dis(),&quot;potentiel_chimique_generalise&quot;,&quot;.&quot;,1,schema_temps().temps_courant(),ch_mutilde);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>dis.<ref refid="classDiscretisation__base_1afea05efdd1484bb9c80df965627c367f" kindref="member">discretiser_champ</ref>(</highlight><highlight class="stringliteral">&quot;temperature&quot;</highlight><highlight class="normal">,<ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>(),</highlight><highlight class="stringliteral">&quot;potentiel_chimique_generalise&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">,<ref refid="classConvection__Diffusion__Concentration_1a1fadc795982818d4bc6a305e43ebcf48" kindref="member">constituant</ref>().<ref refid="classConvection__Diffusion__Concentration_1a979a4eaabe504e3abdb92a582579d680" kindref="member">nb_constituants</ref>(),<ref refid="classEquation__base_1abc11e51aa75b4c7aa55c27f71eb2f2c4" kindref="member">schema_temps</ref>().temps_courant(),<ref refid="classConvection__Diffusion__Phase__field_1aaa4394a6b8535ddc293b9593f94b2e12" kindref="member">ch_mutilde</ref>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1ad687c312e72dcbc783cf597af5927b07" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1aa2bd9fb5b3b311863130fa0bbc404773" kindref="member">ajoute_champ</ref>(<ref refid="classConvection__Diffusion__Phase__field_1aaa4394a6b8535ddc293b9593f94b2e12" kindref="member">ch_mutilde</ref>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>&amp;<sp/>eq_ns=ref_cast(<ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>,<ref refid="classEquation__base_1aa8151a96f63719523bf50ddd832e0f8f" kindref="member">probleme</ref>().equation(0));</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1ad8464adfc65be5aa67be02403809b666" kindref="member">gradient</ref>.<ref refid="classMorEqn_1a1a6c57edd46cc696aa45c6b01a76e14c" kindref="member">associer_eqn</ref>(eq_ns);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1ad8464adfc65be5aa67be02403809b666" kindref="member">gradient</ref>.<ref refid="classOperateur__Grad_1aab7ee0db82901a47490b18b22aa819df" kindref="member">typer</ref>();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1ad8464adfc65be5aa67be02403809b666" kindref="member">gradient</ref>.<ref refid="classOperateur__Grad_1a55b2c186f572d7efb36ae10f0f46b098" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1addce89950be87e830970589f6aba37d3" kindref="member">associer_eqn</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Concentration_1a82c113e3f4824208e2b25ab752f57144" kindref="member">Convection_Diffusion_Concentration::discretiser</ref>();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Convection_Diffusion_Phase_field::discretiser()<sp/>ok&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classConvection__Diffusion__Phase__field_1a0d78233d3cc1c2cfe2692f4ff6b703fb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Phase__field_1a0d78233d3cc1c2cfe2692f4ff6b703fb" kindref="member">Convection_Diffusion_Phase_field::completer</ref>()</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1a68c77bfc9fb39474ddc481495710c40e" kindref="member">Equation_base::completer</ref>();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1ad8464adfc65be5aa67be02403809b666" kindref="member">gradient</ref>.<ref refid="classOperateur_1ac40f77a68a1959a5d37b5b2e45b40571" kindref="member">completer</ref>();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="classConvection__Diffusion__Phase__field_1a2a6f155f2a222275eb8a5f93cf1d6185" refkind="member"><highlight class="normal"><ref refid="classOperateur__Grad" kindref="compound">Operateur_Grad</ref>&amp;<sp/><ref refid="classConvection__Diffusion__Phase__field_1a2a6f155f2a222275eb8a5f93cf1d6185" kindref="member">Convection_Diffusion_Phase_field::operateur_gradient</ref>()</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Phase__field_1ad8464adfc65be5aa67be02403809b666" kindref="member">gradient</ref>;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132" refid="classConvection__Diffusion__Phase__field_1a15d7e18ddff18cb683151f05255e0d44" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Grad" kindref="compound">Operateur_Grad</ref>&amp;<sp/><ref refid="classConvection__Diffusion__Phase__field_1a2a6f155f2a222275eb8a5f93cf1d6185" kindref="member">Convection_Diffusion_Phase_field::operateur_gradient</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="133"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Phase__field_1ad8464adfc65be5aa67be02403809b666" kindref="member">gradient</ref>;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="classConvection__Diffusion__Phase__field_1a04fa72e4ec70f56e279af4514898eb92" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Phase__field_1a04fa72e4ec70f56e279af4514898eb92" kindref="member">Convection_Diffusion_Phase_field::preparer_calcul</ref>()</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Concentration_1a911ed2215245062921a790931a67bf75" kindref="member">Convection_Diffusion_Concentration::preparer_calcul</ref>();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Convection_Diffusion_Phase_field::preparer_calcul&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ATTENTION<sp/>:<sp/>avec<sp/>le<sp/>nouveau<sp/>modele,<sp/>on<sp/>n&apos;utilise<sp/>plus<sp/>div_alpha_rho_gradC<sp/>mais</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>div_alpha_gradC.<sp/>Si<sp/>on<sp/>veut<sp/>reutiliser<sp/>l&apos;ancienne<sp/>forme,<sp/>il<sp/>faut<sp/>remodifier<sp/>le<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>mutilde,<sp/>div_alpha_gradC,<sp/>alpha_gradC_carre<sp/>et<sp/>pression_thermo</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ont<sp/>la<sp/>meme<sp/>structure<sp/>que<sp/>la<sp/>concentration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1aaa96abf0f2d9a7dccb69de7619ad56ab" kindref="member">mutilde</ref><sp/>=<sp/><ref refid="classConvection__Diffusion__Concentration_1ab8be51fd6560094b4dd67ce9b0f9cdba" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1aaa96abf0f2d9a7dccb69de7619ad56ab" kindref="member">mutilde</ref><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Mass_Redistribution_Phase_Field::c_ini<sp/>=<sp/>inconnue().valeurs();//Mass_redistribution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>si<sp/>on<sp/>traite<sp/>une<sp/>variable<sp/>avec<sp/>&quot;dis.&quot;<sp/>(voir<sp/>discretiser()),<sp/>l&apos;operation<sp/>&quot;resize&quot;<sp/>est<sp/>inutile<sp/>car<sp/>&quot;dis.&quot;<sp/>s&apos;en<sp/>charge.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>En<sp/>sequentiel<sp/>:<sp/>resize()<sp/>autorise</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>En<sp/>parallele<sp/>:<sp/>resize()<sp/>interdit,<sp/>car<sp/>alors<sp/>on<sp/>ne<sp/>prend<sp/>pas<sp/>en<sp/>compte<sp/>les<sp/>joints</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1af9b0c3e50dbe90b6ddd77665937e5694" kindref="member">div_alpha_rho_gradC</ref><sp/>=<sp/><ref refid="classConvection__Diffusion__Concentration_1ab8be51fd6560094b4dd67ce9b0f9cdba" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1af9b0c3e50dbe90b6ddd77665937e5694" kindref="member">div_alpha_rho_gradC</ref><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1a1d33f6b6b379bc95a3e615b04bffa2e0" kindref="member">div_alpha_gradC</ref><sp/>=<sp/><ref refid="classConvection__Diffusion__Concentration_1ab8be51fd6560094b4dd67ce9b0f9cdba" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1a1d33f6b6b379bc95a3e615b04bffa2e0" kindref="member">div_alpha_gradC</ref><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Phase__field_1a95d6c38e9f326f7843ecf775a9a43b09" kindref="member">alpha_gradC_carre</ref><sp/>=<sp/><ref refid="classConvection__Diffusion__Phase__field_1a1d33f6b6b379bc95a3e615b04bffa2e0" kindref="member">div_alpha_gradC</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//pression_thermo<sp/>=<sp/>div_alpha_gradC;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr&lt;&lt;&quot;<sp/>mutilde<sp/>:<sp/>preparer_calcul<sp/>=<sp/>&quot;&lt;&lt;<sp/>mutilde<sp/>&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr&lt;&lt;&quot;<sp/>div_alpha_gradC<sp/>:<sp/>preparer_calcul<sp/>=<sp/>&quot;&lt;&lt;<sp/>div_alpha_gradC<sp/>&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr&lt;&lt;&quot;<sp/>alpha_gradC_carre<sp/>:<sp/>preparer_calcul<sp/>=<sp/>&quot;&lt;&lt;<sp/>alpha_gradC_carre<sp/>&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr&lt;&lt;&quot;<sp/>pression_thermo<sp/>:<sp/>preparer_calcul<sp/>=<sp/>&quot;&lt;&lt;<sp/>pression_thermo<sp/>&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1a3c8ac50e3e7b6ed29024a43e828a5396" kindref="member">sources</ref>().<ref refid="classSources_1aa993ae270b7536a4d1a321899b905bf8" kindref="member">mettre_a_jour</ref>(<ref refid="classEquation__base_1abc11e51aa75b4c7aa55c27f71eb2f2c4" kindref="member">schema_temps</ref>().temps_courant());</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Phase_field/Convection_Diffusion_Phase_field.cpp"/>
+  </compounddef>
+</doxygen>

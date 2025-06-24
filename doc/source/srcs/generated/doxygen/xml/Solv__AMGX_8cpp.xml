@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Solv__AMGX_8cpp" kind="file" language="C++">
+    <compoundname>Solv_AMGX.cpp</compoundname>
+    <includes refid="Solv__AMGX_8h" local="no">Solv_AMGX.h</includes>
+    <includes refid="Matrice__Morse_8h" local="no">Matrice_Morse.h</includes>
+    <includes local="no">ctime</includes>
+    <includes refid="communications_8h" local="no">communications.h</includes>
+    <includes refid="stat__counters_8h" local="no">stat_counters.h</includes>
+    <includes refid="Device_8h" local="no">Device.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Solv_AMGX.cpp</label>
+        <link refid="Solv__AMGX_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ctime</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Solv__AMGX_8cpp_1a51aca53f9f3b657ceca48ddc3bc52ea0" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Solv_AMGXbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Solv_AMGXbases</name>
+        <initializer>={   &amp;( <ref refid="classSolv__Petsc" kindref="compound">Solv_Petsc</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_AMGX.cpp" line="23" column="48" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_AMGX.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Solv_AMGX.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Morse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ctime&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;communications.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stat_counters.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Device.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classSolv__AMGX_1a2e92938cfaaad582379a26f54216328b" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<ref refid="classSolv__AMGX" kindref="compound">Solv_AMGX</ref>,</highlight><highlight class="stringliteral">&quot;Solv_AMGX&quot;</highlight><highlight class="normal">,<ref refid="classSolv__Petsc" kindref="compound">Solv_Petsc</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>amgx<sp/>petsc<sp/>amgx<sp/>0<sp/>Solver<sp/>via<sp/>AmgX<sp/>API</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>solveur<sp/>chaine<sp/>solveur<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>option_solveur<sp/>bloc_lecture<sp/>option_solveur<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>printOn</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classSolv__AMGX_1ab0c4022e686637abac5b6ef29f2ace74" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSolv__AMGX_1ab0c4022e686637abac5b6ef29f2ace74" kindref="member">Solv_AMGX::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="31"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>readOn</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classSolv__AMGX_1ad26423054dc2bdfc0b5f309dd342717c" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSolv__AMGX_1ad26423054dc2bdfc0b5f309dd342717c" kindref="member">Solv_AMGX::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Petsc_1a35a8ad922fb450f5b693f9ce1e31875c" kindref="member">create_solver</ref>(is);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PETSCKSP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TRUST_USE_CUDA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Solv_AMGX::initialize()</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(amgx_initialized())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>AmgXmode<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;dDDI&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>dDDI:GPU<sp/>hDDI:CPU<sp/>(not<sp/>supported<sp/>yet<sp/>by<sp/>AmgXWrapper)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Possible<sp/>de<sp/>jouer<sp/>avec<sp/>simple<sp/>precision<sp/>peut<sp/>etre:</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/>1.<sp/>(lowercase)<sp/>letter:<sp/>whether<sp/>the<sp/>code<sp/>will<sp/>run<sp/>on<sp/>the<sp/>host<sp/>(h)<sp/>or<sp/>device<sp/>(d).</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/>2.<sp/>(uppercase)<sp/>letter:<sp/>whether<sp/>the<sp/>matrix<sp/>precision<sp/>is<sp/>float<sp/>(F)<sp/>or<sp/>double<sp/>(D).</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/>3.<sp/>(uppercase)<sp/>letter:<sp/>whether<sp/>the<sp/>vector<sp/>precision<sp/>is<sp/>float<sp/>(F)<sp/>or<sp/>double<sp/>(D).</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/>4.<sp/>(uppercase)<sp/>letter:<sp/>whether<sp/>the<sp/>index<sp/>type<sp/>is<sp/>32-bit<sp/>int<sp/>(I)<sp/>or<sp/>else<sp/>(not<sp/>currently<sp/>supported).</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/>typedef<sp/>enum<sp/>{<sp/>AMGX_mode_hDDI,<sp/>AMGX_mode_hDFI,<sp/>AMGX_mode_hFFI,<sp/>AMGX_mode_dDDI,<sp/>AMGX_mode_dDFI,<sp/>AMGX_mode_dFFI<sp/>}<sp/>AMGX_Mode;<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>Amgx<sp/>and<sp/>reading<sp/>the<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classSolv__Petsc_1af626ce7ac5babfaf8333057766ac15cf" kindref="member">config</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>file.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>start<sp/>=<sp/><ref refid="classStatistiques_1afce574b1c6577fa642d288f6a6bd0253" kindref="member">Statistiques::get_time_now</ref>();;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>SolveurAmgX_.initialize(PETSC_COMM_WORLD,<sp/>AmgXmode.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>(),<sp/><ref refid="classSolv__Petsc_1af626ce7ac5babfaf8333057766ac15cf" kindref="member">config</ref>().getString());</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;[AmgX]<sp/>Time<sp/>to<sp/>initialize:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classStatistiques_1afce574b1c6577fa642d288f6a6bd0253" kindref="member">Statistiques::get_time_now</ref>()<sp/>-<sp/>start<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Petsc_1a7244784294055ac6cd06c16d5d7264e7" kindref="member">amgx_initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>MPI_Barrier(PETSC_COMM_WORLD);<sp/>Voir<sp/>dans<sp/>https://github.com/barbagroup/AmgXWrapper/pull/30/commits/1554808a3689f51fa43ab81a35c47a9a1525939a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Creation<sp/>des<sp/>objets</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Solv_AMGX::Create_objects(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>mat_morse,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>blocksize)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>initialize();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolv__Petsc_1a9c92c7b3025ccb3f301489141a442211" kindref="member">read_matrix_</ref>)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Read_matrix<sp/>not<sp/>supported<sp/>on<sp/>GPU<sp/>yet.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Creation<sp/>de<sp/>la<sp/>matrice<sp/>Petsc<sp/>(CSR<sp/>pointeurs<sp/>dessus)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(MatricePetsc_<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>MatDestroy(&amp;MatricePetsc_);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>Create_MatricePetsc(MatricePetsc_,<sp/>mataij_,<sp/>mat_morse);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>start<sp/>=<sp/><ref refid="classStatistiques_1afce574b1c6577fa642d288f6a6bd0253" kindref="member">Statistiques::get_time_now</ref>();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>petscToCSR(MatricePetsc_,<sp/>SolutionPetsc_,<sp/>SecondMembrePetsc_);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;[AmgX]<sp/>Time<sp/>to<sp/>create<sp/>CSR<sp/>pointers:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classStatistiques_1afce574b1c6577fa642d288f6a6bd0253" kindref="member">Statistiques::get_time_now</ref>()<sp/>-<sp/>start<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1affcd058809786918ed173aaf681d0843" kindref="member">begin_count</ref>(gpu_copytodevice_counter_);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>device<sp/>pointer<sp/>to<sp/>enable<sp/>device<sp/>consolidation<sp/>in<sp/>AmgXWrapper:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>values_device;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>cudaMalloc((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">**)&amp;values_device,<sp/>nNz<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>cudaMemcpy(values_device,<sp/>values,<sp/>nNz<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">),<sp/>cudaMemcpyHostToDevice);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//SolveurAmgX_.setA(nRowsGlobal,<sp/>nRowsLocal,<sp/>nNz,<sp/>rowOffsets,<sp/>colIndices,<sp/>values,<sp/>nullptr);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>SolveurAmgX_.setA(nRowsGlobal,<sp/>nRowsLocal,<sp/>nNz,<sp/>rowOffsets,<sp/>colIndices,<sp/>values_device,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//cudaFree(values_device);delete[]<sp/>hostArray;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1a686ef80e162afd2fb6058c8d27175ca4" kindref="member">end_count</ref>(gpu_copytodevice_counter_,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>*<sp/>(nRowsLocal<sp/>+<sp/>nNz)<sp/>+<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">)<sp/>*<sp/>nNz));</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;[AmgX]<sp/>Time<sp/>to<sp/>set<sp/>matrix<sp/>(copy+setup)<sp/>on<sp/>GPU:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>statistiques().<ref refid="classStatistiques_1a21c24113a2042f33ce1134b473ebc1ac" kindref="member">last_time</ref>(gpu_copytodevice_counter_)<sp/>&lt;&lt;<sp/>finl;<sp/></highlight><highlight class="comment">//<sp/>Attention<sp/>balise<sp/>lue<sp/>par<sp/>fiche<sp/>de<sp/>validation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Solv_AMGX::Create_vectors(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>b)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Externe_1a8c5427ebe82ad701d71ed55cde06fe3f" kindref="member">Create_lhs_rhs_onDevice</ref>();</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Solv_AMGX::Update_vectors(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>secmem,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>solution)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>Solv_Externe::Update_lhs_rhs&lt;Kokkos::DefaultExecutionSpace&gt;(secmem,<sp/>solution);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolv__Petsc_1add7d1d8a5e08095450d5e7493c480429" kindref="member">reorder_matrix_</ref>)<sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(</highlight><highlight class="stringliteral">&quot;Option<sp/>not<sp/>supported<sp/>yet<sp/>for<sp/>AmgX.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolv__Externe_1ae477e8000cb545a13e1736c673d74af9" kindref="member">Solv_AMGX::Update_solution</ref>(<ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>solution)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>Solv_Externe::Update_solution&lt;Kokkos::DefaultExecutionSpace&gt;(solution);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Fonction<sp/>de<sp/>conversion<sp/>Petsc<sp/>-&gt;CSR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal">PetscErrorCode<sp/>Solv_AMGX::petscToCSR(Mat&amp;<sp/>A,<sp/>Vec&amp;<sp/>lhs_petsc,<sp/>Vec&amp;<sp/>rhs_petsc)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>PetscFunctionBeginUser;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>PetscBool<sp/>done;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>MatType<sp/>type;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>Mat<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>PetscErrorCode<sp/>ierr<sp/>=<sp/>MatGetType(A,<sp/>&amp;type);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>CHKERRQ(ierr);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>whether<sp/>the<sp/>Mat<sp/>type<sp/>is<sp/>supported</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::strcmp(type,<sp/>MATSEQAIJ)<sp/>==<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>sequential<sp/>AIJ</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>localA<sp/>point<sp/>to<sp/>the<sp/>same<sp/>memory<sp/>space<sp/>as<sp/>A<sp/>does</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>localA<sp/>=<sp/>A;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::strcmp(type,<sp/>MATMPIAIJ)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>local<sp/>matrix<sp/>from<sp/>redistributed<sp/>matrix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(localA!=</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>MatDestroy(&amp;localA);<sp/></highlight><highlight class="comment">//<sp/>Suite<sp/>accroissement<sp/>memoire<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ierr<sp/>=<sp/>MatMPIAIJGetLocalMat(A,<sp/>MAT_INITIAL_MATRIX,<sp/>&amp;localA);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CHKERRQ(ierr);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SETERRQ(PETSC_COMM_WORLD,<sp/>PETSC_ERR_ARG_WRONG,</highlight><highlight class="stringliteral">&quot;Mat<sp/>type<sp/>%s<sp/>is<sp/>not<sp/>supported!\n&quot;</highlight><highlight class="normal">,<sp/>type);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>row<sp/>and<sp/>column<sp/>indices<sp/>in<sp/>compressed<sp/>row<sp/>format</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>ierr<sp/>=<sp/>MatGetRowIJ(localA,<sp/>0,<sp/>PETSC_FALSE,<sp/>PETSC_FALSE,<sp/>&amp;nRowsLocal,<sp/>&amp;rowOffsets,<sp/>&amp;colIndices,<sp/>&amp;done);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(done==PETSC_FALSE)<sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">Process::abort</ref>();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>CHKERRQ(ierr);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/>ierr<sp/>=<sp/>MatSeqAIJGetArray(localA,<sp/>&amp;values);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>CHKERRQ(ierr);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>pointers<sp/>to<sp/>the<sp/>raw<sp/>data<sp/>of<sp/>local<sp/>vectors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/>ierr<sp/>=<sp/>VecGetArray(lhs_petsc,<sp/>&amp;lhs);</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/>CHKERRQ(ierr);</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/>ierr<sp/>=<sp/>VecGetArray(rhs_petsc,<sp/>&amp;rhs);</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/>CHKERRQ(ierr);</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>the<sp/>number<sp/>of<sp/>rows<sp/>in<sp/>nRowsGlobal</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/>ierr<sp/>=<sp/>MPI_Allreduce(&amp;nRowsLocal,<sp/>&amp;nRowsGlobal,<sp/>1,<sp/>MPI_INT,<sp/>MPI_SUM,<sp/>PETSC_COMM_WORLD);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/>CHKERRQ(ierr);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>the<sp/>number<sp/>of<sp/>non-zeros</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/>nNz<sp/>=<sp/>rowOffsets[nRowsLocal];</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>PetscFunctionReturn(0);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Solv_AMGX::Update_matrix(Mat&amp;<sp/>MatricePetsc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>mat_morse)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>La<sp/>matrice<sp/>CSR<sp/>de<sp/>PETSc<sp/>a<sp/>ete<sp/>mise<sp/>a<sp/>jour<sp/>dans<sp/>check_stencil</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1affcd058809786918ed173aaf681d0843" kindref="member">begin_count</ref>(gpu_copytodevice_counter_);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/>SolveurAmgX_.updateA(nRowsLocal,<sp/>nNz,<sp/>values);<sp/><sp/></highlight><highlight class="comment">//<sp/>ToDo<sp/>erreur<sp/>valgrind<sp/>au<sp/>premier<sp/>appel<sp/>de<sp/>updateA...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1a686ef80e162afd2fb6058c8d27175ca4" kindref="member">end_count</ref>(gpu_copytodevice_counter_,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">)*nNz);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;[AmgX]<sp/>Time<sp/>to<sp/>update<sp/>matrix<sp/>(copy+resetup)<sp/>on<sp/>GPU:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>statistiques().<ref refid="classStatistiques_1a21c24113a2042f33ce1134b473ebc1ac" kindref="member">last_time</ref>(gpu_copytodevice_counter_)<sp/>&lt;&lt;<sp/>finl;<sp/></highlight><highlight class="comment">//<sp/>Attention<sp/>balise<sp/>lue<sp/>par<sp/>fiche<sp/>de<sp/>validation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Check<sp/>and<sp/>return<sp/>true<sp/>if<sp/>new<sp/>stencil</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Solv_AMGX::check_stencil(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>mat_morse)</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>True_int<sp/>num_devices<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>cudaGetDeviceCount(&amp;num_devices);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(num_devices&gt;1)</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Exemple<sp/>cas<sp/>PETSC_AMGX<sp/>en<sp/>parallele:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;[AmgX]<sp/>In<sp/>Solv_AMGX::check_stencil<sp/>same_stencil=true<sp/>cause<sp/>bug<sp/>in<sp/>SolveurAmgX_::updateA<sp/>on<sp/>multi-GPU<sp/>(ToDo:<sp/>fix<sp/>by<sp/>switching<sp/>to<sp/>CSR<sp/>interface)!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>start<sp/>=<sp/><ref refid="classStatistiques_1afce574b1c6577fa642d288f6a6bd0253" kindref="member">Statistiques::get_time_now</ref>();</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Parcours<sp/>de<sp/>la<sp/>matrice_morse<sp/>(qui<sp/>peut<sp/>contenir<sp/>des<sp/>0<sp/>et<sp/>qui<sp/>n&apos;est<sp/>pas<sp/>triee<sp/>par<sp/>colonnes<sp/>croissantes)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>si<sp/>matrice<sp/>sur<sp/>le<sp/>GPU<sp/>deja<sp/>construite<sp/>(qui<sp/>est<sp/>sans<sp/>0<sp/>et<sp/>qui<sp/>est<sp/>triee<sp/>par<sp/>colonnes<sp/>croissantes):</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref>&amp;<sp/>tab1<sp/>=<sp/>mat_morse.<ref refid="classMatrice__Morse_1a4c6cb8e8ac31833e64b9fe6d26aa4ec0" kindref="member">get_tab1</ref>();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref>&amp;<sp/>tab2<sp/>=<sp/>mat_morse.<ref refid="classMatrice__Morse_1ade95a94ce982fe5fcb1196508b8f0cc3" kindref="member">get_tab2</ref>();</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>coeff<sp/>=<sp/>mat_morse.<ref refid="classMatrice__Morse_1a7fdede1c7eb63b9636e7873a2d25092b" kindref="member">get_coeff</ref>();</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfTID</ref>&amp;<sp/>renum_array<sp/>=<sp/><ref refid="classSolv__Externe_1a76ebb364a0ae0d2fd9892d2a95ce4568" kindref="member">renum_</ref>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>new_stencil<sp/>=<sp/>0,<sp/>RowLocal<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1a57e0f54b11e6eaadbea224fa904b18dd" kindref="member">Journal</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Provisoire:<sp/>nb_rows_=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classSolv__Externe_1a3d0203b49e6e953a4afc804a6b91d8d3" kindref="member">nb_rows_</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>nb_rows_tot_=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classSolv__Externe_1a1bd31ba8057caad81098865e27c245a4" kindref="member">nb_rows_tot_</ref><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>tab1.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()<sp/>-<sp/>1;<sp/>i++)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolv__Externe_1a51202795422f5866ef465c93e38dae7d" kindref="member">items_to_keep_</ref>[i])</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nnz_row<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>tab1(i)<sp/>-<sp/>1;<sp/>k<sp/>&lt;<sp/>tab1(i<sp/>+<sp/>1)<sp/>-<sp/>1;<sp/>k++)</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(coeff(k)<sp/>!=<sp/>0)<sp/>nnz_row++;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nnz_row<sp/>!=<sp/>rowOffsets[RowLocal<sp/>+<sp/>1]<sp/>-<sp/>rowOffsets[RowLocal])</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a57e0f54b11e6eaadbea224fa904b18dd" kindref="member">Journal</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Provisoire:<sp/>Number<sp/>of<sp/>non-zero<sp/>on<sp/>GPU<sp/>will<sp/>change<sp/>from<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>rowOffsets[RowLocal<sp/>+<sp/>1]<sp/>-<sp/>rowOffsets[RowLocal]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>to<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nnz_row<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>on<sp/>row<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>RowLocal<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>new_stencil<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>tab1(i)<sp/>-<sp/>1;<sp/>k<sp/>&lt;<sp/>tab1(i<sp/>+<sp/>1)<sp/>-<sp/>1;<sp/>k++)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(coeff(k)<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>found<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trustIdType<sp/>col<sp/>=<sp/>renum_array[tab2(k)<sp/>-<sp/>1];</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Boucle<sp/>pour<sp/>voir<sp/>si<sp/>le<sp/>coeff<sp/>est<sp/>sur<sp/>le<sp/>GPU:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>RowGlobal<sp/>=<sp/><ref refid="classSolv__Externe_1a1274201623bf03351eeac6a5fc0f9c5d" kindref="member">decalage_local_global_</ref>+RowLocal;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kk<sp/>=<sp/>rowOffsets[RowLocal];<sp/>kk<sp/>&lt;<sp/>rowOffsets[RowLocal<sp/>+<sp/>1];<sp/>kk++)</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(colIndices[kk]<sp/>==<sp/>col)</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>values[kk]<sp/>=<sp/>coeff(k);<sp/></highlight><highlight class="comment">//<sp/>On<sp/>met<sp/>a<sp/>jour<sp/>le<sp/>coefficient</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>found<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!found)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a57e0f54b11e6eaadbea224fa904b18dd" kindref="member">Journal</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Provisoire:<sp/>mat_morse(&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>RowGlobal<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>col<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)!=0<sp/>new<sp/>on<sp/>GPU<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>new_stencil<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RowLocal++;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/>new_stencil<sp/>=<sp/><ref refid="classProcess_1a1e9d9f9899b71927cfafae14c7bd048d" kindref="member">mp_max</ref>(new_stencil);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;[AmgX]<sp/>Time<sp/>to<sp/>check<sp/>stencil:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classStatistiques_1afce574b1c6577fa642d288f6a6bd0253" kindref="member">Statistiques::get_time_now</ref>()<sp/>-<sp/>start<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>new_stencil;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Resolution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Solv_AMGX::solve(<ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>residu)</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/>mapToDevice(<ref refid="classSolv__Externe_1a750d495b0e11d322e53505e76034ca76" kindref="member">rhs_</ref>);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/>computeOnTheDevice(<ref refid="classSolv__Externe_1a3b5255a6290acc0c7daba16684707a24" kindref="member">lhs_</ref>);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1affcd058809786918ed173aaf681d0843" kindref="member">begin_count</ref>(gpu_library_counter_);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Offer<sp/>device<sp/>pointers<sp/>to<sp/>AmgX:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/>SolveurAmgX_.solve(addrOnDevice(<ref refid="classSolv__Externe_1a3b5255a6290acc0c7daba16684707a24" kindref="member">lhs_</ref>),<sp/>addrOnDevice(<ref refid="classSolv__Externe_1a750d495b0e11d322e53505e76034ca76" kindref="member">rhs_</ref>),<sp/>nRowsLocal,<sp/>seuil_);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1a686ef80e162afd2fb6058c8d27175ca4" kindref="member">end_count</ref>(gpu_library_counter_);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;[AmgX]<sp/>Time<sp/>to<sp/>solve<sp/>system<sp/>on<sp/>GPU:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>statistiques().<ref refid="classStatistiques_1a21c24113a2042f33ce1134b473ebc1ac" kindref="member">last_time</ref>(gpu_library_counter_)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nbiter(residu);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Solv_AMGX::nbiter(<ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>residu)</highlight></codeline>
+<codeline lineno="252"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/>True_int<sp/>nbiter<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/>SolveurAmgX_.getIters(nbiter);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Bug<sp/>AmgX,<sp/>seul<sp/>le<sp/>process<sp/>0<sp/>renvoie<sp/>correctement<sp/>nbiter...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/>envoyer_broadcast(nbiter,<sp/>0);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolveurSys__base_1a6435c5b83312da8f782eeeab564b4061" kindref="member">limpr</ref>()<sp/>&gt;<sp/>-1)</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SolveurAmgX_.getResidual(0,<sp/>residu(0));</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nbiter&gt;0)<sp/>SolveurAmgX_.getResidual(nbiter<sp/>-<sp/>1,<sp/>residu(nbiter));</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nbiter;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_AMGX.cpp"/>
+  </compounddef>
+</doxygen>

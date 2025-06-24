@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="PrecondA_8cpp" kind="file" language="C++">
+    <compoundname>PrecondA.cpp</compoundname>
+    <includes refid="Matrice__Morse__Sym_8h" local="no">Matrice_Morse_Sym.h</includes>
+    <includes refid="Matrice__Bloc__Sym_8h" local="no">Matrice_Bloc_Sym.h</includes>
+    <includes refid="TRUSTTab__parts_8h" local="no">TRUSTTab_parts.h</includes>
+    <includes refid="PrecondA_8h" local="no">PrecondA.h</includes>
+    <includes refid="Motcle_8h" local="no">Motcle.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="PrecondA_8cpp_1ab0b18f1e93f68d77fe3261db0bff74ac" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* PrecondAbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>PrecondAbases</name>
+        <initializer>={   &amp;( <ref refid="classPrecond__base" kindref="compound">Precond_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/PrecondA.cpp" line="23" column="73" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/PrecondA.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="PrecondA_8cpp_1a5a74ca9f1d52694e95489dc6b26801e7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void prepare_precond</definition>
+        <argsstring>(TRUST_Deriv&lt; Precond_base &gt; &amp;p, const Matrice_Base &amp;m, const DoubleVect &amp;v, Precond_base::Init_Status status)</argsstring>
+        <name>prepare_precond</name>
+        <param>
+          <type><ref refid="classTRUST__Deriv" kindref="compound">TRUST_Deriv</ref>&lt; <ref refid="classPrecond__base" kindref="compound">Precond_base</ref> &gt; &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref> &amp;</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref> &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36ca" kindref="member">Precond_base::Init_Status</ref></type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/PrecondA.cpp" line="49" column="13" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/PrecondA.cpp" bodystart="49" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Morse_Sym.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Bloc_Sym.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTab_parts.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;PrecondA.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Motcle.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classPrecondA_1a992a619a16e56814d8a1d5d7942bd4c6" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classPrecondA" kindref="compound">PrecondA</ref>,</highlight><highlight class="stringliteral">&quot;ssor_bloc&quot;</highlight><highlight class="normal">,<ref refid="classPrecond__base" kindref="compound">Precond_base</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>ssor_bloc<sp/>precond_base<sp/>ssor_bloc<sp/>-1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classPrecondA_1ac6c9c8755455d2ab6271796af07ff742" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classPrecondA_1ac6c9c8755455d2ab6271796af07ff742" kindref="member">PrecondA::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="27"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classPrecondA_1a66550a675b809a614b3296bf1d074e8f" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classPrecondA_1a66550a675b809a614b3296bf1d074e8f" kindref="member">PrecondA::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><ref refid="classPrecondA_1a78c4f5c29361c1ada59937fde82dd3bd" kindref="member">set_param</ref>(param);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aa9d44fc51b4a08b357733a97dc7acaad" kindref="member">lire_avec_accolades_depuis</ref>(is);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classPrecondA_1a78c4f5c29361c1ada59937fde82dd3bd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPrecondA_1a78c4f5c29361c1ada59937fde82dd3bd" kindref="member">PrecondA::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;precond0&quot;</highlight><highlight class="normal">,&amp;<ref refid="classPrecondA_1a8af6d2ed618a0ec61c3cfef2bceae10f" kindref="member">le_precond_0</ref>);<sp/></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>precond0<sp/>precond_base<sp/>precond0<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;precond1&quot;</highlight><highlight class="normal">,&amp;<ref refid="classPrecondA_1a1418f900286d9141307722c6c4a89654" kindref="member">le_precond_1</ref>);<sp/></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>precond1<sp/>precond_base<sp/>precond1<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;preconda&quot;</highlight><highlight class="normal">,&amp;<ref refid="classPrecondA_1a774c9a9f43e8f1752865ff1115103a59" kindref="member">le_precond_a</ref>);<sp/></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>preconda<sp/>precond_base<sp/>preconda<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;alpha_0&quot;</highlight><highlight class="normal">,&amp;<ref refid="classPrecondA_1ad59762373b0b0ed006148dded05fa0c7" kindref="member">alpha_0</ref>);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>alpha_0<sp/>floattant<sp/>alpha_0<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;alpha_1&quot;</highlight><highlight class="normal">,&amp;<ref refid="classPrecondA_1a7700053e0a461968e61dfec9ec8d0b59" kindref="member">alpha_1</ref>);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>alpha_1<sp/>floattant<sp/>alpha_1<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;alpha_a&quot;</highlight><highlight class="normal">,&amp;<ref refid="classPrecondA_1a79c35b8e2b260c31dbf0a291532feb53" kindref="member">alpha_a</ref>);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>alpha_a<sp/>floattant<sp/>alpha_a<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>prepare_precond(OWN_PTR(<ref refid="classPrecond__base" kindref="compound">Precond_base</ref>)&amp;<sp/>p,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>m,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>v,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36ca" kindref="member">Precond_base::Init_Status</ref><sp/>status)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p.non_nul())</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPrecond__base" kindref="compound">Precond_base</ref>&amp;<sp/>pp<sp/>=<sp/>p.valeur();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pp.<ref refid="classPrecond__base_1ab18d88451a29f28d526041302c811e83" kindref="member">reinit</ref>(status);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pp.<ref refid="classPrecond__base_1a3b2b51c8190a44300619f11a0957b158" kindref="member">prepare</ref>(m,<sp/>v);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classPrecondA_1ab7ff7214512313c6da468ed104fdbcde" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPrecondA_1ab7ff7214512313c6da468ed104fdbcde" kindref="member">PrecondA::prepare_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>m,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>v)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36ca" kindref="member">Init_Status</ref><sp/>status<sp/>=<sp/><ref refid="classPrecond__base_1aa800d84d0dcc4ac5b199a3fe06c86e50" kindref="member">get_status</ref>();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Bloc__Sym" kindref="compound">Matrice_Bloc_Sym</ref>&amp;<sp/>matbloc<sp/>=<sp/>ref_cast(<ref refid="classMatrice__Bloc__Sym" kindref="compound">Matrice_Bloc_Sym</ref>,<sp/>m);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classConstTRUSTTab__parts" kindref="compound">ConstDoubleTab_parts</ref><sp/>parts(v);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>prepare_precond(<ref refid="classPrecondA_1a8af6d2ed618a0ec61c3cfef2bceae10f" kindref="member">le_precond_0</ref>,<sp/>matbloc.<ref refid="classMatrice__Bloc__Sym_1a05381d758f4e7d6feee6cb8ebb7d9d0e" kindref="member">get_bloc</ref>(0,0),<sp/>parts[0],<sp/>status);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>prepare_precond(<ref refid="classPrecondA_1a1418f900286d9141307722c6c4a89654" kindref="member">le_precond_1</ref>,<sp/>matbloc.<ref refid="classMatrice__Bloc__Sym_1a05381d758f4e7d6feee6cb8ebb7d9d0e" kindref="member">get_bloc</ref>(1,1),<sp/>parts[1],<sp/>status);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(parts.<ref refid="classConstTRUSTTab__parts_1ae10f3ef0c7e534ca9eba15590b4b7385" kindref="member">size</ref>()<sp/>&gt;<sp/>2)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>prepare_precond(<ref refid="classPrecondA_1a774c9a9f43e8f1752865ff1115103a59" kindref="member">le_precond_a</ref>,<sp/>matbloc.<ref refid="classMatrice__Bloc__Sym_1a05381d758f4e7d6feee6cb8ebb7d9d0e" kindref="member">get_bloc</ref>(2,2),<sp/>parts[2],<sp/>status);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="classPrecond__base_1a9c08f049dc01c418f7f1a3d166aea264" kindref="member">Precond_base::prepare_</ref>(m,<sp/>v);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="72"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>la<sp/>solution<sp/>du<sp/>systeme<sp/>lineaire:<sp/>A<sp/>*<sp/>solution<sp/>=<sp/>b<sp/>avec<sp/>la<sp/>methode<sp/>de<sp/>relaxation<sp/>PrecondA.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classPrecondA_1a47980850a81fb196a78a482ac233ae87" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPrecondA_1a47980850a81fb196a78a482ac233ae87" kindref="member">PrecondA::preconditionner_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>matrice,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>b,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>solution)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>pscb<sp/>=<sp/>mp_prodscal(b,<sp/>b);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(pscb&lt;1.e-24)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>solution=b;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>calcule<sp/>solution<sp/>=<sp/>inverse(C)*b<sp/>avec:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>inverse(C)<sp/>=<sp/>inverse((1/w<sp/>D<sp/>-<sp/>E))<sp/>*(2-w/w<sp/>D)<sp/>*<sp/>inverse((1/wD<sp/>-E)t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>D<sp/>:partie<sp/>diagonale<sp/>des<sp/>blocs<sp/>de<sp/>la<sp/>matrice</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>E<sp/>:partie<sp/>triangulaire<sp/>inferieure<sp/>des<sp/>blocs<sp/>de<sp/>la<sp/>matrice</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Bloc__Sym" kindref="compound">Matrice_Bloc_Sym</ref>&amp;<sp/>matbloc=ref_cast(<ref refid="classMatrice__Bloc__Sym" kindref="compound">Matrice_Bloc_Sym</ref>,<sp/>matrice);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(matbloc.<ref refid="classMatrice__Bloc_1a1fdaccddd2a2be35fc171e76801bebd2" kindref="member">nb_bloc_lignes</ref>()&lt;2</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>matbloc.<ref refid="classMatrice__Bloc_1a55bd478530e70c132ae3e245b05d2da6" kindref="member">nb_bloc_colonnes</ref>()&lt;2</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>matbloc.<ref refid="classMatrice__Bloc_1a1fdaccddd2a2be35fc171e76801bebd2" kindref="member">nb_bloc_lignes</ref>()!=matbloc.<ref refid="classMatrice__Bloc_1a55bd478530e70c132ae3e245b05d2da6" kindref="member">nb_bloc_colonnes</ref>())</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>preconditioning<sp/>SSOR_BLOC<sp/>can<sp/>be<sp/>used<sp/>only<sp/>for<sp/>symetric<sp/>block<sp/>matrixes&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;containing<sp/>at<sp/>least<sp/>2*2<sp/>blocs.<sp/>For<sp/>example,<sp/>when<sp/>considering<sp/>the<sp/>following<sp/>VEF<sp/>discretizations<sp/>:&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;P0+P1<sp/>or<sp/>P0+Pa<sp/>or<sp/>P0+P1+Pa.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nblocs=matbloc.<ref refid="classMatrice__Bloc_1a1fdaccddd2a2be35fc171e76801bebd2" kindref="member">nb_bloc_lignes</ref>();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>A00=matbloc.<ref refid="classMatrice__Bloc__Sym_1a05381d758f4e7d6feee6cb8ebb7d9d0e" kindref="member">get_bloc</ref>(0,0);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>A01=matbloc.<ref refid="classMatrice__Bloc__Sym_1a05381d758f4e7d6feee6cb8ebb7d9d0e" kindref="member">get_bloc</ref>(0,1);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>A11=matbloc.<ref refid="classMatrice__Bloc__Sym_1a05381d758f4e7d6feee6cb8ebb7d9d0e" kindref="member">get_bloc</ref>(1,1);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>A0a=matbloc.<ref refid="classMatrice__Bloc__Sym_1a05381d758f4e7d6feee6cb8ebb7d9d0e" kindref="member">get_bloc</ref>(0,nblocs-1);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>A1a=matbloc.<ref refid="classMatrice__Bloc__Sym_1a05381d758f4e7d6feee6cb8ebb7d9d0e" kindref="member">get_bloc</ref>(1,nblocs-1);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>Aaa=matbloc.<ref refid="classMatrice__Bloc__Sym_1a05381d758f4e7d6feee6cb8ebb7d9d0e" kindref="member">get_bloc</ref>(nblocs-1,nblocs-1);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab__parts" kindref="compound">DoubleTab_parts</ref><sp/>parties(solution);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>X0<sp/>=<sp/>parties[0];</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>X1<sp/>=<sp/>parties[1];</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>Xa<sp/>=<sp/>parties[parties.<ref refid="classTRUSTTab__parts_1a2111bc898c9a5a4df8f7087a1b895b91" kindref="member">size</ref>()<sp/>-<sp/>1];</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>F(b);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab__parts" kindref="compound">DoubleTab_parts</ref><sp/>parties_f(F);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>Y0<sp/>=<sp/>parties_f[0];</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>Y1<sp/>=<sp/>parties_f[1];</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>Ya<sp/>=<sp/>parties_f[parties_f.<ref refid="classTRUSTTab__parts_1a2111bc898c9a5a4df8f7087a1b895b91" kindref="member">size</ref>()<sp/>-<sp/>1];</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TRACE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Y0<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mp_norme_vect(Y0)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Y1<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mp_norme_vect(Y1)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nblocs<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Ya<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mp_norme_vect(Ya)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>matrice.<ref refid="classMatrice__Base_1a91c98b86a0bdce6ccc483dd453ef9ab2" kindref="member">multvect</ref>(b,<sp/>F);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>psc=mp_prodscal(F,b);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>assert(psc&gt;0);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>pscF=mp_prodscal(F,F);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;cos(angle)<sp/>no<sp/>prec<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>psc*psc/(pscF*pscb)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;(F,b)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>psc<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;(b,b)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pscb<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;(F,F)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pscF<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>F.<ref refid="classTRUSTVect_1ab13a422634103e4b33357f35dd281473" kindref="member">ajoute</ref>(-psc/pscb,b,VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;(F0,F0)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mp_prodscal(Y0,Y0)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;(F1,F1)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mp_prodscal(Y1,Y1)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nblocs<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;(Fa,Fa)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mp_prodscal(Ya,Ya)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>F=b;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Descente<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><ref refid="classPrecondA_1a1418f900286d9141307722c6c4a89654" kindref="member">le_precond_1</ref>-&gt;<ref refid="classPrecond__base_1a20061d7ebbe45f61a6e2c65c723b3da3" kindref="member">preconditionner</ref>(A11,Y1,X1);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>operator_multiply(X1,<sp/>-<ref refid="classPrecondA_1a7700053e0a461968e61dfec9ec8d0b59" kindref="member">alpha_1</ref>,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>A11.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(X1,<sp/>Y1);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/>A01.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(X1,<sp/>Y0);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nblocs<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>A1a.<ref refid="classMatrice__Base_1a50d546b702948f821ad95800afa9f1b6" kindref="member">ajouter_multvectT</ref>(X1,<sp/>Ya);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>operator_multiply(X1,<sp/>-1,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><ref refid="classPrecondA_1a8af6d2ed618a0ec61c3cfef2bceae10f" kindref="member">le_precond_0</ref>-&gt;<ref refid="classPrecond__base_1a20061d7ebbe45f61a6e2c65c723b3da3" kindref="member">preconditionner</ref>(A00,Y0,X0);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>operator_multiply(X0,<sp/>-<ref refid="classPrecondA_1ad59762373b0b0ed006148dded05fa0c7" kindref="member">alpha_0</ref>,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/>A00.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(X0,<sp/>Y0);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/>A01.<ref refid="classMatrice__Base_1a50d546b702948f821ad95800afa9f1b6" kindref="member">ajouter_multvectT</ref>(X0,<sp/>Y1);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nblocs<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>A0a.<ref refid="classMatrice__Base_1a50d546b702948f821ad95800afa9f1b6" kindref="member">ajouter_multvectT</ref>(X0,<sp/>Ya);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/>operator_multiply(X0,<sp/>-1,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nblocs<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPrecondA_1a774c9a9f43e8f1752865ff1115103a59" kindref="member">le_precond_a</ref>-&gt;<ref refid="classPrecond__base_1a20061d7ebbe45f61a6e2c65c723b3da3" kindref="member">preconditionner</ref>(Aaa,Ya,Xa);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>operator_multiply(Xa,<sp/>-<ref refid="classPrecondA_1a79c35b8e2b260c31dbf0a291532feb53" kindref="member">alpha_a</ref>,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Aaa.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(Xa,<sp/>Ya);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>A1a.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(Xa,<sp/>Y1);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>A0a.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(Xa,<sp/>Y0);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>operator_multiply(Xa,<sp/>-1,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>X<sp/>contient<sp/>S,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>F=solution;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Diagonale<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>A11.<ref refid="classMatrice__Base_1a91c98b86a0bdce6ccc483dd453ef9ab2" kindref="member">multvect</ref>(Y1,X1);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>operator_multiply(X1,<sp/>1./<ref refid="classPrecondA_1a7700053e0a461968e61dfec9ec8d0b59" kindref="member">alpha_1</ref>,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>A00.<ref refid="classMatrice__Base_1a91c98b86a0bdce6ccc483dd453ef9ab2" kindref="member">multvect</ref>(Y0,X0);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>operator_multiply(X0,<sp/>1./<ref refid="classPrecondA_1ad59762373b0b0ed006148dded05fa0c7" kindref="member">alpha_0</ref>,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nblocs<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Aaa.<ref refid="classMatrice__Base_1a91c98b86a0bdce6ccc483dd453ef9ab2" kindref="member">multvect</ref>(Ya,Xa);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>operator_multiply(Xa,<sp/>1./<ref refid="classPrecondA_1a79c35b8e2b260c31dbf0a291532feb53" kindref="member">alpha_a</ref>,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>X<sp/>contient<sp/>T,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>F=solution;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Remontee<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nblocs<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPrecondA_1a774c9a9f43e8f1752865ff1115103a59" kindref="member">le_precond_a</ref>-&gt;<ref refid="classPrecond__base_1a20061d7ebbe45f61a6e2c65c723b3da3" kindref="member">preconditionner</ref>(Aaa,Ya,Xa);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>operator_multiply(Xa,<sp/>-<ref refid="classPrecondA_1a79c35b8e2b260c31dbf0a291532feb53" kindref="member">alpha_a</ref>,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Aaa.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(Xa,<sp/>Ya);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>A1a.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(Xa,<sp/>Y1);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>A0a.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(Xa,<sp/>Y0);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>operator_multiply(Xa,<sp/>-1.,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><ref refid="classPrecondA_1a8af6d2ed618a0ec61c3cfef2bceae10f" kindref="member">le_precond_0</ref>-&gt;<ref refid="classPrecond__base_1a20061d7ebbe45f61a6e2c65c723b3da3" kindref="member">preconditionner</ref>(A00,Y0,X0);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/>operator_multiply(X0,<sp/>-<ref refid="classPrecondA_1ad59762373b0b0ed006148dded05fa0c7" kindref="member">alpha_0</ref>,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/>A00.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(X0,<sp/>Y0);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/>A01.<ref refid="classMatrice__Base_1a50d546b702948f821ad95800afa9f1b6" kindref="member">ajouter_multvectT</ref>(X0,<sp/>Y1);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nblocs<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>A0a.<ref refid="classMatrice__Base_1a50d546b702948f821ad95800afa9f1b6" kindref="member">ajouter_multvectT</ref>(X0,<sp/>Ya);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/>operator_multiply(X0,<sp/>-1.,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><ref refid="classPrecondA_1a1418f900286d9141307722c6c4a89654" kindref="member">le_precond_1</ref>-&gt;<ref refid="classPrecond__base_1a20061d7ebbe45f61a6e2c65c723b3da3" kindref="member">preconditionner</ref>(A11,Y1,X1);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>operator_multiply(X1,<sp/>-<ref refid="classPrecondA_1a7700053e0a461968e61dfec9ec8d0b59" kindref="member">alpha_1</ref>,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/>A11.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(X1,<sp/>Y1);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>A01.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(X1,<sp/>Y0);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nblocs<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>A1a.<ref refid="classMatrice__Base_1a50d546b702948f821ad95800afa9f1b6" kindref="member">ajouter_multvectT</ref>(X1,<sp/>Ya);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>operator_multiply(X1,<sp/>-1.,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TRACE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/>matrice.<ref refid="classMatrice__Base_1a91c98b86a0bdce6ccc483dd453ef9ab2" kindref="member">multvect</ref>(solution,<sp/>F);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/>psc=mp_prodscal(F,b);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>assert(psc&gt;0);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>pscF=mp_prodscal(F,F);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;cos(angle)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>psc*psc/(pscF*pscb)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;(F,b)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>psc<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;(b,b)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pscb<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;(F,F)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pscF<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>F.<ref refid="classTRUSTVect_1ab13a422634103e4b33357f35dd281473" kindref="member">ajoute</ref>(-psc/pscb,b);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;(F0,F0)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mp_prodscal(Y0,Y0)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;(F1,F1)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mp_prodscal(Y1,Y1)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nblocs<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>finl<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;(Fa,Fa)<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mp_prodscal(Ya,Ya)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/PrecondA.cpp"/>
+  </compounddef>
+</doxygen>

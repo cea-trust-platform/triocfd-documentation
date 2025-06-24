@@ -1,0 +1,421 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Tetraedre_8cpp" kind="file" language="C++">
+    <compoundname>Tetraedre.cpp</compoundname>
+    <includes refid="Tetraedre_8h" local="no">Tetraedre.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Linear__algebra__tools__impl_8h" local="no">Linear_algebra_tools_impl.h</includes>
+    <includes local="no">algorithm</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Tetraedre.cpp</label>
+        <link refid="Tetraedre_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>algorithm</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Tetraedre_8cpp_1a3326f9eb210cb4f6b3b0e5089c14f01e" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int faces_sommets_tetra[4][3]</definition>
+        <argsstring>[4][3]</argsstring>
+        <name>faces_sommets_tetra</name>
+        <initializer>=
+{
+  { 1, 2, 3 },
+  { 2, 3, 0 },
+  { 3, 0, 1 },
+  { 0, 1, 2 }
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Tetraedre.cpp" line="24" column="12" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Tetraedre.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Tetraedre_8cpp_1a2f499e4ff5acbafb1b14c1fc5d322ef9" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename _T_</type>
+          </param>
+        </templateparamlist>
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Tetraedre_32_64bases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Tetraedre_32_64bases</name>
+        <initializer>= { &amp;( <ref refid="classElem__geom__base__32__64" kindref="compound">Elem_geom_base_32_64</ref>&lt;_T_&gt; ::info_obj) }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Tetraedre.cpp" line="22" column="139" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Tetraedre.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Tetraedre.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Linear_algebra_tools_impl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::swap;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classTetraedre__32__64_1ac4969184e6e1dba929184f2bb36f3475" refkind="member"><highlight class="normal">Implemente_instanciable_32_64(<ref refid="classTetraedre__32__64" kindref="compound">Tetraedre_32_64</ref>,</highlight><highlight class="stringliteral">&quot;Tetraedre&quot;</highlight><highlight class="normal">,<ref refid="classElem__geom__base__32__64" kindref="compound">Elem_geom_base_32_64&lt;_T_&gt;</ref>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>faces_sommets_tetra[4][3]<sp/>=</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>{<sp/>1,<sp/>2,<sp/>3<sp/>},</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>{<sp/>2,<sp/>3,<sp/>0<sp/>},</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>{<sp/>3,<sp/>0,<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>1,<sp/>2<sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="33" refid="classTetraedre__32__64_1ab36155eec850fb1049bd35f577bdf8ee" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classTetraedre__32__64_1ab36155eec850fb1049bd35f577bdf8ee" kindref="member">Tetraedre_32_64&lt;_SIZE_&gt;::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="34"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="39" refid="classTetraedre__32__64_1a08bd89bfbe929e8c1407430e6cb8abd6" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classTetraedre__32__64_1a08bd89bfbe929e8c1407430e6cb8abd6" kindref="member">Tetraedre_32_64&lt;_SIZE_&gt;::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s<sp/>)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="45"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nom<sp/>LML<sp/>d&apos;un<sp/>tetraedre<sp/>=<sp/>&quot;TETRA4&quot;.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Nom&amp;)<sp/>toujours<sp/>egal<sp/>a<sp/>&quot;TETRA4&quot;</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="50" refid="classTetraedre__32__64_1a9608a6b02ab6a41d6613c7dd1ba0142b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><ref refid="classTetraedre__32__64_1a9608a6b02ab6a41d6613c7dd1ba0142b" kindref="member">Tetraedre_32_64&lt;_SIZE_&gt;::nom_lml</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="51"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom=</highlight><highlight class="stringliteral">&quot;TETRA4&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nom;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="57"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>1<sp/>si<sp/>l&apos;element<sp/>ielem<sp/>du<sp/>domaine<sp/>associe<sp/>a<sp/>l&apos;element<sp/>geometrique<sp/>contient<sp/>le<sp/>point</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>de<sp/>coordonnees<sp/>specifiees<sp/>par<sp/>le<sp/>parametre<sp/>&quot;pos&quot;.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Renvoie<sp/>0<sp/>sinon.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleVect&amp;<sp/>pos)<sp/>coordonnees<sp/>du<sp/>point<sp/>que<sp/>l&apos;on<sp/>cherche<sp/>a<sp/>localiser</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>ielem)<sp/>le<sp/>numero<sp/>de<sp/>l&apos;element<sp/>du<sp/>domaine<sp/>dans<sp/>lequel<sp/>on<sp/>cherche<sp/>le<sp/>point.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>1<sp/>si<sp/>le<sp/>point<sp/>de<sp/>coordonnees<sp/>specifiees<sp/>appartient<sp/>a<sp/>l&apos;element<sp/>ielem<sp/>0<sp/>sinon</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="67" refid="classTetraedre__32__64_1a32e5a2c009c58fd1c947da68d268dce9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTetraedre__32__64_1a32e5a2c009c58fd1c947da68d268dce9" kindref="member">Tetraedre_32_64&lt;_SIZE_&gt;::contient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>pos,<sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>ielem)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="68"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>29/01/2010<sp/>Optimisation<sp/>CPU<sp/>de<sp/>la<sp/>methode<sp/>(50%<sp/>plus<sp/>rapide)<sp/>par<sp/>PL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>assert(pos.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()==3);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>domaine=mon_dom.valeur();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab_t</ref>&amp;<sp/>coord=domaine.coord_sommets();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>prod1,prod2,xn,yn,zn;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>som0<sp/>=<sp/>domaine.sommet_elem(ielem,0),</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>som1<sp/>=<sp/>domaine.sommet_elem(ielem,1),</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>som2<sp/>=<sp/>domaine.sommet_elem(ielem,2),</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>som3<sp/>=<sp/>domaine.sommet_elem(ielem,3);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>X0<sp/>=<sp/>coord(som0,0);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Y0<sp/>=<sp/>coord(som0,1);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Z0<sp/>=<sp/>coord(som0,2);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>X1<sp/>=<sp/>coord(som1,0);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Y1<sp/>=<sp/>coord(som1,1);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Z1<sp/>=<sp/>coord(som1,2);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>X2<sp/>=<sp/>coord(som2,0);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Y2<sp/>=<sp/>coord(som2,1);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Z2<sp/>=<sp/>coord(som2,2);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>X3<sp/>=<sp/>coord(som3,0);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Y3<sp/>=<sp/>coord(som3,1);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Z3<sp/>=<sp/>coord(som3,2);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>regarde<sp/>tout<sp/>d&apos;abord<sp/>si<sp/>le<sp/>point<sp/>cherche<sp/>n&apos;est<sp/>pas<sp/>un<sp/>des<sp/>sommets<sp/>du<sp/>triangle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>D&apos;apres<sp/>gcov<sp/>sur<sp/>les<sp/>1000<sp/>cas<sp/>tests,<sp/>on<sp/>ne<sp/>gagne<sp/>pas<sp/>beaucoup<sp/>a<sp/>faire<sp/>cela<sp/>(utile<sp/>dans<sp/>0.03%<sp/>des<sp/>cas!!!)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/>if<sp/>((est_egal(X0,pos(0))<sp/>&amp;&amp;<sp/>est_egal(Y0,pos(1))<sp/>&amp;&amp;<sp/>est_egal(Z0,pos(2)))</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/>||<sp/>(est_egal(X1,pos(0))<sp/>&amp;&amp;<sp/>est_egal(Y1,pos(1))<sp/>&amp;&amp;<sp/>est_egal(Z1,pos(2)))</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/>||<sp/>(est_egal(X2,pos(0))<sp/>&amp;&amp;<sp/>est_egal(Y2,pos(1))<sp/>&amp;&amp;<sp/>est_egal(Z2,pos(2)))</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/>||<sp/>(est_egal(X3,pos(0))<sp/>&amp;&amp;<sp/>est_egal(Y3,pos(1))<sp/>&amp;&amp;<sp/>est_egal(Z3,pos(2))))</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/>return<sp/>1;<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;4;<sp/>j++)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(j)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0<sp/>:</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Inutile<sp/>car<sp/>deja<sp/>fait<sp/>quelques<sp/>lignes<sp/>plus<sp/>haut</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som0<sp/>=<sp/>domaine.sommet_elem(ielem,0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som1<sp/>=<sp/>domaine.sommet_elem(ielem,1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som2<sp/>=<sp/>domaine.sommet_elem(ielem,2);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som3<sp/>=<sp/>domaine.sommet_elem(ielem,3);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1<sp/>:</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(som0,som1);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(som2,som3);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(X0,X1);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(Y0,Y1);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(Z0,Z1);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(X2,X3);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(Y2,Y3);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(Z2,Z3);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som0<sp/>=<sp/>domaine.sommet_elem(ielem,1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som1<sp/>=<sp/>domaine.sommet_elem(ielem,0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som2<sp/>=<sp/>domaine.sommet_elem(ielem,3);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som3<sp/>=<sp/>domaine.sommet_elem(ielem,2);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2<sp/>:</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(som0,som1);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(som1,som3);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(X0,X1);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(Y0,Y1);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(Z0,Z1);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(X1,X3);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(Y1,Y3);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(Z1,Z3);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som0<sp/>=<sp/>domaine.sommet_elem(ielem,0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som1<sp/>=<sp/>domaine.sommet_elem(ielem,2);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som2<sp/>=<sp/>domaine.sommet_elem(ielem,3);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som3<sp/>=<sp/>domaine.sommet_elem(ielem,1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3<sp/>:</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(som0,som1);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(som1,som3);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(X0,X1);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(Y0,Y1);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(Z0,Z1);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(X1,X3);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(Y1,Y3);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(Z1,Z3);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som0<sp/>=<sp/>domaine.sommet_elem(ielem,2);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som1<sp/>=<sp/>domaine.sommet_elem(ielem,1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som2<sp/>=<sp/>domaine.sommet_elem(ielem,3);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//som3<sp/>=<sp/>domaine.sommet_elem(ielem,0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Algorithme<sp/>:<sp/>le<sp/>sommet<sp/>3<sp/>et<sp/>le<sp/>point<sp/>M<sp/>doivent<sp/>pour<sp/>j=0<sp/>a<sp/>3<sp/>du<sp/>meme<sp/>cote</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>que<sp/>le<sp/>plan<sp/>formes<sp/>par<sp/>les<sp/>points<sp/>som0,som1,som2.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calcul<sp/>de<sp/>la<sp/>normale<sp/>au<sp/>plan<sp/>som0,som1,som2<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>xn<sp/>=<sp/>(<sp/>Y1<sp/>-<sp/>Y0<sp/>)<sp/>*<sp/>(<sp/>Z2<sp/>-<sp/>Z0<sp/>)<sp/>-<sp/>(<sp/>Z1<sp/>-<sp/>Z0<sp/>)<sp/>*<sp/>(<sp/>Y2<sp/>-<sp/>Y0<sp/>);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>yn<sp/>=<sp/>(<sp/>Z1<sp/>-<sp/>Z0<sp/>)<sp/>*<sp/>(<sp/>X2<sp/>-<sp/>X0<sp/>)<sp/>-<sp/>(<sp/>X1<sp/>-<sp/>X0<sp/>)<sp/>*<sp/>(<sp/>Z2<sp/>-<sp/>Z0<sp/>);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>zn<sp/>=<sp/>(<sp/>X1<sp/>-<sp/>X0<sp/>)<sp/>*<sp/>(<sp/>Y2<sp/>-<sp/>Y0<sp/>)<sp/>-<sp/>(<sp/>Y1<sp/>-<sp/>Y0<sp/>)<sp/>*<sp/>(<sp/>X2<sp/>-<sp/>X0<sp/>);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>prod1<sp/>=<sp/>xn<sp/>*<sp/>(<sp/>X3<sp/>-<sp/>X0<sp/>)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>yn<sp/>*<sp/>(<sp/>Y3<sp/>-<sp/>Y0<sp/>)</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>zn<sp/>*<sp/>(<sp/>Z3<sp/>-<sp/>Z0<sp/>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>prod2<sp/>=<sp/>xn<sp/>*<sp/>(<sp/>pos[0]<sp/>-<sp/>X0<sp/>)</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>yn<sp/>*<sp/>(<sp/>pos[1]<sp/>-<sp/>Y0<sp/>)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>zn<sp/>*<sp/>(<sp/>pos[2]<sp/>-<sp/>Z0<sp/>);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Si<sp/>le<sp/>point<sp/>est<sp/>sur<sp/>le<sp/>plan<sp/>(prod2<sp/>quasi<sp/>nul)<sp/>:<sp/>on<sp/>ne<sp/>peut<sp/>pas<sp/>conclure...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(prod1*prod2<sp/>&lt;<sp/>0<sp/>&amp;&amp;<sp/>std::fabs(prod2)&gt;std::fabs(prod1)*<ref refid="classObjet__U_1a7447e25c68cc8d3a1c06cf99f0565cff" kindref="member">Objet_U::precision_geom</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="174"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>1<sp/>si<sp/>les<sp/>sommets<sp/>specifies<sp/>par<sp/>le<sp/>parametre<sp/>&quot;pos&quot;<sp/>sont<sp/>les<sp/>sommets<sp/>de<sp/>l&apos;element<sp/>&quot;element&quot;<sp/>du<sp/>domaine<sp/>associe<sp/>a</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>l&apos;element<sp/>geometrique.</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/>*<sp/>@param<sp/>(IntVect&amp;<sp/>pos)<sp/>les<sp/>numeros<sp/>des<sp/>sommets<sp/>a<sp/>comparer<sp/>avec<sp/>ceux<sp/>de<sp/>l&apos;elements<sp/>&quot;element&quot;</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>element)<sp/>le<sp/>numero<sp/>de<sp/>l&apos;element<sp/>du<sp/>domaine<sp/>dont<sp/>on<sp/>veut<sp/>comparer<sp/>les<sp/>sommets</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>1<sp/>si<sp/>les<sp/>sommets<sp/>passes<sp/>en<sp/>parametre<sp/>sont<sp/>ceux<sp/>de<sp/>l&apos;element<sp/>specifie,<sp/>0<sp/>sinon</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="183" refid="classTetraedre__32__64_1a2b8dfc21dc0c2c3eee9669022de355c9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTetraedre__32__64_1a32e5a2c009c58fd1c947da68d268dce9" kindref="member">Tetraedre_32_64&lt;_SIZE_&gt;::contient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">SmallArrOfTID_t</ref>&amp;<sp/>som,<sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>element<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="184"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>domaine=mon_dom.valeur();</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((domaine.sommet_elem(element,0)==som[0])&amp;&amp;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(domaine.sommet_elem(element,1)==som[1])&amp;&amp;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(domaine.sommet_elem(element,1)==som[2])&amp;&amp;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(domaine.sommet_elem(element,1)==som[3]))</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="195"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>les<sp/>volumes<sp/>des<sp/>elements<sp/>du<sp/>domaine<sp/>associe.</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleVect&amp;<sp/>volumes)<sp/>le<sp/>vecteur<sp/>contenant<sp/>les<sp/>valeurs<sp/><sp/>des<sp/>des<sp/>volumes<sp/>des<sp/>elements<sp/>du<sp/>domaine</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="200" refid="classTetraedre__32__64_1a1f6fec04132cf657e70e3a5586ed1941" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTetraedre__32__64_1a1f6fec04132cf657e70e3a5586ed1941" kindref="member">Tetraedre_32_64&lt;_SIZE_&gt;::calculer_volumes</ref>(<ref refid="classTRUSTVect" kindref="compound">DoubleVect_t</ref>&amp;<sp/>volumes)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="201"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>domaine=mon_dom.valeur();</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>dom=domaine;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x0,y0,z0;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x1,y1,z1;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x2,y2,z2;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x3,y3,z3;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>s[4];</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>size_tot<sp/>=<sp/>domaine.nb_elem_tot();</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/>assert(volumes.<ref refid="classTRUSTVect_1a1918c7467e93eb90ae67d288b1519ae7" kindref="member">size_totale</ref>()==size_tot);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>num_poly=0;<sp/>num_poly&lt;size_tot;<sp/>num_poly++)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;4;<sp/>i++)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s[i]<sp/>=<sp/>domaine.sommet_elem(num_poly,i);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x0<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(s[0],0);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>y0<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(s[0],1);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z0<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(s[0],2);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x1<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(s[1],0);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>y1<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(s[1],1);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z1<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(s[1],2);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x2<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(s[2],0);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>y2<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(s[2],1);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z2<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(s[2],2);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x3<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(s[3],0);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>y3<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(s[3],1);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z3<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(s[3],2);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>volumes[num_poly]<sp/>=<sp/>std::fabs((x1-x0)*((y2-y0)*(z3-z0)-(y3-y0)*(z2-z0))-</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(x2-x0)*((y1-y0)*(z3-z0)-(y3-y0)*(z1-z0))+</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(x3-x0)*((y1-y0)*(z2-z0)-(y2-y0)*(z1-z0)))/6;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="241"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>les<sp/>normales<sp/>aux<sp/>faces<sp/>des<sp/>elements<sp/>du<sp/>domaine<sp/>associe.</highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/>*<sp/>@param<sp/>(IntTab&amp;<sp/>face_sommets)<sp/>les<sp/>numeros<sp/>des<sp/>sommets<sp/>des<sp/>faces<sp/>dans<sp/>la<sp/>liste<sp/>des<sp/>sommets<sp/>du<sp/>domaine<sp/>associe</highlight></codeline>
+<codeline lineno="244"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>face_normales)</highlight></codeline>
+<codeline lineno="245"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="247" refid="classTetraedre__32__64_1adfcd3507d14e0d1c918d0ad23fc3ad8c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTetraedre__32__64_1adfcd3507d14e0d1c918d0ad23fc3ad8c" kindref="member">Tetraedre_32_64&lt;_SIZE_&gt;::calculer_normales</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_t</ref>&amp;<sp/>Face_sommets,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab_t</ref>&amp;<sp/>face_normales)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="248"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>domaine_geom<sp/>=<sp/>mon_dom.valeur();</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab_t</ref>&amp;<sp/>les_coords<sp/>=<sp/>domaine_geom.<ref refid="classDomaine__32__64_1ac38406cad4d4a168ff220bf1c3bfee72" kindref="member">coord_sommets</ref>();</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>nbfaces<sp/>=<sp/>Face_sommets.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x1,y1,z1,x2,y2,z2;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>n0,n1,n2;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>numface=0;<sp/>numface&lt;nbfaces;<sp/>numface++)</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n0<sp/>=<sp/>Face_sommets(numface,0);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n1<sp/>=<sp/>Face_sommets(numface,1);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n2<sp/>=<sp/>Face_sommets(numface,2);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x1<sp/>=<sp/>les_coords(n0,0)<sp/>-<sp/>les_coords(n1,0);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>y1<sp/>=<sp/>les_coords(n0,1)<sp/>-<sp/>les_coords(n1,1);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z1<sp/>=<sp/>les_coords(n0,2)<sp/>-<sp/>les_coords(n1,2);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x2<sp/>=<sp/>les_coords(n2,0)<sp/>-<sp/>les_coords(n1,0);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>y2<sp/>=<sp/>les_coords(n2,1)<sp/>-<sp/>les_coords(n1,1);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>z2<sp/>=<sp/>les_coords(n2,2)<sp/>-<sp/>les_coords(n1,2);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_normales(numface,0)<sp/>=<sp/>(y1*z2<sp/>-<sp/>y2*z1)/2;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_normales(numface,1)<sp/>=<sp/>(-x1*z2<sp/>+<sp/>x2*z1)/2;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_normales(numface,2)<sp/>=<sp/>(x1*y2<sp/>-<sp/>x2*y1)/2;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="273"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="275"><highlight class="comment">/*!<sp/>@brief<sp/>voir<sp/>ElemGeomBase::get_tab_faces_sommets_locaux</highlight></codeline>
+<codeline lineno="276"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="278" refid="classTetraedre__32__64_1a556814de715d12cb8e4bd3a6844bf90f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTetraedre__32__64_1a556814de715d12cb8e4bd3a6844bf90f" kindref="member">Tetraedre_32_64&lt;_SIZE_&gt;::get_tab_faces_sommets_locaux</ref>(<ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>faces_som_local)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="279"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>un<sp/>tetraedre<sp/>a<sp/>quatre<sp/>faces<sp/>de<sp/>trois<sp/>sommets</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/>faces_som_local.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(4,3);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;4;<sp/>i++)</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;3;<sp/>j++)</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>faces_som_local(i,j)<sp/>=<sp/>faces_sommets_tetra[i][j];</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="289" refid="classTetraedre__32__64_1a9312e0cb445eaa692f680f4bb01f9e20" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTetraedre__32__64_1a9312e0cb445eaa692f680f4bb01f9e20" kindref="member">Tetraedre_32_64&lt;_SIZE_&gt;::get_tab_aretes_sommets_locaux</ref>(<ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>tab)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="290"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>un<sp/>tetraedre<sp/>a<sp/>six<sp/>aretes<sp/>de<sp/>deux<sp/>sommets</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/>tab.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(6,<sp/>2);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Une<sp/>arete<sp/>entre<sp/>chaque<sp/>couple<sp/>de<sp/>sommet<sp/>du<sp/>tetra:<sp/>n<sp/>*<sp/>(n-1)<sp/>/<sp/>2<sp/>aretes<sp/>avec<sp/>n=4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>3;<sp/>i++)</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>i<sp/>+<sp/>1;<sp/>j<sp/>&lt;<sp/>4;<sp/>j++)</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tab(count,<sp/>0)<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tab(count,<sp/>1)<sp/>=<sp/>j;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count++;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/>assert(count<sp/>==<sp/>6);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="308"><highlight class="comment">///*!<sp/>Calcul<sp/>de<sp/>la<sp/>coordonnee<sp/>baryrentrique<sp/>dans<sp/>un<sp/>tetra<sp/>correspondant<sp/>a<sp/>une<sp/>coordonnee</highlight></codeline>
+<codeline lineno="309"><highlight class="comment"></highlight><highlight class="comment">//<sp/>*<sp/>cartesienne<sp/>&quot;point&quot;.<sp/>Attention,<sp/>si<sp/>&quot;point&quot;<sp/>est<sp/>en<sp/>dehors<sp/>du<sp/>tetra,<sp/>une<sp/>ou<sp/>plusieurs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>coordonnees<sp/>barycentriques<sp/>seront<sp/>negatives<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>polys<sp/>est<sp/>le<sp/>tableau<sp/>des<sp/>tetraedres<sp/>(indices<sp/>de<sp/>sommets),</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>coords<sp/>est<sp/>le<sp/>tableau<sp/>des<sp/>coordonnees<sp/>des<sp/>sommets,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>le_poly<sp/>est<sp/>le<sp/>numero<sp/>du<sp/>tetraetre<sp/>point<sp/>la<sp/>coordonnees<sp/>du<sp/>point<sp/>a<sp/>transformer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>On<sp/>stocke<sp/>le<sp/>resultat<sp/>dans<sp/>coord_bary<sp/>(poids<sp/>des<sp/>trois<sp/>premiers<sp/>sommets,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>le<sp/>quatrieme<sp/>etant<sp/>implicitement<sp/>1<sp/>moins<sp/>la<sp/>somme<sp/>des<sp/>trois<sp/>autres)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>Si<sp/>epsilon<sp/>est<sp/>non<sp/>nul,<sp/>la<sp/>valeur<sp/>de<sp/>retour<sp/>est<sp/>l&apos;incertitude<sp/>sur<sp/>les<sp/>coordonnees</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>barycentriques,<sp/>pour<sp/>une<sp/>incertitude<sp/>epsilon<sp/>sur<sp/>les<sp/>coordonnees<sp/>carthesiennes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>(calcul<sp/>en<sp/>norme<sp/>Linfini,<sp/>c&apos;est<sp/>a<sp/>dire<sp/>le<sp/>max<sp/>des<sp/>erreurs<sp/>sur<sp/>chaque<sp/>composantes)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight><highlight class="comment">//template<sp/>&lt;typename<sp/>_SIZE_&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight><highlight class="comment">//double<sp/>Tetraedre_32_64&lt;_SIZE_&gt;::coord_bary(const<sp/>IntTab&amp;<sp/>polys,<sp/>const<sp/>DoubleTab&amp;<sp/>coords,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Vecteur3&amp;<sp/>point,<sp/>int<sp/>le_poly,<sp/>Vecteur3&amp;<sp/>coord_bary,<sp/>double<sp/>epsilon)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight><highlight class="comment">//{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Matrice33<sp/>m;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Vecteur3<sp/>origine;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>matrice_base_tetraedre(polys,<sp/>coords,<sp/>le_poly,<sp/>m,<sp/>origine);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Matrice33<sp/>inverse_m;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Matrice33::inverse(m,<sp/>inverse_m);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Vecteur3<sp/>v(point-origine);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Matrice33::produit(inverse_m,<sp/>v,<sp/>coord_bary);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>double<sp/>resu;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>if<sp/>(epsilon<sp/>&gt;<sp/>0.)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Une<sp/>erreur<sp/>epsilon<sp/>sur<sp/>la<sp/>coordonnee<sp/>&quot;point&quot;<sp/>entraine<sp/>une<sp/>erreur<sp/>sur<sp/>coord_bary:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>norm<sp/>=<sp/>inverse_m.norme_Linfini();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>resu<sp/>=<sp/>norm<sp/>*<sp/>epsilon;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>resu<sp/>=<sp/>0.;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>return<sp/>resu;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight><highlight class="comment">//}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTetraedre__32__64" kindref="compound">Tetraedre_32_64&lt;int&gt;</ref>;</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>INT_is_64_<sp/>==<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTetraedre__32__64" kindref="compound">Tetraedre_32_64&lt;trustIdType&gt;</ref>;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Tetraedre.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,440 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Champ__Generique__base_8cpp" kind="file" language="C++">
+    <compoundname>Champ_Generique_base.cpp</compoundname>
+    <includes refid="Champ__Generique__base_8h" local="no">Champ_Generique_base.h</includes>
+    <includes refid="Champs__compris_8h" local="no">Champs_compris.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Interprete_8h" local="no">Interprete.h</includes>
+    <includes refid="TRUST__Ref_8h" local="no">TRUST_Ref.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Champ__Generique__base_8cpp_1ade73861c37a34d89854dbeaf3194f081" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Champ_Generique_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Champ_Generique_basebases</name>
+        <initializer>={   &amp;( <ref refid="classObjet__U" kindref="compound">Objet_U</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Champ_Generique_base.cpp" line="23" column="121" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Champ_Generique_base.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Generique_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champs_compris.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Interprete.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUST_Ref.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classChamp__Generique__base_1a3f485bb78c8d58b6f60c6c62ea25fb7f" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classChamp__Generique__base" kindref="compound">Champ_Generique_base</ref>,</highlight><highlight class="stringliteral">&quot;Champ_Generique_base&quot;</highlight><highlight class="normal">,<ref refid="classObjet__U" kindref="compound">Objet_U</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>champ_generique_base<sp/>objet_u<sp/>champ_generique_base<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>definition_champ<sp/>objet_lecture<sp/>nul<sp/>0<sp/>Keyword<sp/>to<sp/>create<sp/>new<sp/>complex<sp/>field<sp/>for<sp/>advanced<sp/>postprocessing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>name<sp/>chaine<sp/>name<sp/>0<sp/>The<sp/>name<sp/>of<sp/>the<sp/>new<sp/>created<sp/>field.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>champ_generique<sp/>champ_generique_base<sp/>champ_generique<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>definition_champs<sp/>listobj<sp/>nul<sp/>1<sp/>definition_champ<sp/>0<sp/>List<sp/>of<sp/>definition<sp/>champ</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classChamp__Generique__base_1a37467d5e411e2b9708707ee74ee8d7d0" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classChamp__Generique__base_1a37467d5e411e2b9708707ee74ee8d7d0" kindref="member">Champ_Generique_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="33"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classChamp__Generique__base_1a2c97a5ff13f6e80039b149c64a5dcc03" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classChamp__Generique__base_1a2c97a5ff13f6e80039b149c64a5dcc03" kindref="member">Champ_Generique_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1a57e0f54b11e6eaadbea224fa904b18dd" kindref="member">Journal</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;Reading<sp/>data<sp/>for<sp/>a<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>field.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Generique__base_1a3a0ebd2b589375e8cbbe6ee5b4c12d5a" kindref="member">set_param</ref>(param);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aa9d44fc51b4a08b357733a97dc7acaad" kindref="member">lire_avec_accolades_depuis</ref>(is);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classChamp__Generique__base_1a7981cae824020e3ec66230fba18a0761" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1a7981cae824020e3ec66230fba18a0761" kindref="member">Champ_Generique_base::lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="51"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>la<sp/>dimension<sp/>de<sp/>l&apos;espace<sp/>dans<sp/>lequel<sp/>le<sp/>champ<sp/>est<sp/>defini.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>Il<sp/>s&apos;agit<sp/>du<sp/>nombre<sp/>de<sp/>composantes<sp/>des<sp/>coordonnees<sp/>qu&apos;il<sp/>faut<sp/>fournir<sp/>dans<sp/>get_xyz_values.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/><sp/><sp/>(par<sp/>exemple,<sp/>un<sp/>champ<sp/>defini<sp/>sur<sp/>une<sp/>surface<sp/>peut<sp/>etre<sp/>de<sp/>dimension<sp/>3<sp/>si<sp/>les</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>coordonnees<sp/>des<sp/>sommets<sp/>sont<sp/>3D,<sp/>ou<sp/>de<sp/>dimension<sp/>2<sp/>s&apos;il<sp/>s&apos;agit<sp/>de<sp/>coordonnees<sp/>curvilignes</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>le<sp/>long<sp/>de<sp/>la<sp/>surface)</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classChamp__Generique__base_1a70f2724175e528c27bde0e0369d9e777" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1a70f2724175e528c27bde0e0369d9e777" kindref="member">Champ_Generique_base::get_dimension</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="60"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NOT_IMPLEMENTED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>n&apos;arrive<sp/>jamais<sp/>ici</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>temps<sp/>du<sp/>Champ_Generique_base.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classChamp__Generique__base_1a6435e2b611b616ec03f9d1d1aaca8e12" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1a6435e2b611b616ec03f9d1d1aaca8e12" kindref="member">Champ_Generique_base::get_time</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="69"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NOT_IMPLEMENTED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="73"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>probleme<sp/>qui<sp/>porte<sp/>le<sp/>champ<sp/>cible</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classChamp__Generique__base_1aa169d6d6d3d1ad0be700ec62ebd78e03" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/><ref refid="classChamp__Generique__base_1aa169d6d6d3d1ad0be700ec62ebd78e03" kindref="member">Champ_Generique_base::get_ref_pb_base</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="77"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NOT_IMPLEMENTED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="81"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>la<sp/>discretisation<sp/>associee<sp/>au<sp/>probleme</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classChamp__Generique__base_1af226047f92909993c601a7d103058b0c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDiscretisation__base" kindref="compound">Discretisation_base</ref>&amp;<sp/><ref refid="classChamp__Generique__base_1af226047f92909993c601a7d103058b0c" kindref="member">Champ_Generique_base::get_discretisation</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="85"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classObjet__U" kindref="compound">Objet_U</ref>&amp;<sp/>ob<sp/>=<sp/><ref refid="classObjet__U_1a341ec06044679eef096ca615a85151ad" kindref="member">interprete</ref>().<ref refid="classInterprete_1a3ca248609f0b72eac68baca14621b4ee" kindref="member">objet</ref>(<ref refid="classChamp__Generique__base_1a5959d75a754eccae6dd28907315aaf49" kindref="member">nom_pb_</ref>);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/>pb<sp/>=<sp/>ref_cast(<ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>,ob);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDiscretisation__base" kindref="compound">Discretisation_base</ref>&amp;<sp/>discr<sp/>=<sp/>pb.<ref refid="classProbleme__base_1a6d2fc3674212b71c3834f4a20a069bba" kindref="member">discretisation</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>discr;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="92"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>la<sp/>directive<sp/>(champ_elem,<sp/>champ_sommets,<sp/>champ_face<sp/>ou<sp/>pression)</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>pour<sp/>lancer<sp/>la<sp/>discretisation<sp/>de<sp/>l<sp/>espace<sp/>de<sp/>stockage<sp/>rendu<sp/>par<sp/>get_champ()</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classChamp__Generique__base_1ae8b8d226e7ca007cfe4ed2d2076a6afc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/><ref refid="classChamp__Generique__base_1ae8b8d226e7ca007cfe4ed2d2076a6afc" kindref="member">Champ_Generique_base::get_directive_pour_discr</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="97"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NOT_IMPLEMENTED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classChamp__Generique__base_1ac0c56a8ba5feefc98276b5e90b9c74f4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1ac0c56a8ba5feefc98276b5e90b9c74f4" kindref="member">Champ_Generique_base::nommer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Generique__base_1ae62b052dfbd7325d47584487401729e4" kindref="member">nom_post_</ref><sp/>=<sp/>nom;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classChamp__Generique__base_1a9bef3d575201ecd51a8cba4a59a7cf40" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><ref refid="classChamp__Generique__base_1a9bef3d575201ecd51a8cba4a59a7cf40" kindref="member">Champ_Generique_base::get_nom_post</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="107"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1ae62b052dfbd7325d47584487401729e4" kindref="member">nom_post_</ref>;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="111"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>la<sp/>liste<sp/>des<sp/>&quot;query&quot;<sp/>possibles<sp/>pour<sp/>le<sp/>champ.</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="classChamp__Generique__base_1a18b5bb213f1886d164ebc83fd72a236d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1a18b5bb213f1886d164ebc83fd72a236d" kindref="member">Champ_Generique_base::get_property_names</ref>(<ref refid="classMotcles" kindref="compound">Motcles</ref>&amp;<sp/>list)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="115"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NOT_IMPLEMENTED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="119"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>la<sp/>propriete<sp/>demandee.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*<sp/>Exemples:<sp/>&quot;DISCRETISATION&quot;<sp/>:<sp/>type<sp/>du<sp/>champ<sp/>discret<sp/>(P0,<sp/>P1,<sp/>P1NC,<sp/>etc...)</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*<sp/><sp/><sp/>&quot;ELEMENT_TYPE&quot;<sp/>:<sp/>type<sp/>de<sp/>l&apos;element<sp/>de<sp/>plus<sp/>grande<sp/>dimension<sp/>({TRIANGLE},<sp/>{TETRAHEDRA},<sp/>{QUAD},<sp/>{HEXA},<sp/>etc)</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*<sp/><sp/><sp/>&quot;DYNAMIC_MESH&quot;<sp/>:<sp/>le<sp/>maillage<sp/>est-il<sp/>dynamique<sp/>ou<sp/>pas<sp/>({STATIC},<sp/>{DYNAMIC})</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*<sp/><sp/><sp/>&quot;NAME&quot;<sp/>:<sp/>nom<sp/>du<sp/>champ</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*<sp/><sp/><sp/>&quot;COMPONENT_NAMES&quot;<sp/>:<sp/>nom<sp/>des<sp/>composantes<sp/>du<sp/>champ<sp/>({K,EPSILON}<sp/>ou<sp/>{VITESSE_X,VITESSE_Y,VITESSE_Z})</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*<sp/><sp/><sp/>&quot;BOUNDARY_NAMES&quot;<sp/>:<sp/>nom<sp/>des<sp/>bords</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*<sp/><sp/><sp/>&quot;COORDINATES&quot;<sp/>:<sp/>systeme<sp/>de<sp/>coordonnees<sp/>des<sp/>noeuds<sp/>({X},<sp/>{X,Y},<sp/>{X,Y,Z},<sp/>{R,THETA},<sp/>etc...)</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*<sp/><sp/>Exceptions:</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::INVALID<sp/>:<sp/>query<sp/>non<sp/>comprise</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/><ref refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" kindref="member">Champ_Generique_base::get_property</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>query)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="133"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NOT_IMPLEMENTED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="138"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>type<sp/>des<sp/>entites<sp/>geometriques<sp/>sur<sp/>auxquelles<sp/>les<sp/>valeurs<sp/>discretes<sp/>sont<sp/>attachees<sp/>(NODE<sp/>pour<sp/>un<sp/>champ<sp/>P1,<sp/>FACE<sp/>pour<sp/>un<sp/>champ<sp/>P1NC,<sp/>ELEMENT<sp/>pour<sp/>un</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/>*<sp/><sp/><sp/>champ<sp/>P0,<sp/>etc).<sp/>Il<sp/>est<sp/>conseille<sp/>d&apos;utiliser<sp/>la<sp/>syntaxe<sp/>get_localisation()<sp/>sans</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/>*<sp/><sp/><sp/>parametre,<sp/>sauf<sp/>si<sp/>on<sp/>sait<sp/>quoi<sp/>faire<sp/>pour<sp/>les<sp/>champs<sp/>multi-supports.</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*<sp/><sp/><sp/>@sa<sp/>get_nb_localisations()</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/>*<sp/><sp/>Parametre<sp/>:<sp/>index</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/>*<sp/><sp/>Signification<sp/>:<sp/>index<sp/>de<sp/>la<sp/>localisation<sp/>demandee<sp/>(pour<sp/>les<sp/>champs<sp/>multi-support).</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Si<sp/>index<sp/>=<sp/>-1<sp/>:<sp/>si<sp/>le<sp/>champ<sp/>est<sp/>multi-support<sp/>on<sp/>leve<sp/>une<sp/>exception,<sp/>sinon<sp/>on<sp/>renvoie<sp/>le<sp/>support.</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Si<sp/>index<sp/>&gt;=<sp/>0<sp/>:<sp/>on<sp/>renvoie<sp/>le<sp/>i-ieme<sp/>support.</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/>*<sp/><sp/>Valeur<sp/>par<sp/>defaut<sp/>:<sp/>-1</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/>*<sp/><sp/>Exceptions:</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::INVALID<sp/>:<sp/>le<sp/>champ<sp/>n&apos;est<sp/>pas<sp/>discretise<sp/>sur<sp/>ces<sp/>entites<sp/>geometriques</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(il<sp/>peut<sp/>s&apos;agir<sp/>d&apos;un<sp/>champ<sp/>analytique<sp/>ou<sp/>d&apos;un<sp/>champ<sp/>multi-localisation),<sp/>ou<sp/>le<sp/>champ</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>est<sp/>multi-support<sp/>alors<sp/>qu&apos;on<sp/>a<sp/>demande<sp/>index<sp/>=<sp/>-1,<sp/>ou<sp/>le<sp/>support<sp/>&quot;index&quot;<sp/>n&apos;existe<sp/>pas.</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="classChamp__Generique__base_1aa23354e17aa74f0aecf67014f0276eaf" refkind="member"><highlight class="normal">Entity<sp/><ref refid="classChamp__Generique__base_1aa23354e17aa74f0aecf67014f0276eaf" kindref="member">Champ_Generique_base::get_localisation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="155"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NOT_IMPLEMENTED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="classChamp__Generique__base_1a82a9148fb2d7798b85de7c713b62cfd1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1a82a9148fb2d7798b85de7c713b62cfd1" kindref="member">Champ_Generique_base::get_nb_localisations</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="160"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NOT_IMPLEMENTED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="164"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>une<sp/>reference<sp/>au<sp/>tableau<sp/>de<sp/>valeurs<sp/>discretes<sp/>s&apos;il<sp/>existe<sp/>en<sp/>memoire.</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/>*<sp/>La<sp/>reference<sp/>est<sp/>valide<sp/>au<sp/>moins<sp/>jusqu&apos;au<sp/>prochain<sp/>appel<sp/>a<sp/>une<sp/>methode<sp/>non<sp/>const.</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Le<sp/>maillage<sp/>sur<sp/>lequel<sp/>ces<sp/>valeurs<sp/>sont<sp/>definies<sp/>est<sp/>accessible<sp/>par<sp/>les<sp/>methodes</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/>*<sp/><sp/><sp/>get_node_coordinates(),<sp/>get_connectivity(),<sp/>get_field_type().</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/>*<sp/><sp/>Exceptions:</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::XYZ_ONLY<sp/>:<sp/>les<sp/>valeurs<sp/>ne<sp/>sont<sp/>accessibles<sp/>que<sp/>par<sp/>get_xyz_values</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::NO_REF<sp/>:<sp/>les<sp/>valeurs<sp/>ne<sp/>sont<sp/>pas<sp/>stockees<sp/>en<sp/>memoire,</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>il<sp/>faut<sp/>utiliser<sp/>get_copy_values();</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::MESH_ONLY<sp/>:<sp/>le<sp/>champ<sp/>ne<sp/>porte<sp/>pas<sp/>de<sp/>valeurs,<sp/>il<sp/>sert<sp/>uniquement<sp/>a<sp/>decrire<sp/>une<sp/>geometrie</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="classChamp__Generique__base_1a991a00ec3963b9926ea07871a461e11c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classChamp__Generique__base_1a991a00ec3963b9926ea07871a461e11c" kindref="member">Champ_Generique_base::get_ref_values</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="177"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Implementation<sp/>par<sp/>defaut<sp/>:<sp/>exception<sp/>NO_REF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NO_REF&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="182"><highlight class="comment">/*!<sp/>@brief<sp/>Remplit<sp/>le<sp/>tableau<sp/>values<sp/>avec<sp/>les<sp/>valeurs<sp/>discretes<sp/>du<sp/>champ<sp/>(cree<sp/>une<sp/>copie).</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/>*<sp/>Exceptions:</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::XYZ_ONLY<sp/>:<sp/>les<sp/>valeurs<sp/>ne<sp/>sont<sp/>accessibles<sp/>que<sp/>par<sp/>get_xyz_values</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::MESH_ONLY<sp/>:<sp/>le<sp/>champ<sp/>ne<sp/>porte<sp/>pas<sp/>de<sp/>valeurs,<sp/>il<sp/>sert<sp/>uniquement<sp/>a<sp/>decrire<sp/>une<sp/>geometrie</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189" refid="classChamp__Generique__base_1a7647c22f729237edb48ceab5d60a740e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1a7647c22f729237edb48ceab5d60a740e" kindref="member">Champ_Generique_base::get_copy_values</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>values)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="190"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NOT_IMPLEMENTED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="194"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>la<sp/>valeur<sp/>ponctuelle<sp/>du<sp/>champ<sp/>aux<sp/>coordonnees<sp/>donnees<sp/>dans<sp/>coords<sp/>et<sp/>les<sp/>met<sp/>dans<sp/>values.</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/>*<sp/>validity_flag<sp/>est<sp/>rempli<sp/>avec<sp/>1<sp/>si<sp/>la<sp/>valeur<sp/>est<sp/>valide</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/>*<sp/><sp/><sp/>(coordonnees<sp/>a<sp/>l&apos;interieur<sp/>du<sp/>domaine),<sp/>0<sp/>sinon.</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/>*<sp/><sp/>Attention<sp/>en<sp/>parallele:</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Chaque<sp/>processeur<sp/>traite<sp/>le<sp/>tableau<sp/>coords<sp/>qui<sp/>lui<sp/>est<sp/>fourni<sp/>:<sp/>on<sp/>peut<sp/>soit<sp/>faire</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/>*<sp/><sp/><sp/>calculer<sp/>le<sp/>meme<sp/>tableau<sp/>a<sp/>tout<sp/>le<sp/>monde:<sp/>dans<sp/>ce<sp/>cas,<sp/>validity_flag<sp/>indique<sp/>sur</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/>*<sp/><sp/><sp/>chaque<sp/>processeur<sp/>quelles<sp/>valeurs<sp/>chaque<sp/>processeur<sp/>a<sp/>pu<sp/>calculer,<sp/>soit<sp/>on<sp/>sait<sp/>par</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/>*<sp/><sp/><sp/>avance<sp/>quelles<sp/>coordonnees<sp/>sont<sp/>calculable<sp/>par<sp/>chaque<sp/>processeur<sp/>et<sp/>on<sp/>donne<sp/>au<sp/>processeur</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/>*<sp/><sp/><sp/>local<sp/>uniquement<sp/>des<sp/>coordonnees<sp/>qu&apos;il<sp/>possede.<sp/>Si<sp/>une<sp/>meme<sp/>coordonnee<sp/>est<sp/>demandee</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/>*<sp/><sp/><sp/>a<sp/>plusieurs<sp/>processeurs,<sp/>on<sp/>ne<sp/>garantit<sp/>pas<sp/>que<sp/>tous<sp/>donnent<sp/>le<sp/>meme<sp/>resultat.<sp/>En<sp/>general,</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/>*<sp/><sp/><sp/>un<sp/>seul<sp/>aura<sp/>le<sp/>validity_flag<sp/>mis<sp/>pour<sp/>cette<sp/>coordonnee.</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/>*<sp/><sp/>Exceptions:</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::NOT_IMPLEMENTED<sp/>:<sp/>le<sp/>paresseux<sp/>n&apos;a<sp/>pas<sp/>code<sp/>les<sp/>methodes<sp/>d&apos;interpolation</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>il<sp/>faut<sp/>se<sp/>debrouiller<sp/>avec<sp/>le<sp/>maillage<sp/>et<sp/>les<sp/>valeurs<sp/>discretes.</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::MESH_ONLY<sp/>:<sp/>le<sp/>champ<sp/>ne<sp/>porte<sp/>pas<sp/>de<sp/>valeurs,<sp/>il<sp/>sert<sp/>uniquement<sp/>a<sp/>decrire<sp/>une<sp/>geometrie</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212" refid="classChamp__Generique__base_1a960a4af55d10e86432d59165137b71cb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1a960a4af55d10e86432d59165137b71cb" kindref="member">Champ_Generique_base::get_xyz_values</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>coords,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>values,<sp/><ref refid="classArrOfBit__32__64" kindref="compound">ArrOfBit</ref>&amp;<sp/>validity_flag)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="213"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NOT_IMPLEMENTED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="217"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>une<sp/>reference<sp/>au<sp/>tableau<sp/>des<sp/>coordonnees<sp/>des<sp/>sommets<sp/>du<sp/>maillage<sp/>support<sp/>du<sp/>champ,<sp/>s&apos;il<sp/>existe.</highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/>*<sp/>Le<sp/>tableau<sp/>a<sp/>toujours<sp/>deux<sp/>dimensions<sp/>:</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>dimension(0)<sp/>=<sp/>nombre<sp/>de<sp/>sommets<sp/>reels</highlight></codeline>
+<codeline lineno="221"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>dimension(1)<sp/>=<sp/>get_dimension()<sp/>(dimension<sp/>de<sp/>l&apos;espace<sp/>dans<sp/>lequel<sp/>est<sp/>defini<sp/>le<sp/>champ)</highlight></codeline>
+<codeline lineno="222"><highlight class="comment"><sp/>*<sp/><sp/><sp/>En<sp/>parallele,<sp/>le<sp/>tableau<sp/>est<sp/>un<sp/>tableau<sp/>distribue<sp/>avec<sp/>items<sp/>communs.</highlight></codeline>
+<codeline lineno="223"><highlight class="comment"><sp/>*<sp/><sp/>Exceptions:</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::INVALID<sp/>:<sp/>le<sp/>tableau<sp/>n&apos;existe<sp/>pas<sp/>(champ<sp/>analytique<sp/>...)</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::NO_REF<sp/>:<sp/>les<sp/>valeurs<sp/>ne<sp/>sont<sp/>pas<sp/>stockees<sp/>en<sp/>memoire,</highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>il<sp/>faut<sp/>utiliser<sp/>get_copy_coordinates();</highlight></codeline>
+<codeline lineno="227"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229" refid="classChamp__Generique__base_1a901c20dc55fa76600ca47a5053a99a4b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classChamp__Generique__base_1a901c20dc55fa76600ca47a5053a99a4b" kindref="member">Champ_Generique_base::get_ref_coordinates</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="230"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Implementation<sp/>par<sp/>defaut<sp/>:<sp/>exception<sp/>NO_REF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NO_REF&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236" refid="classChamp__Generique__base_1aab0d7e45ed27d1fa6687df30254620b8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1aab0d7e45ed27d1fa6687df30254620b8" kindref="member">Champ_Generique_base::get_copy_coordinates</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="237"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NO_REF&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="241"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>tableau<sp/>de<sp/>connectivite<sp/>entre<sp/>l&apos;entite<sp/>geometrique<sp/>index1<sp/>et<sp/>l&apos;entite<sp/>index2.</highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/>*<sp/>Par<sp/>exemple</highlight></codeline>
+<codeline lineno="244"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>get_ref_connectivity(ELEM,<sp/>NODE)<sp/>=<sp/>Domaine::mes_elems</highlight></codeline>
+<codeline lineno="245"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>get_ref_connectivity(ELEM,<sp/>FACE)<sp/>=<sp/>DomaineVF::elem_faces_</highlight></codeline>
+<codeline lineno="246"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>get_ref_connectivity(FACE,<sp/>ELEM)<sp/>=<sp/>DomaineVF::face_voisins_</highlight></codeline>
+<codeline lineno="247"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Le<sp/>tableau<sp/>a<sp/>toujours<sp/>deux<sp/>dimensions<sp/>:</highlight></codeline>
+<codeline lineno="248"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>dimension(0)<sp/>=<sp/>nombre<sp/>d&apos;entites<sp/>&quot;index1&quot;<sp/>reelles</highlight></codeline>
+<codeline lineno="249"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>dimension(1)<sp/>=<sp/>nombre<sp/>d&apos;entites<sp/>&quot;index2&quot;<sp/>connectees<sp/>a<sp/>chaque<sp/>entite<sp/>&quot;index1&quot;</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"><sp/>*<sp/><sp/><sp/>En<sp/>parallele,<sp/>le<sp/>tableau<sp/>est<sp/>un<sp/>tableau<sp/>distribue<sp/>avec<sp/>items<sp/>communs</highlight></codeline>
+<codeline lineno="251"><highlight class="comment"><sp/>*<sp/><sp/>Exceptions:</highlight></codeline>
+<codeline lineno="252"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::INVALID<sp/>:<sp/>le<sp/>tableau<sp/>n&apos;existe<sp/>pas<sp/>(champ<sp/>analytique<sp/>...)</highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp/>*<sp/><sp/><sp/>-<sp/>GenericFieldError::NO_REF<sp/>:<sp/>les<sp/>valeurs<sp/>ne<sp/>sont<sp/>pas<sp/>stockees<sp/>en<sp/>memoire,</highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>il<sp/>faut<sp/>utiliser<sp/>get_copy_connectivity();</highlight></codeline>
+<codeline lineno="255"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="classChamp__Generique__base_1a2354a3c4d2c3b2b480d7d9331e31cdd5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/><ref refid="classChamp__Generique__base_1a2354a3c4d2c3b2b480d7d9331e31cdd5" kindref="member">Champ_Generique_base::get_ref_connectivity</ref>(Entity<sp/>index1,<sp/>Entity<sp/>index2)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="258"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NOT_IMPLEMENTED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="classChamp__Generique__base_1a374cc384ccc097740d20d1cc983c5ec3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1a374cc384ccc097740d20d1cc983c5ec3" kindref="member">Champ_Generique_base::get_copy_connectivity</ref>(Entity<sp/>index1,<sp/>Entity<sp/>index2,<sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="263"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;NOT_IMPLEMENTED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="267"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>une<sp/>ref<sp/>au<sp/>domaine<sp/>sur<sp/>lequel<sp/>sera<sp/>evalue<sp/>l<sp/>espace<sp/>de<sp/>stockage.</highlight></codeline>
+<codeline lineno="268"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="269"><highlight class="comment"><sp/>*<sp/>Par<sp/>defaut<sp/>le<sp/>domaine<sp/>associe<sp/>au<sp/>probleme.</highlight></codeline>
+<codeline lineno="270"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="271"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="classChamp__Generique__base_1adf66b46fffb340391a88f0f87d96c63f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/><ref refid="classChamp__Generique__base_1adf66b46fffb340391a88f0f87d96c63f" kindref="member">Champ_Generique_base::get_ref_domain</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="273"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classObjet__U" kindref="compound">Objet_U</ref>&amp;<sp/>ob<sp/>=<sp/><ref refid="classObjet__U_1a341ec06044679eef096ca615a85151ad" kindref="member">interprete</ref>().<ref refid="classInterprete_1a3ca248609f0b72eac68baca14621b4ee" kindref="member">objet</ref>(<ref refid="classChamp__Generique__base_1a5959d75a754eccae6dd28907315aaf49" kindref="member">nom_pb_</ref>);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/>pb<sp/>=<sp/>ref_cast(<ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>,ob);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>dom<sp/>=<sp/>pb.<ref refid="classProbleme__base_1ae79e94815e436ab3fb3916f341d7978e" kindref="member">domaine_dis</ref>().<ref refid="classDomaine__dis__base_1a8effce5ffccf506b8908ba79119b6832" kindref="member">domaine</ref>();</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dom;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="281"><highlight class="comment">/*!<sp/>@brief<sp/>Cree<sp/>une<sp/>copie<sp/>du<sp/>domaine<sp/>sur<sp/>lequel<sp/>sera<sp/>evalue<sp/>l<sp/>espace<sp/>de<sp/>stockage.</highlight></codeline>
+<codeline lineno="282"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="283"><highlight class="comment"><sp/>*<sp/>Par<sp/>defaut<sp/>le<sp/>domaine<sp/>associe<sp/>au<sp/>probleme.</highlight></codeline>
+<codeline lineno="284"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="285"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286" refid="classChamp__Generique__base_1a875e82d94cb104b8389314c1204d4854" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1a875e82d94cb104b8389314c1204d4854" kindref="member">Champ_Generique_base::get_copy_domain</ref>(<ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>domain)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="287"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>dom<sp/>=<sp/><ref refid="classChamp__Generique__base_1adf66b46fffb340391a88f0f87d96c63f" kindref="member">get_ref_domain</ref>();</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/>domain<sp/>=<sp/>dom;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="293"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>une<sp/>ref<sp/>au<sp/>domaine_discretisee<sp/>du<sp/>domaine<sp/>sur<sp/>lequel<sp/>sera<sp/>evalue<sp/>l<sp/>espace<sp/>de<sp/>stockage.</highlight></codeline>
+<codeline lineno="294"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="295"><highlight class="comment"><sp/>*<sp/><sp/>Par<sp/>defaut<sp/>le<sp/>domaine<sp/>associe<sp/>au<sp/>probleme.</highlight></codeline>
+<codeline lineno="296"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="297"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298" refid="classChamp__Generique__base_1a0a4c6940e5e52cc520c3344b6a7d00cf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__dis__base" kindref="compound">Domaine_dis_base</ref>&amp;<sp/><ref refid="classChamp__Generique__base_1a0a4c6940e5e52cc520c3344b6a7d00cf" kindref="member">Champ_Generique_base::get_ref_domaine_dis_base</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="299"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classObjet__U" kindref="compound">Objet_U</ref>&amp;<sp/>ob<sp/>=<sp/><ref refid="classObjet__U_1a341ec06044679eef096ca615a85151ad" kindref="member">interprete</ref>().<ref refid="classInterprete_1a3ca248609f0b72eac68baca14621b4ee" kindref="member">objet</ref>(<ref refid="classChamp__Generique__base_1a5959d75a754eccae6dd28907315aaf49" kindref="member">nom_pb_</ref>);</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/>pb<sp/>=<sp/>ref_cast(<ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>,ob);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__dis__base" kindref="compound">Domaine_dis_base</ref>&amp;<sp/>domaine_dis<sp/>=<sp/>pb.<ref refid="classProbleme__base_1ae79e94815e436ab3fb3916f341d7978e" kindref="member">domaine_dis</ref>();</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>domaine_dis;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="306"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>une<sp/>ref<sp/>au<sp/>domaine_cl_discretisee<sp/>de<sp/>l<sp/>equation<sp/>portant<sp/>le<sp/>champ<sp/>cible.</highlight></codeline>
+<codeline lineno="307"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="308"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309" refid="classChamp__Generique__base_1a6267f592a08607939844950045cd8e40" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__dis__base" kindref="compound">Domaine_Cl_dis_base</ref>&amp;<sp/><ref refid="classChamp__Generique__base_1a6267f592a08607939844950045cd8e40" kindref="member">Champ_Generique_base::get_ref_zcl_dis_base</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="310"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;INVALID&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314" refid="classChamp__Generique__base_1a0fc2c3c2f9d9805076382a731779f8a9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1a0fc2c3c2f9d9805076382a731779f8a9" kindref="member">Champ_Generique_base::has_champ_post</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>nom)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="315"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>nom_champ;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>nom_champ_post<sp/>=<sp/><ref refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" kindref="member">get_property</ref>(</highlight><highlight class="stringliteral">&quot;nom&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/>nom_champ<sp/>=<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(nom_champ_post[0]);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom_champ<sp/>==<sp/>nom)</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>syno<sp/>=<sp/><ref refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" kindref="member">get_property</ref>(</highlight><highlight class="stringliteral">&quot;synonyms&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>syno.<ref refid="classTRUST__Vector_1afae0a388de57f1ab2a0d9127f7c0a5f9" kindref="member">size</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nom_champ<sp/>=<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(syno[i]);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom_champ<sp/>==<sp/>nom)</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>composantes<sp/>=<sp/><ref refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" kindref="member">get_property</ref>(</highlight><highlight class="stringliteral">&quot;composantes&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;itr<sp/>:<sp/>composantes)</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nom_champ<sp/>=<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(itr);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom_champ<sp/>==<sp/>nom)</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">/*<sp/>rien<sp/>trouve<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342" refid="classChamp__Generique__base_1a56bf351fe37d5dae2b433ede19780c7f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base" kindref="compound">Champ_Generique_base</ref>&amp;<sp/><ref refid="classChamp__Generique__base_1a56bf351fe37d5dae2b433ede19780c7f" kindref="member">Champ_Generique_base::get_champ_post</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>nom)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="343"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/>OBS_PTR(<ref refid="classChamp__Generique__base" kindref="compound">Champ_Generique_base</ref>)<sp/>ref_champ;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>nom_champ;</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>nom_champ_post<sp/>=<sp/><ref refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" kindref="member">get_property</ref>(</highlight><highlight class="stringliteral">&quot;nom&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/>nom_champ<sp/>=<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(nom_champ_post[0]);</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom_champ==nom)</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ref_champ<sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ref_champ-&gt;fixer_identifiant_appel(nom);</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ref_champ;</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>syno<sp/>=<sp/><ref refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" kindref="member">get_property</ref>(</highlight><highlight class="stringliteral">&quot;synonyms&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_syno<sp/>=<sp/>syno.<ref refid="classTRUST__Vector_1afae0a388de57f1ab2a0d9127f7c0a5f9" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb_syno;<sp/>i++)</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nom_champ<sp/>=<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(syno[i]);</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom_champ==nom)</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ref_champ<sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ref_champ-&gt;fixer_identifiant_appel(nom);</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ref_champ;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>composantes<sp/>=<sp/><ref refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" kindref="member">get_property</ref>(</highlight><highlight class="stringliteral">&quot;composantes&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>composantes)</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nom_champ<sp/>=<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(itr);</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom_champ==nom)</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ref_champ<sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ref_champ-&gt;fixer_identifiant_appel(nom);</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ref_champ;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::runtime_error(std::string(</highlight><highlight class="stringliteral">&quot;Field<sp/>&quot;</highlight><highlight class="normal">)<sp/>+<sp/>nom.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()<sp/>+<sp/>std::string(</highlight><highlight class="stringliteral">&quot;<sp/>not<sp/>found<sp/>!&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="384"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386" refid="classChamp__Generique__base_1a2e5ba6e8552d359d7293e6a60d5bd149" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__base_1a2e5ba6e8552d359d7293e6a60d5bd149" kindref="member">Champ_Generique_base::comprend_champ_post</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>identifiant)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="387"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>nom_champ;</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>nom_champ_post<sp/>=<sp/><ref refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" kindref="member">get_property</ref>(</highlight><highlight class="stringliteral">&quot;nom&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/>nom_champ<sp/>=<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(nom_champ_post[0]);</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom_champ==identifiant)</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>composantes<sp/>=<sp/><ref refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" kindref="member">get_property</ref>(</highlight><highlight class="stringliteral">&quot;composantes&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>composantes)</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nom_champ<sp/>=<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(itr);</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom_champ==identifiant)</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="405"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Champ_Generique_base.cpp"/>
+  </compounddef>
+</doxygen>

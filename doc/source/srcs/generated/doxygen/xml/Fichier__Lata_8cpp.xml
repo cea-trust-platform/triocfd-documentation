@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Fichier__Lata_8cpp" kind="file" language="C++">
+    <compoundname>Fichier_Lata.cpp</compoundname>
+    <includes refid="EcrFicPartageMPIIO_8h" local="no">EcrFicPartageMPIIO.h</includes>
+    <includes refid="EcrFicPartageBin_8h" local="no">EcrFicPartageBin.h</includes>
+    <includes refid="Fichier__Lata_8h" local="no">Fichier_Lata.h</includes>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EcrFicPartageMPIIO.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EcrFicPartageBin.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fichier_Lata.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">/*!<sp/>@brief<sp/>Construit<sp/>un<sp/>fichier<sp/>de<sp/>type<sp/>EcrFicPartage(Bin)<sp/>ou<sp/>EcrFicPrive(Bin),<sp/>binaire<sp/>ou<sp/>pas<sp/>selon<sp/>le<sp/>parametre<sp/>&quot;format&quot;.</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Si<sp/>parallel==MULTIPLE_FILES,<sp/>le<sp/>fichier<sp/>est<sp/>de<sp/>type<sp/>EcrFicPrive(Bin).</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Dans<sp/>ce<sp/>cas,<sp/>chaque<sp/>processeur<sp/>ouvre<sp/>un<sp/>fichier<sp/>different,<sp/>dont</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>le<sp/>nom<sp/>est<sp/>&quot;basename_XXXXXextension&quot;,<sp/>ou<sp/>XXXXX<sp/>est<sp/>egal<sp/>a<sp/>Process::me().</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Tous<sp/>les<sp/>processeurs<sp/>renverront<sp/>is_master()<sp/>==<sp/>1.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Si<sp/>parallel==SINGLE_FILE<sp/>est<sp/>non<sp/>nul,<sp/>le<sp/>fichier<sp/>est<sp/>de<sp/>type<sp/>EcrFicPartage(Bin).</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Seul<sp/>le<sp/>processeur<sp/>maitre<sp/>ouvre<sp/>le<sp/>fichier,<sp/>le<sp/>nom<sp/>du<sp/>fichier<sp/>est</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>&quot;basenameextension&quot;.</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>is_master()<sp/>renverra<sp/>1<sp/>sur<sp/>le<sp/>maitre,<sp/>0<sp/>sur<sp/>les<sp/>autres<sp/>processeurs.</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@param<sp/>(basename)<sp/>debut<sp/>du<sp/>nom<sp/>du<sp/>fichier</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@param<sp/>(extension)<sp/>fin<sp/>du<sp/>nom<sp/>du<sp/>fichier</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@param<sp/>(mode_append)<sp/>Si<sp/>mode_append==ERASE,<sp/>on<sp/>ouvre<sp/>en<sp/>mode<sp/>ecriture,<sp/>si<sp/>mode_append==APPEND,<sp/>on<sp/>ouvre<sp/>en<sp/>mode<sp/>append.</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@param<sp/>(format)<sp/>Determine<sp/>si<sp/>on<sp/>ouvre<sp/>en<sp/>binaire<sp/>ou<sp/>pas.<sp/>(valeurs<sp/>possibles:<sp/>Format_Post_Lata::ASCII<sp/>ou<sp/>Format_Post_Lata::BINAIRE)</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@param<sp/>(parallel)<sp/>fichier<sp/>unique<sp/>partage<sp/>ou<sp/>plusieurs<sp/>fichiers<sp/>prives...</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classFichier__Lata_1a4e94dc02f52379815aa8bd786c9f3c16" refkind="member"><highlight class="normal"><ref refid="classFichier__Lata_1a4e94dc02f52379815aa8bd786c9f3c16" kindref="member">Fichier_Lata::Fichier_Lata</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>basename,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>extension,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1afadf4963467b3123d9e9ec312644cb48" kindref="member">Mode</ref><sp/>mode_append,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFormat__Post__Lata_1a8698c5e7e825c54749a7365f7ffff53c" kindref="member">Format_Post_Lata::Format</ref><sp/>format,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFormat__Post__Lata_1a8de32871f6c5c4602655246c85410a94" kindref="member">Format_Post_Lata::Options_Para</ref><sp/>parallel)<sp/>:</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>filename_(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>fichier_(0),</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>is_parallel_(0)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s[20]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(parallel)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__Lata_1a8de32871f6c5c4602655246c85410a94a23ea36f7593e2b91825cd82fa150b5e4" kindref="member">Format_Post_Lata::SINGLE_FILE_MPIIO</ref>:</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__Lata_1a8de32871f6c5c4602655246c85410a94a448f17201fc397a7da69a62ae0637043" kindref="member">Format_Post_Lata::SINGLE_FILE</ref>:</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1af56e687eb76326f30b3a31eae524ceb3" kindref="member">is_parallel_</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1a37bcfe5d3baae24dc288388268a9c7df" kindref="member">filename_</ref><sp/>=<sp/>basename;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1a37bcfe5d3baae24dc288388268a9c7df" kindref="member">filename_</ref><sp/>+=<sp/>extension;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pour<sp/>un<sp/>calcul<sp/>sequentiel,<sp/>on<sp/>ouvre<sp/>un<sp/>fichier<sp/>SFichier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pour<sp/>ne<sp/>pas<sp/>bufferiser<sp/>en<sp/>memoire</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/><sp/>(<ref refid="classProcess_1ae3b6cc030ab93d5ea4ba437a4a2455cc" kindref="member">Process::is_sequential</ref>())</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classSFichier" kindref="compound">SFichier</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(format<sp/>==<sp/><ref refid="classFormat__Post__Lata_1a8698c5e7e825c54749a7365f7ffff53ca2d3fa963128b6785fca8a03841962e16" kindref="member">Format_Post_Lata::BINAIRE</ref><sp/>&amp;&amp;<sp/>parallel<sp/>==<sp/><ref refid="classFormat__Post__Lata_1a8de32871f6c5c4602655246c85410a94a23ea36f7593e2b91825cd82fa150b5e4" kindref="member">Format_Post_Lata::SINGLE_FILE_MPIIO</ref>)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classEcrFicPartageMPIIO" kindref="compound">EcrFicPartageMPIIO</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classEcrFicPartage" kindref="compound">EcrFicPartage</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__Lata_1a8de32871f6c5c4602655246c85410a94aef0c737cbac106d4baaade24e94e5028" kindref="member">Format_Post_Lata::MULTIPLE_FILES</ref>:</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1af56e687eb76326f30b3a31eae524ceb3" kindref="member">is_parallel_</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classSFichier" kindref="compound">SFichier</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>moi<sp/>=<sp/><ref refid="classProcess_1ab55ba07167ec807ed3a145cac0f5dca4" kindref="member">Process::me</ref>();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>snprintf(s,<sp/>20,<sp/></highlight><highlight class="stringliteral">&quot;_%05d&quot;</highlight><highlight class="normal">,<sp/>(True_int)moi);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Fichier_Lata::Fichier_Lata:<sp/>parallel<sp/>option<sp/>not<sp/>supported<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>(int)parallel<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><ref refid="classFichier__Lata_1a37bcfe5d3baae24dc288388268a9c7df" kindref="member">filename_</ref><sp/>=<sp/>basename;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><ref refid="classFichier__Lata_1a37bcfe5d3baae24dc288388268a9c7df" kindref="member">filename_</ref><sp/>+=<sp/>s;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><ref refid="classFichier__Lata_1a37bcfe5d3baae24dc288388268a9c7df" kindref="member">filename_</ref><sp/>+=<sp/>extension;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(format)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__Lata_1a8698c5e7e825c54749a7365f7ffff53ca64e753afccaf02de631ef2ad18733aab" kindref="member">Format_Post_Lata::ASCII</ref>:</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref>-&gt;<ref refid="classSortie_1a53c429bd933e80f026abf293a837ffeb" kindref="member">set_bin</ref>(0);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__Lata_1a8698c5e7e825c54749a7365f7ffff53ca2d3fa963128b6785fca8a03841962e16" kindref="member">Format_Post_Lata::BINAIRE</ref>:</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref>-&gt;<ref refid="classSortie_1a53c429bd933e80f026abf293a837ffeb" kindref="member">set_bin</ref>(1);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Fichier_Lata::Fichier_Lata:<sp/>format<sp/>not<sp/>supported<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>(int)format<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>IOS_OPEN_MODE<sp/>mode<sp/>=<sp/>ios::out;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(mode_append)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classFichier__Lata_1afadf4963467b3123d9e9ec312644cb48aafea5adb55ed5ecc0b957884c5e754c1" kindref="member">ERASE</ref>:</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mode<sp/>=<sp/>ios::out;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classFichier__Lata_1afadf4963467b3123d9e9ec312644cb48ad9db95f97d41cea9e4338af8876bd408" kindref="member">APPEND</ref>:</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mode<sp/>=<sp/>ios::out<sp/>|<sp/>ios::app;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Fichier_Lata::Fichier_Lata:<sp/>open<sp/>mode<sp/>not<sp/>supported<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>(int)mode_append<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//if<sp/>(Process::je_suis_maitre()<sp/>||<sp/>parallel==Format_Post_Lata::MULTIPLE_FILES)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ok<sp/>=<sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref>-&gt;<ref refid="classSortie__Fichier__base_1adeb941e6d25cb82e0fa362b54a132bc2" kindref="member">ouvrir</ref>(<ref refid="classFichier__Lata_1a37bcfe5d3baae24dc288388268a9c7df" kindref="member">filename_</ref>,<sp/>mode);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ok)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Fichier_Lata::Fichier_Lata\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Error<sp/>while<sp/>opening<sp/>file<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classFichier__Lata_1a37bcfe5d3baae24dc288388268a9c7df" kindref="member">filename_</ref></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref>-&gt;<ref refid="classSortie__Fichier__base_1a7fae3eeaad5fd8a3ca3e38218d574365" kindref="member">setf</ref>(ios::scientific);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref>-&gt;<ref refid="classSortie__Fichier__base_1a8341672e95dd856b2c30d7b7d2f649d0" kindref="member">precision</ref>(8);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classFichier__Lata_1a50ff28fb3abad505c0cca8fbf1836294" refkind="member"><highlight class="normal"><ref refid="classFichier__Lata_1a50ff28fb3abad505c0cca8fbf1836294" kindref="member">Fichier_Lata::~Fichier_Lata</ref>()</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref>)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref>;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="classFichier__Lata_1a18a15a1d2d7f0edccbb258f9da1526b3" refkind="member"><highlight class="normal"><ref refid="classSFichier" kindref="compound">SFichier</ref>&amp;<sp/><ref refid="classFichier__Lata_1a18a15a1d2d7f0edccbb258f9da1526b3" kindref="member">Fichier_Lata::get_SFichier</ref>()</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/>assert(<ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref>);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*<ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref>;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="141"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nom<sp/>du<sp/>fichier<sp/>avec<sp/>le<sp/>path</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="classFichier__Lata_1adfb113d0fc8e9447c00e5072f702c0ca" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><ref refid="classFichier__Lata_1adfb113d0fc8e9447c00e5072f702c0ca" kindref="member">Fichier_Lata::get_filename</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="145"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classFichier__Lata_1a37bcfe5d3baae24dc288388268a9c7df" kindref="member">filename_</ref>;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="149"><highlight class="comment">/*!<sp/>@brief<sp/>Si<sp/>le<sp/>fichier<sp/>est<sp/>de<sp/>type<sp/>partage,<sp/>renvoie<sp/>1<sp/>si<sp/>me()<sp/>est<sp/>egal<sp/>au<sp/>master<sp/>du<sp/>groupe<sp/>et<sp/>0<sp/>sinon,</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Si<sp/>le<sp/>fichier<sp/>est<sp/>prive,<sp/>renvoie<sp/>1<sp/>sur<sp/>tous<sp/>les<sp/>processeurs.</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="classFichier__Lata_1a08880b23b5155529aee9107caae62db4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFichier__Lata_1a08880b23b5155529aee9107caae62db4" kindref="member">Fichier_Lata::is_master</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="155"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resu<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classFichier__Lata_1af56e687eb76326f30b3a31eae524ceb3" kindref="member">is_parallel_</ref><sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Execution<sp/>sequentielle,<sp/>fichiers<sp/>prives<sp/>chaque<sp/>processeur<sp/>est<sp/>maitre</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>resu<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Execution<sp/>parallele<sp/>:<sp/>un<sp/>seul<sp/>maitre</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">Process::je_suis_maitre</ref>())</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resu<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resu;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="171"><highlight class="comment">/*!<sp/>@brief<sp/>Si<sp/>le<sp/>fichier<sp/>est<sp/>de<sp/>type<sp/>partage,<sp/>appelle<sp/>la<sp/>methode<sp/>syncfile(),<sp/>sinon<sp/>ne<sp/>fait<sp/>rien.</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="classFichier__Lata_1af042e59f9c02f4d9c4087e126d711426" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFichier__Lata_1af042e59f9c02f4d9c4087e126d711426" kindref="member">Fichier_Lata::syncfile</ref>()</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classFichier__Lata_1af56e687eb76326f30b3a31eae524ceb3" kindref="member">is_parallel_</ref><sp/>&amp;&amp;<sp/><ref refid="classProcess_1a48ea49c199fc8961be575e571038b79a" kindref="member">Process::is_parallel</ref>())</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref>-&gt;<ref refid="classSortie_1ae98acb70e7f3886cab47a51f2de6a976" kindref="member">syncfile</ref>();</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="classFichier__Lata__maitre_1ad21ee814c656a3aed1304c3450cf323d" refkind="member"><highlight class="normal"><ref refid="classFichier__Lata__maitre_1ad21ee814c656a3aed1304c3450cf323d" kindref="member">Fichier_Lata_maitre::Fichier_Lata_maitre</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>basename,</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>extension,</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFichier__Lata_1afadf4963467b3123d9e9ec312644cb48" kindref="member">Mode</ref><sp/>mode_append,</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFormat__Post__Lata_1a8de32871f6c5c4602655246c85410a94" kindref="member">Format_Post_Lata::Options_Para</ref><sp/>parallel)<sp/>:</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><ref refid="classFichier__Lata" kindref="compound">Fichier_Lata</ref>(basename,<sp/>extension,</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mode_append,<sp/><ref refid="classFormat__Post__Lata" kindref="compound">Format_Post_Lata</ref>::ASCII,<sp/>parallel)</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref>-&gt;<ref refid="classSortie__Fichier__base_1a7fae3eeaad5fd8a3ca3e38218d574365" kindref="member">setf</ref>(ios::scientific);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>peut<sp/>changer<sp/>la<sp/>precision<sp/>du<sp/>fichier<sp/>maitre<sp/>a<sp/>cet<sp/>endroit:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><ref refid="classFichier__Lata_1a21152a1ead7a67d50b7f198fe6ed223b" kindref="member">fichier_</ref>-&gt;<ref refid="classSortie__Fichier__base_1a8341672e95dd856b2c30d7b7d2f649d0" kindref="member">precision</ref>(8);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Fichier_Lata.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Loi__Fermeture__base_8cpp" kind="file" language="C++">
+    <compoundname>Loi_Fermeture_base.cpp</compoundname>
+    <includes refid="Loi__Fermeture__base_8h" local="no">Loi_Fermeture_base.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes refid="Champs__compris_8h" local="no">Champs_compris.h</includes>
+    <includes refid="Schema__Temps__base_8h" local="no">Schema_Temps_base.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Loi__Fermeture__base_8cpp_1a9cbba352807b0371b61ea6b9fd92d60d" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Loi_Fermeture_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Loi_Fermeture_basebases</name>
+        <initializer>={   &amp;( <ref refid="classObjet__U" kindref="compound">Objet_U</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Loi_Fermeture_base.cpp" line="23" column="66" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Loi_Fermeture_base.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Loi_Fermeture_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champs_compris.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Temps_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classLoi__Fermeture__base_1a12292eea927a974ace7af03a3820f43b" refkind="member"><highlight class="normal">Implemente_base_sans_constructeur(<ref refid="classLoi__Fermeture__base" kindref="compound">Loi_Fermeture_base</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Loi_Fermeture_base&quot;</highlight><highlight class="normal">,<sp/><ref refid="classObjet__U" kindref="compound">Objet_U</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>loi_fermeture_base<sp/>objet_u<sp/>loi_fermeture_base<sp/>-3<sp/>Class<sp/>for<sp/>appends<sp/>fermeture<sp/>to<sp/>problem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classLoi__Fermeture__base_1af0b6aa2c4f5a4f4771a4a203db0ad9d7" refkind="member"><highlight class="normal"><ref refid="classLoi__Fermeture__base_1af0b6aa2c4f5a4f4771a4a203db0ad9d7" kindref="member">Loi_Fermeture_base::Loi_Fermeture_base</ref>()</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><ref refid="classLoi__Fermeture__base_1a49837b1bbdee995585e5b9add70c92ba" kindref="member">status_</ref><sp/>=<sp/><ref refid="classLoi__Fermeture__base_1a62b20dd81ebdbd198126c3bc91d230cea7845947be528f699e814b6d84e6cb557" kindref="member">INITIAL</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="31"><highlight class="comment">/*!<sp/>@brief<sp/>Cette<sp/>methode<sp/>est<sp/>la<sp/>premiere<sp/>appelee<sp/>par<sp/>le<sp/>probleme<sp/>pour<sp/>construire<sp/>l&apos;objet<sp/>au<sp/>moment<sp/>ou<sp/>on<sp/>l&apos;associe<sp/>au<sp/>probleme.</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/><sp/><sp/>On<sp/>verifie<sp/>qu&apos;on<sp/>est<sp/>pas<sp/>encore<sp/>associe.</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classLoi__Fermeture__base_1a5550cedcd4fdabbec88d62502a995d53" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLoi__Fermeture__base_1a5550cedcd4fdabbec88d62502a995d53" kindref="member">Loi_Fermeture_base::associer_pb_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/>pb)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classLoi__Fermeture__base_1a49837b1bbdee995585e5b9add70c92ba" kindref="member">status_</ref><sp/>==<sp/><ref refid="classLoi__Fermeture__base_1a62b20dd81ebdbd198126c3bc91d230ceae67be2d3cf7dc7a1346cbf093523c2bf" kindref="member">PB_ASSOCIE</ref>)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>associating<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classLoi__Fermeture__base_1a4de49fd94dc240701bffcaca49f457cf" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>to<sp/>problem<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pb.<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.\n<sp/>This<sp/>object<sp/>is<sp/>already<sp/>associated<sp/>to<sp/>problem<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classLoi__Fermeture__base_1a191c241f28dcd4006fc016f9e006bf4a" kindref="member">mon_probleme</ref>().<ref refid="classProbleme__U_1a43ca6fdaa9fd199851c93f689d957af7" kindref="member">le_nom</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1aa9e74a5c06a68ea38298a08ea401e7b1" kindref="member">barrier</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>assert(<ref refid="classLoi__Fermeture__base_1a49837b1bbdee995585e5b9add70c92ba" kindref="member">status_</ref><sp/>==<sp/><ref refid="classLoi__Fermeture__base_1a62b20dd81ebdbd198126c3bc91d230cea7845947be528f699e814b6d84e6cb557" kindref="member">INITIAL</ref>);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>mon_probleme_<sp/>=<sp/>pb;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="classLoi__Fermeture__base_1a49837b1bbdee995585e5b9add70c92ba" kindref="member">status_</ref><sp/>=<sp/><ref refid="classLoi__Fermeture__base_1a62b20dd81ebdbd198126c3bc91d230ceae67be2d3cf7dc7a1346cbf093523c2bf" kindref="member">PB_ASSOCIE</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="51"><highlight class="comment">/*!<sp/>@brief<sp/>Cette<sp/>methode<sp/>est<sp/>appelee<sp/>par<sp/>le<sp/>probleme<sp/>apres<sp/>la<sp/>discretisation<sp/>des<sp/>equations<sp/>et<sp/>du<sp/>milieu<sp/>et<sp/>avant</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/><sp/><sp/>l&apos;appel<sp/>a<sp/>readOn()<sp/>pour<sp/>lecture<sp/>des<sp/>parametres.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Dans<sp/>les<sp/>classes<sp/>derivees<sp/>elle<sp/>doit<sp/>discretiser<sp/>au<sp/>minimum<sp/>les<sp/>champs</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/><sp/><sp/>qui<sp/>seront<sp/>requis<sp/>dans<sp/>le<sp/>readOn()<sp/>des<sp/>equations<sp/>ou<sp/>des<sp/>autres</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/><sp/><sp/>lois<sp/>de<sp/>fermeture.</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classLoi__Fermeture__base_1a0ac4b76469fd1759a54fce5a5caca5df" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLoi__Fermeture__base_1a0ac4b76469fd1759a54fce5a5caca5df" kindref="member">Loi_Fermeture_base::discretiser</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDiscretisation__base" kindref="compound">Discretisation_base</ref>&amp;)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>assert(<ref refid="classLoi__Fermeture__base_1a49837b1bbdee995585e5b9add70c92ba" kindref="member">status_</ref><sp/>==<sp/><ref refid="classLoi__Fermeture__base_1a62b20dd81ebdbd198126c3bc91d230ceae67be2d3cf7dc7a1346cbf093523c2bf" kindref="member">PB_ASSOCIE</ref>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="classLoi__Fermeture__base_1a49837b1bbdee995585e5b9add70c92ba" kindref="member">status_</ref><sp/>=<sp/><ref refid="classLoi__Fermeture__base_1a62b20dd81ebdbd198126c3bc91d230cea2dd80c55894c6663dd918bba8bd22ad0" kindref="member">DISCRETISE</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment">/*!<sp/>@brief<sp/>Cette<sp/>methode<sp/>appelle<sp/>la<sp/>methode<sp/>set_param()<sp/>pour<sp/>initialiser<sp/>les<sp/>parametres,<sp/>puis<sp/>lit<sp/>les<sp/>parametres.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Dans<sp/>l&apos;implementation<sp/>des<sp/>classes<sp/>derivees<sp/>on<sp/>peut<sp/>se<sp/>contenter</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/><sp/><sp/>d&apos;appeler<sp/>la<sp/>methode<sp/>de<sp/>la<sp/>classe<sp/>de<sp/>base<sp/>et<sp/>verifier<sp/>les<sp/>parametres.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classLoi__Fermeture__base_1aea37e4fcc5a9c40620284653878f1c96" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLoi__Fermeture__base_1aea37e4fcc5a9c40620284653878f1c96" kindref="member">Loi_Fermeture_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>assert(<ref refid="classLoi__Fermeture__base_1a49837b1bbdee995585e5b9add70c92ba" kindref="member">status_</ref><sp/>==<sp/><ref refid="classLoi__Fermeture__base_1a62b20dd81ebdbd198126c3bc91d230cea2dd80c55894c6663dd918bba8bd22ad0" kindref="member">DISCRETISE</ref>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><ref refid="classLoi__Fermeture__base_1ac3d384dfc27e3e36975a95a62ae8b7df" kindref="member">set_param</ref>(param);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aa9d44fc51b4a08b357733a97dc7acaad" kindref="member">lire_avec_accolades_depuis</ref>(is);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="classLoi__Fermeture__base_1a49837b1bbdee995585e5b9add70c92ba" kindref="member">status_</ref><sp/>=<sp/><ref refid="classLoi__Fermeture__base_1a62b20dd81ebdbd198126c3bc91d230cea9da3ba8ea83f9201d8bd55631e7c50d5" kindref="member">READON_FAIT</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="81"><highlight class="comment">/*!<sp/>@brief<sp/>Pour<sp/>l&apos;instant,<sp/>exit()</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classLoi__Fermeture__base_1a3f7ebcc0ddca626745fbcada0899b045" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classLoi__Fermeture__base_1a3f7ebcc0ddca626745fbcada0899b045" kindref="member">Loi_Fermeture_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="85"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Loi_Fermeture_base::printOn<sp/>non<sp/>code&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="91"><highlight class="comment">/*!<sp/>@brief<sp/>Cette<sp/>methode<sp/>est<sp/>appelee<sp/>par<sp/>le<sp/>readOn<sp/>de<sp/>la<sp/>classe.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>Elle<sp/>doit<sp/>etre<sp/>reimplementee<sp/>dans<sp/>les<sp/>classes<sp/>derivees<sp/>pour</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*<sp/><sp/><sp/>ajouter<sp/>dans<sp/>&quot;param&quot;<sp/>les<sp/>differents<sp/>parametres<sp/>a<sp/>lire</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/><sp/><sp/>dans<sp/>le<sp/>jeu<sp/>de<sp/>donnees<sp/>et<sp/>appeler<sp/>la<sp/>methode<sp/>de<sp/>l&apos;ancetre.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Dans<sp/>la<sp/>classe<sp/>de<sp/>base:<sp/>aucun<sp/>parametre.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="classLoi__Fermeture__base_1ac3d384dfc27e3e36975a95a62ae8b7df" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLoi__Fermeture__base_1ac3d384dfc27e3e36975a95a62ae8b7df" kindref="member">Loi_Fermeture_base::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="103"><highlight class="comment">/*!<sp/>@brief<sp/>Cette<sp/>methode<sp/>est<sp/>appelee<sp/>apres<sp/>avoir<sp/>lu<sp/>toutes<sp/>les<sp/>equations<sp/>et<sp/>les<sp/>lois<sp/>de<sp/>fermeture<sp/>(tous<sp/>les<sp/>champs<sp/>et<sp/>les<sp/>conditions<sp/>aux<sp/>limites</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/>*<sp/><sp/><sp/>du<sp/>probleme<sp/>sont<sp/>disponibles)</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classLoi__Fermeture__base_1ad9b9d931984fbc54ba30e2b3cf6b934f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLoi__Fermeture__base_1ad9b9d931984fbc54ba30e2b3cf6b934f" kindref="member">Loi_Fermeture_base::completer</ref>()</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>assert(<ref refid="classLoi__Fermeture__base_1a49837b1bbdee995585e5b9add70c92ba" kindref="member">status_</ref><sp/>==<sp/><ref refid="classLoi__Fermeture__base_1a62b20dd81ebdbd198126c3bc91d230cea9da3ba8ea83f9201d8bd55631e7c50d5" kindref="member">READON_FAIT</ref>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="classLoi__Fermeture__base_1a49837b1bbdee995585e5b9add70c92ba" kindref="member">status_</ref><sp/>=<sp/><ref refid="classLoi__Fermeture__base_1a62b20dd81ebdbd198126c3bc91d230cea5738afd4dade4fcc40a7bdf3aea77b57" kindref="member">COMPLET</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="114"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>probleme<sp/>(j&apos;ai<sp/>cree<sp/>cette<sp/>methode<sp/>pour<sp/>ne<sp/>pas<sp/>donner<sp/>acces<sp/>au<sp/>probleme<sp/>en<sp/>ecriture<sp/>par<sp/>la<sp/>REF)</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classLoi__Fermeture__base_1a191c241f28dcd4006fc016f9e006bf4a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/><ref refid="classLoi__Fermeture__base_1a191c241f28dcd4006fc016f9e006bf4a" kindref="member">Loi_Fermeture_base::mon_probleme</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="118"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mon_probleme_.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="122"><highlight class="comment">/*!<sp/>@brief<sp/>Cette<sp/>methode<sp/>est<sp/>appelee<sp/>par<sp/>le<sp/>probleme<sp/>apres<sp/>preparer_calcul()<sp/>des<sp/>equations<sp/>et<sp/>du<sp/>milieu.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*<sp/>Elle<sp/>doit<sp/>mettre</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*<sp/><sp/><sp/>a<sp/>jour<sp/>tous<sp/>les<sp/>champs<sp/>qu&apos;elle<sp/>gere<sp/>en<sp/>fonction<sp/>des<sp/>autres</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*<sp/><sp/><sp/>champs<sp/>du<sp/>probleme.</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="classLoi__Fermeture__base_1a690ed988c7ceff85aa85795fffbd1363" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLoi__Fermeture__base_1a690ed988c7ceff85aa85795fffbd1363" kindref="member">Loi_Fermeture_base::preparer_calcul</ref>()</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>assert(<ref refid="classLoi__Fermeture__base_1a49837b1bbdee995585e5b9add70c92ba" kindref="member">status_</ref><sp/>==<sp/><ref refid="classLoi__Fermeture__base_1a62b20dd81ebdbd198126c3bc91d230cea5738afd4dade4fcc40a7bdf3aea77b57" kindref="member">COMPLET</ref>);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps<sp/>=<sp/><ref refid="classLoi__Fermeture__base_1a191c241f28dcd4006fc016f9e006bf4a" kindref="member">mon_probleme</ref>().<ref refid="classProbleme__base_1ab478224fd233d4ef2fcd2b629108d14c" kindref="member">schema_temps</ref>().<ref refid="classSchema__Temps__base_1a1e573b93ad40c737ecb2da65b68f968a" kindref="member">temps_courant</ref>();</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><ref refid="classLoi__Fermeture__base_1add87a45fab4acf2ae285a203f8e869ee" kindref="member">mettre_a_jour</ref>(temps);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="136"><highlight class="comment">/*!<sp/>@brief<sp/>Cette<sp/>methode<sp/>est<sp/>appelee<sp/>par<sp/>le<sp/>probleme<sp/>apres<sp/>mettre_a_jour()<sp/>des<sp/>equations<sp/>et<sp/>du<sp/>milieu.</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/>*<sp/>Elle<sp/>doit<sp/>mettre</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/>*<sp/><sp/><sp/>a<sp/>jour<sp/>tous<sp/>les<sp/>champs<sp/>qu&apos;elle<sp/>gere<sp/>en<sp/>fonction<sp/>des<sp/>autres</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/>*<sp/><sp/><sp/>champs<sp/>du<sp/>probleme.</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="classLoi__Fermeture__base_1add87a45fab4acf2ae285a203f8e869ee" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLoi__Fermeture__base_1add87a45fab4acf2ae285a203f8e869ee" kindref="member">Loi_Fermeture_base::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>assert(<ref refid="classLoi__Fermeture__base_1a49837b1bbdee995585e5b9add70c92ba" kindref="member">status_</ref><sp/>==<sp/><ref refid="classLoi__Fermeture__base_1a62b20dd81ebdbd198126c3bc91d230cea5738afd4dade4fcc40a7bdf3aea77b57" kindref="member">COMPLET</ref>);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="148"><highlight class="comment">/*!<sp/>@brief<sp/>Cette<sp/>methode<sp/>renvoie<sp/>le<sp/>champ<sp/>de<sp/>nom<sp/>&quot;nom&quot;<sp/>s&apos;il<sp/>est<sp/>compris<sp/>par<sp/>la<sp/>classe,<sp/>sinon<sp/>appelle<sp/>la<sp/>methode<sp/>get_champ<sp/>de<sp/>l&apos;ancetre.</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Dans<sp/>la<sp/>classe<sp/>de<sp/>base,<sp/>on<sp/>leve<sp/>l&apos;exception<sp/>Champ_compris_erreur.</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153" refid="classLoi__Fermeture__base_1a0771f932c0261f629f66cf4e1ebb801a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classLoi__Fermeture__base_1a0771f932c0261f629f66cf4e1ebb801a" kindref="member">Loi_Fermeture_base::get_champ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>nom)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="154"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classLoi__Fermeture__base_1a8954c22cec7edc7b9933aeec3ef7ae5e" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1a81e7ff823e570ba4432177e16035084a" kindref="member">get_champ</ref>(nom);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="157" refid="classLoi__Fermeture__base_1a74a42e2201b5a112f726bba2620d0c8a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classLoi__Fermeture__base_1a74a42e2201b5a112f726bba2620d0c8a" kindref="member">Loi_Fermeture_base::has_champ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>nom,<sp/>OBS_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)<sp/>&amp;ref_champ)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="158"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classLoi__Fermeture__base_1a8954c22cec7edc7b9933aeec3ef7ae5e" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1a6e1edab0631a09fa94ba8d2f172f0e63" kindref="member">has_champ</ref>(nom,<sp/>ref_champ);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="classLoi__Fermeture__base_1a05ab1d2cd4bad42996903852f22fd19a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classLoi__Fermeture__base_1a74a42e2201b5a112f726bba2620d0c8a" kindref="member">Loi_Fermeture_base::has_champ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>nom)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="163"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classLoi__Fermeture__base_1a8954c22cec7edc7b9933aeec3ef7ae5e" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1a6e1edab0631a09fa94ba8d2f172f0e63" kindref="member">has_champ</ref>(nom);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="classLoi__Fermeture__base_1adb9c0cfbd715962a3b77b12d7b58d139" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLoi__Fermeture__base_1adb9c0cfbd715962a3b77b12d7b58d139" kindref="member">Loi_Fermeture_base::get_noms_champs_postraitables</ref>(<ref refid="classNoms" kindref="compound">Noms</ref>&amp;<sp/>noms,<sp/>Option<sp/>opt)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="168"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(opt<sp/>==<sp/>DESCRIPTION)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classLoi__Fermeture__base_1a8954c22cec7edc7b9933aeec3ef7ae5e" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1a388ec0dd36a665b722df36a5c6300461" kindref="member">liste_noms_compris</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>noms.<ref refid="classTRUST__Vector_1aa9e285b1a40b334ee274883f2ce7dbb9" kindref="member">add</ref>(<ref refid="classLoi__Fermeture__base_1a8954c22cec7edc7b9933aeec3ef7ae5e" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1a388ec0dd36a665b722df36a5c6300461" kindref="member">liste_noms_compris</ref>());</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Loi_Fermeture_base.cpp"/>
+  </compounddef>
+</doxygen>

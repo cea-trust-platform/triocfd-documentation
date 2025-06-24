@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Paroi__Knudsen__non__negligeable_8cpp" kind="file" language="C++">
+    <compoundname>Paroi_Knudsen_non_negligeable.cpp</compoundname>
+    <includes refid="Paroi__Knudsen__non__negligeable_8h" local="no">Paroi_Knudsen_non_negligeable.h</includes>
+    <includes refid="Champ__front__fonc__gradient_8h" local="no">Champ_front_fonc_gradient.h</includes>
+    <includes refid="Discretisation__base_8h" local="no">Discretisation_base.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Paroi__Knudsen__non__negligeable_8cpp_1a30e8fe6d91bfab1c2743a7e62f22262c" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Paroi_Knudsen_non_negligeablebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Paroi_Knudsen_non_negligeablebases</name>
+        <initializer>={   &amp;( <ref refid="classDirichlet__paroi__defilante" kindref="compound">Dirichlet_paroi_defilante</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Cond_Lim/Paroi_Knudsen_non_negligeable.cpp" line="20" column="157" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Cond_Lim/Paroi_Knudsen_non_negligeable.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Paroi_Knudsen_non_negligeable.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_front_fonc_gradient.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discretisation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classParoi__Knudsen__non__negligeable_1abdc1a2dac6c09ecf1218b5eb7369eca0" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classParoi__Knudsen__non__negligeable" kindref="compound">Paroi_Knudsen_non_negligeable</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Paroi_Knudsen_non_negligeable&quot;</highlight><highlight class="normal">,<sp/><ref refid="classDirichlet__paroi__defilante" kindref="compound">Dirichlet_paroi_defilante</ref>);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>paroi_knudsen_non_negligeable<sp/>dirichlet<sp/>paroi_knudsen_non_negligeable<sp/>-1<sp/>Boundary<sp/>condition<sp/>for<sp/>number<sp/>of<sp/>Knudsen<sp/>(Kn)<sp/>above<sp/>0.001<sp/>where<sp/>slip-flow<sp/>condition<sp/>appears:<sp/>the<sp/>velocity<sp/>near<sp/>the<sp/>wall<sp/>depends<sp/>on<sp/>the<sp/>shear<sp/>stress<sp/>:<sp/>Kn=l/L<sp/>with<sp/>l<sp/>is<sp/>the<sp/>mean-free-path<sp/>of<sp/>the<sp/>molecules<sp/>and<sp/>L<sp/>a<sp/>characteristic<sp/>length<sp/>scale.<sp/>NL2<sp/>U(y=0)-Uwall=k(dU/dY)<sp/>NL2<sp/>Where<sp/>k<sp/>is<sp/>a<sp/>coefficient<sp/>given<sp/>by<sp/>several<sp/>laws:<sp/>NL2<sp/>Mawxell<sp/>:<sp/>k=(2-s)*l/s<sp/>NL2<sp/>Bestok\&amp;Karniadakis<sp/>:k=(2-s)/s*L*Kn/(1+Kn)<sp/>NL2<sp/>Xue\&amp;Fan<sp/>:k=(2-s)/s*L*tanh(Kn)<sp/>NL2<sp/>s<sp/>is<sp/>a<sp/>value<sp/>between<sp/>0<sp/>and<sp/>2<sp/>named<sp/>accomodation<sp/>coefficient.<sp/>s=1<sp/>seems<sp/>a<sp/>good<sp/>value.<sp/>NL2<sp/>Warning<sp/>:<sp/>The<sp/>keyword<sp/>is<sp/>available<sp/>for<sp/>VDF<sp/>calculation<sp/>only<sp/>for<sp/>the<sp/>moment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>name_champ_1<sp/>chaine(into=[&quot;vitesse_paroi&quot;,&quot;k&quot;])<sp/>name_champ_1<sp/>0<sp/>Field<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>champ_1<sp/>front_field_base<sp/>champ_1<sp/>0<sp/>Boundary<sp/>field<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>name_champ_2<sp/>chaine(into=[&quot;vitesse_paroi&quot;,&quot;k&quot;])<sp/>name_champ_2<sp/>0<sp/>Field<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>champ_2<sp/>front_field_base<sp/>champ_2<sp/>0<sp/>Boundary<sp/>field<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classParoi__Knudsen__non__negligeable_1aeb42e40c285d5a062675aacf3f7d7167" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classParoi__Knudsen__non__negligeable_1aeb42e40c285d5a062675aacf3f7d7167" kindref="member">Paroi_Knudsen_non_negligeable::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;<sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classParoi__Knudsen__non__negligeable_1a917ef6dd1be356f1eaf68603fd101f8f" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classParoi__Knudsen__non__negligeable_1a917ef6dd1be356f1eaf68603fd101f8f" kindref="member">Paroi_Knudsen_non_negligeable::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1ad515d1c64270d631157a55d5c6795c37" kindref="member">app_domains</ref>.size()<sp/>==<sp/>0)<sp/><ref refid="classCond__lim__base_1ad515d1c64270d631157a55d5c6795c37" kindref="member">app_domains</ref><sp/>=<sp/>{<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(</highlight><highlight class="stringliteral">&quot;Hydraulique&quot;</highlight><highlight class="normal">),<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(</highlight><highlight class="stringliteral">&quot;indetermine&quot;</highlight><highlight class="normal">)<sp/>};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Paroi_Knudsen_non_negligeable::readOn&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>mot;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="classMotcles" kindref="compound">Motcles</ref><sp/>les_motcles(3);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>les_motcles[0]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;vitesse_paroi&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>les_motcles[1]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_champs_lus<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(nb_champs_lus<sp/>&lt;<sp/>2)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&gt;&gt;<sp/>mot;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rang<sp/>=<sp/>les_motcles.<ref refid="classMotcles_1abd4862b9c8552b88a48927e67bd48d9d" kindref="member">search</ref>(mot);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rang<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&gt;&gt;<sp/><ref refid="classParoi__Knudsen__non__negligeable_1a8f1b2125ccc26b335b4d3a75b6f67c48" kindref="member">vitesse_paroi_</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rang<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&gt;&gt;<sp/><ref refid="classParoi__Knudsen__non__negligeable_1a38477ce0a7436f1dd09163462de9ae25" kindref="member">k_</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nb_champs_lus++;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>.<ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(</highlight><highlight class="stringliteral">&quot;Champ_front_fonc_gradient&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classField__base_1a0d3bb177287a79b9d7da6f3a46deff53" kindref="member">fixer_nb_comp</ref>(<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classParoi__Knudsen__non__negligeable_1af6821495724a744860f9db30a0d66273" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classParoi__Knudsen__non__negligeable_1af6821495724a744860f9db30a0d66273" kindref="member">Paroi_Knudsen_non_negligeable::completer</ref>()</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Paroi_Knudsen_non_negligeable::completer&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Champ_front_fonc_gradient_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>type<sp/>+=<sp/><ref refid="classCond__lim__base_1a93140daa237cd8eb86ae561272af7042" kindref="member">domaine_Cl_dis</ref>().<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a440fc95363315082eddbef26dc76024e" kindref="member">discretisation</ref>().<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Typage<sp/>definitif<sp/>en<sp/>fonction<sp/>de<sp/>la<sp/>discretisation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classFrontiere__dis__base" kindref="compound">Frontiere_dis_base</ref>&amp;<sp/>fr<sp/>=<sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a2ade0aea3d8e1676539884e12d4f0cfd" kindref="member">frontiere_dis</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>.<ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(type);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a1ae6df96074110036fe849b8aeeb851f" kindref="member">associer_fr_dis_base</ref>(fr);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Paroi<sp/>defilante<sp/>:<sp/>le<sp/>champ_front<sp/>est<sp/>la<sp/>vitesse<sp/>de<sp/>nombre</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>de<sp/>composantes<sp/>la<sp/>dimension<sp/>du<sp/>pb<sp/>...<sp/>Est<sp/>ce<sp/>utile<sp/>de<sp/>dimensionner</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>maintenant<sp/>cela<sp/>?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classField__base_1a0d3bb177287a79b9d7da6f3a46deff53" kindref="member">fixer_nb_comp</ref>(<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>associe<sp/>l&apos;inconnue:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><ref refid="classChamp__front__fonc__gradient" kindref="compound">Champ_front_fonc_gradient</ref>&amp;<sp/>ch<sp/>=<sp/>ref_cast(<ref refid="classChamp__front__fonc__gradient" kindref="compound">Champ_front_fonc_gradient</ref>,<sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>ch.<ref refid="classChamp__front__fonc__gradient_1a530548534171cd9cb47dbc6eb48ccd96" kindref="member">associer_ch_inc_base</ref>(<ref refid="classCond__lim__base_1a93140daa237cd8eb86ae561272af7042" kindref="member">domaine_Cl_dis</ref>().equation().inconnue());</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Paroi_Knudsen_non_negligeable::completer<sp/>OK&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Cond_Lim/Paroi_Knudsen_non_negligeable.cpp"/>
+  </compounddef>
+</doxygen>

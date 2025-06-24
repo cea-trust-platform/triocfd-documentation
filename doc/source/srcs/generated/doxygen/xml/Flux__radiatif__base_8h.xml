@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Flux__radiatif__base_8h" kind="file" language="C++">
+    <compoundname>Flux_radiatif_base.h</compoundname>
+    <includes refid="Neumann__paroi_8h" local="no">Neumann_paroi.h</includes>
+    <includedby refid="Cond__Lim__rayo__semi__transp_8cpp" local="no">Cond_Lim_rayo_semi_transp.cpp</includedby>
+    <includedby refid="Flux__radiatif__VDF_8h" local="no">Flux_radiatif_VDF.h</includedby>
+    <includedby refid="Flux__radiatif__VEF_8h" local="no">Flux_radiatif_VEF.h</includedby>
+    <includedby refid="Flux__radiatif__base_8cpp" local="no">Flux_radiatif_base.cpp</includedby>
+    <includedby refid="Modele__rayo__semi__transp_8cpp" local="no">Modele_rayo_semi_transp.cpp</includedby>
+    <innerclass refid="classFlux__radiatif__base" prot="public">Flux_radiatif_base</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Flux_radiatif_base.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TRUST_ROOT/../Composants/TrioCFD/Rayonnement_semi_transp/src</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version:<sp/><sp/><sp/><sp/><sp/>/main/10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>Flux_radiatif_base_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>Flux_radiatif_base_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Neumann_paroi.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEquation__base" kindref="compound">Equation_base</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment">/*!<sp/>@brief<sp/>Decrire<sp/>ici<sp/>la<sp/>classe<sp/>Flux_radiatif_base</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/><sp/>.FINHTML</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/><sp/>.FINEPS</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classFlux__radiatif__base" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classFlux__radiatif__base" kindref="compound">Flux_radiatif_base</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classNeumann__paroi" kindref="compound">Neumann_paroi</ref></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38" refid="classFlux__radiatif__base_1a4281258453400a2c6d5f89b38722ab7d" refkind="member"><highlight class="normal"><sp/><sp/>Declare_base(<ref refid="classFlux__radiatif__base" kindref="compound">Flux_radiatif_base</ref>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">public<sp/>:</highlight></codeline>
+<codeline lineno="41" refid="classFlux__radiatif__base_1aa7d1a9156aea068fefe8d238536bd584" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFlux__radiatif__base_1aa7d1a9156aea068fefe8d238536bd584" kindref="member">compatible_avec_eqn</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;<sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>&amp;<sp/><ref refid="classFlux__radiatif__base_1acff36318f762cf0a8e1b5b3e76cf80d0" kindref="member">emissivite</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>&amp;<sp/><ref refid="classFlux__radiatif__base_1acff36318f762cf0a8e1b5b3e76cf80d0" kindref="member">emissivite</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/><ref refid="classFlux__radiatif__base_1a919442e92271b2d5461bb0e8574eb1cb" kindref="member">A</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/><ref refid="classFlux__radiatif__base_1a919442e92271b2d5461bb0e8574eb1cb" kindref="member">A</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classFlux__radiatif__base_1acaac9e1b4539819dc71fedfa2c6dc896" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFlux__radiatif__base_1acaac9e1b4539819dc71fedfa2c6dc896" kindref="member">calculer_flux_radiatif</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eq_temp)=0;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>&amp;<sp/><ref refid="classFlux__radiatif__base_1a90416c5b7d187c7e5499aa57882a555e" kindref="member">flux_radiatif</ref>();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>&amp;<sp/><ref refid="classFlux__radiatif__base_1a90416c5b7d187c7e5499aa57882a555e" kindref="member">flux_radiatif</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFlux__radiatif__base_1ac17401b14649262f732975a880e7815a" kindref="member">completer</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classFlux__radiatif__base_1abea8d0fce38c47244e041e49d51438b0" kindref="member">flux_impose</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classFlux__radiatif__base_1abea8d0fce38c47244e041e49d51438b0" kindref="member">flux_impose</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">protected<sp/>:</highlight></codeline>
+<codeline lineno="56" refid="classFlux__radiatif__base_1a38aab7d424368713c442a02af858d8f4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classFlux__radiatif__base_1a38aab7d424368713c442a02af858d8f4" kindref="member">A_</ref>;</highlight></codeline>
+<codeline lineno="57" refid="classFlux__radiatif__base_1a8e3bc9a739834ef2aaae81e3acbe134e" refkind="member"><highlight class="normal"><sp/><sp/>OWN_PTR(<ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>)<sp/><ref refid="classFlux__radiatif__base_1a8e3bc9a739834ef2aaae81e3acbe134e" kindref="member">emissivite_</ref>;</highlight></codeline>
+<codeline lineno="58" refid="classFlux__radiatif__base_1a31017bebd8aa3dcb94f9c4e93ec861a4" refkind="member"><highlight class="normal"><sp/><sp/>OWN_PTR(<ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>)<sp/><ref refid="classFlux__radiatif__base_1a31017bebd8aa3dcb94f9c4e93ec861a4" kindref="member">flux_radiatif_</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classFlux__radiatif__base_1a90416c5b7d187c7e5499aa57882a555e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>&amp;<sp/><ref refid="classFlux__radiatif__base_1a90416c5b7d187c7e5499aa57882a555e" kindref="member">Flux_radiatif_base::flux_radiatif</ref>()</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classFlux__radiatif__base_1a31017bebd8aa3dcb94f9c4e93ec861a4" kindref="member">flux_radiatif_</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classFlux__radiatif__base_1a0063b56c2b5c3624df63addff18880cf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>&amp;<sp/><ref refid="classFlux__radiatif__base_1a90416c5b7d187c7e5499aa57882a555e" kindref="member">Flux_radiatif_base::flux_radiatif</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="69"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classFlux__radiatif__base_1a31017bebd8aa3dcb94f9c4e93ec861a4" kindref="member">flux_radiatif_</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classFlux__radiatif__base_1a919442e92271b2d5461bb0e8574eb1cb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/><ref refid="classFlux__radiatif__base_1a919442e92271b2d5461bb0e8574eb1cb" kindref="member">Flux_radiatif_base::A</ref>()</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classFlux__radiatif__base_1a38aab7d424368713c442a02af858d8f4" kindref="member">A_</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classFlux__radiatif__base_1ac62747383c40daad93e113d4177384b6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/><ref refid="classFlux__radiatif__base_1a919442e92271b2d5461bb0e8574eb1cb" kindref="member">Flux_radiatif_base::A</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="79"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classFlux__radiatif__base_1a38aab7d424368713c442a02af858d8f4" kindref="member">A_</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classFlux__radiatif__base_1acff36318f762cf0a8e1b5b3e76cf80d0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>&amp;<sp/><ref refid="classFlux__radiatif__base_1acff36318f762cf0a8e1b5b3e76cf80d0" kindref="member">Flux_radiatif_base::emissivite</ref>()</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classFlux__radiatif__base_1a8e3bc9a739834ef2aaae81e3acbe134e" kindref="member">emissivite_</ref>;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classFlux__radiatif__base_1a0ef7059b4dc30aa21d02f8ec1dad3a90" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>&amp;<sp/><ref refid="classFlux__radiatif__base_1acff36318f762cf0a8e1b5b3e76cf80d0" kindref="member">Flux_radiatif_base::emissivite</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="90"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classFlux__radiatif__base_1a8e3bc9a739834ef2aaae81e3acbe134e" kindref="member">emissivite_</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Rayonnement/Rayonnement_semi_transp/Flux_radiatif_base.h"/>
+  </compounddef>
+</doxygen>

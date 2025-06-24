@@ -1,0 +1,421 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Sortie_8cpp" kind="file" language="C++">
+    <compoundname>Sortie.cpp</compoundname>
+    <includes refid="Objet__U_8h" local="no">Objet_U.h</includes>
+    <includes refid="Sortie_8h" local="no">Sortie.h</includes>
+    <includes refid="Separateur_8h" local="no">Separateur.h</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">iomanip</includes>
+    <includes local="no">cstring</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Sortie.cpp</label>
+        <link refid="Sortie_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>cstring</label>
+      </node>
+      <node id="3">
+        <label>iomanip</label>
+      </node>
+      <node id="2">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Sortie_8cpp_1a18599b9eec1058c8d881d46197d4ddc9" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classSeparateur" kindref="compound">Separateur</ref></type>
+        <definition>const Separateur finl(Separateur::ENDL)</definition>
+        <argsstring>(Separateur::ENDL)</argsstring>
+        <name>finl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Sortie.cpp" line="23" column="18"/>
+      </memberdef>
+      <memberdef kind="variable" id="Sortie_8cpp_1ac07e2fafb9c71768403cdd8b2a3d94fe" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classSeparateur" kindref="compound">Separateur</ref></type>
+        <definition>const Separateur tspace(Separateur::SPACE)</definition>
+        <argsstring>(Separateur::SPACE)</argsstring>
+        <name>tspace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Sortie.cpp" line="24" column="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Objet_U.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Sortie.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Separateur.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iomanip&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSeparateur" kindref="compound">Separateur</ref><sp/>finl(<ref refid="classSeparateur_1a106ba609d6c2f8fe68b04e797d521137a6fe582122578def6fba11ae4fbdec38e" kindref="member">Separateur::ENDL</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSeparateur" kindref="compound">Separateur</ref><sp/>tspace(<ref refid="classSeparateur_1a106ba609d6c2f8fe68b04e797d521137aabe5fe56826fb90ca06a76dc3f74c7ca" kindref="member">Separateur::SPACE</ref>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classSortie_1a3886e900d597e5a721ba73c0ebe5ff4d" refkind="member"><highlight class="normal"><ref refid="classSortie_1a3886e900d597e5a721ba73c0ebe5ff4d" kindref="member">Sortie::Sortie</ref>()<sp/>:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><ref refid="classAbstractIO" kindref="compound">AbstractIO</ref>(),</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>col_width_(-1)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Constructor<sp/>does<sp/>**not**<sp/>instanciate<sp/>ostream_<sp/>-<sp/>typically<sp/>done<sp/>in<sp/>derived<sp/>classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classSortie_1a6e6a38f1110619b5203469b3b559e8d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSortie_1a6e6a38f1110619b5203469b3b559e8d4" kindref="member">Sortie::setf</ref>(IOS_FORMAT<sp/>code)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>-&gt;setf(code);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classSortie_1a846ea173fd5e5b18fa2a0764f39724e3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSortie_1a846ea173fd5e5b18fa2a0764f39724e3" kindref="member">Sortie::precision</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pre)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>-&gt;precision(pre);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classSortie_1a8a8b78ca4eef5618751bd24be4d64648" refkind="member"><highlight class="normal"><ref refid="classSortie_1a3886e900d597e5a721ba73c0ebe5ff4d" kindref="member">Sortie::Sortie</ref>(ostream&amp;<sp/>os)<sp/>:<sp/><ref refid="classSortie" kindref="compound">Sortie</ref>()</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(os.rdbuf())</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref><sp/>=<sp/>std::make_unique&lt;ostream&gt;(os.rdbuf());</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classSortie_1afa0d3f50482b08ecd840af398883f6cd" refkind="member"><highlight class="normal"><ref refid="classSortie_1a3886e900d597e5a721ba73c0ebe5ff4d" kindref="member">Sortie::Sortie</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)<sp/>:<sp/><ref refid="classSortie" kindref="compound">Sortie</ref>()</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(os.<ref refid="classSortie_1a1a1ba27d5c9fb0e3d900943a1d553c39" kindref="member">has_ostream</ref>())</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;we<sp/>try<sp/>to<sp/>copy<sp/>a<sp/>Sortie<sp/>with<sp/>a<sp/>non-empty<sp/>std::ostream!!!&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>abort();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Operateurs<sp/>d&apos;affectation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classSortie_1ad461b012c55dc9630b4c36a22877a611" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1ad461b012c55dc9630b4c36a22877a611" kindref="member">Sortie::operator=</ref>(ostream&amp;<sp/>os)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>a<sp/>new<sp/>ostream_:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref><sp/>=<sp/>std::make_unique&lt;ostream&gt;(os.rdbuf());</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classSortie_1aeb027142835229f30ea20add9096ba52" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1ad461b012c55dc9630b4c36a22877a611" kindref="member">Sortie::operator=</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(os.<ref refid="classSortie_1a1a1ba27d5c9fb0e3d900943a1d553c39" kindref="member">has_ostream</ref>())</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;we<sp/>try<sp/>to<sp/>copy<sp/>a<sp/>Sortie<sp/>with<sp/>a<sp/>non-empty<sp/>std::stream!!!&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>abort();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>are<sp/>copying<sp/>from<sp/>a<sp/>void<sp/>Sortie<sp/>-<sp/>make<sp/>sure<sp/>we<sp/>clean<sp/>our<sp/>side:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classSortie_1ad511678a92a7d561f3d2928e2049c25d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSortie_1ad511678a92a7d561f3d2928e2049c25d" kindref="member">Sortie::add_col</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ob)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classAbstractIO_1a6ad28fa6d6fcebb2e3c0458f22ca98ea" kindref="member">bin_</ref><sp/>or<sp/><ref refid="classSortie_1ac2e0050005d6348bcd6c558df9b26b48" kindref="member">col_width_</ref><sp/>==<sp/>-1)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>abort();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>)<sp/>&lt;&lt;<sp/>std::right<sp/>&lt;&lt;<sp/>std::setw(<ref refid="classSortie_1ac2e0050005d6348bcd6c558df9b26b48" kindref="member">col_width_</ref>)<sp/>&lt;&lt;<sp/>ob;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>-&gt;good();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classSortie_1ad2cee2c3ed7a8cb0c1c5bce63e0efb26" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSortie_1ad511678a92a7d561f3d2928e2049c25d" kindref="member">Sortie::add_col</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>ob)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classAbstractIO_1a6ad28fa6d6fcebb2e3c0458f22ca98ea" kindref="member">bin_</ref><sp/>or<sp/><ref refid="classSortie_1ac2e0050005d6348bcd6c558df9b26b48" kindref="member">col_width_</ref><sp/>==<sp/>-1)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>abort();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>)<sp/>&lt;&lt;<sp/>std::right<sp/>&lt;&lt;<sp/>std::setw(<ref refid="classSortie_1ac2e0050005d6348bcd6c558df9b26b48" kindref="member">col_width_</ref>)<sp/>&lt;&lt;<sp/>ob;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>-&gt;good();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classSortie_1a4e4a98f0185e240cf78c34483edafe51" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSortie_1a4e4a98f0185e240cf78c34483edafe51" kindref="member">Sortie::put</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>*<sp/>ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>put_template&lt;unsigned&gt;(ob,n,nb_col);<sp/>}</highlight></codeline>
+<codeline lineno="102" refid="classSortie_1aaf96af2cc726a1724791a1a9215f9b4e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSortie_1a4e4a98f0185e240cf78c34483edafe51" kindref="member">Sortie::put</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>True_int<sp/>*<sp/>ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>put_template&lt;True_int&gt;(ob,n,nb_col);<sp/>}</highlight></codeline>
+<codeline lineno="103" refid="classSortie_1a123a566375743026cbd147a302f8e3b7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSortie_1a4e4a98f0185e240cf78c34483edafe51" kindref="member">Sortie::put</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>*<sp/>ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>put_template&lt;long&gt;(ob,n,nb_col);<sp/>}</highlight></codeline>
+<codeline lineno="104" refid="classSortie_1a58ac76f3c47cae36fe0995dbb98a2496" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSortie_1a4e4a98f0185e240cf78c34483edafe51" kindref="member">Sortie::put</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>*<sp/>ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>put_template&lt;long<sp/>long&gt;(ob,n,nb_col);<sp/>}</highlight></codeline>
+<codeline lineno="105" refid="classSortie_1aa6bcc7f9cdb32c7290c5e34502b8c1e9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSortie_1a4e4a98f0185e240cf78c34483edafe51" kindref="member">Sortie::put</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*<sp/>ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>put_template&lt;float&gt;(ob,n,nb_col);<sp/>}</highlight></codeline>
+<codeline lineno="106" refid="classSortie_1ae80c57ef1f5db99c0b69d1e5719bd272" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSortie_1a4e4a98f0185e240cf78c34483edafe51" kindref="member">Sortie::put</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*<sp/>ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>put_template&lt;double&gt;(ob,n,nb_col);<sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classSortie_1ace97cccb1ec3d815044a10bdc52658eb" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator&lt;&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>ob)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operator_template&lt;unsigned&gt;(ob);<sp/>}</highlight></codeline>
+<codeline lineno="109" refid="classSortie_1a8978d9d2e6e9b299941ac2487f813e71" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator&lt;&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>True_int<sp/>ob)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operator_template&lt;True_int&gt;(ob);<sp/>}</highlight></codeline>
+<codeline lineno="110" refid="classSortie_1a2f5e745f99bc3f67f9488a2b0171094d" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator&lt;&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>ob)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operator_template&lt;float&gt;(ob);<sp/>}</highlight></codeline>
+<codeline lineno="111" refid="classSortie_1a6781c80beecf0760be7ecb14885401f9" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator&lt;&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ob)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operator_template&lt;double&gt;(ob);<sp/>}</highlight></codeline>
+<codeline lineno="112" refid="classSortie_1a073f6456ecee53ee58995acebc4cb808" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator&lt;&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>ob)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operator_template&lt;long&gt;(ob);<sp/>}</highlight></codeline>
+<codeline lineno="113" refid="classSortie_1a1ef95db35ae897f669ee43164ed19388" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator&lt;&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>ob)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operator_template&lt;long<sp/>long&gt;(ob);<sp/>}</highlight></codeline>
+<codeline lineno="114" refid="classSortie_1ae9b964ce1bce139dbd42eba767dcef5f" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator&lt;&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>ob)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operator_template&lt;unsigned<sp/>long&gt;(ob);<sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator &lt;&lt;</ref>(ostream&amp;<sp/>(*f)(ostream&amp;))</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Ca<sp/>c&apos;est<sp/>pas<sp/>genial,<sp/>c&apos;est<sp/>pour<sp/>permettre<sp/><sp/>&quot;&lt;&lt;<sp/>endl&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Probleme:<sp/>ca<sp/>ne<sp/>marche<sp/>pas<sp/>si<sp/>ostream_<sp/>==<sp/>0.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref><sp/>&amp;&amp;<sp/>!<ref refid="classAbstractIO_1a6ad28fa6d6fcebb2e3c0458f22ca98ea" kindref="member">bin_</ref>)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>(*f)(*ostream_);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="classSortie_1ae28a765a6a5bc1ce14e6db89ef31836d" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator &lt;&lt;</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>(*f)(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;))</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>(*f)(*this);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="classSortie_1a18558853ca355b79d9036ec2d3265f58" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator &lt;&lt;</ref>(ios&amp;<sp/>(*f)(ios&amp;))</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>(*f)(*ostream_);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="classSortie_1a2456baf1997d9a7a6310349929bccf30" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a2456baf1997d9a7a6310349929bccf30" kindref="member">Sortie::flush</ref>()</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>-&gt;flush();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="classSortie_1a36ef2c9f55625cb7652c74d81f2d76de" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator&lt;&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSeparateur" kindref="compound">Separateur</ref>&amp;<sp/>ob)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classAbstractIO_1a6ad28fa6d6fcebb2e3c0458f22ca98ea" kindref="member">bin_</ref>)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>En<sp/>binaire<sp/>on<sp/>n&apos;ecrit<sp/>pas<sp/>les<sp/>separateurs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(ob.<ref refid="classSeparateur_1a383105a1fc9e049f36c544b73618b77d" kindref="member">get_type</ref>())</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classSeparateur_1a106ba609d6c2f8fe68b04e797d521137a6fe582122578def6fba11ae4fbdec38e" kindref="member">Separateur::ENDL</ref>:</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>endl<sp/>=<sp/>&apos;\n&apos;<sp/>+<sp/>flush</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__CYGWIN__)<sp/>||<sp/>defined(MICROSOFT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GF<sp/>pb<sp/>sous<sp/>windows<sp/>avec<sp/>ancienne<sp/>ligne</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*ostream_)&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*ostream_)<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Flush<sp/>eventuel<sp/>(surcharge<sp/>possible<sp/>par<sp/>Sortie_Fichier_base::flush())</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSortie_1a2456baf1997d9a7a6310349929bccf30" kindref="member">flush</ref>();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classSeparateur_1a106ba609d6c2f8fe68b04e797d521137aabe5fe56826fb90ca06a76dc3f74c7ca" kindref="member">Separateur::SPACE</ref>:</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*ostream_)<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="classSortie_1a835d483aba6ab6351414e92f891bad81" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a835d483aba6ab6351414e92f891bad81" kindref="member">Sortie::lockfile</ref>()</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Sortie::lockfile()<sp/>:<sp/>we<sp/>should<sp/>not<sp/>go<sp/>through<sp/>it<sp/>!!&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="classSortie_1a542584d49a2cd8f74aebb9ab4a0f469b" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a542584d49a2cd8f74aebb9ab4a0f469b" kindref="member">Sortie::unlockfile</ref>()</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Sortie::unlockfile()<sp/>:<sp/>we<sp/>should<sp/>not<sp/>go<sp/>through<sp/>it<sp/>!!&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="classSortie_1ae98acb70e7f3886cab47a51f2de6a976" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1ae98acb70e7f3886cab47a51f2de6a976" kindref="member">Sortie::syncfile</ref>()</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Sortie::syncfile()<sp/>:<sp/>we<sp/>should<sp/>not<sp/>go<sp/>through<sp/>it<sp/>!!&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="194"><highlight class="comment">/*!<sp/>@brief<sp/>Ecriture<sp/>d&apos;un<sp/>objet<sp/>ou<sp/>d&apos;une<sp/>variable.</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/>*<sp/>Dans<sp/>cette<sp/>implementation<sp/>(et<sp/>dans<sp/>la<sp/>plupart<sp/>des<sp/>classes<sp/>derivees)</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/>*<sp/><sp/><sp/>on<sp/>appelle<sp/>simplement<sp/>ob.printOn<sp/>(a<sp/>l&apos;exception<sp/>de<sp/>Sortie_Nulle)</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Attention,<sp/>si<sp/>on<sp/>veut<sp/>que<sp/>le<sp/>flux<sp/>puisse<sp/>etre<sp/>indifferemment<sp/>ASCII<sp/>ou<sp/>BINAIRE,</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/>*<sp/><sp/><sp/>il<sp/>faut<sp/>inserer<sp/>&quot;&lt;&lt;<sp/>space<sp/>&lt;&lt;&quot;<sp/><sp/>ou<sp/>&quot;&lt;&lt;<sp/>finl<sp/>&lt;&lt;&quot;<sp/>pour<sp/>separer<sp/>les<sp/>objets.</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="classSortie_1a7f429425dc28cee3daa801dbcb976b1c" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator&lt;&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classObjet__U" kindref="compound">Objet_U</ref>&amp;<sp/>ob)</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/>ob.<ref refid="classObjet__U_1af73113dc3d3e0dc9709e33ae566f5130" kindref="member">printOn</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="208"><highlight class="comment">/*!<sp/>@brief<sp/>Ecriture<sp/>d&apos;une<sp/>chaine<sp/>de<sp/>caracteres.</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/>*<sp/>Attention,<sp/>pour<sp/>pouvoir<sp/>relire<sp/>correctement<sp/>la<sp/>chaine<sp/>en<sp/>mode<sp/>ascii,<sp/>celle-ci<sp/>ne<sp/>doit</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/>*<sp/><sp/>pas<sp/>contenir<sp/>de<sp/>separateur<sp/>(ni<sp/>espace,<sp/>ni<sp/>retour<sp/>a<sp/>la<sp/>ligne,<sp/>...)</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="213"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="classSortie_1a42d6162d4c64ce999be1bcb4509912d0" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator &lt;&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>ob)</highlight></codeline>
+<codeline lineno="215"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classAbstractIO_1a6ad28fa6d6fcebb2e3c0458f22ca98ea" kindref="member">bin_</ref>)</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ca<sp/>c&apos;est<sp/>dommage<sp/>:<sp/>dans<sp/>LIST,<sp/>il<sp/>y<sp/>a<sp/>&quot;&lt;&lt;<sp/>blanc<sp/>&lt;&lt;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>qui<sp/>oblige<sp/>a<sp/>mettre<sp/>ce<sp/>test<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Il<sp/>faudrait<sp/>mettre<sp/>&quot;&lt;&lt;<sp/>space<sp/>&lt;&lt;&quot;<sp/><sp/>mais<sp/>cela<sp/>change<sp/>les<sp/>fichiers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>.Zones<sp/>binaires...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(ob,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>(int)strlen(ob)<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>-&gt;write((</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)<sp/>ob,<sp/>n<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(char));</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(*ostream_)<sp/>&lt;&lt;<sp/>ob;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>B.Mathieu,<sp/>7/10/2004<sp/>:<sp/>je<sp/>supprime<sp/>l&apos;espace<sp/>apres<sp/>ecrire(ob).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Attention,<sp/>maintenant,<sp/>il<sp/>faut<sp/>faire</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>fichier<sp/>&lt;&lt;<sp/>&quot;chaine&quot;<sp/>&lt;&lt;<sp/>space<sp/>&lt;&lt;<sp/>nombre;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>pour<sp/>pouvoir<sp/>relire<sp/>le<sp/>fichier<sp/>de<sp/>facon<sp/>transparente<sp/>avec</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>fichier<sp/>&gt;&gt;<sp/>motcle<sp/>&gt;&gt;<sp/>nombre;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Ancien<sp/>code:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>if(!bin_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>ecrire(&quot;<sp/>&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243" refid="classSortie_1afece91e7c2c8d289ee9760980d955638" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie_1a5affb80ee844b1032a7dba4bf05ffd7e" kindref="member">Sortie::operator &lt;&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>str)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>&lt;&lt;<sp/>str.c_str();<sp/>}</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="246"><highlight class="comment">/*!<sp/>@brief<sp/>Change<sp/>le<sp/>mode<sp/>d&apos;ecriture<sp/>du<sp/>fichier.</highlight></codeline>
+<codeline lineno="247"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="248"><highlight class="comment"><sp/>*<sp/>Cette<sp/>methode<sp/>peut<sp/>etre<sp/>appelee<sp/>n&apos;importe<sp/>quand.<sp/>Attention</highlight></codeline>
+<codeline lineno="249"><highlight class="comment"><sp/>*<sp/><sp/><sp/>cependant<sp/>pour<sp/>les<sp/>fichiers<sp/>Ecrire_Fichier_Partage<sp/>:</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"><sp/>*<sp/><sp/><sp/>il<sp/>faut<sp/>faire<sp/>le<sp/>changement<sp/>uniquement<sp/>au<sp/>debut<sp/>de<sp/>l&apos;ecriture</highlight></codeline>
+<codeline lineno="251"><highlight class="comment"><sp/>*<sp/><sp/><sp/>d&apos;un<sp/>bloc,<sp/>juste<sp/>apres<sp/>syncfile()<sp/>(sinon,<sp/>mauvaise<sp/>traduction</highlight></codeline>
+<codeline lineno="252"><highlight class="comment"><sp/>*<sp/><sp/><sp/>des<sp/>retours<sp/>a<sp/>la<sp/>ligne<sp/>lors<sp/>du<sp/>syncfile<sp/>suivant).</highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="classSortie_1a53c429bd933e80f026abf293a837ffeb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSortie_1a53c429bd933e80f026abf293a837ffeb" kindref="member">Sortie::set_bin</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bin)</highlight></codeline>
+<codeline lineno="256"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><ref refid="classAbstractIO_1a6ad28fa6d6fcebb2e3c0458f22ca98ea" kindref="member">bin_</ref><sp/>=<sp/>bin;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>)</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Error<sp/>you<sp/>cant<sp/>change<sp/>binary<sp/>format<sp/>after<sp/>open<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>assert(0);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="264"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="266"><highlight class="comment">/*!<sp/>@brief<sp/>Methode<sp/>de<sp/>bas<sp/>niveau<sp/>pour<sp/>ecrire<sp/>un<sp/>tableau<sp/>d&apos;ints<sp/>ou<sp/>reels<sp/>dans<sp/>le<sp/>stream.</highlight></codeline>
+<codeline lineno="267"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="268"><highlight class="comment"><sp/>*<sp/>Dans<sp/>l&apos;implementation<sp/>de<sp/>la<sp/>classe<sp/>de<sp/>base,<sp/>on<sp/>ecrit<sp/>dans<sp/>ostream_.</highlight></codeline>
+<codeline lineno="269"><highlight class="comment"><sp/>*<sp/><sp/><sp/>En<sp/>binaire<sp/>on<sp/>utilise<sp/>ostream::write(),<sp/>en<sp/>ascii<sp/>ostream::operato&lt;&lt;()</highlight></codeline>
+<codeline lineno="270"><highlight class="comment"><sp/>*<sp/><sp/><sp/>En<sp/>ascii,<sp/>on<sp/>revient<sp/>a<sp/>la<sp/>ligne<sp/>chaque<sp/>fois<sp/>qu&apos;on<sp/>a<sp/>ecrit<sp/>&quot;nb_col&quot;<sp/>valeurs<sp/>et<sp/>a<sp/>la<sp/>fin<sp/>du<sp/>tableau.</highlight></codeline>
+<codeline lineno="271"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Valeur<sp/>de<sp/>retour<sp/>:<sp/>ostream_-&gt;good()</highlight></codeline>
+<codeline lineno="272"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="273"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_TYPE_&gt;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Sortie::put_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>_TYPE_<sp/>*ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col)</highlight></codeline>
+<codeline lineno="276"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/>assert(n<sp/>&gt;=<sp/>0);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classAbstractIO_1a6ad28fa6d6fcebb2e3c0458f22ca98ea" kindref="member">bin_</ref>)</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(must_convert&lt;_TYPE_&gt;())</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Need<sp/>to<sp/>cast,<sp/>use<sp/>&apos;&gt;&gt;&apos;<sp/>operator<sp/><sp/>-<sp/>see<sp/>doc<sp/>in<sp/>operator_template&lt;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>&lt;&lt;<sp/>ob[i];</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>In<sp/>binary,<sp/>optimized<sp/>block<sp/>writing:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::streamsize<sp/>sz<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(_TYPE_);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sz<sp/>*=<sp/>n;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>-&gt;write((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)<sp/>ob,<sp/>sz);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::streamsize<sp/>j<sp/>=<sp/>nb_col;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::streamsize<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*ostream_)<sp/>&lt;&lt;<sp/>(ob[i])<sp/>&lt;&lt;<sp/>(</highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j--;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(j<sp/>&lt;=<sp/>0)</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*ostream_)<sp/>&lt;&lt;<sp/>(endl);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j<sp/>=<sp/>nb_col;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Si<sp/>on<sp/>n&apos;a<sp/>pas<sp/>fini<sp/>pas<sp/>un<sp/>retour<sp/>a<sp/>la<sp/>ligne,<sp/>en<sp/>ajouter<sp/>un</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(j<sp/>!=<sp/>nb_col<sp/>&amp;&amp;<sp/>n<sp/>&gt;<sp/>0)<sp/>(*ostream_)<sp/>&lt;&lt;<sp/>(endl);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>-&gt;flush();</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>-&gt;good();</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Explicit<sp/>instanciations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Sortie::put_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>*ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Sortie::put_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>True_int<sp/>*ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Sortie::put_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>*ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col);</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Sortie::put_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>*ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Sortie::put_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Sortie::put_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*ob,<sp/>std::streamsize<sp/>n,<sp/>std::streamsize<sp/>nb_col);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="322"><highlight class="comment">/*!<sp/>@brief<sp/>Methode<sp/>de<sp/>bas<sp/>niveau<sp/>pour<sp/>ecrire<sp/>un<sp/>int<sp/>ou<sp/>flottant<sp/>dans<sp/>le<sp/>stream.</highlight></codeline>
+<codeline lineno="323"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="324"><highlight class="comment"><sp/>*<sp/>Dans<sp/>l&apos;implementation<sp/>de<sp/>la<sp/>classe<sp/>de<sp/>base,<sp/>on<sp/>ecrit<sp/>dans<sp/>ostream_.</highlight></codeline>
+<codeline lineno="325"><highlight class="comment"><sp/>*<sp/><sp/><sp/>En<sp/>binaire<sp/>on<sp/>utilise<sp/>ostream::write(),<sp/>en<sp/>ascii<sp/>ostream::operator&lt;&lt;()</highlight></codeline>
+<codeline lineno="326"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="327"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_TYPE_&gt;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>Sortie::operator_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>_TYPE_<sp/>&amp;ob)</highlight></codeline>
+<codeline lineno="330"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classAbstractIO_1a6ad28fa6d6fcebb2e3c0458f22ca98ea" kindref="member">bin_</ref>)</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;must_convert&lt;_TYPE_&gt;())</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trustIdType<sp/>val<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">trustIdType</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(ob);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>-&gt;write((</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)<sp/>&amp;val,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(trustIdType));</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>-&gt;write((</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)<sp/>&amp;ob,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(_TYPE_));</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>(*<ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>)<sp/>&lt;&lt;<sp/>ob;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Explicit<sp/>instanciations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>Sortie::operator_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">&amp;<sp/>ob);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>Sortie::operator_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>True_int&amp;<sp/>ob);</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>Sortie::operator_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">&amp;<sp/>ob);</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>Sortie::operator_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">&amp;<sp/>ob);</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>Sortie::operator_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&amp;<sp/>ob);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>Sortie::operator_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>ob);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>Sortie::operator_template(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">&amp;<sp/>ob);</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Sortie.cpp"/>
+  </compounddef>
+</doxygen>

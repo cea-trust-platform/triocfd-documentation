@@ -1,0 +1,339 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="TRUSTTabFT__cut__cell_8cpp" kind="file" language="C++">
+    <compoundname>TRUSTTabFT_cut_cell.cpp</compoundname>
+    <includes refid="Cut__cell__FT__Disc_8h" local="no">Cut_cell_FT_Disc.h</includes>
+    <includes refid="TRUSTTabFT__cut__cell_8h" local="no">TRUSTTabFT_cut_cell.h</includes>
+    <includes refid="IJK__Interfaces_8h" local="no">IJK_Interfaces.h</includes>
+    <includes refid="IJK__Navier__Stokes__tools_8h" local="no">IJK_Navier_Stokes_tools.h</includes>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="TRUSTTabFT__cut__cell_8cpp_1ae3036f72ecac7c71775e7f98fa5e1f04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _TYPE_</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void compare_second_column</definition>
+        <argsstring>(_TYPE_ *ptr, int sz)</argsstring>
+        <name>compare_second_column</name>
+        <param>
+          <type>_TYPE_ *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>sz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/Cut_Cell/TRUSTTabFT_cut_cell.cpp" line="22" column="6" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/Cut_Cell/TRUSTTabFT_cut_cell.cpp" bodystart="22" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="TRUSTTabFT__cut__cell_8cpp_1afd4ca13f8d9d8c3a17f72fb482ba4d0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _TYPE_</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void compare_second_then_third_column</definition>
+        <argsstring>(_TYPE_ *ptr, int sz)</argsstring>
+        <name>compare_second_then_third_column</name>
+        <param>
+          <type>_TYPE_ *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>sz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/Cut_Cell/TRUSTTabFT_cut_cell.cpp" line="33" column="6" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/Cut_Cell/TRUSTTabFT_cut_cell.cpp" bodystart="33" bodyend="44"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2019,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Cut_cell_FT_Disc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTabFT_cut_cell.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;IJK_Interfaces.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;IJK_Navier_Stokes_tools.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_TYPE_&gt;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>compare_second_column(_TYPE_*<sp/>ptr,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sz)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="structpair" kindref="compound">pair</ref><sp/>=<sp/>std::array&lt;_TYPE_,<sp/>2&gt;;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><ref refid="structpair" kindref="compound">pair</ref>*<sp/>tmp<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="structpair" kindref="compound">pair</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(ptr);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>std::sort(tmp,<sp/>tmp+sz,<sp/>[&amp;](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structpair" kindref="compound">pair</ref>&amp;<sp/>p1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structpair" kindref="compound">pair</ref>&amp;<sp/>p2)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(p1[1]<sp/>&lt;<sp/>p2[1]);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>});</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_TYPE_&gt;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>compare_second_then_third_column(_TYPE_*<sp/>ptr,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sz)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>triplet<sp/>=<sp/>std::array&lt;_TYPE_,<sp/>3&gt;;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>triplet*<sp/>tmp<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">triplet*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(ptr);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>std::sort(tmp,<sp/>tmp+sz,<sp/>[&amp;](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>triplet&amp;<sp/>p1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>triplet&amp;<sp/>p2)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39" refid="classTRUSTTabFT__cut__cell_1a978fde66264d1600531fdd419cc7aadd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(p1[1]<sp/>==<sp/>p2[1])</highlight></codeline>
+<codeline lineno="40" refid="classTRUSTTabFT__cut__cell_1af297b996d5ce1e6ad8f52b5e05c4ae5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(p1[2]<sp/>&lt;<sp/>p2[2]);</highlight></codeline>
+<codeline lineno="41" refid="classTRUSTTabFT__cut__cell_1a08df578bcde1a364711bde6653020f49" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(p1[1]<sp/>&lt;<sp/>p2[1]);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>});</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_TYPE_&gt;</highlight></codeline>
+<codeline lineno="47" refid="classTRUSTTabFT__cut__cell_1a978fde66264d1600531fdd419cc7aadd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTabFT__cut__cell_1a978fde66264d1600531fdd419cc7aadd" kindref="member">TRUSTTabFT_cut_cell&lt;_TYPE_&gt;::associer_persistant</ref>(<ref refid="classCut__cell__FT__Disc" kindref="compound">Cut_cell_FT_Disc</ref>&amp;<sp/>cut_cell_disc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dimension)</highlight></codeline>
+<codeline lineno="48" refid="classTRUSTTabFT__cut__cell_1a524c6ee606b3ce17cbfecaf0bc52d3c2" refkind="member"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>cut_cell_disc_<sp/>=<sp/>cut_cell_disc;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>cut_cell_disc_-&gt;<ref refid="classCut__cell__FT__Disc_1ab8d421ad1dc9825a53c645a40b5f525b" kindref="member">add_to_persistent_data</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>dimension);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_TYPE_&gt;</highlight></codeline>
+<codeline lineno="54" refid="classTRUSTTabFT__cut__cell_1af297b996d5ce1e6ad8f52b5e05c4ae5b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTabFT__cut__cell_1af297b996d5ce1e6ad8f52b5e05c4ae5b" kindref="member">TRUSTTabFT_cut_cell&lt;_TYPE_&gt;::associer_ephemere</ref>(<ref refid="classCut__cell__FT__Disc" kindref="compound">Cut_cell_FT_Disc</ref>&amp;<sp/>cut_cell_disc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dimension)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>cut_cell_disc_<sp/>=<sp/>cut_cell_disc;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>cut_cell_disc_-&gt;<ref refid="classCut__cell__FT__Disc_1a7caf5b8ed59260b20950f499af382dfb" kindref="member">add_to_transient_data</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>dimension);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_TYPE_&gt;</highlight></codeline>
+<codeline lineno="61" refid="classTRUSTTabFT__cut__cell_1a08df578bcde1a364711bde6653020f49" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTabFT__cut__cell_1a08df578bcde1a364711bde6653020f49" kindref="member">TRUSTTabFT_cut_cell&lt;_TYPE_&gt;::associer_paresseux</ref>(<ref refid="classCut__cell__FT__Disc" kindref="compound">Cut_cell_FT_Disc</ref>&amp;<sp/>cut_cell_disc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dimension)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>cut_cell_disc_<sp/>=<sp/>cut_cell_disc;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>cut_cell_disc_-&gt;<ref refid="classCut__cell__FT__Disc_1a1791a79a443c8875d54903d777dc9dd9" kindref="member">add_to_lazy_data</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>dimension);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTabFT__cut__cell_1af91be0d74ccd80ed4daf3ff55f87899b" kindref="member">TRUSTTabFT_cut_cell&lt;int&gt;::sort_tot</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>column)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>(1)<sp/>==<sp/>2)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(column<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compare_second_column&lt;int&gt;(<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>(),<sp/><ref refid="classTRUSTTabFT__cut__cell_1a8837fa4480d26107f0cbe034da61754e" kindref="member">cut_cell_disc_</ref>-&gt;get_n_tot());</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;NotImplementedError:<sp/>TRUSTTabFT_cut_cell&lt;int&gt;::sort_tot(int)<sp/>with<sp/>sorting<sp/>other<sp/>than<sp/>the<sp/>second<sp/>column.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;NotImplementedError:<sp/>TRUSTTabFT_cut_cell&lt;int&gt;::sort_tot(int)<sp/>with<sp/>other<sp/>than<sp/>2<sp/>columns.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTabFT__cut__cell_1af91be0d74ccd80ed4daf3ff55f87899b" kindref="member">TRUSTTabFT_cut_cell&lt;double&gt;::sort_tot</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>column)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>(1)<sp/>==<sp/>2)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(column<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compare_second_column&lt;double&gt;(<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>(),<sp/><ref refid="classTRUSTTabFT__cut__cell_1a8837fa4480d26107f0cbe034da61754e" kindref="member">cut_cell_disc_</ref>-&gt;get_n_tot());</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;NotImplementedError:<sp/>TRUSTTabFT_cut_cell&lt;double&gt;::sort_tot(double)<sp/>with<sp/>sorting<sp/>other<sp/>than<sp/>the<sp/>second<sp/>column.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;NotImplementedError:<sp/>TRUSTTabFT_cut_cell&lt;double&gt;::sort_tot(double)<sp/>with<sp/>other<sp/>than<sp/>2<sp/>columns.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTabFT__cut__cell_1af91be0d74ccd80ed4daf3ff55f87899b" kindref="member">TRUSTTabFT_cut_cell&lt;int&gt;::sort_tot</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>column_1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>column_2)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>(1)<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(column_1<sp/>==<sp/>1<sp/>&amp;&amp;<sp/>column_2<sp/>==<sp/>2)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compare_second_then_third_column&lt;int&gt;(<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>(),<sp/><ref refid="classTRUSTTabFT__cut__cell_1a8837fa4480d26107f0cbe034da61754e" kindref="member">cut_cell_disc_</ref>-&gt;get_n_tot());</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;NotImplementedError:<sp/>TRUSTTabFT_cut_cell&lt;int&gt;::sort_tot(int,int)<sp/>with<sp/>sorting<sp/>other<sp/>than<sp/>the<sp/>second,<sp/>then<sp/>third<sp/>column.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;NotImplementedError:<sp/>TRUSTTabFT_cut_cell&lt;int&gt;::sort_tot(int,int)<sp/>with<sp/>other<sp/>than<sp/>3<sp/>columns.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTabFT__cut__cell_1af91be0d74ccd80ed4daf3ff55f87899b" kindref="member">TRUSTTabFT_cut_cell&lt;double&gt;::sort_tot</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>column_1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>column_2)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>(1)<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(column_1<sp/>==<sp/>1<sp/>&amp;&amp;<sp/>column_2<sp/>==<sp/>2)</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compare_second_then_third_column&lt;double&gt;(<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>(),<sp/><ref refid="classTRUSTTabFT__cut__cell_1a8837fa4480d26107f0cbe034da61754e" kindref="member">cut_cell_disc_</ref>-&gt;get_n_tot());</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;NotImplementedError:<sp/>TRUSTTabFT_cut_cell&lt;double&gt;::sort_tot(double,double)<sp/>with<sp/>sorting<sp/>other<sp/>than<sp/>the<sp/>second,<sp/>then<sp/>third<sp/>column.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;NotImplementedError:<sp/>TRUSTTabFT_cut_cell&lt;double&gt;::sort_tot(double,double)<sp/>with<sp/>other<sp/>than<sp/>3<sp/>columns.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_TYPE_&gt;</highlight></codeline>
+<codeline lineno="156" refid="classTRUSTTabFT__cut__cell_1a5371ae40bbc6b8b8daeb2c6bd6f02448" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTabFT__cut__cell_1a5371ae40bbc6b8b8daeb2c6bd6f02448" kindref="member">TRUSTTabFT_cut_cell&lt;_TYPE_&gt;::echange_espace_virtuel</ref>()</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>cut_cell_disc_-&gt;get_desc_structure().echange_espace_virtuel(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_TYPE_&gt;</highlight></codeline>
+<codeline lineno="162" refid="classTRUSTTabFT__cut__cell_1a524c6ee606b3ce17cbfecaf0bc52d3c2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTabFT__cut__cell_1a5371ae40bbc6b8b8daeb2c6bd6f02448" kindref="member">TRUSTTabFT_cut_cell&lt;_TYPE_&gt;::echange_espace_virtuel</ref>(<ref refid="classMD__Vector__tools_1ac0611ff35861322f7e1fe9b98a132b7c" kindref="member">MD_Vector_tools::Operations_echange</ref><sp/>op)</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/>cut_cell_disc_-&gt;get_desc_structure().echange_espace_virtuel(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>op);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="classCut__cell__data_1a9b7e92d368c701f1be0db0275e3d8f00" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__data_1a9b7e92d368c701f1be0db0275e3d8f00" kindref="member">Cut_cell_data::associer_persistant</ref>(<ref refid="classCut__cell__FT__Disc" kindref="compound">Cut_cell_FT_Disc</ref>&amp;<sp/>cut_cell_disc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dimension)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a889db15c960b42c9fe65c50eecb5831a" kindref="member">cut_cell_disc_</ref><sp/>=<sp/>cut_cell_disc;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a2da15751285dcdd9e76f3e3451fe46e9" kindref="member">diph_l_</ref>.<ref refid="classTRUSTTabFT__cut__cell_1a978fde66264d1600531fdd419cc7aadd" kindref="member">associer_persistant</ref>(<ref refid="classCut__cell__data_1a889db15c960b42c9fe65c50eecb5831a" kindref="member">cut_cell_disc_</ref>,<sp/>dimension);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a207821bcea744ffd342832c36836d2ab" kindref="member">diph_v_</ref>.<ref refid="classTRUSTTabFT__cut__cell_1a978fde66264d1600531fdd419cc7aadd" kindref="member">associer_persistant</ref>(<ref refid="classCut__cell__data_1a889db15c960b42c9fe65c50eecb5831a" kindref="member">cut_cell_disc_</ref>,<sp/>dimension);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="classCut__cell__data_1a0ca713d6987d56baaefafdccefecd601" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__data_1a0ca713d6987d56baaefafdccefecd601" kindref="member">Cut_cell_data::associer_ephemere</ref>(<ref refid="classCut__cell__FT__Disc" kindref="compound">Cut_cell_FT_Disc</ref>&amp;<sp/>cut_cell_disc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dimension)</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a889db15c960b42c9fe65c50eecb5831a" kindref="member">cut_cell_disc_</ref><sp/>=<sp/>cut_cell_disc;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a2da15751285dcdd9e76f3e3451fe46e9" kindref="member">diph_l_</ref>.<ref refid="classTRUSTTabFT__cut__cell_1af297b996d5ce1e6ad8f52b5e05c4ae5b" kindref="member">associer_ephemere</ref>(<ref refid="classCut__cell__data_1a889db15c960b42c9fe65c50eecb5831a" kindref="member">cut_cell_disc_</ref>,<sp/>dimension);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a207821bcea744ffd342832c36836d2ab" kindref="member">diph_v_</ref>.<ref refid="classTRUSTTabFT__cut__cell_1af297b996d5ce1e6ad8f52b5e05c4ae5b" kindref="member">associer_ephemere</ref>(<ref refid="classCut__cell__data_1a889db15c960b42c9fe65c50eecb5831a" kindref="member">cut_cell_disc_</ref>,<sp/>dimension);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="classCut__cell__data_1ac11895b681b3b0069b040a830ba8ebf6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__data_1ac11895b681b3b0069b040a830ba8ebf6" kindref="member">Cut_cell_data::associer_paresseux</ref>(<ref refid="classCut__cell__FT__Disc" kindref="compound">Cut_cell_FT_Disc</ref>&amp;<sp/>cut_cell_disc,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dimension)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a889db15c960b42c9fe65c50eecb5831a" kindref="member">cut_cell_disc_</ref><sp/>=<sp/>cut_cell_disc;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a2da15751285dcdd9e76f3e3451fe46e9" kindref="member">diph_l_</ref>.<ref refid="classTRUSTTabFT__cut__cell_1a08df578bcde1a364711bde6653020f49" kindref="member">associer_paresseux</ref>(<ref refid="classCut__cell__data_1a889db15c960b42c9fe65c50eecb5831a" kindref="member">cut_cell_disc_</ref>,<sp/>dimension);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a207821bcea744ffd342832c36836d2ab" kindref="member">diph_v_</ref>.<ref refid="classTRUSTTabFT__cut__cell_1a08df578bcde1a364711bde6653020f49" kindref="member">associer_paresseux</ref>(<ref refid="classCut__cell__data_1a889db15c960b42c9fe65c50eecb5831a" kindref="member">cut_cell_disc_</ref>,<sp/>dimension);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189" refid="classCut__cell__data_1a552cdb3f2ad49fd8c6cc36a3051c8161" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__data_1a552cdb3f2ad49fd8c6cc36a3051c8161" kindref="member">Cut_cell_data::echange_espace_virtuel</ref>()</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a2da15751285dcdd9e76f3e3451fe46e9" kindref="member">diph_l_</ref>.<ref refid="classTRUSTTabFT__cut__cell_1a5371ae40bbc6b8b8daeb2c6bd6f02448" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a207821bcea744ffd342832c36836d2ab" kindref="member">diph_v_</ref>.<ref refid="classTRUSTTabFT__cut__cell_1a5371ae40bbc6b8b8daeb2c6bd6f02448" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195" refid="classCut__cell__data_1a6afe272405c5555988ac2047f778cf25" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__data_1a552cdb3f2ad49fd8c6cc36a3051c8161" kindref="member">Cut_cell_data::echange_espace_virtuel</ref>(<ref refid="classMD__Vector__tools_1ac0611ff35861322f7e1fe9b98a132b7c" kindref="member">MD_Vector_tools::Operations_echange</ref><sp/>op)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a2da15751285dcdd9e76f3e3451fe46e9" kindref="member">diph_l_</ref>.<ref refid="classTRUSTTabFT__cut__cell_1a5371ae40bbc6b8b8daeb2c6bd6f02448" kindref="member">echange_espace_virtuel</ref>(op);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a207821bcea744ffd342832c36836d2ab" kindref="member">diph_v_</ref>.<ref refid="classTRUSTTabFT__cut__cell_1a5371ae40bbc6b8b8daeb2c6bd6f02448" kindref="member">echange_espace_virtuel</ref>(op);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="classCut__cell__double_1a4924ec016136503f3e5a921a57e67753" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__double_1a4924ec016136503f3e5a921a57e67753" kindref="member">Cut_cell_double::associer_persistant</ref>(<ref refid="classCut__cell__FT__Disc" kindref="compound">Cut_cell_FT_Disc</ref>&amp;<sp/>cut_cell_disc)</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a9b7e92d368c701f1be0db0275e3d8f00" kindref="member">Cut_cell_data::associer_persistant</ref>(cut_cell_disc,<sp/>1);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="classCut__cell__double_1a28d7bd0d894615dfde124b68fda8b5b0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__double_1a28d7bd0d894615dfde124b68fda8b5b0" kindref="member">Cut_cell_double::associer_ephemere</ref>(<ref refid="classCut__cell__FT__Disc" kindref="compound">Cut_cell_FT_Disc</ref>&amp;<sp/>cut_cell_disc)</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1a0ca713d6987d56baaefafdccefecd601" kindref="member">Cut_cell_data::associer_ephemere</ref>(cut_cell_disc,<sp/>1);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211" refid="classCut__cell__double_1a516ea67c9943a99c116865ae29fa8647" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__double_1a516ea67c9943a99c116865ae29fa8647" kindref="member">Cut_cell_double::associer_paresseux</ref>(<ref refid="classCut__cell__FT__Disc" kindref="compound">Cut_cell_FT_Disc</ref>&amp;<sp/>cut_cell_disc)</highlight></codeline>
+<codeline lineno="212"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__data_1ac11895b681b3b0069b040a830ba8ebf6" kindref="member">Cut_cell_data::associer_paresseux</ref>(cut_cell_disc,<sp/>1);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Verifie<sp/>que<sp/>le<sp/>champ<sp/>pure_,<sp/>suppose<sp/>etre<sp/>localise<sp/>sur<sp/>une<sp/>surface,<sp/>est<sp/>coherent<sp/>avec</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="comment">//<sp/>le<sp/>champ<sp/>diph_v_<sp/>ou<sp/>diph_l_<sp/>si<sp/>la<sp/>dite<sp/>surface<sp/>appartient<sp/>a<sp/>une<sp/>cellule<sp/>pure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="classCut__cell__double_1a622e35c4ca81935554c87169ec342326" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__double_1a622e35c4ca81935554c87169ec342326" kindref="member">Cut_cell_double::verify_consistency_within_layer</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dir,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k_layer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classIJK__Field__local__template" kindref="compound">IJK_Field_local_double</ref>&amp;<sp/>flux)</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ni<sp/>=<sp/>(dir<sp/>==<sp/>0)<sp/>?<sp/>flux.<ref refid="classIJK__Field__local__template_1a05abe70b988f06b647c55447a401e8a1" kindref="member">ni</ref>()<sp/>:<sp/>flux.<ref refid="classIJK__Field__local__template_1a05abe70b988f06b647c55447a401e8a1" kindref="member">ni</ref>()<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nj<sp/>=<sp/>(dir<sp/>==<sp/>1)<sp/>?<sp/>flux.<ref refid="classIJK__Field__local__template_1a0b04ee03ff119133a0e6f3a69236f1f0" kindref="member">nj</ref>()<sp/>:<sp/>flux.<ref refid="classIJK__Field__local__template_1a0b04ee03ff119133a0e6f3a69236f1f0" kindref="member">nj</ref>()<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>di<sp/>=<sp/>(dir<sp/>==<sp/>0)*(-1);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dj<sp/>=<sp/>(dir<sp/>==<sp/>1)*(-1);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dk<sp/>=<sp/>(dir<sp/>==<sp/>2)*(-1);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>nj;<sp/>j++)</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>ni;<sp/>i++)</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/><ref refid="classCut__cell__data_1a889db15c960b42c9fe65c50eecb5831a" kindref="member">cut_cell_disc_</ref>-&gt;get_n(i,<sp/>j,<sp/>k_layer);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n<sp/>&gt;=<sp/>0)</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n_decale<sp/>=<sp/><ref refid="classCut__cell__data_1a889db15c960b42c9fe65c50eecb5831a" kindref="member">cut_cell_disc_</ref>-&gt;get_n(i+di,<sp/>j+dj,<sp/>k_layer+dk);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n_decale<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Surface<sp/>between<sp/>a<sp/>pure<sp/>and<sp/>non-pure<sp/>cells</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>There<sp/>should<sp/>be<sp/>a<sp/>consistency</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>phase<sp/>=<sp/><ref refid="classIJK__Interfaces_1af8ca622dcb054668ee8b3e9101a3844b" kindref="member">IJK_Interfaces::convert_indicatrice_to_phase</ref>(<ref refid="classCut__cell__data_1a889db15c960b42c9fe65c50eecb5831a" kindref="member">cut_cell_disc_</ref>-&gt;indic_pure(i+di,<sp/>j+dj,<sp/>k_layer+dk));</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(phase<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(flux(i,j,0)<sp/>!=<sp/><ref refid="classCut__cell__data_1a207821bcea744ffd342832c36836d2ab" kindref="member">diph_v_</ref>(n))</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(0);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(flux(i,j,0)<sp/>!=<sp/><ref refid="classCut__cell__data_1a2da15751285dcdd9e76f3e3451fe46e9" kindref="member">diph_l_</ref>(n))</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(0);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Explicit<sp/>instantiations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTRUSTTabFT__cut__cell" kindref="compound">TRUSTTabFT_cut_cell&lt;int&gt;</ref>;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTRUSTTabFT__cut__cell" kindref="compound">TRUSTTabFT_cut_cell&lt;double&gt;</ref>;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/Cut_Cell/TRUSTTabFT_cut_cell.cpp"/>
+  </compounddef>
+</doxygen>

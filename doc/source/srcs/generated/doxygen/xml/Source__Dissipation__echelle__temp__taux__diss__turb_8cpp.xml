@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Source__Dissipation__echelle__temp__taux__diss__turb_8cpp" kind="file" language="C++">
+    <compoundname>Source_Dissipation_echelle_temp_taux_diss_turb.cpp</compoundname>
+    <includes refid="Source__Dissipation__echelle__temp__taux__diss__turb_8h" local="no">Source_Dissipation_echelle_temp_taux_diss_turb.h</includes>
+    <includes refid="Echelle__temporelle__turbulente_8h" local="no">Echelle_temporelle_turbulente.h</includes>
+    <includes refid="Taux__dissipation__turbulent_8h" local="no">Taux_dissipation_turbulent.h</includes>
+    <includes refid="Milieu__composite_8h" local="no">Milieu_composite.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Pb__Multiphase_8h" local="no">Pb_Multiphase.h</includes>
+    <includes refid="Matrix__tools_8h" local="no">Matrix_tools.h</includes>
+    <includes refid="Array__tools_8h" local="no">Array_tools.h</includes>
+    <includes refid="Domaine__VF_8h" local="no">Domaine_VF.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Source__Dissipation__echelle__temp__taux__diss__turb_8cpp_1ab12bca1c3c0c189c8f5a2ff984b64c67" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Source_Dissipation_echelle_temp_taux_diss_turbbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Source_Dissipation_echelle_temp_taux_diss_turbbases</name>
+        <initializer>={   &amp;( <ref refid="classSources__Multiphase__base" kindref="compound">Sources_Multiphase_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Sources/Source_Dissipation_echelle_temp_taux_diss_turb.cpp" line="34" column="225" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Sources/Source_Dissipation_echelle_temp_taux_diss_turb.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2021,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Source_Dissipation_echelle_temp_taux_diss_turb.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TRUST_ROOT/src/Turbulence/Sources</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version:<sp/><sp/><sp/><sp/><sp/>/main/13</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Source_Dissipation_echelle_temp_taux_diss_turb.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Echelle_temporelle_turbulente.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Taux_dissipation_turbulent.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Milieu_composite.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Pb_Multiphase.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrix_tools.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Array_tools.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classSource__Dissipation__echelle__temp__taux__diss__turb_1a4f50923032307d9bf1b5730888e38f52" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classSource__Dissipation__echelle__temp__taux__diss__turb" kindref="compound">Source_Dissipation_echelle_temp_taux_diss_turb</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Source_Dissipation_echelle_temp_taux_diss_turb&quot;</highlight><highlight class="normal">,<sp/><ref refid="classSources__Multiphase__base" kindref="compound">Sources_Multiphase_base</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>Source_Dissipation_echelle_temp_taux_diss_turb<sp/>source_base<sp/>Source_Dissipation_echelle_temp_taux_diss_turb<sp/>0<sp/>Source<sp/>term<sp/>which<sp/>corresponds<sp/>to<sp/>the<sp/>dissipation<sp/>source<sp/>term<sp/>that<sp/>appears<sp/>in<sp/>the<sp/>transport<sp/>equation<sp/>for<sp/>tau<sp/>(in<sp/>the<sp/>k-tau<sp/>turbulence<sp/>model)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classSource__Dissipation__echelle__temp__taux__diss__turb_1ab2b5130a0c4048eafc0689a6541c9cb2" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSource__Dissipation__echelle__temp__taux__diss__turb_1ab2b5130a0c4048eafc0689a6541c9cb2" kindref="member">Source_Dissipation_echelle_temp_taux_diss_turb::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="38"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classSource__Dissipation__echelle__temp__taux__diss__turb_1a970fc3db07148065f285c7ced7ea4a01" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSource__Dissipation__echelle__temp__taux__diss__turb_1a970fc3db07148065f285c7ced7ea4a01" kindref="member">Source_Dissipation_echelle_temp_taux_diss_turb::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;beta_omega&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classSource__Dissipation__echelle__temp__taux__diss__turb_1acc9c30b63fa28dee616f4a1500578c55" kindref="member">beta_omega</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aa9d44fc51b4a08b357733a97dc7acaad" kindref="member">lire_avec_accolades_depuis</ref>(is);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classSource__Dissipation__echelle__temp__taux__diss__turb_1a54b0d2b53a8bdce55492830b7423a3d7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSource__Dissipation__echelle__temp__taux__diss__turb_1a54b0d2b53a8bdce55492830b7423a3d7" kindref="member">Source_Dissipation_echelle_temp_taux_diss_turb::ajouter_blocs</ref>(matrices_t<sp/>matrices,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>secmem,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>tabs_t&amp;<sp/>semi_impl)</highlight><highlight class="keyword"><sp/><sp/>const</highlight></codeline>
+<codeline lineno="51"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>&amp;<sp/>domaine<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>,<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().domaine_dis());</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>diss<sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>pdiss<sp/><sp/><sp/><sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a31066589ce6d89d4f0a96d25a5250e2f" kindref="member">passe</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>pe<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a1ca88930cf00c12a910ad27ac840719c" kindref="member">milieu</ref>().<ref refid="classMilieu__base_1a0623ba36878076b2e05ecaf39b96dad2" kindref="member">porosite_elem</ref>(),<sp/>&amp;ve<sp/>=<sp/>domaine.volumes();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_elem<sp/>=<sp/>domaine.nb_elem();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>diss.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>std::string<sp/>Type_diss<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>omega<sp/>or<sp/>tau<sp/>dissipation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classEchelle__temporelle__turbulente" kindref="compound">Echelle_temporelle_turbulente</ref>,<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>()))</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>Type_diss<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;tau&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classTaux__dissipation__turbulent" kindref="compound">Taux_dissipation_turbulent</ref>,<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>()))</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>Type_diss<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;omega&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(Type_diss<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">Process::abort</ref>();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>assert(<sp/>N<sp/>==<sp/>1<sp/>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>e<sp/>=<sp/>0;<sp/>e<sp/>&lt;<sp/>nb_elem;<sp/>e++)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0;<sp/>n<sp/>&lt;<sp/>N;<sp/>n++)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(Type_diss<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;tau&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>secmem_en<sp/><sp/>=<sp/>pe(e)<sp/>*<sp/>ve(e)<sp/>*<sp/><ref refid="classSource__Dissipation__echelle__temp__taux__diss__turb_1acc9c30b63fa28dee616f4a1500578c55" kindref="member">beta_omega</ref><sp/>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secmem(e,<sp/>n)<sp/>+=<sp/>secmem_en<sp/>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(Type_diss<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;omega&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>secmem_en<sp/><sp/>=<sp/>-<sp/>pe(e)<sp/>*<sp/>ve(e)<sp/>*<sp/><ref refid="classSource__Dissipation__echelle__temp__taux__diss__turb_1acc9c30b63fa28dee616f4a1500578c55" kindref="member">beta_omega</ref><sp/>*<sp/>pdiss(e,n)<sp/>*<sp/>(<sp/><sp/>pdiss(e,n)<sp/>+<sp/>2<sp/>*<sp/>(diss(e,n)<sp/>-<sp/>pdiss(e,n)<sp/>)<sp/>);<sp/></highlight><highlight class="comment">//<sp/>cAlan<sp/>:<sp/>pourquoi<sp/>cette<sp/>forme<sp/>?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secmem(e,<sp/>n)<sp/>+=<sp/>secmem_en<sp/>;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;i_m<sp/>:<sp/>matrices)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i_m.first<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;omega&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*i_m.second)(N*e+n,<sp/>N*e+n)<sp/>+=<sp/>pe(e)<sp/>*<sp/>ve(e)<sp/>*<sp/><ref refid="classSource__Dissipation__echelle__temp__taux__diss__turb_1acc9c30b63fa28dee616f4a1500578c55" kindref="member">beta_omega</ref><sp/>*<sp/>2*<sp/>pdiss(e,n)<sp/>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Sources/Source_Dissipation_echelle_temp_taux_diss_turb.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Point_8h" kind="file" language="C++">
+    <compoundname>Point.h</compoundname>
+    <includes refid="Elem__geom__base_8h" local="no">Elem_geom_base.h</includes>
+    <includedby refid="Point_8cpp" local="no">Point.cpp</includedby>
+    <innerclass refid="classPoint__32__64" prot="public">Point_32_64</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="Point_8h_1a0141c8f705cac768a5b43d61347b7647" prot="public" static="no">
+        <type><ref refid="classPoint__32__64" kindref="compound">Point_32_64</ref>&lt; int &gt;</type>
+        <definition>using Point =  Point_32_64&lt;int&gt;</definition>
+        <argsstring></argsstring>
+        <name>Point</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Point.h" line="133" column="1" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Point.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Point_8h_1a421a0e719f01a72741d9c1b0522fa63f" prot="public" static="no">
+        <type><ref refid="classPoint__32__64" kindref="compound">Point_32_64</ref>&lt; trustIdType &gt;</type>
+        <definition>using Point_64 =  Point_32_64&lt;trustIdType&gt;</definition>
+        <argsstring></argsstring>
+        <name>Point_64</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Point.h" line="134" column="1" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Point.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>Point_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>Point_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Elem_geom_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">/*!<sp/>@brief<sp/>Classe<sp/>Point<sp/>Cette<sp/>classe<sp/>represente<sp/>l&apos;element<sp/>geometrique<sp/>segment.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Un<sp/>Point<sp/>a<sp/>1<sp/>face<sp/>et<sp/>1<sp/>sommets.</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@sa<sp/>Elem_geom_base<sp/>Elem_geom,<sp/>.CONTRAINTES,<sp/>.INVARIANTS,<sp/>.HTML,<sp/>.EPS</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="28" refid="classPoint__32__64" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPoint__32__64" kindref="compound">Point_32_64</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classElem__geom__base__32__64" kindref="compound">Elem_geom_base_32_64</ref>&lt;_SIZE_&gt;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classPoint__32__64_1abaff8ff6628cc9a0e525d0800eb9fe79" refkind="member"><highlight class="normal"><sp/><sp/>Declare_instanciable_32_64(<ref refid="classPoint__32__64" kindref="compound">Point_32_64</ref>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">public<sp/>:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classPoint__32__64_1aef562872dc6a1c677052521c2583357c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>=<sp/>_SIZE_;</highlight></codeline>
+<codeline lineno="36" refid="classPoint__32__64_1ae8b720f6cc4431a78290a472e4cd8368" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_t</ref><sp/>=<sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_T&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="37" refid="classPoint__32__64_1a176c737f6a8b58f19bf60ddfaaadd8b5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">SmallArrOfTID_t</ref><sp/>=<sp/><ref refid="classTRUSTArray" kindref="compound">SmallArrOfTID_T&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="38" refid="classPoint__32__64_1a845c12aefb61518bc5edeaa6b35d295f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect_t</ref><sp/>=<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect_T&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="39" refid="classPoint__32__64_1aca76fab2a9f3b1ea82ba531faa089aa8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref><sp/>=<sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_32_64&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1abd13ffb4220d18d7b03ad755ef3d3484" kindref="member">face_sommet</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a8edd6cbc726fa4e2f1d5d70294282aa8" kindref="member">face_sommet0</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classPoint__32__64_1ae9cd08f24a42ea967accb03d47f1d93f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1ae9cd08f24a42ea967accb03d47f1d93f" kindref="member">nb_som</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;<sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a88d64c93a509f52647afcf097447e160" kindref="member">nb_faces</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">=0)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a48c72ace95fbee7cb8c193cd1c7391d2" kindref="member">nb_som_face</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">=0)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47" refid="classPoint__32__64_1a4b3a93277ade015de111e3536c9dd82a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a4b3a93277ade015de111e3536c9dd82a" kindref="member">est_structure</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><ref refid="classPoint__32__64_1a4874720d0c15b4d87f241979d9657f5d" kindref="member">nom_lml</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a1ac07c2f1e95bd3fcc1abaf70808dcba" kindref="member">contient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>pos,<sp/><ref refid="classPoint__32__64_1aef562872dc6a1c677052521c2583357c" kindref="member">int_t</ref><sp/>elem)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a1ac07c2f1e95bd3fcc1abaf70808dcba" kindref="member">contient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a176c737f6a8b58f19bf60ddfaaadd8b5" kindref="member">SmallArrOfTID_t</ref>&amp;<sp/>soms,<sp/><ref refid="classPoint__32__64_1aef562872dc6a1c677052521c2583357c" kindref="member">int_t</ref><sp/>elem)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Type_Face<sp/><ref refid="classPoint__32__64_1a7a598d04b73a5fb7d27e5ab292e5285f" kindref="member">type_face</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">=0)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52" refid="classPoint__32__64_1a2d33e32782579b353bf2aeb3f3b06f36" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a2d33e32782579b353bf2aeb3f3b06f36" kindref="member">reordonner</ref>()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/>}</highlight></codeline>
+<codeline lineno="53" refid="classPoint__32__64_1a4db7c749370b7eab2cc70c08515dbe1c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a4db7c749370b7eab2cc70c08515dbe1c" kindref="member">calculer_volumes</ref>(<ref refid="classTRUSTVect" kindref="compound">DoubleVect_t</ref>&amp;<sp/>vols)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/>vols<sp/>=<sp/>1.;<sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a00d8f74b2bb84c4d56c08c3d88daf219" kindref="member">get_tab_faces_sommets_locaux</ref>(<ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>faces_som_local)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="58"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>numero<sp/>du<sp/>j-ieme<sp/>sommet<sp/>de<sp/>la<sp/>i-ieme<sp/>face<sp/>de<sp/>l&apos;element.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>un<sp/>numero<sp/>de<sp/>face</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>j)<sp/>un<sp/>numero<sp/>de<sp/>sommet</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>numero<sp/>du<sp/>j-ieme<sp/>sommet<sp/>de<sp/>la<sp/>i-ieme<sp/>face</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="65" refid="classPoint__32__64_1abd13ffb4220d18d7b03ad755ef3d3484" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1abd13ffb4220d18d7b03ad755ef3d3484" kindref="member">Point_32_64&lt;_SIZE_&gt;::face_sommet</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="66"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>assert(i&lt;1);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(i)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>face_sommet0(j);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>default<sp/>:</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="78"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>0<sp/>LE<sp/>CODE<sp/>NE<sp/>FAIT<sp/>PAS<sp/>CE<sp/>QU&apos;ON<sp/>ATTENDRAIT.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>numero<sp/>du<sp/>sommet<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>renvoie<sp/>toujours<sp/>0<sp/>(si<sp/>i=0)</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="84" refid="classPoint__32__64_1a8edd6cbc726fa4e2f1d5d70294282aa8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a8edd6cbc726fa4e2f1d5d70294282aa8" kindref="member">Point_32_64&lt;_SIZE_&gt;::face_sommet0</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="85"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>assert(i==0);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="91"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nombre<sp/>de<sp/>faces<sp/>du<sp/>type<sp/>specifie<sp/>que<sp/>possede<sp/>l&apos;element<sp/>geometrique.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>type<sp/>de<sp/>face</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>nombre<sp/>de<sp/>faces<sp/>de<sp/>type<sp/>i</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="97" refid="classPoint__32__64_1a88d64c93a509f52647afcf097447e160" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a88d64c93a509f52647afcf097447e160" kindref="member">Point_32_64&lt;_SIZE_&gt;::nb_faces</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="98"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>assert(i==0);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="104"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nombre<sp/>de<sp/>sommets<sp/>des<sp/>faces<sp/>du<sp/>type<sp/>specifie.</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>LE<sp/>CODE<sp/>NE<sp/>FAIT<sp/>PAS<sp/>CE<sp/>QU&apos;ON<sp/>ATTENDRAIT.</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>type<sp/>de<sp/>face</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>nombre<sp/>de<sp/>sommets<sp/>des<sp/>faces<sp/>de<sp/>type<sp/>i</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="112" refid="classPoint__32__64_1a48c72ace95fbee7cb8c193cd1c7391d2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64_1a48c72ace95fbee7cb8c193cd1c7391d2" kindref="member">Point_32_64&lt;_SIZE_&gt;::nb_som_face</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="113"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>assert(i==0);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="119"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>i-ieme<sp/>type<sp/>de<sp/>face.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*<sp/>Un<sp/>segment<sp/>n&apos;a<sp/>qu&apos;un<sp/>seul<sp/>type<sp/>de<sp/>face.</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>rang<sp/>du<sp/>type<sp/>de<sp/>face<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Type_Face)<sp/>un<sp/>type<sp/>de<sp/>face</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="127" refid="classPoint__32__64_1a7a598d04b73a5fb7d27e5ab292e5285f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Type_Face<sp/><ref refid="classPoint__32__64_1a7a598d04b73a5fb7d27e5ab292e5285f" kindref="member">Point_32_64&lt;_SIZE_&gt;::type_face</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="128"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>assert(i==0);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Type_Face::point_1D;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64" kindref="compound">Point</ref><sp/>=<sp/><ref refid="classPoint__32__64" kindref="compound">Point_32_64&lt;int&gt;</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classPoint__32__64" kindref="compound">Point_64</ref><sp/>=<sp/><ref refid="classPoint__32__64" kindref="compound">Point_32_64&lt;trustIdType&gt;</ref>;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Point.h"/>
+  </compounddef>
+</doxygen>

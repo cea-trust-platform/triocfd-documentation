@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="LoiParoiHybride__VDF_8cpp" kind="file" language="C++">
+    <compoundname>LoiParoiHybride_VDF.cpp</compoundname>
+    <includes refid="LoiParoiHybride__VDF_8h" local="no">LoiParoiHybride_VDF.h</includes>
+    <includes refid="Dirichlet__paroi__fixe_8h" local="no">Dirichlet_paroi_fixe.h</includes>
+    <includes refid="Dirichlet__paroi__defilante_8h" local="no">Dirichlet_paroi_defilante.h</includes>
+    <includes refid="Neumann__paroi_8h" local="no">Neumann_paroi.h</includes>
+    <includes refid="Domaine__Cl__VDF_8h" local="no">Domaine_Cl_VDF.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="LoiParoiHybride__VDF_8cpp_1ac1dd489dd2cb8f680eb16ba476d4a98b" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* LoiParoiHybride_VDFbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>LoiParoiHybride_VDFbases</name>
+        <initializer>={   &amp;( <ref refid="classParoi__hyd__base__VDF" kindref="compound">Paroi_hyd_base_VDF</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/Specializations/VDF/Lois_Paroi/Hydr/LoiParoiHybride_VDF.cpp" line="28" column="117" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/Specializations/VDF/Lois_Paroi/Hydr/LoiParoiHybride_VDF.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LoiParoiHybride_VDF.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TURBULENCE_ROOT/src/Specializations/VDF/Lois_Paroi/Hydr</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;LoiParoiHybride_VDF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Dirichlet_paroi_fixe.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Dirichlet_paroi_defilante.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Neumann_paroi.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_Cl_VDF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classLoiParoiHybride__VDF_1ae76080c1029692cfd121c7d166613789" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classLoiParoiHybride__VDF" kindref="compound">LoiParoiHybride_VDF</ref>,</highlight><highlight class="stringliteral">&quot;Loi_Paroi_Hybride_VDF&quot;</highlight><highlight class="normal">,<ref refid="classParoi__hyd__base__VDF" kindref="compound">Paroi_hyd_base_VDF</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classLoiParoiHybride__VDF_1afef7bed999f0e0b8f0ddbb1a5aa87e62" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classLoiParoiHybride__VDF_1afef7bed999f0e0b8f0ddbb1a5aa87e62" kindref="member">LoiParoiHybride_VDF::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="31"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classLoiParoiHybride__VDF_1a3c7048baf8c37b5ebae379246c05b721" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLoiParoiHybride__VDF_1a3c7048baf8c37b5ebae379246c05b721" kindref="member">LoiParoiHybride_VDF::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbord<sp/>=<sp/><ref refid="classTurbulence__paroi__base_1a9aca489d20eabd51d428e33c5c3ff5e1" kindref="member">le_dom_dis_</ref>-&gt;nb_front_Cl();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>noms(nbord);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ibord=0;<sp/>ibord&lt;nbord;<sp/>ibord++)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classCond__lim" kindref="compound">Cond_lim</ref>&amp;<sp/>la_cl<sp/>=<sp/><ref refid="classTurbulence__paroi__base_1a2e1551437672dcde1f413c2ce09bc9e0" kindref="member">le_dom_Cl_dis_</ref>-&gt;les_conditions_limites(ibord);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>noms[ibord]<sp/>=<sp/>la_cl-&gt;frontiere_dis().<ref refid="classObjet__U__ptr_1a9a5254ed0900de717b295a2a49c08d53" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="classLoiParoiHybride_1acf377b81b246b4ad75c72e50743c9541" kindref="member">LoiParoiHybride::lire</ref>(s,noms,<sp/><ref refid="classTurbulence__paroi__base_1a2de1a88655445017e5b9085644d9678a" kindref="member">mon_modele_turb_hyd</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classLoiParoiHybride__VDF_1acc1eb2e5598a3fcb1284c3bba50cf1a0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLoiParoiHybride__VDF_1acc1eb2e5598a3fcb1284c3bba50cf1a0" kindref="member">LoiParoiHybride_VDF::associer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__dis__base" kindref="compound">Domaine_dis_base</ref>&amp;<sp/>zd,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__dis__base" kindref="compound">Domaine_Cl_dis_base</ref>&amp;<sp/>zcl)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="classLoiParoiHybride_1af6c9a75e1da62c5f7397f3872545de4c" kindref="member">LoiParoiHybride::associer</ref>(zd,zcl);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="classParoi__hyd__base__VDF_1ad14462d63ab331d332dd4b1c79be4970" kindref="member">Paroi_hyd_base_VDF::associer</ref>(zd,zcl);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classLoiParoiHybride__VDF_1a12e2c4e8bfbdb7caa144e7a177d66568" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLoiParoiHybride__VDF_1a12e2c4e8bfbdb7caa144e7a177d66568" kindref="member">LoiParoiHybride_VDF::init_lois_paroi</ref>()</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><ref refid="classLoiParoiHybride_1a748ac5f5e34f9e4e2783cf3994e80701" kindref="member">LoiParoiHybride::init_lois_paroi</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classTurbulence__paroi__base_1a7dff1f6fc5aa589e8b7cdcb0a628ff18" kindref="member">Cisaillement_paroi_</ref>.<ref refid="classTRUSTVect_1aee66e0d9d1fe1a107f84b5a7a3d59644" kindref="member">get_md_vector</ref>().<ref refid="classMD__Vector_1a036f2429ea40bd07b331500f6ff22b8f" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTurbulence__paroi__base_1a7dff1f6fc5aa589e8b7cdcb0a628ff18" kindref="member">Cisaillement_paroi_</ref>.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(0,<sp/><ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTurbulence__paroi__base_1a9aca489d20eabd51d428e33c5c3ff5e1" kindref="member">le_dom_dis_</ref>-&gt;creer_tableau_faces_bord(<ref refid="classTurbulence__paroi__base_1a7dff1f6fc5aa589e8b7cdcb0a628ff18" kindref="member">Cisaillement_paroi_</ref>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classLoiParoiHybride__VDF_1a40ee5caec826c4b6bb8369775a0762a9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLoiParoiHybride__VDF_1a40ee5caec826c4b6bb8369775a0762a9" kindref="member">LoiParoiHybride_VDF::calculer_hyd</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab1)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="classLoiParoiHybride_1aa19f2c643c944bdafe7c22846403ddf4" kindref="member">LoiParoiHybride::calculer_hyd</ref>(tab1,<sp/><ref refid="classTurbulence__paroi__base_1a9aca489d20eabd51d428e33c5c3ff5e1" kindref="member">le_dom_dis_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>(),<sp/><ref refid="classTurbulence__paroi__base_1a2e1551437672dcde1f413c2ce09bc9e0" kindref="member">le_dom_Cl_dis_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>(),<sp/><ref refid="classTurbulence__paroi__base_1a7dff1f6fc5aa589e8b7cdcb0a628ff18" kindref="member">Cisaillement_paroi_</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classLoiParoiHybride__VDF_1a6592bfde3632c78ad56e09c183f0e8ae" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLoiParoiHybride__VDF_1a40ee5caec826c4b6bb8369775a0762a9" kindref="member">LoiParoiHybride_VDF::calculer_hyd</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab1,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab2)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="classLoiParoiHybride_1aa19f2c643c944bdafe7c22846403ddf4" kindref="member">LoiParoiHybride::calculer_hyd</ref>(tab1,<sp/>tab2,<sp/><ref refid="classTurbulence__paroi__base_1a9aca489d20eabd51d428e33c5c3ff5e1" kindref="member">le_dom_dis_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>(),<sp/><ref refid="classTurbulence__paroi__base_1a2e1551437672dcde1f413c2ce09bc9e0" kindref="member">le_dom_Cl_dis_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>(),<sp/><ref refid="classTurbulence__paroi__base_1a7dff1f6fc5aa589e8b7cdcb0a628ff18" kindref="member">Cisaillement_paroi_</ref>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classLoiParoiHybride__VDF_1af2f54b31ba3abf314d19df3f25fe14c3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLoiParoiHybride__VDF_1af2f54b31ba3abf314d19df3f25fe14c3" kindref="member">LoiParoiHybride_VDF::calculer_hyd_BiK</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab_k,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab_eps)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><ref refid="classLoiParoiHybride_1a36530c33fdaf406250dc1fcaf9917580" kindref="member">LoiParoiHybride::calculer_hyd_BiK</ref>(tab_k,<sp/>tab_eps,<sp/><ref refid="classTurbulence__paroi__base_1a9aca489d20eabd51d428e33c5c3ff5e1" kindref="member">le_dom_dis_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>(),<sp/><ref refid="classTurbulence__paroi__base_1a2e1551437672dcde1f413c2ce09bc9e0" kindref="member">le_dom_Cl_dis_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>(),<sp/><ref refid="classTurbulence__paroi__base_1a7dff1f6fc5aa589e8b7cdcb0a628ff18" kindref="member">Cisaillement_paroi_</ref>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/Specializations/VDF/Lois_Paroi/Hydr/LoiParoiHybride_VDF.cpp"/>
+  </compounddef>
+</doxygen>

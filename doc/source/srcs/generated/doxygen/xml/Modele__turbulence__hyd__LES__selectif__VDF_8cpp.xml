@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Modele__turbulence__hyd__LES__selectif__VDF_8cpp" kind="file" language="C++">
+    <compoundname>Modele_turbulence_hyd_LES_selectif_VDF.cpp</compoundname>
+    <includes refid="Modele__turbulence__hyd__LES__selectif__VDF_8h" local="no">Modele_turbulence_hyd_LES_selectif_VDF.h</includes>
+    <includes refid="VDF__discretisation_8h" local="no">VDF_discretisation.h</includes>
+    <includes refid="Champ__Face__VDF_8h" local="no">Champ_Face_VDF.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Domaine__VDF_8h" local="no">Domaine_VDF.h</includes>
+    <includes local="no">math.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Modele_turbulence_hyd_LES_selectif_VDF.cpp</label>
+        <link refid="Modele__turbulence__hyd__LES__selectif__VDF_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>math.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Modele__turbulence__hyd__LES__selectif__VDF_8cpp_1a6472158bee2fff70d719cc365df7fd84" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Modele_turbulence_hyd_LES_selectif_VDFbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Modele_turbulence_hyd_LES_selectif_VDFbases</name>
+        <initializer>={   &amp;( <ref refid="classModele__turbulence__hyd__LES__VDF" kindref="compound">Modele_turbulence_hyd_LES_VDF</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/Specializations/VDF/Modeles_Turbulence/LES/Hydr/Modele_turbulence_hyd_LES_selectif_VDF.cpp" line="30" column="106" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/Specializations/VDF/Modeles_Turbulence/LES/Hydr/Modele_turbulence_hyd_LES_selectif_VDF.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Modele__turbulence__hyd__LES__selectif__VDF_8cpp_1a95ce6a86654743bb84d4c163f4af1838" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double SIN2ANGL</definition>
+        <argsstring></argsstring>
+        <name>SIN2ANGL</name>
+        <initializer>= 11697778e-8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/Specializations/VDF/Modeles_Turbulence/LES/Hydr/Modele_turbulence_hyd_LES_selectif_VDF.cpp" line="32" column="18" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/Specializations/VDF/Modeles_Turbulence/LES/Hydr/Modele_turbulence_hyd_LES_selectif_VDF.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="16"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Modele_turbulence_hyd_LES_selectif_VDF.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TURBULENCE_ROOT/src/Specializations/VDF/Modeles_Turbulence/LES/Hydr</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Modele_turbulence_hyd_LES_selectif_VDF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;VDF_discretisation.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Face_VDF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VDF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classModele__turbulence__hyd__LES__selectif__VDF_1a4f02286c88ed00c42cfd6b1f755c2d3a" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<ref refid="classModele__turbulence__hyd__LES__selectif__VDF" kindref="compound">Modele_turbulence_hyd_LES_selectif_VDF</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Modele_turbulence_hyd_sous_maille_selectif_VDF&quot;</highlight><highlight class="normal">,<sp/><ref refid="classModele__turbulence__hyd__LES__VDF" kindref="compound">Modele_turbulence_hyd_LES_VDF</ref>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SIN2ANGL<sp/>=<sp/>11697778e-8;<sp/></highlight><highlight class="comment">//<sp/>sin(20<sp/>degre)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classModele__turbulence__hyd__LES__selectif__VDF_1ae2ed0a1dd55824f2074211b72906e7f7" refkind="member"><highlight class="normal"><ref refid="classModele__turbulence__hyd__LES__selectif__VDF_1ae2ed0a1dd55824f2074211b72906e7f7" kindref="member">Modele_turbulence_hyd_LES_selectif_VDF::Modele_turbulence_hyd_LES_selectif_VDF</ref>()</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__LES__VDF_1a3fd64dacefd23f039fa3645e8198af8f" kindref="member">Csm1_</ref><sp/>=<sp/><ref refid="classModele__turbulence__hyd__LES__base_1af36a8be0f43f0cbf5e7fdb0d35f92189" kindref="member">CSMS1</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__LES__VDF_1ab1dcc44c1a24489970c5d0a799367ee6" kindref="member">Csm2_</ref><sp/>=<sp/>1.146;<sp/><sp/></highlight><highlight class="comment">//<sp/>si<sp/>CSM1<sp/>=<sp/>0.112<sp/><sp/>(autre<sp/>0.162)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>CSM2<sp/>=<sp/>27/8*M_PI^2*CSM1^2*C_k^3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classModele__turbulence__hyd__LES__selectif__VDF_1a773bdf7caf06a3065fff8d2d5a24cfc6" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__LES__selectif__VDF_1a773bdf7caf06a3065fff8d2d5a24cfc6" kindref="member">Modele_turbulence_hyd_LES_selectif_VDF::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="42"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classModele__turbulence__hyd__LES__selectif__VDF_1a628b5048435e0b73c20ff275355f29cb" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__LES__selectif__VDF_1a628b5048435e0b73c20ff275355f29cb" kindref="member">Modele_turbulence_hyd_LES_selectif_VDF::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__LES__VDF_1a3c85c171f21dda9719dd759909c6d708" kindref="member">Modele_turbulence_hyd_LES_VDF::readOn</ref>(s);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classModele__turbulence__hyd__LES__selectif__VDF_1a7bbc4c64fe7668f2ff9b194aad0afedf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__LES__selectif__VDF_1a7bbc4c64fe7668f2ff9b194aad0afedf" kindref="member">Modele_turbulence_hyd_LES_selectif_VDF::discretiser</ref>()</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__0__eq__base_1abbc89bcaf37d2e7dd97fbd02a4ebdc2e" kindref="member">Modele_turbulence_hyd_LES_base::discretiser</ref>();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classVDF__discretisation" kindref="compound">VDF_discretisation</ref>&amp;<sp/>dis<sp/>=<sp/>ref_cast(<ref refid="classVDF__discretisation" kindref="compound">VDF_discretisation</ref>,<sp/><ref refid="classModele__turbulence__hyd__base_1ada26f55e92d2f323dcb549509c175661" kindref="member">mon_equation_</ref>-&gt;discretisation());</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>dis.<ref refid="classVDF__discretisation_1a3427c159896dc685e976f5f275868e3c" kindref="member">vorticite</ref>(<ref refid="classModele__turbulence__hyd__base_1ada26f55e92d2f323dcb549509c175661" kindref="member">mon_equation_</ref>-&gt;domaine_dis(),<sp/><ref refid="classModele__turbulence__hyd__base_1ada26f55e92d2f323dcb549509c175661" kindref="member">mon_equation_</ref>-&gt;inconnue(),<sp/><ref refid="classModele__turbulence__hyd__LES__selectif__VDF_1afefe260d44f80d2d9fd4cc5cff59303d" kindref="member">la_vorticite_</ref>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classModele__turbulence__hyd__LES__selectif__VDF_1a4a0d97f111836cf142a6ebdf22d2fed6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__LES__selectif__VDF_1a4a0d97f111836cf142a6ebdf22d2fed6" kindref="member">Modele_turbulence_hyd_LES_selectif_VDF::a_pour_Champ_Fonc</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OBS_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)<sp/>&amp;ch_ref)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="60"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><ref refid="classMotcles" kindref="compound">Motcles</ref><sp/>les_motcles(3);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>les_motcles[0]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;viscosite_turbulente&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>les_motcles[1]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>les_motcles[2]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;vorticite&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rang<sp/>=<sp/>les_motcles.<ref refid="classMotcles_1abd4862b9c8552b88a48927e67bd48d9d" kindref="member">search</ref>(mot);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(rang)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ch_ref<sp/>=<sp/><ref refid="classModele__turbulence__hyd__base_1a229c914beb2afc1e28495427801560fa" kindref="member">la_viscosite_turbulente_</ref>.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ch_ref<sp/>=<sp/><ref refid="classModele__turbulence__hyd__0__eq__base_1a333b8020eca1e992bdad3c9d7d4d26cb" kindref="member">energie_cinetique_turb_</ref>.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ch_ref<sp/>=<sp/><ref refid="classModele__turbulence__hyd__LES__selectif__VDF_1afefe260d44f80d2d9fd4cc5cff59303d" kindref="member">la_vorticite_</ref>.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classModele__turbulence__hyd__LES__selectif__VDF_1aba7f0483e0a6cac2028d3dd60e18797e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__LES__selectif__VDF_1aba7f0483e0a6cac2028d3dd60e18797e" kindref="member">Modele_turbulence_hyd_LES_selectif_VDF::calculer_fonction_structure</ref>()</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__LES__VDF_1a595f02550bbbbbb0d64aa0bdea338443" kindref="member">Modele_turbulence_hyd_LES_VDF::calculer_fonction_structure</ref>();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__LES__selectif__VDF_1a24c58871dbcd6c467268238b68e78c2e" kindref="member">cutoff</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Fonction<sp/>qui<sp/>permet<sp/>d&apos;appliquer<sp/>un<sp/>filtre<sp/>sur<sp/>la<sp/>fonction<sp/>de<sp/>structure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>La<sp/>fonction<sp/>de<sp/>structure<sp/>d&apos;un<sp/>element<sp/>est<sp/>mise<sp/>a<sp/>zero<sp/>si<sp/>il<sp/>existe<sp/>une</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//<sp/>deviation<sp/>inferieure<sp/>a<sp/>20<sp/>degres<sp/>entre<sp/>son<sp/>vecteur<sp/>vorticite<sp/>et<sp/>le</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/>vecteur<sp/>moyen<sp/>des<sp/>vorticites<sp/>des<sp/>6<sp/>elements<sp/>les<sp/>plus<sp/>proches</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/>La<sp/>constante<sp/>Sin2Angl<sp/>contient<sp/>le<sp/>carre<sp/>du<sp/>sinus<sp/>d&apos;un<sp/>angle<sp/>de<sp/>20<sp/>degres</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classModele__turbulence__hyd__LES__selectif__VDF_1a24c58871dbcd6c467268238b68e78c2e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__LES__selectif__VDF_1a24c58871dbcd6c467268238b68e78c2e" kindref="member">Modele_turbulence_hyd_LES_selectif_VDF::cutoff</ref>()</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Face__VDF" kindref="compound">Champ_Face_VDF</ref>&amp;<sp/>vitesse<sp/>=<sp/>ref_cast(<ref refid="classChamp__Face__VDF" kindref="compound">Champ_Face_VDF</ref>,<sp/><ref refid="classModele__turbulence__hyd__base_1ada26f55e92d2f323dcb549509c175661" kindref="member">mon_equation_</ref>-&gt;inconnue());</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VDF" kindref="compound">Domaine_VDF</ref>&amp;<sp/>domaine_VDF<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VDF" kindref="compound">Domaine_VDF</ref>,<sp/><ref refid="classModele__turbulence__hyd__0__eq__base_1ae4f7169d85315e5edcaa8f332db1d202" kindref="member">le_dom_VF_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>face_voisins<sp/>=<sp/>domaine_VDF.<ref refid="classDomaine__VF_1ad19ad4b9679367115cbbc7036257aa51" kindref="member">face_voisins</ref>();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>elem_faces<sp/>=<sp/>domaine_VDF.<ref refid="classDomaine__VF_1aa67059b226a41e89c7de2132c53e6bda" kindref="member">elem_faces</ref>();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_poly<sp/>=<sp/>domaine_VDF.<ref refid="classDomaine__dis__base_1a8effce5ffccf506b8908ba79119b6832" kindref="member">domaine</ref>().<ref refid="classDomaine__32__64_1a92cccd83fdd182cb909d51ff9938eb1b" kindref="member">nb_elem</ref>();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>vorticite<sp/>=<sp/><ref refid="classModele__turbulence__hyd__LES__selectif__VDF_1afefe260d44f80d2d9fd4cc5cff59303d" kindref="member">la_vorticite_</ref>-&gt;<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__LES__selectif__VDF_1afefe260d44f80d2d9fd4cc5cff59303d" kindref="member">la_vorticite_</ref>-&gt;<ref refid="classChamp__Fonc__base_1ab9c18e4ed594d73cae4ea02ff15dfd16" kindref="member">mettre_a_jour</ref>(vitesse.<ref refid="classChamp__base_1a74560965ac18225959cd9457b3c8faa9" kindref="member">temps</ref>());</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>vorticite.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>elx0,<sp/>elx1,<sp/>ely0,<sp/>ely1,<sp/>elz0,<sp/>elz1,<sp/>i;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>norme,<sp/>norme_moyen,<sp/>prod;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>vorti_moyen(3);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_elem<sp/>=<sp/>0;<sp/>num_elem<sp/>&lt;<sp/>nb_poly;<sp/>num_elem++)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>elx0<sp/>=<sp/>face_voisins(elem_faces(num_elem,<sp/>0),<sp/>0);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>elx1<sp/>=<sp/>face_voisins(elem_faces(num_elem,<sp/>3),<sp/>1);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ely0<sp/>=<sp/>face_voisins(elem_faces(num_elem,<sp/>1),<sp/>0);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ely1<sp/>=<sp/>face_voisins(elem_faces(num_elem,<sp/>4),<sp/>1);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>elz0<sp/>=<sp/>face_voisins(elem_faces(num_elem,<sp/>2),<sp/>0);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>elz1<sp/>=<sp/>face_voisins(elem_faces(num_elem,<sp/>5),<sp/>1);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dx0<sp/>=<sp/>0.,<sp/>dx1<sp/>=<sp/>0.,<sp/>dy0<sp/>=<sp/>0.,<sp/>dy1<sp/>=<sp/>0.,<sp/>dz0<sp/>=<sp/>0.,<sp/>dz1<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>3;<sp/>i++)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(elx0<sp/>!=<sp/>-1)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dx0<sp/>+=<sp/>domaine_VDF.<ref refid="classDomaine__VDF_1aafb007708d2d223c14d266479c978104" kindref="member">dist_elem_period</ref>(num_elem,<sp/>elx0,<sp/>i)<sp/>*<sp/>domaine_VDF.<ref refid="classDomaine__VDF_1aafb007708d2d223c14d266479c978104" kindref="member">dist_elem_period</ref>(num_elem,<sp/>elx0,<sp/>i);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(elx1<sp/>!=<sp/>-1)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dx1<sp/>+=<sp/>domaine_VDF.<ref refid="classDomaine__VDF_1aafb007708d2d223c14d266479c978104" kindref="member">dist_elem_period</ref>(num_elem,<sp/>elx1,<sp/>i)<sp/>*<sp/>domaine_VDF.<ref refid="classDomaine__VDF_1aafb007708d2d223c14d266479c978104" kindref="member">dist_elem_period</ref>(num_elem,<sp/>elx1,<sp/>i);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ely0<sp/>!=<sp/>-1)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dy0<sp/>+=<sp/>domaine_VDF.<ref refid="classDomaine__VDF_1aafb007708d2d223c14d266479c978104" kindref="member">dist_elem_period</ref>(num_elem,<sp/>ely0,<sp/>i)<sp/>*<sp/>domaine_VDF.<ref refid="classDomaine__VDF_1aafb007708d2d223c14d266479c978104" kindref="member">dist_elem_period</ref>(num_elem,<sp/>ely0,<sp/>i);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ely1<sp/>!=<sp/>-1)</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dy1<sp/>+=<sp/>domaine_VDF.<ref refid="classDomaine__VDF_1aafb007708d2d223c14d266479c978104" kindref="member">dist_elem_period</ref>(num_elem,<sp/>ely1,<sp/>i)<sp/>*<sp/>domaine_VDF.<ref refid="classDomaine__VDF_1aafb007708d2d223c14d266479c978104" kindref="member">dist_elem_period</ref>(num_elem,<sp/>ely1,<sp/>i);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(elz0<sp/>!=<sp/>-1)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dz0<sp/>+=<sp/>domaine_VDF.<ref refid="classDomaine__VDF_1aafb007708d2d223c14d266479c978104" kindref="member">dist_elem_period</ref>(num_elem,<sp/>elz0,<sp/>i)<sp/>*<sp/>domaine_VDF.<ref refid="classDomaine__VDF_1aafb007708d2d223c14d266479c978104" kindref="member">dist_elem_period</ref>(num_elem,<sp/>elz0,<sp/>i);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(elz1<sp/>!=<sp/>-1)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dz1<sp/>+=<sp/>domaine_VDF.<ref refid="classDomaine__VDF_1aafb007708d2d223c14d266479c978104" kindref="member">dist_elem_period</ref>(num_elem,<sp/>elz1,<sp/>i)<sp/>*<sp/>domaine_VDF.<ref refid="classDomaine__VDF_1aafb007708d2d223c14d266479c978104" kindref="member">dist_elem_period</ref>(num_elem,<sp/>elz1,<sp/>i);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(dx0)<sp/>&gt;<sp/>DMINFLOAT)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dx0<sp/>=<sp/>1.<sp/>/<sp/>sqrt(dx0);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(dx1)<sp/>&gt;<sp/>DMINFLOAT)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dx1<sp/>=<sp/>1.<sp/>/<sp/>sqrt(dx1);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(dy0)<sp/>&gt;<sp/>DMINFLOAT)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dy0<sp/>=<sp/>1.<sp/>/<sp/>sqrt(dy0);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(dy1)<sp/>&gt;<sp/>DMINFLOAT)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dy1<sp/>=<sp/>1.<sp/>/<sp/>sqrt(dy1);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(dz0)<sp/>&gt;<sp/>DMINFLOAT)</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dz0<sp/>=<sp/>1.<sp/>/<sp/>sqrt(dz0);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(dz1)<sp/>&gt;<sp/>DMINFLOAT)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dz1<sp/>=<sp/>1.<sp/>/<sp/>sqrt(dz1);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((elx0<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(elx1<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(ely0<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(ely1<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(elz0<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(elz1<sp/>!=<sp/>-1))</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cas<sp/>d&apos;un<sp/>element<sp/>interne</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>3;<sp/>k++)</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vorti_moyen(k)<sp/>=<sp/>(dx0<sp/>*<sp/>vorticite(elx0,<sp/>k)<sp/>+<sp/>dx1<sp/>*<sp/>vorticite(elx1,<sp/>k)<sp/>+<sp/>dy0<sp/>*<sp/>vorticite(ely0,<sp/>k)<sp/>+<sp/>dy1<sp/>*<sp/>vorticite(ely1,<sp/>k)<sp/>+<sp/>dz0<sp/>*<sp/>vorticite(elz0,<sp/>k)<sp/>+<sp/>dz1<sp/>*<sp/>vorticite(elz1,<sp/>k))</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/<sp/>(dx0<sp/>+<sp/>dx1<sp/>+<sp/>dy0<sp/>+<sp/>dy1<sp/>+<sp/>dz0<sp/>+<sp/>dz1);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((elx0<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(elx1<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(ely0<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(ely1<sp/>!=<sp/>-1))</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>3;<sp/>k++)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vorti_moyen(k)<sp/>=<sp/>(dx0<sp/>*<sp/>vorticite(elx0,<sp/>k)<sp/>+<sp/>dx1<sp/>*<sp/>vorticite(elx1,<sp/>k)<sp/>+<sp/>dy0<sp/>*<sp/>vorticite(ely0,<sp/>k)<sp/>+<sp/>dy1<sp/>*<sp/>vorticite(ely1,<sp/>k))<sp/>/<sp/>(dx0<sp/>+<sp/>dx1<sp/>+<sp/>dy0<sp/>+<sp/>dy1);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((elx0<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(elx1<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(elz0<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(elz1<sp/>!=<sp/>-1))</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>3;<sp/>k++)</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vorti_moyen(k)<sp/>=<sp/>(dx0<sp/>*<sp/>vorticite(elx0,<sp/>k)<sp/>+<sp/>dx1<sp/>*<sp/>vorticite(elx1,<sp/>k)<sp/>+<sp/>dz0<sp/>*<sp/>vorticite(elz0,<sp/>k)<sp/>+<sp/>dz1<sp/>*<sp/>vorticite(elz1,<sp/>k))<sp/>/<sp/>(dx0<sp/>+<sp/>dx1<sp/>+<sp/>dz0<sp/>+<sp/>dz1);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((ely0<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(ely1<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(elz0<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(elz1<sp/>!=<sp/>-1))</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>3;<sp/>k++)</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vorti_moyen(k)<sp/>=<sp/>(dy0<sp/>*<sp/>vorticite(ely0,<sp/>k)<sp/>+<sp/>dy1<sp/>*<sp/>vorticite(ely1,<sp/>k)<sp/>+<sp/>dz0<sp/>*<sp/>vorticite(elz0,<sp/>k)<sp/>+<sp/>dz1<sp/>*<sp/>vorticite(elz1,<sp/>k))<sp/>/<sp/>(dy0<sp/>+<sp/>dy1<sp/>+<sp/>dz0<sp/>+<sp/>dz1);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((elx0<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(elx1<sp/>!=<sp/>-1))</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>3;<sp/>k++)</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vorti_moyen(k)<sp/>=<sp/>(dx0<sp/>*<sp/>vorticite(elx0,<sp/>k)<sp/>+<sp/>dx1<sp/>*<sp/>vorticite(elx1,<sp/>k))<sp/>/<sp/>(dx0<sp/>+<sp/>dx1);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((ely0<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(ely1<sp/>!=<sp/>-1))</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>3;<sp/>k++)</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vorti_moyen(k)<sp/>=<sp/>(dy0<sp/>*<sp/>vorticite(ely0,<sp/>k)<sp/>+<sp/>dy1<sp/>*<sp/>vorticite(ely1,<sp/>k))<sp/>/<sp/>(dy0<sp/>+<sp/>dy1);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((elz0<sp/>!=<sp/>-1)<sp/>&amp;&amp;<sp/>(elz1<sp/>!=<sp/>-1))</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>3;<sp/>k++)</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vorti_moyen(k)<sp/>=<sp/>(dz0<sp/>*<sp/>vorticite(elz0,<sp/>k)<sp/>+<sp/>dz1<sp/>*<sp/>vorticite(elz1,<sp/>k))<sp/>/<sp/>(dz0<sp/>+<sp/>dz1);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Cas<sp/>d&apos;un<sp/>element<sp/>coin<sp/>;<sp/>on<sp/>met<sp/>FS<sp/>a<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>rend<sp/>nul<sp/>le<sp/>vecteur<sp/>vorti_moyen(k)<sp/>ce<sp/>qui<sp/>provoquera<sp/>la<sp/>mise<sp/>a<sp/>zero<sp/>de<sp/>FS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>3;<sp/>k++)</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vorti_moyen(k)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>du<sp/>produit<sp/>vectoriel<sp/>entre<sp/>la<sp/>vorticite<sp/>dans<sp/>l&apos;element</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>et<sp/>le<sp/>vecteur<sp/>des<sp/>vorticites<sp/>des<sp/>elements<sp/>voisins</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>norme<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>3;<sp/>k++)</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>norme<sp/>+=<sp/>carre(vorticite(num_elem,<sp/>k));</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>norme_moyen<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>3;<sp/>k++)</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>norme_moyen<sp/>+=<sp/>carre(vorti_moyen(k));</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((norme<sp/>&gt;<sp/>1.e-10)<sp/>&amp;&amp;<sp/>(norme_moyen<sp/>&gt;<sp/>1.e-10))</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prod<sp/>=<sp/>carre(vorti_moyen(1)<sp/>*<sp/>vorticite(num_elem,<sp/>2)<sp/>-<sp/>vorti_moyen(2)<sp/>*<sp/>vorticite(num_elem,<sp/>1))<sp/>+<sp/>carre(vorti_moyen(2)<sp/>*<sp/>vorticite(num_elem,<sp/>0)<sp/>-<sp/>vorti_moyen(0)<sp/>*<sp/>vorticite(num_elem,<sp/>2))</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>carre(vorti_moyen(0)<sp/>*<sp/>vorticite(num_elem,<sp/>1)<sp/>-<sp/>vorti_moyen(1)<sp/>*<sp/>vorticite(num_elem,<sp/>0));</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prod<sp/>/=<sp/>(norme<sp/>*<sp/>norme_moyen);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(prod<sp/>&lt;=<sp/>SIN2ANGL)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classModele__turbulence__hyd__LES__VDF_1a998971eb9398fd22a62dfa80d26f4b14" kindref="member">F2_</ref>(num_elem)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>bruit<sp/>numerique<sp/>ou<sp/>element<sp/>de<sp/>coin</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classModele__turbulence__hyd__LES__VDF_1a998971eb9398fd22a62dfa80d26f4b14" kindref="member">F2_</ref>(num_elem)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Vu<sp/>ou<sp/>etait<sp/>l&apos;echange<sp/>avant<sp/>ca<sp/>plantait<sp/>des<sp/>que<sp/>le<sp/>nbre<sp/>de<sp/>maille</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>etait<sp/>different<sp/>sur<sp/>un<sp/>des<sp/>procs<sp/>!!!!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__LES__VDF_1a998971eb9398fd22a62dfa80d26f4b14" kindref="member">F2_</ref>.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="232"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/Specializations/VDF/Modeles_Turbulence/LES/Hydr/Modele_turbulence_hyd_LES_selectif_VDF.cpp"/>
+  </compounddef>
+</doxygen>

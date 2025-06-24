@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Operateur__Diff_8cpp" kind="file" language="C++">
+    <compoundname>Operateur_Diff.cpp</compoundname>
+    <includes refid="Discretisation__base_8h" local="no">Discretisation_base.h</includes>
+    <includes refid="Operateur__Diff_8h" local="no">Operateur_Diff.h</includes>
+    <includes refid="stat__counters_8h" local="no">stat_counters.h</includes>
+    <includes refid="Champ__base_8h" local="no">Champ_base.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Operateur__Diff_8cpp_1a9a28ca1f3efdb8da2c738d1d8ace24d3" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Operateur_Diffbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Operateur_Diffbases</name>
+        <initializer>={   &amp;( <ref refid="classTRUST__Deriv" kindref="compound">TRUST_Deriv</ref>&lt; <ref refid="classOperateur__Diff__base" kindref="compound">Operateur_Diff_base</ref> &gt; ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Operateurs/Operateur_Diff.cpp" line="22" column="97" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Operateurs/Operateur_Diff.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discretisation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur_Diff.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stat_counters.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classOperateur__Diff_1a935f8315e35304f2279e569b709f2e75" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classOperateur__Diff" kindref="compound">Operateur_Diff</ref>,</highlight><highlight class="stringliteral">&quot;Operateur_Diff&quot;</highlight><highlight class="normal">,OWN_PTR(<ref refid="classOperateur__Diff__base" kindref="compound">Operateur_Diff_base</ref>));</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>diffusion_deriv<sp/>objet_lecture<sp/>diffusion_deriv<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>bloc_diffusion<sp/>objet_lecture<sp/>nul<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>aco<sp/>chaine(into=[&quot;{&quot;])<sp/>aco<sp/>0<sp/>Opening<sp/>curly<sp/>bracket.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>operateur<sp/>diffusion_deriv<sp/>operateur<sp/>1<sp/>if<sp/>none<sp/>is<sp/>specified,<sp/>the<sp/>diffusive<sp/>scheme<sp/>used<sp/>is<sp/>a<sp/>2nd-order<sp/>scheme.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>op_implicite<sp/>op_implicite<sp/>op_implicite<sp/>1<sp/>To<sp/>have<sp/>diffusive<sp/>implicitation,<sp/>it<sp/>use<sp/>Uzawa<sp/>algorithm.<sp/>Very<sp/>useful<sp/>when<sp/>viscosity<sp/>has<sp/>large<sp/>variations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>acof<sp/>chaine(into=[&quot;}&quot;])<sp/>acof<sp/>0<sp/>Closing<sp/>curly<sp/>bracket.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Here<sp/>we<sp/>put<sp/>the<sp/>doc<sp/>for<sp/>all<sp/>shared<sp/>(VDF,<sp/>VEF,...)<sp/>keywords:<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>diffusion_negligeable<sp/>diffusion_deriv<sp/>negligeable<sp/>0<sp/>the<sp/>diffusivity<sp/>will<sp/>not<sp/>taken<sp/>in<sp/>count</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>diffusion_option<sp/>diffusion_deriv<sp/>option<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>bloc_lecture<sp/>bloc_lecture<sp/>bloc_lecture<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classOperateur__Diff_1ad0a11a718aef0c0c8af40b146d735b89" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classOperateur__Diff_1ad0a11a718aef0c0c8af40b146d735b89" kindref="member">Operateur_Diff::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="38"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1a7831381cc6a3c0b1183f00f648ba86b4" kindref="member">Operateur::ecrire</ref>(os);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classOperateur__Diff_1a14359a5f64e320c3334d7df11980e060" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classOperateur__Diff_1a14359a5f64e320c3334d7df11980e060" kindref="member">Operateur_Diff::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOperateur_1a4f23a0e4930adffe06e508d94d60e16c" kindref="member">Operateur::lire</ref>(is);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="47"><highlight class="comment">/*!<sp/>@brief<sp/>Type<sp/>l&apos;operateur:<sp/>se<sp/>type<sp/>&quot;Op_Diff_&quot;+discretisation()<sp/>+<sp/>(&quot;_&quot;ou&quot;_Multi_inco_&quot;)<sp/>+<sp/>inconnue().suffix</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Associe<sp/>la<sp/>diffusivite<sp/>a<sp/>l&apos;operateur<sp/>base.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classOperateur__Diff_1acf6a9a9161578b16a6d8665f0a4bfc23" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Diff_1acf6a9a9161578b16a6d8665f0a4bfc23" kindref="member">Operateur_Diff::typer</ref>()</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Operateur_Diff::typer(&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMotcle" kindref="compound">Motcle</ref>(<ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref>)==<ref refid="classMotcle" kindref="compound">Motcle</ref>(</highlight><highlight class="stringliteral">&quot;negligeable&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>OWN_PTR(<ref refid="classOperateur__Diff__base" kindref="compound">Operateur_Diff_base</ref>)::<ref refid="classOperateur__Diff_1acf6a9a9161578b16a6d8665f0a4bfc23" kindref="member">typer</ref>(</highlight><highlight class="stringliteral">&quot;Op_Diff_negligeable&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>().<ref refid="classOperateur__Diff__base_1a6b7a2267ef5127b6ef55d97b5e203032" kindref="member">associer_diffusivite</ref>(<ref refid="classOperateur__Diff_1a684570cd736780e40fecef7696a227b6" kindref="member">diffusivite</ref>());</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>assert(<ref refid="classOperateur__Diff_1a40e8e73a22b41134f6a21b9e7c7bd456" kindref="member">la_diffusivite</ref>.<ref refid="classTRUST__Ref_1ae9b0cdf7e0ca42f09d339275e0b992e3" kindref="member">non_nul</ref>());</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn=<ref refid="classMorEqn_1a82f9d0c41fe998c095a16b15648fdb38" kindref="member">mon_equation</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_type=<sp/>eqn.<ref refid="classEquation__base_1a440fc95363315082eddbef26dc76024e" kindref="member">discretisation</ref>().<ref refid="classDiscretisation__base_1ab4507fbd7e3aced9ca91e0650c110132" kindref="member">get_name_of_type_for</ref>(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>(),<ref refid="classOperateur_1ae17a8274c0d52b0b4b170db92535a089" kindref="member">typ</ref>,eqn,<ref refid="classOperateur__Diff_1a684570cd736780e40fecef7696a227b6" kindref="member">diffusivite</ref>());</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>OWN_PTR(<ref refid="classOperateur__Diff__base" kindref="compound">Operateur_Diff_base</ref>)::<ref refid="classOperateur__Diff_1acf6a9a9161578b16a6d8665f0a4bfc23" kindref="member">typer</ref>(nom_type);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>().<ref refid="classOperateur__Diff__base_1a6b7a2267ef5127b6ef55d97b5e203032" kindref="member">associer_diffusivite</ref>(<ref refid="classOperateur__Diff_1a684570cd736780e40fecef7696a227b6" kindref="member">diffusivite</ref>());</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>().<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;objet<sp/>sous-jacent<sp/>upcaste<sp/>en<sp/>Operateur_base</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Operateur_base&amp;)<sp/>l&apos;objet<sp/>sous-jacent<sp/>upcaste<sp/>en<sp/>Operateur_base</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classOperateur__Diff_1afe46b489af4b0c5560f3771c3ee8940b" refkind="member"><highlight class="normal"><ref refid="classOperateur__base" kindref="compound">Operateur_base</ref>&amp;<sp/><ref refid="classOperateur__Diff_1afe46b489af4b0c5560f3771c3ee8940b" kindref="member">Operateur_Diff::l_op_base</ref>()</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="78"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;objet<sp/>sous-jacent<sp/>upcaste<sp/>en<sp/>Operateur_base<sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Operateur_base&amp;)<sp/>l&apos;objet<sp/>sous-jacent<sp/>upcaste<sp/>en<sp/>Operateur_base</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classOperateur__Diff_1a2fa07c131b634cd2c3b6682f6e956fd6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOperateur__base" kindref="compound">Operateur_base</ref>&amp;<sp/><ref refid="classOperateur__Diff_1afe46b489af4b0c5560f3771c3ee8940b" kindref="member">Operateur_Diff::l_op_base</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="83"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="87"><highlight class="comment">/*!<sp/>@brief<sp/>Appel<sp/>a<sp/>l&apos;objet<sp/>sous-jacent.</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*<sp/>Ajoute<sp/>la<sp/>contribution<sp/>de<sp/>l&apos;operateur<sp/>au<sp/>tableau</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>passe<sp/>en<sp/>parametre</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>donnee)<sp/>tableau<sp/>contenant<sp/>les<sp/>donnees<sp/>sur<sp/>lesquelles<sp/>on<sp/>applique<sp/>l&apos;operateur.</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>resu)<sp/>tableau<sp/>auquel<sp/>on<sp/>ajoute<sp/>la<sp/>contribution<sp/>de<sp/>l&apos;operateur</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*<sp/>@return<sp/>(DoubleTab&amp;)<sp/>le<sp/>tableau<sp/>contenant<sp/>le<sp/>resultat</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classOperateur__Diff_1a6811540f85701822bea8164d6fb79abb" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classOperateur__Diff_1a6811540f85701822bea8164d6fb79abb" kindref="member">Operateur_Diff::ajouter</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>donnee,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>resu)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="98"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1affcd058809786918ed173aaf681d0843" kindref="member">begin_count</ref>(diffusion_counter_);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tmp<sp/>=<sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>().<ref refid="classOperateur__base_1ae8eb74015f6e04dca91d4a2da5fca9bb" kindref="member">ajouter</ref>(donnee,<sp/>resu);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1a686ef80e162afd2fb6058c8d27175ca4" kindref="member">end_count</ref>(diffusion_counter_);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tmp;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="105"><highlight class="comment">/*!<sp/>@brief<sp/>Appel<sp/>a<sp/>l&apos;objet<sp/>sous-jacent.</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*<sp/>Initialise<sp/>le<sp/>tableau<sp/>passe<sp/>en<sp/>parametre<sp/>avec<sp/>la<sp/>contribution</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>de<sp/>l&apos;operateur.</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>donnee)<sp/>tableau<sp/>contenant<sp/>les<sp/>donnees<sp/>sur<sp/>lesquelles<sp/>on<sp/>applique<sp/>l&apos;operateur.</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>resu)<sp/>tableau<sp/>dans<sp/>lequel<sp/>stocke<sp/>la<sp/>contribution<sp/>de<sp/>l&apos;operateur</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/>*<sp/>@return<sp/>(DoubleTab&amp;)<sp/>le<sp/>tableau<sp/>contenant<sp/>le<sp/>resultat</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="classOperateur__Diff_1afd07e25ba9b0051a28e8b6545eac911f" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classOperateur__Diff_1afd07e25ba9b0051a28e8b6545eac911f" kindref="member">Operateur_Diff::calculer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>donnee,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>resu)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="116"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1affcd058809786918ed173aaf681d0843" kindref="member">begin_count</ref>(diffusion_counter_);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tmp<sp/>=<sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>().<ref refid="classOperateur__base_1a2cac888141406ee39b0eb5fd66da7fca" kindref="member">calculer</ref>(donnee,<sp/>resu);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1a686ef80e162afd2fb6058c8d27175ca4" kindref="member">end_count</ref>(diffusion_counter_);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tmp;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="124"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>champ<sp/>representant<sp/>la<sp/>diffusivite.</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Champ_Don_base&amp;)<sp/>le<sp/>champ<sp/>representant<sp/>la<sp/>diffusivite</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="classOperateur__Diff_1a684570cd736780e40fecef7696a227b6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classOperateur__Diff_1a684570cd736780e40fecef7696a227b6" kindref="member">Operateur_Diff::diffusivite</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="129"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Diff_1a40e8e73a22b41134f6a21b9e7c7bd456" kindref="member">la_diffusivite</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="134"><highlight class="comment">/*!<sp/>@brief<sp/>Associe<sp/>la<sp/>diffusivite<sp/>a<sp/>l&apos;operateur.</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Champ_Don_base&amp;<sp/>nu)<sp/>le<sp/>champ<sp/>representant<sp/>la<sp/>diffusivite</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/>*<sp/>@return<sp/>le<sp/>champ<sp/>representant<sp/>la<sp/>diffusivite</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="classOperateur__Diff_1a9e560c15136324e71568e3087f3652b5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Diff_1a9e560c15136324e71568e3087f3652b5" kindref="member">Operateur_Diff::associer_diffusivite</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/>nu)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__Diff_1a40e8e73a22b41134f6a21b9e7c7bd456" kindref="member">la_diffusivite</ref>=nu;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="classOperateur__Diff_1a75a11b9bc776e5de33c49f48e947f8be" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><ref refid="classOperateur__Diff_1a75a11b9bc776e5de33c49f48e947f8be" kindref="member">Operateur_Diff::associer_diffusivite_pour_pas_de_temps</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/>nu)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>().<ref refid="classOperateur__Diff__base_1a90df8a35377264fa313b2bcbbd1a9a18" kindref="member">associer_diffusivite_pour_pas_de_temps</ref>(nu);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="149"><highlight class="comment">/*!<sp/>@brief<sp/>Type<sp/>l&apos;operateur.</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Nom&amp;<sp/>typ)<sp/>le<sp/>nom<sp/>representant<sp/>le<sp/>type<sp/>de<sp/>l&apos;operateur</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153" refid="classOperateur__Diff_1a27063750de3dd7f401964377f6cdd154" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Diff_1acf6a9a9161578b16a6d8665f0a4bfc23" kindref="member">Operateur_Diff::typer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>un_type)</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/>OWN_PTR(<ref refid="classOperateur__Diff__base" kindref="compound">Operateur_Diff_base</ref>)::<ref refid="classOperateur__Diff_1acf6a9a9161578b16a6d8665f0a4bfc23" kindref="member">typer</ref>(un_type);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Operateurs/Operateur_Diff.cpp"/>
+  </compounddef>
+</doxygen>

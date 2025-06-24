@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Champ__Generique__Divergence_8cpp" kind="file" language="C++">
+    <compoundname>Champ_Generique_Divergence.cpp</compoundname>
+    <includes refid="Champ__Generique__Divergence_8h" local="no">Champ_Generique_Divergence.h</includes>
+    <includes refid="Champ__Generique__refChamp_8h" local="no">Champ_Generique_refChamp.h</includes>
+    <includes refid="Discretisation__base_8h" local="no">Discretisation_base.h</includes>
+    <includes refid="Synonyme__info_8h" local="no">Synonyme_info.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Champ__Generique__Divergence_8cpp_1aacf665aa031922671dfbdbb706b9516d" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Champ_Generique_Divergencebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Champ_Generique_Divergencebases</name>
+        <initializer>={   &amp;( <ref refid="classChamp__Generique__Operateur__base" kindref="compound">Champ_Generique_Operateur_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Champ_Generique_Divergence.cpp" line="21" column="145" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Champ_Generique_Divergence.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Champ__Generique__Divergence_8cpp_1a0128b860131cc6d7fc4da4dc691a4602" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classSynonyme__info" kindref="compound">Synonyme_info</ref></type>
+        <definition>const Synonyme_info synonym_Champ_Generique_Divergence__LINE__(&quot;Champ_Post_Operateur_Divergence&quot;, Champ_Generique_Divergence ::info_obj.name())</definition>
+        <argsstring>(&quot;Champ_Post_Operateur_Divergence&quot;, Champ_Generique_Divergence ::info_obj.name())</argsstring>
+        <name>synonym_Champ_Generique_Divergence__LINE__</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Champ_Generique_Divergence.cpp" line="24" column="22"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Generique_Divergence.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Generique_refChamp.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discretisation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Synonyme_info.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classChamp__Generique__Divergence_1a33c293f53907e80e9ef19499aea798e2" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classChamp__Generique__Divergence" kindref="compound">Champ_Generique_Divergence</ref>,</highlight><highlight class="stringliteral">&quot;Divergence&quot;</highlight><highlight class="normal">,<ref refid="classChamp__Generique__Operateur__base" kindref="compound">Champ_Generique_Operateur_base</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>divergence<sp/>champ_post_operateur_base<sp/>divergence<sp/>-1<sp/>To<sp/>calculate<sp/>divergency<sp/>of<sp/>a<sp/>given<sp/>field.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">Add_synonym(<ref refid="classChamp__Generique__Divergence" kindref="compound">Champ_Generique_Divergence</ref>,</highlight><highlight class="stringliteral">&quot;Champ_Post_Operateur_Divergence&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classChamp__Generique__Divergence_1ab3e294592f5d9ed241472d07d9e0f42f" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classChamp__Generique__Divergence_1ab3e294592f5d9ed241472d07d9e0f42f" kindref="member">Champ_Generique_Divergence::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="27"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classChamp__Generique__Divergence_1a98d2be008c95bc2b44e4fa7c215b224c" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classChamp__Generique__Divergence_1a98d2be008c95bc2b44e4fa7c215b224c" kindref="member">Champ_Generique_Divergence::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s<sp/>)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Generique__Operateur__base_1a8a78cdbad10ad62c53307cd21db21268" kindref="member">Champ_Generique_Operateur_base::readOn</ref>(s);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classChamp__Generique__Divergence_1a498340d453e113b2f64c599b15d7f7f0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__Divergence_1a498340d453e113b2f64c599b15d7f7f0" kindref="member">Champ_Generique_Divergence::completer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPostraitement__base" kindref="compound">Postraitement_base</ref>&amp;<sp/>post)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Gen__de__Champs__Gen_1a580093f9e120ee6257cd2bc7116a0b00" kindref="member">Champ_Gen_de_Champs_Gen::completer</ref>(post);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/>Pb<sp/>=<sp/><ref refid="classChamp__Gen__de__Champs__Gen_1a647a4bcdc6125bc9a76618198f1e43f4" kindref="member">get_ref_pb_base</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//On<sp/>ne<sp/>complete<sp/>l<sp/>operateur<sp/>que<sp/>s<sp/>il<sp/>sagit<sp/>du<sp/>champ<sp/>de<sp/>vitesse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Generique__refChamp" kindref="compound">Champ_Generique_refChamp</ref>,<ref refid="classChamp__Gen__de__Champs__Gen_1acd00167fc60353efe9298a0b8b3dd0fb" kindref="member">get_source</ref>(0)))</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>OWN_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)<sp/>espace_stockage;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classChamp__Gen__de__Champs__Gen_1acd00167fc60353efe9298a0b8b3dd0fb" kindref="member">get_source</ref>(0).<ref refid="classChamp__Generique__Divergence_1ae16bd708a9504846b0e3102ba2d0440a" kindref="member">get_champ</ref>(espace_stockage).<ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>()==</highlight><highlight class="stringliteral">&quot;vitesse&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn<sp/>=<sp/>Pb.<ref refid="classProbleme__base_1acdfdb3499a491996c477ba8e2ce4b9db" kindref="member">equation</ref>(0);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__Generique__Divergence_1a01ddde5347e668653093d443ab8e3eab" kindref="member">Op_Div_</ref>.<ref refid="classMorEqn_1a1a6c57edd46cc696aa45c6b01a76e14c" kindref="member">associer_eqn</ref>(eqn);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__Generique__Divergence_1a01ddde5347e668653093d443ab8e3eab" kindref="member">Op_Div_</ref>.<ref refid="classOperateur__Div_1a121d0afd56a4671fc2e78cc5ab27d6a5" kindref="member">typer</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__Generique__Divergence_1a01ddde5347e668653093d443ab8e3eab" kindref="member">Op_Div_</ref>.<ref refid="classOperateur__Div_1a0de7f11c68a7d209e822dc0dfbf6605e" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1addce89950be87e830970589f6aba37d3" kindref="member">associer_eqn</ref>(eqn);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//La<sp/>methode<sp/>completer()<sp/>lance<sp/>l<sp/>association<sp/>du<sp/>domaine_discretisee</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//qui<sp/>est<sp/>recuperre<sp/>par<sp/>l<sp/>equation<sp/>associee<sp/>a<sp/>l<sp/>operateur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__Generique__Divergence_1a01ddde5347e668653093d443ab8e3eab" kindref="member">Op_Div_</ref>-&gt;<ref refid="classOperateur_1ac40f77a68a1959a5d37b5b2e45b40571" kindref="member">completer</ref>();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classChamp__Generique__Divergence_1a91193ab4d7669c8c866de95deaab6949" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classChamp__Generique__Divergence_1a91193ab4d7669c8c866de95deaab6949" kindref="member">Champ_Generique_Divergence::get_champ_without_evaluation</ref>(OWN_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)&amp;<sp/>espace_stockage)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="62"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classChamp__Generique__Divergence_1a01ddde5347e668653093d443ab8e3eab" kindref="member">Op_Div_</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>OWN_PTR(<ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>)<sp/><sp/>es_tmp;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>espace_stockage<sp/>=<sp/><ref refid="classChamp__Gen__de__Champs__Gen_1a2521d438f1124925eab2f0fe7381bc83" kindref="member">creer_espace_stockage</ref>(scalaire,1,es_tmp);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//const<sp/>Noms<sp/>nom<sp/>=<sp/>get_source(0).get_property(&quot;nom&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;We<sp/>can<sp/>apply<sp/>a<sp/>Champ_Generique_Divergence<sp/>only<sp/>to<sp/>the<sp/>velocity<sp/>field&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>espace_stockage;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78" refid="classChamp__Generique__Divergence_1ae16bd708a9504846b0e3102ba2d0440a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classChamp__Generique__Divergence_1ae16bd708a9504846b0e3102ba2d0440a" kindref="member">Champ_Generique_Divergence::get_champ</ref>(OWN_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)&amp;<sp/>espace_stockage)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="79"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>OWN_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)<sp/>source_espace_stockage;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/>source<sp/>=<sp/><ref refid="classChamp__Gen__de__Champs__Gen_1acd00167fc60353efe9298a0b8b3dd0fb" kindref="member">get_source</ref>(0).<ref refid="classChamp__Generique__base_1a8d8e641c4464bb4074ebdcf616bd6918" kindref="member">get_champ</ref>(source_espace_stockage);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classChamp__Generique__Divergence_1a01ddde5347e668653093d443ab8e3eab" kindref="member">Op_Div_</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>OWN_PTR(<ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>)<sp/><sp/>es_tmp;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>espace_stockage<sp/>=<sp/><ref refid="classChamp__Gen__de__Champs__Gen_1a2521d438f1124925eab2f0fe7381bc83" kindref="member">creer_espace_stockage</ref>(scalaire,1,es_tmp);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__Generique__Divergence_1a01ddde5347e668653093d443ab8e3eab" kindref="member">Op_Div_</ref>.<ref refid="classOperateur__Div_1a1a0c6a55c5a037c765108418a92456f3" kindref="member">calculer</ref>(source.<ref refid="classChamp__Proto_1a87dd9bef0380e547eb00afc0a9f47b6e" kindref="member">valeurs</ref>(),espace_stockage-&gt;<ref refid="classChamp__Proto_1a87dd9bef0380e547eb00afc0a9f47b6e" kindref="member">valeurs</ref>());</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>nom<sp/>=<sp/><ref refid="classChamp__Gen__de__Champs__Gen_1acd00167fc60353efe9298a0b8b3dd0fb" kindref="member">get_source</ref>(0).<ref refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" kindref="member">get_property</ref>(</highlight><highlight class="stringliteral">&quot;nom&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;We<sp/>can<sp/>apply<sp/>a<sp/>Champ_Generique_Divergence<sp/>only<sp/>to<sp/>the<sp/>velocity<sp/>field&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;The<sp/>field<sp/>treated<sp/>here<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;nom[0]&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>concerns<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;source.<ref refid="classField__base_1a1a644c094b32b3923219f3afd6bcc075" kindref="member">le_nom</ref>()&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>espace_valeurs<sp/>=<sp/>espace_stockage-&gt;<ref refid="classChamp__Proto_1a87dd9bef0380e547eb00afc0a9f47b6e" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>espace_valeurs.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>espace_stockage;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classChamp__Generique__Divergence_1a35fc99e280db8699bd2fd5aa3fd4b739" refkind="member"><highlight class="normal">Entity<sp/><ref refid="classChamp__Generique__Divergence_1a35fc99e280db8699bd2fd5aa3fd4b739" kindref="member">Champ_Generique_Divergence::get_localisation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="105"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>Entity<sp/>loc;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type_op<sp/>=<sp/><ref refid="classChamp__Generique__Divergence_1a01ddde5347e668653093d443ab8e3eab" kindref="member">Op_Div_</ref>-&gt;<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(((type_op==</highlight><highlight class="stringliteral">&quot;Op_Div_VEF_P1NC&quot;</highlight><highlight class="normal">)<sp/>||<sp/>(type_op==</highlight><highlight class="stringliteral">&quot;Op_Div_VDF_Face&quot;</highlight><highlight class="normal">))<sp/>&amp;&amp;<sp/>(index<sp/>&lt;=<sp/>0))</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>loc<sp/>=<sp/>Entity::ELEMENT;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>of<sp/>type<sp/>:<sp/>Divergence<sp/>operator<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>type_op<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>is<sp/>not<sp/>possible<sp/>for<sp/>the<sp/>defined<sp/>field<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classChamp__Generique__base_1ae62b052dfbd7325d47584487401729e4" kindref="member">nom_post_</ref><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__erreur" kindref="compound">Champ_Generique_erreur</ref>(</highlight><highlight class="stringliteral">&quot;INVALID&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>loc;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117" refid="classChamp__Generique__Divergence_1a5263c634b6c4b79ab9d068286d08af9f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/><ref refid="classChamp__Generique__Divergence_1a5263c634b6c4b79ab9d068286d08af9f" kindref="member">Champ_Generique_Divergence::get_property</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>query)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="118"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><ref refid="classMotcles" kindref="compound">Motcles</ref><sp/>motcles(2);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>motcles[0]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;composantes&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>motcles[1]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;unites&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rang<sp/>=<sp/>motcles.<ref refid="classMotcles_1abd4862b9c8552b88a48927e67bd48d9d" kindref="member">search</ref>(query);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(rang)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>compo(1);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nume((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)0);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compo[0]<sp/>=<sp/><ref refid="classChamp__Generique__base_1ae62b052dfbd7325d47584487401729e4" kindref="member">nom_post_</ref>+nume;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compo;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>unites(1);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>source_unites<sp/>=<sp/><ref refid="classChamp__Gen__de__Champs__Gen_1acd00167fc60353efe9298a0b8b3dd0fb" kindref="member">get_source</ref>(0).<ref refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" kindref="member">get_property</ref>(</highlight><highlight class="stringliteral">&quot;unites&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unites[0]<sp/>=<sp/>source_unites[0]+</highlight><highlight class="stringliteral">&quot;/m&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>unites;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classChamp__Gen__de__Champs__Gen_1a4022edbc7d59b504d85b5b7510c1682e" kindref="member">Champ_Gen_de_Champs_Gen::get_property</ref>(query);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="comment">//Nomme<sp/>le<sp/>champ<sp/>en<sp/>tant<sp/>que<sp/>source<sp/>par<sp/>defaut</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="comment">//&quot;Divergence_&quot;<sp/>+<sp/>nom_champ_source</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="classChamp__Generique__Divergence_1ae6a8e5c6d42f027aaaff7f16fd7741d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Generique__Divergence_1ae6a8e5c6d42f027aaaff7f16fd7741d4" kindref="member">Champ_Generique_Divergence::nommer_source</ref>()</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classChamp__Generique__base_1ae62b052dfbd7325d47584487401729e4" kindref="member">nom_post_</ref>==</highlight><highlight class="stringliteral">&quot;??&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_post_source,<sp/>nom_champ_source;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>nom<sp/>=<sp/><ref refid="classChamp__Gen__de__Champs__Gen_1acd00167fc60353efe9298a0b8b3dd0fb" kindref="member">get_source</ref>(0).<ref refid="classChamp__Generique__base_1a093a1c6fcc3e9be60859b5f1a25a5622" kindref="member">get_property</ref>(</highlight><highlight class="stringliteral">&quot;nom&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nom_champ_source<sp/>=<sp/>nom[0];</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nom_post_source<sp/>=<sp/><sp/></highlight><highlight class="stringliteral">&quot;Divergence_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nom_post_source<sp/>+=<sp/><sp/>nom_champ_source;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__Generique__base_1ac0c56a8ba5feefc98276b5e90b9c74f4" kindref="member">nommer</ref>(nom_post_source);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="classChamp__Generique__Divergence_1aa80b3f2082a50c6ec2c979a2f8f2c877" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/><ref refid="classChamp__Generique__Divergence_1aa80b3f2082a50c6ec2c979a2f8f2c877" kindref="member">Champ_Generique_Divergence::get_directive_pour_discr</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="165"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>directive;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>directive<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;divergence_vitesse&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>directive;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Champ_Generique_Divergence.cpp"/>
+  </compounddef>
+</doxygen>

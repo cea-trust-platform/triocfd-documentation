@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Schema__Backward__Differentiation__base_8cpp" kind="file" language="C++">
+    <compoundname>Schema_Backward_Differentiation_base.cpp</compoundname>
+    <includes refid="Schema__Backward__Differentiation__base_8h" local="no">Schema_Backward_Differentiation_base.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Navier__Stokes__std_8h" local="no">Navier_Stokes_std.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Probleme__Couple_8h" local="no">Probleme_Couple.h</includes>
+    <includes refid="Milieu__base_8h" local="no">Milieu_base.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes refid="communications_8h" local="no">communications.h</includes>
+    <includes refid="Matrice__Morse_8h" local="no">Matrice_Morse.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Schema__Backward__Differentiation__base_8cpp_1a75c5a175e31cd2f0cb870456e5dff187" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Schema_Backward_Differentiation_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Schema_Backward_Differentiation_basebases</name>
+        <initializer>={   &amp;( <ref refid="classSchema__Implicite__Multi__TimeStep__base" kindref="compound">Schema_Implicite_Multi_TimeStep_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Schemas_Temps/Schema_Backward_Differentiation_base.cpp" line="28" column="185" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Schemas_Temps/Schema_Backward_Differentiation_base.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Backward_Differentiation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_Couple.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Milieu_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;communications.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Morse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classSchema__Backward__Differentiation__base_1aa9f61dbf0fd80e5170c04401a7efee16" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classSchema__Backward__Differentiation__base" kindref="compound">Schema_Backward_Differentiation_base</ref>,</highlight><highlight class="stringliteral">&quot;Schema_Backward_Differentiation_base&quot;</highlight><highlight class="normal">,<ref refid="classSchema__Implicite__Multi__TimeStep__base" kindref="compound">Schema_Implicite_Multi_TimeStep_base</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="31"><highlight class="comment">/*!<sp/>@brief<sp/>Simple<sp/>appel<sp/>a:<sp/>Schema_Temps_base::printOn(Sortie&amp;<sp/>)<sp/>Ecrit<sp/>le<sp/>schema<sp/>en<sp/>temps<sp/>sur<sp/>un<sp/>flot<sp/>de<sp/>sortie.</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>s)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Sortie&amp;)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>modifie</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classSchema__Backward__Differentiation__base_1ac3896ca9133068c36b8d11c6c130e2de" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSchema__Backward__Differentiation__base_1ac3896ca9133068c36b8d11c6c130e2de" kindref="member">Schema_Backward_Differentiation_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="37"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><sp/><ref refid="classSchema__Implicite__Multi__TimeStep__base_1a66fabeb8c37ce9f97375111706ac3da7" kindref="member">Schema_Implicite_Multi_TimeStep_base::printOn</ref>(s);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="42"><highlight class="comment">/*!<sp/>@brief<sp/>Lit<sp/>le<sp/>schema<sp/>en<sp/>temps<sp/>a<sp/>partir<sp/>d&apos;un<sp/>flot<sp/>d&apos;entree.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>Simple<sp/>appel<sp/>a:<sp/>Schema_Temps_base::readOn(Entree&amp;<sp/>)</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>s)<sp/>un<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;)<sp/>le<sp/>flot<sp/>d&apos;entree<sp/>modifie</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classSchema__Backward__Differentiation__base_1a739a1277aedb06df5ca06771701d441b" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSchema__Backward__Differentiation__base_1a739a1277aedb06df5ca06771701d441b" kindref="member">Schema_Backward_Differentiation_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSchema__Implicite__Multi__TimeStep__base_1a81d7cfd76a78b7698ce20eba3fb15e23" kindref="member">Schema_Implicite_Multi_TimeStep_base::readOn</ref>(s);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classSchema__Backward__Differentiation__base_1a3969ae33c16b185810fdcaadc16d1927" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classSchema__Backward__Differentiation__base_1a3969ae33c16b185810fdcaadc16d1927" kindref="member">Schema_Backward_Differentiation_base::changer_temps</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().Champ_base::changer_temps(temps);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>temps;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classSchema__Backward__Differentiation__base_1afc24a844b5874339d38a515f74bf21e4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Backward__Differentiation__base_1afc24a844b5874339d38a515f74bf21e4" kindref="member">Schema_Backward_Differentiation_base::update_time_derivative</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>data)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Nothing<sp/>to<sp/>do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classSchema__Backward__Differentiation__base_1a8db7b6c39ae613d6a1610b9d6b78d827" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Backward__Differentiation__base_1a8db7b6c39ae613d6a1610b9d6b78d827" kindref="member">Schema_Backward_Differentiation_base::mettre_a_jour_equation</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a600260f3b3623450c54c5a33a131e8f3" kindref="member">mettre_a_jour</ref>(temps);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="classSchema__Backward__Differentiation__base_1a9b6cbe819a4f8b8d6dcbad0ac69528b8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Backward__Differentiation__base_1a9b6cbe819a4f8b8d6dcbad0ac69528b8" kindref="member">Schema_Backward_Differentiation_base::compute_coefficients</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>time_step,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>times)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="71"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><ref refid="classSchema__Backward__Differentiation__base_1a4043220332e2d70e49568493fdc2dce5" kindref="member">compute_backward_differentiation_coefficients</ref>(time_step,times);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//To<sp/>take<sp/>into<sp/>account<sp/>pressure<sp/>constraint</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classSchema__Backward__Differentiation__base_1a19dd6274c454f1e7e125b7d82832cf5d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Backward__Differentiation__base_1a19dd6274c454f1e7e125b7d82832cf5d" kindref="member">Schema_Backward_Differentiation_base::store_equation_parameters</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>stored_parameters)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSchema__Temps__base_1ab32e23a4b61dfec4803446bace0256e6" kindref="member">nb_pas_dt</ref>()&gt;<ref refid="classSchema__Implicite__Multi__TimeStep__base_1a7af3825ba82171bd2e0da660cdf1d4c6" kindref="member">nb_pas_dt_seuil</ref>())</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>,eqn))</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>&amp;<sp/>navier_stokes<sp/>=<sp/>ref_cast(<ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>,eqn);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stored_parameters<sp/>=<sp/>navier_stokes.<ref refid="classNavier__Stokes__std_1afb97e5ea42a31c4a6b85fd95d5061dfb" kindref="member">pression</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>();<sp/></highlight><highlight class="comment">//store<sp/>pressure<sp/>at<sp/>time<sp/>tn</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//To<sp/>take<sp/>into<sp/>account<sp/>pressure<sp/>constraint</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classSchema__Backward__Differentiation__base_1a62f97f85309ee3d967b306001557df2d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Backward__Differentiation__base_1a62f97f85309ee3d967b306001557df2d" kindref="member">Schema_Backward_Differentiation_base::modify_equation_parameters</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>stored_parameters)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSchema__Temps__base_1ab32e23a4b61dfec4803446bace0256e6" kindref="member">nb_pas_dt</ref>()&gt;<ref refid="classSchema__Implicite__Multi__TimeStep__base_1a7af3825ba82171bd2e0da660cdf1d4c6" kindref="member">nb_pas_dt_seuil</ref>())</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>,eqn))</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>&amp;<sp/>navier_stokes<sp/>=<sp/>ref_cast(<ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>,eqn);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>pressure<sp/>=<sp/>navier_stokes.<ref refid="classNavier__Stokes__std_1afb97e5ea42a31c4a6b85fd95d5061dfb" kindref="member">pression</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>();<sp/></highlight><highlight class="comment">//pressure<sp/>at<sp/>time<sp/>tnplus1<sp/>that<sp/>is<sp/>to<sp/>say<sp/>P(n+1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/><sp/>delta_pressure(pressure);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delta_pressure<sp/>-=<sp/>stored_parameters;<sp/></highlight><highlight class="comment">//contains<sp/>P(n+1)<sp/>-<sp/>P(n)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delta_pressure<sp/>/=<sp/><ref refid="classSchema__Backward__Differentiation__base_1a020f5adb0b51bfa22861fc1f77d3da27" kindref="member">coefficients</ref>()[<ref refid="classSchema__Implicite__Multi__TimeStep__base_1aa17f04a2659b434bdfe159b5bb44982d" kindref="member">nb_valeurs_passees</ref>()+1];<sp/></highlight><highlight class="comment">//take<sp/>into<sp/>account<sp/>time<sp/>scheme<sp/>coefficient</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pressure<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>stored_parameters;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pressure<sp/><sp/><sp/><sp/><sp/><sp/><sp/>+=<sp/>delta_pressure;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classSchema__Backward__Differentiation__base_1a833e9683771d073682b6bf75b3df07a1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Backward__Differentiation__base_1a833e9683771d073682b6bf75b3df07a1" kindref="member">Schema_Backward_Differentiation_base::add_multi_timestep_data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>mat_morse,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>secmem)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="109"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>time_step<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><ref refid="classSchema__Temps__base_1a816fca9a75adfb2501a68b08652a08fb" kindref="member">pas_de_temps</ref>();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>effective_time_step<sp/><sp/><sp/><sp/><sp/>=<sp/>-1.;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Remark<sp/>for<sp/>&quot;pen&quot;<sp/>interger<sp/>:<sp/>we<sp/>do<sp/>not<sp/>penalize<sp/>matrices<sp/>and<sp/>right<sp/>members<sp/>even<sp/>in<sp/>the<sp/>case</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>Dirichlet<sp/>or<sp/>Symetrie<sp/>boundary<sp/>conditions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pen<sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>effective_time_step<sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classSchema__Backward__Differentiation__base_1a020f5adb0b51bfa22861fc1f77d3da27" kindref="member">coefficients</ref>()[<ref refid="classSchema__Implicite__Multi__TimeStep__base_1aa17f04a2659b434bdfe159b5bb44982d" kindref="member">nb_valeurs_passees</ref>()+1]<sp/>*<sp/>time_step;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Modification<sp/>due<sp/>to<sp/>present<sp/>time<sp/>and<sp/>past<sp/>times</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>dudt(eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>());</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>tmp(dudt);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>dudt<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;<ref refid="classSchema__Implicite__Multi__TimeStep__base_1aa17f04a2659b434bdfe159b5bb44982d" kindref="member">nb_valeurs_passees</ref>()+1;<sp/>++i)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/><sp/>=<sp/><ref refid="classSchema__Implicite__Multi__TimeStep__base_1aa17f04a2659b434bdfe159b5bb44982d" kindref="member">nb_valeurs_passees</ref>()-i<sp/>+<sp/>1;</highlight><highlight class="comment">//due<sp/>to<sp/>Initialiser_Champs()<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tmp<sp/><sp/><sp/><sp/><sp/>=<sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a31066589ce6d89d4f0a96d25a5250e2f" kindref="member">passe</ref>(offset);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tmp<sp/><sp/><sp/><sp/>*=<sp/><ref refid="classSchema__Backward__Differentiation__base_1a020f5adb0b51bfa22861fc1f77d3da27" kindref="member">coefficients</ref>()[i]<sp/>;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dudt<sp/><sp/><sp/>+=<sp/>tmp;<sp/></highlight><highlight class="comment">//past<sp/>times<sp/>and<sp/>present<sp/>time<sp/>if<sp/>i==nb_valeurs_passees()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a4b4effb48f1841ec8c743d6eb29f8a51" kindref="member">solv_masse</ref>().<ref refid="classSolveur__Masse__base_1a95d49c5b0ac8480995d0777f7c72df5d" kindref="member">ajouter_masse</ref>(effective_time_step,secmem,dudt,pen);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a4b4effb48f1841ec8c743d6eb29f8a51" kindref="member">solv_masse</ref>().<ref refid="classSolveur__Masse__base_1a95d49c5b0ac8480995d0777f7c72df5d" kindref="member">ajouter_masse</ref>(effective_time_step,mat_morse,pen);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Schemas_Temps/Schema_Backward_Differentiation_base.cpp"/>
+  </compounddef>
+</doxygen>

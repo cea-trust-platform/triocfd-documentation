@@ -1,0 +1,427 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Implicit__steady_8cpp" kind="file" language="C++">
+    <compoundname>Implicit_steady.cpp</compoundname>
+    <includes refid="Implicit__steady_8h" local="no">Implicit_steady.h</includes>
+    <includes refid="Schema__Euler__Implicite__Stationnaire_8h" local="no">Schema_Euler_Implicite_Stationnaire.h</includes>
+    <includes refid="Domaine__VF_8h" local="no">Domaine_VF.h</includes>
+    <includes refid="Domaine__VEF_8h" local="no">Domaine_VEF.h</includes>
+    <includes refid="Domaine__Cl__VEF_8h" local="no">Domaine_Cl_VEF.h</includes>
+    <includes refid="Domaine__VDF_8h" local="no">Domaine_VDF.h</includes>
+    <includes refid="Navier__Stokes__std_8h" local="no">Navier_Stokes_std.h</includes>
+    <includes refid="EChaine_8h" local="no">EChaine.h</includes>
+    <includes refid="Debog_8h" local="no">Debog.h</includes>
+    <includes refid="Matrice__Bloc_8h" local="no">Matrice_Bloc.h</includes>
+    <includes refid="Assembleur__base_8h" local="no">Assembleur_base.h</includes>
+    <includes refid="Discretisation__base_8h" local="no">Discretisation_base.h</includes>
+    <includes refid="Statistiques_8h" local="no">Statistiques.h</includes>
+    <includes refid="Schema__Temps__base_8h" local="no">Schema_Temps_base.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+    <includes refid="Fluide__Quasi__Compressible_8h" local="no">Fluide_Quasi_Compressible.h</includes>
+    <includes refid="Dirichlet_8h" local="no">Dirichlet.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes local="no">assert.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Implicit_steady.cpp</label>
+        <link refid="Implicit__steady_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>assert.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Implicit__steady_8cpp_1ad993b3a71ec9430f225b2926cd8c7ea2" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Implicit_steadybases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Implicit_steadybases</name>
+        <initializer>={   &amp;( <ref refid="classSimpler" kindref="compound">Simpler</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Schema_Euler_Implicite_Stationnaire/Implicit_steady.cpp" line="43" column="101" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Schema_Euler_Implicite_Stationnaire/Implicit_steady.cpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Implicit__steady_8cpp_1a1ae08ac8bdca294a41fdc8a30e4cd339" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_impose_bound_cond</definition>
+        <argsstring>(Equation_base &amp;eqn, DoubleTab &amp;current2, const char *msg, int flag)</argsstring>
+        <name>test_impose_bound_cond</name>
+        <param>
+          <type><ref refid="classEquation__base" kindref="compound">Equation_base</ref> &amp;</type>
+          <declname>eqn</declname>
+        </param>
+        <param>
+          <type><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref> &amp;</type>
+          <declname>current2</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>flag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Schema_Euler_Implicite_Stationnaire/Implicit_steady.cpp" line="60" column="6" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Schema_Euler_Implicite_Stationnaire/Implicit_steady.cpp" bodystart="60" bodyend="75"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Implicite_steady.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TRUST_ROOT/../Composants/TrioCFD/Schema_Euler_Implicite_Stationnaire/src/New</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version:<sp/><sp/><sp/><sp/><sp/>/main/29</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Implicit_steady.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Euler_Implicite_Stationnaire.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VEF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_Cl_VEF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VDF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EChaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Debog.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Bloc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Assembleur_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discretisation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Statistiques.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Temps_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Quasi_Compressible.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Dirichlet.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classImplicit__steady_1a35f37ee79cf329fdfdfd60ef5a261644" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classImplicit__steady" kindref="compound">Implicit_steady</ref>,</highlight><highlight class="stringliteral">&quot;Implicit_steady&quot;</highlight><highlight class="normal">,<ref refid="classSimpler" kindref="compound">Simpler</ref>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>implicit_steady<sp/>implicite<sp/><sp/>implicit_steady<sp/>1<sp/><sp/>this<sp/>is<sp/>the<sp/>implicit<sp/>solver<sp/>using<sp/>a<sp/>dual<sp/>time<sp/>step.<sp/>Remark:<sp/>this<sp/>solver<sp/>can<sp/>be<sp/>used<sp/>only<sp/>with<sp/>the<sp/>Implicit_Euler_Steady_Scheme<sp/>time<sp/>scheme.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classImplicit__steady_1a6cb5272c50c20a0dc7b998c3025ef06b" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classImplicit__steady_1a6cb5272c50c20a0dc7b998c3025ef06b" kindref="member">Implicit_steady::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="47"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimpler_1ab366344c23dbaab3f1a46620740bde65" kindref="member">Simpler::printOn</ref>(os);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classImplicit__steady_1a7e7d71b8e5aaad771ab9b5fcc3b68b47" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classImplicit__steady_1a7e7d71b8e5aaad771ab9b5fcc3b68b47" kindref="member">Implicit_steady::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="classSimpler_1a67c19f48bf7bd78b6c048a013664473f" kindref="member">Simpler::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>test_impose_bound_cond(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>current2,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>msg,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flag)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>present<sp/>=<sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a246d9aabb57dbccef0ca304c87abf870" kindref="member">futur</ref>();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>sauv(present);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSchema__Temps__base" kindref="compound">Schema_Temps_base</ref>&amp;<sp/>sch<sp/>=<sp/>eqn.<ref refid="classEquation__base_1aa8151a96f63719523bf50ddd832e0f8f" kindref="member">probleme</ref>().<ref refid="classProbleme__base_1ab478224fd233d4ef2fcd2b629108d14c" kindref="member">schema_temps</ref>();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>().<ref refid="classDomaine__Cl__dis__base_1a52d23ed7c6da1e9557e93f99cbdcd822" kindref="member">imposer_cond_lim</ref>(eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>(),sch.<ref refid="classSchema__Temps__base_1a1e573b93ad40c737ecb2da65b68f968a" kindref="member">temps_courant</ref>()+sch.<ref refid="classSchema__Temps__base_1a816fca9a75adfb2501a68b08652a08fb" kindref="member">pas_de_temps</ref>());</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>present<sp/>-=<sp/>sauv;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>BM,<sp/>je<sp/>remplace<sp/>max_abs<sp/>par<sp/>mp_pax_abs:<sp/>du<sp/>coup<sp/>la<sp/>methode<sp/>doit<sp/>etre<sp/>appelee<sp/>simultanement<sp/>par<sp/>tous<sp/>les<sp/>procs.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ecart_max=mp_max_abs_vect(present);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>Cout&lt;&lt;msg<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;ecart_max&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((ecart_max&gt;1e-10))</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>abort();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>present<sp/>=<sp/>sauv;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//This<sp/>function<sp/>slightly<sp/>modifies<sp/>the<sp/>&quot;Piso<sp/>::<sp/>iterate_NS<sp/>with<sp/>avancement_crank_=0&quot;<sp/>function<sp/>in<sp/>order<sp/>to<sp/>take<sp/>into<sp/>account<sp/>a<sp/>variable<sp/>time<sp/>step</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//Use<sp/>of<sp/>a<sp/>variable<sp/>time<sp/>step<sp/>with<sp/>the<sp/>IMPLICITE<sp/>algorithm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//replaces<sp/>the<sp/>global<sp/>time<sp/>step<sp/>with<sp/>a<sp/>local<sp/>time<sp/>step</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classImplicit__steady_1a698be6194f69b921f493bdee17fb38a7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classImplicit__steady_1a698be6194f69b921f493bdee17fb38a7" kindref="member">Implicit_steady::iterer_NS</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>current,<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>pression,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matrice,</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>seuil_resol,<ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref>&amp;<sp/>secmem,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_iter,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>converge,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>ok)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><ref refid="classSchema__Temps__base" kindref="compound">Schema_Temps_base</ref>&amp;<sp/>sch<sp/>=<sp/>eqn.<ref refid="classEquation__base_1aa8151a96f63719523bf50ddd832e0f8f" kindref="member">probleme</ref>().<ref refid="classProbleme__base_1ab478224fd233d4ef2fcd2b629108d14c" kindref="member">schema_temps</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><ref refid="classParametre__implicite" kindref="compound">Parametre_implicite</ref>&amp;<sp/>param_eqn<sp/>=<sp/><ref refid="classSimpler__Base_1a48f161aca850ff2462803f62c040c173" kindref="member">get_and_set_parametre_implicite</ref>(eqn);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><ref refid="classSolveurSys" kindref="compound">SolveurSys</ref>&amp;<sp/>le_solveur_<sp/>=<sp/>param_eqn.<ref refid="classParametre__implicite_1a17400e45bc9f12d9eb3e228cf8696e16" kindref="member">solveur</ref>();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>converge<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>&amp;<sp/>eqnNS<sp/>=<sp/>ref_cast(<ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>,eqn);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!sub_type(<ref refid="classSchema__Euler__Implicite__Stationnaire" kindref="compound">Schema_Euler_Implicite_Stationnaire</ref>,sch))</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Implicit_steady<sp/>solveur<sp/>can<sp/>be<sp/>used<sp/>only<sp/>with<sp/>the<sp/>Implicit_Euler_Steady_Scheme<sp/>or<sp/>Schema_Euler_Implicite_Stationnaire<sp/>scheme!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Please,<sp/>contact<sp/>TRUST<sp/>support.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//DoubleTab&amp;<sp/>passe<sp/>=<sp/>eqnNS.inconnue().passe(2);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>present(current);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>gradP(current);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>correction_en_pression(pression);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>resu(current);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__Grad" kindref="compound">Operateur_Grad</ref>&amp;<sp/>gradient<sp/>=<sp/>eqnNS.<ref refid="classNavier__Stokes__std_1a840295836fce939b7861f1353da595ff" kindref="member">operateur_gradient</ref>();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__Div" kindref="compound">Operateur_Div</ref>&amp;<sp/>divergence<sp/>=<sp/>eqnNS.<ref refid="classNavier__Stokes__std_1a614d41350181667ee295b87a72779c1a" kindref="member">operateur_divergence</ref>();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Construction<sp/>de<sp/>matrice<sp/>et<sp/>resu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//matrice<sp/>=<sp/>A[Un]<sp/>=<sp/>M/dt_locaux<sp/>+<sp/>CONV<sp/>+DIFF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//resu<sp/>=<sp/>M/dt_locaux*Un<sp/><sp/>-BtPn<sp/>+<sp/>Sv</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>gradient.<ref refid="classOperateur__Grad_1a48b8660fed0e8067d4e66a0b66140502" kindref="member">calculer</ref>(pression,gradP);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>resu<sp/>-=<sp/>gradP;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>eqnNS.<ref refid="classEquation__base_1a6442c887ca10e6b6e59e0d36140f698c" kindref="member">assembler_avec_inertie</ref>(matrice,current,resu);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>le_solveur_-&gt;reinit();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Implicit_steady::iterer_NS<sp/>resu<sp/>apres<sp/>assembler_avec_inertie&quot;</highlight><highlight class="normal">,resu);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Definition<sp/>de<sp/>matrice_en_pression_2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><ref refid="classMatrice" kindref="compound">Matrice</ref>&amp;<sp/>matrice_en_pression_2<sp/>=<sp/>eqnNS.<ref refid="classNavier__Stokes__std_1ade0331e225bfe2c312d4917eb127e3cd" kindref="member">matrice_pression</ref>();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="classSolveurSys" kindref="compound">SolveurSys</ref>&amp;<sp/>solveur_pression_<sp/>=<sp/>eqnNS.<ref refid="classNavier__Stokes__std_1ae83d9f7a42531293583f32be1efd3d5f" kindref="member">solveur_pression</ref>();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Etape<sp/>predicteur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Compute<sp/>U*<sp/>:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Resolution<sp/>du<sp/>systeme<sp/>A[Un]U*<sp/>=<sp/>-BtPn<sp/>+<sp/>Sv<sp/>+<sp/>Ss</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//current<sp/>=<sp/>U*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>le_solveur_.<ref refid="classSolveurSys_1a62ca198f0c5dc599e53b0535761e5138" kindref="member">resoudre_systeme</ref>(matrice,resu,current);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>test_impose_bound_cond(eqn,current,</highlight><highlight class="stringliteral">&quot;apres<sp/>resolution<sp/>&quot;</highlight><highlight class="normal">,0);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Implicit_steady::iterer_NS<sp/>current<sp/>apres<sp/>CL&quot;</highlight><highlight class="normal">,current);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/>#ifndef<sp/>NDEBUG</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/>//<sp/>Check<sp/>periodic<sp/>BC<sp/>on<sp/>U*</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/>test_periodic_solution(eqnNS,<sp/>current);</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/>#endif</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>current.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Calcul<sp/>de<sp/>secmem<sp/>=<sp/>BU*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(eqn.<ref refid="classEquation__base_1aa8151a96f63719523bf50ddd832e0f8f" kindref="member">probleme</ref>().<ref refid="classProbleme__base_1a40e3419cc379f9aea225fbef3dadf3ec" kindref="member">is_dilatable</ref>())</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Steady<sp/>option<sp/>is<sp/>not<sp/>compatible<sp/>with<sp/>the<sp/>quasi/weakly<sp/>compressible<sp/>models<sp/>!&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Please,<sp/>contact<sp/>TRUST<sp/>support.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>divergence.<ref refid="classOperateur__Div_1a1a0c6a55c5a037c765108418a92456f3" kindref="member">calculer</ref>(current,secmem);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>secmem<sp/>*=<sp/>-1;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>secmem.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Etape<sp/>de<sp/>correction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Solving<sp/>mass<sp/>equation<sp/>:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Description<sp/>du<sp/>cas<sp/>implicite</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Resolution<sp/>du<sp/>systeme<sp/>(B*dt_locaux*M-1Bt)P&apos;<sp/>=<sp/>Bu*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//correction_en_pression<sp/>=<sp/>P&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>dt_locaux<sp/>=<sp/>sch.<ref refid="classSchema__Temps__base_1a907416b266095a1aa4136c99fabea16d" kindref="member">pas_de_temps_locaux</ref>();</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Calcul<sp/>du<sp/>M/dt_locaux</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>m_dt(dt_locaux);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>discr=eqnNS.<ref refid="classEquation__base_1a440fc95363315082eddbef26dc76024e" kindref="member">discretisation</ref>().<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(discr==</highlight><highlight class="stringliteral">&quot;VDF&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classImplicit__steady_1a64ae47637b7af8ffaa432d4cff7e5b73" kindref="member">calcul_mat_masse_diviser_par_dt_vdf</ref>(eqnNS,<sp/>m_dt,<sp/>dt_locaux);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classImplicit__steady_1ab43632dffd939db1faddf8fdf45a9e7b" kindref="member">calcul_mat_masse_diviser_par_dt_vef</ref>(eqnNS,<sp/>m_dt,<sp/>dt_locaux);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//DoubleVect<sp/><sp/>m_dt(dt_locaux);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//eqnNS.solv_masse().get_masse_divide_by_local_dt(m_dt,<sp/>dt_locaux,<sp/>0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Construction<sp/>de<sp/>matrice_en_pression_2<sp/>=<sp/>B*dt_locaux*M-1Bt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>eqnNS.<ref refid="classNavier__Stokes__std_1ae71e6da0b4fcd369536c7334c828778d" kindref="member">assembleur_pression</ref>()-&gt;<ref refid="classAssembleur__base_1a0710705cb88b7db3620b993a2cb31e05" kindref="member">assembler_mat</ref>(matrice_en_pression_2,m_dt,1,1);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>solveur_pression_-&gt;reinit();</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Resolution<sp/>du<sp/>systeme<sp/>(B*dt_locaux*M-1Bt)P&apos;<sp/>=<sp/>Bu*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/>solveur_pression_.<ref refid="classSolveurSys_1a62ca198f0c5dc599e53b0535761e5138" kindref="member">resoudre_systeme</ref>(matrice_en_pression_2.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>(),</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secmem,correction_en_pression);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/>correction_en_pression.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Calcul<sp/>de<sp/>M^-1BtP&apos;=gradP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>gradient-&gt;multvect(correction_en_pression,gradP);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a4b4effb48f1841ec8c743d6eb29f8a51" kindref="member">solv_masse</ref>().<ref refid="classSolveur__Masse__base_1acb67cf99305704c37379cda2d3a2358a" kindref="member">appliquer</ref>(gradP);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Calcul<sp/>de<sp/>Un+1<sp/>=<sp/>U*<sp/>-dt_locaux*gradP<sp/>-M*dt_locaux*deltaU/dt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//dt<sp/>=<sp/>pas<sp/>de<sp/>temps<sp/>global</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//deltaU<sp/>=<sp/>Un+1<sp/>-Un</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size=gradP.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//dt_locaux_taille_vitesse<sp/>pas<sp/>de<sp/>temps<sp/>local:<sp/>Vect<sp/>de<sp/>la<sp/>meme<sp/>taille<sp/>que<sp/>le<sp/>vecteur<sp/>vitesse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//construit<sp/>a<sp/>partir<sp/>de<sp/>dt_face:<sp/>pas<sp/>de<sp/>temps<sp/>par<sp/>face</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//dt_locaux_taille_vitesse<sp/>par<sp/>face<sp/>a<sp/>la<sp/>meme<sp/>valeurs<sp/>dans<sp/>les<sp/>directions<sp/>:<sp/>x,y,z</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/><sp/>dt_locaux_taille_vitesse(current);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(discr==</highlight><highlight class="stringliteral">&quot;VDF&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dt_locaux_taille_vitesse<sp/>=<sp/>dt_locaux;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_dim<sp/>=<sp/>eqnNS.<ref refid="classNavier__Stokes__std_1a3beaade39a0ca1d2cbd00fc7a6979364" kindref="member">inconnue</ref>().<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>assert(dt_locaux.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()*nb_dim<sp/>==<sp/>dt_locaux_taille_vitesse.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;dt_locaux_taille_vitesse.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(i<sp/>!=<sp/>0<sp/>&amp;&amp;<sp/>i%nb_dim<sp/>==<sp/>0)<sp/>j++;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dt_locaux_taille_vitesse[i]<sp/>=<sp/>dt_locaux[j];</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dt_locaux_taille_vitesse.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/><sp/>dt_locaux_masse<sp/>(dt_locaux_taille_vitesse);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Calcul<sp/>du<sp/>M*dt_locaux</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/>eqnNS.<ref refid="classEquation__base_1a4b4effb48f1841ec8c743d6eb29f8a51" kindref="member">solv_masse</ref>().<ref refid="classSolveur__Masse__base_1a90f956055e6ea38ea45aae6d194623eb" kindref="member">get_masse_dt_local</ref>(dt_locaux_masse,<sp/>dt_locaux_taille_vitesse,<sp/>0);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;size;<sp/>i++)</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>present.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]<sp/>*=dt_locaux_masse[i]/dt;<sp/></highlight><highlight class="comment">//M*dt_locaux*Un/dt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gradP.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]<sp/>*=dt_locaux_taille_vitesse[i];<sp/><sp/></highlight><highlight class="comment">//dt_locaux*gradP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/>present.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/>gradP.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/>current<sp/>-=<sp/>gradP;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ajustement<sp/>pour<sp/>prendre<sp/>en<sp/>compte<sp/>le<sp/>terme<sp/>M*dt_locaux*deltaU/dt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>current<sp/>+=<sp/>present;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;size;<sp/>i++)</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>current.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]<sp/>*=<sp/>dt/(dt+dt_locaux_masse[i]);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/>test_impose_bound_cond(eqn,current,</highlight><highlight class="stringliteral">&quot;apres<sp/>resolution<sp/>&quot;</highlight><highlight class="normal">,0);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//current=Un+1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/>current.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>divergence.<ref refid="classOperateur__Div_1a1a0c6a55c5a037c765108418a92456f3" kindref="member">calculer</ref>(current,secmem);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Calcul<sp/>de<sp/>Pn+1<sp/>=<sp/>Pn<sp/>+<sp/>P&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/>pression<sp/>+=<sp/>correction_en_pression;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Implicit_steady::iterer_NS<sp/>pression<sp/>fin&quot;</highlight><highlight class="normal">,<sp/>pression);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/>eqnNS.<ref refid="classNavier__Stokes__std_1ae71e6da0b4fcd369536c7334c828778d" kindref="member">assembleur_pression</ref>()-&gt;<ref refid="classAssembleur__base_1ab63a4124e6e959dc5986c566748422f6" kindref="member">modifier_solution</ref>(pression);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/>pression.echange_espace_virtuel();</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight><highlight class="comment">//Calcule<sp/>M/dt_locaux</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="classImplicit__steady_1ab43632dffd939db1faddf8fdf45a9e7b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classImplicit__steady_1ab43632dffd939db1faddf8fdf45a9e7b" kindref="member">Implicit_steady::calcul_mat_masse_diviser_par_dt_vef</ref>(<ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>&amp;<sp/>eqnNS,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>m_dt,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>dt_locaux)</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VEF" kindref="compound">Domaine_VEF</ref>&amp;<sp/>le_dom<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VEF" kindref="compound">Domaine_VEF</ref>,eqnNS.<ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>());</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>volumes_entrelaces_ref=le_dom.<ref refid="classDomaine__VF_1a3feb55fc2f6c55d61d249f14ba658494" kindref="member">volumes_entrelaces</ref>();</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__VEF" kindref="compound">Domaine_Cl_VEF</ref>&amp;<sp/>le_dom_cl<sp/>=<sp/>ref_cast(<ref refid="classDomaine__Cl__VEF" kindref="compound">Domaine_Cl_VEF</ref>,eqnNS.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>());</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>volumes_entrelaces_cl=le_dom_cl.<ref refid="classDomaine__Cl__VEF_1a06d734cb510f5752c9ebae5ec39c37b5" kindref="member">volumes_entrelaces_Cl</ref>();</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>volumes_entrelaces(volumes_entrelaces_ref);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size_cl=volumes_entrelaces_cl.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>f=0;<sp/>f&lt;size_cl;<sp/>f++)</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(volumes_entrelaces_cl(f)!=0)</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>volumes_entrelaces(f)=volumes_entrelaces_cl(f);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/>volumes_entrelaces.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size=volumes_entrelaces.<ref refid="classTRUSTVect_1a1918c7467e93eb90ae67d288b1519ae7" kindref="member">size_totale</ref>();</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Si<sp/>rho<sp/>n&apos;est<sp/>pas<sp/>constant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>masse_volumique<sp/>=<sp/>eqnNS.<ref refid="classNavier__Stokes__std_1a4db4702d702054a0a35fc714609c3de4" kindref="member">fluide</ref>().<ref refid="classMilieu__base_1ab8ce0742ed6681306999931dca88a5b9" kindref="member">masse_volumique</ref>().<ref refid="classChamp__Proto_1a87dd9bef0380e547eb00afc0a9f47b6e" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(masse_volumique.<ref refid="classTRUSTVect_1a1918c7467e93eb90ae67d288b1519ae7" kindref="member">size_totale</ref>()==size)</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>face=0;<sp/>face&lt;size;<sp/>face++)</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_dt(face)<sp/>=<sp/>volumes_entrelaces(face)*masse_volumique(face)<sp/>/<sp/>dt_locaux(face);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>face=0;<sp/>face&lt;size;<sp/>face++)</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_dt(face)<sp/>=<sp/>volumes_entrelaces(face)/<sp/>dt_locaux(face);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/>m_dt.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277" refid="classImplicit__steady_1a64ae47637b7af8ffaa432d4cff7e5b73" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classImplicit__steady_1a64ae47637b7af8ffaa432d4cff7e5b73" kindref="member">Implicit_steady::calcul_mat_masse_diviser_par_dt_vdf</ref>(<ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>&amp;<sp/>eqnNS,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>m_dt,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>dt_locaux)</highlight></codeline>
+<codeline lineno="278"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VDF" kindref="compound">Domaine_VDF</ref>&amp;<sp/>le_dom<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VDF" kindref="compound">Domaine_VDF</ref>,eqnNS.<ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>());</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>volumes_entrelaces=le_dom.<ref refid="classDomaine__VF_1a3feb55fc2f6c55d61d249f14ba658494" kindref="member">volumes_entrelaces</ref>();</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size=volumes_entrelaces.<ref refid="classTRUSTVect_1a1918c7467e93eb90ae67d288b1519ae7" kindref="member">size_totale</ref>();</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Si<sp/>rho<sp/>n&apos;est<sp/>pas<sp/>constant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>masse_volumique<sp/>=<sp/>eqnNS.<ref refid="classNavier__Stokes__std_1a4db4702d702054a0a35fc714609c3de4" kindref="member">fluide</ref>().<ref refid="classMilieu__base_1ab8ce0742ed6681306999931dca88a5b9" kindref="member">masse_volumique</ref>().<ref refid="classChamp__Proto_1a87dd9bef0380e547eb00afc0a9f47b6e" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(masse_volumique.<ref refid="classTRUSTVect_1a1918c7467e93eb90ae67d288b1519ae7" kindref="member">size_totale</ref>()==size)</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>face=0;<sp/>face&lt;size;<sp/>face++)</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_dt(face)<sp/>=<sp/>volumes_entrelaces(face)*masse_volumique(face)<sp/>/<sp/>dt_locaux(face);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>face=0;<sp/>face&lt;size;<sp/>face++)</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_dt(face)<sp/>=<sp/>volumes_entrelaces(face)/<sp/>dt_locaux(face);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/>m_dt.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight><highlight class="comment">/*//Fonction<sp/>utile<sp/>uniquement<sp/>pour<sp/>le<sp/>Debug</highlight></codeline>
+<codeline lineno="303"><highlight class="comment">void<sp/>Implicit_steady::test_periodic_solution(Navier_Stokes_std&amp;<sp/>eqnNS,<sp/>DoubleTab&amp;<sp/>current)<sp/>const</highlight></codeline>
+<codeline lineno="304"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="305"><highlight class="comment"></highlight></codeline>
+<codeline lineno="306"><highlight class="comment"><sp/><sp/>const<sp/>Domaine_VEF&amp;<sp/>le_dom<sp/>=<sp/>ref_cast(Domaine_VEF,eqnNS.domaine_dis());</highlight></codeline>
+<codeline lineno="307"><highlight class="comment"><sp/><sp/>const<sp/>Domaine_Cl_VEF&amp;<sp/>le_dom_cl<sp/>=<sp/>ref_cast(Domaine_Cl_VEF,eqnNS.domaine_Cl_dis());</highlight></codeline>
+<codeline lineno="308"><highlight class="comment"><sp/><sp/>int<sp/>nb_comp=current.dimension(1);</highlight></codeline>
+<codeline lineno="309"><highlight class="comment"><sp/><sp/>for<sp/>(int<sp/>n_bord=0;<sp/>n_bord&lt;le_dom.nb_front_Cl();<sp/>n_bord++)</highlight></codeline>
+<codeline lineno="310"><highlight class="comment"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="311"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Cond_lim&amp;<sp/>la_cl<sp/>=<sp/>le_dom_cl.les_conditions_limites(n_bord);</highlight></codeline>
+<codeline lineno="312"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(sub_type(Periodique,la_cl.valeur()))</highlight></codeline>
+<codeline lineno="313"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="314"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Periodique&amp;<sp/>la_cl_perio<sp/>=<sp/>ref_cast(Periodique,la_cl.valeur());</highlight></codeline>
+<codeline lineno="315"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Front_VF&amp;<sp/>le_bord<sp/>=<sp/>ref_cast(Front_VF,la_cl-&gt;frontiere_dis());</highlight></codeline>
+<codeline lineno="316"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>nb_faces_bord=le_bord.nb_faces();</highlight></codeline>
+<codeline lineno="317"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>ind_face=0;<sp/>ind_face&lt;nb_faces_bord;<sp/>ind_face++)</highlight></codeline>
+<codeline lineno="318"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="319"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>ind_face_associee<sp/>=<sp/>la_cl_perio.face_associee(ind_face);</highlight></codeline>
+<codeline lineno="320"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>face<sp/>=<sp/>le_bord.num_face(ind_face);</highlight></codeline>
+<codeline lineno="321"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>face_associee<sp/>=<sp/>le_bord.num_face(ind_face_associee);</highlight></codeline>
+<codeline lineno="322"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>comp=0;<sp/>comp&lt;nb_comp;<sp/>comp++)</highlight></codeline>
+<codeline lineno="323"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="324"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!est_egal(current(face,<sp/>comp),current(face_associee,<sp/>comp),1.e-4))</highlight></codeline>
+<codeline lineno="325"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;Periodic<sp/>boundary<sp/>condition<sp/>is<sp/>not<sp/>correct<sp/>in<sp/>Implicite_steady::test_periodic_solution&quot;<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="327"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;vit1(&quot;&lt;&lt;face&lt;&lt;<sp/>&quot;,&quot;&lt;&lt;comp&lt;&lt;&quot;)=&quot;<sp/>&lt;&lt;<sp/>current(face,<sp/>comp)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="328"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;vit2(&quot;&lt;&lt;face_associee&lt;&lt;&quot;,&quot;&lt;&lt;comp&lt;&lt;&quot;)=&quot;<sp/>&lt;&lt;<sp/>current(face_associee,comp)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="329"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;Delta=&quot;<sp/>&lt;&lt;<sp/>current(face,comp)-current(face_associee,comp)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="330"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Process::exit();</highlight></codeline>
+<codeline lineno="331"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="332"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="333"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="334"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="335"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="336"><highlight class="comment"></highlight></codeline>
+<codeline lineno="337"><highlight class="comment">}*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Schema_Euler_Implicite_Stationnaire/Implicit_steady.cpp"/>
+  </compounddef>
+</doxygen>

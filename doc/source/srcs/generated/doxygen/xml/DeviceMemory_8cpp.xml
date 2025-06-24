@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="DeviceMemory_8cpp" kind="file" language="C++">
+    <compoundname>DeviceMemory.cpp</compoundname>
+    <includes refid="DeviceMemory_8h" local="no">DeviceMemory.h</includes>
+    <includes local="no">iostream</includes>
+    <includes refid="Process_8h" local="no">Process.h</includes>
+    <includes refid="Nom_8h" local="no">Nom.h</includes>
+    <includes refid="Device_8h" local="no">Device.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>DeviceMemory.cpp</label>
+        <link refid="DeviceMemory_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;DeviceMemory.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Process.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Nom.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Device.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LATATOOLS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TRUST_USE_ROCM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;hip/hip_runtime.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">map_t<sp/>DeviceMemory::memory_map_;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>DeviceMemory::initial_free_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Typical<sp/>size<sp/>of<sp/>internal_items<sp/>(elem,face,som)<sp/>used<sp/>as<sp/>threshold<sp/>to<sp/>detect<sp/>excessive<sp/>H2D/D2H<sp/>copies<sp/>or<sp/>host<sp/>array<sp/>allocation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">trustIdType<sp/><ref refid="structDeviceMemory_1a860d1806d883e144ff0115dda6e8b92f" kindref="member">DeviceMemory::internal_items_size_</ref><sp/>=<sp/>1e9;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structDeviceMemory_1a86335be3b55621d22c251999d789eb26" kindref="member">DeviceMemory::nb_pas_dt_</ref><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Memory:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="structDeviceMemory_1ab7ecf3cc58ddeafb3d73826c8e6f3d0c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structDeviceMemory_1ab7ecf3cc58ddeafb3d73826c8e6f3d0c" kindref="member">DeviceMemory::deviceMemGetInfo</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>print_total)<sp/></highlight><highlight class="comment">//<sp/>free<sp/>or<sp/>total<sp/>bytes<sp/>of<sp/>the<sp/>device</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>free=0,<sp/>total=0;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LATATOOLS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TRUST_USE_CUDA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>cudaMemGetInfo(&amp;free,<sp/>&amp;total);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TRUST_USE_ROCM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>err<sp/>=<sp/>hipMemGetInfo(&amp;free,<sp/>&amp;total);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err)<sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(</highlight><highlight class="stringliteral">&quot;Error<sp/>during<sp/>hipMemGetInfo&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>print_total<sp/>?<sp/>total<sp/>:<sp/>free;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48" refid="structDeviceMemory_1a4ff61adaafc514c1913b3aab28c16796" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structDeviceMemory_1a4ff61adaafc514c1913b3aab28c16796" kindref="member">DeviceMemory::allocatedBytesOnDevice</ref>()</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>free<sp/>=<sp/><ref refid="structDeviceMemory_1ab7ecf3cc58ddeafb3d73826c8e6f3d0c" kindref="member">deviceMemGetInfo</ref>(0);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>initial_free_<sp/>=<sp/>(initial_free_==0)<sp/>?<sp/>free<sp/>:<sp/>initial_free_;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>initial_free_<sp/>-<sp/>free;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="55"><highlight class="comment">/**<sp/>Check<sp/>if<sp/>a<sp/>chunk<sp/>(even<sp/>empty)<sp/>is<sp/>allocated<sp/>on<sp/>the<sp/>device<sp/>for<sp/>the<sp/>host<sp/>ptr</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>Return<sp/>true/false</highlight></codeline>
+<codeline lineno="57"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="structDeviceMemory_1a48db20c0c7c66099f4b66ce9099265ee" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structDeviceMemory_1a48db20c0c7c66099f4b66ce9099265ee" kindref="member">DeviceMemory::isAllocatedOnDevice</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>ptr)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(memory_map_.empty())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>memory_map_.find(ptr);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>memory_map_.end());</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment">/**<sp/>Return<sp/>the<sp/>device<sp/>address<sp/>of<sp/>the<sp/>host<sp/>ptr</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>Return<sp/>nullptr<sp/>if<sp/>ptr<sp/>null<sp/>or<sp/>map<sp/>empty</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>Fatal<sp/>error<sp/>if<sp/>address<sp/>not<sp/>found<sp/>on<sp/>the<sp/>device</highlight></codeline>
+<codeline lineno="68"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LATATOOLS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="structDeviceMemory_1adbb1c0d2b0d5cabfef4574d1899fb1be" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="structDeviceMemory_1adbb1c0d2b0d5cabfef4574d1899fb1be" kindref="member">DeviceMemory::addrOnDevice</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>ptr)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ptr==</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/>memory_map_.empty())</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>trustIdType<sp/>bytes;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>device_ptr;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>host_ptr;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>memory_map_.begin();<sp/>it<sp/>!=<sp/>memory_map_.end();<sp/>++it)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>host_ptr<sp/>=<sp/>it-&gt;first;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::tie(bytes,<sp/>device_ptr)<sp/>=<sp/>it-&gt;second;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ptr==host_ptr)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>device_ptr;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cas<sp/>de<sp/>buffer_base<sp/>(ptr<sp/>n&apos;est<sp/>pas<sp/>forcement<sp/>l&apos;adresse<sp/>de<sp/>debut<sp/>du<sp/>bloc<sp/>memoire...)<sp/>ou<sp/>de<sp/>DoubleTab_parts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ptr<sp/>&gt;=<sp/>host_ptr<sp/>&amp;&amp;<sp/>ptr<sp/>&lt;<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(host_ptr)<sp/>+<sp/>bytes)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(device_ptr)<sp/>+<sp/>(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(ptr)<sp/>-<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(host_ptr));</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Reproduce<sp/>OpenMP-target<sp/>spec:<sp/>FATAL<sp/>ERROR:<sp/>data<sp/>in<sp/>use_device<sp/>clause<sp/>was<sp/>not<sp/>found<sp/>on<sp/>device<sp/>1:<sp/>host:0x3dc75600</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1a57e0f54b11e6eaadbea224fa904b18dd" kindref="member">Process:: Journal</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error!<sp/>Device<sp/>address<sp/>for<sp/>host<sp/>address<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>ptrToString(ptr)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>not<sp/>found:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="structDeviceMemory_1a665b5039411f7507f32c9c986804ac85" kindref="member">DeviceMemory::printMemoryMap</ref>();</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(</highlight><highlight class="stringliteral">&quot;Error!<sp/>Device<sp/>address<sp/>for<sp/>host<sp/>address<sp/>not<sp/>found.<sp/>See<sp/>log.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="97"><highlight class="comment">/**<sp/>Add<sp/>a<sp/>new<sp/>line<sp/>to<sp/>the<sp/>memory_map_</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>ptr<sp/>should<sp/>be<sp/>non-null,<sp/>device_ptr<sp/>and<sp/>size<sp/>may<sp/>be<sp/>null</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="structDeviceMemory_1a64eb0b031e099fe1071939783f8753e3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structDeviceMemory_1a64eb0b031e099fe1071939783f8753e3" kindref="member">DeviceMemory::add</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>ptr,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>device_ptr,<sp/>trustIdType<sp/>bytes)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ptr==</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><ref refid="structDeviceMemory_1a6fdb52d250ec147bbcb7af421e8ffed9" kindref="member">DeviceMemory::getMemoryMap</ref>()[ptr]<sp/>=<sp/>{bytes,<sp/>device_ptr};</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(clock_on)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a57e0f54b11e6eaadbea224fa904b18dd" kindref="member">Process::Journal</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Adding<sp/>Host<sp/>ptr:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>ptrToString(ptr)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Device<sp/>ptr:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>ptrToString(device_ptr)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>bytes:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>bytes<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structDeviceMemory_1a665b5039411f7507f32c9c986804ac85" kindref="member">DeviceMemory::printMemoryMap</ref>();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="112"><highlight class="comment">/**<sp/>Delete<sp/>a<sp/>line<sp/>into<sp/>the<sp/>memory_map_</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="structDeviceMemory_1ab608744b194ac0648f5a99e61c3be075" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structDeviceMemory_1ab608744b194ac0648f5a99e61c3be075" kindref="member">DeviceMemory::del</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>ptr)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="structDeviceMemory_1a6fdb52d250ec147bbcb7af421e8ffed9" kindref="member">DeviceMemory::getMemoryMap</ref>().erase(ptr);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(clock_on)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a57e0f54b11e6eaadbea224fa904b18dd" kindref="member">Process::Journal</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Deleting<sp/>Host<sp/>ptr:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>ptrToString(ptr)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structDeviceMemory_1a665b5039411f7507f32c9c986804ac85" kindref="member">DeviceMemory::printMemoryMap</ref>();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="125"><highlight class="comment">/**<sp/>Print<sp/>the<sp/>memory<sp/>map<sp/>for<sp/>debug</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="structDeviceMemory_1a665b5039411f7507f32c9c986804ac85" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structDeviceMemory_1a665b5039411f7507f32c9c986804ac85" kindref="member">DeviceMemory::printMemoryMap</ref>()</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>trustIdType<sp/>bytes;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>device_ptr;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1a57e0f54b11e6eaadbea224fa904b18dd" kindref="member">Process::Journal</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>Memory<sp/>blocks<sp/>on<sp/>the<sp/>device<sp/>===&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>block<sp/>:<sp/>memory_map_)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>ptr<sp/>=<sp/>block.first;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::tie(bytes,<sp/>device_ptr)<sp/>=<sp/>block.second;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a57e0f54b11e6eaadbea224fa904b18dd" kindref="member">Process::Journal</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Host<sp/>ptr:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>ptrToString(ptr)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Device<sp/>ptr:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>ptrToString(device_ptr)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>bytes:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>bytes<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1a57e0f54b11e6eaadbea224fa904b18dd" kindref="member">Process::Journal</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;===================================&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="structDeviceMemory_1a7ab4e031c2b55cf7d01eaeb3dfece269" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structDeviceMemory_1a7ab4e031c2b55cf7d01eaeb3dfece269" kindref="member">DeviceMemory::warning</ref>(trustIdType<sp/>nb_items)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>clock_on<sp/>&amp;&amp;<sp/><ref refid="structDeviceMemory_1a86335be3b55621d22c251999d789eb26" kindref="member">nb_pas_dt_</ref>&gt;1<sp/>&amp;&amp;<sp/>nb_items&gt;=<ref refid="structDeviceMemory_1a860d1806d883e144ff0115dda6e8b92f" kindref="member">internal_items_size_</ref>;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/DeviceMemory.cpp"/>
+  </compounddef>
+</doxygen>

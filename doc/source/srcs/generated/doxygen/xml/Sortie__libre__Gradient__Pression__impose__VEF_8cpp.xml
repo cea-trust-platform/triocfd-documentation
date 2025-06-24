@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Sortie__libre__Gradient__Pression__impose__VEF_8cpp" kind="file" language="C++">
+    <compoundname>Sortie_libre_Gradient_Pression_impose_VEF.cpp</compoundname>
+    <includes refid="Sortie__libre__Gradient__Pression__impose__VEF_8h" local="no">Sortie_libre_Gradient_Pression_impose_VEF.h</includes>
+    <includes refid="Discretisation__base_8h" local="no">Discretisation_base.h</includes>
+    <includes refid="Navier__Stokes__std_8h" local="no">Navier_Stokes_std.h</includes>
+    <includes refid="Champ__P0__VEF_8h" local="no">Champ_P0_VEF.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Sortie__libre__Gradient__Pression__impose__VEF_8cpp_1a9fd6193c3d4d02e59f565dd2e856bbf6" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Sortie_libre_Gradient_Pression_impose_VEFbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Sortie_libre_Gradient_Pression_impose_VEFbases</name>
+        <initializer>={   &amp;( <ref refid="classNeumann__sortie__libre" kindref="compound">Neumann_sortie_libre</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Cond_Lim/Sortie_libre_Gradient_Pression_impose_VEF.cpp" line="21" column="205" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Cond_Lim/Sortie_libre_Gradient_Pression_impose_VEF.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Sortie_libre_Gradient_Pression_impose_VEF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discretisation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_P0_VEF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classSortie__libre__Gradient__Pression__impose__VEF_1afb8dfcd3ed53a5b73d63a6e1f48fcd16" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classSortie__libre__Gradient__Pression__impose__VEF" kindref="compound">Sortie_libre_Gradient_Pression_impose_VEF</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Frontiere_ouverte_Gradient_Pression_impose_VEF&quot;</highlight><highlight class="normal">,<sp/><ref refid="classNeumann__sortie__libre" kindref="compound">Neumann_sortie_libre</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classSortie__libre__Gradient__Pression__impose__VEF_1a887666874aac34a7a4a3b9238ade3ea1" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie__libre__Gradient__Pression__impose__VEF_1a887666874aac34a7a4a3b9238ade3ea1" kindref="member">Sortie_libre_Gradient_Pression_impose_VEF::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="24"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classSortie__libre__Gradient__Pression__impose__VEF_1a1d3244ad1cb60a1dfabfe5c938cd81e2" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSortie__libre__Gradient__Pression__impose__VEF_1a1d3244ad1cb60a1dfabfe5c938cd81e2" kindref="member">Sortie_libre_Gradient_Pression_impose_VEF::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1ad515d1c64270d631157a55d5c6795c37" kindref="member">app_domains</ref>.size()<sp/>==<sp/>0)<sp/><ref refid="classCond__lim__base_1ad515d1c64270d631157a55d5c6795c37" kindref="member">app_domains</ref><sp/>=<sp/>{<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(</highlight><highlight class="stringliteral">&quot;Hydraulique&quot;</highlight><highlight class="normal">),<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(</highlight><highlight class="stringliteral">&quot;indetermine&quot;</highlight><highlight class="normal">)<sp/>};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>s<sp/>&gt;&gt;<sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><ref refid="classNeumann__sortie__libre_1afb8a2709891b8966c91c9cd4cebea74d" kindref="member">le_champ_ext</ref>.<ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(</highlight><highlight class="stringliteral">&quot;Champ_front_uniforme&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><ref refid="classNeumann__sortie__libre_1afb8a2709891b8966c91c9cd4cebea74d" kindref="member">le_champ_ext</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>().<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(1,<sp/><ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classSortie__libre__Gradient__Pression__impose__VEF_1a684847eddaa721fbcc1357ba1c282e0f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classSortie__libre__Gradient__Pression__impose__VEF_1a684847eddaa721fbcc1357ba1c282e0f" kindref="member">Sortie_libre_Gradient_Pression_impose_VEF::flux_impose</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>face)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="39"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>().<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>a1<sp/>=<sp/><ref refid="classSortie__libre__Gradient__Pression__impose__VEF_1a34a14a7752b6acb30b6b332a6a0758eb" kindref="member">trace_pression_int</ref>[face];</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>a2<sp/>=<sp/><ref refid="classSortie__libre__Gradient__Pression__impose__VEF_1a3ecff065e4c480ca01728c7806788bb2" kindref="member">coeff</ref>[face];</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>a3<sp/>=<sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>()(0,<sp/>0);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Pimp<sp/>=<sp/>a1<sp/>+<sp/>a2<sp/>*<sp/>a3;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Pimp;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>().<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="classSortie__libre__Gradient__Pression__impose__VEF_1a34a14a7752b6acb30b6b332a6a0758eb" kindref="member">trace_pression_int</ref>[face]<sp/>+<sp/><ref refid="classSortie__libre__Gradient__Pression__impose__VEF_1a3ecff065e4c480ca01728c7806788bb2" kindref="member">coeff</ref>[face]<sp/>*<sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>()(face,<sp/>0));</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Sortie_libre_Gradient_Pression_impose_VEF::flux_impose<sp/>erreur&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classSortie__libre__Gradient__Pression__impose__VEF_1a472efbbc9b534fc3c7573637b11ca1a3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classSortie__libre__Gradient__Pression__impose__VEF_1a684847eddaa721fbcc1357ba1c282e0f" kindref="member">Sortie_libre_Gradient_Pression_impose_VEF::flux_impose</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>face,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ncomp)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="59"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ncomp<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSortie__libre__Gradient__Pression__impose__VEF_1a684847eddaa721fbcc1357ba1c282e0f" kindref="member">flux_impose</ref>(face);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Sortie_libre_Gradient_Pression_impose_VEF::flux_impose(int<sp/><sp/>,<sp/>int<sp/>)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;On<sp/>ne<sp/>sait<sp/>imposer<sp/>que<sp/>la<sp/>composante<sp/>normale<sp/>du<sp/>gradient&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Cond_Lim/Sortie_libre_Gradient_Pression_impose_VEF.cpp"/>
+  </compounddef>
+</doxygen>

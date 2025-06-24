@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Gravite__Multiphase_8cpp" kind="file" language="C++">
+    <compoundname>Gravite_Multiphase.cpp</compoundname>
+    <includes refid="Gravite__Multiphase_8h" local="no">Gravite_Multiphase.h</includes>
+    <includes refid="Pb__Multiphase_8h" local="no">Pb_Multiphase.h</includes>
+    <includes refid="Discret__Thyd_8h" local="no">Discret_Thyd.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Gravite__Multiphase_8cpp_1a24f43a61d6b633b34ee259d72cdb0057" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Gravite_Multiphasebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Gravite_Multiphasebases</name>
+        <initializer>={   &amp;( <ref refid="classCorrelation__base" kindref="compound">Correlation_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Correlations/Gravite_Multiphase.cpp" line="20" column="113" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Correlations/Gravite_Multiphase.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Gravite_Multiphase.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Pb_Multiphase.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discret_Thyd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classGravite__Multiphase_1a3478b9efb3ee60377df8303b701348b5" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classGravite__Multiphase" kindref="compound">Gravite_Multiphase</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Gravite_Multiphase&quot;</highlight><highlight class="normal">,<sp/><ref refid="classCorrelation__base" kindref="compound">Correlation_base</ref>);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classGravite__Multiphase_1af112d35615d70a73fd109e9f987b0f8f" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classGravite__Multiphase_1af112d35615d70a73fd109e9f987b0f8f" kindref="member">Gravite_Multiphase::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="23"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classGravite__Multiphase_1a6d31a21246ae073d9afe2abb609dac99" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classGravite__Multiphase_1a6d31a21246ae073d9afe2abb609dac99" kindref="member">Gravite_Multiphase::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>OWN_PTR(<ref refid="classChamp__Don__base" kindref="compound">Champ_Don_base</ref>)<sp/>gravite_don_;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>gravite_don_;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><ref refid="classPb__Multiphase" kindref="compound">Pb_Multiphase</ref>&amp;<sp/>pb<sp/>=<sp/>ref_cast(<ref refid="classPb__Multiphase" kindref="compound">Pb_Multiphase</ref>,<sp/><ref refid="classCorrelation__base_1a72b03e09863a1883a944f204a8d4f7b5" kindref="member">pb_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>D<sp/>=<sp/><ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDiscret__Thyd" kindref="compound">Discret_Thyd</ref>&amp;<sp/>dis=ref_cast(<ref refid="classDiscret__Thyd" kindref="compound">Discret_Thyd</ref>,pb.<ref refid="classProbleme__base_1a6d2fc3674212b71c3834f4a20a069bba" kindref="member">discretisation</ref>());</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>noms(D),<sp/>unites(D);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>noms[0]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;gravite&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>unites[0]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;m/s^2&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>typeChamp<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;champ_elem&quot;</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__dis__base" kindref="compound">Domaine_dis_base</ref>&amp;<sp/>z<sp/>=<sp/>pb.<ref refid="classProbleme__base_1ae79e94815e436ab3fb3916f341d7978e" kindref="member">domaine_dis</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>dis.<ref refid="classDiscretisation__base_1afea05efdd1484bb9c80df965627c367f" kindref="member">discretiser_champ</ref>(typeChamp,<sp/>z,<sp/>scalaire,<sp/>noms<sp/>,<sp/>unites,<sp/>D,<sp/>0,<sp/><ref refid="classGravite__Multiphase_1a68a5a2f928bb009f53b28b11f148e147" kindref="member">gravite_</ref>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><ref refid="classCorrelation__base_1a48cca3e9388e19bb81c5c5902ea7b5fa" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1aa2bd9fb5b3b311863130fa0bbc404773" kindref="member">ajoute_champ</ref>(<ref refid="classGravite__Multiphase_1a68a5a2f928bb009f53b28b11f148e147" kindref="member">gravite_</ref>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><ref refid="classGravite__Multiphase_1a68a5a2f928bb009f53b28b11f148e147" kindref="member">gravite_</ref>-&gt;<ref refid="classChamp__base_1a336a105699c70cd8c4d9b066a39264a8" kindref="member">affecter</ref>(gravite_don_.valeur());</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="classGravite__Multiphase_1a68a5a2f928bb009f53b28b11f148e147" kindref="member">gravite_</ref>-&gt;<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>().<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classGravite__Multiphase_1abc9fb3475ff84bf38357408ff8556223" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classGravite__Multiphase_1abc9fb3475ff84bf38357408ff8556223" kindref="member">Gravite_Multiphase::has_champ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>nom,<sp/>OBS_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)<sp/>&amp;ref_champ)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="51"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;gravite&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classCorrelation__base_1a48cca3e9388e19bb81c5c5902ea7b5fa" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1a6e1edab0631a09fa94ba8d2f172f0e63" kindref="member">has_champ</ref>(nom,<sp/>ref_champ);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">/*<sp/>rien<sp/>trouve<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classGravite__Multiphase_1ab7f9cdf261e82dde4ac649a6a7b2e5e9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classGravite__Multiphase_1abc9fb3475ff84bf38357408ff8556223" kindref="member">Gravite_Multiphase::has_champ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>nom)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="59"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;gravite&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">/*<sp/>rien<sp/>trouve<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classGravite__Multiphase_1ac294c9d455fea828e12ee2725f6c98b9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classGravite__Multiphase_1ac294c9d455fea828e12ee2725f6c98b9" kindref="member">Gravite_Multiphase::get_champ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>nom)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="67"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;gravite&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classCorrelation__base_1a48cca3e9388e19bb81c5c5902ea7b5fa" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1a81e7ff823e570ba4432177e16035084a" kindref="member">get_champ</ref>(nom);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::runtime_error(std::string(</highlight><highlight class="stringliteral">&quot;Field<sp/>&quot;</highlight><highlight class="normal">)<sp/>+<sp/>nom.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()<sp/>+<sp/>std::string(</highlight><highlight class="stringliteral">&quot;<sp/>not<sp/>found<sp/>!&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Correlations/Gravite_Multiphase.cpp"/>
+  </compounddef>
+</doxygen>

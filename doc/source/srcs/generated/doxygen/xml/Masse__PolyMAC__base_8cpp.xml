@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Masse__PolyMAC__base_8cpp" kind="file" language="C++">
+    <compoundname>Masse_PolyMAC_base.cpp</compoundname>
+    <includes refid="Schema__Euler__Implicite_8h" local="no">Schema_Euler_Implicite.h</includes>
+    <includes refid="Op__Diff__negligeable_8h" local="no">Op_Diff_negligeable.h</includes>
+    <includes refid="Masse__PolyMAC__base_8h" local="no">Masse_PolyMAC_base.h</includes>
+    <includes refid="Domaine__Cl__PolyMAC_8h" local="no">Domaine_Cl_PolyMAC.h</includes>
+    <includes refid="Domaine__PolyMAC_8h" local="no">Domaine_PolyMAC.h</includes>
+    <includes refid="TRUSTTab__parts_8h" local="no">TRUSTTab_parts.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Operateur_8h" local="no">Operateur.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Masse__PolyMAC__base_8cpp_1a528f69361e6eb04cabe124c1ec583396" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Masse_PolyMAC_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Masse_PolyMAC_basebases</name>
+        <initializer>={   &amp;( <ref refid="classSolveur__Masse__base" kindref="compound">Solveur_Masse_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/PolyMAC/Solveurs/Masse_PolyMAC_base.cpp" line="25" column="113" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/PolyMAC/Solveurs/Masse_PolyMAC_base.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Masse__PolyMAC__base_8cpp_1a36b6c057f497f2fd4f97a486119bdc87" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Masse_PolyMAC_P0P1NC_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Masse_PolyMAC_P0P1NC_basebases</name>
+        <initializer>={   &amp;( <ref refid="classMasse__PolyMAC__base" kindref="compound">Masse_PolyMAC_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/PolyMAC/Solveurs/Masse_PolyMAC_base.cpp" line="29" column="141" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/PolyMAC/Solveurs/Masse_PolyMAC_base.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Euler_Implicite.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Op_Diff_negligeable.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Masse_PolyMAC_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_Cl_PolyMAC.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_PolyMAC.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTab_parts.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classMasse__PolyMAC__base_1a543329d21dd7995059304e22244606ad" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classMasse__PolyMAC__base" kindref="compound">Masse_PolyMAC_base</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Masse_PolyMAC_base&quot;</highlight><highlight class="normal">,<sp/><ref refid="classSolveur__Masse__base" kindref="compound">Solveur_Masse_base</ref>);</highlight></codeline>
+<codeline lineno="26" refid="classMasse__PolyMAC__base_1a0c2c56dadaa63e420f3892df08c0174f" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classMasse__PolyMAC__base_1a0c2c56dadaa63e420f3892df08c0174f" kindref="member">Masse_PolyMAC_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="27" refid="classMasse__PolyMAC__base_1ab5f56a8d0c88e2f1142fdac2fb109626" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classMasse__PolyMAC__base_1ab5f56a8d0c88e2f1142fdac2fb109626" kindref="member">Masse_PolyMAC_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;<sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classMasse__PolyMAC__P0P1NC__base_1a5dc21f03a00f258d32cb8cd212976f4a" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classMasse__PolyMAC__P0P1NC__base" kindref="compound">Masse_PolyMAC_P0P1NC_base</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Masse_PolyMAC_P0P1NC_base&quot;</highlight><highlight class="normal">,<sp/><ref refid="classMasse__PolyMAC__base" kindref="compound">Masse_PolyMAC_base</ref>);</highlight></codeline>
+<codeline lineno="30" refid="classMasse__PolyMAC__P0P1NC__base_1adf4e5e55f1b13ca8770a8a593693c9c1" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classMasse__PolyMAC__P0P1NC__base_1adf4e5e55f1b13ca8770a8a593693c9c1" kindref="member">Masse_PolyMAC_P0P1NC_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="31" refid="classMasse__PolyMAC__P0P1NC__base_1a278389f3c44120bcbf7730756509298e" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classMasse__PolyMAC__P0P1NC__base_1a278389f3c44120bcbf7730756509298e" kindref="member">Masse_PolyMAC_P0P1NC_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>;<sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classMasse__PolyMAC__base_1aebcbaff2e807fe24de901434b6ba2a57" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMasse__PolyMAC__base_1aebcbaff2e807fe24de901434b6ba2a57" kindref="member">Masse_PolyMAC_base::associer_domaine_dis_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__dis__base" kindref="compound">Domaine_dis_base</ref>&amp;<sp/>le_dom_dis_base)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><ref refid="classMasse__PolyMAC__base_1a5945ad1b5cdfd71efddbbbb573bfb348" kindref="member">le_dom_PolyMAC</ref><sp/>=<sp/>ref_cast(<ref refid="classDomaine__PolyMAC" kindref="compound">Domaine_PolyMAC</ref>,<sp/>le_dom_dis_base);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classMasse__PolyMAC__base_1a5934bbb0305c1fc90d6e35de759f4e05" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMasse__PolyMAC__base_1a5934bbb0305c1fc90d6e35de759f4e05" kindref="member">Masse_PolyMAC_base::associer_domaine_cl_dis_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__dis__base" kindref="compound">Domaine_Cl_dis_base</ref>&amp;<sp/>le_dom_Cl_dis_base)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="classMasse__PolyMAC__base_1a4e11c83cdda4e8fe2c903045ec76bec1" kindref="member">le_dom_Cl_PolyMAC</ref><sp/>=<sp/>ref_cast(<ref refid="classDomaine__Cl__PolyMAC" kindref="compound">Domaine_Cl_PolyMAC</ref>,<sp/>le_dom_Cl_dis_base);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classMasse__PolyMAC__base_1a32a12f598a23db6f3fa4e85d16f64d55" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMasse__PolyMAC__base_1a32a12f598a23db6f3fa4e85d16f64d55" kindref="member">Masse_PolyMAC_base::completer</ref>()</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!sub_type(<ref refid="classSchema__Implicite__base" kindref="compound">Schema_Implicite_base</ref>,<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().schema_temps()))</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;===================================================================================&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>when<sp/>using<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1abc11e51aa75b4c7aa55c27f71eb2f2c4" kindref="member">schema_temps</ref>().<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>scheme:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>can<sp/>only<sp/>use<sp/>implicit<sp/>schemes<sp/>with<sp/>the<sp/>PolyMAC<sp/>discretization<sp/>(for<sp/>mass<sp/>solver).&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="classMasse__PolyMAC__base_1a57147eb50c0c3876114a5f0ced8030bc" kindref="member">no_diff_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a68cdf54c4af72b23d0d2c8a1b3f7ebd9" kindref="member">nombre_d_operateurs</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classOperateur__Diff__base" kindref="compound">Operateur_Diff_base</ref>,<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().operateur(i).l_op_base()))</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!sub_type(<ref refid="classOp__Diff__negligeable" kindref="compound">Op_Diff_negligeable</ref>,<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().operateur(i).l_op_base()))</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMasse__PolyMAC__base_1a57147eb50c0c3876114a5f0ced8030bc" kindref="member">no_diff_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classMasse__PolyMAC__base_1ada5f5217181cbea79567170aca43fe78" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMasse__PolyMAC__base_1ada5f5217181cbea79567170aca43fe78" kindref="member">Masse_PolyMAC_base::appliquer_coef</ref>(<ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>coef)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="61"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolveur__Masse__base_1aa4ef73c8f45712b1f66267ea3e3731ad" kindref="member">has_coefficient_temporel_</ref>)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>OBS_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)<sp/>ref_coeff;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ref_coeff<sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a57ba60a2c32601e3441c838ab2d74332" kindref="member">get_champ</ref>(<ref refid="classSolveur__Masse__base_1af23a31374eb2875d63c45eea355f93e8" kindref="member">name_of_coefficient_temporel_</ref>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>values;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>,ref_coeff.valeur()))</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/>coeff<sp/>=<sp/>ref_cast(<ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>,ref_coeff.valeur());</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConstTRUSTTab__parts" kindref="compound">ConstDoubleTab_parts</ref><sp/>val_parts(coeff.<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>());</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>values.<ref refid="classTRUSTTab_1accf9995f3e3b0111c58a37ee5e075279" kindref="member">ref</ref>(val_parts[0]);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>,ref_coeff.valeur()))</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>&amp;<sp/>coeff<sp/>=<sp/>ref_cast(<ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>,ref_coeff.valeur());</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>values.<ref refid="classTRUSTTab_1accf9995f3e3b0111c58a37ee5e075279" kindref="member">ref</ref>(coeff.<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>());</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Don__base" kindref="compound">Champ_Don_base</ref>,ref_coeff.valeur()))</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>nodes;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1ac4cfea5832fe0e0b189f9ffc2b0d499c" kindref="member">remplir_coord_noeuds</ref>(nodes);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ref_coeff-&gt;valeur_aux(nodes,values);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tab_multiply_any_shape(coef,<sp/>values,<sp/>VECT_REAL_ITEMS);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/PolyMAC/Solveurs/Masse_PolyMAC_base.cpp"/>
+  </compounddef>
+</doxygen>

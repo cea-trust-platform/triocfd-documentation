@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Transport__K__KEps_8h" kind="file" language="C++">
+    <compoundname>Transport_K_KEps.h</compoundname>
+    <includes refid="Transport__K__Eps__non__std_8h" local="no">Transport_K_Eps_non_std.h</includes>
+    <includes refid="Loi__2couches__base_8h" local="no">Loi_2couches_base.h</includes>
+    <includes refid="Operateur__Conv_8h" local="no">Operateur_Conv.h</includes>
+    <includes refid="TRUST__Ref_8h" local="no">TRUST_Ref.h</includes>
+    <includedby refid="Modele__turbulence__hyd__K__Eps__2__Couches_8h" local="no">Modele_turbulence_hyd_K_Eps_2_Couches.h</includedby>
+    <includedby refid="Source__Transport__K__KEps__VDF__Elem_8cpp" local="no">Source_Transport_K_KEps_VDF_Elem.cpp</includedby>
+    <includedby refid="Source__Transport__K__KEps__anisotherme__VDF__Elem_8cpp" local="no">Source_Transport_K_KEps_anisotherme_VDF_Elem.cpp</includedby>
+    <includedby refid="Transport__K__KEps_8cpp" local="no">Transport_K_KEps.cpp</includedby>
+    <innerclass refid="classTransport__K__KEps" prot="public">Transport_K_KEps</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Transport_K_KEps.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TURBULENCE_ROOT/src/ThHyd/Incompressible/Equations/RANS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>Transport_K_KEps_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>Transport_K_KEps_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Transport_K_Eps_non_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Loi_2couches_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur_Conv.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUST_Ref.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches" kindref="compound">Modele_turbulence_hyd_K_Eps_2_Couches</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMotcle" kindref="compound">Motcle</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="33"><highlight class="comment">/*!<sp/>@brief<sp/>classe<sp/>Transport_K_KEps<sp/>Cette<sp/>classe<sp/>represente<sp/>l&apos;equation<sp/>de<sp/>transport<sp/>de<sp/>l&apos;energie<sp/>cinetique</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>turbulente<sp/>K<sp/>et<sp/>du<sp/>taux<sp/>de<sp/>dissipation<sp/>epsilon<sp/>(eps)<sp/>associee<sp/>au<sp/>modele</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>de<sp/>turbulence<sp/>(k,eps)<sp/>a<sp/>deux<sp/>couches.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>On<sp/>traite<sp/>en<sp/>une<sp/>seule<sp/>equation<sp/>le<sp/>transport<sp/>des<sp/>deux</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>grandeurs<sp/>turbulentes.<sp/>Il<sp/>s&apos;agit<sp/>donc<sp/>d&apos;une<sp/>equation<sp/>vectorielle,<sp/>dont</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>le<sp/>champ<sp/>inconnue<sp/>possede<sp/>2<sp/>composantes:<sp/>K<sp/>et<sp/>epsilon.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>On<sp/>instanciera<sp/>un<sp/>objet<sp/>de<sp/>cette<sp/>classe<sp/>uniquement<sp/>si</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>on<sp/>utilise<sp/>le<sp/>modele<sp/>a<sp/>deux<sp/>couches<sp/><sp/>pour<sp/>traiter<sp/>la<sp/>turbulence</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@sa<sp/>Equation_base</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classTransport__K__KEps" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTransport__K__KEps" kindref="compound">Transport_K_KEps</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__Eps__non__std" kindref="compound">Transport_K_Eps_non_std</ref></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classTransport__K__KEps_1a39298bb1c3a13e9b7a95bad821cf733b" refkind="member"><highlight class="normal"><sp/><sp/>Declare_instanciable(<ref refid="classTransport__K__KEps" kindref="compound">Transport_K_KEps</ref>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">public<sp/>:</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1afa4e6811440913d442fd1fc8f953c116" kindref="member">set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>titi)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1a72bcfa7a276b88757873df0b7f7736c7" kindref="member">lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1ae28aec5bb8d3cee3c95d374332ae1261" kindref="member">associer_milieu_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1aaf758d2b3522c27d5a8866451a21ced1" kindref="member">associer_modele_turbulence</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__2__eq__base" kindref="compound">Modele_turbulence_hyd_2_eq_base</ref>&amp;)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1a845c14f19892867543275138ae5adc74" kindref="member">get_nbcouches</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1a3633988bba2759f363f9071f845b0e81" kindref="member">get_yswitch</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1a450d92377babfd58392948bdcb989ba2" kindref="member">get_switch</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1a19ee600ddc6e7c66e915b745b9b691b6" kindref="member">get_nutswitch</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1ab5e31b44ca2bf00b1cd314f5394b33e6" kindref="member">get_impr</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61" refid="classTransport__K__KEps_1a190ed8aee64f28364e02b3e27a9304a2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/><ref refid="classTransport__K__KEps_1a190ed8aee64f28364e02b3e27a9304a2" kindref="member">vitesse_transportante</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/><ref refid="classTransport__K__KEps_1a914c8c6294ade9458744e956b0487a70" kindref="member">domaine_application</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64" refid="classTransport__K__KEps_1a2c0e66c8cc965846b97a001c1d6d731d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classLoi__2couches__base" kindref="compound">Loi_2couches_base</ref>&amp;<sp/><ref refid="classTransport__K__KEps_1a2c0e66c8cc965846b97a001c1d6d731d" kindref="member">loi2couches</ref>()</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1a44909761edf938ae5b1ac794d1952a01" kindref="member">loi_2couches</ref>.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">protected<sp/>:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classTransport__K__KEps_1a44909761edf938ae5b1ac794d1952a01" refkind="member"><highlight class="normal"><sp/><sp/>OWN_PTR(<ref refid="classLoi__2couches__base" kindref="compound">Loi_2couches_base</ref>)<sp/><ref refid="classTransport__K__KEps_1a44909761edf938ae5b1ac794d1952a01" kindref="member">loi_2couches</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_couches;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//le<sp/>nombre<sp/>de<sp/>couches<sp/>de<sp/>mailles<sp/>ou<sp/>on<sp/>applique<sp/>le<sp/>modele<sp/>1-equation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ystar_switch;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//la<sp/>valeur<sp/>de<sp/>y*<sp/>qui<sp/>delimite<sp/>les<sp/>deux<sp/>couches</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type_switch;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>indique<sp/>si<sp/>on<sp/>choisit<sp/>un<sp/>switch<sp/>par<sp/>y*<sp/>ou<sp/>par<sp/>nu_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nut_switch;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//la<sp/>valeur<sp/>de<sp/>nut/nu<sp/>qui<sp/>delimite<sp/>les<sp/>deux<sp/>couches.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>impr;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Indique<sp/>si<sp/>on<sp/>doit<sp/>afficher<sp/>la<sp/>zon,e<sp/>des<sp/>2<sp/>couches<sp/>dans<sp/>le<sp/>.out</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="82"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nombre<sp/>de<sp/>couches<sp/>utilisees<sp/>pour<sp/>le<sp/>modele<sp/>1-equation.</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*<sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>nombre<sp/>de<sp/>couches</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classTransport__K__KEps_1a845c14f19892867543275138ae5adc74" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1a845c14f19892867543275138ae5adc74" kindref="member">Transport_K_KEps::get_nbcouches</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="89"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nb_couches;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="93"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>y*<sp/>de<sp/>switch<sp/>entre<sp/>les<sp/>deux<sp/>couches<sp/>pour<sp/>le<sp/>modele<sp/>a<sp/>deux<sp/>couches.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>nombre<sp/>de<sp/>couches</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="classTransport__K__KEps_1a3633988bba2759f363f9071f845b0e81" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1a3633988bba2759f363f9071f845b0e81" kindref="member">Transport_K_KEps::get_yswitch</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="100"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ystar_switch;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="106"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>0<sp/>si<sp/>on<sp/>choisit<sp/>le<sp/>switch<sp/>par<sp/>y*,<sp/>0<sp/>par<sp/>nu_t.</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*<sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="classTransport__K__KEps_1a450d92377babfd58392948bdcb989ba2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1a450d92377babfd58392948bdcb989ba2" kindref="member">Transport_K_KEps::get_switch</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="113"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>type_switch;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="117"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>la<sp/>valeur<sp/>de<sp/>nut/nu<sp/>qui<sp/>delimite<sp/>les<sp/>deux<sp/>couches.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*<sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>valeur<sp/>limite<sp/>de<sp/>nu_t/nu</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="classTransport__K__KEps_1a19ee600ddc6e7c66e915b745b9b691b6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1a19ee600ddc6e7c66e915b745b9b691b6" kindref="member">Transport_K_KEps::get_nutswitch</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="124"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nut_switch;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="128"><highlight class="comment">/*!<sp/>@brief<sp/>indique<sp/>si<sp/>on<sp/>doit<sp/>ecrire<sp/>le<sp/>domaine<sp/>des<sp/>2<sp/>couches<sp/>dans<sp/>le<sp/>.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*<sp/>out.<sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>1<sp/>si<sp/>on<sp/>imprime<sp/>,<sp/>0<sp/>sinon.</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="classTransport__K__KEps_1ab5e31b44ca2bf00b1cd314f5394b33e6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__KEps_1ab5e31b44ca2bf00b1cd314f5394b33e6" kindref="member">Transport_K_KEps::get_impr</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="135"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impr;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Incompressible/Equations/RANS/Transport_K_KEps.h"/>
+  </compounddef>
+</doxygen>

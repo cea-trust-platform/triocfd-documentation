@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Viscosite__turbulente__multiple_8cpp" kind="file" language="C++">
+    <compoundname>Viscosite_turbulente_multiple.cpp</compoundname>
+    <includes refid="Viscosite__turbulente__multiple_8h" local="no">Viscosite_turbulente_multiple.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Champ__base_8h" local="no">Champ_base.h</includes>
+    <includes refid="TRUSTTab__parts_8h" local="no">TRUSTTab_parts.h</includes>
+    <includes refid="TRUSTTab_8h" local="no">TRUSTTab.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+    <includes refid="MD__Vector__tools_8h" local="no">MD_Vector_tools.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Viscosite__turbulente__multiple_8cpp_1a3b4fc40837d5dd176f3b9bbf95aa88fd" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Viscosite_turbulente_multiplebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Viscosite_turbulente_multiplebases</name>
+        <initializer>={   &amp;( <ref refid="classViscosite__turbulente__base" kindref="compound">Viscosite_turbulente_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Turbulence/Viscosite_turbulente_multiple.cpp" line="26" column="157" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Turbulence/Viscosite_turbulente_multiple.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Viscosite_turbulente_multiple.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTab_parts.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTab.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;MD_Vector_tools.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classViscosite__turbulente__multiple_1a4e9b657f582f202552d9451895dbe681" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classViscosite__turbulente__multiple" kindref="compound">Viscosite_turbulente_multiple</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Viscosite_turbulente_multiple&quot;</highlight><highlight class="normal">,<sp/><ref refid="classViscosite__turbulente__base" kindref="compound">Viscosite_turbulente_base</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classViscosite__turbulente__multiple_1a960fb532d6e7f80e4c0691b9f523ef93" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classViscosite__turbulente__multiple_1a960fb532d6e7f80e4c0691b9f523ef93" kindref="member">Viscosite_turbulente_multiple::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="29"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classViscosite__turbulente__multiple_1a25c441ca0f596338d4167bf13e2cbd3b" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classViscosite__turbulente__multiple_1a25c441ca0f596338d4167bf13e2cbd3b" kindref="member">Viscosite_turbulente_multiple::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>mot;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>mot;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Multiple<sp/>turbulent<sp/>viscosities<sp/>:<sp/>{<sp/>expected<sp/>instead<sp/>of<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mot<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(is<sp/>&gt;&gt;<sp/>mot;<sp/>mot<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">;<sp/>is<sp/>&gt;&gt;<sp/>mot)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(viscs_turbs.count(mot.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()))</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>a<sp/>correlation<sp/>already<sp/>exists<sp/>for<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>mot<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCorrelation__base_1a60487b01a946fb08df8af760a6f3c77f" kindref="member">Correlation_base::typer_lire_correlation</ref>(viscs_turbs[mot.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()],<sp/><ref refid="classCorrelation__base_1a72b03e09863a1883a944f204a8d4f7b5" kindref="member">pb_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;viscosite_turbulente&quot;</highlight><highlight class="normal">,<sp/>is);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classViscosite__turbulente__multiple_1a055cae0a459712a1fc026e0101347016" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classViscosite__turbulente__multiple_1a055cae0a459712a1fc026e0101347016" kindref="member">Viscosite_turbulente_multiple::eddy_viscosity</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>nu_t)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="52"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//On<sp/>fait<sp/>appel<sp/>aux<sp/>correlations<sp/>d&apos;en_dessous</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>nu_t<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>nu_loc<sp/>=<sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref>(nu_t);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;corr<sp/>:<sp/>viscs_turbs)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nu_loc<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ref_cast(<ref refid="classViscosite__turbulente__base" kindref="compound">Viscosite_turbulente_base</ref>,<sp/>corr.second.valeur()).eddy_viscosity(nu_loc);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nu_t.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0);<sp/>i++)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0;<sp/>n<sp/>&lt;<sp/>nu_t.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);<sp/>n++)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nu_t(i,<sp/>n)<sp/>+=<sp/>nu_loc(i,n);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classViscosite__turbulente__multiple_1a5d06a7f3adf78c4d8033fba4bebc6c2f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classViscosite__turbulente__multiple_1a5d06a7f3adf78c4d8033fba4bebc6c2f" kindref="member">Viscosite_turbulente_multiple::reynolds_stress</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>R_ij)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>Renvoie<sp/>&lt;u_i&apos;u_j&apos;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>D<sp/>=<sp/>dimension;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>R_ij<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>R_ij_loc<sp/>=<sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref>(R_ij);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;corr<sp/>:<sp/>viscs_turbs)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>R_ij_loc<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ref_cast(<ref refid="classViscosite__turbulente__base" kindref="compound">Viscosite_turbulente_base</ref>,<sp/>corr.second.valeur()).reynolds_stress(R_ij_loc);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>R_ij.dimension(0);<sp/>i++)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0;<sp/>n<sp/>&lt;<sp/>R_ij.dimension(1);<sp/>n++)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>0;<sp/>d<sp/>&lt;<sp/>D;<sp/>d++)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>db<sp/>=<sp/>0;<sp/>db<sp/>&lt;<sp/>D;<sp/>db++)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R_ij(i,<sp/>n,<sp/>d,<sp/>db)<sp/>+=<sp/>R_ij_loc(i,<sp/>n,<sp/>d,<sp/>db);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classViscosite__turbulente__multiple_1a7ff1bf2deccd9931a897ae30eaf41761" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classViscosite__turbulente__multiple_1a7ff1bf2deccd9931a897ae30eaf41761" kindref="member">Viscosite_turbulente_multiple::reynolds_stress_BIF</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>R_ij)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>Renvoie<sp/>&lt;u_i&apos;u_j&apos;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>D<sp/>=<sp/>dimension;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>R_ij<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>R_ij_loc<sp/>=<sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref>(R_ij);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;corr<sp/>:<sp/>viscs_turbs)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((corr.first<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;BIF&quot;</highlight><highlight class="normal">)<sp/>||<sp/>(corr.first<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;WIF&quot;</highlight><highlight class="normal">)<sp/>||<sp/>(corr.first<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;WIT&quot;</highlight><highlight class="normal">)<sp/>||<sp/>(corr.first<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;SATO&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R_ij_loc<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ref_cast(<ref refid="classViscosite__turbulente__base" kindref="compound">Viscosite_turbulente_base</ref>,<sp/>corr.second.valeur()).reynolds_stress(R_ij_loc);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>R_ij.dimension(0);<sp/>i++)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0;<sp/>n<sp/>&lt;<sp/>R_ij.dimension(1);<sp/>n++)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>0;<sp/>d<sp/>&lt;<sp/>D;<sp/>d++)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>db<sp/>=<sp/>0;<sp/>db<sp/>&lt;<sp/>D;<sp/>db++)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R_ij(i,<sp/>n,<sp/>d,<sp/>db)<sp/>+=<sp/>R_ij_loc(i,<sp/>n,<sp/>d,<sp/>db);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classViscosite__turbulente__multiple_1a276e47cddb9b89c47def7ac25157b535" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classViscosite__turbulente__multiple_1a276e47cddb9b89c47def7ac25157b535" kindref="member">Viscosite_turbulente_multiple::k_over_eps</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>k_sur_eps)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="102"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>k_sur_eps<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>k_sur_eps_loc<sp/>=<sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref>(k_sur_eps);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;corr<sp/>:<sp/>viscs_turbs)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>k_sur_eps_loc<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ref_cast(<ref refid="classViscosite__turbulente__base" kindref="compound">Viscosite_turbulente_base</ref>,<sp/>corr.second.valeur()).k_over_eps(k_sur_eps_loc);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>k_sur_eps.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0);<sp/>i++)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0;<sp/>n<sp/>&lt;<sp/>k_sur_eps.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);<sp/>n++)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k_sur_eps(i,<sp/>n)<sp/>+=<sp/>k_sur_eps_loc(i,n);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classViscosite__turbulente__multiple_1a0b65b16c8d9a7a99ae62ab2413359e73" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classViscosite__turbulente__multiple_1a0b65b16c8d9a7a99ae62ab2413359e73" kindref="member">Viscosite_turbulente_multiple::eps</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>eps_)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="117"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>eps_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>eps_loc<sp/>=<sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref>(eps_);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;corr<sp/>:<sp/>viscs_turbs)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>eps_loc<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ref_cast(<ref refid="classViscosite__turbulente__base" kindref="compound">Viscosite_turbulente_base</ref>,<sp/>corr.second.valeur()).eps(eps_loc);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>eps_.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0);<sp/>i++)</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0;<sp/>n<sp/>&lt;<sp/>eps_.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);<sp/>n++)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>eps_(i,<sp/>n)<sp/>+=<sp/>eps_loc(i,n);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Turbulence/Viscosite_turbulente_multiple.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Modele__turbulence__hyd__K__Eps__2__Couches_8cpp" kind="file" language="C++">
+    <compoundname>Modele_turbulence_hyd_K_Eps_2_Couches.cpp</compoundname>
+    <includes refid="Modele__turbulence__hyd__K__Eps__2__Couches_8h" local="no">Modele_turbulence_hyd_K_Eps_2_Couches.h</includes>
+    <includes refid="Schema__Temps__base_8h" local="no">Schema_Temps_base.h</includes>
+    <includes refid="Modifier__pour__fluide__dilatable_8h" local="no">Modifier_pour_fluide_dilatable.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="stat__counters_8h" local="no">stat_counters.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Modele__turbulence__hyd__K__Eps__2__Couches_8cpp_1ae2e7dc756576f5e8d900e3ec496a3964" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Modele_turbulence_hyd_K_Eps_2_Couchesbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Modele_turbulence_hyd_K_Eps_2_Couchesbases</name>
+        <initializer>={   &amp;( <ref refid="classModele__turbulence__hyd__RANS__K__Eps__base" kindref="compound">Modele_turbulence_hyd_RANS_K_Eps_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Modeles_Turbulence/RANS/Hydr/Modele_turbulence_hyd_K_Eps_2_Couches.cpp" line="29" column="189" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Modeles_Turbulence/RANS/Hydr/Modele_turbulence_hyd_K_Eps_2_Couches.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Modele_turbulence_hyd_K_Eps_2_Couches.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TURBULENCE_ROOT/src/ThHyd/Modeles_Turbulence/RANS/Hydr</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Modele_turbulence_hyd_K_Eps_2_Couches.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Temps_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Modifier_pour_fluide_dilatable.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stat_counters.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a9766d04e8f6636ecbe79eac878db99ca" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classModele__turbulence__hyd__K__Eps__2__Couches" kindref="compound">Modele_turbulence_hyd_K_Eps_2_Couches</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Modele_turbulence_hyd_K_Epsilon_2_Couches&quot;</highlight><highlight class="normal">,<sp/><ref refid="classModele__turbulence__hyd__RANS__K__Eps__base" kindref="compound">Modele_turbulence_hyd_RANS_K_Eps_base</ref>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classModele__turbulence__hyd__K__Eps__2__Couches_1afdb36b4aa2b15607d5775a9754017d0b" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1afdb36b4aa2b15607d5775a9754017d0b" kindref="member">Modele_turbulence_hyd_K_Eps_2_Couches::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="32"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classModele__turbulence__hyd__K__Eps__2__Couches_1ad94c2f6cfa64bf61e3c1c84a94660fb1" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1ad94c2f6cfa64bf61e3c1c84a94660fb1" kindref="member">Modele_turbulence_hyd_K_Eps_2_Couches::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__RANS__K__Eps__base_1a0e528aca2fba2f0ca74c9309a0eaddc0" kindref="member">Modele_turbulence_hyd_RANS_K_Eps_base::readOn</ref>(s);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a206f8ebc19188d572d20e924b6b9b25c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a206f8ebc19188d572d20e924b6b9b25c" kindref="member">Modele_turbulence_hyd_K_Eps_2_Couches::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__RANS__K__Eps__base_1a404d2d3f64a24a25295fc75965dc8f6c" kindref="member">Modele_turbulence_hyd_RANS_K_Eps_base::set_param</ref>(param);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;Transport_K_KEpsilon&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">),<sp/><ref refid="classParam_1aa4ad0ca1d49bc5f2ebc5fc83ee9df384aaf5b6dfac1c5970478525407cc6ac572" kindref="member">Param::REQUIRED</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a57810642e6a2c248cb6bfde437e5b370" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a57810642e6a2c248cb6bfde437e5b370" kindref="member">Modele_turbulence_hyd_K_Eps_2_Couches::lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;Transport_K_KEpsilon&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a6c7881f976ce7b23f90c5f2ffdf04457" kindref="member">eqn_transp_K_Eps</ref>().<ref refid="classTransport__2eq__base_1a5c8eb6057eec83ef9e15895c42bf515b" kindref="member">associer_modele_turbulence</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a6c7881f976ce7b23f90c5f2ffdf04457" kindref="member">eqn_transp_K_Eps</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__base_1a3364c67c978f291554e99c7073014b02" kindref="member">Modele_turbulence_hyd_RANS_K_Eps_base::lire_motcle_non_standard</ref>(mot,<sp/>is);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>la<sp/>viscosite<sp/>turbulente<sp/>au<sp/>temps<sp/>demande.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>temps)<sp/>le<sp/>temps<sp/>auquel<sp/>il<sp/>faut<sp/>calculer<sp/>la<sp/>viscosite</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Champ_Fonc_base&amp;)<sp/>la<sp/>viscosite<sp/>turbulente<sp/>au<sp/>temps<sp/>demande</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@throws<sp/>erreur<sp/>de<sp/>taille<sp/>de<sp/>visco_turb_K_eps</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a60a71bad426a1a20e8227ae371758f60" refkind="member"><highlight class="normal"><ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a60a71bad426a1a20e8227ae371758f60" kindref="member">Modele_turbulence_hyd_K_Eps_2_Couches::calculer_viscosite_turbulente</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/>chK_Eps<sp/>=<sp/>eqn_transport_K_Eps_.<ref refid="classTransport__K__Eps__base_1a60c495aa9dad416f241f26ad8b2e34d3" kindref="member">inconnue</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type<sp/>=<sp/>chK_Eps.<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab_K_Eps<sp/>=<sp/>chK_Eps.<ref refid="classChamp__Proto_1a87dd9bef0380e547eb00afc0a9f47b6e" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>visco_turb<sp/>=<sp/><ref refid="classModele__turbulence__hyd__base_1a229c914beb2afc1e28495427801560fa" kindref="member">la_viscosite_turbulente_</ref>-&gt;<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>K_Eps(i,0)<sp/>=<sp/>K<sp/>au<sp/>noeud<sp/>i</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>K_Eps(i,1)<sp/>=<sp/>Epsilon<sp/>au<sp/>noeud<sp/>i</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>tab_K_Eps.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(visco_turb.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()<sp/>!=<sp/>n)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>OWN_PTR(<ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>)<sp/>visco_turb_au_format_K_eps;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>visco_turb_au_format_K_eps.typer(type);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>visco_turb_K_eps<sp/>=<sp/><ref refid="classModele__turbulence__hyd__RANS__Gen_1a864252fd1f939f8e1f7777310394cb3e" kindref="member">complete_viscosity_field</ref>(n,<sp/>eqn_transport_K_Eps_.<ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>(),<sp/>visco_turb_au_format_K_eps);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(visco_turb_K_eps.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()<sp/>!=<sp/>n)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;visco_turb_K_eps<sp/>size<sp/>is<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>visco_turb_K_eps.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>instead<sp/>of<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>n<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fill_turbulent_viscosity_tab(n,<sp/>tab_K_Eps,<sp/>visco_turb_K_eps);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classModele__turbulence__hyd__base_1a229c914beb2afc1e28495427801560fa" kindref="member">la_viscosite_turbulente_</ref>-&gt;<ref refid="classChamp__base_1a336a105699c70cd8c4d9b066a39264a8" kindref="member">affecter</ref>(visco_turb_au_format_K_eps.valeur());</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>fill_turbulent_viscosity_tab(n,<sp/>tab_K_Eps,<sp/>visco_turb);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__base_1a229c914beb2afc1e28495427801560fa" kindref="member">la_viscosite_turbulente_</ref>-&gt;<ref refid="classChamp__base_1a51c611d7c5754aaf1556c5f0e563c157" kindref="member">changer_temps</ref>(temps);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__base_1a229c914beb2afc1e28495427801560fa" kindref="member">la_viscosite_turbulente_</ref>;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Modele_turbulence_hyd_K_Eps_2_Couches::fill_turbulent_viscosity_tab(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab_K_Eps,<sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>turbulent_viscosity)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tab_K_Eps(i,<sp/>1)<sp/>&lt;=<sp/><ref refid="classModele__turbulence__hyd__2__eq__base_1a72750508f9e69d0c949ab66f849e7fe1" kindref="member">EPS_MIN_</ref>)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>turbulent_viscosity[i]<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>turbulent_viscosity[i]<sp/>=<sp/>CMU<sp/>*<sp/>tab_K_Eps(i,<sp/>0)<sp/>*<sp/>tab_K_Eps(i,<sp/>0)<sp/>/<sp/>tab_K_Eps(i,<sp/>1);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classModele__turbulence__hyd__K__Eps__2__Couches_1aaa06685cbef5df4eec2a624c25db5615" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1aaa06685cbef5df4eec2a624c25db5615" kindref="member">Modele_turbulence_hyd_K_Eps_2_Couches::preparer_calcul</ref>()</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a6c7881f976ce7b23f90c5f2ffdf04457" kindref="member">eqn_transp_K_Eps</ref>().<ref refid="classEquation__base_1a6ec47139247e984d286c2e13d0a92ff7" kindref="member">preparer_calcul</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a60a71bad426a1a20e8227ae371758f60" kindref="member">calculer_viscosite_turbulente</ref>(<ref refid="classModele__turbulence__hyd__base_1ac35cd2d28aba6811f8cbe04f4f9c4145" kindref="member">equation</ref>().schema_temps().temps_courant());</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__base_1a3d4ebe6aa10bf7525abb5a3a71ad55bd" kindref="member">Modele_turbulence_hyd_base::preparer_calcul</ref>();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a60a71bad426a1a20e8227ae371758f60" kindref="member">calculer_viscosite_turbulente</ref>(<ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a55ff8eb8bb0010a279ee7ac252b2d1ec" kindref="member">K_Eps</ref>().temps());</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__base_1a229c914beb2afc1e28495427801560fa" kindref="member">la_viscosite_turbulente_</ref>-&gt;<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>().<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a137907fec5ef58d8a14aa8fe405e218a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a137907fec5ef58d8a14aa8fe405e218a" kindref="member">Modele_turbulence_hyd_K_Eps_2_Couches::initTimeStep</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>eqn_transport_K_Eps_.<ref refid="classEquation__base_1abe73d22669a839178f90e5afa713e616" kindref="member">initTimeStep</ref>(dt);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="124"><highlight class="comment">/*!<sp/>@brief<sp/>Effectue<sp/>une<sp/>mise<sp/>a<sp/>jour<sp/>en<sp/>temps<sp/>du<sp/>modele<sp/>de<sp/>turbulence.</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*<sp/>Met<sp/>a<sp/>jour<sp/>l&apos;equation<sp/>de<sp/>transport<sp/>K-epsilon,</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>calcule<sp/>la<sp/>loi<sp/>de<sp/>paroi<sp/>et<sp/>la<sp/>viscosite<sp/>turbulente</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>au<sp/>nouveau<sp/>temps.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>temps)<sp/>le<sp/>temps<sp/>de<sp/>mise<sp/>a<sp/>jour</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="classModele__turbulence__hyd__K__Eps__2__Couches_1af8825c2774cea54df8a1944cfe6e46be" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1af8825c2774cea54df8a1944cfe6e46be" kindref="member">Modele_turbulence_hyd_K_Eps_2_Couches::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><ref refid="classSchema__Temps__base" kindref="compound">Schema_Temps_base</ref>&amp;<sp/>sch<sp/>=<sp/>eqn_transport_K_Eps_.<ref refid="classEquation__base_1abc11e51aa75b4c7aa55c27f71eb2f2c4" kindref="member">schema_temps</ref>();</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>eqn_transport_K_Eps_.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>().<ref refid="classDomaine__Cl__dis__base_1aa795c2647aa15f522174d4f0202d6f4b" kindref="member">mettre_a_jour</ref>(temps);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>sch.<ref refid="classSchema__Temps__base_1aaf384ecbdb1555490cad2f1779dd5a9c" kindref="member">faire_un_pas_de_temps_eqn_base</ref>(eqn_transport_K_Eps_);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/>eqn_transport_K_Eps_.<ref refid="classEquation__base_1a62757c897af44f346e3a9e65e38aa122" kindref="member">mettre_a_jour</ref>(temps);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1affcd058809786918ed173aaf681d0843" kindref="member">begin_count</ref>(nut_counter_);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/>calculate_limit_viscosity&lt;MODELE_TYPE::K_EPS_2_COUCHES&gt;(<ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a55ff8eb8bb0010a279ee7ac252b2d1ec" kindref="member">K_Eps</ref>(),<sp/><ref refid="classModele__turbulence__hyd__base_1a3da25c02a78d40cfbac09ed28890f4a5" kindref="member">LeCmu_</ref>);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>statistiques().<ref refid="classStatistiques_1a686ef80e162afd2fb6058c8d27175ca4" kindref="member">end_count</ref>(nut_counter_);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="144"><highlight class="comment">/*!<sp/>@brief<sp/>Simple<sp/>appel<sp/>a<sp/>Transport_K_Eps::completer()</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="classModele__turbulence__hyd__K__Eps__2__Couches_1ad7c818d66c9e8a70896f0650725c7fc7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1ad7c818d66c9e8a70896f0650725c7fc7" kindref="member">Modele_turbulence_hyd_K_Eps_2_Couches::completer</ref>()</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__K__Eps__2__Couches_1a6c7881f976ce7b23f90c5f2ffdf04457" kindref="member">eqn_transp_K_Eps</ref>().<ref refid="classEquation__base_1a68c77bfc9fb39474ddc481495710c40e" kindref="member">completer</ref>();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__2__eq__base_1a2df78bd41e64bebd7b4478b7975b915b" kindref="member">verifie_loi_paroi</ref>();</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Modeles_Turbulence/RANS/Hydr/Modele_turbulence_hyd_K_Eps_2_Couches.cpp"/>
+  </compounddef>
+</doxygen>

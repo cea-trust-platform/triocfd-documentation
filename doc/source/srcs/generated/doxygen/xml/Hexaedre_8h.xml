@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Hexaedre_8h" kind="file" language="C++">
+    <compoundname>Hexaedre.h</compoundname>
+    <includes refid="Elem__geom__base_8h" local="no">Elem_geom_base.h</includes>
+    <includedby refid="Domaine__DG_8cpp" local="no">Domaine_DG.cpp</includedby>
+    <includedby refid="Domaine__EF_8cpp" local="no">Domaine_EF.cpp</includedby>
+    <includedby refid="Domaine__IJK_8cpp" local="no">Domaine_IJK.cpp</includedby>
+    <includedby refid="Domaine__PolyMAC_8cpp" local="no">Domaine_PolyMAC.cpp</includedby>
+    <includedby refid="Domaine__PolyMAC__P0_8cpp" local="no">Domaine_PolyMAC_P0.cpp</includedby>
+    <includedby refid="Domaine__PolyMAC__P0P1NC_8cpp" local="no">Domaine_PolyMAC_P0P1NC.cpp</includedby>
+    <includedby refid="Domaine__Poly__base_8cpp" local="no">Domaine_Poly_base.cpp</includedby>
+    <includedby refid="Domaine__VDF_8cpp" local="no">Domaine_VDF.cpp</includedby>
+    <includedby refid="Domaine__VEF_8cpp" local="no">Domaine_VEF.cpp</includedby>
+    <includedby refid="Domaine__bord_8cpp" local="no">Domaine_bord.cpp</includedby>
+    <includedby refid="Hexaedre_8cpp" local="no">Hexaedre.cpp</includedby>
+    <includedby refid="Hexaedre__axi_8h" local="no">Hexaedre_axi.h</includedby>
+    <includedby refid="IJK__Grid__Geometry_8cpp" local="no">IJK_Grid_Geometry.cpp</includedby>
+    <includedby refid="Marching__Cubes_8cpp" local="no">Marching_Cubes.cpp</includedby>
+    <includedby refid="Redresser__hexaedres__vdf_8cpp" local="no">Redresser_hexaedres_vdf.cpp</includedby>
+    <includedby refid="Remaillage__FT_8cpp" local="no">Remaillage_FT.cpp</includedby>
+    <includedby refid="Transformer_8cpp" local="no">Transformer.cpp</includedby>
+    <innerclass refid="classHexaedre__32__64" prot="public">Hexaedre_32_64</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="Hexaedre_8h_1a580fddea4ebbd29a4e5afc64a12e3bcc" prot="public" static="no">
+        <type><ref refid="classHexaedre__32__64" kindref="compound">Hexaedre_32_64</ref>&lt; int &gt;</type>
+        <definition>using Hexaedre =  Hexaedre_32_64&lt;int&gt;</definition>
+        <argsstring></argsstring>
+        <name>Hexaedre</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Hexaedre.h" line="212" column="1" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Hexaedre.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Hexaedre_8h_1a462e09dc9fc7c22fc0f4d951bb885066" prot="public" static="no">
+        <type><ref refid="classHexaedre__32__64" kindref="compound">Hexaedre_32_64</ref>&lt; trustIdType &gt;</type>
+        <definition>using Hexaedre_64 =  Hexaedre_32_64&lt;trustIdType&gt;</definition>
+        <argsstring></argsstring>
+        <name>Hexaedre_64</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Hexaedre.h" line="213" column="1" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Hexaedre.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>Hexaedre_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>Hexaedre_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Elem_geom_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">/*!<sp/>@brief<sp/>Classe<sp/>Hexaedre<sp/>Cette<sp/>represente<sp/>un<sp/>element<sp/>geometrique<sp/>a<sp/>6<sp/>faces,<sp/>8<sp/>sommets<sp/>et</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>un<sp/>seul<sp/>type<sp/>de<sp/>face<sp/>(Type_Face::quadrangle_3D)<sp/>a<sp/>4<sp/>sommets.</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@sa<sp/>Hexaedre_axi<sp/>Elem_geom_base<sp/>Elem_geom,<sp/>Un<sp/>hexaedre<sp/>est<sp/>un<sp/>element<sp/>3D</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="28" refid="classHexaedre__32__64" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classHexaedre__32__64" kindref="compound">Hexaedre_32_64</ref><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classElem__geom__base__32__64" kindref="compound">Elem_geom_base_32_64</ref>&lt;_SIZE_&gt;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classHexaedre__32__64_1a27e5aa20505951be8ac9dbbfb0a4bfc0" refkind="member"><highlight class="normal"><sp/><sp/>Declare_instanciable_32_64(<ref refid="classHexaedre__32__64" kindref="compound">Hexaedre_32_64</ref>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">public<sp/>:</highlight></codeline>
+<codeline lineno="34" refid="classHexaedre__32__64_1a408426f9eae1e4db57300180d10b8d71" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>=<sp/>_SIZE_;</highlight></codeline>
+<codeline lineno="35" refid="classHexaedre__32__64_1af69e2a0d765ec91de9a22534e54e3e0e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_t</ref><sp/>=<sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_T&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="36" refid="classHexaedre__32__64_1acea4964b138cec68d6301432d03af136" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">SmallArrOfTID_t</ref><sp/>=<sp/><ref refid="classTRUSTArray" kindref="compound">SmallArrOfTID_T&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="37" refid="classHexaedre__32__64_1a2966bd42ed6a23ae3a4cec1744051d0d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect_t</ref><sp/>=<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect_T&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="38" refid="classHexaedre__32__64_1adac87d5087f7f979f373b1bc2d45a007" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab_t</ref><sp/>=<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab_T&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="39" refid="classHexaedre__32__64_1a9ce0eb6648964b3548778154052c6748" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref><sp/>=<sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_32_64&lt;_SIZE_&gt;</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a4925b54a9843afbb6463ed3a6198a510" kindref="member">face_sommet</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a712e46804633e139bf816bd56b613f98" kindref="member">face_sommet0</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a38d497ccc006e571e5fdc9ccaf2a26ea" kindref="member">face_sommet1</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a63f9e96f00bf0178958890fbb416723f" kindref="member">face_sommet2</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1ae36d1c77ea41431aeff46c5e9d761b8f" kindref="member">face_sommet3</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a864e47b69c117009ef897536fa5cccd8" kindref="member">face_sommet4</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1ab91e551db4d667e9cc44406ee9a4b719" kindref="member">face_sommet5</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49" refid="classHexaedre__32__64_1a1a54788726262da046c00ce6330c5ce3" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a1a54788726262da046c00ce6330c5ce3" kindref="member">nb_som</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>8;<sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a887eddbd85d907d28259f43980ccea5b" kindref="member">nb_faces</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">=0)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a044c17ff27309c3dad8cf26c556af756" kindref="member">nb_som_face</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">=0)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52" refid="classHexaedre__32__64_1add549ddc31654bdc94143d09b17ec25f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1add549ddc31654bdc94143d09b17ec25f" kindref="member">est_structure</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/>};</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><ref refid="classHexaedre__32__64_1aab494464df40822eec03a5e494a53092" kindref="member">nom_lml</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a1ffcf3a9358c548034b2b0eb2ab9b918" kindref="member">contient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>pos,<sp/><ref refid="classHexaedre__32__64_1a408426f9eae1e4db57300180d10b8d71" kindref="member">int_t</ref><sp/>elem)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a1ffcf3a9358c548034b2b0eb2ab9b918" kindref="member">contient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1acea4964b138cec68d6301432d03af136" kindref="member">SmallArrOfTID_t</ref>&amp;<sp/>soms,<sp/><ref refid="classHexaedre__32__64_1a408426f9eae1e4db57300180d10b8d71" kindref="member">int_t</ref><sp/>elem)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Type_Face<sp/><ref refid="classHexaedre__32__64_1a31fd9cdee98ecf475cf006c02eb6c8f9" kindref="member">type_face</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">=0)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1acd88056b1679f3301a47c358ae9a2f16" kindref="member">reordonner</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a0646e45e61ee1f7a5b5d7f025e6bb08b" kindref="member">reordonner_elem</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a737dac0eee8cba5c3af4f82459df6fab" kindref="member">calculer_volumes</ref>(<ref refid="classHexaedre__32__64_1a2966bd42ed6a23ae3a4cec1744051d0d" kindref="member">DoubleVect_t</ref>&amp;<sp/>vols)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a1c8cec1d340b27024fd2825eeff52057" kindref="member">calculer_normales</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1af69e2a0d765ec91de9a22534e54e3e0e" kindref="member">IntTab_t</ref>&amp;<sp/>faces_sommets<sp/>,<sp/><ref refid="classHexaedre__32__64_1adac87d5087f7f979f373b1bc2d45a007" kindref="member">DoubleTab_t</ref>&amp;<sp/>face_normales)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a88da76a5e28a36cfbf41d28be3f8226b" kindref="member">get_tab_faces_sommets_locaux</ref>(<ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>faces_som_local)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="64"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nombre<sp/>de<sp/>faces<sp/>du<sp/>type<sp/>specifie<sp/>que<sp/>possede<sp/>l&apos;element<sp/>geometrique.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>type<sp/>de<sp/>face</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>nombre<sp/>de<sp/>faces<sp/>de<sp/>type<sp/>i</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="70" refid="classHexaedre__32__64_1a887eddbd85d907d28259f43980ccea5b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a887eddbd85d907d28259f43980ccea5b" kindref="member">Hexaedre_32_64&lt;_SIZE_&gt;::nb_faces</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="71"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>assert(i==0);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>6;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="77"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nombre<sp/>de<sp/>sommets<sp/>des<sp/>faces<sp/>du<sp/>type<sp/>specifie.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>type<sp/>de<sp/>face</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>nombre<sp/>de<sp/>sommets<sp/>des<sp/>faces<sp/>de<sp/>type<sp/>i</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="83" refid="classHexaedre__32__64_1a044c17ff27309c3dad8cf26c556af756" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a044c17ff27309c3dad8cf26c556af756" kindref="member">Hexaedre_32_64&lt;_SIZE_&gt;::nb_som_face</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="84"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>assert(i==0);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>4;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="90"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>0</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>numero<sp/>du<sp/>sommet<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>0</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="96" refid="classHexaedre__32__64_1a712e46804633e139bf816bd56b613f98" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a712e46804633e139bf816bd56b613f98" kindref="member">Hexaedre_32_64&lt;_SIZE_&gt;::face_sommet0</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="97"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet0(0)=0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet0(1)=2;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet0(2)=4;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet0(3)=6;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>assert(i&gt;=0);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>assert(i&lt;4);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2*i;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="108"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>1</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>numero<sp/>du<sp/>sommet<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>1</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="114" refid="classHexaedre__32__64_1a38d497ccc006e571e5fdc9ccaf2a26ea" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a38d497ccc006e571e5fdc9ccaf2a26ea" kindref="member">Hexaedre_32_64&lt;_SIZE_&gt;::face_sommet1</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="115"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet1(0)=0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet1(1)=1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet1(2)=4;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet1(3)=5;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/>assert(i&gt;=0);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>assert(i&lt;4);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2*(i/2)+i;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="126"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>2</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>numero<sp/>du<sp/>sommet<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>2</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="132" refid="classHexaedre__32__64_1a63f9e96f00bf0178958890fbb416723f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a63f9e96f00bf0178958890fbb416723f" kindref="member">Hexaedre_32_64&lt;_SIZE_&gt;::face_sommet2</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="133"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet2(0)=0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet2(1)=1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet2(2)=2;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet2(3)=3;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>assert(i&gt;=0);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>assert(i&lt;4);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="144"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>3</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>numero<sp/>du<sp/>sommet<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>3</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="150" refid="classHexaedre__32__64_1ae36d1c77ea41431aeff46c5e9d761b8f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1ae36d1c77ea41431aeff46c5e9d761b8f" kindref="member">Hexaedre_32_64&lt;_SIZE_&gt;::face_sommet3</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="151"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet3(0)=1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet3(1)=3;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet3(2)=5;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet3(3)=7;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/>assert(i&gt;=0);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>assert(i&lt;4);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2*i+1;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="162"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>4</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>numero<sp/>du<sp/>sommet<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>4</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="168" refid="classHexaedre__32__64_1a864e47b69c117009ef897536fa5cccd8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1a864e47b69c117009ef897536fa5cccd8" kindref="member">Hexaedre_32_64&lt;_SIZE_&gt;::face_sommet4</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="169"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet4(0)=2;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet4(1)=3;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet4(2)=6;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet4(3)=7;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/>assert(i&gt;=0);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>assert(i&lt;4);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2*(i/2)+i+2;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="180"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>5</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>numero<sp/>du<sp/>sommet<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>numero<sp/>du<sp/>i-ieme<sp/>sommet<sp/>de<sp/>la<sp/>face<sp/>5</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="186" refid="classHexaedre__32__64_1ab91e551db4d667e9cc44406ee9a4b719" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64_1ab91e551db4d667e9cc44406ee9a4b719" kindref="member">Hexaedre_32_64&lt;_SIZE_&gt;::face_sommet5</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="187"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet4(0)=4;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet4(1)=5;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet4(2)=6;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//face_sommet4(3)=7;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/>assert(i&gt;=0);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/>assert(i&lt;4);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>i+4;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="198"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>i-ieme<sp/>type<sp/>de<sp/>face.</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/>*<sp/>Un<sp/>hexaedre<sp/>n&apos;a<sp/>qu&apos;un<sp/>seul<sp/>type<sp/>de<sp/>face.</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>le<sp/>rang<sp/>du<sp/>type<sp/>de<sp/>face<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Type_Face)<sp/>un<sp/>type<sp/>de<sp/>face</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="206" refid="classHexaedre__32__64_1a31fd9cdee98ecf475cf006c02eb6c8f9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Type_Face<sp/><ref refid="classHexaedre__32__64_1a31fd9cdee98ecf475cf006c02eb6c8f9" kindref="member">Hexaedre_32_64&lt;_SIZE_&gt;::type_face</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="207"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/>assert(i==0);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Type_Face::quadrangle_3D;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64" kindref="compound">Hexaedre</ref><sp/>=<sp/><ref refid="classHexaedre__32__64" kindref="compound">Hexaedre_32_64&lt;int&gt;</ref>;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classHexaedre__32__64" kindref="compound">Hexaedre_64</ref><sp/>=<sp/><ref refid="classHexaedre__32__64" kindref="compound">Hexaedre_32_64&lt;trustIdType&gt;</ref>;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Hexaedre.h"/>
+  </compounddef>
+</doxygen>

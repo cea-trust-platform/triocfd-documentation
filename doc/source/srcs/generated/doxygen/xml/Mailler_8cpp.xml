@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Mailler_8cpp" kind="file" language="C++">
+    <compoundname>Mailler.cpp</compoundname>
+    <includes refid="NettoieNoeuds_8h" local="no">NettoieNoeuds.h</includes>
+    <includes refid="TRUST__Deriv_8h" local="no">TRUST_Deriv.h</includes>
+    <includes refid="Mailler_8h" local="no">Mailler.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Scatter_8h" local="no">Scatter.h</includes>
+    <includes local="no">list</includes>
+    <includes local="no">memory</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Mailler.cpp</label>
+        <link refid="Mailler_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>list</label>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Mailler_8cpp_1a8831d8823b2f30082308df42f63f5061" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename _T_</type>
+          </param>
+        </templateparamlist>
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Mailler_32_64bases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Mailler_32_64bases</name>
+        <initializer>= { &amp;( <ref refid="classInterprete__geometrique__base__32__64" kindref="compound">Interprete_geometrique_base_32_64</ref>&lt;_T_&gt; ::info_obj) }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Mailler.cpp" line="25" column="131" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Mailler.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Mailler_8cpp_1a08f1fb49c58270c065f93e1dfc6308e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void verifie_syntaxe</definition>
+        <argsstring>(Motcle &amp;motlu)</argsstring>
+        <name>verifie_syntaxe</name>
+        <param>
+          <type><ref refid="classMotcle" kindref="compound">Motcle</ref> &amp;</type>
+          <declname>motlu</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Mailler.cpp" line="42" column="13" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Mailler.cpp" bodystart="42" bodyend="49"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;NettoieNoeuds.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUST_Deriv.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Mailler.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Scatter.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;list&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classMailler__32__64_1a5fe5d69bc21f22b0a86d715383a35ccc" refkind="member"><highlight class="normal">Implemente_instanciable_32_64(<ref refid="classMailler__32__64" kindref="compound">Mailler_32_64</ref>,</highlight><highlight class="stringliteral">&quot;Mailler&quot;</highlight><highlight class="normal">,<ref refid="classInterprete__geometrique__base__32__64" kindref="compound">Interprete_geometrique_base_32_64&lt;_T_&gt;</ref>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>mailler<sp/>interprete<sp/>mailler<sp/>-1<sp/>The<sp/>Mailler<sp/>(Mesh)<sp/>interpretor<sp/>allows<sp/>a<sp/>Domain<sp/>type<sp/>object<sp/>domaine<sp/>to<sp/>be<sp/>meshed<sp/>with<sp/>objects<sp/>objet_1,<sp/>objet_2,<sp/>etc...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>domaine<sp/>ref_domaine<sp/>domaine<sp/>0<sp/>Name<sp/>of<sp/>domain.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>bloc<sp/>list_bloc_mailler<sp/>bloc<sp/>0<sp/>Instructions<sp/>to<sp/>mesh.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="31" refid="classMailler__32__64_1ab1654954edb93b81ecea139c2b688782" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classMailler__32__64_1ab1654954edb93b81ecea139c2b688782" kindref="member">Mailler_32_64&lt;_SIZE_&gt;::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="32"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classInterprete_1a4dc57ee68fca0ece3949ec2a307062e5" kindref="member">Interprete::printOn</ref>(os);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="37" refid="classMailler__32__64_1aa5c6739aa62916f758b77b475944a0ee" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classMailler__32__64_1aa5c6739aa62916f758b77b475944a0ee" kindref="member">Mailler_32_64&lt;_SIZE_&gt;::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classInterprete_1aa53181fde696cbb695f1db6aaabd75e3" kindref="member">Interprete::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>verifie_syntaxe(<ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>motlu)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu!=</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>motlu!=</highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;We<sp/>expected<sp/>,<sp/>or<sp/>}&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="50"><highlight class="comment">/*!<sp/>@brief<sp/>Fonction<sp/>principale<sp/>de<sp/>l&apos;interprete<sp/>Mailler<sp/>Structure<sp/>du<sp/>jeu<sp/>de<sp/>donnee<sp/>(en<sp/>dimension<sp/>2)<sp/>:</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Mailler<sp/>dom</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>[Epsilon<sp/>eps]</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>[objet1]</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>,</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>[objet2]</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Deux<sp/>points<sp/>seront<sp/>confondus<sp/>des<sp/>que<sp/>la<sp/>distance<sp/>entre<sp/>eux<sp/>est</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>inferieure<sp/>a<sp/>Epsilon.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>un<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;)<sp/>le<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@throws<sp/>l&apos;objet<sp/>a<sp/>mailler<sp/>n&apos;est<sp/>pas<sp/>du<sp/>type<sp/>Domaine_t</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>@throws<sp/>accolade<sp/>ouvrante<sp/>attendue</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>@throws<sp/>accolade<sp/>fermante<sp/>ou<sp/>virgule<sp/>attendue</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="70" refid="classMailler__32__64_1abb278f5a57fdf46000f932667970a159" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classMailler__32__64_1abb278f5a57fdf46000f932667970a159" kindref="member">Mailler_32_64&lt;_SIZE_&gt;::interpreter_</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1a48ea49c199fc8961be575e571038b79a" kindref="member">Process::is_parallel</ref>())</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mailler<sp/>keyword<sp/>can&apos;t<sp/>be<sp/>used<sp/>in<sp/>parallel<sp/>calculation!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Use<sp/>only<sp/>Scatter<sp/>keyword<sp/>to<sp/>read<sp/>partitioned<sp/>mesh.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>precision_geom_sa<sp/>=<sp/>this-&gt;precision_geom;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>this-&gt;associer_domaine(is);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>dom<sp/>=<sp/>this-&gt;domaine();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>debloque<sp/>les<sp/>structures<sp/>pour<sp/>modifier<sp/>le<sp/>domaine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><ref refid="classScatter_1aec2d2e44a9cd80f85b6d1615bfdfe8b1" kindref="member">Scatter::uninit_sequential_domain</ref>(dom);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motlu;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;We<sp/>expected<sp/>a<sp/>{&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>typ_domaine;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>std::list&lt;Domaine_t*&gt;<sp/>dom_lst;<sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>list<sp/>of<sp/>domains<sp/>we<sp/>will<sp/>merge<sp/>later<sp/>when<sp/>calling<sp/>comprimer()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>std::list&lt;OWN_PTR(<ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>)&gt;<sp/>dom_lst2;<sp/></highlight><highlight class="comment">//<sp/>just<sp/>for<sp/>memory<sp/>management</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>typ_domaine;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>motlu<sp/>=<sp/>typ_domaine;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(motlu==</highlight><highlight class="stringliteral">&quot;epsilon&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>eps;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>eps;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dom.<ref refid="classDomaine__base_1acc8ea02c68565a5457d2000f68e1a9a5" kindref="member">fixer_epsilon</ref>(eps);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GF<sp/>le<sp/>eps<sp/>du<sp/>domaine<sp/>ne<sp/>sert<sp/>plus<sp/>quand<sp/>on<sp/>cherche<sp/>les<sp/>sommets<sp/>doubles;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;precision_geom=eps;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>verifie_syntaxe(motlu);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(motlu==</highlight><highlight class="stringliteral">&quot;Domain&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_dom;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>nom_dom;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Adding<sp/>a<sp/>domain<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom_dom<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>added_dom=ref_cast(<ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>,<sp/>this-&gt;objet(nom_dom));</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dom_lst.push_back(&amp;added_dom);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>verifie_syntaxe(motlu);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dom_lst2.push_back(OWN_PTR(<ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>)());<sp/></highlight><highlight class="comment">//<sp/>to<sp/>keep<sp/>them<sp/>alive<sp/>till<sp/>the<sp/>end<sp/>of<sp/>the<sp/>method</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OWN_PTR(<ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>)&amp;<sp/>un_domaine<sp/>=<sp/>dom_lst2.back();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>un_domaine.typer(typ_domaine);<sp/></highlight><highlight class="comment">//<sp/>Most<sp/>likely<sp/>a<sp/>Pave<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>ze_domaine<sp/>=<sp/>un_domaine.valeur();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>ze_domaine;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dom_lst.push_back(&amp;ze_domaine);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>verifie_syntaxe(motlu);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(motlu<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Dans<sp/>le<sp/>cas<sp/>ou<sp/>on<sp/>a<sp/>modifie<sp/>precision<sp/>geom,<sp/>on<sp/>le<sp/>remet<sp/>a<sp/>la<sp/>valeur<sp/>d&apos;origine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>this-&gt;precision_geom=precision_geom_sa;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>dom.<ref refid="classDomaine__32__64_1a63ee017ee63ea52268c948d945eaeb58" kindref="member">fill_from_list</ref>(dom_lst);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>dom.<ref refid="classDomaine__32__64_1a94e7efd1c8287b48935f6fe33242dbff" kindref="member">fixer_premieres_faces_frontiere</ref>();</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><ref refid="classNettoieNoeuds__32__64_1a361e496d106690905817cc1519ee4686" kindref="member">NettoieNoeuds_32_64&lt;_SIZE_&gt;::nettoie</ref>(dom);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="classScatter_1a234264f0b60648fc3def26f2b4ab9da5" kindref="member">Scatter::init_sequential_domain</ref>(dom);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMailler__32__64" kindref="compound">Mailler_32_64&lt;int&gt;</ref>;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>INT_is_64_<sp/>==<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMailler__32__64" kindref="compound">Mailler_32_64&lt;trustIdType&gt;</ref>;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Mailler.cpp"/>
+  </compounddef>
+</doxygen>

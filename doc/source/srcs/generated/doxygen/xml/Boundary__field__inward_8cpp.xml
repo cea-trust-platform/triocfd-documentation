@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Boundary__field__inward_8cpp" kind="file" language="C++">
+    <compoundname>Boundary_field_inward.cpp</compoundname>
+    <includes refid="Boundary__field__inward_8h" local="no">Boundary_field_inward.h</includes>
+    <includes refid="Motcle_8h" local="no">Motcle.h</includes>
+    <includes refid="Domaine__VF_8h" local="no">Domaine_VF.h</includes>
+    <includes refid="Linear__algebra__tools_8h" local="no">Linear_algebra_tools.h</includes>
+    <includes refid="EChaine_8h" local="no">EChaine.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Boundary__field__inward_8cpp_1afc712d5d74930156a9e2f1abdcf48022" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Boundary_field_inwardbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Boundary_field_inwardbases</name>
+        <initializer>={   &amp;( <ref refid="classChamp__front__normal" kindref="compound">Champ_front_normal</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Boundary_field_inward.cpp" line="22" column="125" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Boundary_field_inward.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Boundary__field__inward_8cpp_1a3c2ade1af2c5cc6c5b472ecc8d8a91d8" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Champ_front_normal_VEFbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Champ_front_normal_VEFbases</name>
+        <initializer>={   &amp;( <ref refid="classBoundary__field__inward" kindref="compound">Boundary_field_inward</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Boundary_field_inward.cpp" line="100" column="129" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Boundary_field_inward.cpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Boundary_field_inward.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Motcle.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Linear_algebra_tools.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EChaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classBoundary__field__inward_1a8ff45062a50b3eba60dc5694ae08415c" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classBoundary__field__inward" kindref="compound">Boundary_field_inward</ref>,</highlight><highlight class="stringliteral">&quot;Boundary_field_inward&quot;</highlight><highlight class="normal">,<ref refid="classChamp__front__normal" kindref="compound">Champ_front_normal</ref>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>boundary_field_inward<sp/>front_field_base<sp/>boundary_field_inward<sp/>1<sp/>this<sp/>field<sp/>is<sp/>used<sp/>to<sp/>define<sp/>the<sp/>normal<sp/>vector<sp/>field<sp/>standard<sp/>at<sp/>the<sp/>boundary<sp/>in<sp/>VDF<sp/>or<sp/>VEF<sp/>discretization.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>normal_value<sp/>chaine<sp/>normal_value<sp/>0<sp/>normal<sp/>vector<sp/>value<sp/>(positive<sp/>value<sp/>for<sp/>a<sp/>vector<sp/>oriented<sp/>outside<sp/>to<sp/>inside)<sp/>which<sp/>can<sp/>depend<sp/>of<sp/>the<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classBoundary__field__inward_1acbc0ab91f45ad862fb9d096d6a0c0339" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classBoundary__field__inward_1acbc0ab91f45ad862fb9d096d6a0c0339" kindref="member">Boundary_field_inward::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="29"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__normal_1ae18ef8a6d47d291da2a8ee7453d99201" kindref="member">Champ_front_normal::printOn</ref>(os);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classBoundary__field__inward_1a999106e963f977b4770960c56e245374" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classBoundary__field__inward_1a999106e963f977b4770960c56e245374" kindref="member">Boundary_field_inward::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__normal_1ad032a31e1f02b907dcd09d95a935ee9d" kindref="member">Champ_front_normal::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="40"><highlight class="comment">/*!<sp/>@brief<sp/>Initialize<sp/>normal<sp/>inward<sp/>field<sp/>given<sp/>on<sp/>boundaries</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Remark<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>code<sp/>is<sp/>not<sp/>in<sp/>&quot;Champ_front_normal::initialiser&quot;<sp/>function<sp/>because<sp/>in<sp/>the<sp/>case<sp/>of<sp/>using</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Champ_front_debit,<sp/>the<sp/>readOn<sp/>function<sp/>of<sp/>Champ_front_normal<sp/>is<sp/>not<sp/>called</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>so<sp/>vit_norm<sp/>is<sp/>not<sp/>initialized<sp/>and<sp/>it<sp/>can<sp/>leads<sp/>to<sp/>critical<sp/>values<sp/>detected</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>in<sp/>debug<sp/>mode.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Moreover,<sp/>when<sp/>using<sp/>Champ_front_debit<sp/>we<sp/>don&apos;t<sp/>need<sp/>to<sp/>do<sp/>all<sp/>these<sp/>calculations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>That<sp/>is<sp/>why<sp/>Boundary_field_inward<sp/>was<sp/>created</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classBoundary__field__inward_1a62c2232002d9fb3bd0c5362867279082" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classBoundary__field__inward_1a62c2232002d9fb3bd0c5362867279082" kindref="member">Boundary_field_inward::initialiser</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tps,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/>inco)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!<ref refid="classCh__front__var__instationnaire__dep_1a2f84ab4435e03baaa42ecd00b58f8a32" kindref="member">Champ_front_normal::initialiser</ref>(tps,inco)<sp/>)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="classBoundary__field__inward_1a4f5323a576b210d587507b2028222996" kindref="member">mettre_a_jour</ref>(tps);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classBoundary__field__inward_1a4f5323a576b210d587507b2028222996" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBoundary__field__inward_1a4f5323a576b210d587507b2028222996" kindref="member">Boundary_field_inward::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tps)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>&amp;<sp/>domaine_VF<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>,<ref refid="classChamp__front__base_1a5f1d5b08fca8fa01efa7cc3406508d1e" kindref="member">domaine_dis</ref>());</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFront__VF" kindref="compound">Front_VF</ref>&amp;<sp/>le_bord=<sp/>ref_cast(<ref refid="classFront__VF" kindref="compound">Front_VF</ref>,<ref refid="classChamp__front__base_1a2ade0aea3d8e1676539884e12d4f0cfd" kindref="member">frontiere_dis</ref>());</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>first=le_bord.<ref refid="classFront__VF_1a930e90fb5e8e79adaad93b5c405d00d1" kindref="member">num_premiere_face</ref>();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_cases=<ref refid="classChamp__front__base_1a52f671ae3217c69ec9e2175916d367ca" kindref="member">les_valeurs</ref>-&gt;<ref refid="classRoue_1abfa502bacbfc11f6f680b6a5af998fbc" kindref="member">nb_cases</ref>();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>tab_normal_vector(le_bord.<ref refid="classFront__VF_1a48eadf1b57ddc0d16e4953d19f259a9e" kindref="member">nb_faces</ref>(),<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Evaluation<sp/>de<sp/>vit_norm:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="classChamp__front__normal_1a338bd452005a2fd3d57e1a8a2a5521ee" kindref="member">vit_norm</ref>.<ref refid="classParser__U_1a13c377b32b6c3ced39a14f83f94a8828" kindref="member">setVar</ref>(</highlight><highlight class="stringliteral">&quot;t&quot;</highlight><highlight class="normal">,tps);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>value<sp/>=<sp/><ref refid="classChamp__front__normal_1a338bd452005a2fd3d57e1a8a2a5521ee" kindref="member">vit_norm</ref>.<ref refid="classParser__U_1a61605bc1b85e466f884f1739e811b6b4" kindref="member">eval</ref>();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;le_bord.<ref refid="classFront__VF_1a48eadf1b57ddc0d16e4953d19f259a9e" kindref="member">nb_faces</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>signe<sp/>=<sp/>-1;</highlight><highlight class="comment">//we<sp/>want<sp/>the<sp/>opposite<sp/>of<sp/>the<sp/>normal<sp/>vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>global_boundary_face_number=i+first;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//outward<sp/>vector<sp/>associated<sp/>to<sp/>the<sp/>fac<sp/>global_boundary_face_number</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>normal_vector<sp/>=<sp/>domaine_VF.<ref refid="classDomaine__VF_1aa488d10b1371b6b0b6f42a27a6cb124b" kindref="member">normalized_boundaries_outward_vector</ref>(global_boundary_face_number,signe);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k=0;<sp/>k&lt;<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>;<sp/>k++)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tab_normal_vector(i,k)<sp/>=<sp/>normal_vector(k);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>all<sp/>moments</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>t=0;<sp/>t&lt;nb_cases;<sp/>t++)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab=<ref refid="classChamp__front__base_1a52f671ae3217c69ec9e2175916d367ca" kindref="member">les_valeurs</ref>[t].valeurs();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>;<sp/>j++)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tab(i,j)=tab_normal_vector(i,j);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tab(i,j)*=value;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Obsolete<sp/>soon:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classChamp__front__normal__VEF_1a822bc6bf393cbdf7a432053bd9d53a86" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classChamp__front__normal__VEF" kindref="compound">Champ_front_normal_VEF</ref>,</highlight><highlight class="stringliteral">&quot;Champ_front_normal_VEF&quot;</highlight><highlight class="normal">,<ref refid="classBoundary__field__inward" kindref="compound">Boundary_field_inward</ref>);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>champ_front_normal_vef<sp/>front_field_base<sp/>champ_front_normal_vef<sp/>0<sp/>Field<sp/>to<sp/>define<sp/>the<sp/>normal<sp/>vector<sp/>field<sp/>standard<sp/>at<sp/>the<sp/>boundary<sp/>in<sp/>VEF<sp/>discretization.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>mot<sp/>chaine(into=[&quot;valeur_normale&quot;])<sp/>mot<sp/>0<sp/>Name<sp/>of<sp/>vector<sp/>field.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>vit_tan<sp/>floattant<sp/>vit_tan<sp/>0<sp/>normal<sp/>vector<sp/>value<sp/>(positive<sp/>value<sp/>for<sp/>a<sp/>vector<sp/>oriented<sp/>outside<sp/>to<sp/>inside).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classChamp__front__normal__VEF_1a8287225e44a21b6c8949ef282878e816" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classChamp__front__normal__VEF_1a8287225e44a21b6c8949ef282878e816" kindref="member">Champ_front_normal_VEF::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="107"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBoundary__field__inward_1acbc0ab91f45ad862fb9d096d6a0c0339" kindref="member">Boundary_field_inward::printOn</ref>(os);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classChamp__front__normal__VEF_1ae5dad342e2db341bba3bea3bed4670fa" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classChamp__front__normal__VEF_1ae5dad342e2db341bba3bea3bed4670fa" kindref="member">Champ_front_normal_VEF::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motlu;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><ref refid="classMotcles" kindref="compound">Motcles</ref><sp/>les_mots(1);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>les_mots[0]=</highlight><highlight class="stringliteral">&quot;valeur_normale&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>is&gt;&gt;motlu;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu<sp/>!=<sp/>les_mots[0])</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>while<sp/>reading<sp/>a<sp/>Champ_front_normal&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;We<sp/>expected<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>les_mots[0]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>instead<sp/>of<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>motlu<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>debit;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>debit;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>exp(</highlight><highlight class="stringliteral">&quot;{<sp/>normal_value<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>exp+=debit;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>exp+=</highlight><highlight class="stringliteral">&quot;<sp/>}<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><ref refid="classEChaine" kindref="compound">EChaine</ref><sp/>E(exp);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBoundary__field__inward_1a999106e963f977b4770960c56e245374" kindref="member">Boundary_field_inward::readOn</ref>(E);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Boundary_field_inward.cpp"/>
+  </compounddef>
+</doxygen>

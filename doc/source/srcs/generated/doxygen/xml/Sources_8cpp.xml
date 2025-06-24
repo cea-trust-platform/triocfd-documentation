@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Sources_8cpp" kind="file" language="C++">
+    <compoundname>Sources.cpp</compoundname>
+    <includes refid="Matrice__Morse_8h" local="no">Matrice_Morse.h</includes>
+    <includes refid="TRUSTTab_8h" local="no">TRUSTTab.h</includes>
+    <includes refid="Sources_8h" local="no">Sources.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Sources_8cpp_1a676231069c9c80b2a76774657d37410f" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Sourcesbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Sourcesbases</name>
+        <initializer>={   &amp;( <ref refid="classTRUST__List" kindref="compound">TRUST_List</ref>&lt; <ref refid="classSource" kindref="compound">Source</ref> &gt; ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Sources.cpp" line="20" column="69" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Sources.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Morse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTab.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Sources.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classSources_1ab6d2c6c90427333c1f36e46b0ae35179" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classSources" kindref="compound">Sources</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Sources&quot;</highlight><highlight class="normal">,<sp/>LIST(<ref refid="classSource" kindref="compound">Source</ref>));</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>sources<sp/>listobj<sp/>sources<sp/>-1<sp/>source_base<sp/>-1<sp/>The<sp/>sources.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classSources_1ab3b7ae47e2278a5e1847577f4f9e6aa6" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSources_1ab3b7ae47e2278a5e1847577f4f9e6aa6" kindref="member">Sources::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>LIST(<ref refid="classSource" kindref="compound">Source</ref>)::<ref refid="classSources_1ab3b7ae47e2278a5e1847577f4f9e6aa6" kindref="member">printOn</ref>(os);<sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="25"><highlight class="comment">/*!<sp/>@brief<sp/>Lecture<sp/>d&apos;une<sp/>liste<sp/>de<sp/>sources<sp/>sur<sp/>un<sp/>flot<sp/>d&apos;entree.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>Lit<sp/>une<sp/>liste<sp/>de<sp/>sources<sp/>separees<sp/>par<sp/>des<sp/>virgules</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>et<sp/>le<sp/>sajoute<sp/>a<sp/>la<sp/>liste.</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>format:</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>bloc<sp/>de<sp/>lecture<sp/>d&apos;une<sp/>source</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>[,<sp/>bloc<sp/>de<sp/>lecture<sp/>d&apos;une<sp/>source]</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>le<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;)<sp/>le<sp/>flot<sp/>d&apos;entree<sp/>modifie</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@throws<sp/>accolade<sp/>ouvrante<sp/>attendue</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@throws<sp/>accolade<sp/>fermante<sp/>ou<sp/>virgule<sp/>attendue</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classSources_1ad0c93ddea48397ee3c3f98bf78ab8b10" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSources_1ad0c93ddea48397ee3c3f98bf78ab8b10" kindref="member">Sources::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>accouverte=</highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>accfermee=</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>virgule=</highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>typ;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>typ;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(typ!=accouverte)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;We<sp/>were<sp/>waiting<sp/>for<sp/>{<sp/>before<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>typ<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="classSource" kindref="compound">Source</ref><sp/>t;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>typ;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(typ==accfermee)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(1)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSource" kindref="compound">Source</ref>&amp;<sp/>so=<ref refid="classTRUST__List_1a8821a68929efa6b0c3e4139dc675538a" kindref="member">add</ref>(t);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Reading<sp/>of<sp/>term<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>typ<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;and<sp/>typing:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cout<sp/>&lt;&lt;<sp/>&quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<sp/>Type<sp/>de<sp/>Source<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>typ<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>so.<ref refid="classSource_1a64787353f65177329e2118a7462fdf39" kindref="member">typer</ref>(typ,<ref refid="classMorEqn_1a82f9d0c41fe998c095a16b15648fdb38" kindref="member">mon_equation</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>so-&gt;associer_eqn(<ref refid="classMorEqn_1a82f9d0c41fe998c095a16b15648fdb38" kindref="member">mon_equation</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>so.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>typ;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(typ==accfermee)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(typ!=virgule)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>typ<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>we<sp/>expected<sp/>a<sp/>&apos;,&apos;<sp/>or<sp/>a<sp/>&apos;}&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>assert<sp/>(typ==virgule);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>typ;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="80"><highlight class="comment">/*!<sp/>@brief<sp/>Ajoute<sp/>la<sp/>contribution<sp/>de<sp/>toutes<sp/>les<sp/>sources<sp/>de<sp/>la<sp/>liste<sp/>au<sp/>tableau<sp/>passe<sp/>en<sp/>parametre,<sp/>et<sp/>renvoie<sp/>ce<sp/>tableau.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>xx)<sp/>le<sp/>tableau<sp/>dans<sp/>lequel<sp/>on<sp/>doit<sp/>accumuler<sp/>la<sp/>contribution<sp/>des<sp/>termes<sp/>sources</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>@return<sp/>(DoubleTab&amp;)<sp/>le<sp/>parametre<sp/>xx<sp/>modifie</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classSources_1aee196746a5ec214061c0a84814e68117" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classSources_1aee196746a5ec214061c0a84814e68117" kindref="member">Sources::ajouter</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>xx)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="86"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>itr.ajouter(xx);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>xx;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="91"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>la<sp/>contribution<sp/>de<sp/>toutes<sp/>les<sp/>sources<sp/>de<sp/>la<sp/>liste<sp/>stocke<sp/>le<sp/>resultat<sp/>dans<sp/>le<sp/>tableau<sp/>passe<sp/>en<sp/>parametre,</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>et<sp/>renvoie<sp/><sp/>ce<sp/>tableau.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;<sp/>xx)<sp/>le<sp/>tableau<sp/>dans<sp/>lequel<sp/>on<sp/>doit<sp/>stocker<sp/>la<sp/>somme<sp/>des<sp/>contributions<sp/>des<sp/>sources</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>@return<sp/>(DoubleTab&amp;)<sp/>le<sp/>parametre<sp/>xx<sp/>modifie</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="classSources_1af095604c39a6bea22eef57dac61731b9" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classSources_1af095604c39a6bea22eef57dac61731b9" kindref="member">Sources::calculer</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>xx)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="99"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>xx<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>itr.ajouter(xx);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>xx;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="105"><highlight class="comment">/*!<sp/>@brief<sp/>Mise<sp/>a<sp/>jour<sp/>en<sp/>temps,<sp/>de<sp/>toute<sp/>les<sp/>sources<sp/>de<sp/>la<sp/>liste</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>temps)<sp/>le<sp/>pas<sp/>de<sp/>temps<sp/>de<sp/>mise<sp/>a<sp/>jour</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classSources_1aa993ae270b7536a4d1a321899b905bf8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSources_1aa993ae270b7536a4d1a321899b905bf8" kindref="member">Sources::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>itr-&gt;mettre_a_jour(temps);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="114"><highlight class="comment">/*!<sp/>@brief<sp/>Rest<sp/>all<sp/>sources<sp/>to<sp/>a<sp/>given<sp/>time</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*<sp/><sp/>See<sp/>ProblemeTrio::resetTime()</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classSources_1aa50ea070080dbf465f2435e06e7aa0e4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSources_1aa50ea070080dbf465f2435e06e7aa0e4" kindref="member">Sources::resetTime</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>itr-&gt;resetTime(temps);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="122"><highlight class="comment">/*!<sp/>@brief<sp/>Appelle<sp/>Source::completer()<sp/>sur<sp/>toutes<sp/>les<sp/>sources<sp/>de<sp/>la<sp/>liste.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*<sp/>voir<sp/>Source_base::completer().</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="classSources_1ac938e21c6fe9f5bb9f0dc304eb2267dc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSources_1ac938e21c6fe9f5bb9f0dc304eb2267dc" kindref="member">Sources::completer</ref>()</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>itr-&gt;completer();</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="132"><highlight class="comment">/*!<sp/>@brief<sp/>Pour<sp/>chaque<sp/>source<sp/>de<sp/>la<sp/>liste,<sp/>appel<sp/>a<sp/>associer_champ_rho<sp/>de<sp/>la<sp/>source.</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Si<sp/>la<sp/>masse<sp/>volumique<sp/>est<sp/>variable,<sp/>il<sp/>faut<sp/>declarer<sp/>le</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/>*<sp/><sp/><sp/>champ<sp/>de<sp/>rho<sp/>aux<sp/>sources<sp/>avec<sp/>cette<sp/>methode<sp/>(front-tracking)</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Sinon,<sp/>par<sp/>defaut,<sp/>les<sp/>calculs<sp/>sont<sp/>faits<sp/>avec<sp/>rho=1</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="classSources_1ae4a5edaa79c889463af64951ad64ee84" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSources_1ae4a5edaa79c889463af64951ad64ee84" kindref="member">Sources::associer_champ_rho</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/>champ_rho)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSource" kindref="compound">Source</ref>&amp;<sp/>src<sp/>=<sp/>itr;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSource__base" kindref="compound">Source_base</ref>&amp;<sp/>src_base<sp/>=<sp/>src.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>src_base.<ref refid="classSource__base_1a45bad0218ad7b517f064ef4d55df2260" kindref="member">associer_champ_rho</ref>(champ_rho);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="149"><highlight class="comment">/*!<sp/>@brief<sp/>Pour<sp/>chaque<sp/>source<sp/>de<sp/>la<sp/>liste,<sp/>appel<sp/>a<sp/>a_pour_Champ_Fonc(mot,ch_ref).</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/>*<sp/>Cette<sp/>methode<sp/>est<sp/>appelee<sp/>par<sp/>Equation_base::a_pour_Champ_Fonc.</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="classSources_1a5c1645ac017c487c9099a9c6273d7dd6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSources_1a5c1645ac017c487c9099a9c6273d7dd6" kindref="member">Sources::a_pour_Champ_Fonc</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OBS_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)&amp;<sp/>ch_ref)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="156"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ok<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSource" kindref="compound">Source</ref>&amp;<sp/>src<sp/>=<sp/>itr;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSource__base" kindref="compound">Source_base</ref>&amp;<sp/>src_base<sp/>=<sp/>src.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(src_base.<ref refid="classSource__base_1a12327adc90a19cc9eb74c22f67f38d6b" kindref="member">a_pour_Champ_Fonc</ref>(mot,<sp/>ch_ref))</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ok<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ok;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="171"><highlight class="comment">/*!<sp/>@brief<sp/>Appelle<sp/>Source::impr()<sp/>sur<sp/>toutes<sp/>les<sp/>sources<sp/>de<sp/>la<sp/>liste.</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/>*<sp/>voir<sp/>Source_base::impr().</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="classSources_1a16e8cb41e283bf7e0630f9485aab869a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSources_1a16e8cb41e283bf7e0630f9485aab869a" kindref="member">Sources::impr</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="177"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>itr-&gt;impr(os);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="182"><highlight class="comment">/*!<sp/>@brief<sp/>Dimensionnement<sp/>de<sp/>la<sp/>matrice<sp/>implicite<sp/>des<sp/>termes<sp/>sources.</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/>*<sp/>Parcours<sp/>toutes<sp/>les<sp/>sources<sp/>de<sp/>la<sp/>liste<sp/>pour<sp/>dimensionner.</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="classSources_1ac3b18fd761088f669139f11c6b5c9eb7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSources_1ac3b18fd761088f669139f11c6b5c9eb7" kindref="member">Sources::dimensionner</ref>(<ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matrice)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="188"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSource" kindref="compound">Source</ref>&amp;<sp/>src<sp/>=<sp/>itr;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSource__base" kindref="compound">Source_base</ref>&amp;<sp/>src_base<sp/>=<sp/>src.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref><sp/>mat;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>src_base.<ref refid="classSource__base_1af3d787428977472b636a6b4eb30d5416" kindref="member">dimensionner</ref>(mat);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat.<ref refid="classMatrice__Morse_1ad69929b5100f2785d737dd77e2c82196" kindref="member">nb_colonnes</ref>())<sp/>matrice<sp/>+=<sp/>mat;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="198"><highlight class="comment">/*!<sp/>@brief<sp/>contribution<sp/>a<sp/>la<sp/>matrice<sp/>implicite<sp/>des<sp/>termes<sp/>sources<sp/>par<sp/>defaut<sp/>pas<sp/>de<sp/>contribution</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="classSources_1a2c4bb87930a1893ee0a11a509771cfc1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSources_1a2c4bb87930a1893ee0a11a509771cfc1" kindref="member">Sources::contribuer_a_avec</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>a,<sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matrice)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="202"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSource" kindref="compound">Source</ref>&amp;<sp/>src<sp/>=<sp/>itr;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSource__base" kindref="compound">Source_base</ref>&amp;<sp/>src_base<sp/>=<sp/>src.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>src_base.<ref refid="classSource__base_1a7b9e856eeb1c10ca2aa534ecf823d722" kindref="member">contribuer_a_avec</ref>(a,matrice);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211" refid="classSources_1a0e1c149a53e420e0dab4052f7e0224b2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSources_1a0e1c149a53e420e0dab4052f7e0224b2" kindref="member">Sources::contribuer_jacobienne</ref>(<ref refid="classMatrice__Bloc" kindref="compound">Matrice_Bloc</ref>&amp;<sp/>matrice,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="212"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSource" kindref="compound">Source</ref>&amp;<sp/>src<sp/>=<sp/>itr;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSource__base" kindref="compound">Source_base</ref>&amp;<sp/>src_base<sp/>=<sp/>src.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>src_base.<ref refid="classSource__base_1a89b24906e03a2306bf07c3491685a875" kindref="member">contribuer_jacobienne</ref>(matrice,<sp/>n);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="221"><highlight class="comment">/*!<sp/>@brief<sp/>Appelle<sp/>Source::initialiser(temps)<sp/>sur<sp/>toutes<sp/>les<sp/>sources<sp/>de<sp/>la<sp/>liste.</highlight></codeline>
+<codeline lineno="222"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="223"><highlight class="comment"><sp/>*<sp/>voir<sp/>Source_base::initialiser(double<sp/>temps).</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226" refid="classSources_1a40cabc9fa7e745f325fad26aefec055a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSources_1a40cabc9fa7e745f325fad26aefec055a" kindref="member">Sources::initialiser</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ok=1;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>ok<sp/>=<sp/>ok<sp/>&amp;&amp;<sp/>itr-&gt;initialiser(temps);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ok;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="classSources_1ac10f53f3d32b3317f51d39322fb1146b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSources_1ac10f53f3d32b3317f51d39322fb1146b" kindref="member">Sources::check_multiphase_compatibility</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="235"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSource" kindref="compound">Source</ref>&amp;<sp/>src<sp/>=<sp/>itr;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSource__base" kindref="compound">Source_base</ref>&amp;<sp/>src_base<sp/>=<sp/>src.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>src_base.<ref refid="classMorEqn_1a46879a44635069fbe1a7b2bb2368bfc1" kindref="member">check_multiphase_compatibility</ref>();</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Sources.cpp"/>
+  </compounddef>
+</doxygen>

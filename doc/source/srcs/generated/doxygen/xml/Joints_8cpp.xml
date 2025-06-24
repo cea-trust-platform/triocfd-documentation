@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Joints_8cpp" kind="file" language="C++">
+    <compoundname>Joints.cpp</compoundname>
+    <includes refid="Joints_8h" local="no">Joints.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Joints_8cpp_1a62071c540cb3457f391f81a0d87bf566" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename _T_</type>
+          </param>
+        </templateparamlist>
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Joints_32_64bases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Joints_32_64bases</name>
+        <initializer>= { &amp;( <ref refid="classTRUST__List" kindref="compound">TRUST_List</ref>&lt; <ref refid="classJoint__32__64" kindref="compound">Joint_32_64</ref>&lt;_T_&gt; &gt; ::info_obj) }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Joints.cpp" line="18" column="127" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Joints.cpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Joints.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classJoints__32__64_1a5fabbc702a94b3c89d4c294b5f6e33e4" refkind="member"><highlight class="normal">Implemente_instanciable_32_64(<ref refid="classJoints__32__64" kindref="compound">Joints_32_64</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Joints&quot;</highlight><highlight class="normal">,<sp/>LIST(<ref refid="classJoint__32__64" kindref="compound">Joint_32_64&lt;_T_&gt;</ref>));</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="21" refid="classJoints__32__64_1a56007157e645f73b6661e7d5367a3bed" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classJoints__32__64_1a56007157e645f73b6661e7d5367a3bed" kindref="member">Joints_32_64&lt;_SIZE_&gt;::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>LIST(<ref refid="classJoint__32__64" kindref="compound">Joint_32_64&lt;_SIZE_&gt;</ref>)::printOn(os);<sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="24" refid="classJoints__32__64_1a9bff65c37e1bdfb72d7b456fe530d5d1" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classJoints__32__64_1a9bff65c37e1bdfb72d7b456fe530d5d1" kindref="member">Joints_32_64&lt;_SIZE_&gt;::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>LIST(<ref refid="classJoint__32__64" kindref="compound">Joint_32_64&lt;_SIZE_&gt;</ref>)::readOn(is);<sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="26"><highlight class="comment">/*!<sp/>@brief<sp/>Associe<sp/>un<sp/>domaine<sp/>a<sp/>tous<sp/>les<sp/>joints<sp/>de<sp/>la<sp/>liste.</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>Les<sp/>joints<sp/>de<sp/>la<sp/>liste<sp/>feront<sp/>partie<sp/>de<sp/>cet<sp/>domaine.</highlight></codeline>
+<codeline lineno="29" refid="classJoints__32__64_1a5fabbc702a94b3c89d4c294b5f6e33e4" refkind="member"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Domaine&amp;<sp/>un_domaine)<sp/>le<sp/>domaine<sp/>a<sp/>associer<sp/>aux<sp/>joints</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="33" refid="classJoints__32__64_1ad20fa01829550d07f4e749d3e4fbec79" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJoints__32__64_1ad20fa01829550d07f4e749d3e4fbec79" kindref="member">Joints_32_64&lt;_SIZE_&gt;::associer_domaine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>un_domaine)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>itr.associer_domaine(un_domaine);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37" refid="classJoints__32__64_1ad20fa01829550d07f4e749d3e4fbec79" refkind="member"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="38" refid="classJoints__32__64_1a75c3dc5fee95f5111b308eb25e85058e" refkind="member"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nombre<sp/>de<sp/>face<sp/>total<sp/>des<sp/>Joints_32_64<sp/>de<sp/>la<sp/>liste.</highlight></codeline>
+<codeline lineno="39" refid="classJoints__32__64_1a0c34da19ca49baf548cf9564a98d29ea" refkind="member"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>(la<sp/>somme<sp/>des<sp/>faces<sp/>de<sp/>tous<sp/>les</highlight></codeline>
+<codeline lineno="41" refid="classJoints__32__64_1a11b867951cb6c1e14f9f392f44bf95ae" refkind="member"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>joints<sp/>de<sp/>la<sp/>liste).</highlight></codeline>
+<codeline lineno="42" refid="classJoints__32__64_1aed031ee711199cd6bda8703325f27a4b" refkind="member"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>nombre<sp/>de<sp/>face<sp/>total<sp/>des<sp/>Joints_32_64<sp/>de<sp/>la<sp/>liste</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="46" refid="classJoints__32__64_1a75c3dc5fee95f5111b308eb25e85058e" refkind="member"><highlight class="normal">_SIZE_<sp/><ref refid="classJoints__32__64_1a75c3dc5fee95f5111b308eb25e85058e" kindref="member">Joints_32_64&lt;_SIZE_&gt;::nb_faces</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="47"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="classJoints__32__64_1a943d44014a7afac390617785c869e7c1" kindref="member">int_t</ref><sp/>nombre<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>nombre<sp/>+=<sp/>itr.nb_faces();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nombre;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="54"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nombre<sp/>de<sp/>faces<sp/>du<sp/>type<sp/>specifie<sp/>contenues<sp/>dans<sp/>la<sp/>liste<sp/>de<sp/>joints.</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(somme<sp/>des<sp/>faces<sp/>de<sp/>ce<sp/>type<sp/>sur<sp/>tous<sp/>les</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>joints<sp/>de<sp/>la<sp/>liste)</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Type_Face<sp/>type)<sp/>le<sp/>type<sp/>des<sp/>faces<sp/>a<sp/>compter</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>nombre<sp/>de<sp/>faces<sp/>du<sp/>type<sp/>specifie<sp/>contenues<sp/>dans<sp/>la<sp/>liste<sp/>de<sp/>joints</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="63" refid="classJoints__32__64_1a0c34da19ca49baf548cf9564a98d29ea" refkind="member"><highlight class="normal">_SIZE_<sp/><ref refid="classJoints__32__64_1a75c3dc5fee95f5111b308eb25e85058e" kindref="member">Joints_32_64&lt;_SIZE_&gt;::nb_faces</ref>(Type_Face<sp/>type)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="64"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="classJoints__32__64_1a943d44014a7afac390617785c869e7c1" kindref="member">int_t</ref><sp/>nombre<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(type<sp/>==<sp/>itr.faces().type_face())</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nombre<sp/>+=<sp/>itr.nb_faces();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nombre;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="73"><highlight class="comment">/*!<sp/>@brief<sp/>Comprime<sp/>la<sp/>liste<sp/>de<sp/>joints.</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="77" refid="classJoints__32__64_1a11b867951cb6c1e14f9f392f44bf95ae" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classJoints__32__64_1a11b867951cb6c1e14f9f392f44bf95ae" kindref="member">Joints_32_64&lt;_SIZE_&gt;::comprimer</ref>()</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Joints_32_64&lt;_SIZE_&gt;::comprimer()<sp/>-<sp/>Start&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">IntVect</ref><sp/>fait(this-&gt;size());</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rang1<sp/>=<sp/>0,<sp/>rang2<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>list<sp/>=<sp/>this-&gt;get_stl_list();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;itr<sp/>:<sp/>list)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fait(rang1))</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fait(rang1)<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJoint__32__64" kindref="compound">Joint_t</ref>&amp;<sp/>joint1<sp/>=<sp/>itr;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rang2<sp/>=<sp/>rang1;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;itr2<sp/>:<sp/>list)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fait(rang2))</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJoint__32__64" kindref="compound">Joint_t</ref>&amp;<sp/>joint2<sp/>=<sp/>itr2;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(joint1.<ref refid="classJoint__32__64_1ae57179453e83e1f568ba24e03f2495a1" kindref="member">PEvoisin</ref>()<sp/>==<sp/>joint2.<ref refid="classJoint__32__64_1ae57179453e83e1f568ba24e03f2495a1" kindref="member">PEvoisin</ref>())</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;agglomeration<sp/>of<sp/>joints<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>joint1.<ref refid="classFrontiere__32__64_1a80f25b603669b17303d4b4cfe9d933b9" kindref="member">le_nom</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>and<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>joint2.<ref refid="classFrontiere__32__64_1a80f25b603669b17303d4b4cfe9d933b9" kindref="member">le_nom</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fait(rang2)<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>joint1.<ref refid="classFrontiere__32__64_1a3064a8115270f842bec3e2a6c236504a" kindref="member">nommer</ref>(joint1.<ref refid="classFrontiere__32__64_1a80f25b603669b17303d4b4cfe9d933b9" kindref="member">le_nom</ref>()<sp/>+<sp/>joint2.<ref refid="classFrontiere__32__64_1a80f25b603669b17303d4b4cfe9d933b9" kindref="member">le_nom</ref>());</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Concatenation<sp/>des<sp/>faces</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>joint1.<ref refid="classJoint__32__64_1ad359b4b2bca18821499775f406a25d0d" kindref="member">ajouter_faces</ref>(joint2.<ref refid="classFrontiere__32__64_1abc6c71dfd30e5e1a58c60f7e8c64f202" kindref="member">les_sommets_des_faces</ref>());</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Concatenation<sp/>des<sp/>sommets<sp/>???</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Concatenation<sp/>of<sp/>nodes<sp/>?&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>joint2.<ref refid="classJoint__32__64_1a682e335888382681cccc561b19457e12" kindref="member">dimensionner</ref>(0);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rang2++;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++rang1;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>itr<sp/>=<sp/>list.begin();<sp/>itr<sp/>!=<sp/>list.end();<sp/>)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJoint__32__64" kindref="compound">Joint_t</ref>&amp;<sp/>joint1<sp/>=<sp/>*itr;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(joint1.<ref refid="classFrontiere__32__64_1aa7884654b521e9ff54f90af0f872550b" kindref="member">nb_faces</ref>()<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>itr<sp/>=<sp/>list.erase(itr);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++itr;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Joints_32_64&lt;_SIZE_&gt;::comprimer()<sp/>-<sp/>End&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="130"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>une<sp/>reference<sp/>sur<sp/>le<sp/>joint<sp/>qui<sp/>a<sp/>pour<sp/>voisin<sp/>le<sp/>PE<sp/>specifie.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>pe)<sp/>un<sp/>numero<sp/>de<sp/>PE</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Joint&amp;)<sp/>le<sp/>joint<sp/>qui<sp/>a<sp/>pour<sp/>voisin<sp/>le<sp/>PE<sp/>specifie</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/>*<sp/>@throws<sp/>PE<sp/>voisin<sp/>specifie<sp/>non<sp/>trouve<sp/>dans<sp/>la<sp/>liste<sp/>des<sp/>joints.</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="137" refid="classJoints__32__64_1aed031ee711199cd6bda8703325f27a4b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="classJoint__32__64" kindref="compound">Joints_32_64&lt;_SIZE_&gt;::Joint_t</ref>&amp;<sp/><ref refid="classJoints__32__64_1aed031ee711199cd6bda8703325f27a4b" kindref="member">Joints_32_64&lt;_SIZE_&gt;::joint_PE</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pe)</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;itr<sp/>:<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classJoint__32__64" kindref="compound">Joint_t</ref>&amp;<sp/>joint<sp/>=<sp/>itr;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pe_joint<sp/>=<sp/>joint.<ref refid="classJoint__32__64_1ae57179453e83e1f568ba24e03f2495a1" kindref="member">PEvoisin</ref>();</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pe<sp/>==<sp/>pe_joint)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>joint;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Joints_32_64&lt;_SIZE_&gt;::joint_PE<sp/>:<sp/>joint<sp/>not<sp/>found&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classJoints__32__64" kindref="compound">Joints_32_64&lt;int&gt;</ref>;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>INT_is_64_<sp/>==<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classJoints__32__64" kindref="compound">Joints_32_64&lt;trustIdType&gt;</ref>;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Joints.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Pb__Thermohydraulique__Concentration_8cpp" kind="file" language="C++">
+    <compoundname>Pb_Thermohydraulique_Concentration.cpp</compoundname>
+    <includes refid="Pb__Thermohydraulique__Concentration_8h" local="no">Pb_Thermohydraulique_Concentration.h</includes>
+    <includes refid="Fluide__Incompressible_8h" local="no">Fluide_Incompressible.h</includes>
+    <includes refid="Constituant_8h" local="no">Constituant.h</includes>
+    <includes refid="Verif__Cl_8h" local="no">Verif_Cl.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Pb__Thermohydraulique__Concentration_8cpp_1a85cef5ed1c4dcaeccd17bca4c59ff073" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Pb_Thermohydraulique_Concentrationbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Pb_Thermohydraulique_Concentrationbases</name>
+        <initializer>={   &amp;( <ref refid="classPb__Thermohydraulique" kindref="compound">Pb_Thermohydraulique</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Problems/Pb_Thermohydraulique_Concentration.cpp" line="21" column="177" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Problems/Pb_Thermohydraulique_Concentration.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Pb_Thermohydraulique_Concentration.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Incompressible.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Constituant.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Verif_Cl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classPb__Thermohydraulique__Concentration_1a98795be92ea58d9101136fbef1c1c60b" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classPb__Thermohydraulique__Concentration" kindref="compound">Pb_Thermohydraulique_Concentration</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Pb_Thermohydraulique_Concentration&quot;</highlight><highlight class="normal">,<sp/><ref refid="classPb__Thermohydraulique" kindref="compound">Pb_Thermohydraulique</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>pb_thermohydraulique_concentration<sp/>Pb_base<sp/>pb_thermohydraulique_concentration<sp/>-1<sp/>Resolution<sp/>of<sp/>Navier-Stokes/energy/multiple<sp/>constituent<sp/>transport<sp/>equations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>fluide_incompressible<sp/>fluide_incompressible<sp/>fluide_incompressible<sp/>0<sp/>The<sp/>fluid<sp/>medium<sp/>associated<sp/>with<sp/>the<sp/>problem.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>constituant<sp/>constituant<sp/>constituant<sp/>1<sp/>Constituents.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>navier_stokes_standard<sp/>navier_stokes_standard<sp/>navier_stokes_standard<sp/>1<sp/>Navier-Stokes<sp/>equations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>convection_diffusion_concentration<sp/>convection_diffusion_concentration<sp/>convection_diffusion_concentration<sp/>1<sp/>Constituent<sp/>transport<sp/>equations<sp/>(concentration<sp/>diffusion<sp/>convection).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>convection_diffusion_temperature<sp/>convection_diffusion_temperature<sp/>convection_diffusion_temperature<sp/>1<sp/>Energy<sp/>equation<sp/>(temperature<sp/>diffusion<sp/>convection).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classPb__Thermohydraulique__Concentration_1a84f9a5d800ef23606a1cddb86e9b9b89" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classPb__Thermohydraulique__Concentration_1a84f9a5d800ef23606a1cddb86e9b9b89" kindref="member">Pb_Thermohydraulique_Concentration::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Thermohydraulique_1ad10da5597240322f35a68896942d86c4" kindref="member">Pb_Thermohydraulique::printOn</ref>(os);<sp/>}</highlight></codeline>
+<codeline lineno="30" refid="classPb__Thermohydraulique__Concentration_1aaedfb6984736d9974998704591dc37fc" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classPb__Thermohydraulique__Concentration_1aaedfb6984736d9974998704591dc37fc" kindref="member">Pb_Thermohydraulique_Concentration::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Thermohydraulique_1ac045ab0539a574c852544d0abf2fa098" kindref="member">Pb_Thermohydraulique::readOn</ref>(is);<sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="32"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;equation<sp/>d&apos;hydraulique<sp/>de<sp/>type<sp/>Navier_Stokes_std<sp/>si<sp/>i=0<sp/>Renvoie<sp/>l&apos;equation<sp/>de<sp/>la<sp/>thermique<sp/>de<sp/>type</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Convection_Diffusion_Temperature<sp/>si<sp/>i=1</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Renvoie<sp/>l&apos;equation<sp/>de<sp/>la<sp/>thermique<sp/>de<sp/>type</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Convection_Diffusion_Concentration<sp/>si<sp/>i=2</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>l&apos;index<sp/>de<sp/>l&apos;equation<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Equation_base&amp;)<sp/>l&apos;equation<sp/>correspondante<sp/>a<sp/>l&apos;index</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classPb__Thermohydraulique__Concentration_1a47d00fb121dfd14a0a2713bc27626996" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/><ref refid="classPb__Thermohydraulique__Concentration_1a47d00fb121dfd14a0a2713bc27626996" kindref="member">Pb_Thermohydraulique_Concentration::equation</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="43"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>2)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Thermohydraulique__Concentration_1a58bf9dde63831ae8b46ceb29f0b61e3d" kindref="member">eq_concentration</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Thermohydraulique_1ad4b0e34c70d2cdb620061d3e9a1f6fb0" kindref="member">Pb_Thermohydraulique::equation</ref>(i);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="48"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;equation<sp/>d&apos;hydraulique<sp/>de<sp/>type<sp/>Navier_Stokes_std<sp/>si<sp/>i=0<sp/>Renvoie<sp/>l&apos;equation<sp/>de<sp/>la<sp/>thermique<sp/>de<sp/>type</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Convection_Diffusion_Temperature<sp/>si<sp/>i=1</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Renvoie<sp/>l&apos;equation<sp/>de<sp/>la<sp/>thermique<sp/>de<sp/>type</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Convection_Diffusion_Concentration<sp/>si<sp/>i=2</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>l&apos;index<sp/>de<sp/>l&apos;equation<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Equation_base&amp;)<sp/>l&apos;equation<sp/>correspondante<sp/>a<sp/>l&apos;index</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classPb__Thermohydraulique__Concentration_1a0d658797ff772133632a2a847acf9e30" refkind="member"><highlight class="normal"><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/><ref refid="classPb__Thermohydraulique__Concentration_1a47d00fb121dfd14a0a2713bc27626996" kindref="member">Pb_Thermohydraulique_Concentration::equation</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>2)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Thermohydraulique__Concentration_1a58bf9dde63831ae8b46ceb29f0b61e3d" kindref="member">eq_concentration</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Thermohydraulique_1ad4b0e34c70d2cdb620061d3e9a1f6fb0" kindref="member">Pb_Thermohydraulique::equation</ref>(i);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="63"><highlight class="comment">/*!<sp/>@brief<sp/>Associe<sp/>un<sp/>milieu<sp/>au<sp/>probleme,<sp/>Si<sp/>le<sp/>milieu<sp/>est<sp/>de<sp/>type</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>Fluide_Incompressible,<sp/>il<sp/>sera<sp/>associe<sp/>a<sp/>l&apos;equation<sp/>de<sp/>l&apos;hydraulique</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>et<sp/>a<sp/>l&apos;equation<sp/>d&apos;energie.</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>Constituant,<sp/>il<sp/>sera<sp/>associe<sp/>a<sp/>l&apos;equation<sp/>de<sp/>convection-diffusion</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Un<sp/>autre<sp/>type<sp/>de<sp/>milieu<sp/>provoque<sp/>une<sp/>erreur</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Milieu_base&amp;<sp/>mil)<sp/>le<sp/>milieu<sp/>physique<sp/>a<sp/>associer<sp/>au<sp/>probleme</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*<sp/>@throws<sp/>mauvais<sp/>type<sp/>de<sp/>milieu<sp/>physique</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classPb__Thermohydraulique__Concentration_1a1b6af0673f8b080b0246436a3c6b2c37" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPb__Thermohydraulique__Concentration_1a1b6af0673f8b080b0246436a3c6b2c37" kindref="member">Pb_Thermohydraulique_Concentration::associer_milieu_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/>mil)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classConstituant" kindref="compound">Constituant</ref>,<sp/>mil))</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPb__Thermohydraulique__Concentration_1a58bf9dde63831ae8b46ceb29f0b61e3d" kindref="member">eq_concentration</ref>.<ref refid="classConvection__Diffusion__Concentration_1ac332faaea21042251ecd8e6ab5a3595b" kindref="member">associer_milieu_base</ref>(mil);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPb__Thermohydraulique_1a2a5565a0719a799164ff67067d6a91f0" kindref="member">Pb_Thermohydraulique::associer_milieu_base</ref>(mil);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="81"><highlight class="comment">/*!<sp/>@brief<sp/>Teste<sp/>la<sp/>compatibilite<sp/>des<sp/>equations<sp/>de<sp/>convection-diffusion<sp/>et<sp/>de<sp/>l&apos;hydraulique.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>Le<sp/>test<sp/>se<sp/>fait<sp/>sur<sp/>les<sp/>conditions</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>aux<sp/>limites<sp/>discretisees<sp/>de<sp/>chaque<sp/>equation.</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Appels<sp/>aux<sp/>fonctions<sp/>de<sp/>librairie<sp/>hors<sp/>classe:</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>tester_compatibilite_hydr_thermique(const<sp/>Domaine_Cl_dis_base&amp;,const<sp/>Domaine_Cl_dis_base&amp;)</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>tester_compatibilite_hydr_concentration(const<sp/>Domaine_Cl_dis_base&amp;,const<sp/>Domaine_Cl_dis_base&amp;)</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>code<sp/>de<sp/>retour<sp/>propage</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classPb__Thermohydraulique__Concentration_1ae0029f22dde1a609a97f64d21328ad7a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPb__Thermohydraulique__Concentration_1ae0029f22dde1a609a97f64d21328ad7a" kindref="member">Pb_Thermohydraulique_Concentration::verifier</ref>()</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><ref refid="classPb__Thermohydraulique_1aee0cbb5d817e85b86f52f26d9754602f" kindref="member">Pb_Thermohydraulique::verifier</ref>();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__dis__base" kindref="compound">Domaine_Cl_dis_base</ref>&amp;<sp/>domaine_Cl_hydr<sp/>=<sp/><ref refid="classPb__Hydraulique_1aed40011ab22c266c77d38213d079e9ed" kindref="member">eq_hydraulique</ref>.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__dis__base" kindref="compound">Domaine_Cl_dis_base</ref>&amp;<sp/>domaine_Cl_co<sp/>=<sp/><ref refid="classPb__Thermohydraulique__Concentration_1a58bf9dde63831ae8b46ceb29f0b61e3d" kindref="member">eq_concentration</ref>.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tester_compatibilite_hydr_concentration(domaine_Cl_hydr,<sp/>domaine_Cl_co);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Problems/Pb_Thermohydraulique_Concentration.cpp"/>
+  </compounddef>
+</doxygen>

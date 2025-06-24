@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Paroi__Rayo__transp_8cpp" kind="file" language="C++">
+    <compoundname>Paroi_Rayo_transp.cpp</compoundname>
+    <includes refid="Paroi__Rayo__transp_8h" local="no">Paroi_Rayo_transp.h</includes>
+    <includes refid="Modele__Rayonnement__Milieu__Transparent_8h" local="no">Modele_Rayonnement_Milieu_Transparent.h</includes>
+    <includes refid="Milieu__base_8h" local="no">Milieu_base.h</includes>
+    <includes refid="Champ__Uniforme_8h" local="no">Champ_Uniforme.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Front__VF_8h" local="no">Front_VF.h</includes>
+    <includes refid="Fluide__Quasi__Compressible_8h" local="no">Fluide_Quasi_Compressible.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Paroi__Rayo__transp_8cpp_1ac84069063f61c660c04e96174b9c7c6a" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Paroi_Rayo_transpbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Paroi_Rayo_transpbases</name>
+        <initializer>={   &amp;( <ref refid="classNeumann__paroi" kindref="compound">Neumann_paroi</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Rayonnement/Rayonnement_milieu_transparent/Paroi_Rayo_transp.cpp" line="30" column="109" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Rayonnement/Rayonnement_milieu_transparent/Paroi_Rayo_transp.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Paroi_Rayo_transp.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TRUST_ROOT/../Composants/TrioCFD/Rayonnement/src</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version:<sp/><sp/><sp/><sp/><sp/>/main/14</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Paroi_Rayo_transp.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Modele_Rayonnement_Milieu_Transparent.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Milieu_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Uniforme.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Front_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Quasi_Compressible.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classParoi__Rayo__transp_1a100a5f3f1ae941272823d2ef0f642241" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classParoi__Rayo__transp" kindref="compound">Paroi_Rayo_transp</ref>,</highlight><highlight class="stringliteral">&quot;Paroi_Rayo_transp&quot;</highlight><highlight class="normal">,<ref refid="classNeumann__paroi" kindref="compound">Neumann_paroi</ref>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>printOn<sp/>et<sp/>readOn</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classParoi__Rayo__transp_1ac60ee4811f0db98d9ad5892746f4bbd8" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classParoi__Rayo__transp_1ac60ee4811f0db98d9ad5892746f4bbd8" kindref="member">Paroi_Rayo_transp::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="36"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classParoi__Rayo__transp_1af742983cc6aba4b260f26df79db3f646" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classParoi__Rayo__transp_1af742983cc6aba4b260f26df79db3f646" kindref="member">Paroi_Rayo_transp::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is<sp/>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classParoi__Rayo__transp_1a2800f95aea02f0f1af9a075d77294118" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classParoi__Rayo__transp_1a2800f95aea02f0f1af9a075d77294118" kindref="member">Paroi_Rayo_transp::flux_impose</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="46"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFront__VF" kindref="compound">Front_VF</ref>&amp;<sp/>la_frontiere_VF<sp/>=<sp/>ref_cast(<ref refid="classFront__VF" kindref="compound">Front_VF</ref>,<ref refid="classCond__lim__base_1ad88b3b516351146c85e8fce1df0f691a" kindref="member">frontiere_dis</ref>());</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ndeb<sp/>=<sp/>la_frontiere_VF.<ref refid="classFront__VF_1a930e90fb5e8e79adaad93b5c405d00d1" kindref="member">num_premiere_face</ref>();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>flux_radia=<ref refid="classCond__Lim__Rayo_1a12831788d5e040c263daa158fa3d3a51" kindref="member">le_modele_rayo</ref>-&gt;flux_radiatif(i+ndeb);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>().<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()==1)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>()(0,0)-flux_radia;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>().<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1)==1)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>()(i,0)-flux_radia;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Paroi_Rayo_transp::flux_impose<sp/>erreur&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classParoi__Rayo__transp_1a5a59a7c6b4d4a4869830a5c72836c102" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classParoi__Rayo__transp_1a2800f95aea02f0f1af9a075d77294118" kindref="member">Paroi_Rayo_transp::flux_impose</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="61"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFront__VF" kindref="compound">Front_VF</ref>&amp;<sp/>la_frontiere_VF<sp/>=<sp/>ref_cast(<ref refid="classFront__VF" kindref="compound">Front_VF</ref>,<ref refid="classCond__lim__base_1ad88b3b516351146c85e8fce1df0f691a" kindref="member">frontiere_dis</ref>());</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ndeb<sp/>=<sp/>la_frontiere_VF.<ref refid="classFront__VF_1a930e90fb5e8e79adaad93b5c405d00d1" kindref="member">num_premiere_face</ref>();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>flux_radia=<ref refid="classCond__Lim__Rayo_1a12831788d5e040c263daa158fa3d3a51" kindref="member">le_modele_rayo</ref>-&gt;flux_radiatif(i+ndeb);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>(<ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>().<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()<sp/>==<sp/>1)<sp/>?<sp/>0<sp/>:<sp/>i;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>-&gt;<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>()(k,<sp/>j)-flux_radia;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Rayonnement/Rayonnement_milieu_transparent/Paroi_Rayo_transp.cpp"/>
+  </compounddef>
+</doxygen>

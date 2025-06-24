@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Partitionneur__Union_8cpp" kind="file" language="C++">
+    <compoundname>Partitionneur_Union.cpp</compoundname>
+    <includes refid="Partitionneur__Union_8h" local="no">Partitionneur_Union.h</includes>
+    <includes refid="EFichier_8h" local="no">EFichier.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes refid="EChaine_8h" local="no">EChaine.h</includes>
+    <includes refid="Sous__Domaine_8h" local="no">Sous_Domaine.h</includes>
+    <includes refid="Interprete_8h" local="no">Interprete.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Partitionneur__Union_8cpp_1a61914199dbd1a0fe20401ae0c6c8aa43" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Partitionneur_Unionbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Partitionneur_Unionbases</name>
+        <initializer>={   &amp;( <ref refid="classPartitionneur__base__32__64" kindref="compound">Partitionneur_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Decoupeur/Partitionneur_Union.cpp" line="23" column="117" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Decoupeur/Partitionneur_Union.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Partitionneur_Union.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EFichier.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EChaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Sous_Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Interprete.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classPartitionneur__Union_1a17e4b542d75ed71e5d9f312a3061b942" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classPartitionneur__Union" kindref="compound">Partitionneur_Union</ref>,</highlight><highlight class="stringliteral">&quot;Partitionneur_Union&quot;</highlight><highlight class="normal">,<ref refid="classPartitionneur__base__32__64" kindref="compound">Partitionneur_base</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>partitionneur_union<sp/>partitionneur_deriv<sp/>union<sp/>0<sp/>Let<sp/>several<sp/>local<sp/>domains<sp/>be<sp/>generated<sp/>from<sp/>a<sp/>bigger<sp/>one<sp/>using<sp/>the<sp/>keyword<sp/>create_domain_from_sub_domain,<sp/>and<sp/>let<sp/>their<sp/>partitions<sp/>be<sp/>generated<sp/>in<sp/>the<sp/>usual<sp/>way.<sp/>Provided<sp/>the<sp/>list<sp/>of<sp/>partition<sp/>files<sp/>for<sp/>each<sp/>small<sp/>domain,<sp/>the<sp/>keyword<sp/>&apos;union&apos;<sp/>will<sp/>partition<sp/>the<sp/>global<sp/>domain<sp/>in<sp/>a<sp/>conform<sp/>fashion<sp/>with<sp/>the<sp/>smaller<sp/>domains.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>liste<sp/>bloc_lecture<sp/>liste<sp/>0<sp/>List<sp/>of<sp/>the<sp/>partition<sp/>files<sp/>with<sp/>the<sp/>following<sp/>syntaxe:<sp/>{sous_domaine1<sp/>decoupage1<sp/><sp/>...<sp/>sous_domaineim<sp/>decoupageim<sp/>}<sp/>where<sp/>sous_domaine1<sp/>...<sp/>sous_zomeim<sp/>are<sp/>small<sp/>domains<sp/>names<sp/>and<sp/>decoupage1<sp/>...<sp/>decoupageim<sp/>are<sp/>partition<sp/>files.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="27"><highlight class="comment">/*!<sp/>@brief<sp/>Lecture<sp/>des<sp/>parametres<sp/>du<sp/>partitionneur<sp/>sur<sp/>disque.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>Fomat<sp/>attendu:</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>{<sp/>sous_domaine<sp/>decoupage_sous_domaine<sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/><sp/><sp/>FILENAME<sp/>est<sp/>le<sp/>nom<sp/>d&apos;un<sp/>fichier<sp/>existant<sp/>au<sp/>format<sp/>ArrOfInt<sp/>ascii.</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classPartitionneur__Union_1ae24993d8875a8594ce173e9298e976bd" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classPartitionneur__Union_1ae24993d8875a8594ce173e9298e976bd" kindref="member">Partitionneur_Union::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>mot,<sp/>fic;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>mot;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Partitionneur_Union<sp/>:<sp/>list<sp/>{<sp/>sous_domaine<sp/>decoupage<sp/>}<sp/>expected.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">abort</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(is<sp/>&gt;&gt;<sp/>mot;<sp/>mot<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">;<sp/>is<sp/>&gt;&gt;<sp/>mot)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>fic;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fic<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Partitionneur_Union<sp/>:<sp/>partition<sp/>file<sp/>expected<sp/>for<sp/>sub-domaine<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mot<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">abort</ref>();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPartitionneur__Union_1a182c8ade74948e8a2955614337822786" kindref="member">fic_ssz</ref>[mot.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()]<sp/>=<sp/>fic.getString();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classPartitionneur__Union_1ac7e5c037d71cf49dffdf5ae661c5fb5d" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classPartitionneur__Union_1ac7e5c037d71cf49dffdf5ae661c5fb5d" kindref="member">Partitionneur_Union::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="57"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Partitionneur_Union::printOn<sp/>invalid\n&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classPartitionneur__Union_1a686b00f0ef6d6b55deae1394e23be48a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPartitionneur__Union_1a686b00f0ef6d6b55deae1394e23be48a" kindref="member">Partitionneur_Union::associer_domaine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>domaine)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="classPartitionneur__Union_1a1fb359aed995ecf33e047fc1453fe78e" kindref="member">ref_domaine_</ref><sp/>=<sp/>domaine;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="68"><highlight class="comment">/*!<sp/>@brief<sp/>Lit<sp/>le<sp/>contenu<sp/>du<sp/>fichier<sp/>&quot;filename_&quot;<sp/>et<sp/>stocke<sp/>le<sp/>resultat<sp/>dans<sp/>elem_part</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classPartitionneur__Union_1a3cb3d0ed6b50179b7e0e647a490c83e6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPartitionneur__Union_1a3cb3d0ed6b50179b7e0e647a490c83e6" kindref="member">Partitionneur_Union::construire_partition</ref>(<ref refid="classTRUSTVect" kindref="compound">IntVect</ref>&amp;<sp/>elem_part,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>nb_parts_tot)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="72"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>elem_part.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(<ref refid="classPartitionneur__Union_1a1fb359aed995ecf33e047fc1453fe78e" kindref="member">ref_domaine_</ref>-&gt;nb_elem());</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>elem_part<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;kv<sp/>:<sp/><ref refid="classPartitionneur__Union_1a182c8ade74948e8a2955614337822786" kindref="member">fic_ssz</ref>)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//on<sp/>recupere<sp/>le<sp/>sous-domaine<sp/>par<sp/>son<sp/>nom<sp/>et<sp/>le<sp/>decoupage<sp/>en<sp/>ouvrant<sp/>le<sp/>fichier...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>tmp(kv.first);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSous__Domaine__32__64" kindref="compound">Sous_Domaine</ref>&amp;<sp/>ssz<sp/>=<sp/>ref_cast(<ref refid="classSous__Domaine__32__64" kindref="compound">Sous_Domaine</ref>,<sp/><ref refid="classInterprete_1a3ca248609f0b72eac68baca14621b4ee" kindref="member">Interprete::objet</ref>(tmp));</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEFichier" kindref="compound">EFichier</ref><sp/>file;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>file.<ref refid="classEntree__Fichier__base_1a3b395ef740362ee7e8e855b08d4beba5" kindref="member">ouvrir</ref>(kv.second.c_str());</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">IntVect</ref><sp/>dec_ssz;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>file<sp/>&gt;&gt;<sp/>dec_ssz;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>file.<ref refid="classEntree__Fichier__base_1aca9165bc1712c1057b4d4b91a7ea4fb4" kindref="member">close</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//...<sp/>et<sp/>on<sp/>remplit<sp/>un<sp/>morceau<sp/>de<sp/>elem_part<sp/>avec</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dec_ssz.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()<sp/>!=<sp/>ssz.<ref refid="classSous__Domaine__32__64_1a968a7b1da5870848f9545b8d289b05ba" kindref="member">nb_elem_tot</ref>())</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Partitionneur_Union<sp/>:<sp/>incoherent<sp/>element<sp/>number<sp/>for<sp/>sub-domaine<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>kv.first<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>ssz.<ref refid="classSous__Domaine__32__64_1a968a7b1da5870848f9545b8d289b05ba" kindref="member">nb_elem_tot</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>elem_part[ssz(i)]<sp/>=<sp/>dec_ssz(i);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Decoupeur/Partitionneur_Union.cpp"/>
+  </compounddef>
+</doxygen>

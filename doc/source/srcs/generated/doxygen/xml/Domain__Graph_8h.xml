@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Domain__Graph_8h" kind="file" language="C++">
+    <compoundname>Domain_Graph.h</compoundname>
+    <includes local="no">metis.h</includes>
+    <includedby refid="Domain__Graph_8cpp" local="no">Domain_Graph.cpp</includedby>
+    <includedby refid="Partitionneur__Metis_8cpp" local="no">Partitionneur_Metis.cpp</includedby>
+    <includedby refid="Partitionneur__Parmetis_8cpp" local="no">Partitionneur_Parmetis.cpp</includedby>
+    <includedby refid="Partitionneur__Ptscotch_8cpp" local="no">Partitionneur_Ptscotch.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>Domain_Graph.h</label>
+        <link refid="Domain__Graph_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>metis.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classDomain__Graph" prot="public">Domain_Graph</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>Domain_Graph_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>Domain_Graph_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;metis.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>have<sp/>idx_t,<sp/>the<sp/>entity<sp/>index<sp/>of<sp/>METIS<sp/>(32<sp/>or<sp/>64b<sp/>depending<sp/>on<sp/>how<sp/>METIS/PETSc<sp/>was<sp/>compiled)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MPI_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>idx_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>Type<sp/>idx_t<sp/>is<sp/>alreay<sp/>defined<sp/>without<sp/>MPI,<sp/>and<sp/>hence<sp/>without<sp/>PETSc<sp/>-<sp/>this<sp/>Should<sp/>not<sp/>happen</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>idx_t<sp/>trustIdType</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment">/*!<sp/>@brief<sp/>Build<sp/>the<sp/>graph<sp/>of<sp/>the<sp/>domain<sp/>that<sp/>the<sp/>METIS/PARMETIS/PTSCOTCH<sp/>libraries<sp/>need.</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classDomain__Graph" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDomain__Graph" kindref="compound">Domain_Graph</ref></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classDomain__Graph_1ae6ba5cdc3af36a36a827e63c6abce9e7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfIdx_</ref><sp/>=<sp/><ref refid="classTRUSTArray" kindref="compound">TRUSTArray&lt;idx_t, idx_t&gt;</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDomain__Graph_1a67ee0b00c2698d5461e42c73f8b4f7ee" kindref="member">construire_graph_from_segment</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_32_64&lt;_SIZE_&gt;</ref>&amp;<sp/>dom,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>use_weights<sp/>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDomain__Graph_1a6f6cc7bec8f4f3d143d2e42f2be4cbf4" kindref="member">construire_graph_elem_elem</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_32_64&lt;_SIZE_&gt;</ref>&amp;<sp/>dom,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref>&amp;<sp/>liste_bords_periodiques,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>use_weights,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStatic__Int__Lists__32__64" kindref="compound">Static_Int_Lists_32_64&lt;_SIZE_&gt;</ref>&amp;<sp/>graph_elements_perio);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>All<sp/>members<sp/>are<sp/>public<sp/>to<sp/>facilitate<sp/>access<sp/>from<sp/>Partitionneur_*<sp/>classes<sp/>(rather<sp/>than<sp/>friend-ing<sp/>everything):</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classDomain__Graph_1a02d456e8de3bd520b7473f0a1617cde6" refkind="member"><highlight class="normal"><sp/><sp/>idx_t<sp/><ref refid="classDomain__Graph_1a02d456e8de3bd520b7473f0a1617cde6" kindref="member">nvtxs</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>The<sp/>number<sp/>of<sp/>vertices<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classDomain__Graph_1a0fa93799b204a7e7739b13f223f7f9b3" refkind="member"><highlight class="normal"><sp/><sp/>idx_t<sp/><ref refid="classDomain__Graph_1a0fa93799b204a7e7739b13f223f7f9b3" kindref="member">nedges</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>The<sp/>total<sp/>number<sp/>of<sp/>edges<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classDomain__Graph_1a8862f80a5807261225159b3488bddd02" refkind="member"><highlight class="normal"><sp/><sp/>idx_t<sp/><ref refid="classDomain__Graph_1a8862f80a5807261225159b3488bddd02" kindref="member">weightflag</ref>;</highlight></codeline>
+<codeline lineno="55" refid="classDomain__Graph_1af4b1507e73f84a76b904789b1353746a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfIdx_</ref><sp/><ref refid="classDomain__Graph_1af4b1507e73f84a76b904789b1353746a" kindref="member">xadj</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>CRS<sp/>storage<sp/>scheme<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classDomain__Graph_1aa46b7a696ec5dfe96823c0e86e9f7991" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfIdx_</ref><sp/><ref refid="classDomain__Graph_1aa46b7a696ec5dfe96823c0e86e9f7991" kindref="member">adjncy</ref>;</highlight></codeline>
+<codeline lineno="57" refid="classDomain__Graph_1a4d98a1945f8e20ece802d09478c91755" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfIdx_</ref><sp/><ref refid="classDomain__Graph_1a4d98a1945f8e20ece802d09478c91755" kindref="member">vwgts</ref>;</highlight></codeline>
+<codeline lineno="58" refid="classDomain__Graph_1a9c7ef0bec795aebca2579d38f0eacac2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfIdx_</ref><sp/><ref refid="classDomain__Graph_1a9c7ef0bec795aebca2579d38f0eacac2" kindref="member">ewgts</ref>;</highlight></codeline>
+<codeline lineno="59" refid="classDomain__Graph_1ac30ffaf25e07a5ff7eea3594363dbebc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfIdx_</ref><sp/><ref refid="classDomain__Graph_1ac30ffaf25e07a5ff7eea3594363dbebc" kindref="member">vtxdist</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>parmetis:<sp/>distribution<sp/>of<sp/>the<sp/>initial<sp/>graph<sp/>on<sp/>the<sp/>procs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classDomain__Graph_1a577c6fff37fb4de171b8dfd14380bd99" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfIdx_</ref><sp/><ref refid="classDomain__Graph_1a577c6fff37fb4de171b8dfd14380bd99" kindref="member">edgegsttab</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>ptscotch:<sp/>local<sp/>numbering<sp/>of<sp/>vertices</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Decoupeur/Domain_Graph.h"/>
+  </compounddef>
+</doxygen>

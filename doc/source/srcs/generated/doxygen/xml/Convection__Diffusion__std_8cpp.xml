@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Convection__Diffusion__std_8cpp" kind="file" language="C++">
+    <compoundname>Convection_Diffusion_std.cpp</compoundname>
+    <includes refid="Convection__Diffusion__std_8h" local="no">Convection_Diffusion_std.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Milieu__base_8h" local="no">Milieu_base.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Convection__Diffusion__std_8cpp_1a1cf4419afba84ece0beb2d9112cc80ad" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Convection_Diffusion_stdbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Convection_Diffusion_stdbases</name>
+        <initializer>={   &amp;( <ref refid="classEquation__base" kindref="compound">Equation_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Equations/Convection_Diffusion_std.cpp" line="21" column="137" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Equations/Convection_Diffusion_std.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Convection_Diffusion_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Milieu_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classConvection__Diffusion__std_1a02da686813e2c6712f0b29a7d4a217a9" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classConvection__Diffusion__std" kindref="compound">Convection_Diffusion_std</ref>,</highlight><highlight class="stringliteral">&quot;Convection_Diffusion_standard&quot;</highlight><highlight class="normal">,<ref refid="classEquation__base" kindref="compound">Equation_base</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="23"><highlight class="comment">/*!<sp/>@brief<sp/>Simple<sp/>appel<sp/>a<sp/>Equation_base::printOn(Sortie&amp;)</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>is)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Sortie&amp;)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>modifie</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classConvection__Diffusion__std_1add6dbc387f5bf74f5bf271a5601ec57c" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classConvection__Diffusion__std_1add6dbc387f5bf74f5bf271a5601ec57c" kindref="member">Convection_Diffusion_std::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>is)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="29"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1afb293dbd61851af919428a643f5e6d6f" kindref="member">Equation_base::printOn</ref>(is);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="34"><highlight class="comment">/*!<sp/>@brief<sp/>cf<sp/>Equation_base::readOn(Entree&amp;)</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>un<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;)<sp/>le<sp/>flot<sp/>d&apos;entree<sp/>modifie</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@throws<sp/>terme<sp/>diffusif<sp/>non<sp/>specifie</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@throws<sp/>terme<sp/>convectif<sp/>non<sp/>specifie</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classConvection__Diffusion__std_1a13756e4edd404f20e422c8177cc21cb7" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classConvection__Diffusion__std_1a13756e4edd404f20e422c8177cc21cb7" kindref="member">Convection_Diffusion_std::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1ab63880d4511734d1b40c978e10870017" kindref="member">Equation_base::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classConvection__Diffusion__std_1a6c0b61c59140f9f98eaf9b794f64cee0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1a6c0b61c59140f9f98eaf9b794f64cee0" kindref="member">Convection_Diffusion_std::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1a56e1c6f710cf92ffb54656bd4b5be32d" kindref="member">Equation_base::set_param</ref>(param);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;diffusion&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;convection&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classConvection__Diffusion__std_1ae582d3212606486028f051dad02ac3a0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1ae582d3212606486028f051dad02ac3a0" kindref="member">Convection_Diffusion_std::lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot==</highlight><highlight class="stringliteral">&quot;diffusion&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Reading<sp/>and<sp/>typing<sp/>of<sp/>the<sp/>diffusion<sp/>operator<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConvection__Diffusion__std_1a7507bbda8e79eb03a9099ccd35af2275" kindref="member">terme_diffusif</ref>.<ref refid="classOperateur__Diff_1a9e560c15136324e71568e3087f3652b5" kindref="member">associer_diffusivite</ref>(<ref refid="classConvection__Diffusion__std_1a6ef0dc650f9d40a40f64a8b5d7ddadde" kindref="member">diffusivite_pour_transport</ref>());</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classConvection__Diffusion__std_1a7507bbda8e79eb03a9099ccd35af2275" kindref="member">terme_diffusif</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConvection__Diffusion__std_1a7507bbda8e79eb03a9099ccd35af2275" kindref="member">terme_diffusif</ref>.<ref refid="classOperateur__Diff_1a75a11b9bc776e5de33c49f48e947f8be" kindref="member">associer_diffusivite_pour_pas_de_temps</ref>(<ref refid="classConvection__Diffusion__std_1a834f45e444f7b89a8ac81c00eaf0176a" kindref="member">diffusivite_pour_pas_de_temps</ref>());</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot==</highlight><highlight class="stringliteral">&quot;convection&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Reading<sp/>and<sp/>typing<sp/>of<sp/>the<sp/>convection<sp/>operator<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/>ch_vitesse_transportante<sp/>=<sp/><ref refid="classConvection__Diffusion__std_1adf3c17f8f33b204062c1128452edbe5b" kindref="member">vitesse_pour_transport</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConvection__Diffusion__std_1a3f405914a16dc2743ea2a1fab1ab6bda" kindref="member">associer_vitesse</ref>(ch_vitesse_transportante);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConvection__Diffusion__std_1aff629b8054c74fb1244b37c79aa6a3bd" kindref="member">terme_convectif</ref>.<ref refid="classOperateur__Conv_1ab97c7035846db1561eb447f7d8aa7e39" kindref="member">associer_vitesse</ref>(ch_vitesse_transportante);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classConvection__Diffusion__std_1aff629b8054c74fb1244b37c79aa6a3bd" kindref="member">terme_convectif</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1aaaada44548b29f2bb2b695445b11ba22" kindref="member">Equation_base::lire_motcle_non_standard</ref>(mot,is);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="77"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nombre<sp/>d&apos;operateurs<sp/>de<sp/>l&apos;equation:<sp/>2<sp/>pour<sp/>une<sp/>equation<sp/>de<sp/>diffusion.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>nombre<sp/>d&apos;operateurs<sp/>de<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classConvection__Diffusion__std_1ade25f9d00c31f0ac21ae9f73b9148d0a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1ade25f9d00c31f0ac21ae9f73b9148d0a" kindref="member">Convection_Diffusion_std::nombre_d_operateurs</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="82"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="86"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;operateur<sp/>specifie<sp/>par<sp/>son<sp/>index:<sp/>renvoie<sp/>terme_diffusif<sp/>si<sp/>i<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>renvoie<sp/>terme_convectif<sp/>si<sp/>i<sp/>=<sp/>1</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>exit<sp/>si<sp/>i&gt;1</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>l&apos;index<sp/>de<sp/>l&apos;operateur<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Operateur&amp;)<sp/>l&apos;operateur<sp/>specifie</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*<sp/>@throws<sp/>l&apos;equation<sp/>n&apos;a<sp/>pas<sp/>plus<sp/>de<sp/>2<sp/>operateurs</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classConvection__Diffusion__std_1acfb3e5da249873b1f878c2aa5868e534" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOperateur" kindref="compound">Operateur</ref>&amp;<sp/><ref refid="classConvection__Diffusion__std_1acfb3e5da249873b1f878c2aa5868e534" kindref="member">Convection_Diffusion_std::operateur</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="97"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(i)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1a7507bbda8e79eb03a9099ccd35af2275" kindref="member">terme_diffusif</ref>;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1aff629b8054c74fb1244b37c79aa6a3bd" kindref="member">terme_convectif</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>default<sp/>:</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>for<sp/>Convection_Diffusion_std::operateur(int<sp/>i)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Convection_Diffusion_std<sp/>has<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classConvection__Diffusion__std_1ade25f9d00c31f0ac21ae9f73b9148d0a" kindref="member">nombre_d_operateurs</ref>()<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>operators<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;and<sp/>you<sp/>are<sp/>trying<sp/>to<sp/>access<sp/>the<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>th<sp/>one.&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Pour<sp/>les<sp/>compilos!!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1a7507bbda8e79eb03a9099ccd35af2275" kindref="member">terme_diffusif</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="114"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;operateur<sp/>specifie<sp/>par<sp/>son<sp/>index:<sp/>renvoie<sp/>terme_diffusif<sp/>si<sp/>i<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>renvoie<sp/>terme_convectif<sp/>si<sp/>i<sp/>=<sp/>1</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>exit<sp/>si<sp/>i&gt;1</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>l&apos;index<sp/>de<sp/>l&apos;operateur<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Operateur&amp;)<sp/>l&apos;operateur<sp/>specifie</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*<sp/>@throws<sp/>l&apos;equation<sp/>n&apos;a<sp/>pas<sp/>plus<sp/>de<sp/>2<sp/>operateurs</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="classConvection__Diffusion__std_1a9930b7b2ef071344ec46eacff292cad5" refkind="member"><highlight class="normal"><ref refid="classOperateur" kindref="compound">Operateur</ref>&amp;<sp/><ref refid="classConvection__Diffusion__std_1acfb3e5da249873b1f878c2aa5868e534" kindref="member">Convection_Diffusion_std::operateur</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(i)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1a7507bbda8e79eb03a9099ccd35af2275" kindref="member">terme_diffusif</ref>;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1aff629b8054c74fb1244b37c79aa6a3bd" kindref="member">terme_convectif</ref>;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>default<sp/>:</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>for<sp/>Convection_Diffusion_std::operateur(int<sp/>i)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Convection_Diffusion_std<sp/>has<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classConvection__Diffusion__std_1ade25f9d00c31f0ac21ae9f73b9148d0a" kindref="member">nombre_d_operateurs</ref>()<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>operators<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;and<sp/>you<sp/>are<sp/>trying<sp/>to<sp/>access<sp/>the<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>th<sp/>one.&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Pour<sp/>les<sp/>compilos!!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1a7507bbda8e79eb03a9099ccd35af2275" kindref="member">terme_diffusif</ref>;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="classConvection__Diffusion__std_1a6ef0dc650f9d40a40f64a8b5d7ddadde" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Don__base" kindref="compound">Champ_Don_base</ref>&amp;<sp/><ref refid="classConvection__Diffusion__std_1a6ef0dc650f9d40a40f64a8b5d7ddadde" kindref="member">Convection_Diffusion_std::diffusivite_pour_transport</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="142"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1a1ca88930cf00c12a910ad27ac840719c" kindref="member">milieu</ref>().<ref refid="classMilieu__base_1ab4857f84512f820544a4ef86a3ccbd07" kindref="member">diffusivite</ref>();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="classConvection__Diffusion__std_1a834f45e444f7b89a8ac81c00eaf0176a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classConvection__Diffusion__std_1a834f45e444f7b89a8ac81c00eaf0176a" kindref="member">Convection_Diffusion_std::diffusivite_pour_pas_de_temps</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="147"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1a7507bbda8e79eb03a9099ccd35af2275" kindref="member">terme_diffusif</ref>.<ref refid="classOperateur__Diff_1a684570cd736780e40fecef7696a227b6" kindref="member">diffusivite</ref>();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="classConvection__Diffusion__std_1adf3c17f8f33b204062c1128452edbe5b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classConvection__Diffusion__std_1adf3c17f8f33b204062c1128452edbe5b" kindref="member">Convection_Diffusion_std::vitesse_pour_transport</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="152"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1aa8151a96f63719523bf50ddd832e0f8f" kindref="member">probleme</ref>().<ref refid="classProbleme__base_1a587a928959992bbe1a03a3a4c2e5296c" kindref="member">get_champ</ref>(</highlight><highlight class="stringliteral">&quot;vitesse&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="comment">//<sp/>E.<sp/>Saikali<sp/>:<sp/>Methodes<sp/>utiles<sp/>pour<sp/>un<sp/>heritage<sp/>V</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="classConvection__Diffusion__std_1a8d505acd31c2defd6ae53d3e09468547" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1a8d505acd31c2defd6ae53d3e09468547" kindref="member">Convection_Diffusion_std::sauvegarder_base</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="158"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1a9b074257155c1b095a254fa90a2447d7" kindref="member">Equation_base::sauvegarder</ref>(os);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="161" refid="classConvection__Diffusion__std_1a87cba2432b9aa0215de377777fdf9e0f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1a87cba2432b9aa0215de377777fdf9e0f" kindref="member">Convection_Diffusion_std::reprendre_base</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1a1bf3576c178a1c2c907467a526347153" kindref="member">Equation_base::reprendre</ref>(is);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="classConvection__Diffusion__std_1a03a8ea82b9f455bfdcabdfd1ab16a94a" refkind="member"><highlight class="normal">std::vector&lt;YAML_data&gt;<sp/><ref refid="classConvection__Diffusion__std_1a03a8ea82b9f455bfdcabdfd1ab16a94a" kindref="member">Convection_Diffusion_std::data_a_sauvegarder_base</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="167"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1a392b9c1e46ecdbbbe6c5a1025173b878" kindref="member">Equation_base::data_a_sauvegarder</ref>();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Equations/Convection_Diffusion_std.cpp"/>
+  </compounddef>
+</doxygen>

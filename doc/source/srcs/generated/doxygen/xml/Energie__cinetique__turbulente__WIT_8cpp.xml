@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Energie__cinetique__turbulente__WIT_8cpp" kind="file" language="C++">
+    <compoundname>Energie_cinetique_turbulente_WIT.cpp</compoundname>
+    <includes refid="Energie__cinetique__turbulente__WIT_8h" local="no">Energie_cinetique_turbulente_WIT.h</includes>
+    <includes refid="Pb__Multiphase_8h" local="no">Pb_Multiphase.h</includes>
+    <includes refid="Discret__Thyd_8h" local="no">Discret_Thyd.h</includes>
+    <includes refid="Domaine__VF_8h" local="no">Domaine_VF.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Avanc_8h" local="no">Avanc.h</includes>
+    <includes refid="Debog_8h" local="no">Debog.h</includes>
+    <includes refid="Frontiere__dis__base_8h" local="no">Frontiere_dis_base.h</includes>
+    <includes refid="EcritureLectureSpecial_8h" local="no">EcritureLectureSpecial.h</includes>
+    <includes refid="Champ__Uniforme_8h" local="no">Champ_Uniforme.h</includes>
+    <includes refid="Matrice__Morse_8h" local="no">Matrice_Morse.h</includes>
+    <includes refid="Navier__Stokes__std_8h" local="no">Navier_Stokes_std.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+    <includes refid="Neumann__sortie__libre_8h" local="no">Neumann_sortie_libre.h</includes>
+    <includes refid="Op__Conv__negligeable_8h" local="no">Op_Conv_negligeable.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes refid="Schema__Implicite__base_8h" local="no">Schema_Implicite_base.h</includes>
+    <includes refid="SETS_8h" local="no">SETS.h</includes>
+    <includes refid="EChaine_8h" local="no">EChaine.h</includes>
+    <includes refid="Scalaire__impose__paroi_8h" local="no">Scalaire_impose_paroi.h</includes>
+    <includes refid="Echange__global__impose_8h" local="no">Echange_global_impose.h</includes>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="Energie__cinetique__turbulente__WIT_8cpp_1ace7754dd7f3109c4fe8ec2ca768c6391" prot="public" static="no">
+        <name>old_forme</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Equations/Energie_cinetique_turbulente_WIT.cpp" line="45" column="9" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Equations/Energie_cinetique_turbulente_WIT.cpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Energie__cinetique__turbulente__WIT_8cpp_1adcf19e842dddb9dacc3138c351834211" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Energie_cinetique_turbulente_WITbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Energie_cinetique_turbulente_WITbases</name>
+        <initializer>={   &amp;( <ref refid="classConvection__Diffusion__std" kindref="compound">Convection_Diffusion_std</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Equations/Energie_cinetique_turbulente_WIT.cpp" line="49" column="169" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Equations/Energie_cinetique_turbulente_WIT.cpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2021,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Energie_cinetique_turbulente_WIT.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TRUST_ROOT/src/ThHyd/Multiphase/Equations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version:<sp/><sp/><sp/><sp/><sp/>/main/52</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Energie_cinetique_turbulente_WIT.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Pb_Multiphase.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discret_Thyd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Avanc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Debog.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Frontiere_dis_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EcritureLectureSpecial.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Uniforme.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Morse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Neumann_sortie_libre.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Op_Conv_negligeable.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Implicite_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SETS.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EChaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Scalaire_impose_paroi.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Echange_global_impose.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>old_forme</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">Implemente_instanciable(<ref refid="classEnergie__cinetique__turbulente__WIT" kindref="compound">Energie_cinetique_turbulente_WIT</ref>,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Energie_cinetique_turbulente_WIT&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="49" refid="classEnergie__cinetique__turbulente__WIT_1a9c4da74cb040c2e2b4dd15f0c601a4cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConvection__Diffusion__std" kindref="compound">Convection_Diffusion_std</ref>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="51"><highlight class="comment">/*!<sp/>@brief<sp/>Simple<sp/>appel<sp/>a:<sp/>Convection_Diffusion_std::printOn(Sortie&amp;)</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>is)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Sortie&amp;)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>modifie</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classEnergie__cinetique__turbulente__WIT_1ae7abfe08514481f185f77b03406544f0" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1ae7abfe08514481f185f77b03406544f0" kindref="member">Energie_cinetique_turbulente_WIT::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>is)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="57"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1add6dbc387f5bf74f5bf271a5601ec57c" kindref="member">Convection_Diffusion_std::printOn</ref>(is);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment">/*!<sp/>@brief<sp/>Verifie<sp/>si<sp/>l&apos;equation<sp/>a<sp/>une<sp/>inconnue<sp/>et<sp/>un<sp/>fluide<sp/>associe<sp/>et<sp/>appelle<sp/>Convection_Diffusion_std::readOn(Entree&amp;).</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>un<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;<sp/>is)<sp/>le<sp/>flot<sp/>d&apos;entree<sp/>modifie</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classEnergie__cinetique__turbulente__WIT_1a12d44a8b9579b33465ac28a44cb7624a" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a12d44a8b9579b33465ac28a44cb7624a" kindref="member">Energie_cinetique_turbulente_WIT::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>assert(<ref refid="classEnergie__cinetique__turbulente__WIT_1a28fc779c51e778fccbb7a4f3b713820c" kindref="member">l_inco_ch</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>());</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>assert(<ref refid="classEnergie__cinetique__turbulente__WIT_1a5c97155770e2592abcd38164bb40a147" kindref="member">le_fluide</ref>.<ref refid="classTRUST__Ref_1ae9b0cdf7e0ca42f09d339275e0b992e3" kindref="member">non_nul</ref>());</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__std_1a13756e4edd404f20e422c8177cc21cb7" kindref="member">Convection_Diffusion_std::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__std_1aff629b8054c74fb1244b37c79aa6a3bd" kindref="member">terme_convectif</ref>.<ref refid="classOperateur_1adf6c5f02d4e0bd15282a628c4814d61f" kindref="member">set_fichier</ref>(</highlight><highlight class="stringliteral">&quot;Convection_energie_cinetique_turbulente_WIT&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__std_1aff629b8054c74fb1244b37c79aa6a3bd" kindref="member">terme_convectif</ref>.<ref refid="classOperateur_1abe53b54eda0c886809a704bf79b60aa9" kindref="member">set_description</ref>((<ref refid="classNom" kindref="compound">Nom</ref>)</highlight><highlight class="stringliteral">&quot;Turbulent<sp/>kinetic<sp/>energy<sp/>transfer<sp/>rate=Integral(-rho*k*ndS)<sp/>[W]<sp/>if<sp/>SI<sp/>units<sp/>used&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__std_1a7507bbda8e79eb03a9099ccd35af2275" kindref="member">terme_diffusif</ref>.<ref refid="classOperateur_1adf6c5f02d4e0bd15282a628c4814d61f" kindref="member">set_fichier</ref>(</highlight><highlight class="stringliteral">&quot;Diffusion_energie_cinetique_turbulente_WIT&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__std_1a7507bbda8e79eb03a9099ccd35af2275" kindref="member">terme_diffusif</ref>.<ref refid="classOperateur_1abe53b54eda0c886809a704bf79b60aa9" kindref="member">set_description</ref>((<ref refid="classNom" kindref="compound">Nom</ref>)</highlight><highlight class="stringliteral">&quot;Turbulent<sp/>kinetic<sp/>energy<sp/>transfer<sp/>rate=Integral(mu*grad(k)*ndS)<sp/>[W]<sp/>if<sp/>SI<sp/>units<sp/>used&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="78"><highlight class="comment">/*!<sp/>@brief<sp/>Associe<sp/>un<sp/>milieu<sp/>physique<sp/>a<sp/>l&apos;equation,<sp/>le<sp/>milieu<sp/>est<sp/>en<sp/>fait<sp/>caste<sp/>en<sp/>Fluide_base<sp/>ou<sp/>en<sp/>Fluide_Ostwald.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Milieu_base&amp;<sp/>un_milieu)</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*<sp/>@throws<sp/>les<sp/>proprietes<sp/>physiques<sp/>du<sp/>fluide<sp/>ne<sp/>sont<sp/>pas<sp/>toutes<sp/>specifiees</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classEnergie__cinetique__turbulente__WIT_1a0358b7766dfad628434ef96dbcbf8910" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a0358b7766dfad628434ef96dbcbf8910" kindref="member">Energie_cinetique_turbulente_WIT::associer_milieu_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/>un_milieu)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFluide__base" kindref="compound">Fluide_base</ref>&amp;<sp/>un_fluide<sp/>=<sp/>ref_cast(<ref refid="classFluide__base" kindref="compound">Fluide_base</ref>,un_milieu);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a837cdcc955986a4bc2acf61db33dc2f0" kindref="member">associer_fluide</ref>(un_fluide);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classEnergie__cinetique__turbulente__WIT_1acf2c33dbcb6c8ee2ba4b38a5bc44c9f1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Don__base" kindref="compound">Champ_Don_base</ref>&amp;<sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1acf2c33dbcb6c8ee2ba4b38a5bc44c9f1" kindref="member">Energie_cinetique_turbulente_WIT::diffusivite_pour_transport</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="90"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ref_cast(<ref refid="classFluide__base" kindref="compound">Fluide_base</ref>,<ref refid="classEnergie__cinetique__turbulente__WIT_1a1fc079a40fa6c56f9f9a7582840be61f" kindref="member">milieu</ref>()).viscosite_cinematique();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="classEnergie__cinetique__turbulente__WIT_1abf84b2b4108c8bfa0b65c3602e452290" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1abf84b2b4108c8bfa0b65c3602e452290" kindref="member">Energie_cinetique_turbulente_WIT::diffusivite_pour_pas_de_temps</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="95"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ref_cast(<ref refid="classFluide__base" kindref="compound">Fluide_base</ref>,<ref refid="classEnergie__cinetique__turbulente__WIT_1a1fc079a40fa6c56f9f9a7582840be61f" kindref="member">milieu</ref>()).viscosite_cinematique();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="99"><highlight class="comment">/*!<sp/>@brief<sp/>Discretise<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="classEnergie__cinetique__turbulente__WIT_1a509b340044565f316d839dc8d6e97440" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a509b340044565f316d839dc8d6e97440" kindref="member">Energie_cinetique_turbulente_WIT::discretiser</ref>()</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_valeurs_temp<sp/>=<sp/><ref refid="classEquation__base_1abc11e51aa75b4c7aa55c27f71eb2f2c4" kindref="member">schema_temps</ref>().<ref refid="classSchema__Temps__base_1acbe9f5266e4b4267a53fdbb9157718c5" kindref="member">nb_valeurs_temporelles</ref>();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps<sp/>=<sp/><ref refid="classEquation__base_1abc11e51aa75b4c7aa55c27f71eb2f2c4" kindref="member">schema_temps</ref>().<ref refid="classSchema__Temps__base_1a1e573b93ad40c737ecb2da65b68f968a" kindref="member">temps_courant</ref>();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDiscret__Thyd" kindref="compound">Discret_Thyd</ref>&amp;<sp/>dis=ref_cast(<ref refid="classDiscret__Thyd" kindref="compound">Discret_Thyd</ref>,<sp/><ref refid="classEquation__base_1a440fc95363315082eddbef26dc76024e" kindref="member">discretisation</ref>());</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Turbulent<sp/>kinetic<sp/>energy<sp/>discretization&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//On<sp/>utilise<sp/>temperature<sp/>pour<sp/>la<sp/>directive<sp/>car<sp/>discretisation<sp/>identique</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>dis.<ref refid="classDiscretisation__base_1afea05efdd1484bb9c80df965627c367f" kindref="member">discretiser_champ</ref>(</highlight><highlight class="stringliteral">&quot;temperature&quot;</highlight><highlight class="normal">,<ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>(),</highlight><highlight class="stringliteral">&quot;k_WIT&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;J/kg&quot;</highlight><highlight class="normal">,<sp/>1,nb_valeurs_temp,temps,<ref refid="classEnergie__cinetique__turbulente__WIT_1a28fc779c51e778fccbb7a4f3b713820c" kindref="member">l_inco_ch</ref>);</highlight><highlight class="comment">//une<sp/>seule<sp/>compo,<sp/>meme<sp/>en<sp/>multiphase</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a28fc779c51e778fccbb7a4f3b713820c" kindref="member">l_inco_ch</ref>-&gt;<ref refid="classField__base_1a740d888da6eb9db6c7b62e65faf2436e" kindref="member">fixer_nature_du_champ</ref>(scalaire);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a28fc779c51e778fccbb7a4f3b713820c" kindref="member">l_inco_ch</ref>-&gt;<ref refid="classField__base_1ac2b194dc5cdc675df21508d28b80b366" kindref="member">fixer_nom_compo</ref>(0,<sp/><ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;k_WIT&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1ad687c312e72dcbc783cf597af5927b07" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1aa2bd9fb5b3b311863130fa0bbc404773" kindref="member">ajoute_champ</ref>(<ref refid="classEnergie__cinetique__turbulente__WIT_1a28fc779c51e778fccbb7a4f3b713820c" kindref="member">l_inco_ch</ref>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1ac849b71b99dbe338b049a7728208c965" kindref="member">Equation_base::discretiser</ref>();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Energie_cinetique_turbulente_WIT::discretiser()<sp/>ok&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="117"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>milieu<sp/>physique<sp/>de<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*<sp/>(un<sp/>Fluide_base<sp/>upcaste<sp/>en<sp/>Milieu_base)</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Milieu_base&amp;)<sp/>le<sp/>Fluide_base<sp/>upcaste<sp/>en<sp/>Milieu_base</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="classEnergie__cinetique__turbulente__WIT_1a1fc079a40fa6c56f9f9a7582840be61f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a1fc079a40fa6c56f9f9a7582840be61f" kindref="member">Energie_cinetique_turbulente_WIT::milieu</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="125"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a5c97155770e2592abcd38164bb40a147" kindref="member">le_fluide</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="130"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>milieu<sp/>physique<sp/>de<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*<sp/>(un<sp/>Fluide_base<sp/>upcaste<sp/>en<sp/>Milieu_base)</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Milieu_base&amp;)<sp/>le<sp/>Fluide_base<sp/>upcaste<sp/>en<sp/>Milieu_base</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="classEnergie__cinetique__turbulente__WIT_1af455aa21596cf8df1a8e40b12f10f34b" refkind="member"><highlight class="normal"><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a1fc079a40fa6c56f9f9a7582840be61f" kindref="member">Energie_cinetique_turbulente_WIT::milieu</ref>()</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a5c97155770e2592abcd38164bb40a147" kindref="member">le_fluide</ref>;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="141"><highlight class="comment">/*!<sp/>@brief<sp/>Impression<sp/>des<sp/>flux<sp/>sur<sp/>les<sp/>bords<sp/>sur<sp/>un<sp/>flot<sp/>de<sp/>sortie.</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/>*<sp/>Appelle<sp/>Equation_base::impr(Sortie&amp;)</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>os)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>code<sp/>de<sp/>retour<sp/>propage</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="classEnergie__cinetique__turbulente__WIT_1a3956d15cb85bda0021600b94929d41d8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a3956d15cb85bda0021600b94929d41d8" kindref="member">Energie_cinetique_turbulente_WIT::impr</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="149"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1a627afccc65b5c1031a9fdeaadb2c6e62" kindref="member">Equation_base::impr</ref>(os);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="153"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nom<sp/>du<sp/>domaine<sp/>d&apos;application<sp/>de<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/>*<sp/>Ici<sp/>&quot;Thermique&quot;.</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Motcle&amp;)<sp/>le<sp/>nom<sp/>du<sp/>domaine<sp/>d&apos;application<sp/>de<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="classEnergie__cinetique__turbulente__WIT_1aeb55a244d842b523f205af7117a04865" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1aeb55a244d842b523f205af7117a04865" kindref="member">Energie_cinetique_turbulente_WIT::domaine_application</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="160"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>mot(</highlight><highlight class="stringliteral">&quot;Turbulence&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mot;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="165"><highlight class="comment">/*!<sp/>@brief<sp/>Associe<sp/>un<sp/>fluide<sp/>incompressible<sp/>a<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Fluide_base&amp;<sp/>un_fluide)<sp/>le<sp/>milieu<sp/>fluide<sp/>incompressible<sp/>a<sp/>associer<sp/>a<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="classEnergie__cinetique__turbulente__WIT_1a837cdcc955986a4bc2acf61db33dc2f0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a837cdcc955986a4bc2acf61db33dc2f0" kindref="member">Energie_cinetique_turbulente_WIT::associer_fluide</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFluide__base" kindref="compound">Fluide_base</ref>&amp;<sp/>un_fluide)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a5c97155770e2592abcd38164bb40a147" kindref="member">le_fluide</ref><sp/>=<sp/>un_fluide;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="classEnergie__cinetique__turbulente__WIT_1a44b41197b568d05b0f061d297959ee2c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEnergie__cinetique__turbulente__WIT_1a44b41197b568d05b0f061d297959ee2c" kindref="member">Energie_cinetique_turbulente_WIT::calculer_alpha_rho_k_WIT</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classObjet__U" kindref="compound">Objet_U</ref>&amp;<sp/>obj,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>val,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>bval,<sp/>tabs_t&amp;<sp/>deriv)</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>function<sp/>used<sp/>to<sp/>compute<sp/>alpha_rho_k<sp/>for<sp/>the<sp/>WIT<sp/>contribution<sp/>but<sp/>like<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Energie_cinetique_turbulente<sp/>class<sp/>it<sp/>now<sp/>computes<sp/>k.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn<sp/>=<sp/>ref_cast(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>,<sp/>obj);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>k<sp/>=<sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>valeurs<sp/>du<sp/>champ<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>val.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Nl<sp/>=<sp/>val.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>Nl;<sp/>i++)</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0;<sp/>n<sp/>&lt;<sp/>N;<sp/>n++)</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>val(i,<sp/>n)<sp/>=<sp/>k(i,<sp/>n);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>on<sp/>ne<sp/>peut<sp/>utiliser<sp/>valeur_aux_bords<sp/>que<sp/>si<sp/>ch_rho<sp/>a<sp/>un<sp/>domaine_dis_base<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>b_k<sp/>=<sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1afe3eeba24aaeeaf1b34f64b4f165dfd1" kindref="member">valeur_aux_bords</ref>();</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Nb<sp/>=<sp/>b_k.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>Nb;<sp/>i++)</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0;<sp/>n<sp/>&lt;<sp/>N;<sp/>n++)</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>bval(i,<sp/>n)<sp/>=<sp/>b_k(i,<sp/>n);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//derivee<sp/>en<sp/>k<sp/>:<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>d_k<sp/>=<sp/>deriv[</highlight><highlight class="stringliteral">&quot;k_WIT&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/>d_k.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(Nl,<sp/>N);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>Nl;<sp/>i++)</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0;<sp/>n<sp/>&lt;<sp/>N;<sp/>n++)</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>d_k(i,<sp/>n)<sp/>=<sp/>1.;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Equations/Energie_cinetique_turbulente_WIT.cpp"/>
+  </compounddef>
+</doxygen>

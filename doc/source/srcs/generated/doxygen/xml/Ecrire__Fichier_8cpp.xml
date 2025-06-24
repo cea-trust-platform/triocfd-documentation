@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Ecrire__Fichier_8cpp" kind="file" language="C++">
+    <compoundname>Ecrire_Fichier.cpp</compoundname>
+    <includes refid="Ecrire__Fichier_8h" local="no">Ecrire_Fichier.h</includes>
+    <includes refid="SFichier_8h" local="no">SFichier.h</includes>
+    <includes refid="Synonyme__info_8h" local="no">Synonyme_info.h</includes>
+    <includes local="no">fstream</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Ecrire_Fichier.cpp</label>
+        <link refid="Ecrire__Fichier_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>fstream</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Ecrire__Fichier_8cpp_1af56457cc9bcd6d15ead2fa2e140b332f" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Ecrire_Fichierbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Ecrire_Fichierbases</name>
+        <initializer>={   &amp;( <ref refid="classInterprete" kindref="compound">Interprete</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Ecrire_Fichier.cpp" line="21" column="97" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Ecrire_Fichier.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Ecrire__Fichier_8cpp_1a53f4bb9bb7853a9af356b37457a8c382" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classSynonyme__info" kindref="compound">Synonyme_info</ref></type>
+        <definition>const Synonyme_info synonym_Ecrire_Fichier__LINE__(&quot;Ecrire_Fichier_Bin&quot;, Ecrire_Fichier ::info_obj.name())</definition>
+        <argsstring>(&quot;Ecrire_Fichier_Bin&quot;, Ecrire_Fichier ::info_obj.name())</argsstring>
+        <name>synonym_Ecrire_Fichier__LINE__</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Ecrire_Fichier.cpp" line="22" column="22"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Ecrire_Fichier.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SFichier.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Synonyme_info.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classEcrire__Fichier_1a62e51838b804c4bc58df64210bd5009b" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classEcrire__Fichier" kindref="compound">Ecrire_Fichier</ref>,</highlight><highlight class="stringliteral">&quot;Ecrire_Fichier&quot;</highlight><highlight class="normal">,<ref refid="classInterprete" kindref="compound">Interprete</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">Add_synonym(<ref refid="classEcrire__Fichier" kindref="compound">Ecrire_Fichier</ref>,</highlight><highlight class="stringliteral">&quot;Ecrire_Fichier_Bin&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>write_file<sp/>interprete<sp/>ecrire_fichier<sp/>-1<sp/>Keyword<sp/>to<sp/>write<sp/>the<sp/>object<sp/>of<sp/>name<sp/>name_obj<sp/>to<sp/>a<sp/>file<sp/>filename.<sp/>Since<sp/>the<sp/>v1.6.3,<sp/>the<sp/>default<sp/>format<sp/>is<sp/>now<sp/>binary<sp/>format<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>name_obj<sp/>chaine<sp/>name_obj<sp/>0<sp/>Name<sp/>of<sp/>the<sp/>object<sp/>to<sp/>be<sp/>written.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>filename<sp/>chaine<sp/>filename<sp/>0<sp/>Name<sp/>of<sp/>the<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classEcrire__Fichier_1a223285991941c2823ea89c019a011646" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classEcrire__Fichier_1a223285991941c2823ea89c019a011646" kindref="member">Ecrire_Fichier::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="29"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classInterprete_1a4dc57ee68fca0ece3949ec2a307062e5" kindref="member">Interprete::printOn</ref>(os);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classEcrire__Fichier_1ab703bc1b986a124cce4d5146eb22045a" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classEcrire__Fichier_1ab703bc1b986a124cce4d5146eb22045a" kindref="member">Ecrire_Fichier::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classInterprete_1aa53181fde696cbb695f1db6aaabd75e3" kindref="member">Interprete::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classEcrire__Fichier_1abe94c0524751fa2eea3a83e920a62b25" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEcrire__Fichier_1abe94c0524751fa2eea3a83e920a62b25" kindref="member">Ecrire_Fichier::interpreter_</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>format_binaire)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1a6bf692ce58d9578aa62ac3c07b8caaa1" kindref="member">nproc</ref>()<sp/>&gt;<sp/>1)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error:<sp/>keyword<sp/>Ecrire_Fichier_Bin<sp/>cannot<sp/>be<sp/>used<sp/>in<sp/>parallel<sp/>calculation.<sp/>What<sp/>do<sp/>you<sp/>mean<sp/>?&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1aa9e74a5c06a68ea38298a08ea401e7b1" kindref="member">barrier</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><ref refid="classSFichier" kindref="compound">SFichier</ref><sp/>fic;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom1,<sp/>nom2;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>nom1<sp/>&gt;&gt;<sp/>nom2;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Ecrire_Fichier_Bin:<sp/>writing<sp/>object<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom1<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>in<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom2;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(format_binaire)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>in<sp/>binary<sp/>format.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>in<sp/>ascii<sp/>format.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="classObjet__U" kindref="compound">Objet_U</ref>&amp;<sp/>obj<sp/>=<sp/><ref refid="classInterprete_1a3ca248609f0b72eac68baca14621b4ee" kindref="member">objet</ref>(nom1);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>fic.<ref refid="classSortie_1a53c429bd933e80f026abf293a837ffeb" kindref="member">set_bin</ref>(format_binaire);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fic.<ref refid="classSortie__Fichier__base_1adeb941e6d25cb82e0fa362b54a132bc2" kindref="member">ouvrir</ref>(nom2))</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Error<sp/>opening<sp/>file:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom2<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!format_binaire)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fic.<ref refid="classSortie__Fichier__base_1ad69731ab342e17049de30c55b80b6941" kindref="member">get_ofstream</ref>().setf(ios::scientific);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fic.<ref refid="classSortie__Fichier__base_1ad69731ab342e17049de30c55b80b6941" kindref="member">get_ofstream</ref>().precision(8);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>fic<sp/>&lt;&lt;<sp/>obj;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fic.<ref refid="classSortie_1a2b296619da65cf49f0e8934ee51ad3ed" kindref="member">get_ostream</ref>().good())</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>An<sp/>error<sp/>occured<sp/>while<sp/>writing<sp/>the<sp/>file.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classEcrire__Fichier_1a82866cbbf7b6789ad1ef1950b644a78c" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classEcrire__Fichier_1a82866cbbf7b6789ad1ef1950b644a78c" kindref="member">Ecrire_Fichier::interpreter</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="classEcrire__Fichier_1abe94c0524751fa2eea3a83e920a62b25" kindref="member">Ecrire_Fichier::interpreter_</ref>(is,<sp/>1<sp/></highlight><highlight class="comment">/*<sp/>binaire<sp/>*/</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Ecrire_Fichier.cpp"/>
+  </compounddef>
+</doxygen>

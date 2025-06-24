@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Flux__parietal__Nusselt_8cpp" kind="file" language="C++">
+    <compoundname>Flux_parietal_Nusselt.cpp</compoundname>
+    <includes refid="Flux__parietal__Nusselt_8h" local="no">Flux_parietal_Nusselt.h</includes>
+    <includes refid="Milieu__composite_8h" local="no">Milieu_composite.h</includes>
+    <includes refid="Pb__Multiphase_8h" local="no">Pb_Multiphase.h</includes>
+    <includes local="no">cmath</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Flux_parietal_Nusselt.cpp</label>
+        <link refid="Flux__parietal__Nusselt_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cmath</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Flux__parietal__Nusselt_8cpp_1aa2d470bafa78af1353670d9c1030c6a9" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Flux_parietal_Nusseltbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Flux_parietal_Nusseltbases</name>
+        <initializer>={   &amp;( <ref refid="classFlux__parietal__base" kindref="compound">Flux_parietal_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Correlations/Flux_parietal_Nusselt.cpp" line="21" column="125" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Correlations/Flux_parietal_Nusselt.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Flux_parietal_Nusselt.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Milieu_composite.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Pb_Multiphase.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classFlux__parietal__Nusselt_1a2aba4d8874f0bec2b8a9226fb1e99357" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classFlux__parietal__Nusselt" kindref="compound">Flux_parietal_Nusselt</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Flux_parietal_Nusselt&quot;</highlight><highlight class="normal">,<sp/><ref refid="classFlux__parietal__base" kindref="compound">Flux_parietal_base</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classFlux__parietal__Nusselt_1ade0608e7c9bea4a4f6ce18604c3be3a0" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classFlux__parietal__Nusselt_1ade0608e7c9bea4a4f6ce18604c3be3a0" kindref="member">Flux_parietal_Nusselt::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="24"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classFlux__parietal__Nusselt_1a4341bb62f14e1b6f50a93d05108228c6" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classFlux__parietal__Nusselt_1a4341bb62f14e1b6f50a93d05108228c6" kindref="member">Flux_parietal_Nusselt::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;formula&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/><ref refid="classParam_1aa4ad0ca1d49bc5f2ebc5fc83ee9df384aaf5b6dfac1c5970478525407cc6ac572" kindref="member">Param::REQUIRED</ref>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aa9d44fc51b4a08b357733a97dc7acaad" kindref="member">lire_avec_accolades_depuis</ref>(is);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classFlux__parietal__Nusselt_1ad914d0f6837b7a6f480671ffae490192" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFlux__parietal__Nusselt_1ad914d0f6837b7a6f480671ffae490192" kindref="member">Flux_parietal_Nusselt::lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;formula&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>tmp;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>tmp;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Reading<sp/>and<sp/>interpreting<sp/>the<sp/>function<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tmp<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>...<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nusselt_.<ref refid="classParser__U_1a3ff44eabf641cbcea9ca59f84167e2c1" kindref="member">setNbVar</ref>(2);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nusselt_.<ref refid="classParser__U_1a1e905179ae8b011f9c4eb3f9e3f96e99" kindref="member">setString</ref>(tmp);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nusselt_.<ref refid="classParser__U_1ae216b7daee6c4bb756423ffed5674293" kindref="member">addVar</ref>(</highlight><highlight class="stringliteral">&quot;Re&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nusselt_.<ref refid="classParser__U_1ae216b7daee6c4bb756423ffed5674293" kindref="member">addVar</ref>(</highlight><highlight class="stringliteral">&quot;Pr&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nusselt_.<ref refid="classParser__U_1a441c2fd29f5d4370c0c7b6a1cdfe56d5" kindref="member">parseString</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classObjet__U_1a10baff76ab2c39f82da8c7ecaf66d889" kindref="member">Flux_parietal_base::lire_motcle_non_standard</ref>(mot,<sp/>is);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classFlux__parietal__Nusselt_1a233fd418e9ab022137fe89cb0740493e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFlux__parietal__Nusselt_1a233fd418e9ab022137fe89cb0740493e" kindref="member">Flux_parietal_Nusselt::qp</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structFlux__parietal__base_1_1input__t" kindref="compound">input_t</ref>&amp;<sp/>in,<sp/><ref refid="structFlux__parietal__base_1_1output__t" kindref="compound">output_t</ref>&amp;<sp/>out)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="55"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Re<sp/>=<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1a1ef82745d73012adcf2b1f6b5392908b" kindref="member">rho</ref>[0]<sp/>*<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1a55dacc42f219abd0c169900648f46ec2" kindref="member">v</ref>[0]<sp/>*<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1a4c52284197715a6746bb7b31dcd26629" kindref="member">D_h</ref><sp/>/<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1ae40adc2ffcd54c594dc1b9e1435cba54" kindref="member">mu</ref>[0],<sp/>Pr<sp/>=<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1ae40adc2ffcd54c594dc1b9e1435cba54" kindref="member">mu</ref>[0]<sp/>*<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1a2af863eb2241321449b8bccd83afa242" kindref="member">Cp</ref>[0]<sp/>/<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1ad7a0fdd396fa3cecb2b8cae70f62604e" kindref="member">lambda</ref>[0];</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>nusselt_.<ref refid="classParser__U_1a13c377b32b6c3ced39a14f83f94a8828" kindref="member">setVar</ref>(</highlight><highlight class="stringliteral">&quot;Re&quot;</highlight><highlight class="normal">,<sp/>Re);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>nusselt_.<ref refid="classParser__U_1a13c377b32b6c3ced39a14f83f94a8828" kindref="member">setVar</ref>(</highlight><highlight class="stringliteral">&quot;Pr&quot;</highlight><highlight class="normal">,<sp/>Pr);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Nu<sp/>=<sp/>nusselt_.<ref refid="classParser__U_1a61605bc1b85e466f884f1739e811b6b4" kindref="member">eval</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>DT<sp/>=<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1af425135974086693e1b9324162e89256" kindref="member">Tp</ref><sp/>-<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1a038afb39657fadb13cc2b34e071bccac" kindref="member">T</ref>[0],<sp/>dTf_DT<sp/>=<sp/>-1.0,<sp/>dTp_DT<sp/>=<sp/>1.0,<sp/>dp_DT<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(out.<ref refid="structFlux__parietal__base_1_1output__t_1acb9843efd6d2af0a3416fb163b96076d" kindref="member">qpk</ref>)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*out.<ref refid="structFlux__parietal__base_1_1output__t_1acb9843efd6d2af0a3416fb163b96076d" kindref="member">qpk</ref>)(0)<sp/>=<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1ad7a0fdd396fa3cecb2b8cae70f62604e" kindref="member">lambda</ref>[0]<sp/>/<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1a0251f036ee828e11ddf34a7c8befad89" kindref="member">D_ch</ref><sp/>*<sp/>Nu<sp/>*<sp/>DT;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(out.<ref refid="structFlux__parietal__base_1_1output__t_1a72a73f11316e83944bf56e6836bdbfc0" kindref="member">dTf_qpk</ref>)<sp/>(*out.<ref refid="structFlux__parietal__base_1_1output__t_1a72a73f11316e83944bf56e6836bdbfc0" kindref="member">dTf_qpk</ref>)(0,<sp/>0)<sp/>=<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1ad7a0fdd396fa3cecb2b8cae70f62604e" kindref="member">lambda</ref>[0]<sp/>/<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1a0251f036ee828e11ddf34a7c8befad89" kindref="member">D_ch</ref><sp/>*<sp/>Nu<sp/>*<sp/>dTf_DT;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(out.<ref refid="structFlux__parietal__base_1_1output__t_1a6f0e82ab4330348d612b53a61c07f299" kindref="member">dTp_qpk</ref>)<sp/><sp/><sp/><sp/>(*out.<ref refid="structFlux__parietal__base_1_1output__t_1a6f0e82ab4330348d612b53a61c07f299" kindref="member">dTp_qpk</ref>)(0)<sp/>=<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1ad7a0fdd396fa3cecb2b8cae70f62604e" kindref="member">lambda</ref>[0]<sp/>/<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1a0251f036ee828e11ddf34a7c8befad89" kindref="member">D_ch</ref><sp/>*<sp/>Nu<sp/>*<sp/>dTp_DT;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(out.<ref refid="structFlux__parietal__base_1_1output__t_1a5d28bacadc49398533c25f74263aeaca" kindref="member">dp_qpk</ref>)<sp/><sp/><sp/><sp/><sp/><sp/>(*out.<ref refid="structFlux__parietal__base_1_1output__t_1a5d28bacadc49398533c25f74263aeaca" kindref="member">dp_qpk</ref>)(0)<sp/>=<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1ad7a0fdd396fa3cecb2b8cae70f62604e" kindref="member">lambda</ref>[0]<sp/>/<sp/>in.<ref refid="structFlux__parietal__base_1_1input__t_1a0251f036ee828e11ddf34a7c8befad89" kindref="member">D_ch</ref><sp/>*<sp/>Nu<sp/>*<sp/>dp_DT;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Correlations/Flux_parietal_Nusselt.cpp"/>
+  </compounddef>
+</doxygen>

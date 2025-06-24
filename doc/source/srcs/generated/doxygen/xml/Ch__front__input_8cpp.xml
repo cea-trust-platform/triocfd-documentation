@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Ch__front__input_8cpp" kind="file" language="C++">
+    <compoundname>Ch_front_input.cpp</compoundname>
+    <includes refid="Ch__front__input_8h" local="no">Ch_front_input.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Schema__Temps__base_8h" local="no">Schema_Temps_base.h</includes>
+    <includes refid="Interprete_8h" local="no">Interprete.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Frontiere__dis__base_8h" local="no">Frontiere_dis_base.h</includes>
+    <includes refid="communications_8h" local="no">communications.h</includes>
+    <includes refid="Convert__ICoCoTrioField_8h" local="no">Convert_ICoCoTrioField.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Ch__front__input_8cpp_1a5fc5c7942691120c48dcec7b2f45ff3c" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Ch_front_inputbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Ch_front_inputbases</name>
+        <initializer>={   &amp;( <ref refid="classCh__front__var__instationnaire__dep" kindref="compound">Ch_front_var_instationnaire_dep</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Ch_front_input.cpp" line="25" column="97" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Ch_front_input.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Ch_front_input.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Temps_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Interprete.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Frontiere_dis_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;communications.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Convert_ICoCoTrioField.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classCh__front__input_1a9213cc7a71f149c37c7503a9f399e24b" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classCh__front__input" kindref="compound">Ch_front_input</ref>,</highlight><highlight class="stringliteral">&quot;Ch_front_input&quot;</highlight><highlight class="normal">,<ref refid="classCh__front__var__instationnaire__dep" kindref="compound">Ch_front_var_instationnaire_dep</ref>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>ch_front_input<sp/>front_field_base<sp/>ch_front_input<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/>attr<sp/>nb_comp<sp/>entier<sp/>nb_comp<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/>attr<sp/>nom<sp/>chaine<sp/>nom<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/>attr<sp/>initial_value<sp/>list<sp/>initial_value<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/>attr<sp/>probleme<sp/>chaine<sp/>probleme<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/>attr<sp/>sous_zone<sp/>ref_sous_zone<sp/>sous_zone<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classCh__front__input_1a41fb9c8a9a41fbbff4a8d7454d8b8465" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classCh__front__input_1a41fb9c8a9a41fbbff4a8d7454d8b8465" kindref="member">Ch_front_input::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Input__Proto_1ae998d04ea5e92178bf432fbf4ae6f342" kindref="member">sous_domaine_ok</ref>=</highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Input__Proto_1a8af88eb42b6b3d257614b227d1899b7b" kindref="member">read</ref>(is);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Input__Proto_1a8fffd9966ebe508eba045f861313bf00" kindref="member">mon_pb</ref>-&gt;addInputField(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classCh__front__input_1af4f3f7453b20e003f3f293ef415700ca" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classCh__front__input_1af4f3f7453b20e003f3f293ef415700ca" kindref="member">Ch_front_input::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="43"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classCh__front__input_1abb5f9b0f292f152e1063e9fb59ed7d83" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCh__front__input_1abb5f9b0f292f152e1063e9fb59ed7d83" kindref="member">Ch_front_input::set_nb_comp</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><ref refid="classField__base_1a0d3bb177287a79b9d7da6f3a46deff53" kindref="member">fixer_nb_comp</ref>(i);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classCh__front__input_1acd2edfe282ba562459b4eb3370c841d1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCh__front__input_1acd2edfe282ba562459b4eb3370c841d1" kindref="member">Ch_front_input::set_name</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>name)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="classField__base_1a517704cb3a892cbe30c12e0d744277c7" kindref="member">nommer</ref>(name);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classCh__front__input_1ac6793dc86297517fb2ce9cc0e820b4a0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><ref refid="classCh__front__input_1ac6793dc86297517fb2ce9cc0e820b4a0" kindref="member">Ch_front_input::get_name</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="58"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classField__base_1a1a644c094b32b3923219f3afd6bcc075" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="62"><highlight class="comment">/*!<sp/>@brief<sp/>Provides<sp/>afield<sp/>with<sp/>a<sp/>name,<sp/>a<sp/>time<sp/>interval,<sp/>components,<sp/>and<sp/>no<sp/>field<sp/>ownership.</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>The<sp/>geometry<sp/>includes<sp/>all<sp/>nodes<sp/>of<sp/>the<sp/>domain<sp/>and<sp/>all<sp/>faces<sp/>of<sp/>the<sp/>boundary.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/><sp/>WEC<sp/>:<sp/>optimization<sp/>possible<sp/>here</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classCh__front__input_1a6480ea9b8e8bda67f0bb2dfd6dc8657b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCh__front__input_1a6480ea9b8e8bda67f0bb2dfd6dc8657b" kindref="member">Ch_front_input::getTemplate</ref>(TrioField&amp;<sp/>afield)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="69"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>afield.clear();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>afield.setName(<ref refid="classField__base_1a1a644c094b32b3923219f3afd6bcc075" kindref="member">le_nom</ref>().getChar());</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>afield._time1=<ref refid="classChamp__Input__Proto_1a8fffd9966ebe508eba045f861313bf00" kindref="member">mon_pb</ref>-&gt;presentTime();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>afield._time2=<ref refid="classChamp__Input__Proto_1a8fffd9966ebe508eba045f861313bf00" kindref="member">mon_pb</ref>-&gt;futureTime();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>afield._nb_field_components=<ref refid="classField__base_1a7f1a8a933594c9f73ac0b14260961fad" kindref="member">nb_comp</ref>();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>org=1;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classCh__front__input_1a7b412b8fc7d1adc23d0caaaa319d42d9" kindref="member">faces_</ref>.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1)==4)<sp/>org=0;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>org=0;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>en<sp/>mettant<sp/>org<sp/>a<sp/>o1<sp/>on<sp/>revient<sp/>a<sp/>l&apos;ancien<sp/>codage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>sommets=org==1?<ref refid="classChamp__Input__Proto_1a8fffd9966ebe508eba045f861313bf00" kindref="member">mon_pb</ref>-&gt;domaine().les_sommets():<ref refid="classCh__front__input_1a499a0295e4cd471feb1b6b9b7ff1879d" kindref="member">sommets_</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>faces=org==1?<ref refid="classChamp__front__base_1a2ade0aea3d8e1676539884e12d4f0cfd" kindref="member">frontiere_dis</ref>().<ref refid="classFrontiere__dis__base_1a2d99fa72b34da9d3784b16730ba91720" kindref="member">frontiere</ref>().<ref refid="classFrontiere__32__64_1aeb2dadc639ee53d957479f8edb7341e1" kindref="member">faces</ref>().<ref refid="classFaces__32__64_1ac9c518f5ee4388bfa4baae0c769b9fd6" kindref="member">les_sommets</ref>():<ref refid="classCh__front__input_1a7b412b8fc7d1adc23d0caaaa319d42d9" kindref="member">faces_</ref>;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>assert(sommets.<ref refid="classTRUSTTab_1a829be3686b4cf6f076d1dc92870e18f9" kindref="member">nb_dim</ref>()==2);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>assert(faces.<ref refid="classTRUSTTab_1a829be3686b4cf6f076d1dc92870e18f9" kindref="member">nb_dim</ref>()==2);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>afield._space_dim=sommets.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>afield._mesh_dim=afield._space_dim-1;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>afield._nbnodes=sommets.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>afield._nodes_per_elem<sp/>=<sp/><ref refid="classProcess_1a1e9d9f9899b71927cfafae14c7bd048d" kindref="member">mp_max</ref>(faces.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>afield._nb_elems=faces.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Includes<sp/>all<sp/>the<sp/>nodes,<sp/>even<sp/>those<sp/>not<sp/>used<sp/>in<sp/>connectivity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>order<sp/>is<sp/><sp/>x<sp/>y<sp/>z<sp/><sp/>x<sp/>y<sp/>z<sp/><sp/>x<sp/>y<sp/>z</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>affecte_double_avec_doubletab(&amp;afield._coords,sommets);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>affecte_int_avec_inttab(&amp;afield._connectivity,faces);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//<sp/>In<sp/>the<sp/>case<sp/>of<sp/>a<sp/>mobile<sp/>mesh<sp/>(ALE<sp/>frame)<sp/>we<sp/>need<sp/>to<sp/>call<sp/>this<sp/>function<sp/>after<sp/>each<sp/>displacement<sp/>of<sp/>the<sp/>mesh</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classCh__front__input_1a1807a4a1a97b8c5ab4617d136e4380b7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCh__front__input_1a1807a4a1a97b8c5ab4617d136e4380b7" kindref="member">Ch_front_input::buildSommetsFaces</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="106"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>sommets_org=(<ref refid="classChamp__Input__Proto_1a8fffd9966ebe508eba045f861313bf00" kindref="member">mon_pb</ref>-&gt;domaine().les_sommets());</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>sommets=<ref refid="classCh__front__input_1a499a0295e4cd471feb1b6b9b7ff1879d" kindref="member">sommets_</ref>;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>sommets.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(sommets_org.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0),sommets_org.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1));</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>faces=<ref refid="classCh__front__input_1a7b412b8fc7d1adc23d0caaaa319d42d9" kindref="member">faces_</ref>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>faces_org=(<ref refid="classChamp__front__base_1a2ade0aea3d8e1676539884e12d4f0cfd" kindref="member">frontiere_dis</ref>().<ref refid="classFrontiere__dis__base_1a2d99fa72b34da9d3784b16730ba91720" kindref="member">frontiere</ref>().<ref refid="classFrontiere__32__64_1aeb2dadc639ee53d957479f8edb7341e1" kindref="member">faces</ref>().<ref refid="classFaces__32__64_1ac9c518f5ee4388bfa4baae0c769b9fd6" kindref="member">les_sommets</ref>());</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>faces=faces_org;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ntot=0;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref><sp/>marqueur(sommets_org.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0));</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/>marqueur=-1;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>f=0;<sp/>f&lt;faces.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0);<sp/>f++)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>s=0;<sp/>s&lt;faces.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);<sp/>s++)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>som=faces(f,s);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(som<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>marqueur[som]==-1)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marqueur[som]=ntot;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dir=0;<sp/>dir&lt;<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>;<sp/>dir++)</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sommets(ntot,dir)=sommets_org(som,dir);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntot++;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>sommets.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(ntot,<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>refait<sp/>les<sp/>faces</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>f=0;<sp/>f&lt;faces.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0);<sp/>f++)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>s=0;<sp/>s&lt;faces.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);<sp/>s++)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>faces(f,s)<sp/>=<sp/>faces_org(f,<sp/>s)<sp/>&gt;=<sp/>0<sp/>?<sp/>marqueur[faces_org(f,s)]<sp/>:<sp/>-1;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="145"><highlight class="comment">/*!<sp/>@brief<sp/>Uses<sp/>the<sp/>first<sp/>value<sp/>in<sp/>afield<sp/>as<sp/>uniform<sp/>value,<sp/>regardless<sp/>of<sp/>geometry.</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="classCh__front__input_1a8bda5b270196885fbca86dda12c3cc7f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCh__front__input_1a8bda5b270196885fbca86dda12c3cc7f" kindref="member">Ch_front_input::setValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TrioField&amp;<sp/>afield)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=1;<sp/>i&lt;<ref refid="classChamp__front__base_1a52f671ae3217c69ec9e2175916d367ca" kindref="member">les_valeurs</ref>-&gt;<ref refid="classRoue_1abfa502bacbfc11f6f680b6a5af998fbc" kindref="member">nb_cases</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classChamp__Input__Proto_1a836b74149918c637cbac43c705570ad7" kindref="member">Champ_Input_Proto::setValueOnTab</ref>(afield,<ref refid="classChamp__front__base_1a52f671ae3217c69ec9e2175916d367ca" kindref="member">les_valeurs</ref>[i].<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>());</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="classChamp__front__base_1af097283a979773819bb37c382dfb7e1c" kindref="member">calculer_derivee_en_temps</ref>(afield._time1,afield._time2);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="classCh__front__input_1acc93438f9853af051899bad837399908" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="classCh__front__input_1acc93438f9853af051899bad837399908" kindref="member">Ch_front_input::initialiser</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/>inco)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classCh__front__var__instationnaire__dep_1a2f84ab4435e03baaa42ecd00b58f8a32" kindref="member">Ch_front_var_instationnaire_dep::initialiser</ref>(temps,inco))</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/>if<sp/>(nb_comp()==1)</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>i=0;i&lt;les_valeurs-&gt;nb_cases();i++)</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/>les_valeurs[i].valeurs()=9.9e5;</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><ref refid="classCh__front__input_1a1807a4a1a97b8c5ab4617d136e4380b7" kindref="member">buildSommetsFaces</ref>();</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="comment">//<sp/>setDoubleValue:<sp/>actually<sp/>set<sp/>a<sp/>field<sp/>value,<sp/>provided<sp/>it<sp/>has<sp/>size<sp/>1.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172" refid="classCh__front__input_1a3dec1e93062a2a154570a686b9d9876b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCh__front__input_1a3dec1e93062a2a154570a686b9d9876b" kindref="member">Ch_front_input::setDoubleValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>val)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/>assert(<ref refid="classChamp__front__base_1a52f671ae3217c69ec9e2175916d367ca" kindref="member">les_valeurs</ref>[0].<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>().size()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=1;<sp/>i&lt;<ref refid="classChamp__front__base_1a52f671ae3217c69ec9e2175916d367ca" kindref="member">les_valeurs</ref>-&gt;<ref refid="classRoue_1abfa502bacbfc11f6f680b6a5af998fbc" kindref="member">nb_cases</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classChamp__front__base_1a52f671ae3217c69ec9e2175916d367ca" kindref="member">les_valeurs</ref>[i].<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>()(0,0)<sp/>=<sp/>val;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Champs/Ch_front_input.cpp"/>
+  </compounddef>
+</doxygen>

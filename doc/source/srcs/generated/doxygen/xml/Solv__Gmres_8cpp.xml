@@ -1,0 +1,457 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Solv__Gmres_8cpp" kind="file" language="C++">
+    <compoundname>Solv_Gmres.cpp</compoundname>
+    <includes refid="Solv__Gmres_8h" local="no">Solv_Gmres.h</includes>
+    <includes refid="Matrice__Morse__Sym_8h" local="no">Matrice_Morse_Sym.h</includes>
+    <includes refid="Matrice__Bloc_8h" local="no">Matrice_Bloc.h</includes>
+    <includes refid="Motcle_8h" local="no">Motcle.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Solv__Gmres_8cpp_1a14829a5a3099d0b499340f39a3fd0bc4" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Solv_Gmresbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Solv_Gmresbases</name>
+        <initializer>={   &amp;( <ref refid="classsolv__iteratif" kindref="compound">solv_iteratif</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Gmres.cpp" line="26" column="50" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Gmres.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Solv__Gmres_8cpp_1ab7a0be28650998062c22ff46e95d3375" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gmres_local</definition>
+        <argsstring>(const Matrice_Morse &amp;A, const DoubleVect &amp;b, DoubleVect &amp;x1, double &amp;seuil, int precond_diag, int &amp;nb_it_max, int &amp;controle_residu, DoubleVects &amp;v, int dim_espace_Krilov, int limpr_=0)</argsstring>
+        <name>gmres_local</name>
+        <param>
+          <type>const <ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref> &amp;</type>
+          <declname>A</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref> &amp;</type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>seuil</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>precond_diag</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>nb_it_max</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>controle_residu</declname>
+        </param>
+        <param>
+          <type><ref refid="classTRUST__Vector" kindref="compound">DoubleVects</ref> &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dim_espace_Krilov</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>limpr_</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Gmres.cpp" line="148" column="5" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Gmres.cpp" bodystart="148" bodyend="354"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Solv_Gmres.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Morse_Sym.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Bloc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Motcle.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>CRAY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classSolv__Gmres_1aea228abb97eacbe333c2118f17bf9a47" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<ref refid="classSolv__Gmres" kindref="compound">Solv_Gmres</ref>,</highlight><highlight class="stringliteral">&quot;Solv_Gmres&quot;</highlight><highlight class="normal">,<ref refid="classsolv__iteratif" kindref="compound">solv_iteratif</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classSolv__Gmres_1a33ea3691006e0e9ea8bbd4ee647c016c" refkind="member"><highlight class="normal"><ref refid="classSolv__Gmres_1a33ea3691006e0e9ea8bbd4ee647c016c" kindref="member">Solv_Gmres::Solv_Gmres</ref>()</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><ref refid="classsolv__iteratif_1a726974e9a0579e0c242606430dc320d4" kindref="member">seuil_</ref><sp/>=<sp/>1.e-12;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Gmres_1a2e84b20ee812948e94ab7a9968566f7f" kindref="member">nb_it_max_</ref><sp/>=<sp/>1000000;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Gmres_1a519c842fff83508aac53ba5d9254b044" kindref="member">controle_residu_</ref><sp/>=0;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Gmres_1a8ce3f65b858c50f0064ea8bc421d5749" kindref="member">dim_espace_Krilov_</ref>=10;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>printOn<sp/>et<sp/>readOn</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classSolv__Gmres_1aeb306d1f76cb578c2f5c7d8865d20b83" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSolv__Gmres_1aeb306d1f76cb578c2f5c7d8865d20b83" kindref="member">Solv_Gmres::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="38"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>s&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>{<sp/>seuil<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classsolv__iteratif_1a726974e9a0579e0c242606430dc320d4" kindref="member">seuil_</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolv__Gmres_1a89fb74160e06a22a69ad62a52f0063bd" kindref="member">precond_diag</ref>)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>diag<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolv__Gmres_1abeda68a02de217ff696b91704781e0d5" kindref="member">is_local_gmres</ref>)<sp/>s&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>sans_precond<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolv__Gmres_1a519c842fff83508aac53ba5d9254b044" kindref="member">controle_residu_</ref>)<sp/>s&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>controle_residu<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classSolv__Gmres_1a519c842fff83508aac53ba5d9254b044" kindref="member">controle_residu_</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolv__Gmres_1a2e84b20ee812948e94ab7a9968566f7f" kindref="member">nb_it_max_</ref>!=1000000)<sp/>s&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>nb_it_max<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classSolv__Gmres_1a2e84b20ee812948e94ab7a9968566f7f" kindref="member">nb_it_max_</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolveurSys__base_1a6435c5b83312da8f782eeeab564b4061" kindref="member">limpr</ref>()==1)<sp/>s&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>impr<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolveurSys__base_1a6435c5b83312da8f782eeeab564b4061" kindref="member">limpr</ref>()==-1)<sp/>s&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>quiet<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolveurSys__base_1a3a07b4fedbb16ff0a096d7c37a0d952e" kindref="member">save_matrice_</ref>)<sp/>s&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>save_matrice<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>s&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>dim_espace_krilov<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classSolv__Gmres_1a8ce3f65b858c50f0064ea8bc421d5749" kindref="member">dim_espace_Krilov_</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>s&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>}<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classSolv__Gmres_1a928858045d6b7aa91b5e5eb0e834b562" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSolv__Gmres_1a928858045d6b7aa91b5e5eb0e834b562" kindref="member">Solv_Gmres::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Gmres_1afec9f36039cc8aaf3d850d71f8afc8bc" kindref="member">set_param</ref>(param);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aa9d44fc51b4a08b357733a97dc7acaad" kindref="member">lire_avec_accolades_depuis</ref>(is);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classSolv__Gmres_1afec9f36039cc8aaf3d850d71f8afc8bc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolv__Gmres_1afec9f36039cc8aaf3d850d71f8afc8bc" kindref="member">Solv_Gmres::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;impr&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;seuil&quot;</highlight><highlight class="normal">,&amp;<ref refid="classsolv__iteratif_1a726974e9a0579e0c242606430dc320d4" kindref="member">seuil_</ref>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;diag&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;sans_precond&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;nb_it_max&quot;</highlight><highlight class="normal">,&amp;<ref refid="classSolv__Gmres_1a2e84b20ee812948e94ab7a9968566f7f" kindref="member">nb_it_max_</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;controle_residu&quot;</highlight><highlight class="normal">,&amp;<ref refid="classSolv__Gmres_1a519c842fff83508aac53ba5d9254b044" kindref="member">controle_residu_</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1ae3d50612a0014a9d58e6e035a65f20e5" kindref="member">ajouter_flag</ref>(</highlight><highlight class="stringliteral">&quot;save_matrice|save_matrix&quot;</highlight><highlight class="normal">,&amp;<ref refid="classSolveurSys__base_1a3a07b4fedbb16ff0a096d7c37a0d952e" kindref="member">save_matrice_</ref>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;dim_espace_krilov&quot;</highlight><highlight class="normal">,&amp;<ref refid="classSolv__Gmres_1a8ce3f65b858c50f0064ea8bc421d5749" kindref="member">dim_espace_Krilov_</ref>);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;quiet&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classSolv__Gmres_1aaa379f892b5e5360fd7f0bf5245fc1c7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSolv__Gmres_1aaa379f892b5e5360fd7f0bf5245fc1c7" kindref="member">Solv_Gmres::lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>retval<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot==</highlight><highlight class="stringliteral">&quot;impr&quot;</highlight><highlight class="normal">)<sp/><ref refid="classSolveurSys__base_1a987e97740c779c1ab4192c3c1f1bbd5d" kindref="member">fixer_limpr</ref>(1);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot==</highlight><highlight class="stringliteral">&quot;quiet&quot;</highlight><highlight class="normal">)<sp/><ref refid="classSolveurSys__base_1a987e97740c779c1ab4192c3c1f1bbd5d" kindref="member">fixer_limpr</ref>(-1);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot==</highlight><highlight class="stringliteral">&quot;diag&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolv__Gmres_1abeda68a02de217ff696b91704781e0d5" kindref="member">is_local_gmres</ref>=</highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolv__Gmres_1a89fb74160e06a22a69ad62a52f0063bd" kindref="member">precond_diag</ref>=1;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot==</highlight><highlight class="stringliteral">&quot;sans_precond&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolv__Gmres_1abeda68a02de217ff696b91704781e0d5" kindref="member">is_local_gmres</ref>=</highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolv__Gmres_1a89fb74160e06a22a69ad62a52f0063bd" kindref="member">precond_diag</ref>=</highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>retval<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>retval;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="classSolv__Gmres_1a10a94433b9e44da73d1c6aa137329f99" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSolv__Gmres_1a10a94433b9e44da73d1c6aa137329f99" kindref="member">Solv_Gmres::resoudre_systeme</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>la_matrice,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>secmem,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>solution)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sub_type(<ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>,la_matrice))</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matrice<sp/>=<sp/>ref_cast(<ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>,<sp/>la_matrice);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>retour=<sp/><ref refid="classSolv__Gmres_1a2a1a062af95a7bb6d4352994753ccc68" kindref="member">Gmres</ref>(matrice,secmem,solution);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>b(secmem);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>matrice.<ref refid="classMatrice__Base_1a91c98b86a0bdce6ccc483dd453ef9ab2" kindref="member">multvect</ref>(solution,<sp/>b);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;<sp/>b<sp/>:&quot;<sp/>&lt;&lt;<sp/>b&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;<sp/>secmem<sp/>:&quot;<sp/>&lt;&lt;<sp/>secmem&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>b-=secmem;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;||residu||<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>b.norme()<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>retour;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sub_type(<ref refid="classMatrice__Bloc" kindref="compound">Matrice_Bloc</ref>,la_matrice))</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Bloc" kindref="compound">Matrice_Bloc</ref>&amp;<sp/>matrice<sp/>=<sp/>ref_cast(<ref refid="classMatrice__Bloc" kindref="compound">Matrice_Bloc</ref>,la_matrice);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(matrice.<ref refid="classMatrice__Bloc_1a1fdaccddd2a2be35fc171e76801bebd2" kindref="member">nb_bloc_lignes</ref>()&gt;1)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Solv_Gmres<sp/>:<sp/>WARNING<sp/>:<sp/>one<sp/>is<sp/>not<sp/>able<sp/>to<sp/>carry<sp/>out<sp/>Gmres<sp/>by<sp/>blocks&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(-1);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1a48ea49c199fc8961be575e571038b79a" kindref="member">Process::is_parallel</ref>())</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Solv_Gmres<sp/>:<sp/>WARNING<sp/>:<sp/>one<sp/>is<sp/>not<sp/>able<sp/>to<sp/>carry<sp/>out<sp/>parallel<sp/>calculation<sp/>with<sp/>Gmres&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(-1);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>MB00<sp/>=<sp/>ref_cast(<ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>,matrice.<ref refid="classMatrice__Bloc_1a76a5691fecfea8b4dd877d2c449a7f21" kindref="member">get_bloc</ref>(0,0).<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>retour=<sp/><ref refid="classSolv__Gmres_1a2a1a062af95a7bb6d4352994753ccc68" kindref="member">Gmres</ref>(MB00,secmem,solution);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>retour;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Solv_Gmres<sp/>:<sp/>WARNING<sp/>:<sp/>only<sp/>linear<sp/>systems<sp/>based<sp/>on<sp/>Matrice_Morse_Sym<sp/>or<sp/>Matrice_Bloc<sp/>type<sp/>matrixes<sp/>can<sp/>be<sp/>solved&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(-1);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>gmres_local(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>A,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>b,<ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>x1,</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>seuil,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>precond_diag,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>nb_it_max,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>controle_residu,<ref refid="classTRUST__Vector" kindref="compound">DoubleVects</ref>&amp;<sp/>v,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dim_espace_Krilov,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>limpr_=0)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copied<sp/>from<sp/>SouConPhase_field<sp/>(scalar)//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//return<sp/>le_solveur_.resoudre_systeme(A,b,x1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//A.inverse(b,x1,seuil);<sp/>return<sp/>1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j,nk,i0,im,it,ii;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tem=1.,res,ccos,ssin<sp/>;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PL<sp/>c&apos;est<sp/>pas<sp/>joli<sp/>et<sp/>c&apos;est<sp/>de<sp/>moi<sp/>mais<sp/>je<sp/>ne<sp/>comprends<sp/>pas<sp/>pourquoi</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>l&apos;utilisation<sp/>de<sp/>b.size_reelle()<sp/>plante<sp/>sur<sp/>la<sp/>matrice<sp/>en<sp/>pression<sp/>depuis<sp/>la<sp/>1.6.0<sp/>(non<sp/>teste)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Qu&apos;est<sp/>ce<sp/>qui<sp/>est<sp/>fait<sp/>en<sp/>implicite<sp/>pour<sp/>b.size_reelle()<sp/>soit<sp/>&gt;=0<sp/>???</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ns=(b.<ref refid="classTRUSTVect_1a68624d111ae441e36f97f20f20cb7d14" kindref="member">size_reelle_ok</ref>()?b.<ref refid="classTRUSTVect_1a5809672c71423c72778fc6655d26ed56" kindref="member">size_reelle</ref>():b.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>());</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_ligne_tot=(int)<ref refid="classProcess_1a7d23bc1ef94b3f0623fbc79d034c27fd" kindref="member">Process::mp_sum</ref>((</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">)<sp/>ns);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Ajoute<sp/>par<sp/>DJ</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//--------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>int<sp/>nb_elem_tot<sp/>=<sp/>b.size_totale();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//DoubleVect<sp/>x1(x);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//x1=0.;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//for(int<sp/>n_elem=0;<sp/>n_elem&lt;nb_elem_tot;<sp/>n_elem++)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>x1(n_elem)=x(n_elem);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//--------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>present<sp/>dans<sp/>le<sp/>jdd</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>epsGMRES=1.e-10*0;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nkr_min<sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nkr=std::max(nkr_min,nb_ligne_tot/2);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>dimension<sp/>de<sp/>l&apos;espace<sp/>de<sp/>Krylov</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//nkr=10;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>nkr=dim_espace_Krilov;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nit1_min<sp/>=<sp/>20;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nit1=std::max(nit1_min,nb_ligne_tot);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nit=std::min(nb_it_max,nit1);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rec_min<sp/>=<sp/>seuil;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rec_max<sp/>=<sp/>0.1<sp/><sp/>;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>res2_old=-1;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(v.<ref refid="classTRUST__Vector_1afae0a388de57f1ab2a0d9127f7c0a5f9" kindref="member">size</ref>()==0)</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>v.<ref refid="classTRUST__Vector_1a29489aa7553eb6924ce12ceee6f087a6" kindref="member">dimensionner</ref>(nkr);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Krilov<sp/>vectors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>h(nkr+1,nkr);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Heisenberg<sp/>maatrix<sp/>of<sp/>coefficients</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>r(nkr+1);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>v0(x1);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>v1(x1)<sp/>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ns2=ns;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>Diag(ns);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/>Diag=1.;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(precond_diag)</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/>i=0;<sp/>i&lt;ns;<sp/>i++)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Diag[i]=1./A(i,i);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialisation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>v0<sp/>=<sp/>0.<sp/>;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/>v1<sp/>=<sp/>0.<sp/>;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/>A.<ref refid="classMatrice__Base_1a632b5cf52398b1b2cd1a62c1be985cd3" kindref="member">multvect_</ref>(x1,v0);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>v0<sp/>*=<sp/>-1.<sp/>;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>v0+=b;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/>v0.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>res0<sp/>=<sp/>mp_norme_vect(v0);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(ii=0;<sp/>ii&lt;ns2;<sp/>ii++)</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>v0(ii)*=Diag(ii);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>res<sp/>=<sp/>mp_norme_vect(v0);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(limpr_==1)</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>Cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;Gmres<sp/>:<sp/>initial<sp/>residual<sp/>=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;res0&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>See<sp/>http://stackoverflow.com/questions/3437085/check-nan-number</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>May<sp/>be<sp/>could<sp/>be<sp/>interesting<sp/>to<sp/>implement<sp/>isnan<sp/>function<sp/>somewhere</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res0!=res0)</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Nan<sp/>detected<sp/>in<sp/>Solv_Gmres::gmres_local()&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Contact<sp/>TRUST<sp/>support.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>rec_min<sp/>=<sp/>(rec_min&lt;res*epsGMRES)<sp/>?<sp/>res*epsGMRES<sp/>:<sp/>rec_min;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>rec_min<sp/>=<sp/>(rec_min&lt;rec_max)<sp/>?<sp/>rec_min<sp/>:<sp/>rec_max<sp/>;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>iterations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(it=0;<sp/>it&lt;nit;<sp/>it++)</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res==0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/></highlight><highlight class="comment">//<sp/>nothing<sp/>to<sp/>do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nk<sp/>=<sp/>nkr;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//...Orthogonalisation<sp/>of<sp/>Arnoldi</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v0<sp/>/=<sp/>res;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>=<sp/>0.<sp/>;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r[0]<sp/>=<sp/>res;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>h=0.;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(j=0;<sp/>j&lt;nkr;<sp/>j++)</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v0.echange_espace_virtuel();</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[j]=v0;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A.<ref refid="classMatrice__Base_1a91c98b86a0bdce6ccc483dd453ef9ab2" kindref="member">multvect</ref>(v0,v1);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(ii=0;<sp/>ii&lt;ns2;<sp/>ii++)<sp/>v1(ii)*=Diag(ii);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v0<sp/>=<sp/>v1<sp/>;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Modifie<sp/>par<sp/>DJ</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//---------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;=j;<sp/>i++)</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>vvi=v[i];</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h(i,j)+=mp_prodscal(v0,vvi);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(ii=0;<sp/>ii&lt;ns;<sp/>ii++)<sp/>v0(ii)<sp/>-=<sp/>h(i,j)<sp/>*<sp/>vvi(ii);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v0.echange_espace_virtuel();</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tem=mp_norme_vect(v0);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h(j+1,j)<sp/>=<sp/>tem;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(tem&lt;rec_min)</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nk<sp/>=<sp/>j+1;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">goto</highlight><highlight class="normal"><sp/>l5;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v0<sp/>/=<sp/>tem;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//...Triangularisation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal">l5:</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;nk;<sp/>i++)</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>im<sp/>=<sp/>i+1;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tem<sp/>=<sp/>1./sqrt(h(i,i)*h(i,i)<sp/>+<sp/>h(im,i)*h(im,i));</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ccos<sp/>=<sp/>h(i,i)<sp/>*<sp/>tem;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ssin<sp/>=<sp/>-<sp/>h(im,i)<sp/>*<sp/>tem;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(j=i;<sp/>j&lt;nk;<sp/>j++)</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tem<sp/>=<sp/>h(i,j);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h(i,j)<sp/>=<sp/>ccos<sp/>*<sp/>tem<sp/>-<sp/>ssin<sp/>*<sp/>h(im,j);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h(im,j)<sp/>=<sp/><sp/>ssin<sp/>*<sp/>tem<sp/>+<sp/>ccos<sp/>*<sp/>h(im,j);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r[im]<sp/>=<sp/>ssin<sp/>*<sp/>r[i];</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r[i]<sp/>*=<sp/>ccos;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//...Solution<sp/>of<sp/>linear<sp/>system</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=nk-1;<sp/>i&gt;=0;<sp/>i--)</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r[i]<sp/>/=<sp/>h(i,i);</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i0=i-1;<sp/>i0&gt;=0;<sp/>i0--)</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r[i0]<sp/>-=<sp/>h(i0,i)*<sp/>r[i];</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;nk;<sp/>i++)</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>vvi=v[i];</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(ii=0;<sp/>ii&lt;ns;<sp/>ii++)<sp/><sp/>x1(ii)<sp/>+=<sp/>r[i]*vvi(ii);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x1.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>A.<ref refid="classMatrice__Base_1a632b5cf52398b1b2cd1a62c1be985cd3" kindref="member">multvect_</ref>(x1,v0);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v0<sp/>*=<sp/>-1.<sp/>;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v0+=b;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calcul<sp/>du<sp/>residu<sp/>sans<sp/>le<sp/>precond....</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>res2=mp_norme_vect(v0);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((it&gt;0)<sp/>&amp;&amp;<sp/>(controle_residu==1)<sp/>&amp;&amp;<sp/>(sup_strict(res2,res2_old)))</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>Gmres<sp/>iterative<sp/>system<sp/>is<sp/>stopped<sp/>after<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>it+1<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>iterations<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;since<sp/>an<sp/>increase<sp/>of<sp/>the<sp/>residue<sp/>is<sp/>detected.&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>res2_old<sp/>=<sp/>res2;</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(limpr_==1)</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>At<sp/>it<sp/>=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>it+1<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;,<sp/>residu<sp/>scalar<sp/>=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>res2<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>d&apos;arret<sp/>sur<sp/>le<sp/>residu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(res2&lt;rec_min)</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ajoute<sp/>par<sp/>DJ</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//--------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(limpr_&gt;-1)</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Gmres<sp/>:<sp/>Number<sp/>of<sp/>iterations<sp/>to<sp/>reach<sp/>convergence<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>it+1<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>residu_relatif<sp/>=<sp/>(res0&gt;0?res2/res0:res2);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Final<sp/>residue:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>res2<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>(<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>residu_relatif<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it+1;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>d&apos;arret<sp/>sur<sp/>le<sp/>nombre<sp/>d&apos;iterations<sp/>max</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it==nit-1)</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ajoute<sp/>par<sp/>DJ</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//--------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>fait<sp/>le<sp/>choix<sp/>de<sp/>mettre<sp/>a<sp/>jour<sp/>c_demi<sp/>et<sp/>mutilde_demi<sp/>meme<sp/>s&apos;il<sp/>n&apos;y<sp/>a<sp/>pas<sp/>convergence...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>x=x1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//--------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(limpr_&gt;-1)</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Gmres<sp/>:<sp/>Stopped<sp/>after<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>it+1<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>iterations<sp/>(=nb_it_max)&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>residu_relatif<sp/>=<sp/>(res0&gt;0?res2/res0:res2);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Final<sp/>residue:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>res2<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>(<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>residu_relatif<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>==<sp/>(nb_ligne_tot-1))</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;!!!<sp/>Gmres<sp/>stopped<sp/>after<sp/>a<sp/>number<sp/>of<sp/>iterations<sp/>equal<sp/>to<sp/>the<sp/>matrix<sp/>size.<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;!!!<sp/>Either<sp/>your<sp/>matrix<sp/>is<sp/>ill-conditioned<sp/>(try<sp/>cholesky<sp/>instead),<sp/>or<sp/>your<sp/>convergence<sp/>threshold<sp/>is<sp/>too<sp/>low.<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(-1);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it+1;</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>du<sp/>residu<sp/>avec<sp/>preconditionnement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(ii=0;<sp/>ii&lt;ns2;<sp/>ii++)<sp/>v0(ii)*=Diag(ii);</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>=<sp/>mp_norme_vect(v0);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357" refid="classSolv__Gmres_1a2a1a062af95a7bb6d4352994753ccc68" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSolv__Gmres_1a2a1a062af95a7bb6d4352994753ccc68" kindref="member">Solv_Gmres::Gmres</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matrice,</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>secmem,</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>solution)</highlight></codeline>
+<codeline lineno="360"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classSolv__Gmres_1abeda68a02de217ff696b91704781e0d5" kindref="member">is_local_gmres</ref>)</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>matrice.<ref refid="classMatrice__Morse_1a930e2f0b2896d3bc7f58ef89e60239dc" kindref="member">inverse</ref>(secmem,<sp/>solution,<sp/><ref refid="classsolv__iteratif_1a726974e9a0579e0c242606430dc320d4" kindref="member">seuil_</ref>);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>gmres_local(matrice,secmem,solution,<ref refid="classsolv__iteratif_1a726974e9a0579e0c242606430dc320d4" kindref="member">seuil_</ref>,<ref refid="classSolv__Gmres_1a89fb74160e06a22a69ad62a52f0063bd" kindref="member">precond_diag</ref>,<ref refid="classSolv__Gmres_1a2e84b20ee812948e94ab7a9968566f7f" kindref="member">nb_it_max_</ref>,<ref refid="classSolv__Gmres_1a519c842fff83508aac53ba5d9254b044" kindref="member">controle_residu_</ref>,<ref refid="classSolv__Gmres_1a6db39cc32c009a61ebb692859d650c6b" kindref="member">v</ref>,<ref refid="classSolv__Gmres_1a8ce3f65b858c50f0064ea8bc421d5749" kindref="member">dim_espace_Krilov_</ref>,<ref refid="classSolveurSys__base_1a6435c5b83312da8f782eeeab564b4061" kindref="member">limpr</ref>());</highlight></codeline>
+<codeline lineno="365"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Gmres.cpp"/>
+  </compounddef>
+</doxygen>

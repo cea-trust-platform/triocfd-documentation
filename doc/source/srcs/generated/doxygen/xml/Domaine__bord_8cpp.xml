@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Domaine__bord_8cpp" kind="file" language="C++">
+    <compoundname>Domaine_bord.cpp</compoundname>
+    <includes refid="Domaine__bord_8h" local="no">Domaine_bord.h</includes>
+    <includes refid="Hexaedre_8h" local="no">Hexaedre.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Domaine__bord_8cpp_1a88267e98182eebcd940a6e82041d3feb" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename _T_</type>
+          </param>
+        </templateparamlist>
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Domaine_bord_32_64bases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Domaine_bord_32_64bases</name>
+        <initializer>= { &amp;( <ref refid="classDomaine__32__64" kindref="compound">Domaine_32_64</ref>&lt;_T_&gt; ::info_obj) }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Domaine_bord.cpp" line="18" column="151" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Domaine_bord.cpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Domaine__bord_8cpp_1a18ac3174c10c7bb987e96e892ad99aa6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename _SIZE_</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void type_face_to_type_elem</definition>
+        <argsstring>(const Elem_geom_base_32_64&lt; _SIZE_ &gt; &amp;type_elem, const Type_Face &amp;type_face, Motcle &amp;type_elem_face)</argsstring>
+        <name>type_face_to_type_elem</name>
+        <param>
+          <type>const <ref refid="classElem__geom__base__32__64" kindref="compound">Elem_geom_base_32_64</ref>&lt; _SIZE_ &gt; &amp;</type>
+          <declname>type_elem</declname>
+        </param>
+        <param>
+          <type>const Type_Face &amp;</type>
+          <declname>type_face</declname>
+        </param>
+        <param>
+          <type><ref refid="classMotcle" kindref="compound">Motcle</ref> &amp;</type>
+          <declname>type_elem_face</declname>
+        </param>
+        <briefdescription>
+<para>methode pour convertir un type de face en type d&apos;element (a deplacer dans la classe Faces ?) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Domaine_bord.cpp" line="82" column="6" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Domaine_bord.cpp" bodystart="82" bodyend="113"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_bord.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Hexaedre.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classDomaine__bord__32__64_1a76c8511aebd23d1077ee6911c76f7a94" refkind="member"><highlight class="normal">Implemente_instanciable_32_64(<ref refid="classDomaine__bord__32__64" kindref="compound">Domaine_bord_32_64</ref>,</highlight><highlight class="stringliteral">&quot;Domaine_bord&quot;</highlight><highlight class="normal">,<ref refid="classDomaine__32__64" kindref="compound">Domaine_32_64&lt;_T_&gt;</ref>);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">/*!<sp/>@brief<sp/>pour<sp/>l&apos;instant<sp/>exit()</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="24" refid="classDomaine__bord__32__64_1a241940aeb0a6409d9d35a32cb3f283c8" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classDomaine__bord__32__64_1a241940aeb0a6409d9d35a32cb3f283c8" kindref="member">Domaine_bord_32_64&lt;_SIZE_&gt;::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>this-&gt;exit();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="30"><highlight class="comment">/*!<sp/>@brief<sp/>pour<sp/>l&apos;instant<sp/>exit()</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="34" refid="classDomaine__bord__32__64_1a7f4e696be2c7f88f0ce7fe4904f562fc" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classDomaine__bord__32__64_1a7f4e696be2c7f88f0ce7fe4904f562fc" kindref="member">Domaine_bord_32_64&lt;_SIZE_&gt;::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="35"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>this-&gt;exit();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="40"><highlight class="comment">/*!<sp/>@brief<sp/>construit<sp/>le<sp/>domaine<sp/>en<sp/>appelant<sp/>extraire_domaine_bord()</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="44" refid="classDomaine__bord__32__64_1a379c5a65ef23739f6f1cd439d278d539" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDomaine__bord__32__64_1a379c5a65ef23739f6f1cd439d278d539" kindref="member">Domaine_bord_32_64&lt;_SIZE_&gt;::construire_domaine_bord</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_bord_32_64&lt;_SIZE_&gt;::Domaine_t</ref>&amp;<sp/>source,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom_bord)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>domaine_source_<sp/>=<sp/>source;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>bord_source_<sp/>=<sp/>nom_bord;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>extraire_domaine_bord(source,<sp/>nom_bord,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>renum_som_);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="51"><highlight class="comment">/*!<sp/>@brief<sp/>renvoie<sp/>une<sp/>reference<sp/>au<sp/>domaine<sp/>source</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="55" refid="classDomaine__bord__32__64_1a3f60443c19e543c2eba5cc1bbcef3b64" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_32_64&lt;_SIZE_&gt;</ref>&amp;<sp/><ref refid="classDomaine__bord__32__64_1a3f60443c19e543c2eba5cc1bbcef3b64" kindref="member">Domaine_bord_32_64&lt;_SIZE_&gt;::get_domaine_source</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="56"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>domaine_source_;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="60"><highlight class="comment">/*!<sp/>@brief<sp/>renvoie<sp/>le<sp/>nom<sp/>du<sp/>bord<sp/>source</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="64" refid="classDomaine__bord__32__64_1a7e5e1f3f475469b551c398af7e70b459" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><ref refid="classDomaine__bord__32__64_1a7e5e1f3f475469b551c398af7e70b459" kindref="member">Domaine_bord_32_64&lt;_SIZE_&gt;::get_nom_bord_source</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="65"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>bord_source_;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="69"><highlight class="comment">/*!<sp/>@brief<sp/>renvoie<sp/>renum_som<sp/>(pour<sp/>chaque<sp/>sommet<sp/>du<sp/>domaine_bord,<sp/>indice<sp/>du<sp/>meme<sp/>sommet<sp/>dans<sp/>le<sp/>domaine)</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="73" refid="classDomaine__bord__32__64_1a8a0d114ccd953bbe6c67ad94697f44f8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt_T&lt;_SIZE_&gt;</ref>&amp;<sp/><ref refid="classDomaine__bord__32__64_1a8a0d114ccd953bbe6c67ad94697f44f8" kindref="member">Domaine_bord_32_64&lt;_SIZE_&gt;::get_renum_som</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="74"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>renum_som_;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="78"><highlight class="comment">/*!<sp/>@brief<sp/>methode<sp/>pour<sp/>convertir<sp/>un<sp/>type<sp/>de<sp/>face<sp/>en<sp/>type<sp/>d&apos;element<sp/>(a<sp/>deplacer<sp/>dans<sp/>la<sp/>classe<sp/>Faces<sp/>?)</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>type_face_to_type_elem(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classElem__geom__base__32__64" kindref="compound">Elem_geom_base_32_64&lt;_SIZE_&gt;</ref>&amp;<sp/>type_elem,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Type_Face&amp;<sp/>type_face,<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>type_elem_face)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(type_face)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Type_Face::vide_0D:</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_elem_face<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;??&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Type_Face::point_1D:</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_elem_face<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;??&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Type_Face::segment_2D:</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_elem_face<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;segment&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Type_Face::segment_2D_axi:</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_elem_face<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;segment&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Type_Face::triangle_3D:</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_elem_face<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;triangle&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Type_Face::quadrilatere_2D_axi:</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_elem_face<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;quadrangle_VEF&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Type_Face::quadrangle_3D:</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_elem_face<sp/>=<sp/>(sub_type(<ref refid="classHexaedre__32__64" kindref="compound">Hexaedre</ref>,type_elem)?</highlight><highlight class="stringliteral">&quot;rectangle&quot;</highlight><highlight class="normal">:</highlight><highlight class="stringliteral">&quot;quadrangle_VEF&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Type_Face::quadrangle_3D_axi:</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_elem_face<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;quadrangle_VEF&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_elem_face<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;??&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="115"><highlight class="comment">/*!<sp/>@brief<sp/>remplit<sp/>le<sp/>domaine<sp/>&quot;dest&quot;<sp/>avec<sp/>les<sp/>sommets<sp/>et<sp/>les<sp/>faces<sp/>du<sp/>bord<sp/>&quot;nom_bord&quot;<sp/>du<sp/>domaine<sp/>&quot;src&quot;.</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*<sp/>Les<sp/>sommets<sp/>du<sp/>domaine<sp/>dest<sp/>sont<sp/>uniquement<sp/>les<sp/>sommets<sp/>qui<sp/>sont<sp/>sur</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*<sp/><sp/><sp/>une<sp/>face<sp/>du<sp/>bord.<sp/>Le<sp/>tableau<sp/>renum_som<sp/>est<sp/>dimensionne<sp/>a<sp/>dest.nb_som()<sp/>et<sp/>rempli<sp/>comme</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*<sp/><sp/><sp/>suit:<sp/>renum_som[i]<sp/>est<sp/>l&apos;indice<sp/>dans<sp/>le<sp/>domaine<sp/>&quot;src&quot;<sp/>du<sp/>sommet<sp/>i<sp/>du<sp/>domaine<sp/>&quot;dest&quot;.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="123" refid="classDomaine__bord__32__64_1a81a68ff41e38859ee2b760117713086c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDomaine__bord__32__64_1a81a68ff41e38859ee2b760117713086c" kindref="member">Domaine_bord_32_64&lt;_SIZE_&gt;::extraire_domaine_bord</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>src,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom_bord,</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>dest,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt_t</ref>&amp;<sp/>renum_som)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1a48ea49c199fc8961be575e571038b79a" kindref="member">Process::is_parallel</ref>())</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;extraire_domaine_bord<sp/>in<sp/>parallel:<sp/>the<sp/>domain<sp/>created<sp/>will<sp/>not<sp/>have<sp/>a<sp/>distributed<sp/>structure\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>(this<sp/>will<sp/>be<sp/>done<sp/>one<sp/>day...<sp/>ask<sp/>to<sp/>B.Mathieu)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Le<sp/>domaine<sp/>destination<sp/>doit<sp/>etre<sp/>vide:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>assert(dest.<ref refid="classDomaine__32__64_1a92cccd83fdd182cb909d51ff9938eb1b" kindref="member">nb_elem</ref>()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialisation<sp/>du<sp/>domaine:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>choisit<sp/>un<sp/>nom<sp/>pour<sp/>le<sp/>domaine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>dest.<ref refid="classDomaine__base_1a482e6720fc3e1468b71006846aa21d9e" kindref="member">nommer</ref>(src.<ref refid="classDomaine__base_1aca8a61d4dae8d1211fc453e8a1c56170" kindref="member">le_nom</ref>()<sp/>+<sp/><ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal">)<sp/>+<sp/>nom_bord);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Type<sp/>des<sp/>elements<sp/>du<sp/>domaine<sp/>dest:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>type_elem;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>type_face_to_type_elem(src.<ref refid="classDomaine__32__64_1a76a34513b3e6d9bd373452f69b07a9a1" kindref="member">type_elem</ref>().<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>(),<sp/>src.<ref refid="classDomaine__32__64_1a76a34513b3e6d9bd373452f69b07a9a1" kindref="member">type_elem</ref>()-&gt;type_face(),<sp/>type_elem);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/>dest.<ref refid="classDomaine__32__64_1a76a34513b3e6d9bd373452f69b07a9a1" kindref="member">type_elem</ref>().<ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(type_elem);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>dest.<ref refid="classDomaine__32__64_1a76a34513b3e6d9bd373452f69b07a9a1" kindref="member">type_elem</ref>()-&gt;associer_domaine(dest);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFrontiere__32__64" kindref="compound">Frontiere_t</ref>&amp;<sp/>front<sp/>=<sp/>src.<ref refid="classDomaine__32__64_1a706e638a800c8a7248b26c12855a371c" kindref="member">frontiere</ref>(nom_bord);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64_1a8b417aea4265dff1cdf425177c6de8f4" kindref="member">int_t</ref><sp/>nb_faces<sp/>=<sp/>front.<ref refid="classFrontiere__32__64_1aeb2dadc639ee53d957479f8edb7341e1" kindref="member">faces</ref>().<ref refid="classFaces__32__64_1a8054f798ad0dc824af89bff34c9a9d7a" kindref="member">nb_faces</ref>();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_som_face<sp/>=<sp/>front.<ref refid="classFrontiere__32__64_1aeb2dadc639ee53d957479f8edb7341e1" kindref="member">faces</ref>().<ref refid="classFaces__32__64_1afac29457b959d3c8b5a4bd8dfcadb567" kindref="member">nb_som_faces</ref>();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_t</ref>&amp;<sp/>faces_src<sp/>=<sp/>front.<ref refid="classFrontiere__32__64_1aeb2dadc639ee53d957479f8edb7341e1" kindref="member">faces</ref>().<ref refid="classFaces__32__64_1ac9c518f5ee4388bfa4baae0c769b9fd6" kindref="member">les_sommets</ref>();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_t</ref>&amp;<sp/>elem_dest<sp/>=<sp/>dest.<ref refid="classDomaine__32__64_1a8f13ff77f9a9054cf5ca1df84e4e71e9" kindref="member">les_elems</ref>();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/>elem_dest.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(nb_faces,<sp/>nb_som_face);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>renum_som.<ref refid="classTRUSTArray_1a1f7c9cad09ae0ddfef22d4f71f1ed5c7" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>renum_inverse:<sp/>pour<sp/>chaque<sp/>sommet<sp/>du<sp/>domaine<sp/>source,<sp/>son<sp/>indice<sp/>dans<sp/>le<sp/>domaine<sp/>destination:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt_t</ref><sp/>renum_inverse(src.<ref refid="classDomaine__32__64_1ae7be1a7efe0526d124745c0c5238f0a2" kindref="member">nb_som</ref>());</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/>renum_inverse=<sp/>-1;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><ref refid="classDomaine__32__64_1a8b417aea4265dff1cdf425177c6de8f4" kindref="member">int_t</ref><sp/>nb_som_dest<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classDomaine__32__64_1a8b417aea4265dff1cdf425177c6de8f4" kindref="member">int_t</ref><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nb_faces;<sp/>i++)</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>nb_som_face;<sp/>j++)</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64_1a8b417aea4265dff1cdf425177c6de8f4" kindref="member">int_t</ref><sp/>som<sp/>=<sp/>faces_src(i,<sp/>j);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Si<sp/>le<sp/>sommet<sp/>n&apos;a<sp/>pas<sp/>encore<sp/>ete<sp/>rencontre,<sp/>lui<sp/>donner<sp/>un<sp/>indice<sp/>dans<sp/>le<sp/>domaine<sp/>dest:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(renum_inverse[som]<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>renum_som.<ref refid="classTRUSTArray_1a3bbfcd5ab081affbdc18217c813fcba7" kindref="member">append_array</ref>(som);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>renum_inverse[som]<sp/>=<sp/>nb_som_dest++;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>elem_dest(i,<sp/>j)<sp/>=<sp/>renum_inverse[som];</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Copie<sp/>des<sp/>sommets<sp/>utilises<sp/>dans<sp/>le<sp/>domaine<sp/>destination</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab_t</ref>&amp;<sp/>som_dest<sp/>=<sp/>dest.<ref refid="classDomaine__32__64_1a5ddd0d0d5fc6df89e252a9357f6dc67f" kindref="member">les_sommets</ref>();</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab_t</ref>&amp;<sp/>som_src<sp/>=<sp/>src.<ref refid="classDomaine__32__64_1a5ddd0d0d5fc6df89e252a9357f6dc67f" kindref="member">les_sommets</ref>();</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dim<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(som_src.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1));</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>som_dest.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(nb_som_dest,<sp/>dim);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classDomaine__32__64_1a8b417aea4265dff1cdf425177c6de8f4" kindref="member">int_t</ref><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nb_som_dest;<sp/>i++)</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64_1a8b417aea4265dff1cdf425177c6de8f4" kindref="member">int_t</ref><sp/>som<sp/>=<sp/>renum_som[i];</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>dim;<sp/>j++)</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>som_dest(i,<sp/>j)<sp/>=<sp/>som_src(som,<sp/>j);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>faire<sp/>si<sp/>besoin:<sp/>initialiser<sp/>le<sp/>joint<sp/>des<sp/>sommets<sp/>pour<sp/>avoir<sp/>les<sp/>items<sp/>communs,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>et<sp/>autres<sp/>si<sp/>necessaire.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDomaine__bord__32__64" kindref="compound">Domaine_bord_32_64&lt;int&gt;</ref>;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>INT_is_64_<sp/>==<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDomaine__bord__32__64" kindref="compound">Domaine_bord_32_64&lt;trustIdType&gt;</ref>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Domaine_bord.cpp"/>
+  </compounddef>
+</doxygen>

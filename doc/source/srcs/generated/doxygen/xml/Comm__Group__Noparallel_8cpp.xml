@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Comm__Group__Noparallel_8cpp" kind="file" language="C++">
+    <compoundname>Comm_Group_Noparallel.cpp</compoundname>
+    <includes refid="Comm__Group__Noparallel_8h" local="no">Comm_Group_Noparallel.h</includes>
+    <includes local="no">cstring</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Comm_Group_Noparallel.cpp</label>
+        <link refid="Comm__Group__Noparallel_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstring</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Comm__Group__Noparallel_8cpp_1afb179ec172bc9479c33058226700ce56" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Comm_Group_Noparallelbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Comm_Group_Noparallelbases</name>
+        <initializer>={   &amp;( <ref refid="classComm__Group" kindref="compound">Comm_Group</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Comm_Group_Noparallel.cpp" line="19" column="18" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Comm_Group_Noparallel.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Comm_Group_Noparallel.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classComm__Group__Noparallel_1a79ed056207fa08e9c2658c9532921377" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur_ni_destructeur(<ref refid="classComm__Group__Noparallel" kindref="compound">Comm_Group_Noparallel</ref>,</highlight><highlight class="stringliteral">&quot;Comm_Group_Noparallel&quot;</highlight><highlight class="normal">,<ref refid="classComm__Group" kindref="compound">Comm_Group</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Comm_Group_Noparallel::sending_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="23"><highlight class="comment">/*!<sp/>@brief<sp/>constructeur<sp/>pour<sp/>le<sp/>groupe<sp/>Tous</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classComm__Group__Noparallel_1ab77a90ea2f850ffaab3d9a46cdab7291" refkind="member"><highlight class="normal"><ref refid="classComm__Group__Noparallel_1ab77a90ea2f850ffaab3d9a46cdab7291" kindref="member">Comm_Group_Noparallel::Comm_Group_Noparallel</ref>()<sp/>{<sp/><ref refid="classComm__Group_1afa4f509e9e0103ab6969bc8553065d91" kindref="member">Comm_Group::init_group_trio</ref>(1<sp/></highlight><highlight class="comment">/*<sp/>nproc<sp/>*/</highlight><highlight class="normal">,<sp/>0<sp/></highlight><highlight class="comment">/*<sp/>rank<sp/>*/</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="27" refid="classComm__Group__Noparallel_1ae034c6fae482e5ef8c0dc89f9e14f79b" refkind="member"><highlight class="normal"><ref refid="classComm__Group__Noparallel_1ae034c6fae482e5ef8c0dc89f9e14f79b" kindref="member">Comm_Group_Noparallel::~Comm_Group_Noparallel</ref>()<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment">/*!<sp/>@brief<sp/>constructeur<sp/>pour<sp/>un<sp/>sous-groupe<sp/>//</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classComm__Group__Noparallel_1aae9edf246d5f5d0d70c98a7d7928c6bf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComm__Group__Noparallel_1aae9edf246d5f5d0d70c98a7d7928c6bf" kindref="member">Comm_Group_Noparallel::init_group</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref>&amp;<sp/>pe_list)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>assert(pe_list.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><ref refid="classComm__Group_1ad3853172658b85b4737846cc8ac72507" kindref="member">Comm_Group::init_group</ref>(pe_list);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classComm__Group__Noparallel_1a5deefee017a8b5546cdc162fad8ce2ff" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComm__Group__Noparallel_1a5deefee017a8b5546cdc162fad8ce2ff" kindref="member">Comm_Group_Noparallel::abort</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classComm__Group__Noparallel_1ae6076f4cd4bb8362ce20c67339846a49" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classComm__Group__Noparallel_1ae6076f4cd4bb8362ce20c67339846a49" kindref="member">Comm_Group_Noparallel::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="41"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>assert(0);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classComm__Group__Noparallel_1a783dda13ee77506706b1a9a21039785f" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classComm__Group__Noparallel_1a783dda13ee77506706b1a9a21039785f" kindref="member">Comm_Group_Noparallel::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>assert(0);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classComm__Group__Noparallel_1a3d3c2da5fd3bd7713a6c63f9695001c3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classProcess_1aa9e74a5c06a68ea38298a08ea401e7b1" kindref="member">Comm_Group_Noparallel::barrier</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tag)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classComm__Group__Noparallel_1ab2d1a3f76b97dfdc0f782b54fdb4f41c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classComm__Group__Noparallel_1ab2d1a3f76b97dfdc0f782b54fdb4f41c" kindref="member">Comm_Group_Noparallel::reverse_send_recv_list</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref>&amp;<sp/>src_list,<sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref>&amp;<sp/>dest_list)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="57"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>assert(src_list.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>assert(dest_list.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classComm__Group__Noparallel_1abf4cc0e96540d6deea5dce2203cca69d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComm__Group__Noparallel_1abf4cc0e96540d6deea5dce2203cca69d" kindref="member">Comm_Group_Noparallel::send_recv_start</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref>&amp;<sp/>send_list,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref>&amp;<sp/>send_size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal">*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>send_buffers,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref>&amp;<sp/>recv_list,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref>&amp;<sp/>recv_size,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal">*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>recv_buffers,<sp/><ref refid="classComm__Group_1a93c4c5b0887e1fc63a123d11e7da0118" kindref="member">TypeHint</ref><sp/>typehint)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="65"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>assert(sending_<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(send_list.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()<sp/>==<sp/>1<sp/>&amp;&amp;<sp/>send_list[0]<sp/>==<sp/>0<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>recv_list.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()<sp/>==<sp/>1<sp/>&amp;&amp;<sp/>recv_list[0]<sp/>==<sp/>0<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>send_size.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()<sp/>==<sp/>1<sp/>&amp;&amp;<sp/>recv_size.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()<sp/>==<sp/>1</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>send_size[0]<sp/>==<sp/>recv_size[0])</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(recv_buffers[0],<sp/>send_buffers[0],<sp/>send_size[0]);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>assert(recv_list.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>assert(send_list.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>sending_<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classComm__Group__Noparallel_1a46603fdae971fa378ba6de728b076801" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComm__Group__Noparallel_1a46603fdae971fa378ba6de728b076801" kindref="member">Comm_Group_Noparallel::send_recv_finish</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="84"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>assert(sending_);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>sending_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classComm__Group__Noparallel_1ae130babe9d76c91272d67e702e6b366c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComm__Group__Noparallel_1ae130babe9d76c91272d67e702e6b366c" kindref="member">Comm_Group_Noparallel::send</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pe,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buffer,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tag)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/>assert(0);<sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classComm__Group__Noparallel_1a3728f3acef31abac2b961a447bbb6529" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComm__Group__Noparallel_1a3728f3acef31abac2b961a447bbb6529" kindref="member">Comm_Group_Noparallel::recv</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pe,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buffer,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tag)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/>assert(0);<sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classComm__Group__Noparallel_1acd6a30961d46bea4a343034793303dd3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComm__Group__Noparallel_1acd6a30961d46bea4a343034793303dd3" kindref="member">Comm_Group_Noparallel::broadcast</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buffer,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pe_source)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classComm__Group__Noparallel_1a7aa671d9929c2f9c4e016082d9955128" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComm__Group__Noparallel_1a7aa671d9929c2f9c4e016082d9955128" kindref="member">Comm_Group_Noparallel::all_to_all</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*src_buffer,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*dest_buffer,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>data_size)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="96"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>memcpy(dest_buffer,<sp/>src_buffer,<sp/>data_size);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classComm__Group__Noparallel_1ace9a991c51c8b95181f727ea7f18ec78" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComm__Group__Noparallel_1ace9a991c51c8b95181f727ea7f18ec78" kindref="member">Comm_Group_Noparallel::gather</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*src_buffer,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*dest_buffer,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>data_size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>root)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="101"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>memcpy(dest_buffer,<sp/>src_buffer,<sp/>data_size);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classComm__Group__Noparallel_1a51af1d29ea991771e3841632fb669b75" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComm__Group__Noparallel_1a51af1d29ea991771e3841632fb669b75" kindref="member">Comm_Group_Noparallel::all_gather</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*src_buffer,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*dest_buffer,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>data_size)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="106"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>memcpy(dest_buffer,<sp/>src_buffer,<sp/>data_size);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classComm__Group__Noparallel_1a562774b1b63135983856d4d537e4c2c7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComm__Group__Noparallel_1a562774b1b63135983856d4d537e4c2c7" kindref="member">Comm_Group_Noparallel::all_gatherv</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*src_buffer,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*dest_buffer,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>send_size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>True_int*<sp/>recv_size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>True_int*<sp/>displs)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="111"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>memcpy(dest_buffer,<sp/>src_buffer,<sp/>recv_size[0]);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Comm_Group_Noparallel.cpp"/>
+  </compounddef>
+</doxygen>

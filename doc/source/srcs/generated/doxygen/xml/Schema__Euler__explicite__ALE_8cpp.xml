@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Schema__Euler__explicite__ALE_8cpp" kind="file" language="C++">
+    <compoundname>Schema_Euler_explicite_ALE.cpp</compoundname>
+    <includes refid="Schema__Euler__explicite__ALE_8h" local="no">Schema_Euler_explicite_ALE.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Debog_8h" local="no">Debog.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Domaine__ALE_8h" local="no">Domaine_ALE.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Schema__Euler__explicite__ALE_8cpp_1ace84878ce6211c164ce4f6f906a423ee" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Schema_Euler_explicite_ALEbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Schema_Euler_explicite_ALEbases</name>
+        <initializer>={   &amp;( <ref refid="classSchema__Euler__explicite" kindref="compound">Schema_Euler_explicite</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Fluid_Structure_Interaction/ALE/Schema_Euler_explicite_ALE.cpp" line="29" column="145" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Fluid_Structure_Interaction/ALE/Schema_Euler_explicite_ALE.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2019,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Schema_Euler_explicite_ALE.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TRUST_ROOT/../Composants/TrioCFD/ALE/src/New</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Euler_explicite_ALE.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Debog.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_ALE.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classSchema__Euler__explicite__ALE_1a4725ad4d33539ba973984f816d9434c2" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classSchema__Euler__explicite__ALE" kindref="compound">Schema_Euler_explicite_ALE</ref>,</highlight><highlight class="stringliteral">&quot;Schema_euler_explicite_ALE|Scheme_euler_explicit_ALE&quot;</highlight><highlight class="normal">,<ref refid="classSchema__Euler__explicite" kindref="compound">Schema_Euler_explicite</ref>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>scheme_euler_explicite_ALE<sp/>schema_temps_base<sp/>schema_euler_explicite_ALE<sp/>-1<sp/>This<sp/>is<sp/>the<sp/>Euler<sp/>explicit<sp/>scheme<sp/>used<sp/>for<sp/>ALE<sp/>problems.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classSchema__Euler__explicite__ALE_1a254569b999982d7e9e9a3a57cefdc081" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSchema__Euler__explicite__ALE_1a254569b999982d7e9e9a3a57cefdc081" kindref="member">Schema_Euler_explicite_ALE::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="33"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><sp/><ref refid="classSchema__Euler__explicite_1af33eee021e27315aa628e61fbe46d560" kindref="member">Schema_Euler_explicite::printOn</ref>(s);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classSchema__Euler__explicite__ALE_1aa820ff0590f75140ff8ed05758d1c276" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSchema__Euler__explicite__ALE_1aa820ff0590f75140ff8ed05758d1c276" kindref="member">Schema_Euler_explicite_ALE::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSchema__Euler__explicite_1a98211a1c95a7fa0dae1528338c9421eb" kindref="member">Schema_Euler_explicite::readOn</ref>(s)<sp/>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classSchema__Euler__explicite__ALE_1a13aa7c5af3458d338025261e7c1dceab" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSchema__Euler__explicite__ALE_1a13aa7c5af3458d338025261e7c1dceab" kindref="member">Schema_Euler_explicite_ALE::faire_un_pas_de_temps_eqn_base</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>present<sp/>=<sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>();<sp/></highlight><highlight class="comment">//<sp/>Un</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>futur<sp/><sp/><sp/>=<sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a246d9aabb57dbccef0ca304c87abf870" kindref="member">futur</ref>();<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Un+1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>dudt(futur);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Schema_Euler_explicite_ALE::faire_un_pas_de_temps_eqn_base<sp/>-futur<sp/>avant&quot;</highlight><highlight class="normal">,<sp/>futur);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Boundary<sp/>conditions<sp/>applied<sp/>on<sp/>Un+1:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>().<ref refid="classDomaine__Cl__dis__base_1a52d23ed7c6da1e9557e93f99cbdcd822" kindref="member">imposer_cond_lim</ref>(eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>(),<ref refid="classSchema__Temps__base_1a1e573b93ad40c737ecb2da65b68f968a" kindref="member">temps_courant</ref>()+<ref refid="classSchema__Temps__base_1a816fca9a75adfb2501a68b08652a08fb" kindref="member">pas_de_temps</ref>());</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>tourne<sp/>la<sp/>roue<sp/>pour<sp/>que<sp/>les<sp/>operateurs<sp/>utilisent<sp/>les<sp/>champs<sp/>au<sp/>temps<sp/>futur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1aaf9140dd8afc596af43dbffdc117d504" kindref="member">avancer</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a97aa87b0cf6205ef437a6774adf1bd47" kindref="member">derivee_en_temps_inco</ref>(dudt);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1acb1acf903f633930c41adb781f202972" kindref="member">reculer</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Un+1=Un+dt_*dU/dt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>futur=dudt;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>futur*=<ref refid="classSchema__Temps__base_1a41d96b9bfd9ead46031343c31f9bfe5d" kindref="member">dt_</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Adding<sp/>ALE<sp/>Jacobians.<sp/>Jacobians<sp/>are<sp/>renewed<sp/>in<sp/>Navier_Stokes_std::corriger_derivee_impl().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>In<sp/>ALE<sp/>Un+1=(Jn/Jn+1)*Un+dt_*dU/dt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/>problem=<ref refid="classSchema__Temps__base_1a6e2edfe46a7f27b6fc8f114d92c35dc2" kindref="member">pb_base</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="classDomaine__ALE" kindref="compound">Domaine_ALE</ref>&amp;<sp/>domaineALE=ref_cast(<ref refid="classDomaine__ALE" kindref="compound">Domaine_ALE</ref>,<sp/>problem.<ref refid="classProbleme__base_1a568d2900df6cf99cfe0cb15e92e2f08d" kindref="member">domaine</ref>());</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>ALEjacobian_Old=domaineALE.<ref refid="classDomaine__ALE_1aeabf21e771412d137d5381bffe093d04" kindref="member">getOldJacobian</ref>();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>ALEjacobian_New=domaineALE.<ref refid="classDomaine__ALE_1ad4ce9de96c38d5403ad4ec4928bde836" kindref="member">getNewJacobian</ref>();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_face=0;<sp/>num_face&lt;(futur.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()/<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>);<sp/>num_face++)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dim=0;<sp/>dim&lt;<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>;<sp/>dim++)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>futur(num_face,dim)+=present(num_face,dim)*(ALEjacobian_Old(num_face,dim)/ALEjacobian_New(num_face,dim));</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>futur.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Schema_Euler_explicite_ALE::faire_un_pas_de_temps_eqn_base<sp/>-futur<sp/>apres&quot;</highlight><highlight class="normal">,<sp/>futur);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>().<ref refid="classDomaine__Cl__dis__base_1a52d23ed7c6da1e9557e93f99cbdcd822" kindref="member">imposer_cond_lim</ref>(eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>(),<ref refid="classSchema__Temps__base_1a1e573b93ad40c737ecb2da65b68f968a" kindref="member">temps_courant</ref>()+<ref refid="classSchema__Temps__base_1a816fca9a75adfb2501a68b08652a08fb" kindref="member">pas_de_temps</ref>());</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><ref refid="classSchema__Temps__base_1ae688058ec9592383f84aeb6de1d56158" kindref="member">update_critere_statio</ref>(dudt,<sp/>eqn);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Fluid_Structure_Interaction/ALE/Schema_Euler_explicite_ALE.cpp"/>
+  </compounddef>
+</doxygen>

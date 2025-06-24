@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Operateur__IJK__faces__conv_8cpp" kind="file" language="C++">
+    <compoundname>Operateur_IJK_faces_conv.cpp</compoundname>
+    <includes refid="Operateur__IJK__faces__conv_8h" local="no">Operateur_IJK_faces_conv.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Operateur__IJK__faces__conv_8cpp_1a5c1e85f56aeb5be622f783eb2f6db163" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Operateur_IJK_faces_convbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Operateur_IJK_faces_convbases</name>
+        <initializer>={   &amp;( <ref refid="classTRUST__Deriv" kindref="compound">TRUST_Deriv</ref>&lt; <ref refid="classOperateur__IJK__faces__conv__base__double" kindref="compound">Operateur_IJK_faces_conv_base_double</ref> &gt; ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/FOR_TRUST/Operateurs/Operateur_IJK_faces_conv.cpp" line="25" column="78" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/FOR_TRUST/Operateurs/Operateur_IJK_faces_conv.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Deriv_Operateur_IJK_faces_conv.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory<sp/>:<sp/>$TRIOCFD_ROOT/src/Multiphase/Front_tracking_IJK/IJK_Kernel/Operateurs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur_IJK_faces_conv.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classOperateur__IJK__faces__conv_1a07afb2f983968bcb66326a47985a4096" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<sp/><ref refid="classOperateur__IJK__faces__conv" kindref="compound">Operateur_IJK_faces_conv</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Operateur_IJK_faces_conv&quot;</highlight><highlight class="normal">,<sp/>OWN_PTR(<ref refid="classOperateur__IJK__faces__conv__base__double" kindref="compound">Operateur_IJK_faces_conv_base_double</ref>)<sp/>)<sp/>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classOperateur__IJK__faces__conv_1a28019dc8b1c37550186744a7de536b0e" refkind="member"><highlight class="normal"><ref refid="classOperateur__IJK__faces__conv_1a28019dc8b1c37550186744a7de536b0e" kindref="member">Operateur_IJK_faces_conv::Operateur_IJK_faces_conv</ref>()</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a57e5a5698a19334e8bc195bb8b24a6d8" kindref="member">convection_op_words_</ref><sp/>=<sp/><ref refid="classMotcles" kindref="compound">Motcles</ref>(5);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a57e5a5698a19334e8bc195bb8b24a6d8" kindref="member">convection_op_words_</ref>[0]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;amont&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a57e5a5698a19334e8bc195bb8b24a6d8" kindref="member">convection_op_words_</ref>[1]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;centre&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a57e5a5698a19334e8bc195bb8b24a6d8" kindref="member">convection_op_words_</ref>[2]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;centre4&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a57e5a5698a19334e8bc195bb8b24a6d8" kindref="member">convection_op_words_</ref>[3]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;quick&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a57e5a5698a19334e8bc195bb8b24a6d8" kindref="member">convection_op_words_</ref>[4]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;quicksharp&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a1d3f1cf96bae867cc73e498cac65da16" kindref="member">convection_op_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>non_conservative_simple<sp/>:<sp/>rho<sp/>div(u<sp/>u)</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/>*<sp/>non_conservative_rhou<sp/><sp/><sp/><sp/><sp/>:<sp/>div(rho<sp/>u<sp/>u)<sp/>-<sp/>u<sp/>div(rho<sp/>u)</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/>*<sp/>conservative<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>div(rho<sp/>u<sp/>u)</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref><sp/>=<sp/><ref refid="classMotcles" kindref="compound">Motcles</ref>(3);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>[0]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;non_conservative_simple&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>[1]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;non_conservative_rhou&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>[2]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;conservative&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a7bee9b60a8aff9a54a94f2f65a77c6cd" kindref="member">convection_option_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a64ceffb2c20b7cc00828c852b3a2f062" kindref="member">prefix_</ref><sp/>=<sp/><ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;OpConv&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1ac82f2de2ce1151d7966f4501cff6bc44" kindref="member">suffix_</ref><sp/>=<sp/><ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;IJK_double&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a0618085687bd06e72ea3e1022f0829d8" kindref="member">is_cast_</ref>=</highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a74f15ea09f8d1fdf1765db84553ac91f" kindref="member">convection_rank_</ref>=0;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1aec4df36d2fd26fd3058005dd05c56a1f" kindref="member">convection_option_rank_</ref>=0;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classOperateur__IJK__faces__conv_1a8f002d7271888cc01fe9ac2c824e114c" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classOperateur__IJK__faces__conv_1a8f002d7271888cc01fe9ac2c824e114c" kindref="member">Operateur_IJK_faces_conv::printOn</ref>(<sp/><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="58"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>OWN_PTR(Operateur_IJK_faces_conv_base_double)::printOn(<sp/>os<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<sp/><ref refid="classOperateur__IJK__faces__conv_1a57e5a5698a19334e8bc195bb8b24a6d8" kindref="member">convection_op_words_</ref>[<ref refid="classOperateur__IJK__faces__conv_1a74f15ea09f8d1fdf1765db84553ac91f" kindref="member">convection_rank_</ref>]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classOperateur__IJK__faces__conv_1a7bee9b60a8aff9a54a94f2f65a77c6cd" kindref="member">convection_option_</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classOperateur__IJK__faces__conv_1ab0350b419dca52ad6e6e0d3b106d3fea" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classOperateur__IJK__faces__conv_1ab0350b419dca52ad6e6e0d3b106d3fea" kindref="member">Operateur_IJK_faces_conv::readOn</ref>(<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a7b7a643ef7d1897b1b73d0340bcd69da" kindref="member">typer_convection_op</ref>(is);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>By<sp/>default,<sp/>there<sp/>is<sp/>no<sp/>testList<sp/>using<sp/>this...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>convection_option_<sp/>=<sp/>convection_op_options_[0];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Does<sp/>not<sp/>work</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Once<sp/>read<sp/>the<sp/>next<sp/>word<sp/>is<sp/>no<sp/>longer<sp/>used<sp/>to<sp/>read<sp/>the</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/>*<sp/>datafile</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Should<sp/>we<sp/>use<sp/>empty<sp/>brackets<sp/>?</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Yes<sp/>but<sp/>we<sp/>need<sp/>to<sp/>modify<sp/>every<sp/>testfiles...</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>search_convection_option_type(is);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Do<sp/>not<sp/>work<sp/>because<sp/>param.lire_sans_accolade</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/>*<sp/>does<sp/>not<sp/>work<sp/>for<sp/>non<sp/>required<sp/>params</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Param<sp/>param(que_suis_je());</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>set_param(param);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>param.lire_sans_accolade(is);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classOperateur__IJK__faces__conv_1a72b213751d81531c14f1dd5772101d18" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__IJK__faces__conv_1a72b213751d81531c14f1dd5772101d18" kindref="member">Operateur_IJK_faces_conv::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;velocity_convection_form&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classOperateur__IJK__faces__conv_1a8995c4224eefb95ee621ad967d592571" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classOperateur__IJK__faces__conv_1a8995c4224eefb95ee621ad967d592571" kindref="member">Operateur_IJK_faces_conv::lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot==</highlight><highlight class="stringliteral">&quot;velocity_convection_form&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motlu;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">Process::je_suis_maitre</ref>())</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>mot<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>motlu<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>option_rank<sp/>=<sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>.<ref refid="classMotcles_1abd4862b9c8552b88a48927e67bd48d9d" kindref="member">search</ref>(motlu);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(option_rank<sp/>&lt;<sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>.<ref refid="classTRUST__Vector_1afae0a388de57f1ab2a0d9127f7c0a5f9" kindref="member">size</ref>()<sp/>&amp;&amp;<sp/>option_rank<sp/>!=-1)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a7bee9b60a8aff9a54a94f2f65a77c6cd" kindref="member">convection_option_</ref><sp/>=<sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>[option_rank];</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a7bee9b60a8aff9a54a94f2f65a77c6cd" kindref="member">convection_option_</ref><sp/>=<sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>[0];</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a7bee9b60a8aff9a54a94f2f65a77c6cd" kindref="member">convection_option_</ref><sp/>=<sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>[0];</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="classOperateur__IJK__faces__conv_1a42f1323b6559b0501ae29bb1eb55cbc1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__IJK__faces__conv_1a42f1323b6559b0501ae29bb1eb55cbc1" kindref="member">Operateur_IJK_faces_conv::search_convection_option_type</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Read<sp/>Operateur_IJK_faces_conv<sp/>option:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>convection_option;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>convection_option;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>word(convection_option);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1ae61ec310855ef8456b2f3ab22d14543d" kindref="member">set_convection_option_type</ref>(word);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classOperateur__IJK__faces__conv_1ae61ec310855ef8456b2f3ab22d14543d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__IJK__faces__conv_1ae61ec310855ef8456b2f3ab22d14543d" kindref="member">Operateur_IJK_faces_conv::set_convection_option_type</ref>(<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>word<sp/>)<sp/></highlight><highlight class="comment">//<sp/>(const<sp/>char<sp/>*<sp/>convection_op)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>convection_option_index<sp/>=<sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>.<ref refid="classMotcles_1abd4862b9c8552b88a48927e67bd48d9d" kindref="member">search</ref>(word);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(convection_option_index<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>convection_option_index<sp/>&lt;<sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>.<ref refid="classTRUST__Vector_1afae0a388de57f1ab2a0d9127f7c0a5f9" kindref="member">size</ref>())</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a7bee9b60a8aff9a54a94f2f65a77c6cd" kindref="member">convection_option_</ref><sp/>=<sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>[convection_option_index];</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a7bee9b60a8aff9a54a94f2f65a77c6cd" kindref="member">convection_option_</ref><sp/>=<sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>[0];</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classOperateur__IJK__faces__conv_1aad71ccf143595cfbeeee134e165d6b0f" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classOperateur__IJK__faces__conv_1a7b7a643ef7d1897b1b73d0340bcd69da" kindref="member">Operateur_IJK_faces_conv::typer_convection_op</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)<sp/></highlight><highlight class="comment">//<sp/>(const<sp/>char<sp/>*<sp/>convection_op)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Read<sp/>and<sp/>Cast<sp/>Operateur_IJK_faces_conv<sp/>:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>convection_op;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>convection_op;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>word(convection_op);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type(<ref refid="classOperateur__IJK__faces__conv_1a4fa3affc10b8dfbbac4bfe13e39be4bf" kindref="member">get_convection_op_type</ref>(word));</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(type);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a0618085687bd06e72ea3e1022f0829d8" kindref="member">is_cast_</ref>=</highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classOperateur__IJK__faces__conv_1a7b7a643ef7d1897b1b73d0340bcd69da" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__IJK__faces__conv_1a7b7a643ef7d1897b1b73d0340bcd69da" kindref="member">Operateur_IJK_faces_conv::typer_convection_op</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>convection_op)<sp/></highlight><highlight class="comment">//<sp/>(const<sp/>char<sp/>*<sp/>convection_op)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Read<sp/>and<sp/>Cast<sp/>Operateur_IJK_faces_conv<sp/>:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>word(convection_op);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type(<ref refid="classOperateur__IJK__faces__conv_1a4fa3affc10b8dfbbac4bfe13e39be4bf" kindref="member">get_convection_op_type</ref>(word));</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(type);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a0618085687bd06e72ea3e1022f0829d8" kindref="member">is_cast_</ref>=</highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="classOperateur__IJK__faces__conv_1a4fa3affc10b8dfbbac4bfe13e39be4bf" refkind="member"><highlight class="normal"><ref refid="classNom" kindref="compound">Nom</ref><sp/><ref refid="classOperateur__IJK__faces__conv_1a4fa3affc10b8dfbbac4bfe13e39be4bf" kindref="member">Operateur_IJK_faces_conv::get_convection_op_type</ref>(<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>word<sp/>)<sp/></highlight><highlight class="comment">//<sp/>(const<sp/>char<sp/>*<sp/>convection_op)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1aec4df36d2fd26fd3058005dd05c56a1f" kindref="member">convection_option_rank_</ref><sp/>=<sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>.<ref refid="classMotcles_1abd4862b9c8552b88a48927e67bd48d9d" kindref="member">search</ref>(word);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classOperateur__IJK__faces__conv_1aec4df36d2fd26fd3058005dd05c56a1f" kindref="member">convection_option_rank_</ref><sp/>==<sp/>-1)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1aec4df36d2fd26fd3058005dd05c56a1f" kindref="member">convection_option_rank_</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a7bee9b60a8aff9a54a94f2f65a77c6cd" kindref="member">convection_option_</ref><sp/>=<sp/><ref refid="classOperateur__IJK__faces__conv_1a8bd201f222ccbcea3bc2aa6ddef7dfcb" kindref="member">convection_op_options_</ref>[<ref refid="classOperateur__IJK__faces__conv_1aec4df36d2fd26fd3058005dd05c56a1f" kindref="member">convection_option_rank_</ref>];</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a74f15ea09f8d1fdf1765db84553ac91f" kindref="member">convection_rank_</ref><sp/>=<sp/><ref refid="classOperateur__IJK__faces__conv_1a57e5a5698a19334e8bc195bb8b24a6d8" kindref="member">convection_op_words_</ref>.<ref refid="classMotcles_1abd4862b9c8552b88a48927e67bd48d9d" kindref="member">search</ref>(word);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type(<ref refid="classOperateur__IJK__faces__conv_1a64ceffb2c20b7cc00828c852b3a2f062" kindref="member">prefix_</ref>);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(<ref refid="classOperateur__IJK__faces__conv_1a74f15ea09f8d1fdf1765db84553ac91f" kindref="member">convection_rank_</ref>)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0<sp/>:</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a1d3f1cf96bae867cc73e498cac65da16" kindref="member">convection_op_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Amont&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1<sp/>:</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a1d3f1cf96bae867cc73e498cac65da16" kindref="member">convection_op_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Centre4&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2<sp/>:</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a1d3f1cf96bae867cc73e498cac65da16" kindref="member">convection_op_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Centre4&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3<sp/>:</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a1d3f1cf96bae867cc73e498cac65da16" kindref="member">convection_op_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;QuickSharp&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4<sp/>:</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__faces__conv_1a1d3f1cf96bae867cc73e498cac65da16" kindref="member">convection_op_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;QuickSharp&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>default<sp/>:</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;ERROR<sp/>:<sp/>Scalar<sp/>convection<sp/>operators<sp/>that<sp/>are<sp/>already<sp/>implemented<sp/>are:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/><ref refid="classOperateur__IJK__faces__conv_1a57e5a5698a19334e8bc195bb8b24a6d8" kindref="member">convection_op_words_</ref><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">abort</ref>();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/>type<sp/>+=<sp/><ref refid="classOperateur__IJK__faces__conv_1a1d3f1cf96bae867cc73e498cac65da16" kindref="member">convection_op_</ref>;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/>type<sp/>+=<sp/><ref refid="classOperateur__IJK__faces__conv_1ac82f2de2ce1151d7966f4501cff6bc44" kindref="member">suffix_</ref>;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>type;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/FOR_TRUST/Operateurs/Operateur_IJK_faces_conv.cpp"/>
+  </compounddef>
+</doxygen>

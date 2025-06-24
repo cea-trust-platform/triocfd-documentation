@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Pb__Hydraulique_8cpp" kind="file" language="C++">
+    <compoundname>Pb_Hydraulique.cpp</compoundname>
+    <includes refid="Pb__Hydraulique_8h" local="no">Pb_Hydraulique.h</includes>
+    <includes refid="Fluide__Ostwald_8h" local="no">Fluide_Ostwald.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Pb__Hydraulique_8cpp_1a325404a3b3f0a8ba61ecc20ac0c1dfa6" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Pb_Hydrauliquebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Pb_Hydrauliquebases</name>
+        <initializer>={   &amp;( <ref refid="classPb__Fluide__base" kindref="compound">Pb_Fluide_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Problems/Pb_Hydraulique.cpp" line="19" column="97" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Problems/Pb_Hydraulique.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Pb_Hydraulique.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Ostwald.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classPb__Hydraulique_1aa01a1e20208f159678103c36e2ca24d3" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classPb__Hydraulique" kindref="compound">Pb_Hydraulique</ref>,</highlight><highlight class="stringliteral">&quot;Pb_Hydraulique&quot;</highlight><highlight class="normal">,<ref refid="classPb__Fluide__base" kindref="compound">Pb_Fluide_base</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>pb_hydraulique<sp/>Pb_base<sp/>pb_hydraulique<sp/>-1<sp/>Resolution<sp/>of<sp/>the<sp/>Navier-Stokes<sp/>equations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>fluide_incompressible<sp/>fluide_incompressible<sp/>fluide_incompressible<sp/>0<sp/>The<sp/>fluid<sp/>medium<sp/>associated<sp/>with<sp/>the<sp/>problem.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>navier_stokes_standard<sp/>navier_stokes_standard<sp/>navier_stokes_standard<sp/>0<sp/>Navier-Stokes<sp/>equations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classPb__Hydraulique_1a9823d80d13e6708de1d43a77c19a5af2" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classPb__Hydraulique_1a9823d80d13e6708de1d43a77c19a5af2" kindref="member">Pb_Hydraulique::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Fluide__base_1ac68757b7d0963d934c6becc0b9d39788" kindref="member">Pb_Fluide_base::printOn</ref>(os);<sp/>}</highlight></codeline>
+<codeline lineno="25" refid="classPb__Hydraulique_1a4ef54cba1fa75e563989f9fe2f178bee" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classPb__Hydraulique_1a4ef54cba1fa75e563989f9fe2f178bee" kindref="member">Pb_Hydraulique::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Fluide__base_1ab8bffa0c0f798bdcf34da74cc3732930" kindref="member">Pb_Fluide_base::readOn</ref>(is);<sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="27"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;equation<sp/>d&apos;hydraulique<sp/>de<sp/>type<sp/>Navier_Stokes_std<sp/>si<sp/>i=0,<sp/>sort<sp/>(exit)<sp/>sinon.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>l&apos;index<sp/>de<sp/>l&apos;equation<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Equation_base&amp;)<sp/>l&apos;equation<sp/>d&apos;hydraulique<sp/>de<sp/>type<sp/>Navier_Stokes_std</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classPb__Hydraulique_1a3a085943de4aada67c9031870663100c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/><ref refid="classPb__Hydraulique_1a3a085943de4aada67c9031870663100c" kindref="member">Pb_Hydraulique::equation</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="35"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique_1aed40011ab22c266c77d38213d079e9ed" kindref="member">eq_hydraulique</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>&lt;<sp/>1<sp/>+<sp/><ref refid="classProbleme__base_1a5d97b331e65d4eade864d8d0198a692f" kindref="member">eq_opt_</ref>.<ref refid="classTRUST__List_1aa1033040d40b942bbed877aa429a9a4a" kindref="member">size</ref>()<sp/>&amp;&amp;<sp/>i<sp/>&gt;<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base_1a5d97b331e65d4eade864d8d0198a692f" kindref="member">eq_opt_</ref>[i<sp/>-<sp/>1].valeur();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Pb_Hydraulique::equation()<sp/>:<sp/>Wrong<sp/>equation<sp/>number&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique_1aed40011ab22c266c77d38213d079e9ed" kindref="member">eq_hydraulique</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="46"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;equation<sp/>d&apos;hydraulique<sp/>de<sp/>type<sp/>Navier_Stokes_std<sp/>si<sp/>i=0,<sp/>sort<sp/>(exit)<sp/>sinon.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>l&apos;index<sp/>de<sp/>l&apos;equation<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Equation_base&amp;)<sp/>l&apos;equation<sp/>d&apos;hydraulique<sp/>de<sp/>type<sp/>Navier_Stokes_std</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classPb__Hydraulique_1a5a4604f046a007255eaef35f214e356b" refkind="member"><highlight class="normal"><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/><ref refid="classPb__Hydraulique_1a3a085943de4aada67c9031870663100c" kindref="member">Pb_Hydraulique::equation</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique_1aed40011ab22c266c77d38213d079e9ed" kindref="member">eq_hydraulique</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>&lt;<sp/>1<sp/>+<sp/><ref refid="classProbleme__base_1a5d97b331e65d4eade864d8d0198a692f" kindref="member">eq_opt_</ref>.<ref refid="classTRUST__List_1aa1033040d40b942bbed877aa429a9a4a" kindref="member">size</ref>()<sp/>&amp;&amp;<sp/>i<sp/>&gt;<sp/>0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base_1a5d97b331e65d4eade864d8d0198a692f" kindref="member">eq_opt_</ref>[i<sp/>-<sp/>1].valeur();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Pb_Hydraulique::equation()<sp/>:<sp/>Wrong<sp/>equation<sp/>number&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique_1aed40011ab22c266c77d38213d079e9ed" kindref="member">eq_hydraulique</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment">/*!<sp/>@brief<sp/>Associe<sp/>le<sp/>milieu<sp/>au<sp/>probleme.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>Le<sp/>milieu<sp/>doit<sp/>etre<sp/>de<sp/>type<sp/>fluide<sp/>incompressible.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Milieu_base&amp;<sp/>mil)<sp/>le<sp/>milieu<sp/>physique<sp/>a<sp/>associer<sp/>au<sp/>probleme</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>@throws<sp/>le<sp/>milieu<sp/>n&apos;est<sp/>pas<sp/>du<sp/>type<sp/>Fluide_base</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classPb__Hydraulique_1a2f8571cc227b3399112f518eba1275cd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique_1a2f8571cc227b3399112f518eba1275cd" kindref="member">Pb_Hydraulique::associer_milieu_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/>mil)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classFluide__base" kindref="compound">Fluide_base</ref>,mil)<sp/>&amp;&amp;<sp/>ref_cast(<ref refid="classFluide__base" kindref="compound">Fluide_base</ref>,<sp/>mil).is_incompressible())</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPb__Hydraulique_1aed40011ab22c266c77d38213d079e9ed" kindref="member">eq_hydraulique</ref>.<ref refid="classNavier__Stokes__std_1ad65b48c356ad59a2277770f875b5b422" kindref="member">associer_milieu_base</ref>(mil);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classFluide__Ostwald" kindref="compound">Fluide_Ostwald</ref>,mil))</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Je<sp/>suis<sp/>non<sp/>newto&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPb__Hydraulique_1aed40011ab22c266c77d38213d079e9ed" kindref="member">eq_hydraulique</ref>.<ref refid="classNavier__Stokes__std_1ad65b48c356ad59a2277770f875b5b422" kindref="member">associer_milieu_base</ref>(mil);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Un<sp/>milieu<sp/>de<sp/>type<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mil.<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>ne<sp/>peut<sp/>etre<sp/>associe<sp/>a<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;un<sp/>probleme<sp/>de<sp/>type<sp/>Pb_Hydraulique<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Problems/Pb_Hydraulique.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Schema__Adams__Moulton__base_8cpp" kind="file" language="C++">
+    <compoundname>Schema_Adams_Moulton_base.cpp</compoundname>
+    <includes refid="Schema__Adams__Moulton__base_8h" local="no">Schema_Adams_Moulton_base.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Probleme__Couple_8h" local="no">Probleme_Couple.h</includes>
+    <includes refid="Milieu__base_8h" local="no">Milieu_base.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes refid="communications_8h" local="no">communications.h</includes>
+    <includes refid="Matrice__Morse_8h" local="no">Matrice_Morse.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Schema__Adams__Moulton__base_8cpp_1a8526309e36f599db3bd8ac62a1c913aa" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Schema_Adams_Moulton_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Schema_Adams_Moulton_basebases</name>
+        <initializer>={   &amp;( <ref refid="classSchema__Implicite__Multi__TimeStep__base" kindref="compound">Schema_Implicite_Multi_TimeStep_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Schemas_Temps/Schema_Adams_Moulton_base.cpp" line="30" column="141" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Schemas_Temps/Schema_Adams_Moulton_base.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="17"><highlight class="comment">/*!<sp/>@brief<sp/>class<sp/>Schema_Adams_Moulton_base</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Adams_Moulton_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_Couple.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Milieu_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;communications.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Morse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classSchema__Adams__Moulton__base_1aa37e65cb8b90634c2b2f3cde46762da4" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classSchema__Adams__Moulton__base" kindref="compound">Schema_Adams_Moulton_base</ref>,</highlight><highlight class="stringliteral">&quot;Schema_Adams_Moulton_base&quot;</highlight><highlight class="normal">,<ref refid="classSchema__Implicite__Multi__TimeStep__base" kindref="compound">Schema_Implicite_Multi_TimeStep_base</ref>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>printOn()</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="34"><highlight class="comment">/////</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classSchema__Adams__Moulton__base_1a4dbc78d7a11b8e30803c7608db2bbe18" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSchema__Adams__Moulton__base_1a4dbc78d7a11b8e30803c7608db2bbe18" kindref="member">Schema_Adams_Moulton_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="37"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><sp/><ref refid="classSchema__Implicite__base_1a44058c8ce1b5127fd79f2f2375221dac" kindref="member">Schema_Implicite_base::printOn</ref>(s);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">////<sp/>readOn</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classSchema__Adams__Moulton__base_1a83e0fc348f01d167da6af533aa2c5443" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSchema__Adams__Moulton__base_1a83e0fc348f01d167da6af533aa2c5443" kindref="member">Schema_Adams_Moulton_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSchema__Implicite__Multi__TimeStep__base_1a81d7cfd76a78b7698ce20eba3fb15e23" kindref="member">Schema_Implicite_Multi_TimeStep_base::readOn</ref>(s);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classSchema__Adams__Moulton__base_1afc6b001e314d99ba0ab30ae42f0d8ca8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Adams__Moulton__base_1afc6b001e314d99ba0ab30ae42f0d8ca8" kindref="member">Schema_Adams_Moulton_base::associer_pb</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/>un_probleme)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="classSchema__Temps__base_1a4f8fdd474836172881c9349eece9d567" kindref="member">Schema_Implicite_Multi_TimeStep_base::associer_pb</ref>(un_probleme);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Loop<sp/>on<sp/>equations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<ref refid="classSchema__Temps__base_1a6e2edfe46a7f27b6fc8f114d92c35dc2" kindref="member">pb_base</ref>().<ref refid="classProbleme__base_1abefceb0ac0d0b35d42a4daaa82a95f59" kindref="member">nombre_d_equations</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSchema__Temps__base_1a6e2edfe46a7f27b6fc8f114d92c35dc2" kindref="member">pb_base</ref>().<ref refid="classProbleme__base_1acdfdb3499a491996c477ba8e2ce4b9db" kindref="member">equation</ref>(i).<ref refid="classEquation__base_1a41239f371a7cb76961220ffd3f5b8f34" kindref="member">set_calculate_time_derivative</ref>(1);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classSchema__Adams__Moulton__base_1aa638fa9767296f69c7f819bf432ada64" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classSchema__Adams__Moulton__base_1aa638fa9767296f69c7f819bf432ada64" kindref="member">Schema_Adams_Moulton_base::changer_temps</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().Champ_base::changer_temps(temps);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1aa0931f672b45b4b8315e187a204167da" kindref="member">derivee_en_temps</ref>().Champ_base::changer_temps(temps);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>temps;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classSchema__Adams__Moulton__base_1a9d56c92ce2d8faf11ba01f49da84b88f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Adams__Moulton__base_1a9d56c92ce2d8faf11ba01f49da84b88f" kindref="member">Schema_Adams_Moulton_base::update_time_derivative</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>data)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>time_derivative<sp/>=<sp/>eqn.<ref refid="classEquation__base_1aa0931f672b45b4b8315e187a204167da" kindref="member">derivee_en_temps</ref>().<ref refid="classChamp__Inc__base_1a246d9aabb57dbccef0ca304c87abf870" kindref="member">futur</ref>();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>time_derivative<sp/>=<sp/>data;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//here<sp/>&quot;data&quot;<sp/>is<sp/>supposed<sp/>to<sp/>contain<sp/>&quot;vpoint&quot;<sp/>table</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="classSchema__Adams__Moulton__base_1a42fb26e463fe718a6921a94b8add3eb0" kindref="member">modifier_second_membre_full_impl</ref>(eqn,time_derivative);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classSchema__Adams__Moulton__base_1ab1878f02e256216a75dc5dbd9c42d20b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Adams__Moulton__base_1ab1878f02e256216a75dc5dbd9c42d20b" kindref="member">Schema_Adams_Moulton_base::mettre_a_jour_equation</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a600260f3b3623450c54c5a33a131e8f3" kindref="member">mettre_a_jour</ref>(temps);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1aa0931f672b45b4b8315e187a204167da" kindref="member">derivee_en_temps</ref>().<ref refid="classChamp__Inc__base_1a600260f3b3623450c54c5a33a131e8f3" kindref="member">mettre_a_jour</ref>(temps);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classSchema__Adams__Moulton__base_1ac77b82bc814bbfc2925478b89eff6119" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Adams__Moulton__base_1ac77b82bc814bbfc2925478b89eff6119" kindref="member">Schema_Adams_Moulton_base::compute_coefficients</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>time_step,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>times)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="78"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="classSchema__Adams__Moulton__base_1a495d8280b4fd19de955b10144ebc0622" kindref="member">compute_adams_moulton_coefficients</ref>(time_step,times);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classSchema__Adams__Moulton__base_1a6719683bab5959e354018045b4e96b21" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Adams__Moulton__base_1a6719683bab5959e354018045b4e96b21" kindref="member">Schema_Adams_Moulton_base::add_multi_timestep_data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>mat_morse,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>secmem)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="83"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn_bis<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>ref_cast_non_const(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>,eqn);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>time_step<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classSchema__Temps__base_1a816fca9a75adfb2501a68b08652a08fb" kindref="member">pas_de_temps</ref>();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>effective_time_step<sp/><sp/><sp/><sp/><sp/>=<sp/>-1.;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>scaling<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>-1.;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Remark<sp/>for<sp/>&quot;pen&quot;<sp/>interger<sp/>:<sp/>we<sp/>do<sp/>not<sp/>penalize<sp/>matrices<sp/>and<sp/>right<sp/>members<sp/>even<sp/>in<sp/>the<sp/>case</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>Dirichlet<sp/>or<sp/>Symetrie<sp/>boundary<sp/>conditions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pen<sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>effective_time_step<sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classSchema__Adams__Moulton__base_1a6e16d98bc5d21232d2a5448b5aaa1707" kindref="member">coefficients</ref>()[<ref refid="classSchema__Implicite__Multi__TimeStep__base_1aa17f04a2659b434bdfe159b5bb44982d" kindref="member">nb_valeurs_passees</ref>()+1]<sp/>*<sp/>time_step;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>scaling<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1./<ref refid="classSchema__Adams__Moulton__base_1a6e16d98bc5d21232d2a5448b5aaa1707" kindref="member">coefficients</ref>()[<ref refid="classSchema__Implicite__Multi__TimeStep__base_1aa17f04a2659b434bdfe159b5bb44982d" kindref="member">nb_valeurs_passees</ref>()+1];</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Modification<sp/>due<sp/>to<sp/>pressure<sp/>gradient</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>correction(eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>());</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>correction<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>eqn_bis.<ref refid="classEquation__base_1a5c06feed3927199a5ff70fb1c3a10f2a" kindref="member">corriger_derivee_expl</ref>(correction);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>correction<sp/>*=<sp/>(scaling-1.);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>secmem<sp/><sp/><sp/><sp/><sp/>+=<sp/>correction;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Modification<sp/>due<sp/>to<sp/>present<sp/>time<sp/>and<sp/>past<sp/>times</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>dudt(eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a31066589ce6d89d4f0a96d25a5250e2f" kindref="member">passe</ref>(1));<sp/></highlight><highlight class="comment">//due<sp/>to<sp/>Initialiser_Champs()<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>tmp(dudt);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;<ref refid="classSchema__Implicite__Multi__TimeStep__base_1aa17f04a2659b434bdfe159b5bb44982d" kindref="member">nb_valeurs_passees</ref>()+1;<sp/>++i)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/><sp/>=<sp/><ref refid="classSchema__Implicite__Multi__TimeStep__base_1aa17f04a2659b434bdfe159b5bb44982d" kindref="member">nb_valeurs_passees</ref>()-i;<sp/></highlight><highlight class="comment">//present<sp/>time<sp/>if<sp/>offset==0<sp/>else<sp/>past<sp/>times</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tmp<sp/><sp/><sp/><sp/><sp/>=<sp/>eqn.<ref refid="classEquation__base_1aa0931f672b45b4b8315e187a204167da" kindref="member">derivee_en_temps</ref>().<ref refid="classChamp__Inc__base_1a31066589ce6d89d4f0a96d25a5250e2f" kindref="member">passe</ref>(offset);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tmp<sp/><sp/><sp/><sp/>*=<sp/><ref refid="classSchema__Adams__Moulton__base_1a6e16d98bc5d21232d2a5448b5aaa1707" kindref="member">coefficients</ref>()[i]<sp/>*<sp/>time_step;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dudt<sp/><sp/><sp/>+=<sp/>tmp;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a4b4effb48f1841ec8c743d6eb29f8a51" kindref="member">solv_masse</ref>().<ref refid="classSolveur__Masse__base_1a95d49c5b0ac8480995d0777f7c72df5d" kindref="member">ajouter_masse</ref>(effective_time_step,secmem,dudt,pen);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a4b4effb48f1841ec8c743d6eb29f8a51" kindref="member">solv_masse</ref>().<ref refid="classSolveur__Masse__base_1a95d49c5b0ac8480995d0777f7c72df5d" kindref="member">ajouter_masse</ref>(effective_time_step,mat_morse,pen);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment">//To<sp/>get<sp/>du/dt<sp/>table<sp/>without<sp/>pressure<sp/>gradient<sp/>and<sp/>influences<sp/>of<sp/>past<sp/>and<sp/>present<sp/>times</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="classSchema__Adams__Moulton__base_1a42fb26e463fe718a6921a94b8add3eb0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Adams__Moulton__base_1a42fb26e463fe718a6921a94b8add3eb0" kindref="member">Schema_Adams_Moulton_base::modifier_second_membre_full_impl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>secmem)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn_bis<sp/>=<sp/>ref_cast_non_const(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>,eqn);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>correction(secmem);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>correction=0.;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>eqn_bis.<ref refid="classEquation__base_1a5c06feed3927199a5ff70fb1c3a10f2a" kindref="member">corriger_derivee_expl</ref>(correction);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a4b4effb48f1841ec8c743d6eb29f8a51" kindref="member">solv_masse</ref>().<ref refid="classSolveur__Masse__base_1acb67cf99305704c37379cda2d3a2358a" kindref="member">appliquer</ref>(correction);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>secmem-=correction;<sp/></highlight><highlight class="comment">//on<sp/>enleve<sp/>le<sp/>gradient<sp/>de<sp/>pression</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSchema__Temps__base_1ab32e23a4b61dfec4803446bace0256e6" kindref="member">nb_pas_dt</ref>()&gt;<ref refid="classSchema__Implicite__Multi__TimeStep__base_1a7af3825ba82171bd2e0da660cdf1d4c6" kindref="member">nb_pas_dt_seuil</ref>())</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>scaling<sp/>=<sp/>1./<ref refid="classSchema__Adams__Moulton__base_1a6e16d98bc5d21232d2a5448b5aaa1707" kindref="member">coefficients</ref>()[<ref refid="classSchema__Implicite__Multi__TimeStep__base_1aa17f04a2659b434bdfe159b5bb44982d" kindref="member">nb_valeurs_passees</ref>()+1];</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;<ref refid="classSchema__Implicite__Multi__TimeStep__base_1aa17f04a2659b434bdfe159b5bb44982d" kindref="member">nb_valeurs_passees</ref>()+1;<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classSchema__Implicite__Multi__TimeStep__base_1aa17f04a2659b434bdfe159b5bb44982d" kindref="member">nb_valeurs_passees</ref>()<sp/>-<sp/>i;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>correction<sp/><sp/>=<sp/>eqn.<ref refid="classEquation__base_1aa0931f672b45b4b8315e187a204167da" kindref="member">derivee_en_temps</ref>().<ref refid="classChamp__Inc__base_1a31066589ce6d89d4f0a96d25a5250e2f" kindref="member">passe</ref>(offset);</highlight><highlight class="comment">//present<sp/>time<sp/>if<sp/>i==nb_valeurs_passees()<sp/>else<sp/>past<sp/>times</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>correction<sp/>*=<sp/><ref refid="classSchema__Adams__Moulton__base_1a6e16d98bc5d21232d2a5448b5aaa1707" kindref="member">coefficients</ref>()[i];</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secmem<sp/><sp/><sp/><sp/><sp/>-=<sp/>correction;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>secmem<sp/>*=<sp/>scaling;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="comment">//To<sp/>take<sp/>into<sp/>account<sp/>pressure<sp/>constraint</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="classSchema__Adams__Moulton__base_1ae987022e6068b67dcf2d06a7c2069f03" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Adams__Moulton__base_1ae987022e6068b67dcf2d06a7c2069f03" kindref="member">Schema_Adams_Moulton_base::store_equation_parameters</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>stored_parameters)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Nothing<sp/>to<sp/>do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="comment">//To<sp/>take<sp/>into<sp/>account<sp/>pressure<sp/>constraint</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="classSchema__Adams__Moulton__base_1a10ed553a7166ef085accc696557d44bb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSchema__Adams__Moulton__base_1a10ed553a7166ef085accc696557d44bb" kindref="member">Schema_Adams_Moulton_base::modify_equation_parameters</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>stored_parameters)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Nothing<sp/>to<sp/>do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Schemas_Temps/Schema_Adams_Moulton_base.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,437 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Solveur__Masse__base_8cpp" kind="file" language="C++">
+    <compoundname>Solveur_Masse_base.cpp</compoundname>
+    <includes refid="Solveur__Masse__base_8h" local="no">Solveur_Masse_base.h</includes>
+    <includes refid="TRUSTTab__parts_8h" local="no">TRUSTTab_parts.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Matrice__Morse_8h" local="no">Matrice_Morse.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+    <includes refid="Debog_8h" local="no">Debog.h</includes>
+    <includes refid="Device_8h" local="no">Device.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Solveur__Masse__base_8cpp_1a126c5ec5d484b2a753c64780729dffa0" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Solveur_Masse_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Solveur_Masse_basebases</name>
+        <initializer>={   &amp;( <ref refid="classObjet__U" kindref="compound">Objet_U</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Solveur_Masse_base.cpp" line="24" column="66" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Solveur_Masse_base.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Solveur_Masse_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTab_parts.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Morse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Debog.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Device.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classSolveur__Masse__base_1a2a3d8579d2ba4bfa8ad308f576f4bd8f" refkind="member"><highlight class="normal">Implemente_base_sans_constructeur(<ref refid="classSolveur__Masse__base" kindref="compound">Solveur_Masse_base</ref>,</highlight><highlight class="stringliteral">&quot;Solveur_Masse_base&quot;</highlight><highlight class="normal">,<ref refid="classObjet__U" kindref="compound">Objet_U</ref>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classSolveur__Masse__base_1a41bd872171aade7fa921c0970d4246fc" refkind="member"><highlight class="normal"><ref refid="classSolveur__Masse__base_1a41bd872171aade7fa921c0970d4246fc" kindref="member">Solveur_Masse_base::Solveur_Masse_base</ref>()<sp/>:<sp/>has_coefficient_temporel_(0),<sp/>penalisation_flag_(1),<sp/>penalisation_(0)<sp/><sp/>{}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classSolveur__Masse__base_1a8881e8a19995ce351071c6982d0a3529" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSolveur__Masse__base_1a8881e8a19995ce351071c6982d0a3529" kindref="member">Solveur_Masse_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;<sp/>}</highlight></codeline>
+<codeline lineno="29" refid="classSolveur__Masse__base_1a8e9702c30346af7f1e1f5aaaf98d562e" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSolveur__Masse__base_1a8e9702c30346af7f1e1f5aaaf98d562e" kindref="member">Solveur_Masse_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;<sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="31"><highlight class="comment">/*!<sp/>@brief<sp/>DOES<sp/>NOTHING<sp/>-<sp/>to<sp/>override<sp/>in<sp/>derived<sp/>classes.</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>Mise<sp/>a<sp/>jour<sp/>en<sp/>temps<sp/>du<sp/>solveur<sp/>de<sp/>masse.</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double)<sp/>le<sp/>pas<sp/>de<sp/>temps<sp/>de<sp/>mise<sp/>a<sp/>jour</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classSolveur__Masse__base_1af5a0c2e2cf89b193c49216740d72c912" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base_1af5a0c2e2cf89b193c49216740d72c912" kindref="member">Solveur_Masse_base::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">/*!<sp/>@brief<sp/>DOES<sp/>NOTHING<sp/>-<sp/>to<sp/>override<sp/>in<sp/>derived<sp/>classes.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>Reset<sp/>current<sp/>time.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double)<sp/>new<sp/>current<sp/>time.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classSolveur__Masse__base_1ab8cd741217d6209ec3d5c82224f75100" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base_1ab8cd741217d6209ec3d5c82224f75100" kindref="member">Solveur_Masse_base::resetTime</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="50"><highlight class="comment">/*!<sp/>@brief<sp/>DOES<sp/>NOTHING</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>Eventuellement<sp/>a<sp/>surcharger<sp/>dans<sp/>les<sp/>classes<sp/>derivees</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>si<sp/>la<sp/>matrice<sp/>de<sp/>masse<sp/>necessite<sp/>un<sp/>assemblage.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>Assemble<sp/>le<sp/>solveur<sp/>de<sp/>masse<sp/>(en<sp/>general<sp/>la<sp/>matrice<sp/>de<sp/>masse)</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classSolveur__Masse__base_1a1b5e92489b47d32cfdfb78c3249e4655" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base_1a1b5e92489b47d32cfdfb78c3249e4655" kindref="member">Solveur_Masse_base::assembler</ref>()</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="60"><highlight class="comment">/*!<sp/>@brief<sp/>permet<sp/>de<sp/>choisir<sp/>le<sp/>nom<sp/>du<sp/>coefficient<sp/>temporelle<sp/>que<sp/>l&apos;on<sp/>veut<sp/>utiliser<sp/>pour<sp/>appliquer</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/><sp/>verifie<sp/>que<sp/>le<sp/>champ<sp/>exsite<sp/>bien</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classSolveur__Masse__base_1ae4ff14e481fd81ada32d8e93304f375f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base_1ae4ff14e481fd81ada32d8e93304f375f" kindref="member">Solveur_Masse_base::set_name_of_coefficient_temporel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>name)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><ref refid="classSolveur__Masse__base_1af23a31374eb2875d63c45eea355f93e8" kindref="member">name_of_coefficient_temporel_</ref><sp/>=<sp/>name;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="classSolveur__Masse__base_1aa4ef73c8f45712b1f66267ea3e3731ad" kindref="member">has_coefficient_temporel_</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(name<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;no_coeff&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveur__Masse__base_1aa4ef73c8f45712b1f66267ea3e3731ad" kindref="member">has_coefficient_temporel_</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().has_champ(<ref refid="classSolveur__Masse__base_1af23a31374eb2875d63c45eea355f93e8" kindref="member">name_of_coefficient_temporel_</ref>))</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Do<sp/>nothing<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/><ref refid="classSolveur__Masse__base_1af23a31374eb2875d63c45eea355f93e8" kindref="member">name_of_coefficient_temporel_</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>not<sp/>understood<sp/>by<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="86"><highlight class="comment">/*!<sp/>@brief<sp/>renvoie<sp/>appliquer_impl(x/coeffient_temporelle)<sp/>si<sp/>on<sp/>a<sp/>un<sp/>coefficient<sp/>temporel<sp/>sinon<sp/>renvoie<sp/>appliquer_impl(x)</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*<sp/><sp/>Return<sp/>M-1.x</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="classSolveur__Masse__base_1acb67cf99305704c37379cda2d3a2358a" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classSolveur__Masse__base_1acb67cf99305704c37379cda2d3a2358a" kindref="member">Solveur_Masse_base::appliquer</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>x)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="91"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolveur__Masse__base_1aa4ef73c8f45712b1f66267ea3e3731ad" kindref="member">has_coefficient_temporel_</ref>)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>OBS_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)<sp/>ref_coeff;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ref_coeff<sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a57ba60a2c32601e3441c838ab2d74332" kindref="member">get_champ</ref>(<ref refid="classSolveur__Masse__base_1af23a31374eb2875d63c45eea355f93e8" kindref="member">name_of_coefficient_temporel_</ref>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>values;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>,ref_coeff.valeur()))</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/>coeff<sp/>=<sp/>ref_cast(<ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>,ref_coeff.valeur());</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>values.<ref refid="classTRUSTTab_1accf9995f3e3b0111c58a37ee5e075279" kindref="member">ref</ref>(coeff.<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>());</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>,ref_coeff.valeur()))</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>&amp;<sp/>coeff<sp/>=<sp/>ref_cast(<ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>,ref_coeff.valeur());</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>values.<ref refid="classTRUSTTab_1accf9995f3e3b0111c58a37ee5e075279" kindref="member">ref</ref>(coeff.<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>());</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Don__base" kindref="compound">Champ_Don_base</ref>,ref_coeff.valeur()))</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>nodes;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1ac4cfea5832fe0e0b189f9ffc2b0d499c" kindref="member">remplir_coord_noeuds</ref>(nodes);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ref_coeff-&gt;valeur_aux(nodes,values);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Solveur_Masse_base::appliquer<sp/>coeffs&quot;</highlight><highlight class="normal">,values);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//tab_divide_any_shape(x,<sp/>values,<sp/>VECT_REAL_ITEMS);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab__parts" kindref="compound">DoubleTab_parts</ref><sp/>values_parts(values);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tab_divide_any_shape(x,<sp/>values_parts[0],<sp/>VECT_REAL_ITEMS);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base_1a9ec64d68288fbd1727eae9fdb2ca0d04" kindref="member">appliquer_impl</ref>(x);<sp/></highlight><highlight class="comment">//<sp/>M-1.x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Add<sp/>M/dt<sp/>into<sp/>matrix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classSolveur__Masse__base_1a95d49c5b0ac8480995d0777f7c72df5d" refkind="member"><highlight class="normal"><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/><ref refid="classSolveur__Masse__base_1a95d49c5b0ac8480995d0777f7c72df5d" kindref="member">Solveur_Masse_base::ajouter_masse</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt,<sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>matrice,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>penalisation)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="127"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matmo=ref_cast(<ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>,<sp/>matrice);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolveur__Masse__base_1af52620da392363ae50102b88aa77169a" kindref="member">has_interface_blocs</ref>())</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveur__Masse__base_1ab71636fcb67a7acccf355027af30b099" kindref="member">penalisation_flag_</ref><sp/>=<sp/>penalisation;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>inco(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().inconnue().valeurs());</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveur__Masse__base_1afcae08e934c0bf06e68c41303a5e23d1" kindref="member">ajouter_blocs</ref>({{<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classField__base_1a1a644c094b32b3923219f3afd6bcc075" kindref="member">le_nom</ref>().<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>(),<sp/>&amp;matmo<sp/>}},<sp/>inco,<sp/>dt,<sp/>{},<sp/>0);<sp/></highlight><highlight class="comment">//on<sp/>tente<sp/>ajouter_blocs()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>matrice;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>diag(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().inconnue().valeurs());</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sz<sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>().<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0)<sp/>*<sp/>diag.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>diag=1.;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="classSolveur__Masse__base_1acb67cf99305704c37379cda2d3a2358a" kindref="member">appliquer</ref>(diag);<sp/></highlight><highlight class="comment">//<sp/>M-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>prems=0;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(penalisation)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(penalisation_==0)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>penal=0;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;sz;<sp/>i++)</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>penal=std::max(penal,<sp/>matmo(i,i));</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>penal=<ref refid="classProcess_1a1e9d9f9899b71927cfafae14c7bd048d" kindref="member">mp_max</ref>(penal);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>penalisation_=(mp_max_vect(diag)/dt<sp/>+<sp/>penal)*1.e3;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prems=1;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>penalisation_=0;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;sz;<sp/>i++)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]==0)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(prems)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>matmo(i,i)+=penalisation_;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prems=0;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>matmo(i,i)+=penalisation_/dt;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>matmo(i,i)+=1./(diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]*dt);<sp/></highlight><highlight class="comment">//<sp/>M/dt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>matrice;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Add<sp/>M*y/dt<sp/>to<sp/>x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="classSolveur__Masse__base_1a8a12f2e11c8649b2205f0a54b1df1f7a" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classSolveur__Masse__base_1a95d49c5b0ac8480995d0777f7c72df5d" kindref="member">Solveur_Masse_base::ajouter_masse</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>penalisation)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="175"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolveur__Masse__base_1af52620da392363ae50102b88aa77169a" kindref="member">has_interface_blocs</ref>())</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveur__Masse__base_1ab71636fcb67a7acccf355027af30b099" kindref="member">penalisation_flag_</ref><sp/>=<sp/>penalisation;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>nom_inco<sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classField__base_1a1a644c094b32b3923219f3afd6bcc075" kindref="member">le_nom</ref>().<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>();</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveur__Masse__base_1afcae08e934c0bf06e68c41303a5e23d1" kindref="member">ajouter_blocs</ref>({},<sp/>x,<sp/>dt,<sp/>{{nom_inco,y}},<sp/>0);<sp/></highlight><highlight class="comment">//on<sp/>tente<sp/>ajouter_blocs()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sz=y.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>diag;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/>diag.<ref refid="classTRUSTTab_1ad11af5ab9d36aed04231fbafd88c2bfa" kindref="member">copy</ref>(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().inconnue().valeurs(),<sp/>RESIZE_OPTIONS::NOCOPY_NOINIT);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>diag=1.;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><ref refid="classSolveur__Masse__base_1acb67cf99305704c37379cda2d3a2358a" kindref="member">appliquer</ref>(diag);<sp/></highlight><highlight class="comment">//<sp/>M-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(penalisation)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(penalisation_==0)</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>penalisation_<sp/>=<sp/>mp_max_vect(diag)*1.e3;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>penalisation_=1;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;sz;<sp/>i++)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]==0)</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]=penalisation_*y.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i];</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]+=1./(diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]*dt)*y.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i];</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//x.echange_espace_virtuel();Debog::verifier(&quot;Solveur_Masse::ajouter_masse&quot;,x);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="classSolveur__Masse__base_1a4b1dc809c1072edd9395ca7803e617fb" refkind="member"><highlight class="normal"><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/><ref refid="classSolveur__Masse__base_1a4b1dc809c1072edd9395ca7803e617fb" kindref="member">Solveur_Masse_base::ajouter_masse_dt_local</ref>(<ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>dt_locaux,<sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>matrice,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>penalisation)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="209"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matmo=ref_cast(<ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>,<sp/>matrice);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sz=matmo.<ref refid="classMatrice__Morse_1af161208ab81be2aeeda07435876bdc32" kindref="member">nb_lignes</ref>();;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>diag(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().inconnue().valeurs());</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/>diag=1.;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><ref refid="classSolveur__Masse__base_1acb67cf99305704c37379cda2d3a2358a" kindref="member">appliquer</ref>(diag);<sp/></highlight><highlight class="comment">//<sp/>M-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>prems=0;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(penalisation)</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(penalisation_==0)</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>penal=0;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;sz;<sp/>i++)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>penal=std::max(penal,<sp/>matmo(i,i));</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>penal=<ref refid="classProcess_1a1e9d9f9899b71927cfafae14c7bd048d" kindref="member">mp_max</ref>(penal);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>penalisation_=(mp_max_vect(diag)/dt_locaux.<ref refid="classTRUSTVect_1a1ca04a3d8711af3bb31bc20048a5744e" kindref="member">local_max_vect</ref>()<sp/>+<sp/>penal)*1.e3;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prems=1;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>penalisation_=0;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;sz;<sp/>i++)</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]==0)</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(prems)</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>matmo(i,i)+=penalisation_;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prems=0;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>matmo(i,i)+=penalisation_/dt_locaux[i];</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>matmo(i,i)+=1./(diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]*dt_locaux[i]);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>matrice;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="classSolveur__Masse__base_1a9e8621fb65447a6328c004d3fd28d92e" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classSolveur__Masse__base_1a4b1dc809c1072edd9395ca7803e617fb" kindref="member">Solveur_Masse_base::ajouter_masse_dt_local</ref>(<ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>dt_locaux,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>penalisation)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="249"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sz=y.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>diag;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/>diag.<ref refid="classTRUSTTab_1ad11af5ab9d36aed04231fbafd88c2bfa" kindref="member">copy</ref>(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().inconnue().valeurs(),<sp/>RESIZE_OPTIONS::NOCOPY_NOINIT);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/>diag=1.;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><ref refid="classSolveur__Masse__base_1acb67cf99305704c37379cda2d3a2358a" kindref="member">appliquer</ref>(diag);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(penalisation)</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(penalisation_==0)</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>penalisation_<sp/>=<sp/>mp_max_vect(diag)*1.e3;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>penalisation_=1;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;sz;<sp/>i++)</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]==0)</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]=penalisation_*y.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i];</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]+=1./(diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]*dt_locaux[i])*y.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i];</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//x.echange_espace_virtuel();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//test</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277" refid="classSolveur__Masse__base_1a90f956055e6ea38ea45aae6d194623eb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base_1a90f956055e6ea38ea45aae6d194623eb" kindref="member">Solveur_Masse_base::get_masse_dt_local</ref>(<ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>m_dt_locaux,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>dt_locaux,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>penalisation)</highlight></codeline>
+<codeline lineno="278"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sz=dt_locaux.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>diag;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/>diag.<ref refid="classTRUSTTab_1ad11af5ab9d36aed04231fbafd88c2bfa" kindref="member">copy</ref>(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().inconnue().valeurs(),<sp/>RESIZE_OPTIONS::NOCOPY_NOINIT);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/>diag=1.;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><ref refid="classSolveur__Masse__base_1acb67cf99305704c37379cda2d3a2358a" kindref="member">appliquer</ref>(diag);</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(penalisation)</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(penalisation_==0)</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>penalisation_<sp/>=<sp/>mp_max_vect(diag)*1.e3;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/>penalisation_=1;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;sz;<sp/>i++)</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]==0)</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_dt_locaux[i]=0.;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_dt_locaux[i]=(1./diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i])*dt_locaux[i];</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/>m_dt_locaux.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Debog::verifier(&quot;Solveur_Masse::ajouter_masse&quot;,x);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305" refid="classSolveur__Masse__base_1a6b883ad53304451f7f67aa83ff3a1f75" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base_1a6b883ad53304451f7f67aa83ff3a1f75" kindref="member">Solveur_Masse_base::get_masse_divide_by_local_dt</ref>(<ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>m_dt_locaux,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>dt_locaux,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>penalisation)</highlight></codeline>
+<codeline lineno="306"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sz=dt_locaux.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>diag;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/>diag.<ref refid="classTRUSTTab_1ad11af5ab9d36aed04231fbafd88c2bfa" kindref="member">copy</ref>(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().inconnue().valeurs(),<sp/>RESIZE_OPTIONS::NOCOPY_NOINIT);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/>diag=1.;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><ref refid="classSolveur__Masse__base_1acb67cf99305704c37379cda2d3a2358a" kindref="member">appliquer</ref>(diag);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(penalisation)</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(penalisation_==0)</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>penalisation_<sp/>=<sp/>mp_max_vect(diag)*1.e3;</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>penalisation_=1;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;sz;<sp/>i++)</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]==0)</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_dt_locaux[i]=0.;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_dt_locaux[i]=(1./diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i])/dt_locaux[i];</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/>m_dt_locaux.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Debog::verifier(&quot;Solveur_Masse::ajouter_masse&quot;,x);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333" refid="classSolveur__Masse__base_1aa689345aa009372f9f4e5c53d0bf4c84" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classSolveur__Masse__base_1aa689345aa009372f9f4e5c53d0bf4c84" kindref="member">Solveur_Masse_base::corriger_solution</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab_x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab_y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>incr)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="334"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sz<sp/>=<sp/>tab_y.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0)<sp/>*<sp/>tab_y.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>();</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>tab_diag(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().inconnue().valeurs());</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/>tab_diag=1.;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><ref refid="classSolveur__Masse__base_1acb67cf99305704c37379cda2d3a2358a" kindref="member">appliquer</ref>(tab_diag);<sp/></highlight><highlight class="comment">//<sp/>M-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Si<sp/>x<sp/>et<sp/>y<sp/>sont<sp/>sur<sp/>le<sp/>device,<sp/>on<sp/>deporte<sp/>l&apos;execution<sp/>sur<sp/>le<sp/>device:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>kernelOnDevice<sp/>=<sp/>tab_x.<ref refid="classTRUSTArray_1a03efd39cb9d6295ce01dc820c804ecd1" kindref="member">checkDataOnDevice</ref>(tab_y);</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(kernelOnDevice)</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CDoubleArrView<sp/>diag<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal"><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(tab_diag).view_ro();</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CDoubleArrView<sp/>y<sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal"><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(tab_y).view_ro();</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>DoubleArrView<sp/><sp/>x<sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(tab_x).view_wo();</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos::parallel_for(start_gpu_timer(__KERNEL_NAME__),<sp/>sz,<sp/>KOKKOS_LAMBDA(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(diag[i]&lt;1.e-12)</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x[i]<sp/>=<sp/>y[i];</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>end_gpu_timer(__KERNEL_NAME__,<sp/>kernelOnDevice);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;sz;<sp/>i++)</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tab_diag.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]&lt;1.e-12)</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tab_x.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i]<sp/>=<sp/>tab_y.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>()[i];</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tab_x;</highlight></codeline>
+<codeline lineno="360"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Ajout<sp/>d&apos;une<sp/>methode<sp/>dimensionner()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight><highlight class="comment">//<sp/>qui<sp/>dimensionne<sp/>la<sp/>matrice<sp/>a<sp/>la<sp/>diagonale<sp/>quand</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight><highlight class="comment">//<sp/>tous<sp/>les<sp/>operateurs<sp/>sont<sp/>negligeables</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Le<sp/>code<sp/>est<sp/>celui<sp/>utilise<sp/>dans<sp/>la<sp/>version<sp/>Noyau<sp/>de<sp/>Equation_base::dimensionner_matrice()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="366" refid="classSolveur__Masse__base_1a1450c32a5a5311a635b022fa758b5991" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base_1a1450c32a5a5311a635b022fa758b5991" kindref="member">Solveur_Masse_base::dimensionner</ref>(<ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matrix)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="367"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolveur__Masse__base_1af52620da392363ae50102b88aa77169a" kindref="member">has_interface_blocs</ref>())</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveur__Masse__base_1a5016926c1c951a3d2de400318c647c81" kindref="member">dimensionner_blocs</ref>({{<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classField__base_1a1a644c094b32b3923219f3afd6bcc075" kindref="member">le_nom</ref>().<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>(),<sp/>&amp;matrix<sp/>}},<sp/>{});<sp/></highlight><highlight class="comment">//on<sp/>tente<sp/>dimensionner_blocs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>champ_inconnue<sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size<sp/>=<sp/>champ_inconnue.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0)<sp/>*<sp/>champ_inconnue.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>();</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref><sp/>indice(size,<sp/>2);</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;size;<sp/>++i)</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>indice(i,0)<sp/>=<sp/>indice(i,1)<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/>matrix.<ref refid="classMatrice__Morse_1ae95f9ed88a8a3fc637cd2a705cead9c8" kindref="member">dimensionner</ref>(indice);</highlight></codeline>
+<codeline lineno="382"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384" refid="classSolveur__Masse__base_1a5016926c1c951a3d2de400318c647c81" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base_1a5016926c1c951a3d2de400318c647c81" kindref="member">Solveur_Masse_base::dimensionner_blocs</ref>(matrices_t<sp/>matrices,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>tabs_t&amp;<sp/>semi_impl)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="385"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>dimensionner_blocs<sp/>not<sp/>coded!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="387"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389" refid="classSolveur__Masse__base_1afcae08e934c0bf06e68c41303a5e23d1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base_1afcae08e934c0bf06e68c41303a5e23d1" kindref="member">Solveur_Masse_base::ajouter_blocs</ref>(matrices_t<sp/>matrices,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>secmem,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>tabs_t&amp;<sp/>semi_impl,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resoudre_en_increments)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="390"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>ajouter_blocs<sp/>not<sp/>coded!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="392"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Ajout<sp/>d&apos;une<sp/>methode<sp/>completer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Ne<sp/>fait<sp/>rien<sp/>par<sp/>defaut</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="396" refid="classSolveur__Masse__base_1a56136ad47d6ba5dc1f5b5cacd6600b90" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base_1a56136ad47d6ba5dc1f5b5cacd6600b90" kindref="member">Solveur_Masse_base::completer</ref>()<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Ajout<sp/>d&apos;une<sp/>methode<sp/>preparer_calcul</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Ne<sp/>fait<sp/>rien<sp/>par<sp/>defaut</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="400" refid="classSolveur__Masse__base_1ab55060fb4f20ce74b7ea98a0ef8427ff" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolveur__Masse__base_1ab55060fb4f20ce74b7ea98a0ef8427ff" kindref="member">Solveur_Masse_base::preparer_calcul</ref>()<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Solveur_Masse_base.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Sortie__Fichier__base_8cpp" kind="file" language="C++">
+    <compoundname>Sortie_Fichier_base.cpp</compoundname>
+    <includes refid="Sortie__Fichier__base_8h" local="no">Sortie_Fichier_base.h</includes>
+    <includes local="no">fstream</includes>
+    <includes refid="Process_8h" local="no">Process.h</includes>
+    <includes refid="Nom_8h" local="no">Nom.h</includes>
+    <includes local="no">map</includes>
+    <includes local="no">string</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">sys/stat.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Sortie_Fichier_base.cpp</label>
+        <link refid="Sortie__Fichier__base_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>fstream</label>
+      </node>
+      <node id="3">
+        <label>map</label>
+      </node>
+      <node id="5">
+        <label>stdlib.h</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>sys/stat.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Sortie__Fichier__base_8cpp_1a9ba7aa0a747e92658d2f2388d73c901b" prot="public" static="yes" mutable="no">
+        <type>std::map&lt; std::string, int &gt;</type>
+        <definition>std::map&lt;std::string, int&gt; counters</definition>
+        <argsstring></argsstring>
+        <name>counters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Sortie_Fichier_base.cpp" line="117" column="17" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Sortie_Fichier_base.cpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Sortie__Fichier__base_8cpp_1abaaab29910284f852fb3b4d8925934c3" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Sortie_Fichier_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Sortie_Fichier_basebases</name>
+        <initializer>={   &amp;( <ref refid="classObjet__U" kindref="compound">Objet_U</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Sortie_Fichier_base.cpp" line="25" column="18" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Sortie_Fichier_base.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Sortie_Fichier_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Process.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Nom.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/stat.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classSortie__Fichier__base_1aeddb3590e15a1f6c019a52d1d67c0ef8" refkind="member"><highlight class="normal">Implemente_base_sans_constructeur_ni_destructeur(<ref refid="classSortie__Fichier__base" kindref="compound">Sortie_Fichier_base</ref>,</highlight><highlight class="stringliteral">&quot;Sortie_Fichier_base&quot;</highlight><highlight class="normal">,<ref refid="classObjet__U" kindref="compound">Objet_U</ref>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classSortie__Fichier__base_1abf0e3d6e03ce1b0f3b48dce3403e51d4" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSortie__Fichier__base_1abf0e3d6e03ce1b0f3b48dce3403e51d4" kindref="member">Sortie_Fichier_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)<sp/>{<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="28" refid="classSortie__Fichier__base_1a101291269500c1e145d39437f127cb23" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie__Fichier__base_1a101291269500c1e145d39437f127cb23" kindref="member">Sortie_Fichier_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classSortie__Fichier__base_1a241d7a847134478a855218e7cff7d43b" refkind="member"><highlight class="normal"><ref refid="classSortie__Fichier__base_1a241d7a847134478a855218e7cff7d43b" kindref="member">Sortie_Fichier_base::Sortie_Fichier_base</ref>()<sp/>:<sp/><ref refid="classSortie" kindref="compound">Sortie</ref>()</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>set_toFlush();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classSortie__Fichier__base_1a1410264c65c6188d91d8e9d22c5e85af" refkind="member"><highlight class="normal"><ref refid="classSortie__Fichier__base_1a241d7a847134478a855218e7cff7d43b" kindref="member">Sortie_Fichier_base::Sortie_Fichier_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name,<sp/>IOS_OPEN_MODE<sp/>mode)<sp/>:<sp/><ref refid="classSortie" kindref="compound">Sortie</ref>()</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classSortie__Fichier__base_1adeb941e6d25cb82e0fa362b54a132bc2" kindref="member">ouvrir</ref>(name,mode);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classSortie__Fichier__base_1af95afadba3d125eb46902117b0049e12" refkind="member"><highlight class="normal"><ref refid="classSortie__Fichier__base_1af95afadba3d125eb46902117b0049e12" kindref="member">Sortie_Fichier_base::~Sortie_Fichier_base</ref>()</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><ref refid="classSortie__Fichier__base_1ac246a47c4438e3183322c20db2a3323c" kindref="member">close</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Sortie_Fichier_base::set_toFlush()</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Les<sp/>acces<sp/>disques<sp/>ont<sp/>ete<sp/>optimises<sp/>depuis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>donc<sp/>par<sp/>defaut<sp/>on<sp/>flushe<sp/>a<sp/>nouveau<sp/>car</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>sinon<sp/>les<sp/>sondes<sp/>pas<sp/>ecrites...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Si<sp/>lent,<sp/>mettre<sp/>export<sp/>TRIOU_FLUSHFILES=0<sp/>dans<sp/>son<sp/>sub_file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>toFlush_<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>theValue<sp/>=<sp/>getenv(</highlight><highlight class="stringliteral">&quot;TRUST_FLUSHFILES&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(theValue<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toFlush_=atoi(theValue);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Sortie_Fichier_base::set_buffer()</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!toFlush_)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>theValue<sp/>=<sp/>getenv(</highlight><highlight class="stringliteral">&quot;TRUST_BUFFSIZE&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>fixe<sp/>une<sp/>valeur<sp/>a<sp/>3000000<sp/>par<sp/>defaut<sp/>pour<sp/>buffSize</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Elle<sp/>peut<sp/>etre<sp/>changee<sp/>par<sp/>la<sp/>variable<sp/>d&apos;environnement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>buffSize<sp/>=<sp/>3000000;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(theValue<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffSize<sp/>=<sp/>atoi(theValue);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffSize&gt;=0)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>internalBuffSize<sp/>=<sp/>buffSize;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internalBuff_<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">[internalBuffSize];</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>-&gt;rdbuf()-&gt;pubsetbuf(internalBuff_,internalBuffSize);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classSortie__Fichier__base_1ad69731ab342e17049de30c55b80b6941" refkind="member"><highlight class="normal">ofstream&amp;<sp/><ref refid="classSortie__Fichier__base_1ad69731ab342e17049de30c55b80b6941" kindref="member">Sortie_Fichier_base::get_ofstream</ref>()</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*<ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classSortie__Fichier__base_1ac246a47c4438e3183322c20db2a3323c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSortie__Fichier__base_1ac246a47c4438e3183322c20db2a3323c" kindref="member">Sortie_Fichier_base::close</ref>()</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>-&gt;flush();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>-&gt;close();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(internalBuff_)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">[]<sp/>internalBuff_;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>internalBuff_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="classSortie__Fichier__base_1a8341672e95dd856b2c30d7b7d2f649d0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSortie__Fichier__base_1a8341672e95dd856b2c30d7b7d2f649d0" kindref="member">Sortie_Fichier_base::precision</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pre)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>-&gt;precision(pre);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classSortie__Fichier__base_1a14d2f634a031fd5b1a9455a1bdfbf661" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSortie__Fichier__base_1a14d2f634a031fd5b1a9455a1bdfbf661" kindref="member">Sortie_Fichier_base::get_precision</ref>()</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>-&gt;precision();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classSortie__Fichier__base_1a7fae3eeaad5fd8a3ca3e38218d574365" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSortie__Fichier__base_1a7fae3eeaad5fd8a3ca3e38218d574365" kindref="member">Sortie_Fichier_base::setf</ref>(IOS_FORMAT<sp/>code)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>-&gt;setf(code);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal">std::string<sp/><ref refid="classSortie__Fichier__base_1ab971adad56f6875610a198a9cce53833" kindref="member">Sortie_Fichier_base::root</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::map&lt;std::string,<sp/>int&gt;<sp/>counters;</highlight></codeline>
+<codeline lineno="118" refid="classSortie__Fichier__base_1adeb941e6d25cb82e0fa362b54a132bc2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSortie__Fichier__base_1adeb941e6d25cb82e0fa362b54a132bc2" kindref="member">Sortie_Fichier_base::ouvrir</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name,IOS_OPEN_MODE<sp/>mode)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">stat<sp/>sb;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>the<sp/>root<sp/>directory<sp/>if<sp/>it<sp/>doesn&apos;t<sp/>exit<sp/>by<sp/>the<sp/>master<sp/>process:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classSortie__Fichier__base_1ab971adad56f6875610a198a9cce53833" kindref="member">root</ref>.empty()<sp/>&amp;&amp;<sp/>stat(<ref refid="classSortie__Fichier__base_1ab971adad56f6875610a198a9cce53833" kindref="member">root</ref>.c_str(),<sp/>&amp;sb)<sp/>&amp;&amp;<sp/><ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">Process::je_suis_maitre</ref>())</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>cmd=</highlight><highlight class="stringliteral">&quot;mkdir<sp/>-p<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>cmd+=<ref refid="classSortie__Fichier__base_1ab971adad56f6875610a198a9cce53833" kindref="member">root</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>err<sp/>=<sp/>system(cmd.c_str());</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err)</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Sortie_Fichier_base::ouvrir:<sp/>Error<sp/>while<sp/>creating<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classSortie__Fichier__base_1ab971adad56f6875610a198a9cce53833" kindref="member">root</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>folder!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>std::string<sp/>pathname<sp/>=<sp/><ref refid="classSortie__Fichier__base_1ab971adad56f6875610a198a9cce53833" kindref="member">root</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!pathname.empty())<sp/>pathname+=</highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>pathname<sp/>+=<sp/>name;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>p(pathname);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(++counters[pathname]%100==0<sp/>&amp;&amp;<sp/>!p.<ref refid="classNom_1a352790480327a4c89b75c59c4fd20b4a" kindref="member">finit_par</ref>(</highlight><highlight class="stringliteral">&quot;.lata&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>!p.<ref refid="classNom_1a352790480327a4c89b75c59c4fd20b4a" kindref="member">finit_par</ref>(</highlight><highlight class="stringliteral">&quot;.lml&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>!p.<ref refid="classNom_1a352790480327a4c89b75c59c4fd20b4a" kindref="member">finit_par</ref>(</highlight><highlight class="stringliteral">&quot;.lata_single&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>!p.<ref refid="classNom_1a352790480327a4c89b75c59c4fd20b4a" kindref="member">finit_par</ref>(</highlight><highlight class="stringliteral">&quot;.med.index&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Warning,<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pathname<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>has<sp/>been<sp/>opened/closed<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>counters[pathname]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>times...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>IOS_OPEN_MODE<sp/>ios_mod=mode;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>new_bin=0;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classAbstractIO_1a6ad28fa6d6fcebb2e3c0458f22ca98ea" kindref="member">bin_</ref>)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ios_mod==ios::out)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>new_bin=1;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert((ios_mod==ios::app)||(ios_mod==(ios::app|ios::out)));</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ios_mod=ios_mod|ios::binary;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref><sp/>=<sp/>std::make_unique&lt;ofstream&gt;(pathname,ios_mod);<sp/></highlight><highlight class="comment">//<sp/>will<sp/>delete<sp/>any<sp/>existing<sp/>ostream_<sp/>member</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">ofstream<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classSortie_1af1054fdc266c41387df7778bda1e88be" kindref="member">ostream_</ref>.get());<sp/></highlight><highlight class="comment">//<sp/>the<sp/>typed<sp/>version<sp/>of<sp/>the<sp/>pointer<sp/>for<sp/>this<sp/>class.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/>set_toFlush();</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/>set_buffer();</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>-&gt;good())</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>when<sp/>opening<sp/>the<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pathname<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.<sp/>File<sp/>was<sp/>opened<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>counters[pathname]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>time(s)<sp/>...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Either:\n<sp/>you<sp/>don&apos;t<sp/>have<sp/>write<sp/>rights,\n<sp/>or<sp/>your<sp/>filesystem<sp/>is<sp/>very<sp/>slow<sp/>and<sp/>multiple<sp/>file<sp/>open/close.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Contact<sp/>TRUST<sp/>support<sp/>team.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1ab0d2cbf9cdb22a0bd75a7e45026f6fc1" kindref="member">Process::exception_sur_exit</ref>=2;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(new_bin<sp/>&amp;&amp;<sp/><ref refid="classAbstractIO_1ab684029b8554af162733b11f24940334" kindref="member">is_64b_</ref>)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Put<sp/>the<sp/>64b<sp/>marker<sp/>when<sp/>requested<sp/>by<sp/>is_64b_<sp/>flag</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>In<sp/>the<sp/>new<sp/>64b<sp/>mode<sp/>the<sp/>save/restart<sp/>files<sp/>can<sp/>stay<sp/>in<sp/>32b<sp/>(because<sp/>they<sp/>correspond<sp/>to<sp/>information<sp/>saved<sp/>for<sp/>each<sp/>proc,<sp/>where<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>32b<sp/>is<sp/>used).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Lata<sp/>files<sp/>on<sp/>the<sp/>other<sp/>hand<sp/>definitely<sp/>need<sp/>this.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>marq(</highlight><highlight class="stringliteral">&quot;INT64&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(*this)&lt;&lt;marq;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="177"><highlight class="comment">/*!<sp/>@brief<sp/>Force<sp/>l&apos;ecriture<sp/>sur<sp/>disque<sp/>des<sp/>donnees<sp/>dans<sp/>le<sp/>tampon<sp/>Utilise<sp/>l&apos;implementation<sp/>de<sp/>la<sp/>classe<sp/>ofstream</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Sortie&amp;)<sp/>*this</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="classSortie__Fichier__base_1a65a87f3c5bf3820d3c3a7a922c4d19f2" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSortie__Fichier__base_1a65a87f3c5bf3820d3c3a7a922c4d19f2" kindref="member">Sortie_Fichier_base::flush</ref>()</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(toFlush())<sp/><ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>-&gt;flush();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="classSortie__Fichier__base_1acc0244cc2feedba886b643e9b3c295db" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classSortie__Fichier__base_1acc0244cc2feedba886b643e9b3c295db" kindref="member">Sortie_Fichier_base::is_open</ref>()</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="classSortie__Fichier__base_1a4f469e23f4c5f538edd6a06a24b88d06" kindref="member">ofstream_</ref>&amp;&amp;<ref refid="classSortie__Fichier__base_1ad69731ab342e17049de30c55b80b6941" kindref="member">get_ofstream</ref>().<ref refid="classSortie__Fichier__base_1acc0244cc2feedba886b643e9b3c295db" kindref="member">is_open</ref>())<sp/>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192" refid="classSortie__Fichier__base_1aaf538a65d897bb231fcdd829a3fd2a2e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSortie__Fichier__base_1aaf538a65d897bb231fcdd829a3fd2a2e" kindref="member">Sortie_Fichier_base::set_root</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>dirname)</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><ref refid="classSortie__Fichier__base_1ab971adad56f6875610a198a9cce53833" kindref="member">root</ref>=dirname;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;[IO]<sp/>Setting<sp/>output<sp/>directory<sp/>to:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classSortie__Fichier__base_1ab971adad56f6875610a198a9cce53833" kindref="member">root</ref><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Sortie_Fichier_base.cpp"/>
+  </compounddef>
+</doxygen>

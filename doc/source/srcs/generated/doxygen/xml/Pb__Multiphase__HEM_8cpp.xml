@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Pb__Multiphase__HEM_8cpp" kind="file" language="C++">
+    <compoundname>Pb_Multiphase_HEM.cpp</compoundname>
+    <includes refid="Pb__Multiphase__HEM_8h" local="no">Pb_Multiphase_HEM.h</includes>
+    <includes refid="EChaine_8h" local="no">EChaine.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Pb__Multiphase__HEM_8cpp_1a1fb836a8db391a61e43c93b4564a9c3a" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Pb_Multiphase_HEMbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Pb_Multiphase_HEMbases</name>
+        <initializer>={   &amp;( <ref refid="classPb__Multiphase" kindref="compound">Pb_Multiphase</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Problems/Pb_Multiphase_HEM.cpp" line="19" column="109" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Problems/Pb_Multiphase_HEM.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Pb_Multiphase_HEM.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EChaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classPb__Multiphase__HEM_1a2afd49764a27bd2e73cbe9671439f286" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classPb__Multiphase__HEM" kindref="compound">Pb_Multiphase_HEM</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Pb_HEM|Pb_Multiphase_HEM&quot;</highlight><highlight class="normal">,<sp/><ref refid="classPb__Multiphase" kindref="compound">Pb_Multiphase</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>Pb_Multiphase_HEM<sp/>Pb_Multiphase<sp/>Pb_HEM<sp/>-1<sp/>A<sp/>problem<sp/>that<sp/>allows<sp/>the<sp/>resolution<sp/>of<sp/>2-phases<sp/>mechanicaly<sp/>and<sp/>thermally<sp/>coupled<sp/>with<sp/>3<sp/>equations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classPb__Multiphase__HEM_1a3dc88ca389d2129c91b90663630214b7" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classPb__Multiphase__HEM_1a3dc88ca389d2129c91b90663630214b7" kindref="member">Pb_Multiphase_HEM::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Multiphase_1a19ea592df0f2e2df15327ec5e5db26f1" kindref="member">Pb_Multiphase::printOn</ref>(os);<sp/>}</highlight></codeline>
+<codeline lineno="23" refid="classPb__Multiphase__HEM_1add3b39b86fd209196891173293c62e14" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classPb__Multiphase__HEM_1add3b39b86fd209196891173293c62e14" kindref="member">Pb_Multiphase_HEM::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Multiphase_1a3bc6f4d5f753258dcbdde5bf25a865ed" kindref="member">Pb_Multiphase::readOn</ref>(is);<sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classPb__Multiphase__HEM_1adcaf208c7b03c1fd7e53ee72ae57a38e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPb__Multiphase__HEM_1adcaf208c7b03c1fd7e53ee72ae57a38e" kindref="member">Pb_Multiphase_HEM::typer_lire_correlation_hem</ref>()</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Particular<sp/>treatment<sp/>in<sp/>cas<sp/>of<sp/>Homogeneous<sp/>Equilibrium<sp/>Mechanical<sp/>calculation<sp/>using<sp/>the<sp/>Pb_HEM<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>enforce<sp/>a<sp/>interfacial<sp/>flux<sp/>correlation<sp/>with<sp/>constant<sp/>coefficient</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProbleme__base_1a8c62c361fbc067fb1ebcfde1548e8e74" kindref="member">has_correlation</ref>(</highlight><highlight class="stringliteral">&quot;flux_interfacial&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;corr<sp/>:<sp/><ref refid="classProbleme__base_1aef5926981df5ec6afc9adf3179c2fb33" kindref="member">correlations_</ref>)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(corr.second-&gt;que_suis_je()<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;Flux_interfacial_Coef_Constant&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Flux_interfacial_Coef_Constant<sp/>is<sp/>already<sp/>defined.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;An<sp/>interfacial<sp/>flux<sp/>correlation<sp/>is<sp/>already<sp/>defined<sp/>in<sp/>the<sp/>data<sp/>file,<sp/>but<sp/>from<sp/>a<sp/>different<sp/>kind<sp/>that<sp/>coef_constant.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;For<sp/>a<sp/>Pb_HEM,<sp/>the<sp/>interfacial<sp/>flux<sp/>correlation<sp/>must<sp/>be<sp/>of<sp/>the<sp/>kind<sp/>coef_constant.<sp/>Please<sp/>either<sp/>remove<sp/>the<sp/>line<sp/>as<sp/>it<sp/>will<sp/>be<sp/>automatically<sp/>added<sp/>or<sp/>modify<sp/>the<sp/>expression.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>coefficient<sp/>1e10<sp/>is<sp/>enforced.<sp/>If<sp/>the<sp/>user<sp/>wants<sp/>to<sp/>modify<sp/>it,<sp/>we<sp/>invite<sp/>her<sp/>to<sp/>add<sp/>the<sp/>line<sp/>in<sp/>the<sp/>data<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Pb_HEM:<sp/>we<sp/>add<sp/>a<sp/>interfacial<sp/>flux<sp/>correlation<sp/>with<sp/>constant<sp/>coefficient.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>corr_FICC(</highlight><highlight class="stringliteral">&quot;{<sp/>flux_interfacial<sp/>coef_constant<sp/>{<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>0;<sp/>ii<sp/>&lt;<sp/><ref refid="classPb__Multiphase_1abbd18662850b1751183b2522e1e38fb4" kindref="member">nb_phases</ref>();<sp/>ii++)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>corr_FICC<sp/>+=<sp/><ref refid="classPb__Multiphase_1a8a98be9d098f19cca64eaa471d769722" kindref="member">nom_phase</ref>(ii);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>corr_FICC<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>1e10<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>corr_FICC<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;}<sp/>}&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Expression<sp/>added:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>corr_FICC<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Please<sp/>add<sp/>this<sp/>line<sp/>to<sp/>the<sp/>data<sp/>file<sp/>directly<sp/>if<sp/>you<sp/>want<sp/>to<sp/>modify<sp/>the<sp/>enforced<sp/>coefficient<sp/>1e10.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEChaine" kindref="compound">EChaine</ref><sp/>corr_flux_inter_coef_const(corr_FICC);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProbleme__base_1a4ea2abfd5de6599d9868ab6b09651064" kindref="member">lire_correlations</ref>(corr_flux_inter_coef_const);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Problems/Pb_Multiphase_HEM.cpp"/>
+  </compounddef>
+</doxygen>

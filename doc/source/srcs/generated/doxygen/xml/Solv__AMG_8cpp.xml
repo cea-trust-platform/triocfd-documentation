@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Solv__AMG_8cpp" kind="file" language="C++">
+    <compoundname>Solv_AMG.cpp</compoundname>
+    <includes refid="Solv__AMG_8h" local="no">Solv_AMG.h</includes>
+    <includes refid="EChaine_8h" local="no">EChaine.h</includes>
+    <includes refid="Motcle_8h" local="no">Motcle.h</includes>
+    <includes refid="Solv__AMGX_8h" local="no">Solv_AMGX.h</includes>
+    <includes refid="Solv__Petsc__GPU_8h" local="no">Solv_Petsc_GPU.h</includes>
+    <includes refid="comm__incl_8h" local="no">comm_incl.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Solv__AMG_8cpp_1aa51ea59838fa56170b068ee0f79b9ec9" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Solv_AMGbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Solv_AMGbases</name>
+        <initializer>={   &amp;( <ref refid="classSolveurSys__base" kindref="compound">SolveurSys_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_AMG.cpp" line="26" column="73" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_AMG.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Solv_AMG.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EChaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Motcle.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Solv_AMGX.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Solv_Petsc_GPU.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TRUST_USE_ROCM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;rocm-core/rocm_version.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;comm_incl.h&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>Mandatory<sp/>to<sp/>have<sp/>MPIX_CUDA_AWARE_SUPPORT<sp/>defined<sp/>or<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classSolv__AMG_1ac46ebf7d901950e4852c3092dcb96c6c" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classSolv__AMG" kindref="compound">Solv_AMG</ref>,</highlight><highlight class="stringliteral">&quot;Solv_AMG&quot;</highlight><highlight class="normal">,<ref refid="classSolveurSys__base" kindref="compound">SolveurSys_base</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>amg<sp/>solveur_sys_base<sp/>amg<sp/>0<sp/>Wrapper<sp/>for<sp/>AMG<sp/>preconditioner-based<sp/>solver<sp/>which<sp/>switch<sp/>for<sp/>the<sp/>best<sp/>one<sp/>on<sp/>CPU/GPU<sp/>Nvidia/GPU<sp/>AMD</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>solveur<sp/>chaine<sp/>solveur<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>option_solveur<sp/>bloc_lecture<sp/>option_solveur<sp/>0<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>printOn</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classSolv__AMG_1a00f3f21a0a901c8fd81b4ee1e055c7f9" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSolv__AMG_1a00f3f21a0a901c8fd81b4ee1e055c7f9" kindref="member">Solv_AMG::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="33"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="38"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Reads<sp/>the<sp/>configuration<sp/>for<sp/>the<sp/>AMG<sp/>solver<sp/>from<sp/>the<sp/>input<sp/>stream.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>This<sp/>function<sp/>parses<sp/>the<sp/>input<sp/>stream<sp/>to<sp/>configure<sp/>the<sp/>AMG<sp/>solver<sp/>parameters,</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>including<sp/>the<sp/>relative<sp/>tolerance<sp/>(RTOL),<sp/>absolute<sp/>tolerance<sp/>(ATOL),<sp/>and<sp/>whether</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>to<sp/>print<sp/>additional<sp/>information<sp/>(IMPR).<sp/>It<sp/>supports<sp/>different<sp/>solver<sp/>libraries</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>based<sp/>on<sp/>the<sp/>available<sp/>hardware<sp/>(CPU<sp/>or<sp/>GPU).</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>The<sp/>expected<sp/>input<sp/>format<sp/>is:</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/><sp/><sp/>amg<sp/>solver<sp/>{<sp/>rtol<sp/>value<sp/>[impr]<sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@param<sp/>is<sp/>The<sp/>input<sp/>stream<sp/>from<sp/>which<sp/>to<sp/>read<sp/>the<sp/>solver<sp/>configuration.</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>input<sp/>stream<sp/>after<sp/>reading<sp/>the<sp/>configuration.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@throws<sp/>Process::exit<sp/>if<sp/>the<sp/>input<sp/>syntax<sp/>is<sp/>incorrect<sp/>or<sp/>if<sp/>an<sp/>unsupported</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>library<sp/>is<sp/>specified.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classSolv__AMG_1a1bf81428bfeca647815cb0b879c2a8be" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSolv__AMG_1a1bf81428bfeca647815cb0b879c2a8be" kindref="member">Solv_AMG::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>amg<sp/>solver<sp/>{<sp/>rtol<sp/>value<sp/>[impr]<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rtol=0;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>atol=0;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>impr<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>library;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>options_petsc(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motcle;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>motcle;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(motcle<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motcle==</highlight><highlight class="stringliteral">&quot;GCP&quot;</highlight><highlight class="normal"><sp/>||<sp/>motcle==</highlight><highlight class="stringliteral">&quot;BICGSTAB&quot;</highlight><highlight class="normal"><sp/>||<sp/>motcle==</highlight><highlight class="stringliteral">&quot;GMRES&quot;</highlight><highlight class="normal">)<sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref>=motcle;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motcle==</highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">)<sp/>{}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motcle==</highlight><highlight class="stringliteral">&quot;RTOL&quot;</highlight><highlight class="normal">)<sp/>is<sp/>&gt;&gt;<sp/>rtol;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motcle==</highlight><highlight class="stringliteral">&quot;ATOL&quot;</highlight><highlight class="normal">)<sp/>is<sp/>&gt;&gt;<sp/>atol;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motcle==</highlight><highlight class="stringliteral">&quot;IMPR&quot;</highlight><highlight class="normal">)<sp/>impr<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options_petsc+=motcle;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options_petsc+=</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>motcle;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>select<sp/>the<sp/>more<sp/>efficient/robust<sp/>one:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TRUST_USE_CUDA)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(MPIX_CUDA_AWARE_SUPPORT)<sp/>&amp;&amp;<sp/>(OMPI_MAJOR_VERSION<sp/>==<sp/>4)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1a6bf692ce58d9578aa62ac3c07b8caaa1" kindref="member">Process::nproc</ref>()&gt;4)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>library<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;amgx&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>{<sp/>precond<sp/>c-amg<sp/>{<sp/>}&quot;</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Best<sp/>GPU<sp/>solver<sp/>on<sp/>Nvidia<sp/>if<sp/>MPI-GPU<sp/>Aware<sp/>OpenMPI<sp/>4.x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>library<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;petsc_gpu&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>{<sp/>precond<sp/>boomeramg<sp/>{<sp/>}&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Best<sp/>GPU<sp/>solver<sp/>if<sp/>not<sp/>MPI-GPU<sp/>Aware<sp/>(Hypre<sp/>diverge<sp/>on<sp/>multi-GPU<sp/>node)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>library<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;petsc_gpu&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>{<sp/>precond<sp/>boomeramg<sp/>{<sp/>}&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Best<sp/>GPU<sp/>solver<sp/>if<sp/>not<sp/>MPI-GPU<sp/>Aware<sp/>(Hypre<sp/>diverge<sp/>else)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(TRUST_USE_ROCM)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>library<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;petsc_gpu&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>value<sp/>=<sp/>std::getenv(</highlight><highlight class="stringliteral">&quot;ROCM_ARCH&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>std::string(value)<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;gfx1100&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1a48ea49c199fc8961be575e571038b79a" kindref="member">Process::is_parallel</ref>())</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>{<sp/>precond<sp/>ua-amg<sp/>{<sp/>}&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Converge<sp/>mais<sp/>plus<sp/>lent<sp/>que<sp/>sa-amg</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>{<sp/>precond<sp/>sa-amg<sp/>{<sp/>}&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Crash<sp/>en<sp/>parallele</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>{<sp/>precond<sp/>boomeramg<sp/>{<sp/>}&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Best<sp/>GPU<sp/>solver<sp/>(//<sp/>sa-amg<sp/>is<sp/>slow...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>library<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;petsc&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>{<sp/>precond<sp/>boomeramg<sp/>{<sp/>}&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Best<sp/>CPU<sp/>solver</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rtol&gt;0)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>rtol<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/><ref refid="classNom" kindref="compound">Nom</ref>(rtol,<sp/></highlight><highlight class="stringliteral">&quot;%e&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(atol&gt;0)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>atol<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/><ref refid="classNom" kindref="compound">Nom</ref>(atol,<sp/></highlight><highlight class="stringliteral">&quot;%e&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(impr)<sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>impr&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(options_petsc!=</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/>options_petsc;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>}&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;====================================================================&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Creating<sp/>AMG<sp/>solver:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>library<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;====================================================================&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><ref refid="classEChaine" kindref="compound">EChaine</ref><sp/>entree(<ref refid="classSolveurSys__base_1afe094450db2e5697da7b535437bd71b9" kindref="member">chaine_lue_</ref>);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_solveur(</highlight><highlight class="stringliteral">&quot;Solv_&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>nom_solveur+=library;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>solveur_.<ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(nom_solveur);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(library==</highlight><highlight class="stringliteral">&quot;amgx&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>ref_cast(<ref refid="classSolv__AMGX" kindref="compound">Solv_AMGX</ref>,<sp/>solveur_.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>()).create_solver(entree);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(library==</highlight><highlight class="stringliteral">&quot;petsc&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>ref_cast(<ref refid="classSolv__Petsc" kindref="compound">Solv_Petsc</ref>,<sp/>solveur_.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>()).create_solver(entree);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(library==</highlight><highlight class="stringliteral">&quot;petsc_gpu&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>ref_cast(<ref refid="classSolv__Petsc__GPU" kindref="compound">Solv_Petsc_GPU</ref>,<sp/>solveur_.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>()).create_solver(entree);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(</highlight><highlight class="stringliteral">&quot;Unsupported<sp/>case<sp/>in<sp/>Solv_AMG::readOn&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_AMG.cpp"/>
+  </compounddef>
+</doxygen>

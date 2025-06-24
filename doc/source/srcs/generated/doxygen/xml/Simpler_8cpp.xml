@@ -1,0 +1,351 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Simpler_8cpp" kind="file" language="C++">
+    <compoundname>Simpler.cpp</compoundname>
+    <includes refid="Simpler_8h" local="no">Simpler.h</includes>
+    <includes refid="Navier__Stokes__std_8h" local="no">Navier_Stokes_std.h</includes>
+    <includes refid="EChaine_8h" local="no">EChaine.h</includes>
+    <includes refid="Debog_8h" local="no">Debog.h</includes>
+    <includes refid="Matrice__Bloc_8h" local="no">Matrice_Bloc.h</includes>
+    <includes refid="Assembleur__base_8h" local="no">Assembleur_base.h</includes>
+    <includes refid="Statistiques_8h" local="no">Statistiques.h</includes>
+    <includes refid="Schema__Temps__base_8h" local="no">Schema_Temps_base.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Simpler_8cpp_1a30101c7644da14002571fb0bdce5137c" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Simplerbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Simplerbases</name>
+        <initializer>={   &amp;( <ref refid="classSimple" kindref="compound">Simple</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Schemas_Temps/Simpler.cpp" line="28" column="69" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Schemas_Temps/Simpler.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Simpler_8cpp_1a39ebea1914996e78c68ef4f58c5f7d95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int inverser_par_diagonale</definition>
+        <argsstring>(const Matrice_Morse &amp;matrice, const DoubleTrav &amp;resu, const DoubleTab &amp;current, DoubleTrav &amp;correction_en_vitesse)</argsstring>
+        <name>inverser_par_diagonale</name>
+        <param>
+          <type>const <ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref> &amp;</type>
+          <declname>matrice</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref> &amp;</type>
+          <declname>resu</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref> &amp;</type>
+          <declname>current</declname>
+        </param>
+        <param>
+          <type><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref> &amp;</type>
+          <declname>correction_en_vitesse</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Schemas_Temps/Simpler.cpp" line="53" column="5" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Schemas_Temps/Simpler.cpp" bodystart="53" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Simpler.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EChaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Debog.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Bloc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Assembleur_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Statistiques.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Temps_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classSimpler_1a02209fa096a9be0355d45b85b9d7a518" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classSimpler" kindref="compound">Simpler</ref>,</highlight><highlight class="stringliteral">&quot;Simpler&quot;</highlight><highlight class="normal">,<ref refid="classSimple" kindref="compound">Simple</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>simpler<sp/>solveur_implicite_base<sp/>simpler<sp/>1<sp/>Simpler<sp/>method<sp/>for<sp/>incompressible<sp/>systems.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>seuil_convergence_implicite<sp/>floattant<sp/>seuil_convergence_implicite<sp/>0<sp/>Keyword<sp/>to<sp/>set<sp/>the<sp/>value<sp/>of<sp/>the<sp/>convergence<sp/>criteria<sp/>for<sp/>the<sp/>resolution<sp/>of<sp/>the<sp/>implicit<sp/>system<sp/>build<sp/>to<sp/>solve<sp/>either<sp/>the<sp/>Navier_Stokes<sp/>equation<sp/>(only<sp/>for<sp/>Simple<sp/>and<sp/>Simpler<sp/>algorithms)<sp/>or<sp/>a<sp/>scalar<sp/>equation.<sp/>It<sp/>is<sp/>adviced<sp/>to<sp/>use<sp/>the<sp/>default<sp/>value<sp/>(1e6)<sp/>to<sp/>solve<sp/>the<sp/>implicit<sp/>system<sp/>only<sp/>once<sp/>by<sp/>time<sp/>step.<sp/>This<sp/>value<sp/>must<sp/>be<sp/>decreased<sp/>when<sp/>a<sp/>coupling<sp/>between<sp/>problems<sp/>is<sp/>considered.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>seuil_convergence_solveur<sp/>floattant<sp/>seuil_convergence_solveur<sp/>1<sp/>value<sp/>of<sp/>the<sp/>convergence<sp/>criteria<sp/>for<sp/>the<sp/>resolution<sp/>of<sp/>the<sp/>implicit<sp/>system<sp/>build<sp/>by<sp/>solving<sp/>several<sp/>times<sp/>per<sp/>time<sp/>step<sp/>the<sp/>Navier_Stokes<sp/>equation<sp/>and<sp/>the<sp/>scalar<sp/>equations<sp/>if<sp/>any.<sp/>This<sp/>value<sp/>MUST<sp/>be<sp/>used<sp/>when<sp/>a<sp/>coupling<sp/>between<sp/>problems<sp/>is<sp/>considered<sp/>(should<sp/>be<sp/>set<sp/>to<sp/>a<sp/>value<sp/>typically<sp/>of<sp/>0.1<sp/>or<sp/>0.01).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>seuil_generation_solveur<sp/>floattant<sp/>seuil_generation_solveur<sp/>1<sp/>Option<sp/>to<sp/>create<sp/>a<sp/>GMRES<sp/>solver<sp/>and<sp/>use<sp/>vrel<sp/>as<sp/>the<sp/>convergence<sp/>threshold<sp/>(implicit<sp/>linear<sp/>system<sp/>Ax=B<sp/>will<sp/>be<sp/>solved<sp/>if<sp/>residual<sp/>error<sp/>||Ax-B||<sp/>is<sp/>lesser<sp/>than<sp/>vrel).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>seuil_verification_solveur<sp/>floattant<sp/>seuil_verification_solveur<sp/>1<sp/>Option<sp/>to<sp/>check<sp/>if<sp/>residual<sp/>error<sp/>||Ax-B||<sp/>is<sp/>lesser<sp/>than<sp/>vrel<sp/>after<sp/>the<sp/>implicit<sp/>linear<sp/>system<sp/>Ax=B<sp/>has<sp/>been<sp/>solved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>seuil_test_preliminaire_solveur<sp/>floattant<sp/>seuil_test_preliminaire_solveur<sp/>1<sp/>Option<sp/>to<sp/>decide<sp/>if<sp/>the<sp/>implicit<sp/>linear<sp/>system<sp/>Ax=B<sp/>should<sp/>be<sp/>solved<sp/>by<sp/>checking<sp/>if<sp/>the<sp/>residual<sp/>error<sp/>||Ax-B||<sp/>is<sp/>bigger<sp/>than<sp/>vrel.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>solveur<sp/>solveur_sys_base<sp/>solveur<sp/>1<sp/>Method<sp/>(different<sp/>from<sp/>the<sp/>default<sp/>one,<sp/>Gmres<sp/>with<sp/>diagonal<sp/>preconditioning)<sp/>to<sp/>solve<sp/>the<sp/>linear<sp/>system.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>no_qdm<sp/>rien<sp/>no_qdm<sp/>1<sp/>Keyword<sp/>to<sp/>not<sp/>solve<sp/>qdm<sp/>equation<sp/>(and<sp/>turbulence<sp/>models<sp/>of<sp/>these<sp/>equation).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>nb_it_max<sp/>entier<sp/>nb_it_max<sp/>1<sp/>Keyword<sp/>to<sp/>set<sp/>the<sp/>maximum<sp/>iterations<sp/>number<sp/>for<sp/>the<sp/>Gmres.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>controle_residu<sp/>rien<sp/>controle_residu<sp/>1<sp/>Keyword<sp/>of<sp/>Boolean<sp/>type<sp/>(by<sp/>default<sp/>0).<sp/>If<sp/>set<sp/>to<sp/>1,<sp/>the<sp/>convergence<sp/>occurs<sp/>if<sp/>the<sp/>residu<sp/>suddenly<sp/>increases.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classSimpler_1ab366344c23dbaab3f1a46620740bde65" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSimpler_1ab366344c23dbaab3f1a46620740bde65" kindref="member">Simpler::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="42"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimple_1a61ec51f064456d15e74eaf4328801a7a" kindref="member">Simple::printOn</ref>(os);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classSimpler_1a67c19f48bf7bd78b6c048a013664473f" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSimpler_1a67c19f48bf7bd78b6c048a013664473f" kindref="member">Simpler::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimple_1a18fd4fd6cfbe1e48137e66f5447b8c67" kindref="member">Simple::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>calcul<sp/>D<sp/>correction_en_vitesse=<sp/>E<sp/>current<sp/>+<sp/>resu<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>avec<sp/>D<sp/>diagonale<sp/>de<sp/>la<sp/>matrice<sp/>et<sp/>E<sp/>=<sp/>D-matrice<sp/>=-(matrice-D)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>inverser_par_diagonale(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matrice,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref>&amp;<sp/>resu,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>current,<ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref>&amp;<sp/>correction_en_vitesse)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">IntVect</ref>&amp;<sp/>tab1<sp/>=<sp/>matrice.<ref refid="classMatrice__Morse_1a4c6cb8e8ac31833e64b9fe6d26aa4ec0" kindref="member">get_tab1</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">IntVect</ref>&amp;<sp/>tab2<sp/>=<sp/>matrice.<ref refid="classMatrice__Morse_1ade95a94ce982fe5fcb1196508b8f0cc3" kindref="member">get_tab2</ref>();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>coeff<sp/>=<sp/>matrice.<ref refid="classMatrice__Morse_1a7fdede1c7eb63b9636e7873a2d25092b" kindref="member">get_coeff</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>deux_entrees=0;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_comp=1;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(resu.<ref refid="classTRUSTTab_1a829be3686b4cf6f076d1dc92870e18f9" kindref="member">nb_dim</ref>()==2)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>deux_entrees=1;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nb_comp=resu.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="classConstTRUSTTab__parts" kindref="compound">ConstDoubleTab_parts</ref><sp/>part(correction_en_vitesse);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_ligne_reel=part[0].dimension(0);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Determine<sp/>U^</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(deux_entrees==0)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb_ligne_reel;<sp/>i++)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;nb_comp;<sp/>j++)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t=resu(i);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k=tab1(i*nb_comp+j);<sp/>k&lt;tab1(i*nb_comp+j+1)-1;<sp/>k++)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t<sp/>-=<sp/>coeff(k)*current(tab2(k)-1);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>correction_en_vitesse(i)<sp/>=<sp/>t/matrice(i*nb_comp+j,i*nb_comp+j);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>verif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>test</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(0)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb_ligne_reel;<sp/>i++)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;nb_comp;<sp/>j++)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ii=i*nb_comp+j;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tmp=resu(i);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k&lt;matrice.<ref refid="classMatrice__Morse_1ad69929b5100f2785d737dd77e2c82196" kindref="member">nb_colonnes</ref>();<sp/>k++)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((k/nb_comp)!=i)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(matrice(ii,k))</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tmp<sp/>-=<sp/>matrice(ii,k)*current((k/nb_comp));</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>test=tmp/matrice(ii,ii);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!est_egal(test,correction_en_vitesse(i),1e-5))</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;i&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;j&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;resu(i)&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;test&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>ici<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;correction_en_vitesse(i)-test&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb_ligne_reel;<sp/>i++)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;nb_comp;<sp/>j++)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t=resu(i,j);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k=tab1(i*nb_comp+j);<sp/>k&lt;tab1(i*nb_comp+j+1)-1;<sp/>k++)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i1<sp/>=<sp/>(tab2(k)-1)/nb_comp;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j1<sp/>=<sp/>(tab2(k)-1)-i1*nb_comp;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t<sp/>-=<sp/>coeff(k)*current(i1,j1);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>diagonal_coefficient<sp/>=<sp/>matrice(i*nb_comp+j,i*nb_comp+j);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(diagonal_coefficient!=0);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>correction_en_vitesse(i,j)<sp/>=<sp/>t/diagonal_coefficient;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>test</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(0)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;milieu&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>corr2(correction_en_vitesse);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>matrice.<ref refid="classMatrice__Base_1a91c98b86a0bdce6ccc483dd453ef9ab2" kindref="member">multvect</ref>(current,corr2);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb_ligne_reel;<sp/>i++)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;nb_comp;<sp/>j++)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>i*nb_comp+j;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>corr2(i,j)<sp/>=<sp/>(resu(i,j)-corr2(i,j)+matrice(ii,ii)*current(i,j))/matrice(ii,ii);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>test<sp/>=<sp/>corr2(i,j);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!est_egal(test,correction_en_vitesse(i,j)))</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;i&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;j&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;resu(i,j)&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;test&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>ici<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;correction_en_vitesse(i,j)&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;current(i,j)&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;matrice(ii,ii)<sp/>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;fin&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>correction_en_vitesse.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="comment">//Entree<sp/>:<sp/>Uk-1<sp/>;<sp/>Pk-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="comment">//Sortie<sp/>Uk<sp/>;<sp/>Pk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="comment">//k<sp/>designe<sp/>une<sp/>iteration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="classSimpler_1a1c551ffbf84d9d035f4ee3ce52910449" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSimpler_1a1c551ffbf84d9d035f4ee3ce52910449" kindref="member">Simpler::iterer_NS</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>current,<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>pression,</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt,<ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matrice,</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>seuil_resol,<ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref>&amp;<sp/>secmem,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_ite,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>converge,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>ok)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(eqn.<ref refid="classEquation__base_1aa8151a96f63719523bf50ddd832e0f8f" kindref="member">probleme</ref>().<ref refid="classProbleme__base_1a40e3419cc379f9aea225fbef3dadf3ec" kindref="member">is_dilatable</ref>())</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>Simpler<sp/>cannot<sp/>be<sp/>used<sp/>with<sp/>a<sp/>quasi-compressible<sp/>fluid.&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;__FILE__&lt;&lt;(int)__LINE__&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>non<sp/>code&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="classParametre__implicite" kindref="compound">Parametre_implicite</ref>&amp;<sp/>param<sp/>=<sp/><ref refid="classSimpler__Base_1a48f161aca850ff2462803f62c040c173" kindref="member">get_and_set_parametre_implicite</ref>(eqn);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><ref refid="classSolveurSys" kindref="compound">SolveurSys</ref>&amp;<sp/>le_solveur_<sp/>=<sp/>param.<ref refid="classParametre__implicite_1a17400e45bc9f12d9eb3e228cf8696e16" kindref="member">solveur</ref>();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>&amp;<sp/>eqnNS<sp/>=<sp/>ref_cast(<ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>,eqn);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>gradP(current);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>correction_en_pression(pression);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>correction_en_vitesse(current);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>resu(current);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//int<sp/>deux_entrees<sp/>=<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//if<sp/>(current.nb_dim()==2)<sp/>deux_entrees<sp/>=<sp/>1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__Grad" kindref="compound">Operateur_Grad</ref>&amp;<sp/>gradient<sp/>=<sp/>eqnNS.<ref refid="classNavier__Stokes__std_1a840295836fce939b7861f1353da595ff" kindref="member">operateur_gradient</ref>();</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__Div" kindref="compound">Operateur_Div</ref>&amp;<sp/>divergence<sp/>=<sp/>eqnNS.<ref refid="classNavier__Stokes__std_1a614d41350181667ee295b87a72779c1a" kindref="member">operateur_divergence</ref>();</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>int<sp/>nb_comp<sp/>=<sp/>1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//int<sp/>nb_dim<sp/>=<sp/>current.nb_dim();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//if<sp/>(nb_dim==2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>nb_comp<sp/>=<sp/>current.dimension(1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Construction<sp/>de<sp/>matrice<sp/>et<sp/>resu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//matrice<sp/>=<sp/>A[Uk-1]<sp/>=<sp/>M/dt<sp/>+<sp/>CONV<sp/>+DIFF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//resu<sp/>=<sp/><sp/>A[Uk-1]Uk-1<sp/>-(A[Uk-1]Uk-1-Ss)<sp/>+<sp/>Sv<sp/>-BtPk-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/>gradient.<ref refid="classOperateur__Grad_1a48b8660fed0e8067d4e66a0b66140502" kindref="member">calculer</ref>(pression,gradP);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(eqnNS.<ref refid="classNavier__Stokes__std_1aaacb39375974353eda78e680b5c53dc9" kindref="member">has_interface_blocs</ref>())<sp/></highlight><highlight class="comment">/*<sp/>si<sp/>assembler_blocs<sp/>est<sp/>disponible<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>eqnNS.<ref refid="classEquation__base_1a43b8fd39221258e4909cea7b046220a9" kindref="member">assembler_blocs_avec_inertie</ref>({{<sp/></highlight><highlight class="stringliteral">&quot;vitesse&quot;</highlight><highlight class="normal">,<sp/>&amp;matrice<sp/>}},<sp/>resu);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>resu<sp/>-=<sp/>gradP;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>eqnNS.<ref refid="classEquation__base_1a6442c887ca10e6b6e59e0d36140f698c" kindref="member">assembler_avec_inertie</ref>(matrice,current,resu);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>le_solveur_-&gt;reinit();</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Resolution<sp/>du<sp/>systeme<sp/>:<sp/>D[Uk-1]UPk<sp/>=<sp/>E[Uk-1]Uk-1<sp/>+<sp/>Sv<sp/>+<sp/>Ss<sp/>-BtPk-1<sp/>+<sp/>(M/dt)Uk-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//matrice<sp/>=<sp/>A[Uk-1]<sp/>=<sp/>D<sp/>-<sp/>E<sp/>avec<sp/>D<sp/>partie<sp/>diagonale<sp/>de<sp/>A</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//correction_en_vitesse<sp/>=<sp/>UPk<sp/>;<sp/>current<sp/>=<sp/>Uk-1<sp/>;<sp/>resu<sp/>=<sp/>Sv<sp/>+<sp/>Ss<sp/>-BtPk-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>status<sp/>=<sp/>inverser_par_diagonale(matrice,resu,current,correction_en_vitesse);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status!=0)<sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Simpler::iterer_NS<sp/>correction_en_vitesse&quot;</highlight><highlight class="normal">,correction_en_vitesse);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Construction<sp/>de<sp/>matrice_en_pression_2<sp/>=<sp/>BD-1Bt[Uk-1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><ref refid="classMatrice" kindref="compound">Matrice</ref>&amp;<sp/>matrice_en_pression_2<sp/>=<sp/>eqnNS.<ref refid="classNavier__Stokes__std_1ade0331e225bfe2c312d4917eb127e3cd" kindref="member">matrice_pression</ref>();</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><ref refid="classSimpler__Base_1a9551a048f427dd25e9e6e5a054b95038" kindref="member">assembler_matrice_pression_implicite</ref>(eqnNS,matrice,matrice_en_pression_2);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><ref refid="classSolveurSys" kindref="compound">SolveurSys</ref>&amp;<sp/>solveur_pression_<sp/>=<sp/>eqnNS.<ref refid="classNavier__Stokes__std_1ae83d9f7a42531293583f32be1efd3d5f" kindref="member">solveur_pression</ref>();</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/>solveur_pression_-&gt;reinit();</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Calcul<sp/>de<sp/>BUPk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/>divergence.<ref refid="classOperateur__Div_1a1a0c6a55c5a037c765108418a92456f3" kindref="member">calculer</ref>(correction_en_vitesse,secmem);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/>secmem<sp/>*=<sp/>-1;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/>secmem.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nb_ite==1)</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>eqnNS.<ref refid="classNavier__Stokes__std_1ae71e6da0b4fcd369536c7334c828778d" kindref="member">assembleur_pression</ref>()-&gt;<ref refid="classAssembleur__base_1a1b7505480a151e375f3916e94e134a92" kindref="member">modifier_secmem</ref>(secmem);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Resolution<sp/>du<sp/>systeme<sp/>(BD-1Bt)P*_k<sp/>=<sp/>BUPk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//correction_en_pression<sp/>=<sp/>P*_k<sp/>;<sp/>secmem<sp/>=<sp/>BUPk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/>solveur_pression_.<ref refid="classSolveurSys_1a62ca198f0c5dc599e53b0535761e5138" kindref="member">resoudre_systeme</ref>(matrice_en_pression_2.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>(),</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secmem,correction_en_pression);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Calcul<sp/>de<sp/>Pk<sp/>=<sp/>Pk-1<sp/>+<sp/>P*_k</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>operator_add(pression,<sp/>correction_en_pression,<sp/>VECT_ALL_ITEMS);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/>eqnNS.<ref refid="classNavier__Stokes__std_1ae71e6da0b4fcd369536c7334c828778d" kindref="member">assembleur_pression</ref>()-&gt;<ref refid="classAssembleur__base_1ab63a4124e6e959dc5986c566748422f6" kindref="member">modifier_solution</ref>(pression);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Calcul<sp/>de<sp/>Bt<sp/>P*_k<sp/>et<sp/>ajustement<sp/>de<sp/>resu<sp/>a<sp/>-Bt<sp/>Pk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/>gradient-&gt;multvect(correction_en_pression,gradP);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/>resu<sp/>-=<sp/>gradP;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/>resu.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Simpler::iterer_NS<sp/>resu&quot;</highlight><highlight class="normal">,resu);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Resolution<sp/>du<sp/>systeme<sp/>:<sp/>A[Uk-1]U*_k<sp/>=<sp/>-BtPk<sp/>+<sp/>Sv<sp/>+<sp/>Ss<sp/>+<sp/>(M/dt)Uk-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//current<sp/>=<sp/>U*_k<sp/>;<sp/>resu<sp/>=<sp/>A[Uk-1]Uk-1<sp/>-<sp/>(A[Uk-1]Uk-1-Ss)<sp/>+<sp/>Sv<sp/>-BtPk<sp/>+<sp/>(M/dt)Uk-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/>le_solveur_.<ref refid="classSolveurSys_1a62ca198f0c5dc599e53b0535761e5138" kindref="member">resoudre_systeme</ref>(matrice,resu,current);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Calcul<sp/>de<sp/>BU*_k</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/>divergence.<ref refid="classOperateur__Div_1a1a0c6a55c5a037c765108418a92456f3" kindref="member">calculer</ref>(current,secmem);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/>secmem<sp/>*=<sp/>-1;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/>secmem.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Simpler::iterer_NS<sp/>secmem&quot;</highlight><highlight class="normal">,secmem);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Resolution<sp/>du<sp/>systeme<sp/>(BD-1Bt)P&apos;k<sp/>=<sp/>BU*_k</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//correction_en_pression<sp/>=<sp/>P&apos;k<sp/>;<sp/>secmem<sp/>=<sp/>BU*_k</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/>correction_en_pression<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/>solveur_pression_.<ref refid="classSolveurSys_1a62ca198f0c5dc599e53b0535761e5138" kindref="member">resoudre_systeme</ref>(matrice_en_pression_2.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>(),</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secmem,correction_en_pression);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Resolution<sp/>du<sp/>systeme<sp/>D[Uk-1](Uk-U*_k)<sp/>=<sp/>-BtP&apos;k</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//correction_en_vitesse<sp/>=<sp/>U&apos;k<sp/>=<sp/>Uk-U*_k<sp/>;<sp/>correction_en_pression<sp/>=<sp/>P&apos;k</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><ref refid="classSimple_1aba822b0b0b3d30c62205600a72602b37" kindref="member">calculer_correction_en_vitesse</ref>(correction_en_pression,gradP,correction_en_vitesse,matrice,gradient);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(0)</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>rr<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;mp_max_abs_vect(secmem)&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cerr&lt;&lt;secmem&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>secmem*=-1;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>divergence.<ref refid="classOperateur__Div_1a82f1f54208310b83c4b004247fa56db7" kindref="member">ajouter</ref>(correction_en_vitesse,<sp/>secmem);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>rr2<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;mp_max_abs_vect(secmem)&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Calcul<sp/>de<sp/>Uk<sp/>=<sp/>U*_k<sp/>+<sp/>U&apos;k</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/>current<sp/>+=<sp/>correction_en_vitesse;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/>current.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Simpler::iterer_NS<sp/>current&quot;</highlight><highlight class="normal">,current);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(0)</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>divergence.<ref refid="classOperateur__Div_1a1a0c6a55c5a037c765108418a92456f3" kindref="member">calculer</ref>(current,<sp/>secmem);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>apresdiv<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;mp_max_abs_vect(secmem)&lt;&lt;finl;;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Schemas_Temps/Simpler.cpp"/>
+  </compounddef>
+</doxygen>

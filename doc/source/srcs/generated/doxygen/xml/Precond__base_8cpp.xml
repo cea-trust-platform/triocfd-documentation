@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Precond__base_8cpp" kind="file" language="C++">
+    <compoundname>Precond_base.cpp</compoundname>
+    <includes refid="Precond__base_8h" local="no">Precond_base.h</includes>
+    <includes refid="Motcle_8h" local="no">Motcle.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Precond__base_8cpp_1ac97ee9dc9d7b092214c17b8d117ce242" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Precond_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Precond_basebases</name>
+        <initializer>={   &amp;( <ref refid="classObjet__U" kindref="compound">Objet_U</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Precond_base.cpp" line="19" column="54" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Precond_base.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2022,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Precond_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Motcle.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classPrecond__base_1acbab3d1540b9109a01da30ca2879c671" refkind="member"><highlight class="normal">Implemente_base_sans_constructeur(<ref refid="classPrecond__base" kindref="compound">Precond_base</ref>,</highlight><highlight class="stringliteral">&quot;Precond_base&quot;</highlight><highlight class="normal">,<ref refid="classObjet__U" kindref="compound">Objet_U</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>precond_base<sp/>objet_u<sp/>precond_base<sp/>-1<sp/>Basic<sp/>class<sp/>for<sp/>preconditioning.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classPrecond__base_1a791ad0340ff10e525c32baa4f74b6d0e" refkind="member"><highlight class="normal"><ref refid="classPrecond__base_1a791ad0340ff10e525c32baa4f74b6d0e" kindref="member">Precond_base::Precond_base</ref>()</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>status_<sp/>=<sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36caa68664bb0807d39c1ebf0e700ac33c6de" kindref="member">REINIT_ALL</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><ref refid="classPrecond__base_1a848534097f89d1f25993059450e7b0d2" kindref="member">echange_ev_solution_</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classPrecond__base_1a8dcae1d6e0e9c46a206f303647f0810e" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classPrecond__base_1a8dcae1d6e0e9c46a206f303647f0810e" kindref="member">Precond_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="30"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classPrecond__base_1a71a2306010493652c73acccc93912ab6" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classPrecond__base_1a71a2306010493652c73acccc93912ab6" kindref="member">Precond_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="39"><highlight class="comment">/*!<sp/>@brief<sp/>this<sp/>method<sp/>must<sp/>be<sp/>called<sp/>before<sp/>preconditionner()<sp/>whenever<sp/>the<sp/>matrix<sp/>changes<sp/>(coefficients<sp/>only<sp/>or<sp/>coefficients<sp/>and<sp/>structure)<sp/>to</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/><sp/><sp/>tell<sp/>the<sp/>object<sp/>to<sp/>recompute<sp/>some<sp/>matrix<sp/>related<sp/>data.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classPrecond__base_1ab18d88451a29f28d526041302c811e83" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPrecond__base_1ab18d88451a29f28d526041302c811e83" kindref="member">Precond_base::reinit</ref>(<ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36ca" kindref="member">Init_Status</ref><sp/>x)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(x)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36caa48983e5489acadc92dc8bc47cbdc1d09" kindref="member">READY</ref>:</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36caae5c7bd9d36f3b6a71b1d1b3497567581" kindref="member">REINIT_COEFF</ref>:</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status_<sp/>!=<sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36caa68664bb0807d39c1ebf0e700ac33c6de" kindref="member">REINIT_ALL</ref>)<sp/>status_<sp/>=<sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36caae5c7bd9d36f3b6a71b1d1b3497567581" kindref="member">REINIT_COEFF</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36caa68664bb0807d39c1ebf0e700ac33c6de" kindref="member">REINIT_ALL</ref>:</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>status_<sp/>=<sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36caa68664bb0807d39c1ebf0e700ac33c6de" kindref="member">REINIT_ALL</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Precond_base::reinit&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="62"><highlight class="comment">/*!<sp/>@brief<sp/>returns<sp/>1<sp/>if<sp/>the<sp/>implementation<sp/>accepts<sp/>Matrice_Morse_Sym<sp/>matrices,<sp/><sp/>otherwise<sp/>0.</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>(must<sp/>be<sp/>reimplemented<sp/>if<sp/>answer<sp/>is<sp/>0)</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classPrecond__base_1af53af7e627554de86aa5f4bf433b930b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPrecond__base_1af53af7e627554de86aa5f4bf433b930b" kindref="member">Precond_base::supporte_matrice_morse_sym</ref>()</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="75"><highlight class="comment">/*!<sp/>@brief<sp/>Call<sp/>this<sp/>method<sp/>to<sp/>change<sp/>the<sp/>behaviour<sp/>of<sp/>the<sp/>preconditionner()<sp/>method<sp/>0-&gt;<sp/>result<sp/>will<sp/>not<sp/>have<sp/>an<sp/>up-to-date<sp/>virtual<sp/>space</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*<sp/><sp/><sp/>1-&gt;<sp/>yes<sp/>it<sp/>will<sp/>(this<sp/>must<sp/>be<sp/>the<sp/>default<sp/>value<sp/>in<sp/>the<sp/>implementation)</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classPrecond__base_1a81d14817fdd8a125cdf2c43fd355b3bf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPrecond__base_1a81d14817fdd8a125cdf2c43fd355b3bf" kindref="member">Precond_base::set_echange_espace_virtuel_resultat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flag)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><ref refid="classPrecond__base_1a848534097f89d1f25993059450e7b0d2" kindref="member">echange_ev_solution_</ref><sp/>=<sp/>flag;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="85"><highlight class="comment">/*!<sp/>@brief<sp/>Call<sp/>to<sp/>the<sp/>prepare()<sp/>method<sp/>if<sp/>reinit()<sp/>has<sp/>been<sp/>called<sp/>previously,<sp/>then<sp/>call<sp/>to<sp/>preconditionner_().</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*<sp/>..</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*<sp/><sp/>If<sp/>echange_ev_solution<sp/>is<sp/>not<sp/>zero,<sp/>the<sp/>solution<sp/>vector<sp/>will<sp/>have<sp/>an<sp/>updated<sp/>virtual<sp/>space.</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classPrecond__base_1a20061d7ebbe45f61a6e2c65c723b3da3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPrecond__base_1a20061d7ebbe45f61a6e2c65c723b3da3" kindref="member">Precond_base::preconditionner</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>m,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>src,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>solution)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status_<sp/>!=<sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36caa48983e5489acadc92dc8bc47cbdc1d09" kindref="member">READY</ref>)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPrecond__base_1a3b2b51c8190a44300619f11a0957b158" kindref="member">prepare</ref>(m,<sp/>src);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>implementation<sp/>of<sp/>the<sp/>prepare()<sp/>method<sp/>must<sp/>call<sp/>ancestor<sp/>methods<sp/>until<sp/>Precond_base::prepare();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>assert(status_<sp/>==<sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36caa48983e5489acadc92dc8bc47cbdc1d09" kindref="member">READY</ref>);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ok<sp/>=<sp/><ref refid="classPrecond__base_1ab328b94681f392a416e936e6938fdf08" kindref="member">preconditionner_</ref>(m,<sp/>src,<sp/>solution);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ok;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="101"><highlight class="comment">/*!<sp/>@brief<sp/>prepares<sp/>the<sp/>preconditionner<sp/>if<sp/>needed<sp/>after<sp/>a<sp/>matrix<sp/>change<sp/>(reinit()<sp/>call).</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/>*<sp/>prepare()<sp/>is<sp/>public,<sp/>in<sp/>case<sp/>we<sp/>want<sp/>to<sp/>perform<sp/>preparation<sp/>separately<sp/>from<sp/>preconditionning<sp/>(eg<sp/>nested<sp/>solvers)</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/>*<sp/><sp/><sp/>but<sp/>calling<sp/>prepare()<sp/>is<sp/>not<sp/>mandatory<sp/>(done<sp/>automatically<sp/>in<sp/>preconditionner())</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/>*<sp/><sp/><sp/>m<sp/>is<sp/>the<sp/>new<sp/>matrix,<sp/>and<sp/>md<sp/>is<sp/>the<sp/>descriptor<sp/>of<sp/>the<sp/>solution<sp/>vector.</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classPrecond__base_1a3b2b51c8190a44300619f11a0957b158" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPrecond__base_1a3b2b51c8190a44300619f11a0957b158" kindref="member">Precond_base::prepare</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>m,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>v)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status_<sp/>!=<sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36caa48983e5489acadc92dc8bc47cbdc1d09" kindref="member">READY</ref>)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPrecond__base_1a9c08f049dc01c418f7f1a3d166aea264" kindref="member">prepare_</ref>(m,<sp/>v);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>assert(status_<sp/>==<sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36caa48983e5489acadc92dc8bc47cbdc1d09" kindref="member">READY</ref>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="115"><highlight class="comment">/*!<sp/>@brief<sp/>this<sp/>method<sp/>must<sp/>be<sp/>overloaded<sp/>if<sp/>some<sp/>preparation<sp/>is<sp/>necessary.</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*<sp/>It<sp/>is<sp/>called<sp/>after<sp/>a<sp/>call<sp/>to<sp/>reinit()<sp/>and<sp/>before<sp/>the<sp/>next<sp/>call<sp/>to<sp/>preconditionner_().</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Do<sp/>not<sp/>forget<sp/>to<sp/>call<sp/>the<sp/>prepare_()<sp/>method<sp/>of<sp/>the<sp/>ancestor<sp/>(at<sp/>the<sp/>end<sp/>of<sp/>the<sp/>routine,<sp/>otherwise</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>status<sp/>will<sp/>be<sp/>put<sp/>to<sp/>READY)<sp/>and<sp/>use<sp/>get_status()<sp/>to<sp/>know<sp/>what<sp/>should<sp/>be<sp/>prepared.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classPrecond__base_1a9c08f049dc01c418f7f1a3d166aea264" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPrecond__base_1a9c08f049dc01c418f7f1a3d166aea264" kindref="member">Precond_base::prepare_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>m,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>v)</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>status_<sp/>=<sp/><ref refid="classPrecond__base_1a1c72f8083998114548f759cd941d36caa48983e5489acadc92dc8bc47cbdc1d09" kindref="member">READY</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Precond_base.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Loi__Etat__GP__WC_8cpp" kind="file" language="C++">
+    <compoundname>Loi_Etat_GP_WC.cpp</compoundname>
+    <includes refid="Fluide__Weakly__Compressible_8h" local="no">Fluide_Weakly_Compressible.h</includes>
+    <includes refid="Loi__Etat__GP__WC_8h" local="no">Loi_Etat_GP_WC.h</includes>
+    <includes refid="Debog_8h" local="no">Debog.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Loi__Etat__GP__WC_8cpp_1ab1fce39034673d0729449e1fe16e76da" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Loi_Etat_GP_WCbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Loi_Etat_GP_WCbases</name>
+        <initializer>={   &amp;( <ref refid="classLoi__Etat__Mono__GP__base" kindref="compound">Loi_Etat_Mono_GP_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Dilatable/Weakly_Compressible/Milieu/Loi_Etat_GP_WC.cpp" line="20" column="97" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Dilatable/Weakly_Compressible/Milieu/Loi_Etat_GP_WC.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Weakly_Compressible.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Loi_Etat_GP_WC.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Debog.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classLoi__Etat__GP__WC_1a06cfdf9844909e8e5f2209343a4f30fd" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classLoi__Etat__GP__WC" kindref="compound">Loi_Etat_GP_WC</ref>,</highlight><highlight class="stringliteral">&quot;Loi_Etat_Gaz_Parfait_WC&quot;</highlight><highlight class="normal">,<ref refid="classLoi__Etat__Mono__GP__base" kindref="compound">Loi_Etat_Mono_GP_base</ref>);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>perfect_gaz_WC<sp/>loi_etat_gaz_parfait_base<sp/>gaz_parfait_WC<sp/>1<sp/>Class<sp/>for<sp/>perfect<sp/>gas<sp/>state<sp/>law<sp/>used<sp/>with<sp/>a<sp/>weakly-compressible<sp/>fluid.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>Cp<sp/>double<sp/>Cp<sp/>0<sp/>Specific<sp/>heat<sp/>at<sp/>constant<sp/>pressure<sp/>(J/kg/K).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>Cv<sp/>double<sp/>Cv<sp/>1<sp/>Specific<sp/>heat<sp/>at<sp/>constant<sp/>volume<sp/>(J/kg/K).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>gamma<sp/>double<sp/>gamma<sp/>1<sp/>Cp/Cv</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>Prandtl<sp/>double<sp/>Prandtl<sp/>0<sp/>Prandtl<sp/>number<sp/>of<sp/>the<sp/>gas<sp/>Pr=mu*Cp/lambda</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classLoi__Etat__GP__WC_1a65269e40ffdce52517805a8b06ecd4db" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classLoi__Etat__GP__WC_1a65269e40ffdce52517805a8b06ecd4db" kindref="member">Loi_Etat_GP_WC::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="28"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classLoi__Etat__GP__WC_1a256ef698e9c05b52d0f82e0d37b3c86a" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLoi__Etat__GP__WC_1a256ef698e9c05b52d0f82e0d37b3c86a" kindref="member">Loi_Etat_GP_WC::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Lecture<sp/>de<sp/>la<sp/>loi<sp/>d&apos;etat<sp/>gaz<sp/>parfait<sp/>pour<sp/>le<sp/>WC<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="classLoi__Etat__Mono__GP__base_1aef89a7df6ba33728318184a67672e9be" kindref="member">Loi_Etat_Mono_GP_base::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classLoi__Etat__Mono__GP__base_1a93b8b773f3cc567bf88f99a3ba06741c" kindref="member">rho_constant_pour_debug_</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Remove<sp/>the<sp/>keyword<sp/>rho_constant_pour_debug<sp/>from<sp/>your<sp/>data<sp/>file<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classLoi__Etat__GP__WC_1a54c8534b7890e0e52bf357af89cde628" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLoi__Etat__GP__WC_1a912e6088eed2be10c6e480b7f1577a2f" kindref="member">Loi_Etat_GP_WC::calculer_masse_volumique</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>P,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>T)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="47"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classLoi__Etat__GP__base_1ad66c883d830c44f646284db45517699b" kindref="member">Loi_Etat_Mono_GP_base::calculer_masse_volumique</ref>(P,T);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classLoi__Etat__GP__WC_1aeaeef5b1016cdd47c5f63b31b6c504e5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLoi__Etat__GP__WC_1aeaeef5b1016cdd47c5f63b31b6c504e5" kindref="member">Loi_Etat_GP_WC::inverser_Pth</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rho)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Should<sp/>not<sp/>enter<sp/>in<sp/>the<sp/>method<sp/>Loi_Etat_GP_WC::inverser_Pth<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1.e10;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="58"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>la<sp/>masse<sp/>volumique</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classLoi__Etat__GP__WC_1a912e6088eed2be10c6e480b7f1577a2f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLoi__Etat__GP__WC_1a912e6088eed2be10c6e480b7f1577a2f" kindref="member">Loi_Etat_GP_WC::calculer_masse_volumique</ref>()</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab_ICh<sp/>=<sp/><ref refid="classLoi__Etat__base_1adabe45fdfaf4962aa8ef0daa2b9109f2" kindref="member">le_fluide</ref>-&gt;inco_chaleur().valeurs();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classFluide__Weakly__Compressible" kindref="compound">Fluide_Weakly_Compressible</ref>&amp;<sp/>FWC<sp/>=<sp/>ref_cast(<ref refid="classFluide__Weakly__Compressible" kindref="compound">Fluide_Weakly_Compressible</ref>,<ref refid="classLoi__Etat__base_1adabe45fdfaf4962aa8ef0daa2b9109f2" kindref="member">le_fluide</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab_rho<sp/>=<sp/><ref refid="classLoi__Etat__base_1adabe45fdfaf4962aa8ef0daa2b9109f2" kindref="member">le_fluide</ref>-&gt;masse_volumique().valeurs();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>pres<sp/>=<sp/>FWC.<ref refid="classFluide__Weakly__Compressible_1a0020db46151da20fa5e20a496c173039" kindref="member">pression_th_tab</ref>();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>tab_rho.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>som=0<sp/>;<sp/>som&lt;n<sp/>;<sp/>som++)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLoi__Etat__base_1a35a0877b17bda1981f04da05f2ba3ffe" kindref="member">tab_rho_np1</ref>(som)<sp/>=<sp/><ref refid="classLoi__Etat__GP__WC_1a912e6088eed2be10c6e480b7f1577a2f" kindref="member">calculer_masse_volumique</ref>(pres(som,0),tab_ICh(som,0));</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tab_rho(som,0)<sp/>=<sp/>0.5<sp/>*<sp/>(<sp/><ref refid="classLoi__Etat__base_1a871fa2f34cfdb48f795f8d76b6058a45" kindref="member">tab_rho_n</ref>(som)<sp/>+<sp/><ref refid="classLoi__Etat__base_1a35a0877b17bda1981f04da05f2ba3ffe" kindref="member">tab_rho_np1</ref>(som)<sp/>);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>tab_rho.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="classLoi__Etat__base_1a35a0877b17bda1981f04da05f2ba3ffe" kindref="member">tab_rho_np1</ref>.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><ref refid="classLoi__Etat__base_1adabe45fdfaf4962aa8ef0daa2b9109f2" kindref="member">le_fluide</ref>-&gt;calculer_rho_face(<ref refid="classLoi__Etat__base_1a35a0877b17bda1981f04da05f2ba3ffe" kindref="member">tab_rho_np1</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Loi_Etat_GP_WC::calculer_masse_volumique,<sp/>tab_rho_np1&quot;</highlight><highlight class="normal">,<ref refid="classLoi__Etat__base_1a35a0877b17bda1981f04da05f2ba3ffe" kindref="member">tab_rho_np1</ref>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Loi_Etat_GP_WC::calculer_masse_volumique,<sp/>tab_rho&quot;</highlight><highlight class="normal">,tab_rho);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Dilatable/Weakly_Compressible/Milieu/Loi_Etat_GP_WC.cpp"/>
+  </compounddef>
+</doxygen>

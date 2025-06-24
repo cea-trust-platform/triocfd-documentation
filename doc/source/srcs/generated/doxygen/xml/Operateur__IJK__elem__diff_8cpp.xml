@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Operateur__IJK__elem__diff_8cpp" kind="file" language="C++">
+    <compoundname>Operateur_IJK_elem_diff.cpp</compoundname>
+    <includes refid="Operateur__IJK__elem__diff_8h" local="no">Operateur_IJK_elem_diff.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Operateur__IJK__elem__diff_8cpp_1ab503bc5489386e46bb6c1ee1126df9b9" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Operateur_IJK_elem_diffbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Operateur_IJK_elem_diffbases</name>
+        <initializer>={   &amp;( <ref refid="classTRUST__Deriv" kindref="compound">TRUST_Deriv</ref>&lt; <ref refid="classOperateur__IJK__elem__diff__base__double" kindref="compound">Operateur_IJK_elem_diff_base_double</ref> &gt; ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/FOR_TRUST/Operateurs/Operateur_IJK_elem_diff.cpp" line="24" column="76" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/FOR_TRUST/Operateurs/Operateur_IJK_elem_diff.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Operateur_IJK_elem_diff.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory<sp/>:<sp/>$TRIOCFD_ROOT/src/Multiphase/Front_tracking_IJK/IJK_Kernel/Operateurs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur_IJK_elem_diff.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classOperateur__IJK__elem__diff_1a1607d33297e36f752255d43e07dd5a67" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<sp/><ref refid="classOperateur__IJK__elem__diff" kindref="compound">Operateur_IJK_elem_diff</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Operateur_IJK_elem_diff&quot;</highlight><highlight class="normal">,<sp/>OWN_PTR(<sp/><ref refid="classOperateur__IJK__elem__diff__base__double" kindref="compound">Operateur_IJK_elem_diff_base_double</ref><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classOperateur__IJK__elem__diff_1aeac532e1dbd49b14fb543461b40d9c62" refkind="member"><highlight class="normal"><ref refid="classOperateur__IJK__elem__diff_1aeac532e1dbd49b14fb543461b40d9c62" kindref="member">Operateur_IJK_elem_diff::Operateur_IJK_elem_diff</ref>()</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a079a419c5706609c311925635f61aedf" kindref="member">diffusion_op_words_</ref><sp/>=<sp/><ref refid="classMotcles" kindref="compound">Motcles</ref>(6);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a079a419c5706609c311925635f61aedf" kindref="member">diffusion_op_words_</ref>[0]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;standard&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a079a419c5706609c311925635f61aedf" kindref="member">diffusion_op_words_</ref>[1]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;uniform&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a079a419c5706609c311925635f61aedf" kindref="member">diffusion_op_words_</ref>[2]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;anisotropic&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a079a419c5706609c311925635f61aedf" kindref="member">diffusion_op_words_</ref>[3]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;vectorial&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a079a419c5706609c311925635f61aedf" kindref="member">diffusion_op_words_</ref>[4]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;vectorialanisotropic&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a079a419c5706609c311925635f61aedf" kindref="member">diffusion_op_words_</ref>[5]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;structural&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1abb5d95aecf8212da6f2270e0b81873a4" kindref="member">prefix_</ref><sp/>=<sp/><ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;OpDiff&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a72287a5c744c0c9690dc009e727cbd97" kindref="member">suffix_</ref><sp/>=<sp/><ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;IJKScalar_double&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a56a1099520148fd2ccc844f2d7b22993" kindref="member">diffusion_op_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a27005f13310e63e9c035d510dde02131" kindref="member">diffusion_op_options_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a1c518f4a843151b7a68dc25b105611e7" kindref="member">is_cast_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a4f2e9da34b89423f2a3c747944019870" kindref="member">diffusion_rank_</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classOperateur__IJK__elem__diff_1a78dc47892a21db73133d9bc5a4e79dc4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__IJK__elem__diff_1a78dc47892a21db73133d9bc5a4e79dc4" kindref="member">Operateur_IJK_elem_diff::reset_operator</ref>()</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a56a1099520148fd2ccc844f2d7b22993" kindref="member">diffusion_op_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a27005f13310e63e9c035d510dde02131" kindref="member">diffusion_op_options_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a1c518f4a843151b7a68dc25b105611e7" kindref="member">is_cast_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a4f2e9da34b89423f2a3c747944019870" kindref="member">diffusion_rank_</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classOperateur__IJK__elem__diff_1a9c80b0cb5816ad6ab5e174580de9d076" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classOperateur__IJK__elem__diff_1a9c80b0cb5816ad6ab5e174580de9d076" kindref="member">Operateur_IJK_elem_diff::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="54"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>OWN_PTR(Operateur_IJK_elem_diff_base_double)::printOn(<sp/>os<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<sp/><ref refid="classOperateur__IJK__elem__diff_1a079a419c5706609c311925635f61aedf" kindref="member">diffusion_op_words_</ref>[<ref refid="classOperateur__IJK__elem__diff_1a4f2e9da34b89423f2a3c747944019870" kindref="member">diffusion_rank_</ref>];</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classOperateur__IJK__elem__diff_1ab097557b758e2827c81a90249b431813" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classOperateur__IJK__elem__diff_1ab097557b758e2827c81a90249b431813" kindref="member">Operateur_IJK_elem_diff::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a338bc45cc215ae9142dfb9f6b2e0b8b8" kindref="member">typer_diffusion_op</ref>(is);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Param<sp/>param(que_suis_je());</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>set_param(param);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>param.lire_sans_accolade(is);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classOperateur__IJK__elem__diff_1ae36c77df689116e5a8102c43e331808a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__IJK__elem__diff_1ae36c77df689116e5a8102c43e331808a" kindref="member">Operateur_IJK_elem_diff::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;velocity_diffusion_form&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classOperateur__IJK__elem__diff_1a083c90fff643bf1b17e6aa54ca942919" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classOperateur__IJK__elem__diff_1a083c90fff643bf1b17e6aa54ca942919" kindref="member">Operateur_IJK_elem_diff::lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classOperateur__IJK__elem__diff_1ad9c0a8af6d32cecbdd45a2e1b07c05ea" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classOperateur__IJK__elem__diff_1a338bc45cc215ae9142dfb9f6b2e0b8b8" kindref="member">Operateur_IJK_elem_diff::typer_diffusion_op</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classOperateur__IJK__elem__diff_1a1c518f4a843151b7a68dc25b105611e7" kindref="member">is_cast_</ref>)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a78dc47892a21db73133d9bc5a4e79dc4" kindref="member">reset_operator</ref>();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Read<sp/>and<sp/>Cast<sp/>Operateur_IJK_elem_diff<sp/>:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>word;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>word;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type(<ref refid="classOperateur__IJK__elem__diff_1a49200ccb7afd6d6b098ac6ac6b2293dd" kindref="member">get_diffusion_op_type</ref>(word));</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(type);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Operateur_IJK_elem_diff<sp/>cast<sp/>to<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>type<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a1c518f4a843151b7a68dc25b105611e7" kindref="member">is_cast_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="classOperateur__IJK__elem__diff_1a338bc45cc215ae9142dfb9f6b2e0b8b8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__IJK__elem__diff_1a338bc45cc215ae9142dfb9f6b2e0b8b8" kindref="member">Operateur_IJK_elem_diff::typer_diffusion_op</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*diffusion_op)<sp/></highlight><highlight class="comment">//<sp/>(const<sp/>char<sp/>*<sp/>convection_op)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classOperateur__IJK__elem__diff_1a1c518f4a843151b7a68dc25b105611e7" kindref="member">is_cast_</ref>)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a78dc47892a21db73133d9bc5a4e79dc4" kindref="member">reset_operator</ref>();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Read<sp/>and<sp/>Cast<sp/>Operateur_IJK_elem_diff<sp/>:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>word(diffusion_op);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type(<ref refid="classOperateur__IJK__elem__diff_1a49200ccb7afd6d6b098ac6ac6b2293dd" kindref="member">get_diffusion_op_type</ref>(word));</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(type);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Operateur_IJK_elem_diff<sp/>cast<sp/>to<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>type<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a1c518f4a843151b7a68dc25b105611e7" kindref="member">is_cast_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classOperateur__IJK__elem__diff_1a49200ccb7afd6d6b098ac6ac6b2293dd" refkind="member"><highlight class="normal"><ref refid="classNom" kindref="compound">Nom</ref><sp/><ref refid="classOperateur__IJK__elem__diff_1a49200ccb7afd6d6b098ac6ac6b2293dd" kindref="member">Operateur_IJK_elem_diff::get_diffusion_op_type</ref>(<ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>word)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type(<ref refid="classOperateur__IJK__elem__diff_1abb5d95aecf8212da6f2270e0b81873a4" kindref="member">prefix_</ref>);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a4f2e9da34b89423f2a3c747944019870" kindref="member">diffusion_rank_</ref><sp/>=<sp/><ref refid="classOperateur__IJK__elem__diff_1a079a419c5706609c311925635f61aedf" kindref="member">diffusion_op_words_</ref>.<ref refid="classMotcles_1abd4862b9c8552b88a48927e67bd48d9d" kindref="member">search</ref>(word);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(<ref refid="classOperateur__IJK__elem__diff_1a4f2e9da34b89423f2a3c747944019870" kindref="member">diffusion_rank_</ref>)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a56a1099520148fd2ccc844f2d7b22993" kindref="member">diffusion_op_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a56a1099520148fd2ccc844f2d7b22993" kindref="member">diffusion_op_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Uniform&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a56a1099520148fd2ccc844f2d7b22993" kindref="member">diffusion_op_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Anisotropic&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3:</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a56a1099520148fd2ccc844f2d7b22993" kindref="member">diffusion_op_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Vectorial&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4:</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a56a1099520148fd2ccc844f2d7b22993" kindref="member">diffusion_op_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;VectorialAnisotropic&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>5:</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOperateur__IJK__elem__diff_1a56a1099520148fd2ccc844f2d7b22993" kindref="member">diffusion_op_</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;StructuralOnly&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;ERROR<sp/>:<sp/>Diffusion<sp/>operators<sp/>(elem)<sp/>that<sp/>are<sp/>already<sp/>implemented<sp/>are:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/><ref refid="classOperateur__IJK__elem__diff_1a079a419c5706609c311925635f61aedf" kindref="member">diffusion_op_words_</ref><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">abort</ref>();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>type<sp/>+=<sp/><ref refid="classOperateur__IJK__elem__diff_1a56a1099520148fd2ccc844f2d7b22993" kindref="member">diffusion_op_</ref>;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/>type<sp/>+=<sp/><ref refid="classOperateur__IJK__elem__diff_1a72287a5c744c0c9690dc009e727cbd97" kindref="member">suffix_</ref>;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(type);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>type;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="classOperateur__IJK__elem__diff_1aa5f94f3d0d819824327b1a1f65a3b121" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__IJK__elem__diff_1aa5f94f3d0d819824327b1a1f65a3b121" kindref="member">Operateur_IJK_elem_diff::set_conductivity_coefficient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>uniform_lambda,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classIJK__Field__local__template" kindref="compound">IJK_Field_local_double</ref>&amp;<sp/>lambda,<sp/><ref refid="classIJK__Field__local__template" kindref="compound">IJK_Field_local_double</ref>&amp;<sp/>coeff_field_x,</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classIJK__Field__local__template" kindref="compound">IJK_Field_local_double</ref>&amp;<sp/>coeff_field_y,<sp/><ref refid="classIJK__Field__local__template" kindref="compound">IJK_Field_local_double</ref>&amp;<sp/>coeff_field_z)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(<ref refid="classOperateur__IJK__elem__diff_1a4f2e9da34b89423f2a3c747944019870" kindref="member">diffusion_rank_</ref>)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Standard</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>().<ref refid="classOperateur__IJK__elem__diff__base__double_1a3df31e248f23bbdfa60573e9dc8191d2" kindref="member">set_lambda</ref>(lambda);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Uniform</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>().<ref refid="classOperateur__IJK__elem__diff__base__double_1a28e9b766ecbba492991a84d6f9db6c09" kindref="member">set_uniform_lambda</ref>(uniform_lambda);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Anisotropic</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>().<ref refid="classOperateur__IJK__elem__diff__base__double_1a87f2c56f9af8f194e657a635804f9fc3" kindref="member">set_coeff_x_y_z</ref>(coeff_field_x,<sp/>coeff_field_y,<sp/>coeff_field_z);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3:</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Vectorial</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>().<ref refid="classOperateur__IJK__elem__diff__base__double_1a87f2c56f9af8f194e657a635804f9fc3" kindref="member">set_coeff_x_y_z</ref>(coeff_field_x,<sp/>coeff_field_y,<sp/>coeff_field_z);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4:</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>VectorialAnisotropic</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>().<ref refid="classOperateur__IJK__elem__diff__base__double_1a87f2c56f9af8f194e657a635804f9fc3" kindref="member">set_coeff_x_y_z</ref>(coeff_field_x,<sp/>coeff_field_y,<sp/>coeff_field_z);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>5:</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>StructuralOnly</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>().<ref refid="classOperateur__IJK__elem__diff__base__double_1a87f2c56f9af8f194e657a635804f9fc3" kindref="member">set_coeff_x_y_z</ref>(coeff_field_x,<sp/>coeff_field_y,<sp/>coeff_field_z);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;ERROR<sp/>:<sp/>The<sp/>conductivity<sp/>can<sp/>not<sp/>be<sp/>set<sp/>properly&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">abort</ref>();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/FOR_TRUST/Operateurs/Operateur_IJK_elem_diff.cpp"/>
+  </compounddef>
+</doxygen>

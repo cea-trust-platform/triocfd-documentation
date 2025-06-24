@@ -1,0 +1,436 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Eq__ODVM_8cpp" kind="file" language="C++">
+    <compoundname>Eq_ODVM.cpp</compoundname>
+    <includes refid="Eq__ODVM_8h" local="no">Eq_ODVM.h</includes>
+    <includes refid="Modele__turbulence__hyd__base_8h" local="no">Modele_turbulence_hyd_base.h</includes>
+    <includes refid="EcrFicCollecte_8h" local="no">EcrFicCollecte.h</includes>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="Eq__ODVM_8cpp_1acd1636d4e71f645d469c49a7ba8e18a4" prot="public" static="no">
+        <name>KAPPA</name>
+        <initializer>0.415</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Incompressible/Equations/UNUSED/Eq_ODVM.cpp" line="26" column="9" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Incompressible/Equations/UNUSED/Eq_ODVM.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Eq__ODVM_8cpp_1a7ea42c181073238007fa132762cbf634" prot="public" static="no">
+        <name>PR_T</name>
+        <initializer>0.9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Incompressible/Equations/UNUSED/Eq_ODVM.cpp" line="27" column="9" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Incompressible/Equations/UNUSED/Eq_ODVM.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Eq__ODVM_8cpp_1a5c71a5e59a53413cd6c270266d63b031" prot="public" static="no">
+        <name>R</name>
+        <initializer>0.5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Incompressible/Equations/UNUSED/Eq_ODVM.cpp" line="28" column="9" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Incompressible/Equations/UNUSED/Eq_ODVM.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Eq__ODVM_8cpp_1a6650570313d064b37110f70a15cae530" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Eq_ODVMbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Eq_ODVMbases</name>
+        <initializer>={   &amp;( <ref refid="classObjet__U" kindref="compound">Objet_U</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Incompressible/Equations/UNUSED/Eq_ODVM.cpp" line="30" column="69" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Incompressible/Equations/UNUSED/Eq_ODVM.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Eq_ODVM.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TURBULENCE_ROOT/src/ThHyd/Incompressible/Equations/UNUSED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Eq_ODVM.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Modele_turbulence_hyd_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EcrFicCollecte.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KAPPA<sp/>0.415</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PR_T<sp/>0.9</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>R<sp/>0.5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classEq__ODVM_1ae4961001f2da9528b751bd965604c19f" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classEq__ODVM" kindref="compound">Eq_ODVM</ref>,</highlight><highlight class="stringliteral">&quot;Eq_ODVM&quot;</highlight><highlight class="normal">,<ref refid="classObjet__U" kindref="compound">Objet_U</ref>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classEq__ODVM_1a96046f3acfc6208dbb9dde2a902d8fc4" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classEq__ODVM_1a96046f3acfc6208dbb9dde2a902d8fc4" kindref="member">Eq_ODVM::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="34"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classEq__ODVM_1a2f425d5308b8835edd29f23282ea3660" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classEq__ODVM_1a2f425d5308b8835edd29f23282ea3660" kindref="member">Eq_ODVM::readOn</ref>(<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">/*void<sp/>Eq_ODVM::init_profile_CHT(double<sp/>T0,<sp/>double<sp/>Flux,<sp/>double<sp/>alpha,<sp/>double<sp/>nu)</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/>Flux<sp/>=<sp/>Flux/u_tau;</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/>double<sp/>Pr<sp/>=<sp/>nu/alpha;</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/>double<sp/>Beta<sp/>=<sp/>pow(3.85*pow(Pr,1./3.)-1.3,2.)+2.12*log(Pr);</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/>Tm(0)<sp/>=<sp/>T0;</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/>for(int<sp/>i=1;i&lt;N;i++)</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/>double<sp/>y_plus<sp/>=<sp/>Y(i)*u_tau/nu;</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/>double<sp/>Gamma<sp/>=<sp/>(0.01*pow(Pr*y_plus,4.))/(1.+5.*pow(Pr,3.)*y_plus);</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/>double<sp/>T_plus<sp/>=<sp/>Pr*y_plus*exp(-Gamma);</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/>T_plus<sp/>+=<sp/>(2.12*log(1.+y_plus)<sp/>+<sp/>Beta)*exp(-1./(Gamma+1e-20));</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/>Tm(i)<sp/>=<sp/>T0<sp/>+<sp/>T_plus*Flux;</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/>}*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classEq__ODVM_1af691927865ffbd472e3ea06093b42e16" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEq__ODVM_1af691927865ffbd472e3ea06093b42e16" kindref="member">Eq_ODVM::init_profile_CHT</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Ts,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Tf)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;N;<sp/>i++)<sp/>Tm(i)<sp/>=<sp/>Ts<sp/>+<sp/>Y(i)*(Tf-Ts)/Y(N-1);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classEq__ODVM_1a41fa0de86edfdaddc812f43a1bec8f9f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEq__ODVM_1a41fa0de86edfdaddc812f43a1bec8f9f" kindref="member">Eq_ODVM::initialiser</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n,</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>G,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dist,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>T0,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Tn,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t0,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>K,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>f)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>N<sp/>=<sp/>n;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>gamma<sp/>=<sp/>G;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//dy<sp/>=<sp/>dist/(N-1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>y0<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//yn<sp/>=<sp/>dist;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>facteur<sp/>=<sp/>f;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>tn<sp/>=<sp/>t0;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>Tmles_n<sp/><sp/><sp/>=<sp/>Tn;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>Tples_n<sp/><sp/><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>Tples2m_n<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>Tw_m_n<sp/><sp/><sp/><sp/>=<sp/>T0;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>Theta<sp/>=<sp/>K/(K+1.);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>compt<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>u_tau<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>Y.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>F.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>Tm.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>Tp.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>qb.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>qf.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>Q.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>alpha_tot.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>SEC_MEM.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>eps.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>prod.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>mol_diff.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>tur_diff.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(N);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="classEq__ODVM_1a41374822789b373c321c217648c59678" kindref="member">mailler_fin</ref>(dist,<sp/>facteur);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;N;<sp/>i++)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Y(i)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>i*dy;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Tm(i)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>(Tn<sp/>-<sp/>T0)*Y(i)/dist<sp/>+<sp/>T0;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Tp(i)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>qb(i)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>qf(i)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>eps(i)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>prod(i)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mol_diff(i)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tur_diff(i)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SEC_MEM(i)<sp/><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Q(i)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1.;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>dy_w<sp/>=<sp/>Y(1)<sp/>-<sp/>Y(0);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="classEq__ODVM_1a41374822789b373c321c217648c59678" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEq__ODVM_1a41374822789b373c321c217648c59678" kindref="member">Eq_ODVM::mailler_fin</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dist,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>un_facteur)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//********************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Mise<sp/>en<sp/>place<sp/>du<sp/>maillage<sp/>fin<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//********************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><ref refid="classEcrFicCollecte" kindref="compound">EcrFicCollecte</ref><sp/>fic_mesh(</highlight><highlight class="stringliteral">&quot;tble_mesh.dat&quot;</highlight><highlight class="normal">,ios::app);<sp/></highlight><highlight class="comment">//<sp/>ouverture<sp/>du<sp/>fichier<sp/>conv.dat</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>Y(0)=0.;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(un_facteur==1.)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dy=dist/(N-1);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=1<sp/>;<sp/>i&lt;N<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Y(i)=i*dy;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dy<sp/>=<sp/>dist/(1.-pow(un_facteur,N-1));</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=1<sp/>;<sp/>i&lt;N<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Y(i)=dy*(1-pow(un_facteur,i));</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0<sp/>;<sp/>i&lt;N<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fic_mesh<sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>Y(i)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>fic_mesh<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Fin<sp/>mise<sp/>en<sp/>place<sp/>du<sp/>maillage<sp/>fin<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="classEq__ODVM_1a202a3fa7db755305fbadf1ae09539704" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEq__ODVM_1a202a3fa7db755305fbadf1ae09539704" kindref="member">Eq_ODVM::calculer_dt_stab</ref>()</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/>dt=1000.;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=1;<sp/>i&lt;N-1;<sp/>i++)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dy=0.5*(Y(i+1)-Y(i-1));</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((0.5*dy*dy/alpha_tot[i])&lt;dt)<sp/>dt<sp/>=<sp/>0.5*dy*dy/alpha_tot[i];</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="classEq__ODVM_1afaf156b57a54c1a8f042206c7d3f2a75" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEq__ODVM_1afaf156b57a54c1a8f042206c7d3f2a75" kindref="member">Eq_ODVM::calculer_secmem_qb</ref>(<sp/>)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Ap,<sp/>Am;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>SEC_MEM[0]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=1;<sp/>i&lt;N-1;<sp/>i++)</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dy=0.5*(Y(i+1)-Y(i-1));</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Ap<sp/>=<sp/>alpha*(qb[i+1]-qb[i])/(Y(i+1)-Y(i));</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Am<sp/>=<sp/>alpha*(qb[i]-qb[i-1])/(Y(i)-Y(i-1));</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mol_diff[i]<sp/>=<sp/>(Ap<sp/>-<sp/>Am)/(dy);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Ap<sp/>=<sp/>(qb[i+1]-qb[i])/(Y(i+1)-Y(i))*(alpha_tot[i+1]+alpha_tot[i]-2.*alpha)/2.;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Am<sp/>=<sp/>(qb[i]-qb[i-1])/(Y(i)-Y(i-1))*(alpha_tot[i]+alpha_tot[i-1]-2.*alpha)/2.;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tur_diff[i]<sp/>=<sp/>(Ap<sp/>-<sp/>Am)/(dy);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(i==1)</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qb[1]=qb[0];</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mol_diff[1]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tur_diff[1]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>prod[i]<sp/>=<sp/>(alpha_tot[i]-alpha)*(Tm[i+1]-Tm[i-1])*(Tm[i+1]-Tm[i-1])/4./dy/dy;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>f<sp/>=<sp/>(1+tanh(0.08*(30-Y[i]*u_tau/nu)))/2.;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>eps[i]<sp/>=<sp/>(1-f)*sqrt(CMU)<sp/>*<sp/>qb[i]/R<sp/>*<sp/>u_tau*u_tau/(nu+(alpha_tot[i]-alpha)*PR_T);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>eps[i]<sp/>+=<sp/>f*2.*(qb[1]-qb[0])*alpha/(Y(1)-Y(0))/(Y(1)-Y(0));</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SEC_MEM[i]<sp/>=<sp/>mol_diff[i]+tur_diff[i]<sp/>+<sp/>prod[i]<sp/>-<sp/>eps[i];</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205" refid="classEq__ODVM_1a04b24e43f57035b57de585c06b5bb7f9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEq__ODVM_1a04b24e43f57035b57de585c06b5bb7f9" kindref="member">Eq_ODVM::calculer_secmem_qf</ref>(<sp/>)</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Ap,<sp/>Am;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/>SEC_MEM[0]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=1;<sp/>i&lt;N-1;<sp/>i++)</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dy=0.5*(Y(i+1)-Y(i-1));</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pour<sp/>Flux<sp/>impose<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(i==1)<sp/>qf[0]=qf[1];</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Ap<sp/>=<sp/>alpha*(qf[i+1]-qf[i])/(Y(i+1)-Y(i));</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Am<sp/>=<sp/>alpha*(qf[i]-qf[i-1])/(Y(i)-Y(i-1));</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mol_diff[i]<sp/>=<sp/>(Ap<sp/>-<sp/>Am)/(dy);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Ap<sp/>=<sp/>(qf[i+1]-qf[i])/(Y(i+1)-Y(i))*(alpha_tot[i+1]+alpha_tot[i]-2.*alpha)/2.;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Am<sp/>=<sp/>(qf[i]-qf[i-1])/(Y(i)-Y(i-1))*(alpha_tot[i]+alpha_tot[i-1]-2.*alpha)/2.;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tur_diff[i]<sp/>=<sp/>(Ap<sp/>-<sp/>Am)/(dy);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>prod[i]<sp/>=<sp/>(alpha_tot[i]-alpha)*(Tm[i+1]-Tm[i-1])*(Tm[i+1]-Tm[i-1])/dy/dy;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>f<sp/>=<sp/>(1+tanh(0.08*(30-Y[i]*u_tau/nu)))/2.;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>eps[i]<sp/>=<sp/>(1-f)*sqrt(CMU)<sp/>*<sp/>qf[i]/R<sp/>*<sp/>u_tau*u_tau/(nu+(alpha_tot[i]-alpha)*PR_T);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>eps[i]<sp/>+=<sp/>f*2.*(qf[1]-qf[0])*alpha/(Y(1)-Y(0))/(Y(1)-Y(0));</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SEC_MEM[i]<sp/>=<sp/>mol_diff[i]+tur_diff[i]<sp/>+<sp/>prod[i]<sp/>-<sp/>eps[i];</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237" refid="classEq__ODVM_1a81dde36a27e802a2e89829c5f50f2417" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEq__ODVM_1a81dde36a27e802a2e89829c5f50f2417" kindref="member">Eq_ODVM::aller_au_temps</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dtn1,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Tw_np1,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Tnp1,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>diff,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>visco_cin,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type_pb)</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/>compt++;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Ap,<sp/>Am;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/>alpha<sp/>=<sp/>diff;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/>nu<sp/>=<sp/>visco_cin;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculating<sp/>the<sp/>filtered<sp/>values<sp/>of<sp/>the<sp/>LES<sp/>at<sp/>time<sp/>(n+1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/>Tmles_np1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>gamma*Tnp1<sp/>+<sp/>(1.-gamma)*Tmles_n;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/>Tples_np1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>Tnp1<sp/>-<sp/>Tmles_np1;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/>Tples2m_np1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>gamma*(Tnp1-Tmles_np1)*(Tnp1-Tmles_np1)<sp/>+<sp/>(1.-gamma)*Tples2m_n;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/>Tw_m_np1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>gamma*Tw_np1<sp/>+<sp/>(1.-gamma)*Tw_m_n;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(compt==1)</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Tw_m_np1<sp/>=<sp/>Tw_np1;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculating<sp/>the<sp/>temperature<sp/>variance<sp/>ratio<sp/>for<sp/>forcing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(compt&gt;=6)</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;N;<sp/>i++)<sp/>Q(i)<sp/>=<sp/>sqrt(std::fabs(qb(i))/std::fabs(qb(N-1)+1.e-20));</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculating<sp/>the<sp/>turbulent<sp/>diffusivity.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>D;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>A=19.;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;N;<sp/>i++)</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>D<sp/>=<sp/>pow(1.<sp/>-<sp/>exp(-Y[i]*u_tau/nu/A),2.);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>alpha_tot[i]<sp/>=<sp/>alpha<sp/>+<sp/>KAPPA*D*Y[i]*u_tau/PR_T;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;u_tau<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>u_tau<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(tn&lt;dtn1)<sp/></highlight><highlight class="comment">//<sp/>Going<sp/>from<sp/>LES<sp/>value<sp/>at<sp/>(n)<sp/>to<sp/>(n+1).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(type_pb==1)<sp/>Tm(0)<sp/><sp/><sp/>=<sp/>Tw_m_np1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Setting<sp/>lower<sp/>BC<sp/>for<sp/>mean<sp/>temp.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Tm(N-1)<sp/>=<sp/>Tmles_np1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Setting<sp/>upper<sp/>BC<sp/>for<sp/>mean<sp/>temp.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Tp(N-1)<sp/>=<sp/>Tples_np1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Setting<sp/>BC<sp/>for<sp/>temp.<sp/>fluct.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>qb(N-1)<sp/>=<sp/>Tples2m_np1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Setting<sp/>BC<sp/>for<sp/>variance<sp/>eqn.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>qf(N-1)<sp/>=<sp/>Tples2m_np1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Setting<sp/>BC<sp/>for<sp/>variance<sp/>eqn.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEq__ODVM_1a202a3fa7db755305fbadf1ae09539704" kindref="member">calculer_dt_stab</ref>();</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((dtn1-tn)&lt;dt)<sp/>dt<sp/>=<sp/>dtn1-tn;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Time<sp/>advancement<sp/>for<sp/>MEAN<sp/>TEMPERATURE<sp/>AND<sp/>TEMPERATURE<sp/>FLUCTUATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Isothermal<sp/>case</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(type_pb==1)</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;N-1;<sp/>i++)</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(i==0)<sp/>SEC_MEM(i)=0;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dy=0.5*(Y(i+1)-Y(i-1));</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Ap<sp/>=<sp/>((Tm[i+1]-Tm[i])/(Y(i+1)-Y(i)))*(alpha_tot[i+1]+alpha_tot[i])/2.;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Am<sp/>=<sp/>((Tm[i]-Tm[i-1])/(Y(i)-Y(i-1)))*(alpha_tot[i]+alpha_tot[i-1])/2.;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SEC_MEM[i]<sp/>=<sp/>(Ap-Am)/dy;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;N-1;<sp/>i++)</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Tm[i]<sp/>=<sp/>Tm[i]<sp/>+<sp/>SEC_MEM[i]*dt<sp/>+<sp/>F[i]*dt;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Tp[i]<sp/>=<sp/>Q[i]*Tp[N-1];</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//CHT<sp/>case</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(type_pb==2)</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Ap<sp/>=<sp/>((Tm[2]-Tm[1])/(Y(2)-Y(1)))*(alpha_tot[2]+alpha_tot[1])/2.;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Am<sp/>=<sp/>Tw_m_np1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>En<sp/>fait<sp/>ici<sp/>Tw_m_np1<sp/>est<sp/>egal<sp/>au<sp/>flux<sp/>filtre<sp/>que<sp/>l&apos;on<sp/>passe<sp/>par<sp/>Paroi_ODVM.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SEC_MEM[1]<sp/>=<sp/>(Ap-Am)/(0.5*(Y(2)-Y(0)));</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=2;<sp/>i&lt;N-1;<sp/>i++)</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dy=0.5*(Y(i+1)-Y(i-1));</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Ap<sp/>=<sp/>((Tm[i+1]-Tm[i])/(Y(i+1)-Y(i)))*(alpha_tot[i+1]+alpha_tot[i])/2.;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Am<sp/>=<sp/>((Tm[i]-Tm[i-1])/(Y(i)-Y(i-1)))*(alpha_tot[i]+alpha_tot[i-1])/2.;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SEC_MEM[i]<sp/>=<sp/>(Ap-Am)/dy;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=1;<sp/>i&lt;N-1;<sp/>i++)</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Tm[i]<sp/>=<sp/>Tm[i]<sp/>+<sp/>SEC_MEM[i]*dt;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Tp[i]<sp/>=<sp/>Q[i]*Tp[N-1];</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dy=Y(1)-Y(0);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Tm[0]<sp/>=<sp/>Tm[1]<sp/>-<sp/>Tw_m_np1*dy/alpha;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>En<sp/>fait<sp/>ici<sp/>Tw_m_np1<sp/>est<sp/>egal<sp/>au<sp/>flux<sp/>filtre<sp/>que<sp/>l&apos;on<sp/>passe<sp/>par<sp/>Paroi_ODVM.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Tp[0]<sp/>=<sp/>Q[0]*Tp[N-1];</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Time<sp/>advancement<sp/>of<sp/>TRANSPORT<sp/>EQUATION<sp/>FOR<sp/>TEMPERATURE<sp/>VARIANCE<sp/>FOR<sp/>ISOFLUX<sp/>CONDITION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(type_pb==2)</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEq__ODVM_1a04b24e43f57035b57de585c06b5bb7f9" kindref="member">calculer_secmem_qf</ref>();</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=1;<sp/>i&lt;N-1;<sp/>i++)</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qf(i)<sp/>=<sp/>qf(i)<sp/>+<sp/>SEC_MEM(i)*dt;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qf(0)<sp/>=<sp/>qf(1);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qb(0)<sp/>=<sp/>Theta*Theta*qf(0);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Time<sp/>advancement<sp/>of<sp/>TRANSPORT<sp/>EQUATION<sp/>FOR<sp/>TEMPERATURE<sp/>VARIANCE<sp/>FOR<sp/>the<sp/>CHT<sp/>case</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEq__ODVM_1afaf156b57a54c1a8f042206c7d3f2a75" kindref="member">calculer_secmem_qb</ref>();</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=1;<sp/>i&lt;N-1;<sp/>i++)</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qb(i)<sp/>=<sp/>qb(i)<sp/>+<sp/>SEC_MEM(i)*dt;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tn+=dt;</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>time<sp/>advancement<sp/>from<sp/>(n)<sp/>to<sp/>(n+1).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Putting<sp/>the<sp/>values<sp/>of<sp/>(n+1)<sp/>at<sp/>(n)<sp/>for<sp/>next<sp/>time<sp/>iterations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/>tn<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>dtn1;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/>Tmles_n<sp/><sp/><sp/>=<sp/>Tmles_np1;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/>Tples_n<sp/><sp/><sp/>=<sp/>Tples_np1;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/>Tples2m_n<sp/>=<sp/>Tples2m_np1;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/>Tw_m_n<sp/><sp/><sp/><sp/>=<sp/>Tw_m_np1;</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Incompressible/Equations/UNUSED/Eq_ODVM.cpp"/>
+  </compounddef>
+</doxygen>

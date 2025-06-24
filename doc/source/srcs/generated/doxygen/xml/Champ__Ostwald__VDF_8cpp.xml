@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Champ__Ostwald__VDF_8cpp" kind="file" language="C++">
+    <compoundname>Champ_Ostwald_VDF.cpp</compoundname>
+    <includes refid="Champ__Ostwald__VDF_8h" local="no">Champ_Ostwald_VDF.h</includes>
+    <includes refid="Champ__Uniforme_8h" local="no">Champ_Uniforme.h</includes>
+    <includes refid="Fluide__Ostwald_8h" local="no">Fluide_Ostwald.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Champ__Ostwald__VDF_8cpp_1a1e5590e84c8fc91c6280fc1b2cdd9ff0" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Champ_Ostwald_VDFbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Champ_Ostwald_VDFbases</name>
+        <initializer>={   &amp;( <ref refid="classChamp__Ostwald" kindref="compound">Champ_Ostwald</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VDF/Champs/Champ_Ostwald_VDF.cpp" line="20" column="109" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VDF/Champs/Champ_Ostwald_VDF.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Ostwald_VDF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Uniforme.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Ostwald.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classChamp__Ostwald__VDF_1a47886a32829e85612dbe554989a3fa66" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classChamp__Ostwald__VDF" kindref="compound">Champ_Ostwald_VDF</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Champ_Ostwald_VDF&quot;</highlight><highlight class="normal">,<sp/><ref refid="classChamp__Ostwald" kindref="compound">Champ_Ostwald</ref>);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classChamp__Ostwald__VDF_1a14a97816eff63c90fb43bf1b6ea27dfc" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classChamp__Ostwald__VDF_1a14a97816eff63c90fb43bf1b6ea27dfc" kindref="member">Champ_Ostwald_VDF::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/><ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>()(0,<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classChamp__Ostwald__VDF_1ad85e02af92e6f3f1e9a0316ee9c83e20" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classChamp__Ostwald__VDF_1ad85e02af92e6f3f1e9a0316ee9c83e20" kindref="member">Champ_Ostwald_VDF::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;<sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classChamp__Ostwald__VDF_1a17f74c455bf6ec95c9726eed79073728" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Ostwald__VDF_1a17f74c455bf6ec95c9726eed79073728" kindref="member">Champ_Ostwald_VDF::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tps)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Ostwald__VDF_1a506f4de86a2d7c3b1d61a821529ff196" kindref="member">me_calculer</ref>(tps);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><ref refid="classChamp__base_1a51c611d7c5754aaf1556c5f0e563c157" kindref="member">changer_temps</ref>(tps);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Don__base_1a10f8b9d20732f009ece35d064a71c699" kindref="member">Champ_Don_base::mettre_a_jour</ref>(tps);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="33"><highlight class="comment">/*!<sp/>@brief<sp/>Calcul<sp/>la<sp/>viscosite<sp/>mu<sp/>en<sp/>fonction<sp/>de<sp/>la<sp/>consistance<sp/>et<sp/>de<sp/>l&apos;indice<sp/>de<sp/>structure<sp/>en<sp/>utilisant<sp/>la<sp/>loi<sp/>d&apos;Ostwald.</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>Pour</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>des<sp/>viscsites<sp/>tres<sp/>faible<sp/>et<sp/>tres<sp/>fortes<sp/>on<sp/>utilise<sp/>une<sp/>regression</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleTab&amp;)<sp/>les<sp/>viscosite<sp/>au<sp/>temps<sp/>precedent</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classChamp__Ostwald__VDF_1afec36d73a656df79ae5681c469fbdd53" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Ostwald__VDF_1afec36d73a656df79ae5681c469fbdd53" kindref="member">Champ_Ostwald_VDF::calculer_mu</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>mu_tab)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d_n<sp/>=<sp/><ref refid="classChamp__Ostwald_1a3e824caa79f66767dd4f245cdb564c9c" kindref="member">mon_fluide_</ref>-&gt;indice_struct().valeurs()(0,<sp/>0);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="classChamp__Don__base_1ac20663803508c952438d8ced9b8beab1" kindref="member">nb_valeurs_nodales</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Uniforme" kindref="compound">Champ_Uniforme</ref>,<sp/><ref refid="classChamp__Ostwald_1a3e824caa79f66767dd4f245cdb564c9c" kindref="member">mon_fluide_</ref>-&gt;consistance()))</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d_k<sp/>=<sp/><ref refid="classChamp__Ostwald_1a3e824caa79f66767dd4f245cdb564c9c" kindref="member">mon_fluide_</ref>-&gt;consistance().valeurs()(0,<sp/>0);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mu_tab[i]<sp/>&lt;<sp/>1.E-4)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mu_tab[i]<sp/>=<sp/>d_k<sp/>*<sp/>pow(0.5<sp/>*<sp/>1.E-4,<sp/>(d_n<sp/>-<sp/>1.)<sp/>/<sp/>2.);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mu_tab[i]<sp/>&gt;<sp/>1.E16)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mu_tab[i]<sp/>=<sp/>d_k<sp/>*<sp/>pow(0.5<sp/>*<sp/>1.E16,<sp/>(d_n<sp/>-<sp/>1.)<sp/>/<sp/>2.);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mu_tab[i]<sp/>=<sp/>d_k<sp/>*<sp/>pow(0.5<sp/>*<sp/>mu_tab[i],<sp/>(d_n<sp/>-<sp/>1.)<sp/>/<sp/>2.);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>K<sp/>varie<sp/>en<sp/>fonction<sp/>de<sp/>la<sp/>temperature</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>K_tab<sp/>=<sp/><ref refid="classChamp__Ostwald_1a3e824caa79f66767dd4f245cdb564c9c" kindref="member">mon_fluide_</ref>-&gt;consistance().valeurs();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mu_tab[i]<sp/>&lt;<sp/>1.E-4)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mu_tab[i]<sp/>=<sp/>K_tab[i]<sp/>*<sp/>pow(0.5<sp/>*<sp/>1.E-4,<sp/>(d_n<sp/>-<sp/>1.)<sp/>/<sp/>2.);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mu_tab[i]<sp/>&gt;<sp/>1.E16)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mu_tab[i]<sp/>=<sp/>K_tab[i]<sp/>*<sp/>pow(0.5<sp/>*<sp/>1.E16,<sp/>(d_n<sp/>-<sp/>1.)<sp/>/<sp/>2.);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mu_tab[i]<sp/>=<sp/>K_tab[i]<sp/>*<sp/>pow(0.5<sp/>*<sp/>mu_tab[i],<sp/>(d_n<sp/>-<sp/>1.)<sp/>/<sp/>2.);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment">/*!<sp/>@brief<sp/>Calcul<sp/>le<sp/>champ<sp/>Ostwald<sp/>:<sp/>calcul<sp/>de<sp/>D::D</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>puis<sp/>calcul<sp/>de<sp/>mu</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double)<sp/>temps<sp/>ou<sp/>le<sp/>calcul<sp/>est<sp/>effectue</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classChamp__Ostwald__VDF_1a506f4de86a2d7c3b1d61a821529ff196" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Ostwald__VDF_1a506f4de86a2d7c3b1d61a821529ff196" kindref="member">Champ_Ostwald_VDF::me_calculer</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tps)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classChamp__base_1a06a74ef2b02796a933b9b0702d073af9" kindref="member">temps_</ref><sp/>!=<sp/>tps)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cerr&lt;&lt;<sp/>&quot;Calcul<sp/>de<sp/>Mu<sp/>Ostwald&quot;&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__Ostwald__VDF_1a9d2d3b5f2ff65735bfcc2e41444b3173" kindref="member">mon_champ_</ref>-&gt;calculer_dscald_centre_element(<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>());</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__Ostwald__VDF_1afec36d73a656df79ae5681c469fbdd53" kindref="member">calculer_mu</ref>(<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>());</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="87"><highlight class="comment">/*!<sp/>@brief<sp/>Initialise<sp/>le<sp/>champs</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="classChamp__Ostwald__VDF_1aba9c9979c3e32d73f4dc9d6cc7030bd3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classChamp__Ostwald__VDF_1aba9c9979c3e32d73f4dc9d6cc7030bd3" kindref="member">Champ_Ostwald_VDF::initialiser</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>un_temps)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Ostwald__VDF_1a17f74c455bf6ec95c9726eed79073728" kindref="member">mettre_a_jour</ref>(un_temps);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VDF/Champs/Champ_Ostwald_VDF.cpp"/>
+  </compounddef>
+</doxygen>

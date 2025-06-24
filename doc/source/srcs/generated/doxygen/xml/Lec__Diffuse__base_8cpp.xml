@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Lec__Diffuse__base_8cpp" kind="file" language="C++">
+    <compoundname>Lec_Diffuse_base.cpp</compoundname>
+    <includes refid="communications__array_8h" local="no">communications_array.h</includes>
+    <includes refid="Lec__Diffuse__base_8h" local="no">Lec_Diffuse_base.h</includes>
+    <includes refid="Process_8h" local="no">Process.h</includes>
+    <includes local="no">assert.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Lec_Diffuse_base.cpp</label>
+        <link refid="Lec__Diffuse__base_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>assert.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Lec__Diffuse__base_8cpp_1a414c93f760b640095b9434aac63b89ce" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Lec_Diffuse_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Lec_Diffuse_basebases</name>
+        <initializer>={   &amp;( <ref refid="classEFichier" kindref="compound">EFichier</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Lec_Diffuse_base.cpp" line="21" column="62" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Lec_Diffuse_base.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;communications_array.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Lec_Diffuse_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Process.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classLec__Diffuse__base_1a4fe005d9c8c74ee36eba5d12369fe002" refkind="member"><highlight class="normal">Implemente_base_sans_constructeur(<ref refid="classLec__Diffuse__base" kindref="compound">Lec_Diffuse_base</ref>,</highlight><highlight class="stringliteral">&quot;Lec_Diffuse_base&quot;</highlight><highlight class="normal">,<ref refid="classEFichier" kindref="compound">EFichier</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classLec__Diffuse__base_1afc069b5acd1fa25374527426ba644ce6" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLec__Diffuse__base_1afc069b5acd1fa25374527426ba644ce6" kindref="member">Lec_Diffuse_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classLec__Diffuse__base_1ada00878d124ad5bd657cbd9c8ec98ed8" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classLec__Diffuse__base_1ada00878d124ad5bd657cbd9c8ec98ed8" kindref="member">Lec_Diffuse_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="29"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="33"><highlight class="comment">/*!<sp/>@brief<sp/>ne<sp/>fait<sp/>rien<sp/>(constructeur<sp/>protege<sp/>car<sp/>c&apos;est<sp/>une<sp/>classe<sp/>de<sp/>base)</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classLec__Diffuse__base_1aac2b37f3d6345bc387332a5889bc03a7" refkind="member"><highlight class="normal"><ref refid="classLec__Diffuse__base_1aac2b37f3d6345bc387332a5889bc03a7" kindref="member">Lec_Diffuse_base::Lec_Diffuse_base</ref>()<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="38"><highlight class="comment">/*!<sp/>@brief<sp/>erreur</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classLec__Diffuse__base_1abe75e706a1372149ca05821fac123e9b" refkind="member"><highlight class="normal"><ref refid="classLec__Diffuse__base" kindref="compound">Lec_Diffuse_base</ref>&amp;<sp/><ref refid="classLec__Diffuse__base_1abe75e706a1372149ca05821fac123e9b" kindref="member">Lec_Diffuse_base::operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base" kindref="compound">Lec_Diffuse_base</ref>&amp;<sp/>)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Lec_Diffuse_base<sp/>&amp;<sp/>operator=(const<sp/>Lec_Diffuse_base<sp/>&amp;<sp/>is)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classLec__Diffuse__base_1a2878c64c2547a984e467fa0a9e85a6b7" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLec__Diffuse__base_1a2878c64c2547a984e467fa0a9e85a6b7" kindref="member">Lec_Diffuse_base::operator&gt;&gt;</ref>(True_int&amp;<sp/>ob)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operator_template&lt;True_int&gt;(ob);<sp/>}</highlight></codeline>
+<codeline lineno="49" refid="classLec__Diffuse__base_1a730165c0487d3f5bdbeaf8ebb8583d05" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base_1a730165c0487d3f5bdbeaf8ebb8583d05" kindref="member">Lec_Diffuse_base::get</ref>(True_int*<sp/>ob,<sp/>std::streamsize<sp/>n)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>get_template&lt;True_int&gt;(ob,<sp/>n);<sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classLec__Diffuse__base_1a6a940f88edbd93fbcdb8e34620d2ec4e" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLec__Diffuse__base_1a2878c64c2547a984e467fa0a9e85a6b7" kindref="member">Lec_Diffuse_base::operator&gt;&gt;</ref>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">&amp;<sp/>ob)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operator_template&lt;long&gt;(ob);<sp/>}</highlight></codeline>
+<codeline lineno="52" refid="classLec__Diffuse__base_1a490271c5a32268df8e921be3da1dfee2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base_1a730165c0487d3f5bdbeaf8ebb8583d05" kindref="member">Lec_Diffuse_base::get</ref>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">*<sp/>ob,<sp/>std::streamsize<sp/>n)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>get_template&lt;long&gt;(ob,<sp/>n);<sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classLec__Diffuse__base_1ae4642a9cb805bd9bb00b0effebe2c82a" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLec__Diffuse__base_1a2878c64c2547a984e467fa0a9e85a6b7" kindref="member">Lec_Diffuse_base::operator&gt;&gt;</ref>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">&amp;<sp/>ob)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operator_template&lt;long<sp/>long&gt;(ob);<sp/>}</highlight></codeline>
+<codeline lineno="55" refid="classLec__Diffuse__base_1a7ed44d3348a6309532fb159f6f3bd9a6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base_1a730165c0487d3f5bdbeaf8ebb8583d05" kindref="member">Lec_Diffuse_base::get</ref>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">*<sp/>ob,<sp/>std::streamsize<sp/>n)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>get_template&lt;long<sp/>long&gt;(ob,<sp/>n);<sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classLec__Diffuse__base_1a4bc86eb93f0b81fc2942acf5d3f2a4bd" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLec__Diffuse__base_1a2878c64c2547a984e467fa0a9e85a6b7" kindref="member">Lec_Diffuse_base::operator&gt;&gt;</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&amp;<sp/>ob)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operator_template&lt;float&gt;(ob);<sp/>}</highlight></codeline>
+<codeline lineno="58" refid="classLec__Diffuse__base_1a714e37ee41a30d75eed04eb76bfa7314" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base_1a730165c0487d3f5bdbeaf8ebb8583d05" kindref="member">Lec_Diffuse_base::get</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>ob,<sp/>std::streamsize<sp/>n)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>get_template&lt;float&gt;(ob,<sp/>n);<sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classLec__Diffuse__base_1a8977ed4d314f9a8a18bcaf09967be117" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLec__Diffuse__base_1a2878c64c2547a984e467fa0a9e85a6b7" kindref="member">Lec_Diffuse_base::operator&gt;&gt;</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>ob)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>operator_template&lt;double&gt;(ob);<sp/>}</highlight></codeline>
+<codeline lineno="61" refid="classLec__Diffuse__base_1a5302e3ca360d6403591dbd7918d88735" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base_1a730165c0487d3f5bdbeaf8ebb8583d05" kindref="member">Lec_Diffuse_base::get</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*ob,<sp/>std::streamsize<sp/>n)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>get_template&lt;double&gt;(ob,<sp/>n);<sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classLec__Diffuse__base_1a6c370a3ff0eea71df5abec45bc95fc93" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base_1a730165c0487d3f5bdbeaf8ebb8583d05" kindref="member">Lec_Diffuse_base::get</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*buf,<sp/>std::streamsize<sp/>bufsize)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>l<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">Process::je_suis_maitre</ref>())</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>=<sp/><ref refid="classLec__Diffuse__base_1a336126fbfd0188c50f1aaefce583abde" kindref="member">get_entree_master</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>assert(is.<ref refid="classEntree_1adf2eefe2c6cc6cb4bd658054ea788688" kindref="member">get_error_action</ref>()<sp/>==<sp/><ref refid="classEntree_1a92919bfab8dfa0cfdf8cf8e3dc13b078a88176e2e0001a6717ea71baa58bea2a6" kindref="member">ERROR_CONTINUE</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ok<sp/>=<sp/>is.<ref refid="classEntree_1ac51bf56d33f44cef1f366219204ff61e" kindref="member">get</ref>(buf,<sp/>bufsize);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ok)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l<sp/>=<sp/>(int)strlen(buf)<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEntree_1a8e3aed906c5792b6d8147dccccb6f750" kindref="member">diffuse_</ref>)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Lec_Diffuse_base::get(...)<sp/>can&apos;t<sp/>be<sp/>used<sp/>with<sp/>diffuse_=0<sp/>on<sp/>non<sp/>master<sp/>process.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEntree_1a8e3aed906c5792b6d8147dccccb6f750" kindref="member">diffuse_</ref>)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>envoyer_broadcast(l,<sp/>0);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(l<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>envoyer_broadcast_array(buf,<sp/>l,<sp/>0);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEntree_1a11dc4a4e2ae1fbf9c0ba1da1cfa157c8" kindref="member">error_handle</ref>(l<sp/>&lt;<sp/>0);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classLec__Diffuse__base_1a5770518580d7ce16df0ddd0031b429e4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base_1a5770518580d7ce16df0ddd0031b429e4" kindref="member">Lec_Diffuse_base::eof</ref>()</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flag<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">Process::je_suis_maitre</ref>())</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>=<sp/><ref refid="classLec__Diffuse__base_1a336126fbfd0188c50f1aaefce583abde" kindref="member">get_entree_master</ref>();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>flag<sp/>=<sp/>is.<ref refid="classEntree_1abcd397cb0b99fbe7c6f01047d8cec89c" kindref="member">eof</ref>();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEntree_1a8e3aed906c5792b6d8147dccccb6f750" kindref="member">diffuse_</ref>)<sp/>envoyer_broadcast(flag,<sp/>0);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>flag;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classLec__Diffuse__base_1a49fb68c667ad7251c9a0a03e70f2393a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base_1a49fb68c667ad7251c9a0a03e70f2393a" kindref="member">Lec_Diffuse_base::good</ref>()</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flag<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">Process::je_suis_maitre</ref>())</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>=<sp/><ref refid="classLec__Diffuse__base_1a336126fbfd0188c50f1aaefce583abde" kindref="member">get_entree_master</ref>();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>flag<sp/>=<sp/>is.<ref refid="classEntree_1a031cbbd83a3acd74b6d16496602fd941" kindref="member">good</ref>();</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEntree_1a8e3aed906c5792b6d8147dccccb6f750" kindref="member">diffuse_</ref>)<sp/>envoyer_broadcast(flag,<sp/>0);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>flag;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="classLec__Diffuse__base_1a9d0a17a0f6dd504075e7dc08b7fc7db9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base_1a9d0a17a0f6dd504075e7dc08b7fc7db9" kindref="member">Lec_Diffuse_base::fail</ref>()</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flag<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">Process::je_suis_maitre</ref>())</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>=<sp/><ref refid="classLec__Diffuse__base_1a336126fbfd0188c50f1aaefce583abde" kindref="member">get_entree_master</ref>();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>flag<sp/>=<sp/>is.<ref refid="classEntree_1a2c87d3acdad4e3c226c4b8ad4b1fd9a7" kindref="member">fail</ref>();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEntree_1a8e3aed906c5792b6d8147dccccb6f750" kindref="member">diffuse_</ref>)<sp/>envoyer_broadcast(flag,<sp/>0);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>flag;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="124"><highlight class="comment">/*!<sp/>@brief<sp/>appelle<sp/>get_entree_master().</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*<sp/>set_bin(bin)</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="classLec__Diffuse__base_1aadc0e1f4b076e9fe850306ab91935ad7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base_1aadc0e1f4b076e9fe850306ab91935ad7" kindref="member">Lec_Diffuse_base::set_bin</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bin)</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">Process::je_suis_maitre</ref>())</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>=<sp/><ref refid="classLec__Diffuse__base_1a336126fbfd0188c50f1aaefce583abde" kindref="member">get_entree_master</ref>();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is.<ref refid="classEntree_1ac66e45bc9a4d3ca5a205c7f0b5af9f99" kindref="member">set_bin</ref>(bin);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEntree_1a8e3aed906c5792b6d8147dccccb6f750" kindref="member">diffuse_</ref>)<sp/>envoyer_broadcast(bin,<sp/>0);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><ref refid="classEntree_1ac66e45bc9a4d3ca5a205c7f0b5af9f99" kindref="member">Entree::set_bin</ref>(bin);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="140"><highlight class="comment">/*!<sp/>@brief<sp/>appelle<sp/>get_entree_master().</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*<sp/>set_check_types(flag)</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="classLec__Diffuse__base_1a5e603c621344297142584d5cfc31ea4e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base_1a5e603c621344297142584d5cfc31ea4e" kindref="member">Lec_Diffuse_base::set_check_types</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>flag)</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><ref refid="classEntree_1ae33bf3b5e8d4b695a09260191f1d578b" kindref="member">Entree::set_check_types</ref>(flag);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>=<sp/><ref refid="classLec__Diffuse__base_1a336126fbfd0188c50f1aaefce583abde" kindref="member">get_entree_master</ref>();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>is.<ref refid="classEntree_1ae33bf3b5e8d4b695a09260191f1d578b" kindref="member">set_check_types</ref>(flag);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="classLec__Diffuse__base_1aaff128ee32a0c329f0ad3dc02936c25e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLec__Diffuse__base_1aaff128ee32a0c329f0ad3dc02936c25e" kindref="member">Lec_Diffuse_base::set_diffuse</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>diffuse)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="classEntree_1a8e3aed906c5792b6d8147dccccb6f750" kindref="member">diffuse_</ref><sp/>=<sp/>diffuse;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Lec_Diffuse_base.cpp"/>
+  </compounddef>
+</doxygen>

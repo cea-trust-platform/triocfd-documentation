@@ -1,0 +1,377 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Quadrangle__VEF_8cpp" kind="file" language="C++">
+    <compoundname>Quadrangle_VEF.cpp</compoundname>
+    <includes refid="Quadrangle__VEF_8h" local="no">Quadrangle_VEF.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Triangle_8h" local="no">Triangle.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Quadrangle__VEF_8cpp_1ab96890f818b4344f27c4d53eebd7b5b8" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int faces_sommets_quadra[4][2]</definition>
+        <argsstring>[4][2]</argsstring>
+        <name>faces_sommets_quadra</name>
+        <initializer>=
+{
+  { 0, 2 },
+  { 0, 1 },
+  { 1, 3 },
+  { 2, 3 }
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Quadrangle_VEF.cpp" line="37" column="12" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Quadrangle_VEF.cpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Quadrangle__VEF_8cpp_1ad01e7c6487d5c020b3d3c3d3cc87e7b7" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename _T_</type>
+          </param>
+        </templateparamlist>
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Quadrangle_VEF_32_64bases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Quadrangle_VEF_32_64bases</name>
+        <initializer>= { &amp;( <ref refid="classElem__geom__base__32__64" kindref="compound">Elem_geom_base_32_64</ref>&lt;_T_&gt; ::info_obj) }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Quadrangle_VEF.cpp" line="45" column="159" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Quadrangle_VEF.cpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Quadrangle_VEF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Triangle.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Definition<sp/>des<sp/>sommets<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>^</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>|</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>2-----3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>0-----1--&gt;<sp/>x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Definition<sp/>des<sp/>faces<sp/>d&apos;un<sp/>quadrangle:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>*--3--*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>0<sp/><sp/><sp/><sp/><sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>|<sp/><sp/><sp/><sp/><sp/>|</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>*--1--*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>faces_sommets_quadra[4][2]<sp/>=</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>2<sp/>},</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>{<sp/>0,<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>{<sp/>1,<sp/>3<sp/>},</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>{<sp/>2,<sp/>3<sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classQuadrangle__VEF__32__64_1aa2aa33399d4ed05f0911ff0d08c6e633" refkind="member"><highlight class="normal">Implemente_instanciable_32_64(<ref refid="classQuadrangle__VEF__32__64" kindref="compound">Quadrangle_VEF_32_64</ref>,</highlight><highlight class="stringliteral">&quot;Quadrangle&quot;</highlight><highlight class="normal">,<ref refid="classElem__geom__base__32__64" kindref="compound">Elem_geom_base_32_64&lt;_T_&gt;</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="48" refid="classQuadrangle__VEF__32__64_1a9884f42aba161ad117540991830aeb51" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classQuadrangle__VEF__32__64_1a9884f42aba161ad117540991830aeb51" kindref="member">Quadrangle_VEF_32_64&lt;_SIZE_&gt;::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="49"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="55" refid="classQuadrangle__VEF__32__64_1a308c738ccbe60e32a05e73a1cb7e332d" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classQuadrangle__VEF__32__64_1a308c738ccbe60e32a05e73a1cb7e332d" kindref="member">Quadrangle_VEF_32_64&lt;_SIZE_&gt;::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s<sp/>)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nom<sp/>LML<sp/>d&apos;un<sp/>Quadrangle_VEF<sp/>=<sp/>&quot;GOLGOTH24&quot;.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Nom&amp;)<sp/>toujours<sp/>egal<sp/>a<sp/>&quot;GOLGOTH24&quot;</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="66" refid="classQuadrangle__VEF__32__64_1ab80186a3fcabb3c596c4d794238f6d1b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><ref refid="classQuadrangle__VEF__32__64_1ab80186a3fcabb3c596c4d794238f6d1b" kindref="member">Quadrangle_VEF_32_64&lt;_SIZE_&gt;::nom_lml</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="67"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>static<sp/>Nom<sp/>nom=&quot;GOLGOTH24&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom=</highlight><highlight class="stringliteral">&quot;VOXEL8&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dimension==3)<sp/>nom=</highlight><highlight class="stringliteral">&quot;QUADRANGLE_3D&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nom;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="75"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>1<sp/>si<sp/>l&apos;element<sp/>ielem<sp/>du<sp/>domaine<sp/>associe<sp/>a<sp/>l&apos;element<sp/>geometrique<sp/>contient<sp/>le<sp/>point</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>de<sp/>coordonnees<sp/>specifiees<sp/>par<sp/>le<sp/>parametre<sp/>&quot;pos&quot;.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Renvoie<sp/>0<sp/>sinon.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleVect&amp;<sp/>pos)<sp/>coordonnees<sp/>du<sp/>point<sp/>que<sp/>l&apos;on<sp/>cherche<sp/>a<sp/>localiser</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>ielem)<sp/>le<sp/>numero<sp/>de<sp/>l&apos;element<sp/>du<sp/>domaine<sp/>dans<sp/>lequel<sp/>on<sp/>cherche<sp/>le<sp/>point.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>1<sp/>si<sp/>le<sp/>point<sp/>de<sp/>coordonnees<sp/>specifiees<sp/>appartient<sp/>a<sp/>l&apos;element<sp/>ielem<sp/>0<sp/>sinon</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="85" refid="classQuadrangle__VEF__32__64_1ae3b1324530c4675358baffee909ecec5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classQuadrangle__VEF__32__64_1ae3b1324530c4675358baffee909ecec5" kindref="member">Quadrangle_VEF_32_64&lt;_SIZE_&gt;::contient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>pos,<sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>element)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="86"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>assert(pos.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()==2);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>domaine=mon_dom.valeur();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>dom=domaine;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>som0<sp/>=<sp/>domaine.sommet_elem(element,0);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>som1<sp/>=<sp/>domaine.sommet_elem(element,1);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>som2<sp/>=<sp/>domaine.sommet_elem(element,2);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>som3<sp/>=<sp/>domaine.sommet_elem(element,3);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>regarde<sp/>tout<sp/>d&apos;abord<sp/>si<sp/>le<sp/>point<sp/>cherche<sp/>n&apos;est<sp/>pas<sp/>un<sp/>des</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>sommets<sp/>du<sp/>quadrangle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>(est_egal(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som0,0),pos[0])<sp/>&amp;&amp;<sp/>est_egal(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som0,1),pos[1]))</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(est_egal(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som1,0),pos[0])<sp/>&amp;&amp;<sp/>est_egal(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som1,1),pos[1]))</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(est_egal(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som2,0),pos[0])<sp/>&amp;&amp;<sp/>est_egal(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som2,1),pos[1]))</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(est_egal(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som3,0),pos[0])<sp/>&amp;&amp;<sp/>est_egal(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som3,1),pos[1]))<sp/>)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>prod,p0,p1,p2,p3;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>de<sp/>prod<sp/>=<sp/>01<sp/>vectoriel<sp/>02<sp/>selon<sp/>z</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>prod<sp/>=<sp/>(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som1,0)-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som0,0))*(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som2,1)-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som0,1))</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som1,1)-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som0,1))*(dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som2,0)-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som0,0));</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>signe;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(prod<sp/>&gt;=<sp/>0)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>signe<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>signe<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>de<sp/>p0<sp/>=<sp/>0M<sp/>vectoriel<sp/>1M<sp/>selon<sp/>z</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>p0<sp/>=<sp/>(pos[0]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som0,0))*(pos[1]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som1,1))</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>(pos[1]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som0,1))*(pos[0]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som1,0));</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>p0<sp/>*=<sp/>signe;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>de<sp/>p1<sp/>=<sp/>1M<sp/>vectoriel<sp/>3M<sp/>selon<sp/>z</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>p1<sp/>=<sp/>(pos[0]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som1,0))*(pos[1]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som3,1))</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>(pos[1]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som1,1))*(pos[0]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som3,0));</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/>p1<sp/>*=<sp/>signe;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>de<sp/>p2<sp/>=<sp/>3M<sp/>vectoriel<sp/>2M<sp/>selon<sp/>z</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>p2<sp/>=<sp/>(pos[0]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som3,0))*(pos[1]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som2,1))</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>(pos[1]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som3,1))*(pos[0]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som2,0));</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>p2<sp/>*=<sp/>signe;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>de<sp/>p3<sp/>=<sp/>2M<sp/>vectoriel<sp/>0M<sp/>selon<sp/>z</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/>p3<sp/>=<sp/>(pos[0]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som2,0))*(pos[1]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som0,1))</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>(pos[1]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som2,1))*(pos[0]-dom.<ref refid="classDomaine__32__64_1ae6e96f11d9a2fdf1c9faf510921b191b" kindref="member">coord</ref>(som0,0));</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>p3<sp/>*=<sp/>signe;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>epsilon=std::fabs(prod)*<ref refid="classObjet__U_1a7447e25c68cc8d3a1c06cf99f0565cff" kindref="member">Objet_U::precision_geom</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((p0&gt;-epsilon)<sp/>&amp;&amp;<sp/>(p1&gt;-epsilon)<sp/>&amp;&amp;<sp/>(p2&gt;-epsilon)<sp/>&amp;&amp;<sp/>(p3&gt;-epsilon))</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="134"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>1<sp/>si<sp/>les<sp/>sommets<sp/>specifies<sp/>par<sp/>le<sp/>parametre<sp/>&quot;pos&quot;<sp/>sont<sp/>les<sp/>sommets<sp/>de<sp/>l&apos;element<sp/>&quot;element&quot;<sp/>du<sp/>domaine<sp/>associe<sp/>a</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>l&apos;element<sp/>geometrique.</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/>*<sp/>@param<sp/>(IntVect&amp;<sp/>pos)<sp/>les<sp/>numeros<sp/>des<sp/>sommets<sp/>a<sp/>comparer<sp/>avec<sp/>ceux<sp/>de<sp/>l&apos;elements<sp/>&quot;element&quot;</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>element)<sp/>le<sp/>numero<sp/>de<sp/>l&apos;element<sp/>du<sp/>domaine<sp/>dont<sp/>on<sp/>veut<sp/>comparer<sp/>les<sp/>sommets</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>1<sp/>si<sp/>les<sp/>sommets<sp/>passes<sp/>en<sp/>parametre<sp/>sont<sp/>ceux<sp/>de<sp/>l&apos;element<sp/>specifie,<sp/>0<sp/>sinon</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="143" refid="classQuadrangle__VEF__32__64_1ab51f7130b1aff4920b56b17ea9b24c6a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classQuadrangle__VEF__32__64_1ae3b1324530c4675358baffee909ecec5" kindref="member">Quadrangle_VEF_32_64&lt;_SIZE_&gt;::contient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">SmallArrOfTID_t</ref>&amp;<sp/>som,<sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>element<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="144"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>domaine=mon_dom.valeur();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((domaine.sommet_elem(element,0)==som[0])&amp;&amp;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(domaine.sommet_elem(element,1)==som[1])&amp;&amp;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(domaine.sommet_elem(element,2)==som[2])&amp;&amp;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(domaine.sommet_elem(element,3)==som[3]))</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="155"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>les<sp/>volumes<sp/>des<sp/>elements<sp/>du<sp/>domaine<sp/>associe.</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/>*<sp/>@param<sp/>(DoubleVect&amp;<sp/>volumes)<sp/>le<sp/>vecteur<sp/>contenant<sp/>les<sp/>valeurs<sp/><sp/>des<sp/>des<sp/>volumes<sp/>des<sp/>elements<sp/>du<sp/>domaine</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="160" refid="classQuadrangle__VEF__32__64_1a3a0d55f1a79f8a514b2998c3ac27a312" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQuadrangle__VEF__32__64_1a3a0d55f1a79f8a514b2998c3ac27a312" kindref="member">Quadrangle_VEF_32_64&lt;_SIZE_&gt;::calculer_volumes</ref>(<ref refid="classTRUSTVect" kindref="compound">DoubleVect_t</ref>&amp;<sp/>volumes)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="161"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>domaine=mon_dom.valeur();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab_t</ref>&amp;<sp/>coord<sp/>=<sp/>domaine.coord_sommets();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>S0,S1,S2,S3;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//ArrOfDouble<sp/>xg(dimension);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_t</ref><sp/>face_sommet_global;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>face_sommet_global.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(4,2);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>pos(3,dimension);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numface;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>size_tot<sp/>=<sp/>domaine.nb_elem_tot();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>assert(volumes.<ref refid="classTRUSTVect_1a1918c7467e93eb90ae67d288b1519ae7" kindref="member">size_totale</ref>()==size_tot);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>num_poly=0;<sp/>num_poly&lt;size_tot;<sp/>num_poly++)</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S0<sp/>=<sp/>domaine.sommet_elem(num_poly,0);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S1<sp/>=<sp/>domaine.sommet_elem(num_poly,1);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S2<sp/>=<sp/>domaine.sommet_elem(num_poly,2);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>S3<sp/>=<sp/>domaine.sommet_elem(num_poly,3);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>construit<sp/>le<sp/>tableau<sp/>de<sp/>travail<sp/>face_sommet_global</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>les<sp/>faces<sp/>seront<sp/>ordonnee<sp/>suivant<sp/>Xmin,<sp/>Xmax,<sp/>Ymin,<sp/>Ymax,<sp/>Zmin,Zmax</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>toujours<sp/>en<sp/>gardant<sp/>la<sp/>numerotation<sp/>de<sp/>TRUST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_sommet_global(0,0)<sp/>=S0;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_sommet_global(0,1)<sp/>=S2;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_sommet_global(1,0)<sp/>=S0;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_sommet_global(1,1)<sp/>=S1;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_sommet_global(2,0)<sp/>=S1;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_sommet_global(2,1)<sp/>=S3;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_sommet_global(3,0)<sp/>=S3;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>face_sommet_global(3,1)<sp/>=S2;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//calcul<sp/>du<sp/>centre<sp/>de<sp/>gravite<sp/>de<sp/>l&apos;element</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;dimension;<sp/>j++)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos(0,j)=(coord(S0,j)+coord(S1,j)+coord(S2,j)+coord(S3,j))*0.25;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>v<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>boucle<sp/>sur<sp/>les<sp/>faces<sp/>de<sp/>l&apos;element<sp/>que<sp/>l&apos;on<sp/>decoupe<sp/>en<sp/>4<sp/>triangles.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>constitue<sp/>des<sp/>deux<sp/>sommets<sp/>de<sp/>la<sp/>face<sp/>consideree<sp/>et<sp/>du<sp/>centre<sp/>de<sp/>gravite<sp/>de<sp/>l&apos;element</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(numface=0;<sp/>numface&lt;nb_faces(0);<sp/>numface++)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;2;<sp/>i++)</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>Si<sp/>=<sp/>face_sommet_global(numface,i);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;dimension;<sp/>j++)</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos(i+1,j)<sp/>=<sp/>coord(Si,j);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v<sp/>+=<sp/>aire_triangle(pos);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>volumes[num_poly]<sp/>=<sp/>v;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="218"><highlight class="comment">/*!<sp/>@brief<sp/>Reordonne</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="221" refid="classQuadrangle__VEF__32__64_1a35508edc96e6e1745633a5738d56f52d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQuadrangle__VEF__32__64_1a35508edc96e6e1745633a5738d56f52d" kindref="member">Quadrangle_VEF_32_64&lt;_SIZE_&gt;::reordonner</ref>()</highlight></codeline>
+<codeline lineno="222"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>domaine=mon_dom.valeur();</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_t</ref>&amp;<sp/>elem=domaine.les_elems();</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">SmallArrOfTID_t</ref><sp/>S(4);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//ArrOfInt<sp/>NS(4);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//DoubleTab<sp/>co(4,2);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>num_poly;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>nb_elem=domaine.nb_elem();</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(num_poly=0;<sp/>num_poly&lt;nb_elem;<sp/>num_poly++)</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;4;<sp/>i++)</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>S[i]<sp/>=<sp/>elem(num_poly,i);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>adaptation<sp/>de<sp/>Hexaedre_VEF<sp/>::reordonne</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab_t</ref>&amp;<sp/>coord=domaine.les_sommets();</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>v(3,3);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=1;<sp/>i&lt;4;<sp/>i++)</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dir=0;<sp/>dir&lt;2;<sp/>dir++)</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v(i-1,dir)=coord(S[i],dir)-coord(S[0],dir);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref><sp/>prod_(3);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>opp=-1;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>op=0;<sp/>op&lt;3;<sp/>op++)</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>prod_v(3,3);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;3;<sp/>i++)</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>prod_v(i,0)=v(op,1)*v(i,2)-v(op,2)*v(i,1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//prod_v(i,1)=v(op,2)*v(i,0)-v(op,0)*v(i,2);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prod_v(i,2)=v(op,0)*v(i,1)-v(op,1)*v(i,0);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cerr&lt;&lt;prod_v&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>prod=0;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i1=-1,i2=-1;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(op==0)</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i1=1;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i2=2;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(op==1)</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i1=0;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i2=2;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(op==2)</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i1=0;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i2=1;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dir=0;<sp/>dir&lt;3;<sp/>dir++)</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prod+=(prod_v(i1,dir)*prod_v(i2,dir));</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prod_[op]=prod;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(prod&lt;0)</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(opp!=-1)</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>op=2;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>a<sp/>deux<sp/>produits<sp/>negatifs<sp/>on<sp/>ne<sp/>fait<sp/>rien</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opp=op;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(opp!=2)</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i2=2;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i1=1;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i3=3;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i2b=i2;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(opp==0)<sp/>i2b=i1;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classElem__geom__base__32__64_1a8943bfd740b9f36c3ec8af8cff919d79" kindref="member">int_t</ref><sp/>tmp=elem(num_poly,i2b);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>elem(num_poly,i2b)=elem(num_poly,i3);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>elem(num_poly,i3)=tmp;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Permutation<sp/>of<sp/>local<sp/>nodes<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;i2b&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>and<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;i3&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>on<sp/>the<sp/>element<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;num_poly&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>prod<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;prod_&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="302"><highlight class="comment">/*!<sp/>@brief<sp/>voir<sp/>ElemGeomBase::get_tab_faces_sommets_locaux</highlight></codeline>
+<codeline lineno="303"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="304"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="306" refid="classQuadrangle__VEF__32__64_1ac8eeeed7775bbd47b8a07a42ff8b9f79" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classQuadrangle__VEF__32__64_1ac8eeeed7775bbd47b8a07a42ff8b9f79" kindref="member">Quadrangle_VEF_32_64&lt;_SIZE_&gt;::get_tab_faces_sommets_locaux</ref>(<ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>faces_som_local)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="307"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/>faces_som_local.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(4,2);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;4;<sp/>i++)</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;2;<sp/>j++)</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>faces_som_local(i,j)<sp/>=<sp/>faces_sommets_quadra[i][j];</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classQuadrangle__VEF__32__64" kindref="compound">Quadrangle_VEF_32_64&lt;int&gt;</ref>;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>INT_is_64_<sp/>==<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classQuadrangle__VEF__32__64" kindref="compound">Quadrangle_VEF_32_64&lt;trustIdType&gt;</ref>;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Elem/Quadrangle_VEF.cpp"/>
+  </compounddef>
+</doxygen>

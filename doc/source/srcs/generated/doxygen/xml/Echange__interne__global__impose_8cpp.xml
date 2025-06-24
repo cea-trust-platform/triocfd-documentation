@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Echange__interne__global__impose_8cpp" kind="file" language="C++">
+    <compoundname>Echange_interne_global_impose.cpp</compoundname>
+    <includes refid="Echange__interne__global__impose_8h" local="no">Echange_interne_global_impose.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Champ__front__calc__interne_8h" local="no">Champ_front_calc_interne.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Domaine__Cl__dis__base_8h" local="no">Domaine_Cl_dis_base.h</includes>
+    <includes refid="Domaine__VF_8h" local="no">Domaine_VF.h</includes>
+    <includes refid="DomaineAxi1d_8h" local="no">DomaineAxi1d.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Echange__interne__global__impose_8cpp_1a5dc49868182fed5d78992f2ac5f4818c" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Echange_interne_global_imposebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Echange_interne_global_imposebases</name>
+        <initializer>={   &amp;( <ref refid="classEchange__global__impose" kindref="compound">Echange_global_impose</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThSol/Echange_interne_global_impose.cpp" line="25" column="157" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThSol/Echange_interne_global_impose.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Echange_interne_global_impose.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_front_calc_interne.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_Cl_dis_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;DomaineAxi1d.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classEchange__interne__global__impose_1a5fe7df8444fc7ab6ae83547e3289b27e" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classEchange__interne__global__impose" kindref="compound">Echange_interne_global_impose</ref>,</highlight><highlight class="stringliteral">&quot;Paroi_echange_interne_global_impose&quot;</highlight><highlight class="normal">,<ref refid="classEchange__global__impose" kindref="compound">Echange_global_impose</ref>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>Echange_interne_global_impose<sp/>condlim_base<sp/>Paroi_echange_interne_global_impose<sp/>-1<sp/>Internal<sp/>heat<sp/>exchange<sp/>boundary<sp/>condition<sp/>with<sp/>global<sp/>exchange<sp/>coefficient.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>h_imp<sp/>chaine<sp/>h_imp<sp/>0<sp/>Global<sp/>exchange<sp/>coefficient<sp/>value.<sp/>The<sp/>global<sp/>exchange<sp/>coefficient<sp/>value<sp/>is<sp/>expressed<sp/>in<sp/>W.m-2.K-1.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>ch<sp/>front_field_base<sp/>ch<sp/>0<sp/>Boundary<sp/>field<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="30"><highlight class="comment">/*!<sp/>@brief<sp/>Ecrit<sp/>le<sp/>type<sp/>de<sp/>l&apos;objet<sp/>sur<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>s)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Sortie&amp;)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>modifie</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classEchange__interne__global__impose_1a7d2025e3658629f6fc580df428ffa006" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classEchange__interne__global__impose_1a7d2025e3658629f6fc580df428ffa006" kindref="member">Echange_interne_global_impose::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="36"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="40"><highlight class="comment">/*!<sp/>@brief<sp/>Simple<sp/>appel<sp/>a<sp/>Echange_impose_base::readOn(Entree&amp;)<sp/>Lit<sp/>les<sp/>specifications<sp/>des<sp/>conditions<sp/>aux<sp/>limites</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>a<sp/>partir<sp/>d&apos;un<sp/>flot<sp/>d&apos;entree.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>s)<sp/>un<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>modifie</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classEchange__interne__global__impose_1a9c99384ce93c1aeb5f2ea971036ae07f" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classEchange__interne__global__impose_1a9c99384ce93c1aeb5f2ea971036ae07f" kindref="member">Echange_interne_global_impose::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s<sp/>)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classCond__lim__base_1ad515d1c64270d631157a55d5c6795c37" kindref="member">app_domains</ref>.size()<sp/>==<sp/>0)<sp/><ref refid="classCond__lim__base_1ad515d1c64270d631157a55d5c6795c37" kindref="member">app_domains</ref><sp/>=<sp/>{<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(</highlight><highlight class="stringliteral">&quot;Thermique&quot;</highlight><highlight class="normal">),<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(</highlight><highlight class="stringliteral">&quot;Neutronique&quot;</highlight><highlight class="normal">),<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(</highlight><highlight class="stringliteral">&quot;fraction_massique&quot;</highlight><highlight class="normal">),<sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>(</highlight><highlight class="stringliteral">&quot;indetermine&quot;</highlight><highlight class="normal">)<sp/>};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motlu;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motcle(</highlight><highlight class="stringliteral">&quot;h_gap&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>s<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu<sp/>==motcle)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>&gt;&gt;<sp/><ref refid="classEchange__impose__base_1a2d95e89867a06dbfad6e63969235418c" kindref="member">h_imp_</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>when<sp/>reading<sp/>boundary<sp/>condition<sp/>with<sp/>type<sp/>Echange_interne_global_impose<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;We<sp/>expected<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>motcle<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>instead<sp/>of<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><sp/>motlu<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classEchange__interne__global__impose_1af60f41ee13354f4149e628ae087f5d29" kindref="member">init</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classEchange__interne__global__impose_1af60f41ee13354f4149e628ae087f5d29" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEchange__interne__global__impose_1af60f41ee13354f4149e628ae087f5d29" kindref="member">Echange_interne_global_impose::init</ref>()</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><ref refid="classCond__lim__base_1af50c36b46e71fda166a6814e1e21b161" kindref="member">le_champ_front</ref>.<ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(</highlight><highlight class="stringliteral">&quot;Champ_front_calc_interne&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//<sp/>preparation<sp/>de<sp/>T_ext</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Override<sp/>to<sp/>skip<sp/>verification<sp/>-<sp/>we<sp/>know<sp/>we<sp/>will<sp/>always<sp/>be<sp/>dealing<sp/>with<sp/>temperature,<sp/>and<sp/>we<sp/>define<sp/>ourselves<sp/>the<sp/>T_ext<sp/>with</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>a<sp/>Champ_front_calc_interne.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classEchange__interne__global__impose_1a41c9dc870fe32e094c9d926191c65c2f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEchange__interne__global__impose_1a41c9dc870fe32e094c9d926191c65c2f" kindref="member">Echange_interne_global_impose::verifie_ch_init_nb_comp</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="77"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Finish<sp/>building<sp/>the<sp/>champ_front_calc_interne</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classEchange__interne__global__impose_1ac08602ea1f4e419007a80f03a52ce353" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEchange__interne__global__impose_1ac08602ea1f4e419007a80f03a52ce353" kindref="member">Echange_interne_global_impose::completer</ref>()</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_pb(<ref refid="classCond__lim__base_1a93140daa237cd8eb86ae561272af7042" kindref="member">domaine_Cl_dis</ref>().equation().probleme().<ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>());</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_bord(<ref refid="classCond__lim__base_1ad88b3b516351146c85e8fce1df0f691a" kindref="member">frontiere_dis</ref>().<ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>());</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><ref refid="classChamp__front__calc__interne" kindref="compound">Champ_front_calc_interne</ref>&amp;<sp/>t_ext<sp/>=<sp/>ref_cast(<ref refid="classChamp__front__calc__interne" kindref="compound">Champ_front_calc_interne</ref>,<sp/><ref refid="classEchange__impose__base_1a63d3eeed4d03bbab4b5286efc50f10a4" kindref="member">T_ext</ref>());</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>t_ext.<ref refid="classChamp__front__calc_1a384d283ccda150286263d0539c541118" kindref="member">creer</ref>(nom_pb,<sp/>nom_bord,<sp/></highlight><highlight class="stringliteral">&quot;temperature&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><ref refid="classEchange__global__impose_1a64b96e93460dbb776340910fa723c053" kindref="member">Echange_global_impose::completer</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFront__VF" kindref="compound">Front_VF</ref>&amp;<sp/>fvf<sp/>=<sp/>ref_cast(<ref refid="classFront__VF" kindref="compound">Front_VF</ref>,<sp/><ref refid="classCond__lim__base_1ad88b3b516351146c85e8fce1df0f691a" kindref="member">frontiere_dis</ref>());</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>&amp;<sp/>zvf<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>,<sp/><ref refid="classCond__lim__base_1a93140daa237cd8eb86ae561272af7042" kindref="member">domaine_Cl_dis</ref>().domaine_dis());</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><ref refid="classCond__lim__base_1ad88b3b516351146c85e8fce1df0f691a" kindref="member">frontiere_dis</ref>().<ref refid="classFrontiere__dis__base_1a2d99fa72b34da9d3784b16730ba91720" kindref="member">frontiere</ref>().<ref refid="classFrontiere__32__64_1adecb57a0ee7f2367fe8b43d672a47a33" kindref="member">creer_tableau_faces</ref>(<ref refid="classEchange__interne__global__impose_1a94cdfdfce4ee74d9ca89201cf2074d21" kindref="member">surface_gap_</ref>,<sp/>RESIZE_OPTIONS::NOCOPY_NOINIT);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(zvf.<ref refid="classDomaine__dis__base_1a8effce5ffccf506b8908ba79119b6832" kindref="member">domaine</ref>().<ref refid="classDomaine__base_1a9104b3bde8d263ea4a47eca1bb962745" kindref="member">axi1d</ref>())</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaineAxi1d__32__64" kindref="compound">DomaineAxi1d</ref>&amp;<sp/>domax<sp/>=<sp/>ref_cast(<ref refid="classDomaineAxi1d__32__64" kindref="compound">DomaineAxi1d</ref>,zvf.<ref refid="classDomaine__dis__base_1a8effce5ffccf506b8908ba79119b6832" kindref="member">domaine</ref>());</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>face_voisins<sp/>=<sp/>zvf.<ref refid="classDomaine__VF_1ad19ad4b9679367115cbbc7036257aa51" kindref="member">face_voisins</ref>();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>xv<sp/>=<sp/>zvf.<ref refid="classDomaine__VF_1a5b43475ca3328249d3ae62642db3feda" kindref="member">xv</ref>();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">IntVect</ref>&amp;<sp/>fmap<sp/>=<sp/>t_ext.<ref refid="classChamp__front__calc__interne_1a28f0a63b30b85916825f17ee58001ea5" kindref="member">face_map</ref>();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;fvf.<ref refid="classFront__VF_1a48eadf1b57ddc0d16e4953d19f259a9e" kindref="member">nb_faces</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iopp<sp/>=<sp/>fmap(i);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>face<sp/>=<sp/>fvf.<ref refid="classFront__VF_1afb322ba7bea455f029d3dec838048c36" kindref="member">num_face</ref>(i);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>face_opp<sp/>=<sp/>fvf.<ref refid="classFront__VF_1afb322ba7bea455f029d3dec838048c36" kindref="member">num_face</ref>(iopp);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>elem<sp/>=<sp/>face_voisins(face,0)==-1<sp/>?<sp/>face_voisins(face,1)<sp/>:<sp/>face_voisins(face,0);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x0<sp/>=<sp/>domax.<ref refid="classDomaineAxi1d__32__64_1aa6dcdcc406b6a2f555d51235ceac9e3f" kindref="member">origine_repere</ref>(elem,0);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y0<sp/>=<sp/>domax.<ref refid="classDomaineAxi1d__32__64_1aa6dcdcc406b6a2f555d51235ceac9e3f" kindref="member">origine_repere</ref>(elem,1);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x1<sp/>=<sp/>xv(face,0);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y1<sp/>=<sp/>xv(face,1);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x2<sp/>=<sp/>xv(face_opp,0);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y2<sp/>=<sp/>xv(face_opp,1);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>r1<sp/>=<sp/>sqrt((x1-x0)*(x1-x0)+(y1-y0)*(y1-y0));</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>r2<sp/>=<sp/>sqrt((x2-x0)*(x2-x0)+(y2-y0)*(y2-y0));</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEchange__interne__global__impose_1a94cdfdfce4ee74d9ca89201cf2074d21" kindref="member">surface_gap_</ref>(i)<sp/>=<sp/>M_PI*(r1+r2);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;fvf.<ref refid="classFront__VF_1a48eadf1b57ddc0d16e4953d19f259a9e" kindref="member">nb_faces</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>face<sp/>=<sp/>fvf.<ref refid="classFront__VF_1afb322ba7bea455f029d3dec838048c36" kindref="member">num_face</ref>(i);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEchange__interne__global__impose_1a94cdfdfce4ee74d9ca89201cf2074d21" kindref="member">surface_gap_</ref>(i)<sp/>=<sp/>zvf.<ref refid="classDomaine__VF_1a92b1a70da7242b1911a34fedfe137d6b" kindref="member">surface</ref>(face);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThSol/Echange_interne_global_impose.cpp"/>
+  </compounddef>
+</doxygen>

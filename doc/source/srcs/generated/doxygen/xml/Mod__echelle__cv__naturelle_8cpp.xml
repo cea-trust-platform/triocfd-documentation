@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Mod__echelle__cv__naturelle_8cpp" kind="file" language="C++">
+    <compoundname>Mod_echelle_cv_naturelle.cpp</compoundname>
+    <includes refid="Mod__echelle__cv__naturelle_8h" local="no">Mod_echelle_cv_naturelle.h</includes>
+    <includes refid="EFichier_8h" local="no">EFichier.h</includes>
+    <includes refid="SFichier_8h" local="no">SFichier.h</includes>
+    <includes refid="Fluide__Incompressible_8h" local="no">Fluide_Incompressible.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Mod__echelle__cv__naturelle_8cpp_1a5d0dc1c3fa5296d4e25d6628fb04fab1" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Mod_echelle_cv_naturellebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Mod_echelle_cv_naturellebases</name>
+        <initializer>={   &amp;( <ref refid="classMod__echelle__LRM__base" kindref="compound">Mod_echelle_LRM_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Lois_Paroi/TBLE/Models/Mod_echelle_cv_naturelle.cpp" line="28" column="137" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Lois_Paroi/TBLE/Models/Mod_echelle_cv_naturelle.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mod_echelle_cv_naturelle.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TURBULENCE_ROOT/src/ThHyd/Lois_Paroi/TBLE/Models</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Mod_echelle_cv_naturelle.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EFichier.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SFichier.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Incompressible.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classMod__echelle__cv__naturelle_1a641fa0c42ef63d9a5166cf0862357575" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classMod__echelle__cv__naturelle" kindref="compound">Mod_echelle_cv_naturelle</ref>,</highlight><highlight class="stringliteral">&quot;Mod_echelle_convection_naturelle&quot;</highlight><highlight class="normal">,<ref refid="classMod__echelle__LRM__base" kindref="compound">Mod_echelle_LRM_base</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>printOn()</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="31"><highlight class="comment">/////</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classMod__echelle__cv__naturelle_1a45adabfaf331ad10adafefe1f8604b73" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classMod__echelle__cv__naturelle_1a45adabfaf331ad10adafefe1f8604b73" kindref="member">Mod_echelle_cv_naturelle::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="34"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="38"><highlight class="comment">////<sp/>readOn</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classMod__echelle__cv__naturelle_1afad108b6d0e7cf9c0bd17081398d09fc" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classMod__echelle__cv__naturelle_1afad108b6d0e7cf9c0bd17081398d09fc" kindref="member">Mod_echelle_cv_naturelle::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classMod__echelle__cv__naturelle_1a0a5595b6118ef3668797d6672d727004" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classMod__echelle__cv__naturelle_1a0a5595b6118ef3668797d6672d727004" kindref="member">Mod_echelle_cv_naturelle::calculer_vv_bar</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>k,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>u,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>visco_cin)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Attention<sp/>:<sp/>vv_bar<sp/>est<sp/>calcule<sp/>en<sp/>y<sp/>pour<sp/>ParoiVDF_LRM<sp/>et<sp/>en<sp/>yc<sp/>pour<sp/>Diffu_k<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Dans<sp/>Mod_echelle_LRM<sp/>il<sp/>est<sp/>calcule<sp/>par<sp/>defaut<sp/>en<sp/>y<sp/>et<sp/>donc<sp/>a<sp/>interpoler<sp/>pour<sp/>Diffu_k.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><sp/>y_star,vv_bar;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>y_star=y*sqrt(k)/visco_cin;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>vv_bar=k*(7.19*1.e-3*y_star-4.33*1.e-5*y_star*y_star+8.8*1.e-8*y_star*y_star*y_star);</highlight><highlight class="comment">//convection<sp/>naturelle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vv_bar;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classMod__echelle__cv__naturelle_1a110b9786a9161c104921d673acf1e016" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classMod__echelle__cv__naturelle_1a110b9786a9161c104921d673acf1e016" kindref="member">Mod_echelle_cv_naturelle::calculer_l_eps</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>k,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>u,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>visco_cin)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//l_eps<sp/>est<sp/>calcule<sp/>en<sp/>y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><sp/>y_nu,<sp/>l_eps,<sp/>vv_bar;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>vv_bar=<ref refid="classMod__echelle__cv__naturelle_1a0a5595b6118ef3668797d6672d727004" kindref="member">calculer_vv_bar</ref>(y,<sp/>k,<sp/>u,<sp/>visco_cin);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>y_nu=y*sqrt(vv_bar)/visco_cin;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>l_eps=(8.8*y)/(1+(10/y_nu)+5.15*1.e-2*y_nu);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>l_eps;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classMod__echelle__cv__naturelle_1a80d28877a7c63966cf175dbe069efc9c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classMod__echelle__cv__naturelle_1a80d28877a7c63966cf175dbe069efc9c" kindref="member">Mod_echelle_cv_naturelle::calculer_l_mu</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>k,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>u,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>visco_cin)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//l_mu<sp/>est<sp/>calcule<sp/>en<sp/>yc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_nu,<sp/>l_mu,<sp/>vv_bar;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>vv_bar=<ref refid="classMod__echelle__cv__naturelle_1a0a5595b6118ef3668797d6672d727004" kindref="member">calculer_vv_bar</ref>(y,<sp/>k,<sp/>u,<sp/>visco_cin);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>y_nu=y*sqrt(vv_bar)/visco_cin;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>l_mu=(0.544*y)/(1+5.025*1.e-4*pow(y_nu,1.65));</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>l_mu;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Turbulence/ThHyd/Lois_Paroi/TBLE/Models/Mod_echelle_cv_naturelle.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Operateur__Conv_8h" kind="file" language="C++">
+    <compoundname>Operateur_Conv.h</compoundname>
+    <includes refid="Operateur__Conv__base_8h" local="no">Operateur_Conv_base.h</includes>
+    <includes refid="TRUST__Deriv_8h" local="no">TRUST_Deriv.h</includes>
+    <includes refid="Operateur_8h" local="no">Operateur.h</includes>
+    <includes refid="TRUST__Ref_8h" local="no">TRUST_Ref.h</includes>
+    <includedby refid="Convection__Diffusion__std_8h" local="no">Convection_Diffusion_std.h</includedby>
+    <includedby refid="Navier__Stokes__std_8h" local="no">Navier_Stokes_std.h</includedby>
+    <includedby refid="Op__Conv__ALE_8h" local="no">Op_Conv_ALE.h</includedby>
+    <includedby refid="Op__Conv__EF__base_8h" local="no">Op_Conv_EF_base.h</includedby>
+    <includedby refid="Op__Conv__PolyMAC__base_8h" local="no">Op_Conv_PolyMAC_base.h</includedby>
+    <includedby refid="Op__Conv__PolyMAC__iterateur__base_8h" local="no">Op_Conv_PolyMAC_iterateur_base.h</includedby>
+    <includedby refid="Op__Conv__VDF__base_8h" local="no">Op_Conv_VDF_base.h</includedby>
+    <includedby refid="Op__Conv__VEF__base_8h" local="no">Op_Conv_VEF_base.h</includedby>
+    <includedby refid="Operateur__Conv_8cpp" local="no">Operateur_Conv.cpp</includedby>
+    <includedby refid="Operateur__Conv__sensibility_8h" local="no">Operateur_Conv_sensibility.h</includedby>
+    <includedby refid="Pred__Cor_8cpp" local="no">Pred_Cor.cpp</includedby>
+    <includedby refid="Terme__Source__Th__TdivU__VEF__Face_8h" local="no">Terme_Source_Th_TdivU_VEF_Face.h</includedby>
+    <includedby refid="Transport__2eq__base_8h" local="no">Transport_2eq_base.h</includedby>
+    <includedby refid="Transport__K__KEps_8h" local="no">Transport_K_KEps.h</includedby>
+    <includedby refid="Transport__K__ou__Eps_8h" local="no">Transport_K_ou_Eps.h</includedby>
+    <includedby refid="Transport__K__ou__Eps__Realisable_8h" local="no">Transport_K_ou_Eps_Realisable.h</includedby>
+    <includedby refid="Transport__K__ou__Eps__non__std_8h" local="no">Transport_K_ou_Eps_non_std.h</includedby>
+    <innerclass refid="classOperateur__Conv" prot="public">Operateur_Conv</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>Operateur_Conv_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>Operateur_Conv_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur_Conv_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUST_Deriv.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUST_Ref.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classChamp__base" kindref="compound">Champ_base</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="26"><highlight class="comment">/*!<sp/>@brief<sp/>classe<sp/>Operateur_Conv<sp/>Classe<sp/>generique<sp/>de<sp/>la<sp/>hierarchie<sp/>des<sp/>operateurs<sp/>representant<sp/>un<sp/>terme</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>de<sp/>convection.<sp/>Un<sp/>objet<sp/>Operateur_Conv<sp/>peut<sp/>referencer<sp/>n&apos;importe<sp/>quel</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>objet<sp/>derivant<sp/>de<sp/>Operateur_Conv_base.</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@sa<sp/>Operateur_Conv_base<sp/>Operateur</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classOperateur__Conv" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classOperateur__Conv" kindref="compound">Operateur_Conv</ref><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classOperateur" kindref="compound">Operateur</ref>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>OWN_PTR(Operateur_Conv_base)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35" refid="classOperateur__Conv_1a4e2bb25ea963b5146b56cb54b98d74e6" refkind="member"><highlight class="normal"><sp/><sp/>Declare_instanciable(<ref refid="classOperateur__Conv" kindref="compound">Operateur_Conv</ref>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">public<sp/>:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classOperateur__base" kindref="compound">Operateur_base</ref>&amp;<sp/><ref refid="classOperateur__Conv_1a09529e87464cda2f0e3de0ee1ac9a947" kindref="member">l_op_base</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOperateur__base" kindref="compound">Operateur_base</ref>&amp;<sp/><ref refid="classOperateur__Conv_1a09529e87464cda2f0e3de0ee1ac9a947" kindref="member">l_op_base</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classOperateur__Conv_1a57343290492f6dcea73cf2c774e6442f" kindref="member">ajouter</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classOperateur__Conv_1a3d5cb32f3f5e2f32046e2cafb439a84d" kindref="member">calculer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Conv_1ab97c7035846db1561eb447f7d8aa7e39" kindref="member">associer_vitesse</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;)<sp/>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><sp/><ref refid="classOperateur__Conv_1a5f1b3feb306554c11e93a03973d96e58" kindref="member">vitesse</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Conv_1a1681cf94ad49243981b787dec0d09cd8" kindref="member">typer</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Conv_1a1681cf94ad49243981b787dec0d09cd8" kindref="member">typer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Conv_1af53282c5c3be72c1b56542df0c2ba962" kindref="member">op_non_nul</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Conv_1a7c4888e192750deca709c9ce3669b4e0" kindref="member">associer_norme_vitesse</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">protected<sp/>:</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classOperateur__Conv_1a324ee144c97b5bbb55f430e60bd27c8e" refkind="member"><highlight class="normal"><sp/><sp/>OBS_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)<sp/><ref refid="classOperateur__Conv_1a324ee144c97b5bbb55f430e60bd27c8e" kindref="member">la_vitesse</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="53"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;objet<sp/>sous-jacent<sp/>upcaste<sp/>en<sp/>Operateur_base</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Operateur_base&amp;)<sp/>l&apos;objet<sp/>sous-jacent<sp/>upcaste<sp/>en<sp/>Operateur_base</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classOperateur__Conv_1a09529e87464cda2f0e3de0ee1ac9a947" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classOperateur__base" kindref="compound">Operateur_base</ref>&amp;<sp/><ref refid="classOperateur__Conv_1a09529e87464cda2f0e3de0ee1ac9a947" kindref="member">Operateur_Conv::l_op_base</ref>()</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;objet<sp/>sous-jacent<sp/>upcaste<sp/>en<sp/>Operateur_base<sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Operateur_base&amp;)<sp/>l&apos;objet<sp/>sous-jacent<sp/>upcaste<sp/>en<sp/>Operateur_base</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classOperateur__Conv_1a759e0123810f3920f81ad56c205488c8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOperateur__base" kindref="compound">Operateur_base</ref>&amp;<sp/><ref refid="classOperateur__Conv_1a09529e87464cda2f0e3de0ee1ac9a947" kindref="member">Operateur_Conv::l_op_base</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="66"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment">/*!<sp/>@brief<sp/>Associe<sp/>la<sp/>vitesse<sp/>(en<sp/>tant<sp/>que<sp/>vitesse<sp/>transportante)<sp/>a<sp/>l&apos;operateur<sp/>de<sp/>convection.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Champ_Inc_base&amp;<sp/>vit)<sp/>le<sp/>champ<sp/>inconnue<sp/>representant<sp/>la<sp/>vitesse</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*<sp/>@return<sp/>le<sp/>champ<sp/>inconnue<sp/>representant<sp/>la<sp/>vitesse<sp/>transportante</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classOperateur__Conv_1ab97c7035846db1561eb447f7d8aa7e39" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Conv_1ab97c7035846db1561eb447f7d8aa7e39" kindref="member">Operateur_Conv::associer_vitesse</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/>vit)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__Conv_1a324ee144c97b5bbb55f430e60bd27c8e" kindref="member">la_vitesse</ref><sp/>=<sp/>vit;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="80"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>la<sp/>vitesse<sp/>transportante<sp/>de<sp/>l&apos;operateur</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Champ_Inc_base&amp;)<sp/>le<sp/>champ<sp/>inconnue<sp/>representant<sp/>la<sp/>vitesse<sp/>transportante</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classOperateur__Conv_1a5f1b3feb306554c11e93a03973d96e58" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classOperateur__Conv_1a5f1b3feb306554c11e93a03973d96e58" kindref="member">Operateur_Conv::vitesse</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="85"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Conv_1a324ee144c97b5bbb55f430e60bd27c8e" kindref="member">la_vitesse</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="91"><highlight class="comment">/*!<sp/>@brief<sp/>Type<sp/>l&apos;operateur.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Nom&amp;<sp/>typ)<sp/>le<sp/>nom<sp/>representant<sp/>le<sp/>type<sp/>de<sp/>l&apos;operateur</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classOperateur__Conv_1a9385892aa2b6a5e8e7ab4ea1fbf441ad" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Conv_1a1681cf94ad49243981b787dec0d09cd8" kindref="member">Operateur_Conv::typer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>a_type)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>OWN_PTR(<ref refid="classOperateur__Conv__base" kindref="compound">Operateur_Conv_base</ref>)::<ref refid="classOperateur__Conv_1a1681cf94ad49243981b787dec0d09cd8" kindref="member">typer</ref>(a_type);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classOperateur__Conv_1af53282c5c3be72c1b56542df0c2ba962" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Conv_1af53282c5c3be72c1b56542df0c2ba962" kindref="member">Operateur_Conv::op_non_nul</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="101"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Operateurs/Operateur_Conv.h"/>
+  </compounddef>
+</doxygen>

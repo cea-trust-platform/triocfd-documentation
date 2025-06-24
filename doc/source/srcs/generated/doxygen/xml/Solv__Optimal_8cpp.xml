@@ -1,0 +1,586 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Solv__Optimal_8cpp" kind="file" language="C++">
+    <compoundname>Solv_Optimal.cpp</compoundname>
+    <includes refid="Solv__Optimal_8h" local="no">Solv_Optimal.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes refid="LecFicDistribueBin_8h" local="no">LecFicDistribueBin.h</includes>
+    <includes refid="stat__counters_8h" local="no">stat_counters.h</includes>
+    <includes refid="LecFicDiffuse_8h" local="no">LecFicDiffuse.h</includes>
+    <includes refid="Matrice__Bloc_8h" local="no">Matrice_Bloc.h</includes>
+    <includes refid="Matrice__Morse__Sym_8h" local="no">Matrice_Morse_Sym.h</includes>
+    <includes refid="SFichier_8h" local="no">SFichier.h</includes>
+    <includes local="no">petsc_for_kernel.h</includes>
+    <includes refid="MD__Vector__tools_8h" local="no">MD_Vector_tools.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Solv_Optimal.cpp</label>
+        <link refid="Solv__Optimal_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>petsc_for_kernel.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Solv__Optimal_8cpp_1a82b8c8ebae307acf6c2b609490c8252f" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int numero_solv_optimal</definition>
+        <argsstring></argsstring>
+        <name>numero_solv_optimal</name>
+        <initializer>=0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp" line="279" column="12" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Solv__Optimal_8cpp_1aaca97a2869edea2d1d42d0cffd33b04a" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Solv_Optimalbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Solv_Optimalbases</name>
+        <initializer>={   &amp;( <ref refid="classsolv__iteratif" kindref="compound">solv_iteratif</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp" line="41" column="18" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Solv__Optimal_8cpp_1ad656dffb7b588b6659e3b680d38209a9" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Test_solveurbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Test_solveurbases</name>
+        <initializer>={   &amp;( <ref refid="classInterprete" kindref="compound">Interprete</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp" line="27" column="89" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Solv__Optimal_8cpp_1a549a420a5b76db5690213e1bfd242898" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void generate_defaut</definition>
+        <argsstring>(const Matrice_Base &amp;matrice, const double seuil, Sortie &amp;sortie, int limpr=0)</argsstring>
+        <name>generate_defaut</name>
+        <param>
+          <type>const <ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref> &amp;</type>
+          <declname>matrice</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>seuil</declname>
+        </param>
+        <param>
+          <type><ref refid="classSortie" kindref="compound">Sortie</ref> &amp;</type>
+          <declname>sortie</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>limpr</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>genere un fichier de solveur a tester different selon si la matrice peut etre resolue avec ou sans GCP </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp" line="148" column="6" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp" bodystart="148" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="Solv__Optimal_8cpp_1a58da3467351cd398d3ec16314c28b328" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int test_solveur</definition>
+        <argsstring>(SolveurSys &amp;solveur, const Matrice_Base &amp;matrice, const DoubleVect &amp;secmem, DoubleVect &amp;solution, int nmax, ArrOfDouble &amp;temps, Entree &amp;list_solveur, double seuil_verification=1e+38)</argsstring>
+        <name>test_solveur</name>
+        <param>
+          <type><ref refid="classSolveurSys" kindref="compound">SolveurSys</ref> &amp;</type>
+          <declname>solveur</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref> &amp;</type>
+          <declname>matrice</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref> &amp;</type>
+          <declname>secmem</declname>
+        </param>
+        <param>
+          <type><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref> &amp;</type>
+          <declname>solution</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nmax</declname>
+        </param>
+        <param>
+          <type><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref> &amp;</type>
+          <declname>temps</declname>
+        </param>
+        <param>
+          <type><ref refid="classEntree" kindref="compound">Entree</ref> &amp;</type>
+          <declname>list_solveur</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>seuil_verification</declname>
+          <defval>1e+38</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp" line="108" column="5" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp" bodystart="108" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="Solv__Optimal_8cpp_1ab95480dbc485ef6e60555bb8fdd81cb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_un_solveur</definition>
+        <argsstring>(SolveurSys &amp;solveur, const Matrice_Base &amp;matrice, const DoubleVect &amp;secmem, DoubleVect &amp;solution, int nmax, ArrOfDouble &amp;temps, double seuil_verification=1e+38)</argsstring>
+        <name>test_un_solveur</name>
+        <param>
+          <type><ref refid="classSolveurSys" kindref="compound">SolveurSys</ref> &amp;</type>
+          <declname>solveur</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref> &amp;</type>
+          <declname>matrice</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref> &amp;</type>
+          <declname>secmem</declname>
+        </param>
+        <param>
+          <type><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref> &amp;</type>
+          <declname>solution</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nmax</declname>
+        </param>
+        <param>
+          <type><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref> &amp;</type>
+          <declname>temps</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>seuil_verification</declname>
+          <defval>1e+38</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp" line="61" column="6" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp" bodystart="61" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Solv_Optimal.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;LecFicDistribueBin.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stat_counters.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;LecFicDiffuse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Bloc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Morse_Sym.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SFichier.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;petsc_for_kernel.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>setbit<sp/></highlight><highlight class="comment">//<sp/>Car<sp/>sinon<sp/>conflit<sp/>avec<sp/>Petsc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;MD_Vector_tools.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classTest__solveur_1a9708ac104d8349242455cd49f5f1c9a3" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classTest__solveur" kindref="compound">Test_solveur</ref>,</highlight><highlight class="stringliteral">&quot;Test_solveur&quot;</highlight><highlight class="normal">,<ref refid="classInterprete" kindref="compound">Interprete</ref>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>test_solveur<sp/>interprete<sp/>test_solveur<sp/>1<sp/>To<sp/>test<sp/>several<sp/>solvers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>fichier_secmem<sp/>chaine<sp/>fichier_secmem<sp/>1<sp/>Filename<sp/>containing<sp/>the<sp/>second<sp/>member<sp/>B</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>fichier_matrice<sp/>chaine<sp/>fichier_matrice<sp/>1<sp/>Filename<sp/>containing<sp/>the<sp/>matrix<sp/>A</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>fichier_solution<sp/>chaine<sp/>fichier_solution<sp/>1<sp/>Filename<sp/>containing<sp/>the<sp/>solution<sp/>x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>nb_test<sp/>entier<sp/>nb_test<sp/>1<sp/>Number<sp/>of<sp/>tests<sp/>to<sp/>measure<sp/>the<sp/>time<sp/>resolution<sp/>(one<sp/>preconditionnement)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>impr<sp/>rien<sp/>impr<sp/>1<sp/>To<sp/>print<sp/>the<sp/>convergence<sp/>solver</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>solveur<sp/>solveur_sys_base<sp/>solveur<sp/>1<sp/>To<sp/>specify<sp/>a<sp/>solver</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>fichier_solveur<sp/>chaine<sp/>fichier_solveur<sp/>1<sp/>To<sp/>specify<sp/>a<sp/>file<sp/>containing<sp/>a<sp/>list<sp/>of<sp/>solvers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>genere_fichier_solveur<sp/>floattant<sp/>genere_fichier_solveur<sp/>1<sp/>To<sp/>create<sp/>a<sp/>file<sp/>of<sp/>the<sp/>solver<sp/>with<sp/>a<sp/>threshold<sp/>convergence</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>seuil_verification<sp/>floattant<sp/>seuil_verification<sp/>1<sp/>Check<sp/>if<sp/>the<sp/>solution<sp/>satisfy<sp/>||Ax-B||&lt;precision</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>pas_de_solution_initiale<sp/>rien<sp/>pas_de_solution_initiale<sp/>1<sp/>Resolution<sp/>isn\&apos;t<sp/>initialized<sp/>with<sp/>the<sp/>solution<sp/>x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>ascii<sp/>rien<sp/>ascii<sp/>1<sp/>Ascii<sp/>files</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classSolv__Optimal_1a3e18c222b743683be4911a909e6aa5d4" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur_ni_destructeur(<ref refid="classSolv__Optimal" kindref="compound">Solv_Optimal</ref>,</highlight><highlight class="stringliteral">&quot;Solv_Optimal&quot;</highlight><highlight class="normal">,<ref refid="classsolv__iteratif" kindref="compound">solv_iteratif</ref>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>optimal<sp/>solveur_sys_base<sp/>optimal<sp/>1<sp/>Optimal<sp/>is<sp/>a<sp/>solver<sp/>which<sp/>tests<sp/>several<sp/>solvers<sp/>of<sp/>the<sp/>previous<sp/>list<sp/>to<sp/>choose<sp/>the<sp/>fastest<sp/>one<sp/>for<sp/>the<sp/>considered<sp/>linear<sp/>system.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>seuil<sp/>floattant<sp/>seuil<sp/>0<sp/>Convergence<sp/>threshold</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>impr<sp/>rien<sp/>impr<sp/>1<sp/>To<sp/>print<sp/>the<sp/>convergency<sp/>of<sp/>the<sp/>fastest<sp/>solver</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>quiet<sp/>rien<sp/>quiet<sp/>1<sp/>To<sp/>disable<sp/>printing<sp/>of<sp/>information</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>save_matrice|save_matrix<sp/>rien<sp/>save_matrice<sp/>1<sp/>To<sp/>save<sp/>the<sp/>linear<sp/>system<sp/>(A,<sp/>x,<sp/>B)<sp/>into<sp/>a<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>frequence_recalc<sp/>entier<sp/>frequence_recalc<sp/>1<sp/>To<sp/>set<sp/>a<sp/>time<sp/>step<sp/>period<sp/>(by<sp/>default,<sp/>100)<sp/>for<sp/>re-checking<sp/>the<sp/>fatest<sp/>solver</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>nom_fichier_solveur<sp/>chaine<sp/>nom_fichier_solveur<sp/>1<sp/>To<sp/>specify<sp/>the<sp/>file<sp/>containing<sp/>the<sp/>list<sp/>of<sp/>the<sp/>tested<sp/>solvers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>fichier_solveur_non_recree<sp/>rien<sp/>fichier_solveur_non_recree<sp/>1<sp/>To<sp/>avoid<sp/>the<sp/>creation<sp/>of<sp/>the<sp/>file<sp/>containing<sp/>the<sp/>list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classTest__solveur_1a1560f10cf561788c6ec23ccb004b2fac" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classTest__solveur_1a1560f10cf561788c6ec23ccb004b2fac" kindref="member">Test_solveur::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="52"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classTest__solveur_1a8fd23c39aaa4d6cd7faae21fe637e890" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classTest__solveur_1a8fd23c39aaa4d6cd7faae21fe637e890" kindref="member">Test_solveur::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>test_un_solveur(<ref refid="classSolveurSys" kindref="compound">SolveurSys</ref>&amp;<sp/>solveur,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>matrice,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>secmem,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>solution,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nmax,<sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>temps,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>seuil_verification=DMAXFLOAT)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>solution_ref(solution);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n=temps.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="classStat__Counter__Id" kindref="compound">Stat_Counter_Id</ref><sp/><sp/>solv_sys_counter_l=<sp/>statistiques().<ref refid="classStatistiques_1ae1d5ab3d7354d4f748173dde67f9912d" kindref="member">new_counter</ref>(1,<sp/></highlight><highlight class="stringliteral">&quot;SolveurSys::resoudre_systeme&quot;</highlight><highlight class="normal">,<sp/>0);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;n;<sp/>i++)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>solution=solution_ref;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>etape<sp/>de<sp/>resolution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStat__Results" kindref="compound">Stat_Results</ref><sp/>stat_resol_0;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>statistiques().<ref refid="classStatistiques_1ab17d748f8771fe4ce1f9194348751ea6" kindref="member">get_stats</ref>(solv_sys_counter_l,<sp/>stat_resol_0);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;------------------------------------&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;Try<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>solver<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>solveur<sp/>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//solveur-&gt;fixer_limpr(0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>statistiques().<ref refid="classStatistiques_1affcd058809786918ed173aaf681d0843" kindref="member">begin_count</ref>(solv_sys_counter_l);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>solveur.<ref refid="classSolveurSys_1a8dc69a794250d2a64d5126507c2349db" kindref="member">nommer</ref>(</highlight><highlight class="stringliteral">&quot;test_solver&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>solveur.<ref refid="classSolveurSys_1a62ca198f0c5dc599e53b0535761e5138" kindref="member">resoudre_systeme</ref>(matrice,secmem,solution);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>statistiques().<ref refid="classStatistiques_1a686ef80e162afd2fb6058c8d27175ca4" kindref="member">end_count</ref>(solv_sys_counter_l);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStat__Results" kindref="compound">Stat_Results</ref><sp/>stat_resol;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>statistiques().<ref refid="classStatistiques_1ab17d748f8771fe4ce1f9194348751ea6" kindref="member">get_stats</ref>(solv_sys_counter_l,<sp/>stat_resol);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>recupere<sp/>un<sp/>delta<sp/>time<sp/>et<sp/>non<sp/>un<sp/>time<sp/>absolu<sp/>!!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>time_resol=stat_resol.<ref refid="classStat__Results_1a9ac46c2ac7225154b6893ac453e214ef" kindref="member">time</ref>-stat_resol_0.<ref refid="classStat__Results_1a9ac46c2ac7225154b6893ac453e214ef" kindref="member">time</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>test(secmem);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>test*=-1;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>matrice.<ref refid="classMatrice__Base_1aed652de189a541ffa30f802e407696cd" kindref="member">ajouter_multvect</ref>(solution,test);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//test-=secmem;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>norme=mp_norme_vect(test);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//statistiques().dump(&quot;Statistiques<sp/>de<sp/>resolution<sp/>du<sp/>probleme&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//print_statistics_analyse(&quot;Statistiques<sp/>de<sp/>resolution<sp/>du<sp/>probleme&quot;,<sp/>1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;CPU=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;time_resol&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>s<sp/>,<sp/>||Ax<sp/>-b||=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>norme<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1aa1142e848c81a78c28a061a6f45b4042" kindref="member">Process::imprimer_ram_totale</ref>();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>temps[i]=<ref refid="classProcess_1a1e9d9f9899b71927cfafae14c7bd048d" kindref="member">Process::mp_max</ref>(time_resol);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(norme&gt;seuil_verification)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;residue<sp/>calculated<sp/>greater<sp/>than<sp/>the<sp/>threshold<sp/>value<sp/>indicated<sp/>(&quot;</highlight><highlight class="normal">&lt;&lt;seuil_verification&lt;&lt;</highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>one<sp/>will<sp/>not<sp/>use<sp/>the<sp/>solver<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;solveur&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temps=1.e37;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>test_solveur(<ref refid="classSolveurSys" kindref="compound">SolveurSys</ref>&amp;<sp/>solveur,<sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>matrice<sp/>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>secmem<sp/>,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>solution<sp/>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nmax,<sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>temps,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>list_solveur,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>seuil_verification=DMAXFLOAT)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>solution_ref(solution);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numero=0,numero_best=-1;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>best_time=1e36;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motsolveur(</highlight><highlight class="stringliteral">&quot;solveur&quot;</highlight><highlight class="normal">),motlu;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>list_solveur<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dernier=temps.<ref refid="classTRUSTArray_1a48b5aa02624ffdc0bad44ca38ddd1a1c" kindref="member">size_array</ref>()-1;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(list_solveur.<ref refid="classEntree_1a031cbbd83a3acd74b6d16496602fd941" kindref="member">good</ref>())</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu!=motsolveur)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>One<sp/>expected<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;motsolveur<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>and<sp/>not<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;motlu&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>numero++;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSolveurSys" kindref="compound">SolveurSys</ref><sp/>newsolveur;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>list_solveur&gt;&gt;newsolveur;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>solution=solution_ref;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>test_un_solveur(newsolveur,<sp/>matrice,<sp/>secmem<sp/>,solution,<sp/>nmax,<sp/>temps,<sp/>seuil_verification);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(temps[dernier]&lt;best_time)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>solveur=newsolveur;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>best_time=temps[dernier];</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>numero_best=numero;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>list_solveur&gt;&gt;motlu;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(numero_best==-1)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>None<sp/>of<sp/>the<sp/>tested<sp/>solvers<sp/>give<sp/>the<sp/>expected<sp/>residue&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>the<sp/>same<sp/>solver<sp/>must<sp/>be<sp/>kept<sp/>?<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>exit();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/>temps=best_time;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>numero_best;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="145"><highlight class="comment">/*!<sp/>@brief<sp/>genere<sp/>un<sp/>fichier<sp/>de<sp/>solveur<sp/>a<sp/>tester<sp/>different<sp/>selon<sp/>si<sp/>la<sp/>matrice<sp/>peut<sp/>etre<sp/>resolue<sp/>avec<sp/>ou<sp/>sans<sp/>GCP</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>generate_defaut(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>matrice,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>seuil,<sp/><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>sortie,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>limpr=0)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>impr(</highlight><highlight class="stringliteral">&quot;<sp/>impr<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(limpr==0)<sp/>impr=</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(limpr==-1)<sp/>impr=</highlight><highlight class="stringliteral">&quot;<sp/>quiet<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">Process::je_suis_maitre</ref>())</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((!sub_type(<ref refid="classMatrice__Morse__Sym" kindref="compound">Matrice_Morse_Sym</ref>,matrice))&amp;&amp;(!sub_type(<ref refid="classMatrice__Bloc" kindref="compound">Matrice_Bloc</ref>,matrice)))</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sortie<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>solveur<sp/>gen<sp/>{<sp/>seuil<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;seuil<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;impr&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>solv_elem<sp/>bicgstab<sp/>precond<sp/>ilu<sp/>{<sp/>type<sp/>2<sp/>filling<sp/>10<sp/>}<sp/>}&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sortie<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>solveur<sp/>gen<sp/>{<sp/>seuil<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;seuil<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;impr&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>solv_elem<sp/>bicgstab<sp/>precond<sp/>ilu<sp/>{<sp/>type<sp/>2<sp/>filling<sp/>20<sp/>}<sp/>}&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sortie<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>solveur<sp/>gmres<sp/>{<sp/>diag<sp/>seuil<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;seuil<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;impr&lt;&lt;</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__PETSCKSP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sortie<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>solveur<sp/>petsc<sp/>bicgstab<sp/>{<sp/>precond<sp/>diag<sp/>{<sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seuil<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;seuil<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;impr&lt;&lt;</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>a<sp/>une<sp/>matrice<sp/>de<sp/>type<sp/>pression<sp/>(?)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Mise<sp/>a<sp/>jour<sp/>des<sp/>solveurs<sp/>testes<sp/>24/05/2012</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sortie<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>solveur<sp/>gcp<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>precond<sp/>ssor<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>omega<sp/>1.6<sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/>seuil<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;seuil<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;impr&lt;&lt;</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__PETSCKSP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sortie<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>solveur<sp/>petsc<sp/>gcp<sp/>{<sp/>precond<sp/>ssor<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>omega<sp/>1.6<sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/>seuil<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;seuil<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;impr&lt;&lt;</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1a6bf692ce58d9578aa62ac3c07b8caaa1" kindref="member">Process::nproc</ref>()&lt;512)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sortie<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>solveur<sp/>petsc<sp/>cholesky<sp/>{<sp/>impr<sp/>}&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pour<sp/>les<sp/>tres<sp/>grands<sp/>calculs<sp/>on<sp/>bascule<sp/>de<sp/>Cholesky<sp/>a<sp/>BICGSTAB<sp/>ILU_SP(1)<sp/>par<sp/>bloc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sortie<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>solveur<sp/>petsc<sp/>bicgstab<sp/>{<sp/>precond<sp/>block_jacobi_icc<sp/>{<sp/>level<sp/>1<sp/>}<sp/>seuil<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;seuil<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;impr&lt;&lt;</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Voire<sp/>CG<sp/>ILU_SP(1)<sp/>par<sp/>bloc<sp/>car<sp/>BICGSTAB<sp/>peut<sp/>avoir<sp/>du<sp/>mal<sp/>a<sp/>converger<sp/>lors<sp/>de<sp/>la<sp/>projection<sp/>initiale...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sortie<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>solveur<sp/>petsc<sp/>gcp<sp/>{<sp/>precond<sp/>block_jacobi_icc<sp/>{<sp/>level<sp/>1<sp/>}<sp/>seuil<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;seuil<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;impr&lt;&lt;</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>SPAI<sp/>n&apos;a<sp/>jamais<sp/>fait<sp/>ses<sp/>preuves<sp/>(comme<sp/>tous<sp/>les<sp/>preconditionnements<sp/>de<sp/>Hypre),<sp/>on<sp/>l&apos;enleve</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//sortie<sp/>&lt;&lt;&quot;<sp/>solveur<sp/>petsc<sp/>gcp<sp/>{<sp/>precond<sp/>spai<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>level<sp/>2<sp/>epsilon<sp/>0.2<sp/>}<sp/>seuil<sp/>&quot;&lt;&lt;seuil<sp/>&lt;&lt;&quot;<sp/>&quot;&lt;&lt;impr&lt;&lt;&quot;}&quot;&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="186" refid="classTest__solveur_1affeb0eca6bcf1cf11eea9b778b129417" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classTest__solveur_1affeb0eca6bcf1cf11eea9b778b129417" kindref="member">Test_solveur::interpreter</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><ref refid="classMatrice" kindref="compound">Matrice</ref><sp/>matrice;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>secmem,solution;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>fichier_secmem(</highlight><highlight class="stringliteral">&quot;Secmem.sa&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>fichier_solution(</highlight><highlight class="stringliteral">&quot;Solution.sa&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>fichier_matrice(</highlight><highlight class="stringliteral">&quot;Matrice.sa&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>fichier_solveur;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>pas_de_solution_init=</highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ascii<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>limpr_<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>seuil_verification=DMAXFLOAT;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><ref refid="classSolveurSys" kindref="compound">SolveurSys</ref><sp/>solveur;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>seuil_list=0;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_test=2;<sp/></highlight><highlight class="comment">//<sp/>On<sp/>teste<sp/>2<sp/>fois<sp/>un<sp/>solveur<sp/>car<sp/>la<sp/>premiere<sp/>fois,<sp/>le<sp/>cout<sp/>du<sp/>preconditionnement<sp/>peut<sp/>penaliser</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/><sp/>param((*this).que_suis_je());</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;fichier_secmem&quot;</highlight><highlight class="normal">,&amp;fichier_secmem);<sp/><sp/></highlight><highlight class="comment">//<sp/>nom<sp/>du<sp/>fichier<sp/>contenant<sp/>le<sp/>second<sp/>membre<sp/>(Secmem.sa<sp/>par<sp/>defaut)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;fichier_matrice&quot;</highlight><highlight class="normal">,&amp;fichier_matrice);<sp/><sp/></highlight><highlight class="comment">//<sp/>nom<sp/>du<sp/>fichier<sp/>contenant<sp/>la<sp/>matrice<sp/>(Matrice.sa<sp/>par<sp/>defaut)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;fichier_solution&quot;</highlight><highlight class="normal">,&amp;fichier_solution);<sp/><sp/></highlight><highlight class="comment">//<sp/>nom<sp/>du<sp/>fichier<sp/>contenant<sp/>la<sp/>solution<sp/>(Solution.sa<sp/>par<sp/>defaut)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;nb_test&quot;</highlight><highlight class="normal">,&amp;nb_test);<sp/><sp/></highlight><highlight class="comment">//<sp/>nb<sp/>de<sp/>resolution<sp/>pour<sp/>mesurer<sp/>le<sp/>temps<sp/>(un<sp/>seul<sp/>preconditionnemt)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1ae3d50612a0014a9d58e6e035a65f20e5" kindref="member">ajouter_flag</ref>(</highlight><highlight class="stringliteral">&quot;impr&quot;</highlight><highlight class="normal">,&amp;limpr_);<sp/></highlight><highlight class="comment">//<sp/>impr<sp/>des<sp/>solveurs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;solveur&quot;</highlight><highlight class="normal">,&amp;solveur);<sp/></highlight><highlight class="comment">//<sp/>pour<sp/>specifier<sp/>un<sp/>solveur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;fichier_solveur&quot;</highlight><highlight class="normal">,&amp;fichier_solveur);<sp/></highlight><highlight class="comment">//<sp/>pour<sp/>specifier<sp/>un<sp/>fichier<sp/>contenant<sp/>des<sp/>solveurs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;genere_fichier_solveur&quot;</highlight><highlight class="normal">,&amp;seuil_list);<sp/></highlight><highlight class="comment">//<sp/>genere<sp/>le<sp/>fichier<sp/>de<sp/>solveur<sp/>avec<sp/>un<sp/>seuil<sp/>donne</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;seuil_verification&quot;</highlight><highlight class="normal">,&amp;seuil_verification);<sp/></highlight><highlight class="comment">//<sp/>verifie<sp/>si<sp/>la<sp/>soulution<sp/>trouvee<sp/>par<sp/>la<sp/>resolution<sp/>est<sp/>telle<sp/>que<sp/>Ax<sp/>-b<sp/>&lt;<sp/>seuil_verification</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1ae3d50612a0014a9d58e6e035a65f20e5" kindref="member">ajouter_flag</ref>(</highlight><highlight class="stringliteral">&quot;pas_de_solution_initiale&quot;</highlight><highlight class="normal">,&amp;pas_de_solution_init);<sp/></highlight><highlight class="comment">//<sp/>pas_de_solution_initiale<sp/>:<sp/>on<sp/>n&apos;initialise<sp/>pas<sp/>la<sp/>resolution<sp/>avec<sp/>la<sp/>solution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1ae3d50612a0014a9d58e6e035a65f20e5" kindref="member">ajouter_flag</ref>(</highlight><highlight class="stringliteral">&quot;ascii&quot;</highlight><highlight class="normal">,&amp;ascii);<sp/></highlight><highlight class="comment">//<sp/>dans<sp/>le<sp/>cas<sp/>ou<sp/>les<sp/>fichiers<sp/>sont<sp/>ascii</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aa9d44fc51b4a08b357733a97dc7acaad" kindref="member">lire_avec_accolades_depuis</ref>(is);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>binaire=1;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ascii)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>binaire=0;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>relit<sp/>la<sp/>matrice<sp/>et<sp/>le<sp/>secmem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLecFicDistribue" kindref="compound">LecFicDistribue</ref><sp/>entree;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>entree.<ref refid="classEntree_1ac66e45bc9a4d3ca5a205c7f0b5af9f99" kindref="member">set_bin</ref>(binaire);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>entree.<ref refid="classLecFicDistribue_1af103078beecbf164455035ae1f1d3f21" kindref="member">ouvrir</ref>(fichier_matrice);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>entree&gt;&gt;matrice;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>Cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>size<sp/>of<sp/>system<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;matrice.valeur(<sp/>).nb_colonnes()&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//matrice-&gt;imprimer_formatte(Cout);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLecFicDistribue" kindref="compound">LecFicDistribue</ref><sp/>entree;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>entree.<ref refid="classEntree_1ac66e45bc9a4d3ca5a205c7f0b5af9f99" kindref="member">set_bin</ref>(binaire);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>entree.<ref refid="classLecFicDistribue_1af103078beecbf164455035ae1f1d3f21" kindref="member">ouvrir</ref>(fichier_secmem);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMD__Vector__tools_1ab7324a93364b401d8c542f399d24a7c5" kindref="member">MD_Vector_tools::restore_vector_with_md</ref>(secmem,entree);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>Cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>size<sp/>of<sp/>system<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;secmem.<ref refid="classTRUSTVect_1a1918c7467e93eb90ae67d288b1519ae7" kindref="member">size_totale</ref>()&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pas_de_solution_init)</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>solution=secmem;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>solution=0.;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLecFicDistribue" kindref="compound">LecFicDistribue</ref><sp/>entree;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>entree.<ref refid="classEntree_1ac66e45bc9a4d3ca5a205c7f0b5af9f99" kindref="member">set_bin</ref>(binaire);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>entree.<ref refid="classLecFicDistribue_1af103078beecbf164455035ae1f1d3f21" kindref="member">ouvrir</ref>(fichier_solution);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMD__Vector__tools_1ab7324a93364b401d8c542f399d24a7c5" kindref="member">MD_Vector_tools::restore_vector_with_md</ref>(solution,entree);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>size<sp/>of<sp/>system<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;solution.<ref refid="classTRUSTVect_1a1918c7467e93eb90ae67d288b1519ae7" kindref="member">size_totale</ref>()&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>solution.<ref refid="classTRUSTVect_1aa71ed4e8bc0401c7762eea01dc4012e8" kindref="member">set_md_vector</ref>(secmem.<ref refid="classTRUSTVect_1aee66e0d9d1fe1a107f84b5a7a3d59644" kindref="member">get_md_vector</ref>());</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(seuil_list!=0)</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fichier_solveur==<ref refid="classNom" kindref="compound">Nom</ref>())</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fichier_solveur=</highlight><highlight class="stringliteral">&quot;list_solveur&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">je_suis_maitre</ref>())</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSFichier" kindref="compound">SFichier</ref><sp/>list_solveur(fichier_solveur);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>generate_defaut(matrice,seuil_list,list_solveur,limpr_);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/>secmem.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/>solution.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref><sp/>temps(nb_test);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fichier_solveur==<ref refid="classNom" kindref="compound">Nom</ref>())</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>test_un_solveur(solveur,<sp/><sp/>matrice<sp/>,<sp/>secmem<sp/>,<sp/>solution<sp/>,<sp/>-10,<sp/>temps,seuil_verification);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLecFicDiffuse" kindref="compound">LecFicDiffuse</ref><sp/>list_solveur(fichier_solveur);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numero_best=test_solveur(solveur,<sp/><sp/>matrice<sp/>,<sp/>secmem<sp/>,<sp/>solution<sp/><sp/>,<sp/>-10,<sp/>temps,list_solveur,seuil_verification);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;------------------------------------------------&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Best<sp/>solver<sp/>:<sp/>number<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;numero_best&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;solveur&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Best<sp/>CPU<sp/>time<sp/>=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;temps[0]&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;------------------------------------------------&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numero_solv_optimal=0;<sp/></highlight><highlight class="comment">//<sp/>numero<sp/>du<sp/>solveur<sp/>pour<sp/>avoir<sp/>des<sp/>noms<sp/>de<sp/>fichiers<sp/>solveurs<sp/>par<sp/>defaut<sp/>differents<sp/>pour<sp/>chaque<sp/>solveur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280" refid="classSolv__Optimal_1a1603b697cf16f99379f23bd6bbe5a397" refkind="member"><highlight class="normal"><ref refid="classSolv__Optimal_1a1603b697cf16f99379f23bd6bbe5a397" kindref="member">Solv_Optimal::Solv_Optimal</ref>():n_resol_(0),n_reinit_(0)</highlight></codeline>
+<codeline lineno="281"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Optimal_1a246a7c223c759f0b1eef3f0c1ebdcb9b" kindref="member">freq_recalc_</ref><sp/>=<sp/>(int)(pow(2.0,(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">)((</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(True_int)*8)-1))-1);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Optimal_1a246a7c223c759f0b1eef3f0c1ebdcb9b" kindref="member">freq_recalc_</ref><sp/>=<sp/>100;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Optimal_1acbe3e2f2be452d17ac2b0383a6524dba" kindref="member">fichier_solveur_</ref>=</highlight><highlight class="stringliteral">&quot;solveurs_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Optimal_1acbe3e2f2be452d17ac2b0383a6524dba" kindref="member">fichier_solveur_</ref>+=<ref refid="classNom" kindref="compound">Nom</ref>(numero_solv_optimal);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/>numero_solv_optimal++;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="289" refid="classSolv__Optimal_1a58fe38d6ff9b7de826cc405ead4f85d0" refkind="member"><highlight class="normal"><ref refid="classSolv__Optimal_1a58fe38d6ff9b7de826cc405ead4f85d0" kindref="member">Solv_Optimal::~Solv_Optimal</ref>()</highlight></codeline>
+<codeline lineno="290"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolv__Optimal_1a698007e5024c8b66bebe4d594e1a3fa7" kindref="member">le_solveur_</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())<sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>The<sp/>solver<sp/>used<sp/>by<sp/>Solv_Optimal<sp/>was<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classSolv__Optimal_1a698007e5024c8b66bebe4d594e1a3fa7" kindref="member">le_solveur_</ref>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="293" refid="classSolv__Optimal_1ad66a7b1c5af4200be6c7fd5e78df5ed4" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSolv__Optimal_1ad66a7b1c5af4200be6c7fd5e78df5ed4" kindref="member">Solv_Optimal::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="294"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298" refid="classSolv__Optimal_1aa6268c6cf6264e1fc252691e2b3c28b3" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSolv__Optimal_1aa6268c6cf6264e1fc252691e2b3c28b3" kindref="member">Solv_Optimal::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>impr,quiet;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param((*this).que_suis_je());</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;seuil&quot;</highlight><highlight class="normal">,&amp;<ref refid="classsolv__iteratif_1a726974e9a0579e0c242606430dc320d4" kindref="member">seuil_</ref>,<ref refid="classParam_1aa4ad0ca1d49bc5f2ebc5fc83ee9df384aaf5b6dfac1c5970478525407cc6ac572" kindref="member">Param::REQUIRED</ref>);<sp/></highlight><highlight class="comment">//<sp/>seuil<sp/>de<sp/>resolution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1ae3d50612a0014a9d58e6e035a65f20e5" kindref="member">ajouter_flag</ref>(</highlight><highlight class="stringliteral">&quot;impr&quot;</highlight><highlight class="normal">,&amp;impr);<sp/></highlight><highlight class="comment">//<sp/>active<sp/>impression<sp/>des<sp/>solveurs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1ae3d50612a0014a9d58e6e035a65f20e5" kindref="member">ajouter_flag</ref>(</highlight><highlight class="stringliteral">&quot;quiet&quot;</highlight><highlight class="normal">,&amp;quiet);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1ae3d50612a0014a9d58e6e035a65f20e5" kindref="member">ajouter_flag</ref>(</highlight><highlight class="stringliteral">&quot;save_matrice|save_matrix&quot;</highlight><highlight class="normal">,&amp;<ref refid="classSolveurSys__base_1a3a07b4fedbb16ff0a096d7c37a0d952e" kindref="member">save_matrice_</ref>);<sp/></highlight><highlight class="comment">//<sp/>pour<sp/>sauvegarder<sp/>A,x,b</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;frequence_recalc&quot;</highlight><highlight class="normal">,&amp;<ref refid="classSolv__Optimal_1a246a7c223c759f0b1eef3f0c1ebdcb9b" kindref="member">freq_recalc_</ref>);<sp/></highlight><highlight class="comment">//<sp/>frequence<sp/>pour<sp/>reevaluer<sp/>le<sp/>solveur<sp/>optimal</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;nom_fichier_solveur&quot;</highlight><highlight class="normal">,&amp;<ref refid="classSolv__Optimal_1acbe3e2f2be452d17ac2b0383a6524dba" kindref="member">fichier_solveur_</ref>);<sp/></highlight><highlight class="comment">//nom<sp/>du<sp/>fichier<sp/>contenant<sp/>les<sp/>solveurs<sp/>testes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1ae3d50612a0014a9d58e6e035a65f20e5" kindref="member">ajouter_flag</ref>(</highlight><highlight class="stringliteral">&quot;fichier_solveur_non_recree&quot;</highlight><highlight class="normal">,&amp;<ref refid="classSolv__Optimal_1a7d2c47e4f9ba6f53ac9ba4494ed3624c" kindref="member">fichier_solveur_non_recree_</ref>);<sp/></highlight><highlight class="comment">//<sp/><sp/>si<sp/>flag<sp/>mis<sp/>alors<sp/>le<sp/>fichier<sp/>n&apos;est<sp/>pas<sp/>cree<sp/>au<sp/>debut<sp/>du<sp/>calcul</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aa9d44fc51b4a08b357733a97dc7acaad" kindref="member">lire_avec_accolades_depuis</ref>(is);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><ref refid="classSolveurSys__base_1a987e97740c779c1ab4192c3c1f1bbd5d" kindref="member">fixer_limpr</ref>(impr);</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(quiet)</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSolveurSys__base_1a987e97740c779c1ab4192c3c1f1bbd5d" kindref="member">fixer_limpr</ref>(-1);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="317"><highlight class="comment">/*!<sp/>@brief<sp/>methode<sp/>clef<sp/>de<sp/>Solv_Optimal<sp/>a<sp/>la<sp/>premiere<sp/>iteration</highlight></codeline>
+<codeline lineno="318"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="319"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>genere<sp/>le<sp/>fichier<sp/>fichier_solveur_<sp/>contenant<sp/>la<sp/>liste<sp/>des<sp/>solveurs<sp/>a<sp/>tester</highlight></codeline>
+<codeline lineno="320"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>prend<sp/>le<sp/>premier<sp/>solveur<sp/>du<sp/>fichier</highlight></codeline>
+<codeline lineno="321"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>A<sp/>la<sp/>3<sp/>ite<sp/>et<sp/>avec<sp/>la<sp/>frequence<sp/>freq_recalc_<sp/>cherche<sp/>le<sp/>solveur<sp/>le<sp/>+<sp/>rapide,<sp/>en<sp/>prenant<sp/>en<sp/>compte<sp/>le<sp/>fait<sp/>que<sp/>la<sp/>matrice<sp/>a<sp/>change<sp/>ou<sp/>non</highlight></codeline>
+<codeline lineno="322"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>appel<sp/>test_solveur</highlight></codeline>
+<codeline lineno="323"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="324"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325" refid="classSolv__Optimal_1aa0ae0a0a4b0e3090a99997e6a55e255f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolv__Optimal_1aa0ae0a0a4b0e3090a99997e6a55e255f" kindref="member">Solv_Optimal::prepare_resol</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>matrice,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>secmem,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>solution,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nmax)</highlight></codeline>
+<codeline lineno="326"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolv__Optimal_1a8a5774f4b44a2e66ad87311b001ceb34" kindref="member">n_resol_</ref>==0)</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>premiere<sp/>chose<sp/>on<sp/>genere<sp/>le<sp/>fichier<sp/>par<sp/>defaut,<sp/>puis<sp/>on<sp/>cree<sp/>le<sp/>solveur<sp/>avec<sp/>le<sp/>premier<sp/>du<sp/>fichier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((!<ref refid="classSolv__Optimal_1a7d2c47e4f9ba6f53ac9ba4494ed3624c" kindref="member">fichier_solveur_non_recree_</ref>)&amp;&amp;(<ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">je_suis_maitre</ref>()))</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSFichier" kindref="compound">SFichier</ref><sp/>list_solveur(<ref refid="classSolv__Optimal_1acbe3e2f2be452d17ac2b0383a6524dba" kindref="member">fichier_solveur_</ref>);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>generate_defaut(matrice,<ref refid="classsolv__iteratif_1a726974e9a0579e0c242606430dc320d4" kindref="member">seuil_</ref>,list_solveur,<ref refid="classSolveurSys__base_1a6435c5b83312da8f782eeeab564b4061" kindref="member">limpr</ref>());</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLecFicDiffuse" kindref="compound">LecFicDiffuse</ref><sp/>list_solveur2(<ref refid="classSolv__Optimal_1acbe3e2f2be452d17ac2b0383a6524dba" kindref="member">fichier_solveur_</ref>);</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>mot;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>list_solveur2&gt;&gt;mot;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>list_solveur2&gt;&gt;<ref refid="classSolv__Optimal_1a698007e5024c8b66bebe4d594e1a3fa7" kindref="member">le_solveur_</ref>;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>OK</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Optimal_1a8a5774f4b44a2e66ad87311b001ceb34" kindref="member">n_resol_</ref>++;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((<ref refid="classSolv__Optimal_1a8a5774f4b44a2e66ad87311b001ceb34" kindref="member">n_resol_</ref>&gt;=3)&amp;&amp;((<ref refid="classSolv__Optimal_1a8a5774f4b44a2e66ad87311b001ceb34" kindref="member">n_resol_</ref>-3)%<ref refid="classSolv__Optimal_1a246a7c223c759f0b1eef3f0c1ebdcb9b" kindref="member">freq_recalc_</ref>==0))</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLecFicDiffuse" kindref="compound">LecFicDiffuse</ref><sp/>list_solveur(<ref refid="classSolv__Optimal_1acbe3e2f2be452d17ac2b0383a6524dba" kindref="member">fichier_solveur_</ref>);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_ite;</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolv__Optimal_1acdbf08667ffd58401a43892d173b60c1" kindref="member">n_reinit_</ref>&lt;2)</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nb_ite=2;<sp/></highlight><highlight class="comment">//<sp/>Matrice<sp/>constante<sp/>(on<sp/>resout<sp/>2<sp/>fois<sp/>pour<sp/>ne<sp/>retenir<sp/>que<sp/>le<sp/>2eme<sp/>temps<sp/>exempt<sp/>d&apos;eventuel<sp/>preconditionnement)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nb_ite=1;<sp/></highlight><highlight class="comment">//<sp/>Matrice<sp/>non<sp/>constante<sp/>(on<sp/>resout<sp/>1<sp/>seul<sp/>fois)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref><sp/>temps(nb_ite);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numero_best=test_solveur(<ref refid="classSolv__Optimal_1a698007e5024c8b66bebe4d594e1a3fa7" kindref="member">le_solveur_</ref>,<sp/><sp/>matrice<sp/>,<sp/>secmem<sp/>,<sp/>solution<sp/><sp/>,<sp/>nmax,<sp/>temps,list_solveur,<ref refid="classsolv__iteratif_1a726974e9a0579e0c242606430dc320d4" kindref="member">seuil_</ref>);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;------------------------------------------------&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Best<sp/>solver<sp/>:<sp/>number<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;numero_best&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classSolv__Optimal_1a698007e5024c8b66bebe4d594e1a3fa7" kindref="member">le_solveur_</ref>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Best<sp/>CPU<sp/>time<sp/>=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;temps[0]&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;------------------------------------------------&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">je_suis_maitre</ref>())</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>best(</highlight><highlight class="stringliteral">&quot;best_&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>best+=<ref refid="classSolv__Optimal_1acbe3e2f2be452d17ac2b0383a6524dba" kindref="member">fichier_solveur_</ref>;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSFichier" kindref="compound">SFichier</ref><sp/>sf(best);</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sf<sp/>&lt;&lt;<sp/><ref refid="classSolv__Optimal_1a698007e5024c8b66bebe4d594e1a3fa7" kindref="member">le_solveur_</ref><sp/>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="365"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="366" refid="classSolv__Optimal_1a2f4a0e780e9d8394587adc0c6c774d98" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSolv__Optimal_1a2f4a0e780e9d8394587adc0c6c774d98" kindref="member">Solv_Optimal::resoudre_systeme</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>matrice,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>secmem,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>solution)</highlight></codeline>
+<codeline lineno="367"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Optimal_1aa0ae0a0a4b0e3090a99997e6a55e255f" kindref="member">prepare_resol</ref>(matrice,secmem,solution,-20);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSolv__Optimal_1a698007e5024c8b66bebe4d594e1a3fa7" kindref="member">le_solveur_</ref>-&gt;<ref refid="classSolveurSys_1a62ca198f0c5dc599e53b0535761e5138" kindref="member">resoudre_systeme</ref>(<sp/>matrice,<sp/>secmem,<sp/><sp/>solution);</highlight></codeline>
+<codeline lineno="370"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="371" refid="classSolv__Optimal_1a731e731b3b6a816009228a5d9ba2cd25" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSolv__Optimal_1a2f4a0e780e9d8394587adc0c6c774d98" kindref="member">Solv_Optimal::resoudre_systeme</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMatrice__Base" kindref="compound">Matrice_Base</ref>&amp;<sp/>matrice,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>secmem,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>solution,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nmax)</highlight></codeline>
+<codeline lineno="372"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Optimal_1aa0ae0a0a4b0e3090a99997e6a55e255f" kindref="member">prepare_resol</ref>(matrice,secmem,solution,<sp/>nmax);</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSolv__Optimal_1a698007e5024c8b66bebe4d594e1a3fa7" kindref="member">le_solveur_</ref>-&gt;<ref refid="classSolveurSys_1a62ca198f0c5dc599e53b0535761e5138" kindref="member">resoudre_systeme</ref>(<sp/>matrice,<sp/>secmem,<sp/><sp/>solution,<sp/>nmax<sp/>);</highlight></codeline>
+<codeline lineno="375"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight></codeline>
+<codeline lineno="378" refid="classSolv__Optimal_1a9140de7e1e77191c073b0752fa77dc7b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolv__Optimal_1a9140de7e1e77191c073b0752fa77dc7b" kindref="member">Solv_Optimal::reinit</ref>()</highlight></codeline>
+<codeline lineno="379"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><ref refid="classSolv__Optimal_1acdbf08667ffd58401a43892d173b60c1" kindref="member">n_reinit_</ref>++;</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classSolv__Optimal_1a698007e5024c8b66bebe4d594e1a3fa7" kindref="member">le_solveur_</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSolv__Optimal_1a698007e5024c8b66bebe4d594e1a3fa7" kindref="member">le_solveur_</ref>-&gt;reinit();</highlight></codeline>
+<codeline lineno="383"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"></highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/SolvSys/Solv_Optimal.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,466 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Champ__front__synt_8cpp" kind="file" language="C++">
+    <compoundname>Champ_front_synt.cpp</compoundname>
+    <includes refid="Frontiere__dis__base_8h" local="no">Frontiere_dis_base.h</includes>
+    <includes refid="Schema__Temps__base_8h" local="no">Schema_Temps_base.h</includes>
+    <includes refid="Navier__Stokes__std_8h" local="no">Navier_Stokes_std.h</includes>
+    <includes refid="Champ__front__synt_8h" local="no">Champ_front_synt.h</includes>
+    <includes refid="Champ__Uniforme_8h" local="no">Champ_Uniforme.h</includes>
+    <includes refid="Fluide__base_8h" local="no">Fluide_base.h</includes>
+    <includes refid="Domaine__VF_8h" local="no">Domaine_VF.h</includes>
+    <includes refid="Frontiere_8h" local="no">Frontiere.h</includes>
+    <includes local="no">random</includes>
+    <includes local="no">string</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Champ_front_synt.cpp</label>
+        <link refid="Champ__front__synt_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>random</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Champ__front__synt_8cpp_1a463e35176eb3a0deb6159b77af937685" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Champ_front_syntbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Champ_front_syntbases</name>
+        <initializer>={   &amp;( <ref refid="classCh__front__var__instationnaire__dep" kindref="compound">Ch_front_var_instationnaire_dep</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Champs/Champ_front_synt.cpp" line="27" column="105" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Champs/Champ_front_synt.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Frontiere_dis_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Temps_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_front_synt.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Uniforme.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Frontiere.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;random&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classChamp__front__synt_1a1ce78dc6ae02ae4a555fba09488c7ae2" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classChamp__front__synt" kindref="compound">Champ_front_synt</ref>,</highlight><highlight class="stringliteral">&quot;Champ_front_synt&quot;</highlight><highlight class="normal">,<ref refid="classCh__front__var__instationnaire__dep" kindref="compound">Ch_front_var_instationnaire_dep</ref>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment">/*!<sp/>@brief<sp/>Impression<sp/>sur<sp/>un<sp/>flot<sp/>de<sp/>sortie<sp/>au<sp/>format:<sp/>taille</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>valeur(0)<sp/>...<sp/>valeur(i)<sp/><sp/>...<sp/>valeur(taille-1)</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>os)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Sortie&amp;)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>modifie</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classChamp__front__synt_1a8192b3119cc929ac9ec33cc6fff4bbc4" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classChamp__front__synt_1a8192b3119cc929ac9ec33cc6fff4bbc4" kindref="member">Champ_front_synt::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="37"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab=<ref refid="classChamp__front__base_1a6cb5e7739d925ea33074095516bef945" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<sp/>tab.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;tab.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>tab(0,i);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="45"><highlight class="comment">/*!<sp/>@brief<sp/>Mise<sp/>a<sp/>jour<sp/>du<sp/>temps</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classChamp__front__synt_1a2b17aebde6541f42bc12cea74edc92a0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__synt_1a2b17aebde6541f42bc12cea74edc92a0" kindref="member">Champ_front_synt::initialiser</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tps,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/>inco)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classCh__front__var__instationnaire__dep_1a2f84ab4435e03baaa42ecd00b58f8a32" kindref="member">Ch_front_var_instationnaire_dep::initialiser</ref>(tps,inco))</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="classChamp__front__synt_1aad8e36dcbdb6c8a3ea7c73e9a723b2ef" kindref="member">ref_inco_</ref><sp/>=<sp/>inco;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="classChamp__front__synt_1afaa153158041127aa59b20d09a8e72b8" kindref="member">temps_d_avant_</ref><sp/>=<sp/>tps;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment">/*!<sp/>@brief<sp/>Lecture<sp/>a<sp/>partir<sp/>d&apos;un<sp/>flot<sp/>d&apos;entree<sp/>au<sp/>format:<sp/>nombre_de_composantes</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>moyenne<sp/>moyenne(0)<sp/>...<sp/>moyenne(nombre_de_composantes-1)</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>moyenne<sp/>amplitude(0)<sp/>...<sp/>amplitude(nombre_de_composantes-1)</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>un<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;)<sp/>le<sp/>flot<sp/>d&apos;entree<sp/>modifie</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>@throws<sp/>accolade<sp/>ouvrante<sp/>attendue</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>@throws<sp/>mot<sp/>clef<sp/>inconnu<sp/>a<sp/>cet<sp/>endroit</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>@throws<sp/>accolade<sp/>fermante<sp/>attendue</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classChamp__front__synt_1acd91267c742b747e2b6881489113ade2" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classChamp__front__synt_1acd91267c742b747e2b6881489113ade2" kindref="member">Champ_front_synt::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dim;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>dim=<ref refid="classChamp__Proto_1aab57f8de7f990578e4aa3bb83046b303" kindref="member">lire_dimension</ref>(is,<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>dim<sp/>!=<sp/>3)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>the<sp/>dimension<sp/>must<sp/>be<sp/>equal<sp/>to<sp/>3&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motlu;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><ref refid="classMotcles" kindref="compound">Motcles</ref><sp/>les_mots(9);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>les_mots[0]=</highlight><highlight class="stringliteral">&quot;moyenne&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>les_mots[1]=</highlight><highlight class="stringliteral">&quot;lenghtScale&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>les_mots[2]=</highlight><highlight class="stringliteral">&quot;nbModes&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>les_mots[3]=</highlight><highlight class="stringliteral">&quot;turbKinEn&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>les_mots[4]=</highlight><highlight class="stringliteral">&quot;turbDissRate&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>les_mots[5]=</highlight><highlight class="stringliteral">&quot;KeOverKmin&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>les_mots[6]=</highlight><highlight class="stringliteral">&quot;timeScale&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>les_mots[7]=</highlight><highlight class="stringliteral">&quot;ratioCutoffWavenumber&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>les_mots[8]=</highlight><highlight class="stringliteral">&quot;dir_fluct&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>while<sp/>reading<sp/>Champ_front_synt&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;We<sp/>expected<sp/>a<sp/>{<sp/>instead<sp/>of<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>motlu<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cpt<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(motlu!=</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rang=les_mots.<ref refid="classMotcles_1abd4862b9c8552b88a48927e67bd48d9d" kindref="member">search</ref>(motlu);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(rang)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cpt++;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__synt_1a50dbd649ab5a0219af37268e1b4d4082" kindref="member">moyenne</ref>.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(dim);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classField__base_1a0d3bb177287a79b9d7da6f3a46deff53" kindref="member">fixer_nb_comp</ref>(dim);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;dim;<sp/>i++)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classChamp__front__synt_1a50dbd649ab5a0219af37268e1b4d4082" kindref="member">moyenne</ref>(i);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cpt++;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classChamp__front__synt_1ad847274828a02b8940cfeb007742ce6b" kindref="member">lenghtScale</ref>;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cpt++;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3:</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cpt++;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classChamp__front__synt_1a69670c312984fda62bca494aff74e964" kindref="member">turbKinEn</ref>;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4:</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cpt++;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classChamp__front__synt_1a9796c772caadb4c16ecf691793b22296" kindref="member">turbDissRate</ref>;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>5:</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cpt++;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classChamp__front__synt_1a5b23de35cad0be41bfb91cc330af37e9" kindref="member">KeOverKmin</ref>;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>6:</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cpt++;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classChamp__front__synt_1ac7bcfe70d10290225d0e10a3b823ff7a" kindref="member">timeScale</ref>;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>7:</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cpt++;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classChamp__front__synt_1ad250569ee244371eb5bdc5ac06e22784" kindref="member">ratioCutoffWavenumber</ref>;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>8:</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cpt++;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__synt_1aaacb006b16b8024e821a555638ebedd9" kindref="member">dir_fluct</ref>.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(dim);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classField__base_1a0d3bb177287a79b9d7da6f3a46deff53" kindref="member">fixer_nb_comp</ref>(dim);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;dim;<sp/>i++)</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classChamp__front__synt_1aaacb006b16b8024e821a555638ebedd9" kindref="member">dir_fluct</ref>(i);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>default<sp/>:</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;p&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>while<sp/>reading<sp/>Champ_front_synt:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>Parameter<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>motlu<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>has<sp/>been<sp/>renamed<sp/>to<sp/>KeOverKmin<sp/>since<sp/>TRUST<sp/>v1.9.0&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>Update<sp/>your<sp/>datafile.&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>while<sp/>reading<sp/>Champ_front_synt:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>motlu<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;is<sp/>not<sp/>understood.&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>We<sp/>are<sp/>expecting<sp/>a<sp/>parameter<sp/>among<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>les_mots<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(cpt<sp/>!=<sp/>9)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>while<sp/>reading<sp/>Champ_front_synt:<sp/>wrong<sp/>number<sp/>of<sp/>parameters&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>should<sp/>specify<sp/>all<sp/>these<sp/>parameters:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>les_mots<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/><ref refid="classChamp__front__synt_1ad847274828a02b8940cfeb007742ce6b" kindref="member">lenghtScale</ref><sp/>==<sp/>0<sp/>||<sp/><ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref><sp/>==<sp/>0<sp/>||<sp/><ref refid="classChamp__front__synt_1a69670c312984fda62bca494aff74e964" kindref="member">turbKinEn</ref><sp/>==<sp/>0<sp/>||<sp/><ref refid="classChamp__front__synt_1a9796c772caadb4c16ecf691793b22296" kindref="member">turbDissRate</ref><sp/>==<sp/>0<sp/>||<sp/><ref refid="classChamp__front__synt_1a5b23de35cad0be41bfb91cc330af37e9" kindref="member">KeOverKmin</ref><sp/>==<sp/>0<sp/>||<sp/><ref refid="classChamp__front__synt_1ac7bcfe70d10290225d0e10a3b823ff7a" kindref="member">timeScale</ref><sp/>==<sp/>0<sp/>||<sp/><ref refid="classChamp__front__synt_1ad250569ee244371eb5bdc5ac06e22784" kindref="member">ratioCutoffWavenumber</ref><sp/>==<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>while<sp/>reading<sp/>Champ_front_synt&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;There<sp/>is<sp/>at<sp/>least<sp/>one<sp/>parameter<sp/>among:<sp/>timeScale,<sp/>lenghtScale,<sp/>nbModes,<sp/>turbKinEn,<sp/>turbDissRate<sp/>and<sp/>ratioCutoffWavenumber<sp/>set<sp/>to<sp/>0&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;dim;<sp/>i++)</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/><ref refid="classChamp__front__synt_1aaacb006b16b8024e821a555638ebedd9" kindref="member">dir_fluct</ref>(i)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="213"><highlight class="comment">/*!<sp/>@brief<sp/>Pas<sp/>code<sp/>!!</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Champ_front_base&amp;<sp/>ch)</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Champ_front_base&amp;)</highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="classChamp__front__synt_1a2598c2e83e739f78b2f20428255f79b8" refkind="member"><highlight class="normal"><ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>&amp;<sp/><ref refid="classChamp__front__synt_1a2598c2e83e739f78b2f20428255f79b8" kindref="member">Champ_front_synt::affecter_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>&amp;<sp/>ch)</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223" refid="classChamp__front__synt_1a17e0eae3334045e7d76e7979d01353b9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__synt_1a17e0eae3334045e7d76e7979d01353b9" kindref="member">Champ_front_synt::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Acceder<sp/>a<sp/>l&apos;equation<sp/>depuis<sp/>l&apos;inconnue,<sp/>ensuite<sp/>acceder<sp/>au<sp/>milieu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>equ<sp/>=<sp/><ref refid="classChamp__front__synt_1aad8e36dcbdb6c8a3ea7c73e9a723b2ef" kindref="member">ref_inco_</ref>-&gt;equation();</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/>mil<sp/>=<sp/>equ.<ref refid="classEquation__base_1a1ca88930cf00c12a910ad27ac840719c" kindref="member">milieu</ref>();</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="231"><highlight class="comment"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;*************************************************&quot;<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;mil<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>mil.masse_volumique()(0,0)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;temps<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>equ.inconnue().temps()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;dt<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>equ.schema_temps().pas_de_temps()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="235"><highlight class="comment"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;visco<sp/>cinematique<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>ref_cast(Fluide_base,mil).viscosite_cinematique().valeur()(0,0)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="236"><highlight class="comment"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;visco<sp/>dynamique<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>ref_cast(Fluide_base,mil).viscosite_dynamique()(0,0)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="237"><highlight class="comment"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;*************************************************&quot;<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="238"><highlight class="comment"></highlight></codeline>
+<codeline lineno="239"><highlight class="comment"><sp/><sp/><sp/><sp/>const<sp/>Champ_Don_base&amp;<sp/>visco<sp/>=<sp/>ref_cast(Fluide_base,mil).viscosite_dynamique();</highlight></codeline>
+<codeline lineno="240"><highlight class="comment"><sp/><sp/><sp/><sp/>if<sp/>(sub_type(Champ_Uniforme,visco.valeur()))</highlight></codeline>
+<codeline lineno="241"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;visco<sp/>dynamique<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>visco(0,0)<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>DoubleTab&amp;<sp/>val_visco<sp/>=<sp/>visco-&gt;valeurs();</highlight></codeline>
+<codeline lineno="245"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>&quot;valeurs<sp/>viscosite<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>val_visco<sp/>&lt;&lt;<sp/>finl;\</highlight></codeline>
+<codeline lineno="246"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="247"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="249"><highlight class="comment"><sp/><sp/>////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"><sp/><sp/>///<sp/><sp/><sp/><sp/><sp/><sp/>donnees<sp/>d&apos;initialisation<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>///</highlight></codeline>
+<codeline lineno="251"><highlight class="comment"><sp/><sp/>////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="252"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>visc<sp/>=<sp/>ref_cast(<ref refid="classFluide__base" kindref="compound">Fluide_base</ref>,mil).viscosite_cinematique().valeurs()(0,0);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFront__VF" kindref="compound">Front_VF</ref>&amp;<sp/>front<sp/>=<sp/>ref_cast(<ref refid="classFront__VF" kindref="compound">Front_VF</ref>,<ref refid="classChamp__front__base_1a1ea44dff06c4eb5832ca409c46653669" kindref="member">la_frontiere_dis</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_face<sp/>=<sp/>front.<ref refid="classFront__VF_1a48eadf1b57ddc0d16e4953d19f259a9e" kindref="member">nb_faces</ref>();<sp/></highlight><highlight class="comment">//<sp/>real<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFaces__32__64" kindref="compound">Faces</ref>&amp;<sp/>tabFaces<sp/>=<sp/>front.<ref refid="classFrontiere__dis__base_1a2d99fa72b34da9d3784b16730ba91720" kindref="member">frontiere</ref>().<ref refid="classFrontiere__32__64_1aeb2dadc639ee53d957479f8edb7341e1" kindref="member">faces</ref>();<sp/></highlight><highlight class="comment">//<sp/>recuperation<sp/>des<sp/>faces</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;We<sp/>store<sp/>:<sp/>temps_d_avant_<sp/>=<sp/>&quot;&lt;&lt;temps_d_avant_&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab_avant=<ref refid="classChamp__front__var__instationnaire_1ac37330145e6ef2afab414852c2339c9d" kindref="member">valeurs_au_temps</ref>(<ref refid="classChamp__front__synt_1afaa153158041127aa59b20d09a8e72b8" kindref="member">temps_d_avant_</ref>);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab=<ref refid="classChamp__front__var__instationnaire_1ac37330145e6ef2afab414852c2339c9d" kindref="member">valeurs_au_temps</ref>(temps);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>aireFaces;<sp/></highlight><highlight class="comment">//<sp/>Attention<sp/>:<sp/>contains<sp/>real<sp/>+<sp/>virtual<sp/>faces</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/>tabFaces.<ref refid="classFaces__32__64_1a3b2f9e1b603cf2932e5632e555a603b2" kindref="member">calculer_surfaces</ref>(aireFaces);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sum_aire=0.;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb_face;<sp/>i++)</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>sum_aire<sp/>+=<sp/>aireFaces[i];</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/>sum_aire<sp/>=<sp/><ref refid="classProcess_1a7d23bc1ef94b3f0623fbc79d034c27fd" kindref="member">mp_sum</ref>(sum_aire);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dmin<sp/>=<sp/>sqrt(<sp/>sum_aire<sp/>/<sp/><ref refid="classProcess_1a9856adce777d1011516d9d0ab077330e" kindref="member">mp_sum_as_double</ref>(nb_face)<sp/>)<sp/>;<sp/></highlight><highlight class="comment">//<sp/>on<sp/>prend<sp/>la<sp/>racine<sp/>de<sp/>l&apos;aire<sp/>moyenne<sp/>des<sp/>faces<sp/>d&apos;entree<sp/>pour<sp/>avoir<sp/>une<sp/>taille<sp/>de<sp/>maille<sp/>caracteristique</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//double<sp/>Uref<sp/>=<sp/>0.;<sp/>//<sp/>vitesse<sp/>de<sp/>reference<sp/>=<sp/>norme<sp/>du<sp/>vecteur<sp/>moyenne</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//for<sp/>(int<sp/>i=0;<sp/>i&lt;moyenne.size_reelle();<sp/>i++)<sp/>Uref<sp/>+=<sp/>moyenne(i)*moyenne(i);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Uref<sp/>=<sp/>sqrt(Uref);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//double<sp/>turbScale<sp/>=<sp/>turbIntensity<sp/>*<sp/>Uref;<sp/>//urms=I*Uref</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//double<sp/>turbKinEn<sp/>=<sp/>3./2.<sp/>*<sp/>(turbIntensity<sp/>*<sp/>Uref)<sp/>*<sp/>(turbIntensity<sp/>*<sp/>Uref);<sp/>//<sp/>evaluation<sp/>de<sp/>l&apos;energie<sp/>cinetique<sp/>turbulente<sp/>=<sp/>3/2*(I*Uref)^2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//double<sp/>turbDissRate<sp/>=<sp/>pow(Cmu,0.75)*pow(turbKinEn,1.5)/lenghtScale;<sp/>//<sp/>calcul<sp/>de<sp/>epsilon<sp/>pour<sp/>un<sp/>ecoulement<sp/>etabli<sp/>en<sp/>conduite.<sp/>A<sp/>faire<sp/>pour<sp/>un<sp/>ecoulement<sp/>de<sp/>grille<sp/>?<sp/>(decroissance<sp/>energetique)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="280"><highlight class="comment"><sp/><sp/>/////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="281"><highlight class="comment"><sp/><sp/>///<sp/>valeurs<sp/>remarquables<sp/>du<sp/>nombre<sp/>d&apos;onde<sp/>///</highlight></codeline>
+<codeline lineno="282"><highlight class="comment"><sp/><sp/>/////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="283"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>kappa_max<sp/>=<sp/>(<ref refid="classChamp__front__synt_1a3dd8bc9ac2058bd95d5970c46a4e5436" kindref="member">pi</ref>/dmin)*<ref refid="classChamp__front__synt_1ad250569ee244371eb5bdc5ac06e22784" kindref="member">ratioCutoffWavenumber</ref>;<sp/></highlight><highlight class="comment">//<sp/>plus<sp/>grand<sp/>nombre<sp/>d&apos;onde<sp/>(depend<sp/>du<sp/>maillage)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>kappa_e<sp/>=<sp/>9*<ref refid="classChamp__front__synt_1a3dd8bc9ac2058bd95d5970c46a4e5436" kindref="member">pi</ref>*<ref refid="classChamp__front__synt_1a3930821fc0c208547c28ff56e44e9c4b" kindref="member">amp</ref>/(55*<ref refid="classChamp__front__synt_1ad847274828a02b8940cfeb007742ce6b" kindref="member">lenghtScale</ref>);<sp/></highlight><highlight class="comment">//<sp/>pic<sp/>d&apos;energie</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>kappa_eta<sp/>=<sp/>pow((<ref refid="classChamp__front__synt_1a9796c772caadb4c16ecf691793b22296" kindref="member">turbDissRate</ref>/(visc*visc*visc)),0.25);<sp/></highlight><highlight class="comment">//<sp/>nombre<sp/>d&apos;onde<sp/>de<sp/>Kolmogorov</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>kappa_min<sp/>=<sp/>kappa_e<sp/>/<sp/><ref refid="classChamp__front__synt_1a5b23de35cad0be41bfb91cc330af37e9" kindref="member">KeOverKmin</ref>;<sp/></highlight><highlight class="comment">//<sp/>plus<sp/>petit<sp/>nombre<sp/>d&apos;onde</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//double<sp/>delta_kappa<sp/>=<sp/>(min(kappa_eta,kappa_max)<sp/>-<sp/>kappa_min)<sp/>/<sp/>nbModes;<sp/>//<sp/>repartition<sp/>lineaire<sp/>des<sp/>modes<sp/>=&gt;<sp/>pas<sp/>bon</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>delta_kappa<sp/>=<sp/>pow(<sp/>(std::min(kappa_eta,kappa_max)<sp/>/<sp/>kappa_min<sp/>),<sp/>1./(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>-1.));<sp/></highlight><highlight class="comment">//<sp/>repartition<sp/>logarithmique<sp/>des<sp/>modes<sp/>=&gt;<sp/>OK</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(kappa_max<sp/>&lt;=<sp/>kappa_min)</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error:<sp/>kappa_max(=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>kappa_max<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)<sp/>&lt;=<sp/>kappa_min(=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>kappa_min<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>should<sp/>either<sp/>refine<sp/>your<sp/>mesh<sp/>or<sp/>increase<sp/>the<sp/>ratioCutoffWavenumber<sp/>value<sp/>in<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;Remarkable<sp/>wavenumbers<sp/>for<sp/>the<sp/>method<sp/>of<sp/>synthetic<sp/>turbulence<sp/>generation:&quot;<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;kappa_min<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>kappa_min<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;kappa_e<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>kappa_e<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;kappa_mesh<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>kappa_max<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;kappa_eta<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>kappa_eta<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;delta_kappa<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>delta_kappa<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>kappa_face(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>+1);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>kappa_center(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>dkn(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>kappa_x(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>kappa_y(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>kappa_z(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>sigma_x(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>sigma_y(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>sigma_z(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>phi(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>alpha(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>psi(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>);</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>tetha(<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="320"><highlight class="comment"><sp/><sp/>////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="321"><highlight class="comment"><sp/><sp/>///<sp/>generation<sp/>aleatoire<sp/>des<sp/>angles<sp/><sp/><sp/><sp/><sp/><sp/>///</highlight></codeline>
+<codeline lineno="322"><highlight class="comment"><sp/><sp/>////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="323"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i&lt;<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>phi(i)<sp/>=<sp/>drand48()*<sp/>2*<ref refid="classChamp__front__synt_1a3dd8bc9ac2058bd95d5970c46a4e5436" kindref="member">pi</ref><sp/>;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>alpha(i)<sp/>=<sp/>drand48()*<sp/>2*<ref refid="classChamp__front__synt_1a3dd8bc9ac2058bd95d5970c46a4e5436" kindref="member">pi</ref><sp/>;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>psi(i)<sp/>=<sp/>drand48()*<sp/>2*<ref refid="classChamp__front__synt_1a3dd8bc9ac2058bd95d5970c46a4e5436" kindref="member">pi</ref><sp/>;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//tetha(i)<sp/>=<sp/>drand48()*<sp/>pi<sp/>;<sp/>//<sp/>pour<sp/>une<sp/>densite<sp/>de<sp/>probabilite<sp/>de<sp/>1/pi<sp/>=&gt;<sp/>pas<sp/>bon</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tetha(i)<sp/>=<sp/>acos(1-2*drand48())<sp/>;<sp/></highlight><highlight class="comment">//<sp/>pour<sp/>une<sp/>densite<sp/>de<sp/>probabilite<sp/>de<sp/>0.5*sin(theta)<sp/>=&gt;<sp/>OK</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="332"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>///<sp/>creation<sp/>vecteur<sp/>onde<sp/>en<sp/>coordonnee<sp/>cartesienne<sp/>///</highlight></codeline>
+<codeline lineno="333"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>kappa_x(i)<sp/>=<sp/>sin(tetha(i))*cos(phi(i));</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>kappa_y(i)<sp/>=<sp/>sin(tetha(i))*sin(phi(i));</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>kappa_z(i)<sp/>=<sp/>cos(tetha(i));</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="337"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>///<sp/>creation<sp/>de<sp/>la<sp/>direction<sp/>orthogonal<sp/>au<sp/>vecteur<sp/>onde<sp/>///</highlight></codeline>
+<codeline lineno="338"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sigma_x(i)<sp/>=<sp/>cos(phi(i))*cos(tetha(i))*cos(alpha(i))<sp/>-<sp/>sin(phi(i))*sin(alpha(i));</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sigma_y(i)<sp/>=<sp/>sin(phi(i))*cos(tetha(i))*cos(alpha(i))<sp/>+<sp/>cos(phi(i))*sin(alpha(i));</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sigma_z(i)<sp/>=<sp/>-sin(tetha(i))*cos(alpha(i));</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//for(int<sp/>i<sp/>=<sp/>0;<sp/>i&lt;<sp/>nbModes+1;<sp/>i++)<sp/>kappa_face(i)<sp/>=<sp/>kappa_min<sp/>+<sp/>delta_kappa*i;<sp/>//<sp/>repartition<sp/>lineaire</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i&lt;<sp/><ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>+1;<sp/>i++)</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>kappa_face(i)<sp/>=<sp/>kappa_min<sp/>*<sp/>pow(delta_kappa,i);<sp/></highlight><highlight class="comment">//<sp/>repartition<sp/>logarithmique</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;Kappa(n)<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>kappa_face(i)<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i&lt;<sp/><ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>kappa_center(i)<sp/>=<sp/>1.0/2.0*(kappa_face(i+1)+kappa_face(i));</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dkn(i)<sp/>=<sp/>kappa_face(i+1)-<sp/>kappa_face(i);</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="356"><highlight class="comment"><sp/><sp/>///<sp/>recuperation<sp/>des<sp/>centres<sp/>de<sp/>gravite<sp/>///</highlight></codeline>
+<codeline lineno="357"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>centreGrav(nb_face);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/>tabFaces.<ref refid="classFaces__32__64_1aa35c5f871639a397399aab50fc37f095" kindref="member">calculer_centres_gravite</ref>(centreGrav);</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i&lt;nb_face;<sp/>i++<sp/>)</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>turb(<ref refid="classField__base_1a7f1a8a933594c9f73ac0b14260961fad" kindref="member">nb_comp</ref>());</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//recuperer<sp/>les<sp/>points<sp/>du<sp/>milieu<sp/>du<sp/>maillage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x_center<sp/>=<sp/>centreGrav(i,0);</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_center<sp/>=<sp/>centreGrav(i,1);</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>z_center<sp/>=<sp/>centreGrav(i,2);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>m<sp/>=<sp/>0;<sp/>m&lt;<ref refid="classChamp__front__synt_1a5e6fbdf2cae2bce140554ecf99be81d4" kindref="member">nbModes</ref>;<sp/>m++)</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>kx<sp/>=<sp/>kappa_x(m)<sp/>*<sp/>kappa_center(m);</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ky<sp/>=<sp/>kappa_y(m)<sp/>*<sp/>kappa_center(m);</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>kz<sp/>=<sp/>kappa_z(m)<sp/>*<sp/>kappa_center(m);</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>arg<sp/>=<sp/>kx*x_center<sp/>+<sp/>ky*y_center<sp/>+<sp/>kz*z_center<sp/>+<sp/>psi(m);</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tfunk<sp/>=<sp/>cos(arg);</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>karman_spectrum<sp/>=<sp/><ref refid="classChamp__front__synt_1a3930821fc0c208547c28ff56e44e9c4b" kindref="member">amp</ref>/kappa_e<sp/>*<sp/>(2.*<ref refid="classChamp__front__synt_1a69670c312984fda62bca494aff74e964" kindref="member">turbKinEn</ref>/3.)<sp/>*<sp/>pow((kappa_center(m)/kappa_e),4)/pow(1+pow(kappa_center(m)/kappa_e,<sp/>2),17.0/6.0)<sp/>*<sp/>exp(-2*(pow(kappa_center(m)/kappa_eta,<sp/>2)));</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>amplitude<sp/>=<sp/>sqrt(karman_spectrum<sp/>*<sp/>dkn(m));</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>turb(0)<sp/>+=<sp/>2*amplitude*tfunk*sigma_x(m);</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>turb(1)<sp/>+=<sp/>2*amplitude*tfunk*sigma_y(m);</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>turb(2)<sp/>+=<sp/>2*amplitude*tfunk*sigma_z(m);</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;Kappa<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>kappa_center(m)<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;Kappa,<sp/>Spectre<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>kappa_center(m)<sp/>&lt;&lt;<sp/>&quot;<sp/>,<sp/>&quot;<sp/>&lt;&lt;<sp/>karman_spectrum<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;Amplitude<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>amplitude<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="391"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>//////////////////////////////////////</highlight></codeline>
+<codeline lineno="392"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>///<sp/>MISE<sp/>EN<sp/>PLACE<sp/>AUTOCORRELATION<sp/><sp/>///</highlight></codeline>
+<codeline lineno="393"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>//////////////////////////////////////</highlight></codeline>
+<codeline lineno="394"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt<sp/>=<sp/>equ.<ref refid="classEquation__base_1abc11e51aa75b4c7aa55c27f71eb2f2c4" kindref="member">schema_temps</ref>().<ref refid="classSchema__Temps__base_1a816fca9a75adfb2501a68b08652a08fb" kindref="member">pas_de_temps</ref>();</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>a<sp/>=<sp/>exp(-dt/<ref refid="classChamp__front__synt_1ac7bcfe70d10290225d0e10a3b823ff7a" kindref="member">timeScale</ref>);</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>b<sp/>=<sp/>sqrt(1-a*a);</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tab(i,0)<sp/>=<sp/><ref refid="classChamp__front__synt_1a50dbd649ab5a0219af37268e1b4d4082" kindref="member">moyenne</ref>(0)<sp/>+<sp/><ref refid="classChamp__front__synt_1aaacb006b16b8024e821a555638ebedd9" kindref="member">dir_fluct</ref>(0)<sp/>*<sp/>(a<sp/>*<sp/>(tab_avant(i,0)<sp/>-<sp/><ref refid="classChamp__front__synt_1a50dbd649ab5a0219af37268e1b4d4082" kindref="member">moyenne</ref>(0))<sp/>+<sp/>b<sp/>*<sp/>turb(0));</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tab(i,1)<sp/>=<sp/><ref refid="classChamp__front__synt_1a50dbd649ab5a0219af37268e1b4d4082" kindref="member">moyenne</ref>(1)<sp/>+<sp/><ref refid="classChamp__front__synt_1aaacb006b16b8024e821a555638ebedd9" kindref="member">dir_fluct</ref>(1)<sp/>*<sp/>(a<sp/>*<sp/>(tab_avant(i,1)<sp/>-<sp/><ref refid="classChamp__front__synt_1a50dbd649ab5a0219af37268e1b4d4082" kindref="member">moyenne</ref>(1))<sp/>+<sp/>b<sp/>*<sp/>turb(1));</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tab(i,2)<sp/>=<sp/><ref refid="classChamp__front__synt_1a50dbd649ab5a0219af37268e1b4d4082" kindref="member">moyenne</ref>(2)<sp/>+<sp/><ref refid="classChamp__front__synt_1aaacb006b16b8024e821a555638ebedd9" kindref="member">dir_fluct</ref>(2)<sp/>*<sp/>(a<sp/>*<sp/>(tab_avant(i,2)<sp/>-<sp/><ref refid="classChamp__front__synt_1a50dbd649ab5a0219af37268e1b4d4082" kindref="member">moyenne</ref>(2))<sp/>+<sp/>b<sp/>*<sp/>turb(2));</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;r,<sp/>a,<sp/>b<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>dt/timeScale<sp/>&lt;&lt;<sp/>&quot;<sp/>,<sp/>&quot;<sp/>&lt;&lt;<sp/>a<sp/>&lt;&lt;<sp/>&quot;<sp/>,<sp/>&quot;<sp/>&lt;&lt;<sp/>b<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;Uprime,<sp/>uprime<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>tab(i,0)<sp/>&lt;&lt;<sp/>&quot;<sp/>,<sp/>&quot;<sp/>&lt;&lt;<sp/>turb(0)<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;face,<sp/>Uprime,<sp/>uprime<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/>&quot;<sp/>,<sp/>&quot;<sp/>&lt;&lt;<sp/>tab(i,0)<sp/>&lt;&lt;<sp/>&quot;<sp/>,<sp/>&quot;<sp/>&lt;&lt;<sp/>turb(0)<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/>tab.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><ref refid="classChamp__front__synt_1afaa153158041127aa59b20d09a8e72b8" kindref="member">temps_d_avant_</ref><sp/>=<sp/>temps;</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Champs/Champ_front_synt.cpp"/>
+  </compounddef>
+</doxygen>

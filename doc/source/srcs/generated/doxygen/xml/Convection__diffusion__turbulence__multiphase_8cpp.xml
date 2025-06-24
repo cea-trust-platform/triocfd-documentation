@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Convection__diffusion__turbulence__multiphase_8cpp" kind="file" language="C++">
+    <compoundname>Convection_diffusion_turbulence_multiphase.cpp</compoundname>
+    <includes refid="Convection__diffusion__turbulence__multiphase_8h" local="no">Convection_diffusion_turbulence_multiphase.h</includes>
+    <includes refid="Pb__Multiphase_8h" local="no">Pb_Multiphase.h</includes>
+    <includes refid="Discret__Thyd_8h" local="no">Discret_Thyd.h</includes>
+    <includes refid="Domaine__VF_8h" local="no">Domaine_VF.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Avanc_8h" local="no">Avanc.h</includes>
+    <includes refid="Debog_8h" local="no">Debog.h</includes>
+    <includes refid="Frontiere__dis__base_8h" local="no">Frontiere_dis_base.h</includes>
+    <includes refid="EcritureLectureSpecial_8h" local="no">EcritureLectureSpecial.h</includes>
+    <includes refid="Champ__Uniforme_8h" local="no">Champ_Uniforme.h</includes>
+    <includes refid="Matrice__Morse_8h" local="no">Matrice_Morse.h</includes>
+    <includes refid="Navier__Stokes__std_8h" local="no">Navier_Stokes_std.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+    <includes refid="Neumann__sortie__libre_8h" local="no">Neumann_sortie_libre.h</includes>
+    <includes refid="Op__Conv__negligeable_8h" local="no">Op_Conv_negligeable.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes refid="Schema__Implicite__base_8h" local="no">Schema_Implicite_base.h</includes>
+    <includes refid="SETS_8h" local="no">SETS.h</includes>
+    <includes refid="EChaine_8h" local="no">EChaine.h</includes>
+    <includes refid="Scalaire__impose__paroi_8h" local="no">Scalaire_impose_paroi.h</includes>
+    <includes refid="Echange__global__impose_8h" local="no">Echange_global_impose.h</includes>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="Convection__diffusion__turbulence__multiphase_8cpp_1ace7754dd7f3109c4fe8ec2ca768c6391" prot="public" static="no">
+        <name>old_forme</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Equations/Convection_diffusion_turbulence_multiphase.cpp" line="45" column="9" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Equations/Convection_diffusion_turbulence_multiphase.cpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Convection__diffusion__turbulence__multiphase_8cpp_1a35f38475dd6c71722cfde00855ac8d65" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Convection_diffusion_turbulence_multiphasebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Convection_diffusion_turbulence_multiphasebases</name>
+        <initializer>={   &amp;( <ref refid="classConvection__Diffusion__std" kindref="compound">Convection_Diffusion_std</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Equations/Convection_diffusion_turbulence_multiphase.cpp" line="47" column="209" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Equations/Convection_diffusion_turbulence_multiphase.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2021,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Convection_diffusion_turbulence_multiphase.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TRUST_ROOT/src/ThHyd/Multiphase/Equations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version:<sp/><sp/><sp/><sp/><sp/>/main/52</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Convection_diffusion_turbulence_multiphase.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Pb_Multiphase.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discret_Thyd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Avanc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Debog.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Frontiere_dis_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EcritureLectureSpecial.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Uniforme.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Matrice_Morse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Neumann_sortie_libre.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Op_Conv_negligeable.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Implicite_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SETS.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EChaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Scalaire_impose_paroi.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Echange_global_impose.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>old_forme</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classConvection__diffusion__turbulence__multiphase_1a6676383289c1eef46609465c396ab6d3" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classConvection__diffusion__turbulence__multiphase" kindref="compound">Convection_diffusion_turbulence_multiphase</ref>,</highlight><highlight class="stringliteral">&quot;Convection_diffusion_turbulence_multiphase&quot;</highlight><highlight class="normal">,<ref refid="classConvection__Diffusion__std" kindref="compound">Convection_Diffusion_std</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="49"><highlight class="comment">/*!<sp/>@brief<sp/>Simple<sp/>appel<sp/>a:<sp/>Convection_Diffusion_std::printOn(Sortie&amp;)</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>is)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Sortie&amp;)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>modifie</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classConvection__diffusion__turbulence__multiphase_1a0d5cfcc7d3c5f61aaa2fbf912f2af01e" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a0d5cfcc7d3c5f61aaa2fbf912f2af01e" kindref="member">Convection_diffusion_turbulence_multiphase::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>is)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="55"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__std_1add6dbc387f5bf74f5bf271a5601ec57c" kindref="member">Convection_Diffusion_std::printOn</ref>(is);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment">/*!<sp/>@brief<sp/>Verifie<sp/>si<sp/>l&apos;equation<sp/>a<sp/>une<sp/>inconnue<sp/>et<sp/>un<sp/>fluide<sp/>associe<sp/>et<sp/>appelle<sp/>Convection_Diffusion_std::readOn(Entree&amp;).</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>un<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;<sp/>is)<sp/>le<sp/>flot<sp/>d&apos;entree<sp/>modifie</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classConvection__diffusion__turbulence__multiphase_1a91b04b2cfde2a381481b618b1fda5840" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a91b04b2cfde2a381481b618b1fda5840" kindref="member">Convection_diffusion_turbulence_multiphase::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>assert(<ref refid="classConvection__diffusion__turbulence__multiphase_1a0b4df36f42464c036c59793fe50d6fcf" kindref="member">l_inco_ch</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>());</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>assert(<ref refid="classConvection__diffusion__turbulence__multiphase_1a9f6f03645a51c2e2e21055552268e2b6" kindref="member">le_fluide</ref>.<ref refid="classTRUST__Ref_1ae9b0cdf7e0ca42f09d339275e0b992e3" kindref="member">non_nul</ref>());</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__std_1a13756e4edd404f20e422c8177cc21cb7" kindref="member">Convection_Diffusion_std::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classConvection__diffusion__turbulence__multiphase_1a6c285196ce5184f45ecf2b6a9c1de0e1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a6c285196ce5184f45ecf2b6a9c1de0e1" kindref="member">Convection_diffusion_turbulence_multiphase::completer</ref>()</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1a68c77bfc9fb39474ddc481495710c40e" kindref="member">Convection_Diffusion_std::completer</ref>();<sp/></highlight><highlight class="comment">//<sp/>en<sp/>fait<sp/>c&apos;est<sp/>Equation_base::completer()<sp/>mais<sp/>on<sp/>sais<sp/>pas<sp/>un<sp/>jour<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__dis__base" kindref="compound">Domaine_dis_base</ref>&amp;<sp/>zdis<sp/>=<sp/><ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(zdis.<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>().<ref refid="classNom_1a7d94eff3b27fea7103475613072a4553" kindref="member">debute_par</ref>(</highlight><highlight class="stringliteral">&quot;Domaine_VDF&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialiser<sp/>l&apos;operateur<sp/>grad<sp/>SI<sp/>VDF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a1b9487df2ec6363cb194460e321f79e9" kindref="member">Op_Grad_</ref>.<ref refid="classMorEqn_1a1a6c57edd46cc696aa45c6b01a76e14c" kindref="member">associer_eqn</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a1b9487df2ec6363cb194460e321f79e9" kindref="member">Op_Grad_</ref>.<ref refid="classOperateur__Grad_1aab7ee0db82901a47490b18b22aa819df" kindref="member">typer</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a1b9487df2ec6363cb194460e321f79e9" kindref="member">Op_Grad_</ref>.<ref refid="classOperateur__Grad_1a55b2c186f572d7efb36ae10f0f46b098" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1addce89950be87e830970589f6aba37d3" kindref="member">associer_eqn</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__dis__base" kindref="compound">Domaine_Cl_dis_base</ref>&amp;<sp/>zcl<sp/>=<sp/><ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/>inco<sp/>=<sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1ab401da712350eacef607bbaa0f6ee145" kindref="member">inconnue</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a1b9487df2ec6363cb194460e321f79e9" kindref="member">Op_Grad_</ref>-&gt;associer(zdis,<sp/>zcl,<sp/>inco);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="89"><highlight class="comment">/*!<sp/>@brief<sp/>Associe<sp/>un<sp/>milieu<sp/>physique<sp/>a<sp/>l&apos;equation,<sp/>le<sp/>milieu<sp/>est<sp/>en<sp/>fait<sp/>caste<sp/>en<sp/>Fluide_base<sp/>ou<sp/>en<sp/>Fluide_Ostwald.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Milieu_base&amp;<sp/>un_milieu)</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>@throws<sp/>les<sp/>proprietes<sp/>physiques<sp/>du<sp/>fluide<sp/>ne<sp/>sont<sp/>pas<sp/>toutes<sp/>specifiees</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="classConvection__diffusion__turbulence__multiphase_1a70e70e85dbdfd5500da675bfec3bdd7c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a70e70e85dbdfd5500da675bfec3bdd7c" kindref="member">Convection_diffusion_turbulence_multiphase::associer_milieu_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/>un_milieu)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a9f6f03645a51c2e2e21055552268e2b6" kindref="member">le_fluide</ref><sp/>=<sp/>ref_cast(<ref refid="classFluide__base" kindref="compound">Fluide_base</ref>,un_milieu);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="99"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>milieu<sp/>physique<sp/>de<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*<sp/>(un<sp/>Fluide_base<sp/>upcaste<sp/>en<sp/>Milieu_base)</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Milieu_base&amp;)<sp/>le<sp/>Fluide_base<sp/>upcaste<sp/>en<sp/>Milieu_base</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classConvection__diffusion__turbulence__multiphase_1a5725624866b24077cef5fbcbd2112136" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a5725624866b24077cef5fbcbd2112136" kindref="member">Convection_diffusion_turbulence_multiphase::milieu</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="107"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a9f6f03645a51c2e2e21055552268e2b6" kindref="member">le_fluide</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="112"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>milieu<sp/>physique<sp/>de<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*<sp/>(un<sp/>Fluide_base<sp/>upcaste<sp/>en<sp/>Milieu_base)</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Milieu_base&amp;)<sp/>le<sp/>Fluide_base<sp/>upcaste<sp/>en<sp/>Milieu_base</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="classConvection__diffusion__turbulence__multiphase_1a68ccc9b77e1fa48638d606f438186dd7" refkind="member"><highlight class="normal"><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a5725624866b24077cef5fbcbd2112136" kindref="member">Convection_diffusion_turbulence_multiphase::milieu</ref>()</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a9f6f03645a51c2e2e21055552268e2b6" kindref="member">le_fluide</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="123"><highlight class="comment">/*!<sp/>@brief<sp/>Impression<sp/>des<sp/>flux<sp/>sur<sp/>les<sp/>bords<sp/>sur<sp/>un<sp/>flot<sp/>de<sp/>sortie.</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*<sp/>Appelle<sp/>Equation_base::impr(Sortie&amp;)</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>os)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>code<sp/>de<sp/>retour<sp/>propage</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classConvection__diffusion__turbulence__multiphase_1a3f2c559323c3efd1587b53ae73c02175" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1a3f2c559323c3efd1587b53ae73c02175" kindref="member">Convection_diffusion_turbulence_multiphase::impr</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="131"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1a627afccc65b5c1031a9fdeaadb2c6e62" kindref="member">Equation_base::impr</ref>(os);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="135"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nom<sp/>du<sp/>domaine<sp/>d&apos;application<sp/>de<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/>*<sp/>Ici<sp/>&quot;Turbulence&quot;.</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Motcle&amp;)<sp/>le<sp/>nom<sp/>du<sp/>domaine<sp/>d&apos;application<sp/>de<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="classConvection__diffusion__turbulence__multiphase_1ad7be32002f56527316a8a7d10ec2c178" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/><ref refid="classConvection__diffusion__turbulence__multiphase_1ad7be32002f56527316a8a7d10ec2c178" kindref="member">Convection_diffusion_turbulence_multiphase::domaine_application</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="142"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>mot(</highlight><highlight class="stringliteral">&quot;Turbulence&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mot;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/CMFD/Turbulence/Equations/Convection_diffusion_turbulence_multiphase.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Champ__Face__base_8cpp" kind="file" language="C++">
+    <compoundname>Champ_Face_base.cpp</compoundname>
+    <includes refid="Domaine__Cl__dis__base_8h" local="no">Domaine_Cl_dis_base.h</includes>
+    <includes refid="Dirichlet__homogene_8h" local="no">Dirichlet_homogene.h</includes>
+    <includes refid="Neumann__homogene_8h" local="no">Neumann_homogene.h</includes>
+    <includes refid="Champ__Face__base_8h" local="no">Champ_Face_base.h</includes>
+    <includes refid="Periodique_8h" local="no">Periodique.h</includes>
+    <includes refid="Dirichlet_8h" local="no">Dirichlet.h</includes>
+    <includes refid="Symetrie_8h" local="no">Symetrie.h</includes>
+    <includes refid="Neumann_8h" local="no">Neumann.h</includes>
+    <includes refid="Navier_8h" local="no">Navier.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Champ__Face__base_8cpp_1a0331ab05859206f96cea32f99c07c772" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Champ_Face_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Champ_Face_basebases</name>
+        <initializer>={   &amp;( <ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Champ_Face_base.cpp" line="27" column="101" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Champ_Face_base.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_Cl_dis_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Dirichlet_homogene.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Neumann_homogene.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Face_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Periodique.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Dirichlet.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Symetrie.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Neumann.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classChamp__Face__base_1a8fc8567343bd8a991624b16ed766e806" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classChamp__Face__base" kindref="compound">Champ_Face_base</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Champ_Face_base&quot;</highlight><highlight class="normal">,<sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classChamp__Face__base_1a235a6c059d92faedae98f591a9eba064" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classChamp__Face__base_1a235a6c059d92faedae98f591a9eba064" kindref="member">Champ_Face_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;<sp/>}</highlight></codeline>
+<codeline lineno="30" refid="classChamp__Face__base_1aacae873a04767164437e5f0ba86aae6b" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classChamp__Face__base_1aacae873a04767164437e5f0ba86aae6b" kindref="member">Champ_Face_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;<sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//tableaux<sp/>de<sp/>correspondance<sp/>pour<sp/>les<sp/>CLs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classChamp__Face__base_1a4b19fe8edf451c0b70b74c51cfd743fd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__Face__base_1a4b19fe8edf451c0b70b74c51cfd743fd" kindref="member">Champ_Face_base::init_fcl</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="34"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>&amp;<sp/><ref refid="classChamp__Inc__base_1a01b72c1d147d0de37973e3d34f3b7bb1" kindref="member">domaine</ref><sp/>=<sp/>ref_cast(<ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>,<ref refid="classChamp__Inc__base_1aabf2b69504cdbf5f068a1fa56afa374b" kindref="member">le_dom_VF</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classConds__lim" kindref="compound">Conds_lim</ref>&amp;<sp/>cls<sp/>=<sp/><ref refid="classChamp__Inc__base_1a5f587e8f4a44ab7f428467c8a9c872f7" kindref="member">domaine_Cl_dis</ref>().<ref refid="classDomaine__Cl__dis__base_1ac61cb62c82e3db6c4b4553538d7a6b61" kindref="member">les_conditions_limites</ref>();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/>f,<sp/>n;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Face__base_1a70bb67436852d86b1f5b690fb1c27ef0" kindref="member">fcl_</ref>.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(<ref refid="classChamp__Inc__base_1a01b72c1d147d0de37973e3d34f3b7bb1" kindref="member">domaine</ref>.nb_faces_tot(),<sp/>3);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(n<sp/>=<sp/>0;<sp/>n<sp/>&lt;<sp/>cls.<ref refid="classTRUST__Vector_1afae0a388de57f1ab2a0d9127f7c0a5f9" kindref="member">size</ref>();<sp/>n++)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFront__VF" kindref="compound">Front_VF</ref>&amp;<sp/>fvf<sp/>=<sp/>ref_cast(<ref refid="classFront__VF" kindref="compound">Front_VF</ref>,<sp/>cls[n]-&gt;frontiere_dis());</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx<sp/>=<sp/>sub_type(<ref refid="classNeumann" kindref="compound">Neumann</ref>,<sp/>cls[n].valeur())</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>2<sp/>*<sp/>sub_type(<ref refid="classNavier" kindref="compound">Navier</ref>,<sp/>cls[n].valeur())</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>3<sp/>*<sp/>sub_type(<ref refid="classDirichlet" kindref="compound">Dirichlet</ref>,<sp/>cls[n].valeur())<sp/>+<sp/>3<sp/>*<sp/>sub_type(<ref refid="classNeumann__homogene" kindref="compound">Neumann_homogene</ref>,<sp/>cls[n].valeur())</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>4<sp/>*<sp/>sub_type(<ref refid="classDirichlet__homogene" kindref="compound">Dirichlet_homogene</ref>,<sp/>cls[n].valeur())</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>5<sp/>*<sp/>sub_type(<ref refid="classPeriodique" kindref="compound">Periodique</ref>,<sp/>cls[n].valeur());</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!idx)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Champ_Face_base<sp/>:<sp/>CL<sp/>non<sp/>codee<sp/>rencontree!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>fvf.<ref refid="classFront__VF_1ae8650bf8eff95a5022a1abc91a0e5592" kindref="member">nb_faces_tot</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>f<sp/>=<sp/>fvf.<ref refid="classFront__VF_1afb322ba7bea455f029d3dec838048c36" kindref="member">num_face</ref>(i),<sp/><ref refid="classChamp__Face__base_1a70bb67436852d86b1f5b690fb1c27ef0" kindref="member">fcl_</ref>(f,<sp/>0)<sp/>=<sp/>idx,<sp/><ref refid="classChamp__Face__base_1a70bb67436852d86b1f5b690fb1c27ef0" kindref="member">fcl_</ref>(f,<sp/>1)<sp/>=<sp/>n,<sp/><ref refid="classChamp__Face__base_1a70bb67436852d86b1f5b690fb1c27ef0" kindref="member">fcl_</ref>(f,<sp/>2)<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Face__base_1a63dc2c2aa3838ed99581f63443cff514" kindref="member">fcl_init_</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classChamp__Face__base_1aaeceea5286eca539a0d6f6c64a93816b" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classChamp__Face__base_1aaeceea5286eca539a0d6f6c64a93816b" kindref="member">Champ_Face_base::get_elem_vector_field</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>val_vec<sp/>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_passe)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="60"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>&amp;<sp/><ref refid="classChamp__Inc__base_1a01b72c1d147d0de37973e3d34f3b7bb1" kindref="member">domaine</ref><sp/>=<sp/>ref_cast(<ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>,<ref refid="classChamp__Inc__base_1aabf2b69504cdbf5f068a1fa56afa374b" kindref="member">le_dom_VF</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>centres_de_gravites<sp/>=<sp/><ref refid="classChamp__Inc__base_1a01b72c1d147d0de37973e3d34f3b7bb1" kindref="member">domaine</ref>.xp();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">IntVect</ref><sp/>les_polys(<ref refid="classChamp__Inc__base_1a01b72c1d147d0de37973e3d34f3b7bb1" kindref="member">domaine</ref>.<ref refid="classDomaine__32__64_1a33af8e98ae3d31533d6e4bf22842f03a" kindref="member">nb_elem_tot</ref>());</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>elem<sp/>=<sp/>0;<sp/>elem<sp/>&lt;<sp/><ref refid="classChamp__Inc__base_1a01b72c1d147d0de37973e3d34f3b7bb1" kindref="member">domaine</ref>.<ref refid="classDomaine__32__64_1a33af8e98ae3d31533d6e4bf22842f03a" kindref="member">nb_elem_tot</ref>();<sp/>elem++)<sp/>les_polys(elem)<sp/>=<sp/>elem;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!is_passe)<sp/><ref refid="classChamp__base_1a962e98716ffb830347f4ac3fef2dac99" kindref="member">valeur_aux_elems</ref>(centres_de_gravites,<sp/>les_polys,<sp/>val_vec);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><ref refid="classChamp__Face__base_1a546232cb56a8af8ccc66a9afc9b14003" kindref="member">valeur_aux_elems_passe</ref>(centres_de_gravites,<sp/>les_polys,<sp/>val_vec);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>val_vec;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classChamp__Face__base_1a33e763b443cd58dc0fcf0c3d338cc766" refkind="member"><highlight class="normal"><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/><ref refid="classChamp__Face__base_1a33e763b443cd58dc0fcf0c3d338cc766" kindref="member">Champ_Face_base::get_elem_vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_elem,<sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>val_vec)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="74"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>&amp;<sp/><ref refid="classChamp__Inc__base_1a01b72c1d147d0de37973e3d34f3b7bb1" kindref="member">domaine</ref><sp/>=<sp/>ref_cast(<ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>,<ref refid="classChamp__Inc__base_1aabf2b69504cdbf5f068a1fa56afa374b" kindref="member">le_dom_VF</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>centres_de_gravites<sp/>=<sp/><ref refid="classChamp__Inc__base_1a01b72c1d147d0de37973e3d34f3b7bb1" kindref="member">domaine</ref>.xp();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="classChamp__base_1aae0a49ca788d62a71f943bea9ff2f562" kindref="member">valeur_a_elem</ref>(centres_de_gravites,<sp/>val_vec,<sp/>num_elem);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>val_vec;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Framework/Champ_Face_base.cpp"/>
+  </compounddef>
+</doxygen>

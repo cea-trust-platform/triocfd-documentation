@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Loi__paroi__log_8cpp" kind="file" language="C++">
+    <compoundname>Loi_paroi_log.cpp</compoundname>
+    <includes refid="Discretisation__base_8h" local="no">Discretisation_base.h</includes>
+    <includes refid="Navier__Stokes__std_8h" local="no">Navier_Stokes_std.h</includes>
+    <includes refid="Correlation__base_8h" local="no">Correlation_base.h</includes>
+    <includes refid="Champ__Face__base_8h" local="no">Champ_Face_base.h</includes>
+    <includes refid="QDM__Multiphase_8h" local="no">QDM_Multiphase.h</includes>
+    <includes refid="TRUSTTab__parts_8h" local="no">TRUSTTab_parts.h</includes>
+    <includes refid="Cond__lim__base_8h" local="no">Cond_lim_base.h</includes>
+    <includes refid="Pb__Multiphase_8h" local="no">Pb_Multiphase.h</includes>
+    <includes refid="Loi__paroi__log_8h" local="no">Loi_paroi_log.h</includes>
+    <includes refid="Domaine__VF_8h" local="no">Domaine_VF.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+    <includes refid="Motcle_8h" local="no">Motcle.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes local="no">math.h</includes>
+    <includes refid="Nom_8h" local="no">Nom.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Loi_paroi_log.cpp</label>
+        <link refid="Loi__paroi__log_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>math.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Loi__paroi__log_8cpp_1a0f7fac3b2ba77c8e7281f784e648cabc" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Loi_paroi_logbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Loi_paroi_logbases</name>
+        <initializer>={   &amp;( <ref refid="classLoi__paroi__base" kindref="compound">Loi_paroi_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Turbulence/Loi_paroi_log.cpp" line="32" column="93" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Turbulence/Loi_paroi_log.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discretisation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Correlation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Face_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDM_Multiphase.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTab_parts.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Cond_lim_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Pb_Multiphase.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Loi_paroi_log.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Motcle.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Nom.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classLoi__paroi__log_1a41e6acfb40b3baa9202531496379bfe8" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classLoi__paroi__log" kindref="compound">Loi_paroi_log</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Loi_paroi_log&quot;</highlight><highlight class="normal">,<sp/><ref refid="classLoi__paroi__base" kindref="compound">Loi_paroi_base</ref>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classLoi__paroi__log_1a14108b4f63648948f58b26989d537c81" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classLoi__paroi__log_1a14108b4f63648948f58b26989d537c81" kindref="member">Loi_paroi_log::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="35"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classLoi__paroi__log_1a505e35b41a9a9f55fe11e61fbab2a15c" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLoi__paroi__log_1a505e35b41a9a9f55fe11e61fbab2a15c" kindref="member">Loi_paroi_log::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classLoi__paroi__base_1a2037074627edfb7ef6e605809b0c1f61" kindref="member">Loi_paroi_base::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classLoi__paroi__log_1ac720edde10638bfffd1cc7fca2b3627d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLoi__paroi__log_1ac720edde10638bfffd1cc7fca2b3627d" kindref="member">Loi_paroi_log::calc_y_plus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>vit,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>nu_visc)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cnu<sp/>=<sp/>nu_visc.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0)<sp/>==<sp/>1;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>&amp;<sp/>domaine<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>,<sp/><ref refid="classCorrelation__base_1a72b03e09863a1883a944f204a8d4f7b5" kindref="member">pb_</ref>-&gt;domaine_dis());</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>u_t<sp/>=<sp/><ref refid="classLoi__paroi__base_1a74e6282d3912884727e0406841dee839" kindref="member">valeurs_loi_paroi_</ref>[</highlight><highlight class="stringliteral">&quot;u_tau&quot;</highlight><highlight class="normal">],<sp/>&amp;y_p<sp/>=<sp/><ref refid="classLoi__paroi__base_1a74e6282d3912884727e0406841dee839" kindref="member">valeurs_loi_paroi_</ref>[</highlight><highlight class="stringliteral">&quot;y_plus&quot;</highlight><highlight class="normal">],<sp/>&amp;y_loc<sp/>=<sp/><ref refid="classLoi__paroi__base_1a74e6282d3912884727e0406841dee839" kindref="member">valeurs_loi_paroi_</ref>[</highlight><highlight class="stringliteral">&quot;y&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>n_f<sp/>=<sp/>domaine.face_normales();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>fs<sp/>=<sp/>domaine.face_surfaces();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>f_e<sp/>=<sp/>domaine.face_voisins();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_VDF<sp/>=<sp/><ref refid="classCorrelation__base_1a72b03e09863a1883a944f204a8d4f7b5" kindref="member">pb_</ref>-&gt;discretisation().is_vdf();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nf_tot<sp/>=<sp/>domaine.nb_faces_tot(),<sp/>D<sp/>=<sp/><ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>,<sp/>N<sp/>=<sp/>vit.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>pvit_elem(0,<sp/>N<sp/>*<sp/>D);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(is_VDF)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Face__base" kindref="compound">Champ_Face_base</ref>&amp;<sp/>ch<sp/>=<sp/>ref_cast(<ref refid="classChamp__Face__base" kindref="compound">Champ_Face_base</ref>,<sp/><ref refid="classCorrelation__base_1a72b03e09863a1883a944f204a8d4f7b5" kindref="member">pb_</ref>-&gt;equation(0).inconnue());</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>domaine.domaine().creer_tableau_elements(pvit_elem);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ch.<ref refid="classChamp__Face__base_1aaeceea5286eca539a0d6f6c64a93816b" kindref="member">get_elem_vector_field</ref>(pvit_elem,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>pour<sp/>l&apos;instant,<sp/>turbulence<sp/>dans<sp/>seulement<sp/>une<sp/>phase</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>f<sp/>=<sp/>0;<sp/>f<sp/>&lt;<sp/>nf_tot;<sp/>f++)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classLoi__paroi__base_1a2d766d0b6138dbf11a377a56adc9cded" kindref="member">Faces_a_calculer_</ref>(f,<sp/>0)<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>(f_e(f,<sp/>0)<sp/>&gt;=<sp/>0)<sp/>?<sp/>0<sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(f_e(f,<sp/>(c<sp/>==<sp/>0)<sp/>?<sp/>1<sp/>:<sp/>0)<sp/>&gt;=<sp/>0)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(</highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>the<sp/>definition<sp/>of<sp/>the<sp/>boundary<sp/>conditions<sp/>for<sp/>wall<sp/>laws&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>e<sp/>=<sp/>f_e(f,<sp/>c);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>u_orth<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>yloc<sp/>=<sp/>y_loc(f,<sp/>n);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>u_parallel(D);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(is_VDF)<sp/></highlight><highlight class="comment">//<sp/>VDF<sp/>case<sp/>:<sp/>vitesse<sp/>au<sp/>centre<sp/>de<sp/>l&apos;element</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>0;<sp/>d<sp/>&lt;<sp/>D;<sp/>d++)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>u_orth<sp/>-=<sp/>pvit_elem(e,<sp/>N<sp/>*<sp/>d<sp/>+<sp/>n)<sp/>*<sp/>n_f(f,<sp/>d)<sp/>/<sp/>fs(f);<sp/></highlight><highlight class="comment">//<sp/>!<sp/>n_f<sp/>pointe<sp/>vers<sp/>la<sp/>face<sp/>1<sp/>donc<sp/>vers<sp/>l&apos;exterieur<sp/>de<sp/>l&apos;element,<sp/>d&apos;ou<sp/>le<sp/>-</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>0;<sp/>d<sp/>&lt;<sp/>D;<sp/>d++)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>u_parallel(d)<sp/>=<sp/>pvit_elem(e,<sp/>N<sp/>*<sp/>d<sp/>+<sp/>n)<sp/>-<sp/>u_orth<sp/>*<sp/>(-n_f(f,<sp/>d))<sp/>/<sp/>fs(f);<sp/></highlight><highlight class="comment">//<sp/>!<sp/>n_f<sp/>pointe<sp/>vers<sp/>la<sp/>face<sp/>1<sp/>donc<sp/>vers<sp/>l&apos;exterieur<sp/>de<sp/>l&apos;element,<sp/>d&apos;ou<sp/>le<sp/>-</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>PolyMAC<sp/>case</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>0;<sp/>d<sp/>&lt;<sp/>D;<sp/>d++)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>u_orth<sp/>-=<sp/>vit(nf_tot<sp/>+<sp/>e<sp/>*<sp/>D<sp/>+<sp/>d,<sp/>n)<sp/>*<sp/>n_f(f,<sp/>d)<sp/>/<sp/>fs(f);<sp/></highlight><highlight class="comment">//<sp/>!<sp/>n_f<sp/>pointe<sp/>vers<sp/>la<sp/>face<sp/>1<sp/>donc<sp/>vers<sp/>l&apos;exterieur<sp/>de<sp/>l&apos;element,<sp/>d&apos;ou<sp/>le<sp/>-</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>0;<sp/>d<sp/>&lt;<sp/>D;<sp/>d++)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>u_parallel(d)<sp/>=<sp/>vit(nf_tot<sp/>+<sp/>e<sp/>*<sp/>D<sp/>+<sp/>d,<sp/>n)<sp/>-<sp/>u_orth<sp/>*<sp/>(-n_f(f,<sp/>d))<sp/>/<sp/>fs(f);<sp/></highlight><highlight class="comment">//<sp/>!<sp/>n_f<sp/>pointe<sp/>vers<sp/>la<sp/>face<sp/>1<sp/>donc<sp/>vers<sp/>l&apos;exterieur<sp/>de<sp/>l&apos;element,<sp/>d&apos;ou<sp/>le<sp/>-</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>norm_u_parallel<sp/>=<sp/>std::sqrt(domaine.dot(&amp;u_parallel(0),<sp/>&amp;u_parallel(0)));</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>double<sp/>residu<sp/>=<sp/>0<sp/>;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>(int<sp/>d<sp/>=<sp/>0;<sp/>d<sp/>&lt;D<sp/>;<sp/>d++)<sp/>residu<sp/>+=<sp/>u_parallel(d)*n_f(f,d)/fs(f);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>(residu<sp/>&gt;<sp/>1e-8)<sp/>Process::exit(&quot;Loi_paroi_adaptative<sp/>:<sp/>Error<sp/>in<sp/>the<sp/>calculation<sp/>of<sp/>the<sp/>parallel<sp/>velocity<sp/>for<sp/>wall<sp/>laws&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y_p(f,<sp/>n)<sp/>=<sp/>std::max(<ref refid="classLoi__paroi__base_1a6d92add321ba71fe2acb6cbc18a217b3" kindref="member">y_p_min_</ref>,<sp/><ref refid="classLoi__paroi__log_1a23f201a56c112543543a4dcd15f25379" kindref="member">calc_y_plus_loc</ref>(norm_u_parallel,<sp/>nu_visc(!cnu<sp/>*<sp/>e,<sp/>n),<sp/>yloc,<sp/>y_p(f,<sp/>n)));</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>u_t(f,<sp/>n)<sp/>=<sp/>y_p(f,<sp/>n)<sp/>*<sp/>nu_visc(!cnu<sp/>*<sp/>e,<sp/>n)<sp/>/<sp/>yloc;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classLoi__paroi__log_1a23f201a56c112543543a4dcd15f25379" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLoi__paroi__log_1a23f201a56c112543543a4dcd15f25379" kindref="member">Loi_paroi_log::calc_y_plus_loc</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>u_par,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>nu,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_p_0)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(u_par<sp/>*<sp/>y<sp/>/<sp/>nu<sp/>&lt;<sp/><ref refid="classLoi__paroi__log_1a5b47c188d61e154186f080bb6b2712be" kindref="member">limiteur_y_p</ref>)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classLoi__paroi__log_1a5b47c188d61e154186f080bb6b2712be" kindref="member">limiteur_y_p</ref>;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>eps<sp/>=<sp/><ref refid="classLoi__paroi__base_1ad9ca9f4effd96138d1e003c66a4e514a" kindref="member">eps_y_p_</ref>;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>step<sp/>=<sp/>1,<sp/>iter_max<sp/>=<sp/>30;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_p<sp/>=<sp/>y_p_0;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>u_tau<sp/>=<sp/>nu<sp/>*<sp/>y_p<sp/>/<sp/>y;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>y_p<sp/>=<sp/>std::max(<ref refid="classLoi__paroi__log_1a5b47c188d61e154186f080bb6b2712be" kindref="member">limiteur_y_p</ref>,<sp/>y_p<sp/>-<sp/>(<ref refid="classLoi__paroi__log_1aeade6d8dcbcabcec4b9de3a54ac1bc59" kindref="member">u_plus_de_y_plus</ref>(y_p)<sp/>-<sp/>u_par<sp/>/<sp/>u_tau)<sp/>/<sp/>(<ref refid="classLoi__paroi__log_1adf622806202b8c3b90baef901f467b00" kindref="member">deriv_u_plus_de_y_plus</ref>(y_p)<sp/>+<sp/>u_par<sp/>/<sp/>(u_tau<sp/>*<sp/>y_p)));</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>step<sp/>=<sp/>step<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>u_tau<sp/>=<sp/>nu<sp/>*<sp/>y_p<sp/>/<sp/>y;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((std::fabs(<ref refid="classLoi__paroi__log_1aeade6d8dcbcabcec4b9de3a54ac1bc59" kindref="member">u_plus_de_y_plus</ref>(y_p)<sp/>-<sp/>u_par<sp/>/<sp/>u_tau)<sp/>&gt;<sp/>eps)<sp/>and<sp/>(step<sp/>&lt;<sp/>iter_max));</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/>assert((std::fabs(u_par<sp/>/<sp/>u_tau<sp/>-<sp/><ref refid="classLoi__paroi__log_1aeade6d8dcbcabcec4b9de3a54ac1bc59" kindref="member">u_plus_de_y_plus</ref>(y_p))<sp/>&lt;<sp/><ref refid="classLoi__paroi__base_1ad9ca9f4effd96138d1e003c66a4e514a" kindref="member">eps_y_p_</ref><sp/>*<sp/>10)<sp/>and<sp/>(step<sp/>&lt;<sp/>iter_max));</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>y_p;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="classLoi__paroi__log_1aeade6d8dcbcabcec4b9de3a54ac1bc59" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLoi__paroi__log_1aeade6d8dcbcabcec4b9de3a54ac1bc59" kindref="member">Loi_paroi_log::u_plus_de_y_plus</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_p)<sp/><sp/></highlight><highlight class="comment">//<sp/>Blended<sp/>Reichardt<sp/>model</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::log(y_p<sp/>+<sp/><ref refid="classLoi__paroi__log_1a5b47c188d61e154186f080bb6b2712be" kindref="member">limiteur_y_p</ref>)<sp/>/<sp/><ref refid="classLoi__paroi__log_1ac28937d54444556339cc45caa076c832" kindref="member">von_karman_</ref><sp/>+<sp/>5.1;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classLoi__paroi__log_1adf622806202b8c3b90baef901f467b00" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLoi__paroi__log_1adf622806202b8c3b90baef901f467b00" kindref="member">Loi_paroi_log::deriv_u_plus_de_y_plus</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_p)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1.<sp/>/<sp/>((y_p<sp/>+<sp/><ref refid="classLoi__paroi__log_1a5b47c188d61e154186f080bb6b2712be" kindref="member">limiteur_y_p</ref>)<sp/>*<sp/><ref refid="classLoi__paroi__log_1ac28937d54444556339cc45caa076c832" kindref="member">von_karman_</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Turbulence/Loi_paroi_log.cpp"/>
+  </compounddef>
+</doxygen>

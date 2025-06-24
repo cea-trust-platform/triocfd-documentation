@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Pb__Hydraulique__Turbulent__ALE_8cpp" kind="file" language="C++">
+    <compoundname>Pb_Hydraulique_Turbulent_ALE.cpp</compoundname>
+    <includes refid="Pb__Hydraulique__Turbulent__ALE_8h" local="no">Pb_Hydraulique_Turbulent_ALE.h</includes>
+    <includes refid="Fluide__Incompressible_8h" local="no">Fluide_Incompressible.h</includes>
+    <includes refid="Verif__Cl_8h" local="no">Verif_Cl.h</includes>
+    <includes refid="Verif__Cl__Turb_8h" local="no">Verif_Cl_Turb.h</includes>
+    <includes refid="Les__mod__turb_8h" local="no">Les_mod_turb.h</includes>
+    <includes refid="Modele__turbulence__hyd__RANS__K__Eps__base_8h" local="no">Modele_turbulence_hyd_RANS_K_Eps_base.h</includes>
+    <includes refid="Schema__Implicite__base_8h" local="no">Schema_Implicite_base.h</includes>
+    <includes refid="Implicite__ALE_8h" local="no">Implicite_ALE.h</includes>
+    <includes refid="Schema__Euler__explicite_8h" local="no">Schema_Euler_explicite.h</includes>
+    <includes refid="Schema__Euler__explicite__ALE_8h" local="no">Schema_Euler_explicite_ALE.h</includes>
+    <includes refid="Schema__Euler__Implicite_8h" local="no">Schema_Euler_Implicite.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Pb__Hydraulique__Turbulent__ALE_8cpp_1a2dc1ac965f7fac5df7fc8546044f268e" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Pb_Hydraulique_Turbulent_ALEbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Pb_Hydraulique_Turbulent_ALEbases</name>
+        <initializer>={   &amp;( <ref refid="classPb__Hydraulique__Turbulent" kindref="compound">Pb_Hydraulique_Turbulent</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Fluid_Structure_Interaction/ALE/Pb_Hydraulique_Turbulent_ALE.cpp" line="34" column="153" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Fluid_Structure_Interaction/ALE/Pb_Hydraulique_Turbulent_ALE.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2019,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Pb_Hydraulique_Turbulent_ALE.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory<sp/>:<sp/>$ALE_ROOT/src/New</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Pb_Hydraulique_Turbulent_ALE.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Incompressible.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Verif_Cl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Verif_Cl_Turb.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Les_mod_turb.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Modele_turbulence_hyd_RANS_K_Eps_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Implicite_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Implicite_ALE.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Euler_explicite.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Euler_explicite_ALE.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Euler_Implicite.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classPb__Hydraulique__Turbulent__ALE_1add47fa385aa8750f06f9eadf28ec464a" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classPb__Hydraulique__Turbulent__ALE" kindref="compound">Pb_Hydraulique_Turbulent_ALE</ref>,</highlight><highlight class="stringliteral">&quot;Pb_Hydraulique_Turbulent_ALE&quot;</highlight><highlight class="normal">,<ref refid="classPb__Hydraulique__Turbulent" kindref="compound">Pb_Hydraulique_Turbulent</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>Pb_Hydraulique_Turbulent_ALE<sp/>Pb_base<sp/>Pb_Hydraulique_Turbulent_ALE<sp/>-1<sp/>Resolution<sp/>of<sp/>hydraulic<sp/>turbulent<sp/>problems<sp/>for<sp/>ALE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/>attr<sp/>fluide_incompressible<sp/>fluide_incompressible<sp/>fluide_incompressible<sp/>0<sp/>The<sp/>fluid<sp/>medium<sp/>associated<sp/>with<sp/>the<sp/>problem.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/>attr<sp/>Navier_Stokes_Turbulent_ALE<sp/>Navier_Stokes_Turbulent_ALE<sp/>Navier_Stokes_Turbulent_ALE<sp/>0<sp/>Navier-Stokes_ALE<sp/>equations<sp/>as<sp/>well<sp/>as<sp/>the<sp/>associated<sp/>turbulence<sp/>model<sp/>equations<sp/>on<sp/>mobile<sp/>domain<sp/>(ALE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">/*!<sp/>@brief<sp/>Simple<sp/>appel<sp/>a:<sp/>Pb_Fluide_base::printOn(Sortie&amp;)<sp/>Ecrit<sp/>le<sp/>probleme<sp/>sur<sp/>un<sp/>flot<sp/>de<sp/>sortie.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>os)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Sortie&amp;)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>modifie</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classPb__Hydraulique__Turbulent__ALE_1aa32cc618e84b10ef557a6db5377f5b08" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1aa32cc618e84b10ef557a6db5377f5b08" kindref="member">Pb_Hydraulique_Turbulent_ALE::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="47"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique__Turbulent_1a09452235744db1068e7603fa90412842" kindref="member">Pb_Hydraulique_Turbulent::printOn</ref>(os);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="52"><highlight class="comment">/*!<sp/>@brief<sp/>Simple<sp/>appel<sp/>a:<sp/>Pb_Fluide_base::readOn(Entree&amp;)<sp/>Lit<sp/>le<sp/>probleme<sp/>a<sp/>partir<sp/>d&apos;un<sp/>flot<sp/>d&apos;entree.</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>un<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;)<sp/>le<sp/>flot<sp/>d&apos;entree<sp/>modifie</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classPb__Hydraulique__Turbulent__ALE_1a2cc1c38b4f11156f204eb3ae7211f0be" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1a2cc1c38b4f11156f204eb3ae7211f0be" kindref="member">Pb_Hydraulique_Turbulent_ALE::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique__Turbulent_1a1bd78be9bcd537df398248ea1fa8f3a4" kindref="member">Pb_Hydraulique_Turbulent::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="62"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nombre<sp/>d&apos;equation,<sp/>Renvoie<sp/>1<sp/>car<sp/>il<sp/>y<sp/>a<sp/>seulement<sp/>1<sp/>equation<sp/>a<sp/>un<sp/>probleme</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>hydraulique<sp/>turbulent:<sp/>l&apos;equation<sp/>de<sp/>Navier<sp/>Stokes<sp/>avec<sp/>Turbulence</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>nombre<sp/>d&apos;equation</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classPb__Hydraulique__Turbulent__ALE_1a78e7f8218382847ff53cd3db4fb68e8b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1a78e7f8218382847ff53cd3db4fb68e8b" kindref="member">Pb_Hydraulique_Turbulent_ALE::nombre_d_equations</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="69"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="73"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;<sp/>equation<sp/>d&apos;hydraulique<sp/>de<sp/>type<sp/>Navier_Stokes_Turbulent<sp/>si<sp/>i=0<sp/>sort<sp/>(exit)<sp/>sinon.</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>l&apos;index<sp/>de<sp/>l&apos;equation<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Equation_base&amp;)<sp/>l&apos;equation<sp/>d&apos;hydraulique<sp/>de<sp/>type<sp/>Navier_Stokes_Turbulent</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classPb__Hydraulique__Turbulent__ALE_1ac439b7f6e894d7ba928b65c4abaae7ba" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1ac439b7f6e894d7ba928b65c4abaae7ba" kindref="member">Pb_Hydraulique_Turbulent_ALE::equation</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="81"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!(<sp/>i==0<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\nError<sp/>in<sp/>Pb_Hydraulique_Turbulent_ALE::equation()<sp/>:<sp/>Wrong<sp/>number<sp/>of<sp/>equation<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1a6828582b7f8db7dd4efa33fb4878567d" kindref="member">eq_hydraulique</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="90"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;<sp/>equation<sp/>d&apos;hydraulique<sp/>de<sp/>type<sp/>Navier_Stokes_Turbulent<sp/>si<sp/>i=0<sp/>sort<sp/>(exit)<sp/>sinon.</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>l&apos;index<sp/>de<sp/>l&apos;equation<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Equation_base&amp;)<sp/>l&apos;equation<sp/>d&apos;hydraulique<sp/>de<sp/>type<sp/>Navier_Stokes_Turbulent</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classPb__Hydraulique__Turbulent__ALE_1af4d76bcf594f2cfb233a0ab056b4a600" refkind="member"><highlight class="normal"><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1ac439b7f6e894d7ba928b65c4abaae7ba" kindref="member">Pb_Hydraulique_Turbulent_ALE::equation</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!(<sp/>i==0<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\nError<sp/>in<sp/>Pb_Hydraulique_Turbulent_ALE::equation()<sp/>:<sp/>Wrong<sp/>number<sp/>of<sp/>equation<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1a6828582b7f8db7dd4efa33fb4878567d" kindref="member">eq_hydraulique</ref>;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="107"><highlight class="comment">/*!<sp/>@brief<sp/>Associe<sp/>le<sp/>milieu<sp/>au<sp/>probleme.</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*<sp/>Le<sp/>milieu<sp/>doit<sp/>etre<sp/>de<sp/>type<sp/>fluide<sp/>incompressible.</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Milieu_base&amp;<sp/>mil)<sp/>le<sp/>milieu<sp/>physique<sp/>a<sp/>associer<sp/>au<sp/>probleme</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/>*<sp/>@throws<sp/>le<sp/>milieu<sp/>n&apos;est<sp/>pas<sp/>du<sp/>type<sp/>Fluide_Incompressible</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="classPb__Hydraulique__Turbulent__ALE_1ab4c5c4794ef1d9f80b13c2d54070ea23" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1ab4c5c4794ef1d9f80b13c2d54070ea23" kindref="member">Pb_Hydraulique_Turbulent_ALE::associer_milieu_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/>mil)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classFluide__Incompressible" kindref="compound">Fluide_Incompressible</ref>,mil))</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1a6828582b7f8db7dd4efa33fb4878567d" kindref="member">eq_hydraulique</ref>.<ref refid="classNavier__Stokes__std_1ad65b48c356ad59a2277770f875b5b422" kindref="member">associer_milieu_base</ref>(mil);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Un<sp/>milieu<sp/>de<sp/>type<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mil.<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>ne<sp/>peut<sp/>etre<sp/>associe<sp/>a<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;un<sp/>probleme<sp/>de<sp/>type<sp/>Pb_Hydraulique_Turbulent_ALE<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="126"><highlight class="comment">/*!<sp/>@brief<sp/>Teste<sp/>la<sp/>compatibilite<sp/>des<sp/>equations<sp/>de<sp/>convection-diffusion<sp/>et<sp/>de<sp/>l&apos;hydraulique.</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*<sp/>Le<sp/>test<sp/>se<sp/>fait<sp/>sur<sp/>les<sp/>conditions</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>aux<sp/>limites<sp/>discretisees<sp/>de<sp/>chaque<sp/>equation.</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Appel<sp/>la<sp/>fonction<sp/>de<sp/>librairie<sp/>hors<sp/>classe:</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>tester_compatibilite_hydr_turb(const<sp/>Domaine_Cl_dis_base&amp;)</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>code<sp/>de<sp/>retour<sp/>propage</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="classPb__Hydraulique__Turbulent__ALE_1ac9029afe716409815ec722ae0ae6f776" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1ac9029afe716409815ec722ae0ae6f776" kindref="member">Pb_Hydraulique_Turbulent_ALE::verifier</ref>()</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__dis__base" kindref="compound">Domaine_Cl_dis_base</ref>&amp;<sp/>domaine_Cl_hydr<sp/>=<sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1a6828582b7f8db7dd4efa33fb4878567d" kindref="member">eq_hydraulique</ref>.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>sub_type(<ref refid="classModele__turbulence__hyd__RANS__K__Eps__base" kindref="compound">Modele_turbulence_hyd_RANS_K_Eps_base</ref>,<sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1a6828582b7f8db7dd4efa33fb4878567d" kindref="member">eq_hydraulique</ref>.<ref refid="classNavier__Stokes__Turbulent__ALE_1af95b2b167ccfc6708c77f706cc834564" kindref="member">get_modele</ref>(TURBULENCE).<ref refid="classTRUST__Ref__Objet__U_1ab2c51fb3472acb362c956467ae84ac32" kindref="member">valeur</ref>()<sp/>))</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__RANS__K__Eps__base" kindref="compound">Modele_turbulence_hyd_RANS_K_Eps_base</ref>&amp;<sp/>le_mod_RANS<sp/>=<sp/>ref_cast(<ref refid="classModele__turbulence__hyd__RANS__K__Eps__base" kindref="compound">Modele_turbulence_hyd_RANS_K_Eps_base</ref>,<sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1a6828582b7f8db7dd4efa33fb4878567d" kindref="member">eq_hydraulique</ref>.<ref refid="classNavier__Stokes__Turbulent__ALE_1af95b2b167ccfc6708c77f706cc834564" kindref="member">get_modele</ref>(TURBULENCE).<ref refid="classTRUST__Ref__Objet__U_1ab2c51fb3472acb362c956467ae84ac32" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTransport__K__Eps__base" kindref="compound">Transport_K_Eps_base</ref>&amp;<sp/>eqn<sp/>=<sp/>ref_cast(<ref refid="classTransport__K__Eps__base" kindref="compound">Transport_K_Eps_base</ref>,<sp/>le_mod_RANS.<ref refid="classModele__turbulence__hyd__RANS__K__Eps__base_1a28a6dbcde3b1f1aa235a6af62b02a158" kindref="member">eqn_transp_K_Eps</ref>());</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__dis__base" kindref="compound">Domaine_Cl_dis_base</ref>&amp;<sp/>domaine_Cl_turb<sp/>=<sp/>eqn.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tester_compatibilite_hydr_turb(domaine_Cl_hydr,<sp/>domaine_Cl_turb);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classPb__Hydraulique__Turbulent__ALE_1a047fdbe79e67b665f9e44390fc1d98ae" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPb__Hydraulique__Turbulent__ALE_1a047fdbe79e67b665f9e44390fc1d98ae" kindref="member">Pb_Hydraulique_Turbulent_ALE::associer_sch_tps_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSchema__Temps__base" kindref="compound">Schema_Temps_base</ref>&amp;<sp/>sch)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="classProbleme__base_1a90bef636c0d4a05f4487238053c0f027" kindref="member">Probleme_base::associer_sch_tps_base</ref>(sch);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Verify<sp/>that<sp/>user<sp/>choosed<sp/>adapted<sp/>time<sp/>scheme/solver</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classSchema__Euler__explicite" kindref="compound">Schema_Euler_explicite</ref>,<ref refid="classProbleme__base_1a4a29f9b246b49a43f7d59eec9f8c0873" kindref="member">le_schema_en_temps_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>()))</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!sub_type(<ref refid="classSchema__Euler__explicite__ALE" kindref="compound">Schema_Euler_explicite_ALE</ref>,<ref refid="classProbleme__base_1a4a29f9b246b49a43f7d59eec9f8c0873" kindref="member">le_schema_en_temps_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>()))</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Error:<sp/>for<sp/>Mobile<sp/>domain<sp/>(Domaine_ALE):<sp/><sp/>replace<sp/><sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;sch.<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>with<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>sch.<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;_ALE<sp/>and<sp/>restart!&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classSchema__Euler__Implicite" kindref="compound">Schema_Euler_Implicite</ref>,<ref refid="classProbleme__base_1a4a29f9b246b49a43f7d59eec9f8c0873" kindref="member">le_schema_en_temps_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>()))</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSchema__Euler__Implicite" kindref="compound">Schema_Euler_Implicite</ref>&amp;<sp/>sch_imp<sp/>=<sp/>ref_cast(<ref refid="classSchema__Euler__Implicite" kindref="compound">Schema_Euler_Implicite</ref>,<ref refid="classProbleme__base_1a4a29f9b246b49a43f7d59eec9f8c0873" kindref="member">le_schema_en_temps_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!sub_type(<ref refid="classImplicite__ALE" kindref="compound">Implicite_ALE</ref>,sch_imp.<ref refid="classSchema__Implicite__base_1a221e616706013a43067e247a625d5ec6" kindref="member">solveur</ref>().<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>()))</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Error:<sp/>for<sp/>Mobile<sp/>domain<sp/>(Domaine_ALE),<sp/>you<sp/>can<sp/>only<sp/>use<sp/>Scheme_euler_implicit<sp/>time<sp/>scheme<sp/>with<sp/>solveur<sp/>implicite_ALE<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Replace<sp/><sp/>solveur<sp/>implicite<sp/>with<sp/>solveur<sp/>implicite_ALE<sp/>and<sp/>restart!&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Fluid_Structure_Interaction/ALE/Pb_Hydraulique_Turbulent_ALE.cpp"/>
+  </compounddef>
+</doxygen>

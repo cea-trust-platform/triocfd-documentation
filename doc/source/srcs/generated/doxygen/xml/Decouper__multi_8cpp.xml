@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Decouper__multi_8cpp" kind="file" language="C++">
+    <compoundname>Decouper_multi.cpp</compoundname>
+    <includes refid="Decouper__multi_8h" local="no">Decouper_multi.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes refid="Connectivite__som__elem_8h" local="no">Connectivite_som_elem.h</includes>
+    <includes refid="Static__Int__Lists_8h" local="no">Static_Int_Lists.h</includes>
+    <includes local="no">medcoupling++.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Decouper_multi.cpp</label>
+        <link refid="Decouper__multi_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>medcoupling++.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Decouper__multi_8cpp_1aaa169f73fee9a8d5188edbd69765a722" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Decouper_multibases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Decouper_multibases</name>
+        <initializer>={   &amp;( <ref refid="classInterprete" kindref="compound">Interprete</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Decoupeur/Decouper_multi.cpp" line="28" column="97" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Decoupeur/Decouper_multi.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Decouper_multi.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Connectivite_som_elem.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Static_Int_Lists.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;medcoupling++.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MEDCOUPLING_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;MEDCouplingMemArray.hxx&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">MEDCoupling;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classDecouper__multi_1a20f6b25d59f07579636bce3dc86ebe93" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classDecouper__multi" kindref="compound">Decouper_multi</ref>,</highlight><highlight class="stringliteral">&quot;Decouper_multi|Partition_multi&quot;</highlight><highlight class="normal">,<ref refid="classInterprete" kindref="compound">Interprete</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>partition_multi<sp/>interprete<sp/>decouper_multi<sp/>0<sp/>allows<sp/>to<sp/>partition<sp/>multiple<sp/>domains<sp/>in<sp/>contact<sp/>with<sp/>each<sp/>other<sp/>in<sp/>parallel:<sp/>necessary<sp/>for<sp/>resolution<sp/>monolithique<sp/>in<sp/>implicit<sp/>schemes<sp/>and<sp/>for<sp/>all<sp/>coupled<sp/>problems<sp/>using<sp/>PolyMAC_P0P1NC.<sp/>By<sp/>default,<sp/>this<sp/>keyword<sp/>is<sp/>commented<sp/>in<sp/>the<sp/>reference<sp/>test<sp/>cases.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>aco<sp/>chaine(into=[&quot;{&quot;])<sp/>aco<sp/>0<sp/>Opening<sp/>curly<sp/>bracket.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>domaine1<sp/>chaine(into=[&quot;domaine&quot;])<sp/>domaine1<sp/>0<sp/>not<sp/>set.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>dom<sp/>ref_domaine<sp/>dom<sp/>0<sp/>Name<sp/>of<sp/>the<sp/>first<sp/>domain<sp/>to<sp/>be<sp/>cut.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>blocdecoupdom1<sp/>bloc_decouper<sp/>blocdecoupdom1<sp/>0<sp/>Partition<sp/>bloc<sp/>for<sp/>the<sp/>first<sp/>domain.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>domaine2<sp/>chaine(into=[&quot;domaine&quot;])<sp/>domaine2<sp/>0<sp/>not<sp/>set.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>dom2<sp/>ref_domaine<sp/>dom2<sp/>0<sp/>Name<sp/>of<sp/>the<sp/>second<sp/>domain<sp/>to<sp/>be<sp/>cut.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>blocdecoupdom2<sp/>bloc_decouper<sp/>blocdecoupdom2<sp/>0<sp/>Partition<sp/>bloc<sp/>for<sp/>the<sp/>second<sp/>domain.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>acof<sp/>chaine(into=[&quot;}&quot;])<sp/>acof<sp/>0<sp/>Closing<sp/>curly<sp/>bracket.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classDecouper__multi_1a2b62f4db5567f5e15404b4bcc41f0763" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classDecouper__multi_1a2b62f4db5567f5e15404b4bcc41f0763" kindref="member">Decouper_multi::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="41"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classDecouper__multi_1adfc62159384359eb431eec8ec616ea0b" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classDecouper__multi_1adfc62159384359eb431eec8ec616ea0b" kindref="member">Decouper_multi::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classDecouper__multi_1a088f4a5214d9bee24c1dca0b2a540bc5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classDecouper__multi_1a088f4a5214d9bee24c1dca0b2a540bc5" kindref="member">Decouper_multi::lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot==</highlight><highlight class="stringliteral">&quot;domaine&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">//parametres<sp/>de<sp/>decoupage<sp/>d&apos;un<sp/>domaine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDecouper__32__64" kindref="compound">Decouper</ref><sp/>decoup;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>decoup.<ref refid="classDecouper__32__64_1a5582a35920c51ec4b96dedb7053c60e8" kindref="member">lire</ref>(is);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom<sp/>=<sp/>decoup.<ref refid="classInterprete__geometrique__base__32__64_1a70c474220424cab0ed34673cd4a4c196" kindref="member">domaine</ref>().<ref refid="classDomaine__base_1aca8a61d4dae8d1211fc453e8a1c56170" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(decoupeurs.count(nom.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()))<sp/></highlight><highlight class="comment">//decoupeur<sp/>deja<sp/>lu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(<ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;Decouper_multi:<sp/>domain<sp/>&quot;</highlight><highlight class="normal">)<sp/>+<sp/>nom<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;already<sp/>read!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>decoupeurs[nom.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()]<sp/>=<sp/>decoup;<sp/></highlight><highlight class="comment">//sinon,<sp/>on<sp/>l&apos;ajoute</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classDecouper__multi_1a3ddc4f534e64cd4d3d5393678098d83c" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classDecouper__multi_1a3ddc4f534e64cd4d3d5393678098d83c" kindref="member">Decouper_multi::interpreter</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//lecture<sp/>des<sp/>domaines<sp/>et<sp/>des<sp/>raccords</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;domaine&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keyword">this</highlight><highlight class="normal">),<ref refid="classParam_1aa4ad0ca1d49bc5f2ebc5fc83ee9df384aaf5b6dfac1c5970478525407cc6ac572" kindref="member">Param::REQUIRED</ref>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;tolerance&quot;</highlight><highlight class="normal">,<sp/>&amp;tolerance);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aa9d44fc51b4a08b357733a97dc7acaad" kindref="member">lire_avec_accolades_depuis</ref>(is);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>partition<sp/>des<sp/>domaines<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>std::vector&lt;Decouper*&gt;<sp/>v_dec;<sp/></highlight><highlight class="comment">//decoupeurs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>std::vector&lt;const<sp/>Domaine*&gt;<sp/>v_dom;<sp/></highlight><highlight class="comment">//domaines</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>std::vector&lt;Static_Int_Lists&gt;<sp/>v_se;<sp/></highlight><highlight class="comment">//connectivites</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>std::vector&lt;MCAuto&lt;DataArrayDouble&gt;&gt;<sp/>v_da;<sp/></highlight><highlight class="comment">//DataArrayDouble<sp/>de<sp/>coordonnes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>std::vector&lt;const<sp/>DataArrayDouble*&gt;<sp/>v_pda;<sp/></highlight><highlight class="comment">//et<sp/>des<sp/>pointeurs<sp/>(ppur<sp/>Aggregate)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>std::vector&lt;int&gt;<sp/>off<sp/>=<sp/>{<sp/>0<sp/>};<sp/></highlight><highlight class="comment">//offset<sp/>des<sp/>sommets<sp/>de<sp/>chaque<sp/>domaine<sp/>dans<sp/>le<sp/>tableau<sp/>aggrege</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;n_d<sp/>:<sp/>decoupeurs)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDecouper__32__64" kindref="compound">Decouper</ref>&amp;<sp/>dec<sp/>=<sp/>n_d.second;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>dom<sp/>=<sp/>dec.<ref refid="classInterprete__geometrique__base__32__64_1a70c474220424cab0ed34673cd4a4c196" kindref="member">domaine</ref>();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>coord<sp/>=<sp/>dom.<ref refid="classDomaine__32__64_1ac38406cad4d4a168ff220bf1c3bfee72" kindref="member">coord_sommets</ref>();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v_dec.push_back(&amp;dec);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v_dom.push_back(&amp;dom);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v_se.push_back(<ref refid="classStatic__Int__Lists__32__64" kindref="compound">Static_Int_Lists</ref>());</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v_da.push_back(DataArrayDouble::New());</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v_da.back()-&gt;useExternalArrayWithRWAccess((</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*)<sp/>coord.<ref refid="classTRUSTArray_1a62f5eeb66939850d54464bb1e9c34d3d" kindref="member">addr</ref>(),<sp/>coord.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0),<sp/>coord.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1));</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v_pda.push_back(v_da.back());</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>off.push_back(off.back()<sp/>+<sp/>coord.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPartitionneur__base__32__64" kindref="compound">Partitionneur_base</ref>&amp;<sp/>partitionneur<sp/>=<sp/>dec.<ref refid="classDecouper__32__64_1a92fec7cb49f142b2832b5603981d8e83" kindref="member">deriv_partitionneur_</ref>.valeur();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>partitionneur.<ref refid="classPartitionneur__base__32__64_1a60ed7ef5f49bc8992619213ada9d59e7" kindref="member">declarer_bords_periodiques</ref>(dec.<ref refid="classDecouper__32__64_1ac79cd8198f97f63597b1ec1b5ca1a2f0" kindref="member">liste_bords_periodiques_</ref>);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>partitionneur.<ref refid="classPartitionneur__base__32__64_1adb6341735f096f38a9c666b1c36ec6c1" kindref="member">construire_partition</ref>(dec.<ref refid="classDecouper__32__64_1a4b58e43e50a056c7d89e85b713be1148" kindref="member">elem_part_</ref>,<sp/>dec.<ref refid="classDecouper__32__64_1a72338bf5846e1dc68ef5b9dab3d634f4" kindref="member">nb_parts_tot_</ref>);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>construire_connectivite_som_elem(dom.<ref refid="classDomaine__32__64_1ae7be1a7efe0526d124745c0c5238f0a2" kindref="member">nb_som</ref>(),<sp/>dom.<ref refid="classDomaine__32__64_1a8f13ff77f9a9054cf5ca1df84e4e71e9" kindref="member">les_elems</ref>(),<sp/>v_se.back(),<sp/>1);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MEDCOUPLING_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>concatenation<sp/>des<sp/>coordonnees<sp/>et<sp/>recherche<sp/>de<sp/>sommets<sp/>coincidents<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Decouper_multi:<sp/>searching<sp/>for<sp/>coinciding<sp/>vertices<sp/>...<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>MCAuto&lt;DataArrayDouble&gt;<sp/>da(DataArrayDouble::Aggregate(v_pda));<sp/></highlight><highlight class="comment">//tous<sp/>les<sp/>sommets!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>DataArrayIdType*<sp/>S_i<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>*S<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//groupes<sp/>de<sp/>sommets<sp/>coincidants<sp/>:<sp/>S([S_i(i),<sp/>S_i(i<sp/>+<sp/>1)[)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>da-&gt;findCommonTuples(tolerance,<sp/>-1,<sp/>S,<sp/>S_i);<sp/></highlight><highlight class="comment">//<sp/>*<sp/>heavy<sp/>lifting<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>pour<sp/>chaque<sp/>groupe<sp/>de<sp/>sommets,<sp/>recherche<sp/>de<sp/>tous<sp/>les<sp/>procs<sp/>les<sp/>touchant<sp/>et<sp/>ajout<sp/>a<sp/>chaque<sp/>sommet<sp/>des<sp/>procs<sp/>qui<sp/>ne<sp/>le<sp/>possedent<sp/>pas<sp/>encore<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>std::vector&lt;std::map&lt;int,<sp/>std::set&lt;int&gt;&gt;&gt;<sp/>v_sp(v_dec.size());<sp/></highlight><highlight class="comment">//v_sp[d][s]<sp/>=<sp/>{<sp/>processeurs<sp/>supplementaires<sp/>ayant<sp/>besoin<sp/>du<sp/>sommet<sp/>s<sp/>du<sp/>domaine<sp/>d<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>std::vector&lt;std::set&lt;int&gt;&gt;<sp/>procs;<sp/></highlight><highlight class="comment">//processeurs<sp/>possedant<sp/>chaque<sp/>sommet<sp/>du<sp/>groupe...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>std::set&lt;int&gt;<sp/>u_procs;<sp/></highlight><highlight class="comment">//et<sp/>leur<sp/>union</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>std::vector&lt;std::array&lt;int,<sp/>2&gt;&gt;<sp/>v_ds;<sp/></highlight><highlight class="comment">//liste<sp/>(domaine,<sp/>num<sp/>sommet<sp/>local)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ns,<sp/>l,<sp/>d,<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>mcIdType<sp/>j,<sp/>s;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(mcIdType<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>+<sp/>1<sp/>&lt;<sp/>S_i-&gt;getNumberOfTuples();<sp/>i++)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((ns<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(S_i-&gt;getIJ(i<sp/>+<sp/>1,<sp/>0)<sp/>-<sp/>S_i-&gt;getIJ(i,<sp/>0)))<sp/>&gt;<sp/>1)<sp/></highlight><highlight class="comment">//pas<sp/>besoin<sp/>de<sp/>traiter<sp/>les<sp/>sommets<sp/>seuls</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count++;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>procs.resize(ns);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v_ds.resize(ns);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j<sp/>=<sp/>S_i-&gt;getIJ(i,<sp/>0);<sp/>j<sp/>&lt;<sp/>S_i-&gt;getIJ(i<sp/>+<sp/>1,<sp/>0);<sp/>j++,<sp/>k++)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Retrouve<sp/>le<sp/>numero<sp/>de<sp/>dom<sp/>dans<sp/>lequel<sp/>le<sp/>sommet<sp/>doublon<sp/>est<sp/>localise:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(s<sp/>=<sp/>S-&gt;getIJ(j,<sp/>0),<sp/>d<sp/>=<sp/>0;<sp/>s<sp/>&gt;=<sp/>off[d<sp/>+<sp/>1];<sp/>)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d++;<sp/></highlight><highlight class="comment">//d<sp/>:<sp/>indice<sp/>du<sp/>domaine<sp/>contenant<sp/>s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">IntVect</ref>&amp;<sp/>elem_part<sp/>=<sp/>v_dec[d]-&gt;elem_part_;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mcIdType<sp/>som_loc0<sp/>=<sp/>s<sp/>-<sp/>off[d];<sp/></highlight><highlight class="comment">//<sp/>son<sp/>numero<sp/>local</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(som_loc0<sp/>&lt;<sp/>std::numeric_limits&lt;int&gt;::max());</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>som_loc<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(som_loc0);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v_ds[k]<sp/>=<sp/>{{<sp/>d,<sp/>som_loc<sp/>}};<sp/></highlight><highlight class="comment">//stockage<sp/>du<sp/>couple<sp/>(d,<sp/>s)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>procs[k].clear();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(l<sp/>=<sp/>0;<sp/>l<sp/>&lt;<sp/>v_se[d].get_list_size(som_loc);<sp/>l++)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>procs[k].insert(elem_part(v_se[d](som_loc,<sp/>l)));<sp/></highlight><highlight class="comment">//processeurs<sp/>connectes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(u_procs.clear(),<sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>ns;<sp/>k++)</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;pr<sp/>:<sp/>procs[k])</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>u_procs.insert(pr);<sp/></highlight><highlight class="comment">//union</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>ns;<sp/>k++)<sp/><sp/></highlight><highlight class="comment">/*<sp/>on<sp/>ajoute<sp/>a<sp/>chaque<sp/>sommet<sp/>les<sp/>procs<sp/>auxquels<sp/>il<sp/>n&apos;est<sp/>pas<sp/>deja<sp/>connecte<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(procs[k].size()<sp/>&lt;<sp/>u_procs.size())</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::set&lt;int&gt;&amp;<sp/>dest<sp/>=<sp/>v_sp[v_ds[k][0]][v_ds[k][1]];<sp/></highlight><highlight class="comment">//ou<sp/>on<sp/>doit<sp/>inserer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::set_difference(u_procs.begin(),<sp/>u_procs.end(),<sp/>procs[k].begin(),<sp/>procs[k].end(),<sp/>std::inserter(dest,<sp/>dest.end()));</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>S_i-&gt;decrRef(),<sp/>S-&gt;decrRef();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>count<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>sommets<sp/>trouves!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(</highlight><highlight class="stringliteral">&quot;Decouper_multi<sp/>requires<sp/>MEDCoupling!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>ecriture<sp/>des<sp/>domaines<sp/>avec<sp/>les<sp/>sommets<sp/>raccord<sp/>qu&apos;on<sp/>a<sp/>trouves<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(d<sp/>=<sp/>0;<sp/>d<sp/>&lt;<sp/>(int)<sp/>v_dec.size();<sp/>d++)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStatic__Int__Lists__32__64" kindref="compound">Static_Int_Lists</ref><sp/>som_raccord;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref><sp/>sizes(v_dom[d]-&gt;nb_som());<sp/></highlight><highlight class="comment">//tailles<sp/>des<sp/>listes<sp/>par<sp/>sommet</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sizes<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>s_p<sp/>:<sp/>v_sp[d])<sp/>sizes[s_p.first]<sp/>=<sp/>(int)s_p.second.size();</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>som_raccord.<ref refid="classStatic__Int__Lists__32__64_1ac66dcf65e302b351f53c96f50fac7e35" kindref="member">set_list_sizes</ref>(sizes);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>s_p<sp/>:<sp/>v_sp[d])</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;p<sp/>:<sp/>s_p.second)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>som_raccord.<ref refid="classStatic__Int__Lists__32__64_1a7afc6b7de0c34a5ebdbfc6835ec76a73" kindref="member">set_value</ref>(s_p.first,<sp/>i,<sp/>p);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i++;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v_dec[d]-&gt;ecrire(&amp;som_raccord);<sp/></highlight><highlight class="comment">//<sp/>*<sp/>heavier<sp/>lifting<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/Decoupeur/Decouper_multi.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Extraire__surface__ALE_8cpp" kind="file" language="C++">
+    <compoundname>Extraire_surface_ALE.cpp</compoundname>
+    <includes refid="Domaine__ALE_8h" local="no">Domaine_ALE.h</includes>
+    <includes refid="Extraire__surface__ALE_8h" local="no">Extraire_surface_ALE.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="NettoieNoeuds_8h" local="no">NettoieNoeuds.h</includes>
+    <includes refid="Parser__U_8h" local="no">Parser_U.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Domaine__VF_8h" local="no">Domaine_VF.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Extraire__surface__ALE_8cpp_1aceb13f93e21aa27d152604753e224b99" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Extraire_surface_ALEbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Extraire_surface_ALEbases</name>
+        <initializer>={   &amp;( <ref refid="classExtraire__surface" kindref="compound">Extraire_surface</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Fluid_Structure_Interaction/ALE/Extraire_surface_ALE.cpp" line="32" column="121" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Fluid_Structure_Interaction/ALE/Extraire_surface_ALE.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Extraire_surface_ALE.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory<sp/>:<sp/>$TRIOCFD_ROOT/src/Fluid_Structure_Interaction/ALE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_ALE.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Extraire_surface_ALE.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;NettoieNoeuds.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Parser_U.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classExtraire__surface__ALE_1a3d2fc1f184fb3bc1bbb3058820edefa4" refkind="member"><highlight class="normal">Implemente_instanciable(<sp/><ref refid="classExtraire__surface__ALE" kindref="compound">Extraire_surface_ALE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Extraire_surface_ALE&quot;</highlight><highlight class="normal">,<sp/><ref refid="classExtraire__surface" kindref="compound">Extraire_surface</ref><sp/>)<sp/>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>Extraire_surface_ALE<sp/>interprete<sp/>Extraire_surface_ALE<sp/>-3<sp/>Extraire_surface_ALE<sp/>in<sp/>order<sp/>to<sp/>extract<sp/>a<sp/>surface<sp/>on<sp/>a<sp/>mobile<sp/>boundary<sp/>(with<sp/>ALE<sp/>desciption).<sp/>NL2<sp/>Keyword<sp/>to<sp/>specify<sp/>that<sp/>the<sp/>extract<sp/>surface<sp/>is<sp/>done<sp/>on<sp/>a<sp/>mobile<sp/>domain.<sp/>The<sp/>surface<sp/>mesh<sp/>is<sp/>defined<sp/>by<sp/>one<sp/>or<sp/>two<sp/>conditions.<sp/>The<sp/>first<sp/>condition<sp/>is<sp/>about<sp/>elements<sp/>with<sp/>Condition_elements.<sp/>For<sp/>example:<sp/>Condition_elements<sp/>x*x+y*y+z*z&lt;1<sp/>NL2<sp/>Will<sp/>define<sp/>a<sp/>surface<sp/>mesh<sp/>with<sp/>external<sp/>faces<sp/>of<sp/>the<sp/>mesh<sp/>elements<sp/>inside<sp/>the<sp/>sphere<sp/>of<sp/>radius<sp/>1<sp/>located<sp/>at<sp/>(0,0,0).<sp/>The<sp/>second<sp/>condition<sp/>Condition_faces<sp/>is<sp/>useful<sp/>to<sp/>give<sp/>a<sp/>restriction.NL2<sp/>By<sp/>default,<sp/>the<sp/>faces<sp/>from<sp/>the<sp/>boundaries<sp/>are<sp/>not<sp/>added<sp/>to<sp/>the<sp/>surface<sp/>mesh<sp/>excepted<sp/>if<sp/>option<sp/>avec_les_bords<sp/>is<sp/>given<sp/>(all<sp/>the<sp/>boundaries<sp/>are<sp/>added),<sp/>or<sp/>if<sp/>the<sp/>option<sp/>avec_certains_bords<sp/>is<sp/>used<sp/>to<sp/>add<sp/>only<sp/>some<sp/>boundaries.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>domaine<sp/>ref_domaine<sp/>domaine<sp/>0<sp/>Domain<sp/>in<sp/>which<sp/>faces<sp/>are<sp/>saved</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>probleme<sp/>ref_Pb_base<sp/>probleme<sp/>0<sp/>Problem<sp/>from<sp/>which<sp/>faces<sp/>should<sp/>be<sp/>extracted</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>condition_elements<sp/>chaine<sp/>condition_elements<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>condition_faces<sp/>chaine<sp/>condition_faces<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>avec_les_bords<sp/>rien<sp/>avec_les_bords<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>avec_certains_bords<sp/>listchaine<sp/>avec_certains_bords<sp/>1<sp/>not_set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classExtraire__surface__ALE_1abd2a7dbeeea3786f859ec7aef9cc1124" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classExtraire__surface__ALE_1abd2a7dbeeea3786f859ec7aef9cc1124" kindref="member">Extraire_surface_ALE::printOn</ref>(<sp/><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="41"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classExtraire__surface_1a3c709f45d15ab7270e062ddad0b4d7c6" kindref="member">Extraire_surface::printOn</ref>(<sp/>os<sp/>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classExtraire__surface__ALE_1a9b00091821bb26107f624f3597bc9d11" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classExtraire__surface__ALE_1a9b00091821bb26107f624f3597bc9d11" kindref="member">Extraire_surface_ALE::readOn</ref>(<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classExtraire__surface_1a1e347a89569624835350aa8fb48778fe" kindref="member">Extraire_surface::readOn</ref>(<sp/>is<sp/>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">/*Entree&amp;<sp/>Extraire_surface_ALE::interpreter_(Entree&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="50"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"></highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/>Extraire_surface::interpreter_(is);</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"></highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/>return<sp/>is;</highlight></codeline>
+<codeline lineno="55"><highlight class="comment">}*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classExtraire__surface__ALE_1a2b13511adda64d7547986c553ab632a1" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classExtraire__surface__ALE_1a2b13511adda64d7547986c553ab632a1" kindref="member">Extraire_surface_ALE::interpreter_</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_pb;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_domaine_surfacique;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>expr_elements(</highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal">),expr_faces(</highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>avec_les_bords;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>noms_des_bords;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;Domaine&quot;</highlight><highlight class="normal">,&amp;nom_domaine_surfacique,<ref refid="classParam_1aa4ad0ca1d49bc5f2ebc5fc83ee9df384aaf5b6dfac1c5970478525407cc6ac572" kindref="member">Param::REQUIRED</ref>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;probleme&quot;</highlight><highlight class="normal">,&amp;nom_pb,<ref refid="classParam_1aa4ad0ca1d49bc5f2ebc5fc83ee9df384aaf5b6dfac1c5970478525407cc6ac572" kindref="member">Param::REQUIRED</ref>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;condition_elements&quot;</highlight><highlight class="normal">,&amp;expr_elements);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;condition_faces&quot;</highlight><highlight class="normal">,&amp;expr_faces);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1ae3d50612a0014a9d58e6e035a65f20e5" kindref="member">ajouter_flag</ref>(</highlight><highlight class="stringliteral">&quot;avec_les_bords&quot;</highlight><highlight class="normal">,&amp;avec_les_bords);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;avec_certains_bords&quot;</highlight><highlight class="normal">,&amp;noms_des_bords);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aa9d44fc51b4a08b357733a97dc7acaad" kindref="member">lire_avec_accolades_depuis</ref>(is);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="classInterprete__geometrique__base__32__64_1a35235d5a5d9994aff7237931bfe4a7eb" kindref="member">associer_domaine</ref>(nom_domaine_surfacique);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>domaine_surfacique=<ref refid="classInterprete__geometrique__base__32__64_1a70c474220424cab0ed34673cd4a4c196" kindref="member">domaine</ref>();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(domaine_surfacique.<ref refid="classDomaine__32__64_1ae3b29af56d930eb26c6abb514fc33fac" kindref="member">nb_som_tot</ref>()!=0)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;The<sp/>domain<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>domaine_surfacique.<ref refid="classDomaine__base_1aca8a61d4dae8d1211fc453e8a1c56170" kindref="member">le_nom</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>can&apos;t<sp/>be<sp/>used<sp/>by<sp/>the<sp/>Extraire_surface<sp/>keyword.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;The<sp/>domain<sp/>for<sp/>Extraire_surface<sp/>keyword<sp/>should<sp/>be<sp/>empty<sp/>and<sp/>created<sp/>just<sp/>before.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>recupere<sp/>le<sp/>pb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<sp/>sub_type(<ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>,<sp/><ref refid="classInterprete_1a3ca248609f0b72eac68baca14621b4ee" kindref="member">objet</ref>(nom_pb)))</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>nom_pb<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>is<sp/>of<sp/>type<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classInterprete_1a3ca248609f0b72eac68baca14621b4ee" kindref="member">objet</ref>(nom_pb).<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;and<sp/>not<sp/>of<sp/>type<sp/>Probleme_base&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/>pb=ref_cast(<ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>,<sp/><ref refid="classInterprete_1a3ca248609f0b72eac68baca14621b4ee" kindref="member">objet</ref>(nom_pb));</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>&amp;<sp/>domaine_vf=ref_cast(<ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>,pb.<ref refid="classProbleme__base_1ae79e94815e436ab3fb3916f341d7978e" kindref="member">domaine_dis</ref>());</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>domaine_volumique<sp/>=<sp/>domaine_vf.<ref refid="classDomaine__dis__base_1a8effce5ffccf506b8908ba79119b6832" kindref="member">domaine</ref>();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>that<sp/>actually<sp/>a<sp/>Domaine_ALE:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(sub_type(<ref refid="classDomaine__ALE" kindref="compound">Domaine_ALE</ref>,<sp/>domaine_surfacique)))</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Extraire_surface_ALE<sp/>needs<sp/>a<sp/>&apos;Domaine_ALE&apos;<sp/>object<sp/>to<sp/>work<sp/>with!!&quot;</highlight><highlight class="normal"><sp/><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(-1);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><ref refid="classDomaine__ALE" kindref="compound">Domaine_ALE</ref>&amp;<sp/>domaine_surfacique_ale<sp/>=<sp/>ref_cast(<ref refid="classDomaine__ALE" kindref="compound">Domaine_ALE</ref>,<sp/>domaine_surfacique);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="classExtraire__surface_1af2e0bd05bc5f065604cbc6b48bb274f3" kindref="member">Extraire_surface::extraire_surface_without_cleaning</ref>(domaine_surfacique_ale,<sp/>domaine_volumique,nom_domaine_surfacique,domaine_vf,expr_elements,expr_faces,avec_les_bords,noms_des_bords);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref><sp/>les_elems_ref=<sp/>domaine_surfacique.<ref refid="classDomaine__32__64_1a8f13ff77f9a9054cf5ca1df84e4e71e9" kindref="member">les_elems</ref>();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//We<sp/>save<sp/>the<sp/>elements<sp/>belonging<sp/>to<sp/>the<sp/>surface;<sp/>it<sp/>contains<sp/>the<sp/>global<sp/>numerations<sp/>of<sp/>the<sp/>faces.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Because<sp/>after<sp/>cleaning<sp/>the<sp/>global<sp/>numerations<sp/>of<sp/>the<sp/>faces<sp/>will<sp/>be<sp/>lost.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>domaine_surfacique_ale.<ref refid="classDomaine__ALE_1abc642fdf63b9e224eda0083e39bb8db4" kindref="member">set_les_elems_extrait_surf_reference</ref>(les_elems_ref);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="classNettoieNoeuds__32__64_1a361e496d106690905817cc1519ee4686" kindref="member">NettoieNoeuds::nettoie</ref>(domaine_surfacique_ale);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Fluid_Structure_Interaction/ALE/Extraire_surface_ALE.cpp"/>
+  </compounddef>
+</doxygen>

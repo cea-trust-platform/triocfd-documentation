@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="RegroupeBord_8cpp" kind="file" language="C++">
+    <compoundname>RegroupeBord.cpp</compoundname>
+    <includes refid="RegroupeBord_8h" local="no">RegroupeBord.h</includes>
+    <includes refid="EFichier_8h" local="no">EFichier.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="RegroupeBord_8cpp_1a2b6dbeab024c890601663b26e8f9cbec" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename _T_</type>
+          </param>
+        </templateparamlist>
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* RegroupeBord_32_64bases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>RegroupeBord_32_64bases</name>
+        <initializer>= { &amp;( <ref refid="classInterprete__geometrique__base__32__64" kindref="compound">Interprete_geometrique_base_32_64</ref>&lt;_T_&gt; ::info_obj) }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/RegroupeBord.cpp" line="19" column="151" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/RegroupeBord.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;RegroupeBord.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EFichier.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classRegroupeBord__32__64_1a66a8e37af8059f51419d4fb2dace4f0b" refkind="member"><highlight class="normal">Implemente_instanciable_32_64(<ref refid="classRegroupeBord__32__64" kindref="compound">RegroupeBord_32_64</ref>,</highlight><highlight class="stringliteral">&quot;RegroupeBord&quot;</highlight><highlight class="normal">,<ref refid="classInterprete__geometrique__base__32__64" kindref="compound">Interprete_geometrique_base_32_64&lt;_T_&gt;</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>regroupebord<sp/>interprete<sp/>regroupebord<sp/>-1<sp/>Keyword<sp/>to<sp/>build<sp/>one<sp/>boundary<sp/>new_bord<sp/>with<sp/>several<sp/>boundaries<sp/>of<sp/>the<sp/>domain<sp/>named<sp/>domaine.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>domaine<sp/>ref_domaine<sp/>domain<sp/>0<sp/>Name<sp/>of<sp/>domain</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>new_bord<sp/>chaine<sp/>new_bord<sp/>0<sp/>Name<sp/>of<sp/>the<sp/>new<sp/>boundary</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/><sp/><sp/>attr<sp/>bords<sp/>bloc_lecture<sp/>bords<sp/>0<sp/>{<sp/>Bound1<sp/>Bound2<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="26" refid="classRegroupeBord__32__64_1ac37220e9feec717f01fe166d7a812b48" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classRegroupeBord__32__64_1ac37220e9feec717f01fe166d7a812b48" kindref="member">RegroupeBord_32_64&lt;_SIZE_&gt;::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="27"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classInterprete_1a4dc57ee68fca0ece3949ec2a307062e5" kindref="member">Interprete::printOn</ref>(os);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="32" refid="classRegroupeBord__32__64_1a587d1829ac58158011fb9865ab7050dc" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classRegroupeBord__32__64_1a587d1829ac58158011fb9865ab7050dc" kindref="member">RegroupeBord_32_64&lt;_SIZE_&gt;::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classInterprete_1aa53181fde696cbb695f1db6aaabd75e3" kindref="member">Interprete::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="38" refid="classRegroupeBord__32__64_1abc79aa7489fa2793366899ed4657455e" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classRegroupeBord__32__64_1abc79aa7489fa2793366899ed4657455e" kindref="member">RegroupeBord_32_64&lt;_SIZE_&gt;::interpreter_</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>LIST(<ref refid="classNom" kindref="compound">Nom</ref>)<sp/>nlistbord;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>this-&gt;associer_domaine(is);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>nom;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//is&gt;&gt;nlistbord;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>recodage<sp/>pour<sp/>ne<sp/>pas<sp/>mettre<sp/>les<sp/>virgules</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>mot;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;mot;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot!=</highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;we<sp/>expected<sp/>{<sp/>and<sp/>not<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;mot&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;exit();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;mot;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(mot!=</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nlistbord.add(mot);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is&gt;&gt;mot;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>dom<sp/>=<sp/>this-&gt;domaine();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>test<sp/>pour<sp/>savoir<sp/>si<sp/>la<sp/>frontiere<sp/>a<sp/>regrouper<sp/>est<sp/>valide</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>i.e<sp/>:<sp/>si<sp/>frontiere<sp/>est<sp/>une<sp/>frontiere<sp/>du<sp/>domaine<sp/><sp/>:<sp/>on<sp/>applique<sp/>regroupe_bord()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>LIST(<ref refid="classNom" kindref="compound">Nom</ref>)<sp/>nlistbord_dom;<sp/></highlight><highlight class="comment">//<sp/>liste<sp/>stockant<sp/>tous<sp/>les<sp/>noms<sp/>de<sp/>frontiere<sp/>du<sp/>domaine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbfr=dom.<ref refid="classDomaine__32__64_1a1c48e4016638c5dd747fe4914e4d76b1" kindref="member">nb_front_Cl</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b=0;<sp/>b&lt;nbfr;<sp/>b++)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFrontiere__32__64" kindref="compound">Frontiere_t</ref>&amp;<sp/>org=dom.<ref refid="classDomaine__32__64_1a706e638a800c8a7248b26c12855a371c" kindref="member">frontiere</ref>(b);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nlistbord_dom.<ref refid="classFrontiere__32__64_1af89000cd56bf4e094b7e8c35d11baa63" kindref="member">add</ref>(org.<ref refid="classFrontiere__32__64_1a80f25b603669b17303d4b4cfe9d933b9" kindref="member">le_nom</ref>());</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nlistbord.size();<sp/>i++)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!nlistbord_dom.contient(nlistbord[i]))</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Problem<sp/>in<sp/>the<sp/>RegroupeBord<sp/>instruction<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>boundary<sp/>named<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nlistbord[i]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>is<sp/>not<sp/>a<sp/>boundary<sp/>of<sp/>the<sp/>domain<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>dom.<ref refid="classDomaine__base_1aca8a61d4dae8d1211fc453e8a1c56170" kindref="member">le_nom</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;exit();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>regroupe_bord(dom,nom,nlistbord);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="89" refid="classRegroupeBord__32__64_1a51aeb93b1be27995a54c6f23dc40bfcb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRegroupeBord__32__64_1a51aeb93b1be27995a54c6f23dc40bfcb" kindref="member">RegroupeBord_32_64&lt;_SIZE_&gt;::rassemble_bords</ref>(<ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>dom)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbfr=dom.<ref refid="classDomaine__32__64_1a1c48e4016638c5dd747fe4914e4d76b1" kindref="member">nb_front_Cl</ref>();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b=0;<sp/>b&lt;nbfr;<sp/>b++)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFrontiere__32__64" kindref="compound">Frontiere_t</ref>&amp;<sp/>org=dom.<ref refid="classDomaine__32__64_1a706e638a800c8a7248b26c12855a371c" kindref="member">frontiere</ref>(b);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom_bord=org.<ref refid="classFrontiere__32__64_1a80f25b603669b17303d4b4cfe9d933b9" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LIST(<ref refid="classNom" kindref="compound">Nom</ref>)<sp/>listn;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>listn.add(nom_bord);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>regroupe_bord(dom,nom_bord,listn);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>si<sp/>on<sp/>a<sp/>detruit<sp/>des<sp/>bords<sp/>on<sp/>revient<sp/>sur<sp/>b</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nbfr!=dom.<ref refid="classDomaine__32__64_1a1c48e4016638c5dd747fe4914e4d76b1" kindref="member">nb_front_Cl</ref>())</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Boundary<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;nom_bord&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>has<sp/>been<sp/>collected&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nbfr=dom.<ref refid="classDomaine__32__64_1a1c48e4016638c5dd747fe4914e4d76b1" kindref="member">nb_front_Cl</ref>();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b--;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>_SIZE_&gt;</highlight></codeline>
+<codeline lineno="112" refid="classRegroupeBord__32__64_1a7bdb3c108ce028ac83e6dfb7e331d911" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRegroupeBord__32__64_1a7bdb3c108ce028ac83e6dfb7e331d911" kindref="member">RegroupeBord_32_64&lt;_SIZE_&gt;::regroupe_bord</ref>(<ref refid="classDomaine__32__64" kindref="compound">Domaine_t</ref>&amp;<sp/>dom,<sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LIST(<ref refid="classNom" kindref="compound">Nom</ref>)&amp;<sp/>nlistbord)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbfr=dom.<ref refid="classDomaine__32__64_1a1c48e4016638c5dd747fe4914e4d76b1" kindref="member">nb_front_Cl</ref>();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><ref refid="classInterprete__geometrique__base__32__64_1a146084030844e5cabc41bf096ec66a92" kindref="member">int_t</ref><sp/>nbfacestot=0;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>prem_b=-1;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b=0;<sp/>b&lt;nbfr;<sp/>b++)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFrontiere__32__64" kindref="compound">Frontiere_t</ref>&amp;<sp/>org=dom.<ref refid="classDomaine__32__64_1a706e638a800c8a7248b26c12855a371c" kindref="member">frontiere</ref>(b);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nlistbord.<ref refid="classNom_1a53b723a5e954eff5d84bbcce22996bc6" kindref="member">contient</ref>(org.<ref refid="classFrontiere__32__64_1a80f25b603669b17303d4b4cfe9d933b9" kindref="member">le_nom</ref>()))</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(prem_b==-1)<sp/>prem_b=b;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Frontiere&amp;<sp/>org=domaine.frontiere(b);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nbfacestot+=org.<ref refid="classFrontiere__32__64_1aa7884654b521e9ff54f90af0f872550b" kindref="member">nb_faces</ref>();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><ref refid="classFrontiere__32__64" kindref="compound">Frontiere_t</ref>&amp;<sp/>newb=dom.<ref refid="classDomaine__32__64_1a706e638a800c8a7248b26c12855a371c" kindref="member">frontiere</ref>(prem_b);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><ref refid="classFaces__32__64" kindref="compound">Faces_t</ref>&amp;<sp/>newfaces=newb.<ref refid="classFrontiere__32__64_1aeb2dadc639ee53d957479f8edb7341e1" kindref="member">faces</ref>();</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//newfaces.typer(domaine.frontiere(0).faces().type_face());</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbsom=newfaces.<ref refid="classFaces__32__64_1afac29457b959d3c8b5a4bd8dfcadb567" kindref="member">nb_som_faces</ref>();</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><ref refid="classInterprete__geometrique__base__32__64_1a146084030844e5cabc41bf096ec66a92" kindref="member">int_t</ref><sp/>nbfacestot0=newfaces.<ref refid="classFaces__32__64_1a8054f798ad0dc824af89bff34c9a9d7a" kindref="member">nb_faces</ref>();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>newfaces.<ref refid="classFaces__32__64_1ab2dbc3e3e4fa4c3f088845d4d8f78812" kindref="member">dimensionner</ref>(nbfacestot);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_t</ref>&amp;<sp/>newsommet=newfaces.<ref refid="classFaces__32__64_1ac9c518f5ee4388bfa4baae0c769b9fd6" kindref="member">les_sommets</ref>();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>nbfacestot<sp/>=<sp/>nbfacestot0;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b=0;<sp/>b&lt;nbfr;<sp/>b++)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(b!=prem_b)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFrontiere__32__64" kindref="compound">Frontiere_t</ref>&amp;<sp/>org=dom.<ref refid="classDomaine__32__64_1a706e638a800c8a7248b26c12855a371c" kindref="member">frontiere</ref>(b);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nombord=org.<ref refid="classFrontiere__32__64_1a80f25b603669b17303d4b4cfe9d933b9" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nlistbord.<ref refid="classNom_1a53b723a5e954eff5d84bbcce22996bc6" kindref="member">contient</ref>(nombord))</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab_t</ref>&amp;<sp/>sommets=org.<ref refid="classFrontiere__32__64_1aeb2dadc639ee53d957479f8edb7341e1" kindref="member">faces</ref>().<ref refid="classFaces__32__64_1ac9c518f5ee4388bfa4baae0c769b9fd6" kindref="member">les_sommets</ref>();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classInterprete__geometrique__base__32__64_1a146084030844e5cabc41bf096ec66a92" kindref="member">int_t</ref><sp/>nbface=org.<ref refid="classFrontiere__32__64_1aa7884654b521e9ff54f90af0f872550b" kindref="member">nb_faces</ref>();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="classInterprete__geometrique__base__32__64_1a146084030844e5cabc41bf096ec66a92" kindref="member">int_t</ref><sp/>fa=0;<sp/>fa&lt;nbface;<sp/>fa++)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>s=0;<sp/>s&lt;nbsom;<sp/>s++)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>newsommet(fa+nbfacestot,s)=sommets(fa,s);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nbfacestot+=org.<ref refid="classFrontiere__32__64_1aa7884654b521e9ff54f90af0f872550b" kindref="member">nb_faces</ref>();</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>dom.<ref refid="classDomaine__32__64_1a706e638a800c8a7248b26c12855a371c" kindref="member">frontiere</ref>(prem_b).<ref refid="classFrontiere__32__64_1a3064a8115270f842bec3e2a6c236504a" kindref="member">nommer</ref>(</highlight><highlight class="stringliteral">&quot;bord_a_conserver_coute_que_coute&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>bordcons<sp/>=dom.<ref refid="classDomaine__32__64_1a706e638a800c8a7248b26c12855a371c" kindref="member">frontiere</ref>(prem_b).<ref refid="classFrontiere__32__64_1a80f25b603669b17303d4b4cfe9d933b9" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b=0;<sp/>b&lt;nbfr;<sp/>b++)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>la<sp/>recup<sp/>des<sp/>bords<sp/>et<sp/>des<sp/>raccords<sp/>est<sp/>dans<sp/>la<sp/>boucle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pour<sp/>pouvoir<sp/>supprimer<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBords__32__64" kindref="compound">Bords_t</ref>&amp;<sp/>listbord=dom.<ref refid="classDomaine__32__64_1a66825442a8c8ed444ef765f343a26f09" kindref="member">faces_bord</ref>();</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRaccords__32__64" kindref="compound">Raccords_t</ref>&amp;<sp/>listrac=dom.<ref refid="classDomaine__32__64_1a8da3e7bb066917ace67bdc40018f86bd" kindref="member">faces_raccord</ref>();</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//const<sp/>Nom&amp;<sp/>nombord=nlistbord[b];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFrontiere__32__64" kindref="compound">Frontiere_t</ref>&amp;<sp/>org=dom.<ref refid="classDomaine__32__64_1a706e638a800c8a7248b26c12855a371c" kindref="member">frontiere</ref>(b);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nombord=org.<ref refid="classFrontiere__32__64_1a80f25b603669b17303d4b4cfe9d933b9" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nlistbord.<ref refid="classNom_1a53b723a5e954eff5d84bbcce22996bc6" kindref="member">contient</ref>(nombord))</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nombord!=bordcons)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_b=dom.<ref refid="classDomaine__32__64_1a615bfe1477ceda10bbf9c05f3a34c9a0" kindref="member">rang_frontiere</ref>(nombord);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(num_b&lt;listbord.<ref refid="classTRUST__List_1aa1033040d40b942bbed877aa429a9a4a" kindref="member">size</ref>())</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>listbord.<ref refid="classTRUST__List_1aa82ca6cee856408e2e187d18f7d9cfd9" kindref="member">suppr</ref>(dom.<ref refid="classDomaine__32__64_1aaaec5ad335d5333bbdc221a0685c5a1e" kindref="member">bord</ref>(nombord));</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>listrac.<ref refid="classTRUST__List_1aa82ca6cee856408e2e187d18f7d9cfd9" kindref="member">suppr</ref>(dom.<ref refid="classDomaine__32__64_1a55ce5dc6bd4644c425cd01cb0fd1d3b5" kindref="member">raccord</ref>(nombord));</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>supprime<sp/>un<sp/>bord</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nbfr--;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b--;<sp/></highlight><highlight class="comment">//<sp/>on<sp/>veut<sp/>verifie<sp/>que<sp/>le<sp/>suivant<sp/>n&apos;est<sp/>pas<sp/>dans<sp/>la<sp/>liste</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>newb.<ref refid="classFrontiere__32__64_1a3064a8115270f842bec3e2a6c236504a" kindref="member">nommer</ref>(nom);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/>dom.<ref refid="classDomaine__32__64_1a94e7efd1c8287b48935f6fe33242dbff" kindref="member">fixer_premieres_faces_frontiere</ref>();</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRegroupeBord__32__64" kindref="compound">RegroupeBord_32_64&lt;int&gt;</ref>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>INT_is_64_<sp/>==<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRegroupeBord__32__64" kindref="compound">RegroupeBord_32_64&lt;trustIdType&gt;</ref>;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Geometrie/RegroupeBord.cpp"/>
+  </compounddef>
+</doxygen>

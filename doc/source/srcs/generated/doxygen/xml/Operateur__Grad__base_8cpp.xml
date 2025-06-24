@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Operateur__Grad__base_8cpp" kind="file" language="C++">
+    <compoundname>Operateur_Grad_base.cpp</compoundname>
+    <includes refid="Operateur__Grad__base_8h" local="no">Operateur_Grad_base.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Operateur__Grad__base_8cpp_1ac29834bba624e76b41fce3ac72532954" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Operateur_Grad_basebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Operateur_Grad_basebases</name>
+        <initializer>={   &amp;( <ref refid="classOperateur__base" kindref="compound">Operateur_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Operateurs/Operateur_Grad_base.cpp" line="19" column="117" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Operateurs/Operateur_Grad_base.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur_Grad_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classOperateur__Grad__base_1a83348817d92282b8729124cafe1dce35" refkind="member"><highlight class="normal">Implemente_base(<ref refid="classOperateur__Grad__base" kindref="compound">Operateur_Grad_base</ref>,</highlight><highlight class="stringliteral">&quot;Operateur_Grad_base&quot;</highlight><highlight class="normal">,<ref refid="classOperateur__base" kindref="compound">Operateur_base</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="22"><highlight class="comment">/*!<sp/>@brief<sp/>NE<sp/>FAIT<sp/>RIEN<sp/>A<sp/>surcharger<sp/>dans<sp/>les<sp/>classes<sp/>derivees</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>os)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Sortie&amp;)<sp/>le<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classOperateur__Grad__base_1a368bf52779a4332a6222dab49cdabfd3" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classOperateur__Grad__base_1a368bf52779a4332a6222dab49cdabfd3" kindref="member">Operateur_Grad_base::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="28"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="33"><highlight class="comment">/*!<sp/>@brief<sp/>NE<sp/>FAIT<sp/>RIEN<sp/>A<sp/>surcharger<sp/>dans<sp/>les<sp/>classes<sp/>derivees</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>un<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;)<sp/>le<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classOperateur__Grad__base_1af458328b29c651a1a9ca951d954b7e56" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classOperateur__Grad__base_1af458328b29c651a1a9ca951d954b7e56" kindref="member">Operateur_Grad_base::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classOperateur__Grad__base_1ad638ade67bb2515489d210cfdf3fca37" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Grad__base_1ad638ade67bb2515489d210cfdf3fca37" kindref="member">Operateur_Grad_base::dimensionner</ref>(<ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>mat)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="44"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>on<sp/>tente<sp/>dimensionner_blocs(),<sp/>mais<sp/>en<sp/>pression!<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classOperateur__base_1a3535d556393ce52658fb973127d63b9f" kindref="member">has_interface_blocs</ref>())<sp/><ref refid="classOperateur__base_1ab1383995b6e34068640675a57bec363b" kindref="member">dimensionner_blocs</ref>({{<sp/></highlight><highlight class="stringliteral">&quot;pression&quot;</highlight><highlight class="normal">,<sp/>&amp;mat<sp/>}});</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>dimensionner()<sp/>not<sp/>coded!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classOperateur__Grad__base_1abe0916e8a47561c541b0068f88ed10e7" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classOperateur__Grad__base_1abe0916e8a47561c541b0068f88ed10e7" kindref="member">Operateur_Grad_base::ajouter</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>inco,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>secmem)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="51"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classOperateur__base_1a3535d556393ce52658fb973127d63b9f" kindref="member">has_interface_blocs</ref>())</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>secmem<sp/>*=<sp/>-1,<sp/><ref refid="classOperateur__base_1aec5922f1a3a0a064dbc94b8d371ad92d" kindref="member">ajouter_blocs</ref>({},<sp/>secmem,<sp/>{{<sp/></highlight><highlight class="stringliteral">&quot;pression&quot;</highlight><highlight class="normal">,<sp/>inco<sp/>}}),<sp/>secmem<sp/>*=<sp/>-1;<sp/></highlight><highlight class="comment">/*<sp/>pour<sp/>avoir<sp/>le<sp/>bon<sp/>signe<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>ajouter()<sp/>not<sp/>coded!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>secmem;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classOperateur__Grad__base_1a398d6fe68c1c1b904a15e43321542235" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperateur__Grad__base_1a398d6fe68c1c1b904a15e43321542235" kindref="member">Operateur_Grad_base::contribuer_a_avec</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>inco,<sp/><ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matrice)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="59"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classOperateur__base_1a3535d556393ce52658fb973127d63b9f" kindref="member">has_interface_blocs</ref>())</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>secmem(<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().inconnue().valeurs());<sp/></highlight><highlight class="comment">//on<sp/>va<sp/>le<sp/>jeter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>matrice.<ref refid="classMatrice__Morse_1a1abea3e29450770ec00ab41b4323f144" kindref="member">get_set_coeff</ref>()<sp/>*=<sp/>-1,<sp/><ref refid="classOperateur__base_1aec5922f1a3a0a064dbc94b8d371ad92d" kindref="member">ajouter_blocs</ref>({{<sp/></highlight><highlight class="stringliteral">&quot;pression&quot;</highlight><highlight class="normal">,<sp/>&amp;matrice<sp/>}},<sp/>secmem),<sp/>matrice.<ref refid="classMatrice__Morse_1a1abea3e29450770ec00ab41b4323f144" kindref="member">get_set_coeff</ref>()<sp/>*=<sp/>-1;<sp/></highlight><highlight class="comment">/*<sp/>pour<sp/>avoir<sp/>le<sp/>bon<sp/>signe<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>contribuer_a_avec()<sp/>not<sp/>coded!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="68"><highlight class="comment">/*!<sp/>@brief<sp/>Calcul<sp/>sans<sp/>les<sp/>conditions<sp/>aux<sp/>limites<sp/>?</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classOperateur__Grad__base_1a331f925ebb5c11dcc1c92e89d5656a69" refkind="member"><highlight class="normal"><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/><ref refid="classOperateur__Grad__base_1a331f925ebb5c11dcc1c92e89d5656a69" kindref="member">Operateur_Grad_base::multvect</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>x,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>b)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="72"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>que_suis_je()&lt;&lt;&quot;::multvect<sp/>n&apos;est<sp/>surcharge!!&quot;<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>copie<sp/>de<sp/>X<sp/>en<sp/>mettant<sp/>0<sp/>dans<sp/>le<sp/>vecteur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>(on<sp/>recupere<sp/>un<sp/>resultat<sp/>tenant<sp/>compte<sp/>uniquement<sp/>des<sp/>conditions<sp/>aux<sp/>limites)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Tentative<sp/>de<sp/>codage<sp/>plus<sp/>efficace:<sp/>ne<sp/>marche<sp/>pas<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ecart<sp/>sur<sp/>SGE_3D_VEF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>x0(x);<sp/></highlight><highlight class="comment">//<sp/>copie<sp/>de<sp/>la<sp/>structure,<sp/>initialisee<sp/>a<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__base_1a2cac888141406ee39b0eb5fd66da7fca" kindref="member">calculer</ref>(x0,<sp/>b);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>operator_negate(b);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__Grad__base_1abe0916e8a47561c541b0068f88ed10e7" kindref="member">ajouter</ref>(x,<sp/>b);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>x0(x);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>b0(b);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__base_1a2cac888141406ee39b0eb5fd66da7fca" kindref="member">calculer</ref>(x0,<sp/>b0);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__base_1a2cac888141406ee39b0eb5fd66da7fca" kindref="member">calculer</ref>(x,b);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>b-=b0;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>a<sp/>soustrait<sp/>au<sp/>resultat<sp/>la<sp/>contribution<sp/>des<sp/>conditions<sp/>aux<sp/>limites.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>b;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Operateurs/Operateur_Grad_base.cpp"/>
+  </compounddef>
+</doxygen>

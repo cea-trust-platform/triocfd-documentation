@@ -1,0 +1,415 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="StringTokenizer_8cpp" kind="file" language="C++">
+    <compoundname>StringTokenizer.cpp</compoundname>
+    <includes refid="StringTokenizer_8h" local="no">StringTokenizer.h</includes>
+    <includes refid="Char__ptr_8h" local="no">Char_ptr.h</includes>
+    <includes refid="Objet__U_8h" local="no">Objet_U.h</includes>
+    <includes local="no">math.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">sstream</includes>
+    <includes local="no">algorithm</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>StringTokenizer.cpp</label>
+        <link refid="StringTokenizer_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>algorithm</label>
+      </node>
+      <node id="2">
+        <label>math.h</label>
+      </node>
+      <node id="4">
+        <label>sstream</label>
+      </node>
+      <node id="3">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;StringTokenizer.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Char_ptr.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Objet_U.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//using<sp/>namespace<sp/>std;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::stringstream;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1a355ad502645427eed066b51a33e5b29f" kindref="member">StringTokenizer::NUMBER</ref>=-2;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1a53b88292d51bd88ff964529ff7550faf" kindref="member">StringTokenizer::STRING</ref>=-3;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1a482db4ea8618f02f6734f369466ab856" kindref="member">StringTokenizer::EOS</ref>=-1;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>On<sp/>ne<sp/>definit<sp/>les<sp/>identificateurs<sp/>des<sp/>operateurs<sp/>qu&apos;une<sp/>seule<sp/>fois<sp/>entre<sp/>la<sp/>classe<sp/>Parser<sp/>et<sp/>StringTokenizer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Pour<sp/>l&apos;instant,<sp/>on<sp/>les<sp/>place<sp/>dans<sp/>cette<sp/>classe<sp/>et<sp/>donc<sp/>on<sp/>les<sp/>supprime<sp/>de<sp/>la<sp/>classe<sp/>Parser</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>=&gt;<sp/>on<sp/>pourra<sp/>envisager<sp/>de<sp/>les<sp/>mettre<sp/>dans<sp/>une<sp/>classe<sp/>a<sp/>part<sp/>entiere<sp/>si<sp/>ca<sp/>parait<sp/>plus<sp/>clair.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>attention<sp/>il<sp/>faut<sp/>que<sp/>les<sp/>constantes<sp/>suivantes<sp/>soit<sp/>superieur<sp/>a<sp/>0<sp/>pour<sp/>eviter<sp/>les<sp/>conflits<sp/>avec<sp/>les<sp/>fonctions<sp/>unaires</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1af054f2588d2b256680836ecf6fda39fa" kindref="member">StringTokenizer::ADD</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1ae8a4564f543a385d0be243a790cd9e8d" kindref="member">StringTokenizer::SUBTRACT</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1a5f7c0440698c64a8bbfaeef871f53158" kindref="member">StringTokenizer::MULTIPLY</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1ac6e742fcb1335226f67370b63b432190" kindref="member">StringTokenizer::DIVIDE</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1aa16b624d07d9001e051805b20712acd4" kindref="member">StringTokenizer::POWER</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1aa7b9bf93a60008ae21e6645f9661a086" kindref="member">StringTokenizer::LT</ref><sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1a91e6890abb8a36e6cd19df6205344f65" kindref="member">StringTokenizer::GT</ref><sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1ab1f46669f879f9d761df606719b9f2d1" kindref="member">StringTokenizer::LE</ref><sp/>=<sp/>7;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1aa7243c09d6687bde2b0cb953229533be" kindref="member">StringTokenizer::GE</ref><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1abdc36f6e49e953af9008ed5aeec015ec" kindref="member">StringTokenizer::MOD</ref><sp/>=<sp/>9;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1af93fce247ccdc8ebbd155106e9588ef6" kindref="member">StringTokenizer::MAX</ref><sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1a74f4778bb362e63b43f9762ad236091f" kindref="member">StringTokenizer::MIN</ref><sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1a034f1b0e3a04d52ff6f6f6078bd1ac8c" kindref="member">StringTokenizer::AND</ref><sp/>=<sp/>12;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1af59aaf08d0a0b638d7c6a76c78883365" kindref="member">StringTokenizer::OR</ref><sp/>=<sp/>13;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1ad6c53e846893d92fedd3f6fbffb3b9e6" kindref="member">StringTokenizer::EQ</ref><sp/>=<sp/>14;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1afe8a2913da000de2c7775c1a41915c97" kindref="member">StringTokenizer::NEQ</ref><sp/>=<sp/>15;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>les<sp/>parentheses<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1aa500886800fd24d00d305b84121f8337" kindref="member">StringTokenizer::GRP</ref><sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1adfae8a077061ef4ae4e815a355d8e1c1" kindref="member">StringTokenizer::ENDGRP</ref><sp/>=<sp/>1001;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Nb<sp/>d&apos;operateurs<sp/>et<sp/>mot-cles<sp/>pour<sp/>les<sp/>identifier<sp/>(ne<sp/>concerne<sp/>pas<sp/>les<sp/>parentheses&quot;(&quot;<sp/>et<sp/>&quot;)&quot;).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Attention<sp/>a<sp/>l&apos;ordre<sp/>des<sp/>operateurs<sp/>ci<sp/>dessous<sp/>:<sp/>ils<sp/>doivent<sp/>etre<sp/>positionnes<sp/>dans<sp/>les<sp/>tableaux<sp/><sp/>keyword_op<sp/>et<sp/>keyword_op_bis<sp/>en<sp/>fonction<sp/>des<sp/>valeurs<sp/>des<sp/>constantes<sp/>statiques<sp/>ADD,<sp/>SUB<sp/>etc...<sp/>definies<sp/>ci-dessus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>StringTokenizer::nb_op=16;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>StringTokenizer::nb_op_bis=11;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>StringTokenizer::keyword_op[][10]<sp/>=<sp/>{<sp/></highlight><highlight class="stringliteral">&quot;ADD&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;SUB&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;MUL&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;DIV&quot;</highlight><highlight class="normal"><sp/>,<sp/></highlight><highlight class="stringliteral">&quot;POW&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;LT&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GT&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;LE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;MOD&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;MAX&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;MIN&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;AND&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;OR&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;EQ&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;NEQ&quot;</highlight><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>StringTokenizer::keyword_op_bis[][10]<sp/>=<sp/>{<sp/></highlight><highlight class="stringliteral">&quot;+&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;-&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;*&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;^&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&lt;&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&gt;&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;[&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;]&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;%&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;$&quot;</highlight><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classStringTokenizer_1abee9392f74f78f6232e090a78a669b8d" refkind="member"><highlight class="normal"><ref refid="classStringTokenizer_1abee9392f74f78f6232e090a78a669b8d" kindref="member">StringTokenizer::StringTokenizer</ref>()</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>str<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;0&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>init_keyword_op();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>reste<sp/>=<sp/>&amp;str[0];</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classStringTokenizer_1a6126a9a25fa011673084305461e88334" refkind="member"><highlight class="normal"><ref refid="classStringTokenizer_1abee9392f74f78f6232e090a78a669b8d" kindref="member">StringTokenizer::StringTokenizer</ref>(std::string&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>str<sp/>=<sp/>s;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>init_keyword_op();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>reste<sp/>=<sp/>&amp;str[0];</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classStringTokenizer_1ae56454db51b713cedb00ecd8b265edd9" refkind="member"><highlight class="normal"><ref refid="classStringTokenizer_1abee9392f74f78f6232e090a78a669b8d" kindref="member">StringTokenizer::StringTokenizer</ref>(std::string<sp/>s,<sp/>std::string<sp/>sep)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>str<sp/>=<sp/>s;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>init_keyword_op();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>reste<sp/>=<sp/>&amp;str[0];</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classStringTokenizer_1a26a59cd69f871ace17ec831e1508b377" refkind="member"><highlight class="normal"><ref refid="classStringTokenizer_1a26a59cd69f871ace17ec831e1508b377" kindref="member">StringTokenizer::~StringTokenizer</ref>()</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;StringTokenizer::nb_op;<sp/>i++)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">[]<sp/>op_sep[i];</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">[]<sp/>op_sep;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classStringTokenizer_1a999cdb95393f479df83c1be95e4941cf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1a999cdb95393f479df83c1be95e4941cf" kindref="member">StringTokenizer::check_GRP</ref>()</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>ch<sp/>=<sp/>str.c_str();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_o=0;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_f=0;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sz<sp/>=<sp/>(int)strlen(ch);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;sz;<sp/>i++)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*(ch+i)==</highlight><highlight class="charliteral">&apos;(&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nb_o++;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*(ch+i)==</highlight><highlight class="charliteral">&apos;)&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nb_f++;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(nb_o==nb_f);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="classStringTokenizer_1a1609abee63fadfa35437bfb379679f64" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1a1609abee63fadfa35437bfb379679f64" kindref="member">StringTokenizer::nextToken</ref>()</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*tmp;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type_sep,<sp/>length;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>tmp=find_sep(reste,<sp/>type_sep,<sp/>length);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tmp<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cout<sp/>&lt;&lt;<sp/>&quot;Fin<sp/>?<sp/>&quot;<sp/>&lt;&lt;<sp/>reste<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(reste[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStringTokenizer_1a85f97a453a77e58f6712f53a1de981e3" kindref="member">type</ref><sp/>=<sp/><ref refid="classStringTokenizer_1a482db4ea8618f02f6734f369466ab856" kindref="member">EOS</ref>;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>((reste[0]<sp/>&gt;=<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>(<sp/>reste[0]<sp/>&lt;=<sp/></highlight><highlight class="charliteral">&apos;9&apos;</highlight><highlight class="normal">))<sp/>||<sp/>(reste[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal">)<sp/><sp/>)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ajout<sp/>OC<sp/>pour<sp/>provoquer<sp/>une<sp/>erreur<sp/>avec<sp/>2x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ind=(int)strlen(reste)-1;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>((reste[ind]<sp/>&lt;<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)<sp/>||<sp/>(reste[ind]<sp/>&gt;<sp/></highlight><highlight class="charliteral">&apos;9&apos;</highlight><highlight class="normal">))<sp/>&amp;&amp;<sp/>(reste[ind]<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal">)<sp/>)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>syntax<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>reste<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>is<sp/>not<sp/>allowed.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStringTokenizer_1a85f97a453a77e58f6712f53a1de981e3" kindref="member">type</ref><sp/>=<sp/><ref refid="classStringTokenizer_1a355ad502645427eed066b51a33e5b29f" kindref="member">NUMBER</ref>;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stringstream<sp/>stream;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/>reste<sp/>;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&gt;&gt;<sp/>nval;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!stream.eof()<sp/>)</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Error<sp/>conversion<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;reste&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>in<sp/>number&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStringTokenizer_1a85f97a453a77e58f6712f53a1de981e3" kindref="member">type</ref>=<ref refid="classStringTokenizer_1a53b88292d51bd88ff964529ff7550faf" kindref="member">STRING</ref>;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sval<sp/>=<sp/>reste;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(sval.begin(),<sp/>sval.end(),<sp/>sval.begin(),<sp/>::toupper);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((*reste++)<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">)<sp/>;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reste--;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tmp==reste)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStringTokenizer_1a85f97a453a77e58f6712f53a1de981e3" kindref="member">type</ref><sp/>=<sp/>type_sep;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>reste=reste+length;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChar__ptr" kindref="compound">Char_ptr</ref><sp/>token;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>token.<ref refid="classChar__ptr_1a99698885f5a6fa6d4b6281649c905b3f" kindref="member">allocate</ref>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)(tmp-reste));</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tok<sp/>=<sp/>token.<ref refid="classChar__ptr_1ae61d8331a5749b5e5bfe65ddb764361e" kindref="member">getChar</ref>();;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;tmp-reste;<sp/>i++)</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>reste[i]<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal"><sp/>)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tok[j++]<sp/>=<sp/>reste[i];</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tok[j]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(((tok[0]<sp/>&gt;=<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>(<sp/>tok[0]<sp/>&lt;=<sp/></highlight><highlight class="charliteral">&apos;9&apos;</highlight><highlight class="normal">))<sp/>||<sp/>(tok[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal">)<sp/><sp/>)</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ind;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>nval_tmp;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStringTokenizer_1a85f97a453a77e58f6712f53a1de981e3" kindref="member">type</ref><sp/>=<sp/><ref refid="classStringTokenizer_1a355ad502645427eed066b51a33e5b29f" kindref="member">NUMBER</ref>;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stringstream<sp/>stream;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ind<sp/>=<sp/>(int)(tmp-reste-1l);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reste<sp/>=<sp/>tmp;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tok[ind]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;e&apos;</highlight><highlight class="normal"><sp/>||<sp/>tok[ind]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;E&apos;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tok[ind]=</highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/>tok<sp/>;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&gt;&gt;<sp/>nval_tmp;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&gt;&gt;<sp/>c;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!stream.eof()<sp/>)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Error<sp/>conversion<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;tok&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>in<sp/>number&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStringTokenizer_1a1609abee63fadfa35437bfb379679f64" kindref="member">nextToken</ref>();</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStringTokenizer_1a85f97a453a77e58f6712f53a1de981e3" kindref="member">type</ref><sp/>==<sp/><ref refid="classStringTokenizer_1ae8a4564f543a385d0be243a790cd9e8d" kindref="member">SUBTRACT</ref>)</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStringTokenizer_1a1609abee63fadfa35437bfb379679f64" kindref="member">nextToken</ref>();</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStringTokenizer_1a85f97a453a77e58f6712f53a1de981e3" kindref="member">type</ref><sp/>!=<sp/><ref refid="classStringTokenizer_1a355ad502645427eed066b51a33e5b29f" kindref="member">NUMBER</ref>)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>while<sp/>interpreting<sp/>the<sp/>string<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>str<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nval_tmp*=pow(10,-nval);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStringTokenizer_1a85f97a453a77e58f6712f53a1de981e3" kindref="member">type</ref><sp/>==<sp/><ref refid="classStringTokenizer_1af054f2588d2b256680836ecf6fda39fa" kindref="member">ADD</ref>)</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStringTokenizer_1a1609abee63fadfa35437bfb379679f64" kindref="member">nextToken</ref>();</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStringTokenizer_1a85f97a453a77e58f6712f53a1de981e3" kindref="member">type</ref><sp/>!=<sp/><ref refid="classStringTokenizer_1a355ad502645427eed066b51a33e5b29f" kindref="member">NUMBER</ref>)</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>while<sp/>interpreting<sp/>the<sp/>string<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>str<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nval_tmp*=pow(10.,nval);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStringTokenizer_1a85f97a453a77e58f6712f53a1de981e3" kindref="member">type</ref><sp/>==<sp/><ref refid="classStringTokenizer_1a355ad502645427eed066b51a33e5b29f" kindref="member">NUMBER</ref>)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GF<sp/>suivant<sp/>les<sp/>versions<sp/>on<sp/>a<sp/>soit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nval_tmp*=pow(10.,nval);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>soit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//nval_tmp<sp/>=<sp/>nval;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>J&apos;interdis<sp/>pour<sp/>l&apos;instant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;Possible<sp/>Erreur<sp/>en<sp/>interpretant<sp/>la<sp/>chaine<sp/>&quot;<sp/>&lt;&lt;<sp/>str<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Process::exit();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>while<sp/>interpreting<sp/>the<sp/>string<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>str<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>((tok[ind]<sp/>&lt;<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)<sp/>||<sp/>(tok[ind]<sp/>&gt;<sp/></highlight><highlight class="charliteral">&apos;9&apos;</highlight><highlight class="normal">))<sp/>&amp;&amp;<sp/>(tok[ind]<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal">)<sp/>)</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>The<sp/>syntax<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tok<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>is<sp/>not<sp/>allowed.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/>tok<sp/>;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&gt;&gt;<sp/>nval_tmp;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!stream.eof()<sp/>)</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Error<sp/>conversion<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;tok&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>in<sp/>number&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nval<sp/>=<sp/>nval_tmp;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStringTokenizer_1a85f97a453a77e58f6712f53a1de981e3" kindref="member">type</ref>=<ref refid="classStringTokenizer_1a53b88292d51bd88ff964529ff7550faf" kindref="member">STRING</ref>;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sval<sp/>=<sp/>tok;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(sval.begin(),<sp/>sval.end(),<sp/>sval.begin(),<sp/>::toupper);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reste=tmp;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>delete[]<sp/>tok;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classStringTokenizer_1a85f97a453a77e58f6712f53a1de981e3" kindref="member">type</ref>;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="comment">//methodes<sp/>privees<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>StringTokenizer::init_keyword_op()</highlight></codeline>
+<codeline lineno="273"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/>op_sep<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*[nb_op];</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>encadre<sp/>le<sp/>mot-cle<sp/>de<sp/>chaque<sp/>operateur<sp/>par<sp/>des<sp/>&quot;_&quot;<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>LT<sp/>=&gt;<sp/><sp/>_LT_<sp/><sp/>etc...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb_op;<sp/>i++)</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>blanc=</highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>op_sep[i]<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">[strlen(keyword_op[i])+3];</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>strcpy(op_sep[i],blanc);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>strcat(op_sep[i],<sp/>keyword_op[i]);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>strcat(op_sep[i],<sp/>blanc);</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="288"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="289"><highlight class="comment"><sp/>*<sp/>Cherche<sp/>dans<sp/>la<sp/>chaine<sp/>&quot;ch&quot;<sp/>la<sp/>prochaine<sp/>apparition<sp/>d&apos;un<sp/>separateur.</highlight></codeline>
+<codeline lineno="290"><highlight class="comment"><sp/>*<sp/>Renvoie<sp/>dans<sp/>le<sp/>parametre<sp/>&quot;type_sep&quot;,<sp/>le<sp/>type<sp/>de<sp/>separateur<sp/>((,<sp/>),<sp/>+,<sp/>-<sp/>etc...)</highlight></codeline>
+<codeline lineno="291"><highlight class="comment"><sp/>*<sp/>Renvoie<sp/>egalement<sp/>la<sp/>longueur<sp/>de<sp/>la<sp/>chaine<sp/>correspondante<sp/>au<sp/>separateur<sp/>trouve</highlight></codeline>
+<codeline lineno="292"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>StringTokenizer::find_sep(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>ch,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>type_sep,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>length)</highlight></codeline>
+<codeline lineno="294"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>trouve=</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>trouve_tmp;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/>type_sep=-1;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/>trouve_tmp<sp/>=<sp/>strstr(ch,<sp/></highlight><highlight class="stringliteral">&quot;(&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pos=100000;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(trouve_tmp<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/>=<sp/>(int)(trouve_tmp-ch);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_sep=<ref refid="classStringTokenizer_1aa500886800fd24d00d305b84121f8337" kindref="member">GRP</ref>;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>length=1;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>trouve=trouve_tmp;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/>trouve_tmp<sp/>=<sp/>strstr(ch,<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((trouve_tmp<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>(trouve_tmp-ch&lt;pos))</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/>=<sp/>(int)(trouve_tmp-ch);</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type_sep=<ref refid="classStringTokenizer_1adfae8a077061ef4ae4e815a355d8e1c1" kindref="member">ENDGRP</ref>;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>length=1;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>trouve=trouve_tmp;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;StringTokenizer::nb_op;<sp/>i++)</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>trouve_tmp<sp/>=<sp/>strstr(ch,<sp/>op_sep[i]);</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((trouve_tmp<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>(trouve_tmp-ch&lt;pos))</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/>=<sp/>(int)(trouve_tmp-ch);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type_sep=i;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>length=(int)strlen(op_sep[i]);</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trouve=trouve_tmp;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;StringTokenizer::nb_op_bis;<sp/>i++)</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>trouve_tmp<sp/>=<sp/>strstr(ch,<sp/>keyword_op_bis[i]);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((trouve_tmp<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)(trouve_tmp-ch)&lt;pos))</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/>=<sp/>(int)(trouve_tmp-ch);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type_sep=i;</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>length=(int)strlen(keyword_op_bis[i]);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trouve=trouve_tmp;</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trouve;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="344"><highlight class="comment"><sp/><sp/>int<sp/>main()</highlight></codeline>
+<codeline lineno="345"><highlight class="comment"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="346"><highlight class="comment"><sp/><sp/>//String<sp/>s(&quot;23+34*12-13+COS<sp/>(<sp/>12<sp/>)*<sp/>2^3&quot;);</highlight></codeline>
+<codeline lineno="347"><highlight class="comment"><sp/><sp/>std::string<sp/>s(&quot;2+3&quot;);</highlight></codeline>
+<codeline lineno="348"><highlight class="comment"><sp/><sp/>StringTokenizer<sp/>tk(s);</highlight></codeline>
+<codeline lineno="349"><highlight class="comment"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>StringTokenizer::NUMBER<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="350"><highlight class="comment"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>StringTokenizer::EOS<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="351"><highlight class="comment"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>StringTokenizer::STRING<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="352"><highlight class="comment"></highlight></codeline>
+<codeline lineno="353"><highlight class="comment"><sp/><sp/>while<sp/>(tk.nextToken()!=StringTokenizer::EOS)</highlight></codeline>
+<codeline lineno="354"><highlight class="comment"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="355"><highlight class="comment"><sp/><sp/>if<sp/>(tk.type<sp/>==<sp/>StringTokenizer::STRING)</highlight></codeline>
+<codeline lineno="356"><highlight class="comment"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="357"><highlight class="comment"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>&quot;String<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>tk.getSValue()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="358"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="359"><highlight class="comment"><sp/><sp/>else<sp/>if<sp/>(tk.type<sp/>==<sp/>StringTokenizer::NUMBER)</highlight></codeline>
+<codeline lineno="360"><highlight class="comment"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="361"><highlight class="comment"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>&quot;Value<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>tk.getNValue()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="362"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="363"><highlight class="comment"><sp/><sp/>else</highlight></codeline>
+<codeline lineno="364"><highlight class="comment"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="365"><highlight class="comment"><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>&quot;Operator<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>(char)<sp/>tk.type<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="366"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="367"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="368"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="369"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/StringTokenizer.cpp"/>
+  </compounddef>
+</doxygen>

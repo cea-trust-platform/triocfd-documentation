@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Synonyme__info_8cpp" kind="file" language="C++">
+    <compoundname>Synonyme_info.cpp</compoundname>
+    <includes refid="Synonyme__info_8h" local="no">Synonyme_info.h</includes>
+    <includes refid="Noms_8h" local="no">Noms.h</includes>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Synonyme__info_8cpp_1aa17622716dc89f97b11c93215fdbb311" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int strcmp_uppercase</definition>
+        <argsstring>(const char *n1, const char *n2)</argsstring>
+        <name>strcmp_uppercase</name>
+        <param>
+          <type>const char *</type>
+          <declname>n1</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>n2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Synonyme_info.cpp" line="42" column="19" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Synonyme_info.cpp" bodystart="42" bodyend="56"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Synonyme_info.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Noms.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>B.Mathieu,<sp/>08/2004</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Le<sp/>processus<sp/>d&apos;initialisation<sp/>de<sp/>ces<sp/>membres<sp/>statiques<sp/>est<sp/>tres</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>important<sp/>:<sp/>il<sp/>faut<sp/>absolument<sp/>qu&apos;ils<sp/>soient<sp/>initialises<sp/>AVANT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>le<sp/>premier<sp/>appel<sp/>au<sp/>constructeur<sp/>Synonyme_info::Synonyme_info(...).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Or<sp/>ce<sp/>constructeur<sp/>est<sp/>appele<sp/>pour<sp/>initialiser<sp/>le<sp/>membre<sp/>statique<sp/>info_obj</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>de<sp/>tous<sp/>les<sp/>Objet_U.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Risque<sp/>de<sp/>&quot;static<sp/>initialization<sp/>order<sp/>fiasco&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>(voir<sp/>http://www.parashift.com/c++-faq-lite/ctors.html<sp/><sp/><sp/>[10.11])</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Pour<sp/>l&apos;instant<sp/>c&apos;est<sp/>ok<sp/>parce<sp/>qu&apos;on<sp/>initialise<sp/>avec<sp/>une<sp/>constante...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Tableau<sp/>de<sp/>pointeurs<sp/>sur<sp/>les<sp/>synonymes<sp/>enregistres<sp/>lors<sp/>de<sp/>la<sp/>construction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>des<sp/>Synonyme_info.<sp/>Si<sp/>plusieurs<sp/>synonymes<sp/>on<sp/>le<sp/>meme<sp/>nom<sp/>(Synonyme_info::n),<sp/>alors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>on<sp/>n&apos;en<sp/>enregistre<sp/>qu&apos;un<sp/>seul<sp/>dans<sp/>Synonyme_info::les_synonymes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSynonyme__info" kindref="compound">Synonyme_info</ref>**<sp/>Synonyme_info::les_synonymes=0;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Pour<sp/>chaque<sp/>elements<sp/>du<sp/>tableau<sp/>&quot;les_synonymes&quot;,<sp/>ce<sp/>nombre<sp/>vaut<sp/>1<sp/>si<sp/>le</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>nom<sp/>du<sp/>synonyme<sp/>est<sp/>commun<sp/>a<sp/>plusieurs<sp/>synonymes,<sp/>0<sp/>sinon.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Voir<sp/>&quot;ajouter_synonyme&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Synonyme_info::nb_classes=0;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Synonyme_info::les_synonymes_memsize=0;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>[ABN]<sp/>I<sp/>don&apos;t<sp/>dare<sp/>replacing<sp/>this<sp/>with<sp/>STL<sp/>for<sp/>efficiency<sp/>purpose<sp/>-<sp/>here<sp/>we<sp/>convert<sp/>only<sp/>what&apos;s<sp/>needed<sp/>for<sp/>comparison</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>strcmp_uppercase(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*n1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*n2)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c1,<sp/>c2;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>delta;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>c1<sp/>=<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>char)<sp/>::toupper(n1[i]);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>c2<sp/>=<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>char)<sp/>::toupper(n2[i]);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>delta<sp/>=<sp/>c1<sp/>-<sp/>c2;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i++;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((delta<sp/>==<sp/>0)<sp/>&amp;&amp;<sp/>(c1<sp/>!=<sp/>0)<sp/>&amp;&amp;<sp/>(c2<sp/>!=<sp/>0));</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>delta;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GF<sp/>pour<sp/>liberer<sp/>correctement<sp/>la<sp/>memoire<sp/>il<sp/>faut<sp/>au<sp/>moins<sp/>detruire<sp/>le<sp/>nom</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classSynonyme__info_1aded9568d0838e269f76256f7736542e5" refkind="member"><highlight class="normal"><ref refid="classSynonyme__info_1aded9568d0838e269f76256f7736542e5" kindref="member">Synonyme_info::~Synonyme_info</ref>()</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>retirer_synonyme(<ref refid="classSynonyme__info_1a3c6094f88db8377e60a5c0866bcb27f8" kindref="member">nom</ref>());</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((nb_classes==0)<sp/>&amp;&amp;<sp/>(les_synonymes_memsize!=0))</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>[]<sp/>les_synonymes;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>les_synonymes_memsize=0;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="69"><highlight class="comment">/*!<sp/>@brief<sp/>Recherche<sp/>le<sp/>synonyme<sp/>de<sp/>nom<sp/>&quot;nom&quot;<sp/>dans<sp/>la<sp/>liste<sp/>de<sp/>synonymes<sp/>enregistres<sp/>par<sp/>une<sp/>recherche<sp/>binaire.</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*<sp/><sp/><sp/>On<sp/>compare<sp/>les<sp/>chaines<sp/>converties<sp/>en<sp/>majuscules.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/><sp/><sp/>On<sp/>range<sp/>dans<sp/>&quot;index&quot;<sp/>l&apos;indice<sp/>du<sp/>synonyme,<sp/>s&apos;il<sp/>a<sp/>ete<sp/>trouve</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*<sp/><sp/><sp/>et<sp/>sinon<sp/>l&apos;indice<sp/>du<sp/>synonyme<sp/>juste<sp/>apres<sp/>(dans<sp/>ce<sp/>cas,<sp/>on<sp/>a</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>les_synonymes[index-1]-&gt;n<sp/>&lt;<sp/>nom<sp/>&lt;<sp/>les_synonymes[index]-&gt;n<sp/>)</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Si<sp/>le<sp/>synonyme<sp/>a<sp/>ete<sp/>trouve<sp/>on<sp/>renvoie<sp/>1,<sp/>sinon<sp/>0.</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Synonyme_info::search_synonyme_info_name(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*nom,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>index)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>assert(<ref refid="classSynonyme__info_1a3c6094f88db8377e60a5c0866bcb27f8" kindref="member">nom</ref><sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>[imin..imax]<sp/>est<sp/>l&apos;intervalle<sp/>ou<sp/>se<sp/>trouve<sp/>l&apos;index<sp/>recherche</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>imin<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>imax<sp/>=<sp/>nb_classes;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(imax<sp/>&gt;<sp/>imin)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>a<sp/>toujours<sp/>milieu<sp/>&lt;<sp/>imax</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>milieu<sp/>=<sp/>(imin<sp/>+<sp/>imax)<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>comparaison<sp/>=<sp/>strcmp_uppercase(<ref refid="classSynonyme__info_1a3c6094f88db8377e60a5c0866bcb27f8" kindref="member">nom</ref>,<sp/>les_synonymes[milieu]-&gt;n);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(comparaison<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>index<sp/>=<sp/>milieu;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(comparaison<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>nom<sp/>&lt;<sp/>les_synonymes[milieu]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>l&apos;index<sp/>recherche<sp/>est<sp/>donc<sp/>inferieur<sp/>ou<sp/>egal<sp/>a<sp/>&quot;milieu&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>imax<sp/>=<sp/>milieu;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>nom<sp/>&gt;<sp/>les_synonymes[milieu]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>l&apos;index<sp/>recherche<sp/>est<sp/>donc<sp/>strictement<sp/>superieur<sp/>a<sp/>&quot;milieu&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>imin<sp/>=<sp/>milieu<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>index<sp/>=<sp/>imax;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="110"><highlight class="comment">/*!<sp/>@brief<sp/>Constructeur<sp/>par<sp/>un<sp/>nom,<sp/>un<sp/>tableau<sp/>de<sp/>meres.</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/>*<sp/>@param<sp/>(const<sp/>char*<sp/>nom)<sp/>le<sp/>nom<sp/>du<sp/>synonyme<sp/>a<sp/>creer</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>nb_base)<sp/>le<sp/>nombre<sp/>de<sp/>meres<sp/>dans<sp/>le<sp/>tableau<sp/>bases[]</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*<sp/>@param<sp/>(const<sp/>Synonyme_info*<sp/>bases[])<sp/>le<sp/>tableau<sp/>specifiant<sp/>les<sp/>synonymes<sp/>de<sp/>bases<sp/>(meres)<sp/>du<sp/>synonyme<sp/>a<sp/>creer</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*<sp/>@throws<sp/>Sort<sp/>en<sp/>erreur<sp/>si<sp/>le<sp/>nom<sp/>n&apos;est<sp/>pas<sp/>defini<sp/>(null)</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classSynonyme__info_1aa106fcc6129da067e5b69affd537229c" refkind="member"><highlight class="normal"><ref refid="classSynonyme__info_1a0e02292c2553acbbf9596e5aab518011" kindref="member">Synonyme_info::Synonyme_info</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>un_nom,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>org_name)<sp/>:</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>n(un_nom),org(org_name)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((un_nom<sp/>==<sp/>0)||(org_name==0))</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Synonyme_info::Synonyme_info(const<sp/>char*<sp/>nom,Objet_U*<sp/>(*f)()...)\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Error<sp/>:<sp/>nom==0&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>assert(0);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><ref refid="classSynonyme__info_1a595231b85afee6d21e6abef2792ffbe6" kindref="member">ajouter_synonyme</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="130"><highlight class="comment">/*!<sp/>@brief<sp/>Methode<sp/>statique<sp/>appelee<sp/>par<sp/>les<sp/>constructeurs<sp/>de<sp/>Synonyme_info<sp/>pour<sp/>ajouter<sp/>un<sp/>nouveau<sp/>synonyme<sp/>a<sp/>la<sp/>liste<sp/>des<sp/>synonymes<sp/>enregistres.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Verifie<sp/>que<sp/>le<sp/>nom<sp/>du<sp/>synonyme<sp/>n&apos;existe<sp/>pas<sp/>encore.</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Synonyme_info::retirer_synonyme(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>nom)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>cherche<sp/>ou<sp/>mettre<sp/>le<sp/>synonyme<sp/>dans<sp/>le<sp/>tableau<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>existe_deja<sp/>=<sp/>search_synonyme_info_name(<ref refid="classSynonyme__info_1a3c6094f88db8377e60a5c0866bcb27f8" kindref="member">nom</ref>,<sp/>index);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!existe_deja)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;A<sp/>synonym<sp/>is<sp/>suppressed<sp/>whereas<sp/>it<sp/>doesn&apos;t<sp/>exist<sp/>!!!!!&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ajout<sp/>du<sp/>synonyme<sp/>dans<sp/>le<sp/>tableau<sp/>a<sp/>l&apos;indice<sp/>&quot;index&quot;:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>index;<sp/>i<sp/>&lt;<sp/>nb_classes-1;<sp/>i++)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>les_synonymes[i]<sp/>=<sp/>les_synonymes[i+1];</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nb_classes--;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="154"><highlight class="comment">/*!<sp/>@brief<sp/>Methode<sp/>statique<sp/>appelee<sp/>par<sp/>les<sp/>constructeurs<sp/>de<sp/>Synonyme_info<sp/>pour<sp/>ajouter<sp/>un<sp/>nouveau<sp/>synonyme<sp/>a<sp/>la<sp/>liste<sp/>des<sp/>synonymes<sp/>enregistres.</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Verifie<sp/>que<sp/>le<sp/>nom<sp/>du<sp/>synonyme<sp/>n&apos;existe<sp/>pas<sp/>encore.</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="classSynonyme__info_1a595231b85afee6d21e6abef2792ffbe6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSynonyme__info_1a595231b85afee6d21e6abef2792ffbe6" kindref="member">Synonyme_info::ajouter_synonyme</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSynonyme__info" kindref="compound">Synonyme_info</ref>&amp;<sp/>synonyme_info)</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Verifie<sp/>qu&apos;il<sp/>y<sp/>a<sp/>assez<sp/>de<sp/>place<sp/>dans<sp/>le<sp/>tableau<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(les_synonymes_memsize<sp/>&lt;=<sp/>nb_classes<sp/>+<sp/>1)</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>INCREMENT<sp/>=<sp/>512;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Plus<sp/>assez<sp/>de<sp/>place<sp/>dans<sp/>le<sp/>tableau:<sp/>on<sp/>redimensionne.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>les_synonymes_memsize<sp/>+=<sp/>INCREMENT;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSynonyme__info" kindref="compound">Synonyme_info</ref>**<sp/>nouveau<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSynonyme__info" kindref="compound">Synonyme_info</ref>*[les_synonymes_memsize];</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nb_classes;<sp/>i++)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nouveau[i]<sp/>=<sp/>les_synonymes[i];</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">[]<sp/>les_synonymes;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>les_synonymes<sp/>=<sp/>nouveau;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>cherche<sp/>ou<sp/>mettre<sp/>le<sp/>synonyme<sp/>dans<sp/>le<sp/>tableau<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>existe_deja=<ref refid="classType__info_1a88e7068fd06bbded90b11681f8efb384" kindref="member">Type_info::est_un_type</ref>(synonyme_info.n);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(existe_deja)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>The<sp/>synonym<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;synonyme_info.n&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>exists<sp/>as<sp/>a<sp/>class<sp/>which<sp/>is<sp/>forbidden<sp/>!!!!&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>existe_deja<sp/>=<sp/>search_synonyme_info_name(synonyme_info.n,<sp/>index);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(existe_deja)</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>Synonym<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;synonyme_info.n&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>already<sp/>exists,<sp/>which<sp/>is<sp/>forbidden!!!!&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ajout<sp/>du<sp/>synonyme<sp/>dans<sp/>le<sp/>tableau<sp/>a<sp/>l&apos;indice<sp/>&quot;index&quot;:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>nb_classes;<sp/>i<sp/>&gt;<sp/>index;<sp/>i--)</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>les_synonymes[i]<sp/>=<sp/>les_synonymes[i-1];</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>les_synonymes[index]<sp/>=<sp/>&amp;synonyme_info;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nb_classes++;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="199"><highlight class="comment">/*!<sp/>@brief<sp/>Ecriture<sp/>de<sp/>toute<sp/>la<sp/>hierarchie<sp/>du<sp/>synonyme<sp/>considere<sp/>sur<sp/>un<sp/>flux<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>os)<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Sortie&amp;)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>modifie</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="classSynonyme__info_1ad816ebead22b577c8eb65dd60ba9d4f7" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSynonyme__info_1ad816ebead22b577c8eb65dd60ba9d4f7" kindref="member">Synonyme_info::hierarchie</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;There<sp/>is<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nb_classes<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>synomyms:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=<sp/>nb_classes;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(i--)</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>les_synonymes[i]-&gt;<ref refid="classSynonyme__info_1a3c6094f88db8377e60a5c0866bcb27f8" kindref="member">nom</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&lt;=&gt;<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>les_synonymes[i]-&gt;<ref refid="classSynonyme__info_1aaf6eb5e4678eb0574832b4f65527769e" kindref="member">org_name_</ref>()&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/>finl&lt;&lt;flush;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="213"><highlight class="comment">/*!<sp/>@brief<sp/>Test<sp/>d&apos;existence<sp/>d&apos;une<sp/>classe<sp/>du<sp/>synonyme<sp/>indique<sp/>si<sp/>il<sp/>existe<sp/>une<sp/>classe<sp/>T<sp/>dont<sp/>le<sp/>Synonyme_info<sp/>a</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>le<sp/>nom<sp/>nom,<sp/>alors<sp/>est_un_synonyme<sp/>renvoie<sp/>1</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>renvoie<sp/>le<sp/>pointeur<sp/>nul<sp/>sinon.</highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/>*<sp/>@param<sp/>(const<sp/>char*<sp/>nom)<sp/>chaine<sp/>de<sp/>caractere<sp/>associee<sp/>a<sp/>un<sp/>synonyme</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>code<sp/>de<sp/>retour<sp/>(0<sp/>ou<sp/><sp/>1)</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221" refid="classSynonyme__info_1a5cca36b7acd77f0a792fabc92f17ee87" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSynonyme__info_1a5cca36b7acd77f0a792fabc92f17ee87" kindref="member">Synonyme_info::est_un_synonyme</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>nom)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSynonyme__info" kindref="compound">Synonyme_info</ref><sp/>*<sp/>synonyme<sp/>=<sp/><ref refid="classSynonyme__info_1a4955fa6c7f53c4289402b2e9c955ed1c" kindref="member">synonyme_info_from_name</ref>(<ref refid="classSynonyme__info_1a3c6094f88db8377e60a5c0866bcb27f8" kindref="member">nom</ref>);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(synonyme<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="227"><highlight class="comment">/*!<sp/>@brief<sp/>Methode<sp/>statique<sp/>qui<sp/>renvoie<sp/>un<sp/>pointeur<sp/>vers<sp/>le<sp/>Synonyme_info<sp/>dont<sp/>le<sp/>nom<sp/>est<sp/>&quot;synonyme_name&quot;.</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/>*<sp/>Si<sp/>synonyme_name<sp/>n&apos;est<sp/>pas<sp/>un<sp/>synonyme,</highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp/>*<sp/><sp/><sp/>renvoie<sp/>un<sp/>pointeur<sp/>nul.</highlight></codeline>
+<codeline lineno="231"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233" refid="classSynonyme__info_1a4955fa6c7f53c4289402b2e9c955ed1c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSynonyme__info" kindref="compound">Synonyme_info</ref><sp/>*<sp/><ref refid="classSynonyme__info_1a4955fa6c7f53c4289402b2e9c955ed1c" kindref="member">Synonyme_info::synonyme_info_from_name</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>synonyme_name)</highlight></codeline>
+<codeline lineno="234"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSynonyme__info" kindref="compound">Synonyme_info</ref><sp/>*<sp/>synonyme_info<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(synonyme_name<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(search_synonyme_info_name(synonyme_name,<sp/>index))</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>synonyme_info<sp/>=<sp/>les_synonymes[index];</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>synonyme_info;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Utilitaires/Synonyme_info.cpp"/>
+  </compounddef>
+</doxygen>

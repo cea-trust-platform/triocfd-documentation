@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Cut__cell__convection__auxiliaire_8cpp" kind="file" language="C++">
+    <compoundname>Cut_cell_convection_auxiliaire.cpp</compoundname>
+    <includes refid="Cut__cell__convection__auxiliaire_8h" local="no">Cut_cell_convection_auxiliaire.h</includes>
+    <includes refid="IJK__Field__vector_8h" local="no">IJK_Field_vector.h</includes>
+    <includes refid="Cut__cell__FT__Disc_8h" local="no">Cut_cell_FT_Disc.h</includes>
+    <includes refid="IJK__Thermal__base_8h" local="no">IJK_Thermal_base.h</includes>
+    <includes refid="Process_8h" local="no">Process.h</includes>
+    <includes refid="Probleme__FTD__IJK__cut__cell_8h" local="no">Probleme_FTD_IJK_cut_cell.h</includes>
+    <includes refid="stat__counters_8h" local="no">stat_counters.h</includes>
+    <includes refid="IJK__Navier__Stokes__tools_8h" local="no">IJK_Navier_Stokes_tools.h</includes>
+    <includes refid="IJK__Navier__Stokes__tools__cut__cell_8h" local="no">IJK_Navier_Stokes_tools_cut_cell.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Cut__cell__convection__auxiliaire_8cpp_1ae49b777774f9cca3365233dbcf27e242" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Cut_cell_convection_auxiliairebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Cut_cell_convection_auxiliairebases</name>
+        <initializer>={   &amp;( <ref refid="classCut__cell__schema__auxiliaire" kindref="compound">Cut_cell_schema_auxiliaire</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/Cut_Cell/Cut_cell_convection_auxiliaire.cpp" line="33" column="90" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/Cut_Cell/Cut_cell_convection_auxiliaire.cpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Cut_cell_convection_auxiliaire.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory<sp/>:<sp/>$IJK_ROOT/src/FT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Cut_cell_convection_auxiliaire.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;IJK_Field_vector.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Cut_cell_FT_Disc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;IJK_Thermal_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Process.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_FTD_IJK_cut_cell.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stat_counters.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;IJK_Navier_Stokes_tools.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;IJK_Navier_Stokes_tools_cut_cell.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classCut__cell__convection__auxiliaire_1a6ffd55b0cc0f0017c56f99822040be88" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<ref refid="classCut__cell__convection__auxiliaire" kindref="compound">Cut_cell_convection_auxiliaire</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cut_cell_convection_auxiliaire&quot;</highlight><highlight class="normal">,<sp/><ref refid="classCut__cell__schema__auxiliaire" kindref="compound">Cut_cell_schema_auxiliaire</ref>)<sp/>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classCut__cell__convection__auxiliaire_1adc77171cd7e130514b72e9cc751da11f" refkind="member"><highlight class="normal"><ref refid="classCut__cell__convection__auxiliaire_1adc77171cd7e130514b72e9cc751da11f" kindref="member">Cut_cell_convection_auxiliaire::Cut_cell_convection_auxiliaire</ref>()</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__schema__auxiliaire_1a85e462934df8f9655d7cb51ec9e63560" kindref="member">methode_valeur_remplissage_</ref><sp/>=<sp/>METHODE_TEMPERATURE_REMPLISSAGE::NON_INITIALISE;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__schema__auxiliaire_1a1abedf045119787ac3bd5f7f8bf0af46" kindref="member">correction_petites_cellules_</ref><sp/>=<sp/>CORRECTION_PETITES_CELLULES::CORRECTION_SYMETRIQUE;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__schema__auxiliaire_1a1f20330a3911d1e9a76dd5b51991bff7" kindref="member">no_static_update_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classCut__cell__convection__auxiliaire_1a40d39a1828c47ce2e2b9e5afd2537ad7" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classCut__cell__convection__auxiliaire_1a40d39a1828c47ce2e2b9e5afd2537ad7" kindref="member">Cut_cell_convection_auxiliaire::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="44"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="classObjet__U_1af73113dc3d3e0dc9709e33ae566f5130" kindref="member">Objet_U::printOn</ref>(os);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classCut__cell__convection__auxiliaire_1aec159b892093217cb8b4efe9a57c1276" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classCut__cell__convection__auxiliaire_1aec159b892093217cb8b4efe9a57c1276" kindref="member">Cut_cell_convection_auxiliaire::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__convection__auxiliaire_1acb2eeecb3e2ec904fa3ec7842a5fd94e" kindref="member">set_param</ref>(param);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aea52f16d3b74c59c48cb5708ff48f14a" kindref="member">lire_avec_accolades</ref>(is);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classCut__cell__convection__auxiliaire_1acb2eeecb3e2ec904fa3ec7842a5fd94e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__convection__auxiliaire_1acb2eeecb3e2ec904fa3ec7842a5fd94e" kindref="member">Cut_cell_convection_auxiliaire::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><ref refid="classCut__cell__schema__auxiliaire_1a2b75599e05a782e27df8059934160fbf" kindref="member">Cut_cell_schema_auxiliaire::set_param</ref>(param);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classCut__cell__convection__auxiliaire_1a18051d1a15a722abd5244d236ad4b600" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__convection__auxiliaire_1a18051d1a15a722abd5244d236ad4b600" kindref="member">Cut_cell_convection_auxiliaire::dying_cells_flux</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_face,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>phase,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classCut__field__vector" kindref="compound">Cut_field_vector3_double</ref>&amp;<sp/>cut_field_total_velocity,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classCut__field__template" kindref="compound">Cut_field_double</ref>&amp;<sp/>cut_field)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__FT__Disc" kindref="compound">Cut_cell_FT_Disc</ref>&amp;<sp/>cut_cell_disc<sp/>=<sp/>cut_field.<ref refid="classCut__field__template_1a3a447e630067f4ba02da84f7adee921f" kindref="member">get_cut_cell_disc</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="classFixedVector" kindref="compound">Int3</ref><sp/>ijk<sp/>=<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1a6c1a46fbca947b9c30d3b8fda15b2d5b" kindref="member">get_ijk</ref>(n);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>ijk[0];</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>ijk[1];</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>ijk[2];</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dir<sp/>=<sp/>num_face%3;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>decalage<sp/>=<sp/>num_face/3;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sign<sp/>=<sp/>decalage*2<sp/>-1;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>di<sp/>=<sp/>decalage*(dir<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dj<sp/>=<sp/>decalage*(dir<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dk<sp/>=<sp/>decalage*(dir<sp/>==<sp/>2);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>di_decale<sp/>=<sp/>sign*(dir<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dj_decale<sp/>=<sp/>sign*(dir<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dk_decale<sp/>=<sp/>sign*(dir<sp/>==<sp/>2);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>next_indicatrice_decale<sp/>=<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1a26caed165da05139a9334fedff9c24ac" kindref="member">get_interfaces</ref>().<ref refid="classIJK__Interfaces_1a956219eb05f05351302c548155bc58be" kindref="member">In</ref>(i+di_decale,j+dj_decale,k+dk_decale);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>valeur_centre<sp/>=<sp/>(phase<sp/>==<sp/>0)<sp/>?<sp/>cut_field.<ref refid="classCut__field__template_1aca49f0a49574eb1d2c33142613457425" kindref="member">diph_v_</ref>(n)<sp/>:<sp/>cut_field.<ref refid="classCut__field__template_1a61f4a81149991328b12092b2ecb743a3" kindref="member">diph_l_</ref>(n);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>valeur_decale<sp/>=<sp/>-1e37;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n_decale<sp/>=<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1ae5b3506a417a7ae8b6983b2a5aefa552" kindref="member">get_n</ref>(i+di_decale,<sp/>j+dj_decale,<sp/>k+dk_decale);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n_decale<sp/>&gt;=<sp/>0)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>valeur_decale<sp/>=<sp/>(phase<sp/>==<sp/>0)<sp/>?<sp/>cut_field.<ref refid="classCut__field__template_1aca49f0a49574eb1d2c33142613457425" kindref="member">diph_v_</ref>(n_decale)<sp/>:<sp/>cut_field.<ref refid="classCut__field__template_1a61f4a81149991328b12092b2ecb743a3" kindref="member">diph_l_</ref>(n_decale);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>valeur_decale<sp/>=<sp/>(phase<sp/>==<sp/>(<ref refid="classIJK__Interfaces_1af8ca622dcb054668ee8b3e9101a3844b" kindref="member">IJK_Interfaces::convert_indicatrice_to_phase</ref>(next_indicatrice_decale)))*cut_field.<ref refid="classCut__field__template_1a2c955764571f59579025d7787ab50ca0" kindref="member">pure_</ref>(i+di_decale,j+dj_decale,k+dk_decale);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>total_velocity<sp/>=<sp/>cut_field_total_velocity[dir].from_ijk_and_phase(i+di,j+dj,k+dk,<sp/>phase);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n_face<sp/>=<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1ac422394d7d0e166fd9af3217a5ec1f31" kindref="member">get_n_face</ref>(num_face,<sp/>n,<sp/>i,<sp/>j,<sp/>k);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n_face<sp/>&gt;=<sp/>0)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>surface_efficace<sp/>=<sp/>(phase<sp/>==<sp/>0)<sp/>?<sp/>1<sp/>-<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1a26caed165da05139a9334fedff9c24ac" kindref="member">get_interfaces</ref>().<ref refid="classIJK__Interfaces_1a0dcab04b1d8098b7f8a1d62eb7e05599" kindref="member">get_indicatrice_surfacique_efficace_face</ref>()(n_face,<sp/>dir)<sp/>:<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1a26caed165da05139a9334fedff9c24ac" kindref="member">get_interfaces</ref>().<ref refid="classIJK__Interfaces_1a0dcab04b1d8098b7f8a1d62eb7e05599" kindref="member">get_indicatrice_surfacique_efficace_face</ref>()(n_face,<sp/>dir);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(surface_efficace<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>valeur<sp/>=<sp/>(sign*total_velocity<sp/>&lt;<sp/>0)<sp/>?<sp/>valeur_decale<sp/>:<sp/>valeur_centre;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-sign*surface_efficace*valeur*total_velocity;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>surface_efficace<sp/>=<sp/>(phase<sp/>==<sp/>0)<sp/>?<sp/>1<sp/>-<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1a26caed165da05139a9334fedff9c24ac" kindref="member">get_interfaces</ref>().<ref refid="classIJK__Interfaces_1a45ce66282e8d426a008b5c742997c8dd" kindref="member">I</ref>(i+di,j+dj,k+dk)<sp/>:<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1a26caed165da05139a9334fedff9c24ac" kindref="member">get_interfaces</ref>().<ref refid="classIJK__Interfaces_1a45ce66282e8d426a008b5c742997c8dd" kindref="member">I</ref>(i+di,j+dj,k+dk);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>assert((surface_efficace<sp/>==<sp/>0)<sp/>||<sp/>(surface_efficace<sp/>==<sp/>1));</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(surface_efficace<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>valeur<sp/>=<sp/>(sign*total_velocity<sp/>&lt;<sp/>0)<sp/>?<sp/>valeur_decale<sp/>:<sp/>valeur_centre;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-sign*surface_efficace*valeur*total_velocity;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="classCut__cell__convection__auxiliaire_1a8a45c2fcf01cfa76b314d3edc13ea073" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__convection__auxiliaire_1a8a45c2fcf01cfa76b314d3edc13ea073" kindref="member">Cut_cell_convection_auxiliaire::small_nascent_cells_flux</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_face,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>phase,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classCut__field__vector" kindref="compound">Cut_field_vector3_double</ref>&amp;<sp/>cut_field_total_velocity,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classCut__field__template" kindref="compound">Cut_field_double</ref>&amp;<sp/>cut_field)</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classCut__cell__FT__Disc" kindref="compound">Cut_cell_FT_Disc</ref>&amp;<sp/>cut_cell_disc<sp/>=<sp/>cut_field.<ref refid="classCut__field__template_1a3a447e630067f4ba02da84f7adee921f" kindref="member">get_cut_cell_disc</ref>();</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><ref refid="classFixedVector" kindref="compound">Int3</ref><sp/>ijk<sp/>=<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1a6c1a46fbca947b9c30d3b8fda15b2d5b" kindref="member">get_ijk</ref>(n);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>ijk[0];</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>ijk[1];</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>ijk[2];</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dir<sp/>=<sp/>num_face%3;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>decalage<sp/>=<sp/>num_face/3;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sign<sp/>=<sp/>decalage*2<sp/>-1;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>di<sp/>=<sp/>decalage*(dir<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dj<sp/>=<sp/>decalage*(dir<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dk<sp/>=<sp/>decalage*(dir<sp/>==<sp/>2);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>di_decale<sp/>=<sp/>sign*(dir<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dj_decale<sp/>=<sp/>sign*(dir<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dk_decale<sp/>=<sp/>sign*(dir<sp/>==<sp/>2);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>next_indicatrice_decale<sp/>=<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1a26caed165da05139a9334fedff9c24ac" kindref="member">get_interfaces</ref>().<ref refid="classIJK__Interfaces_1a956219eb05f05351302c548155bc58be" kindref="member">In</ref>(i+di_decale,j+dj_decale,k+dk_decale);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>valeur_decale<sp/>=<sp/>-1e37;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n_decale<sp/>=<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1ae5b3506a417a7ae8b6983b2a5aefa552" kindref="member">get_n</ref>(i+di_decale,<sp/>j+dj_decale,<sp/>k+dk_decale);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n_decale<sp/>&gt;=<sp/>0)</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>valeur_decale<sp/>=<sp/>(phase<sp/>==<sp/>0)<sp/>?<sp/>cut_field.<ref refid="classCut__field__template_1aca49f0a49574eb1d2c33142613457425" kindref="member">diph_v_</ref>(n_decale)<sp/>:<sp/>cut_field.<ref refid="classCut__field__template_1a61f4a81149991328b12092b2ecb743a3" kindref="member">diph_l_</ref>(n_decale);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>valeur_decale<sp/>=<sp/>(phase<sp/>==<sp/>(<ref refid="classIJK__Interfaces_1af8ca622dcb054668ee8b3e9101a3844b" kindref="member">IJK_Interfaces::convert_indicatrice_to_phase</ref>(next_indicatrice_decale)))*cut_field.<ref refid="classCut__field__template_1a2c955764571f59579025d7787ab50ca0" kindref="member">pure_</ref>(i+di_decale,j+dj_decale,k+dk_decale);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>total_velocity<sp/>=<sp/>cut_field_total_velocity[dir].from_ijk_and_phase(i+di,j+dj,k+dk,<sp/>phase);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n_face<sp/>=<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1ac422394d7d0e166fd9af3217a5ec1f31" kindref="member">get_n_face</ref>(num_face,<sp/>n,<sp/>i,<sp/>j,<sp/>k);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n_face<sp/>&gt;=<sp/>0)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>surface_efficace<sp/>=<sp/>(phase<sp/>==<sp/>0)<sp/>?<sp/>1<sp/>-<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1a26caed165da05139a9334fedff9c24ac" kindref="member">get_interfaces</ref>().<ref refid="classIJK__Interfaces_1a0dcab04b1d8098b7f8a1d62eb7e05599" kindref="member">get_indicatrice_surfacique_efficace_face</ref>()(n_face,<sp/>dir)<sp/>:<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1a26caed165da05139a9334fedff9c24ac" kindref="member">get_interfaces</ref>().<ref refid="classIJK__Interfaces_1a0dcab04b1d8098b7f8a1d62eb7e05599" kindref="member">get_indicatrice_surfacique_efficace_face</ref>()(n_face,<sp/>dir);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(surface_efficace<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>valeur<sp/>=<sp/>valeur_decale;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-sign*surface_efficace*valeur*total_velocity;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>surface_efficace<sp/>=<sp/>(phase<sp/>==<sp/>0)<sp/>?<sp/>1<sp/>-<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1a26caed165da05139a9334fedff9c24ac" kindref="member">get_interfaces</ref>().<ref refid="classIJK__Interfaces_1a956219eb05f05351302c548155bc58be" kindref="member">In</ref>(i+di,j+dj,k+dk)<sp/>:<sp/>cut_cell_disc.<ref refid="classCut__cell__FT__Disc_1a26caed165da05139a9334fedff9c24ac" kindref="member">get_interfaces</ref>().<ref refid="classIJK__Interfaces_1a956219eb05f05351302c548155bc58be" kindref="member">In</ref>(i+di,j+dj,k+dk);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>assert((surface_efficace<sp/>==<sp/>0)<sp/>||<sp/>(surface_efficace<sp/>==<sp/>1));</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(surface_efficace<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>valeur<sp/>=<sp/>valeur_decale;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-sign*surface_efficace*valeur*total_velocity;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Front_tracking_discontinu/IJK/Cut_Cell/Cut_cell_convection_auxiliaire.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Champ__front__ALE_8cpp" kind="file" language="C++">
+    <compoundname>Champ_front_ALE.cpp</compoundname>
+    <includes refid="Champ__front__ALE_8h" local="no">Champ_front_ALE.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Frontiere__dis__base_8h" local="no">Frontiere_dis_base.h</includes>
+    <includes refid="MD__Vector__tools_8h" local="no">MD_Vector_tools.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Champ__front__ALE_8cpp_1a35e65f9debaf731f697eef33d163014b" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Champ_front_ALEbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Champ_front_ALEbases</name>
+        <initializer>={   &amp;( <ref refid="classCh__front__var__instationnaire__dep" kindref="compound">Ch_front_var_instationnaire_dep</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Fluid_Structure_Interaction/ALE/Champ_front_ALE.cpp" line="28" column="101" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Fluid_Structure_Interaction/ALE/Champ_front_ALE.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Champ_front_ALE.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TRUST_ROOT/../Composants/TrioCFD/ALE/src</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version:<sp/><sp/><sp/><sp/><sp/>/main/17</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_front_ALE.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Frontiere_dis_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;MD_Vector_tools.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classChamp__front__ALE_1ab904afb5a9aab7cf3ace2c525ec4f2f8" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classChamp__front__ALE" kindref="compound">Champ_front_ALE</ref>,</highlight><highlight class="stringliteral">&quot;Champ_front_ALE&quot;</highlight><highlight class="normal">,<ref refid="classCh__front__var__instationnaire__dep" kindref="compound">Ch_front_var_instationnaire_dep</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>Champ_front_ale<sp/>front_field_base<sp/>Champ_front_ale<sp/>0<sp/>Class<sp/>to<sp/>define<sp/>a<sp/>boundary<sp/>condition<sp/>on<sp/>a<sp/>moving<sp/>boundary<sp/>of<sp/>a<sp/>mesh<sp/>(only<sp/>for<sp/>the<sp/>Arbitrary<sp/>Lagrangian-Eulerian<sp/>framework<sp/>).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>val<sp/>listchaine<sp/>val<sp/>0<sp/>NL2<sp/>Example:<sp/><sp/>2<sp/>-y*0.01<sp/>x*0.01</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">/*Champ_front_ALE::Champ_front_ALE()</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/><sp/>const<sp/>Frontiere&amp;<sp/>front=la_frontiere_dis-&gt;frontiere();</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/><sp/>const<sp/>Domaine&amp;<sp/>domaine=front.domaine();</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/>const<sp/>Domaine&amp;<sp/>domaine=domaine.domaine();</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/>vit_som_bord_ALE.resize(domaine.nb_som(),nb_comp());</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/><sp/>const<sp/>MD_Vector&amp;<sp/>md<sp/>=<sp/>domaine.domaine().md_vector_sommets();</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/>MD_Vector_tools::creer_tableau_distribue(md,<sp/>vit_som_bord_ALE);</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">}*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="42"><highlight class="comment">/*!<sp/>@brief<sp/>Impression<sp/>sur<sp/>un<sp/>flot<sp/>de<sp/>sortie<sp/>au<sp/>format:<sp/>taille</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>valeur(0)<sp/>...<sp/>valeur(i)<sp/><sp/>...<sp/>valeur(taille-1)</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>os)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Sortie&amp;)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>modifie</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classChamp__front__ALE_1aa0349e661905f82051ba22a014a0858e" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classChamp__front__ALE_1aa0349e661905f82051ba22a014a0858e" kindref="member">Champ_front_ALE::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="50"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>const<sp/>DoubleTab&amp;<sp/>tab=valeurs();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>tab.size()<sp/>&lt;&lt;<sp/>&quot;<sp/>&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>for(int<sp/>i=0;<sp/>i&lt;tab.size();<sp/>i++)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>tab(0,i);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment">/*!<sp/>@brief<sp/>Lecture<sp/>a<sp/>partir<sp/>d&apos;un<sp/>flot<sp/>d&apos;entree<sp/>au<sp/>format:<sp/>nombre_de_composantes</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>fonction<sp/>dependant<sp/>de<sp/>xyzt<sp/>pour<sp/>chaque<sp/>composante</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>un<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;)<sp/>le<sp/>flot<sp/>d&apos;entree<sp/>modifie</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>@throws<sp/>accolade<sp/>ouvrante<sp/>attendue</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>@throws<sp/>mot<sp/>clef<sp/>inconnu<sp/>a<sp/>cet<sp/>endroit</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>@throws<sp/>accolade<sp/>fermante<sp/>attendue</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classChamp__front__ALE_1abd8c7f04eabceeaebb6d309a4820e528" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classChamp__front__ALE_1abd8c7f04eabceeaebb6d309a4820e528" kindref="member">Champ_front_ALE::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dim;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>dim;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><ref refid="classField__base_1a0d3bb177287a79b9d7da6f3a46deff53" kindref="member">fixer_nb_comp</ref>(dim);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>.<ref refid="classTRUST__Vector_1a29489aa7553eb6924ce12ceee6f087a6" kindref="member">dimensionner</ref>(dim);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>&quot;dim<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>dim<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i&lt;dim;<sp/>i++)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>tmp;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cout<sp/>&lt;&lt;<sp/>&quot;i<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>tmp;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cout<sp/>&lt;&lt;<sp/>&quot;fonc<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>tmp<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Lecture<sp/>et<sp/>interpretation<sp/>de<sp/>la<sp/>fonction<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tmp<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>[i].setNbVar(4);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>[i].setString(tmp);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>[i].addVar(</highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>[i].addVar(</highlight><highlight class="stringliteral">&quot;y&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>[i].addVar(</highlight><highlight class="stringliteral">&quot;z&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>[i].addVar(</highlight><highlight class="stringliteral">&quot;t&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>[i].parseString();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Interpretation<sp/>de<sp/>la<sp/>fonction<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tmp<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Ok&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cout<sp/>&lt;&lt;<sp/>&quot;end<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>tmp<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="102"><highlight class="comment">/*!<sp/>@brief<sp/>Pas<sp/>code<sp/>!!</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Champ_front_base&amp;<sp/>ch)</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Champ_front_base&amp;)</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="classChamp__front__ALE_1aadcc5dd0f138f51461b4529b603c3cfe" refkind="member"><highlight class="normal"><ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>&amp;<sp/><ref refid="classChamp__front__ALE_1aadcc5dd0f138f51461b4529b603c3cfe" kindref="member">Champ_front_ALE::affecter_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__base" kindref="compound">Champ_front_base</ref>&amp;<sp/>ch)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="classChamp__front__ALE_1a80a9937647d19ddc1a94a6b157e56b34" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__ALE_1a80a9937647d19ddc1a94a6b157e56b34" kindref="member">Champ_front_ALE::initialiser</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/>inco)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classCh__front__var__instationnaire__dep_1a2f84ab4435e03baaa42ecd00b58f8a32" kindref="member">Ch_front_var_instationnaire_dep::initialiser</ref>(temps,inco))</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="classChamp__front__ALE_1a400d8d6406a6adb42aff80ad0e86635f" kindref="member">mettre_a_jour</ref>(temps);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="121"><highlight class="comment">/*!<sp/>@brief<sp/>Mise<sp/>a<sp/>jour<sp/>du<sp/>champ<sp/>front<sp/>et<sp/>remplie<sp/>un<sp/>tableau<sp/>de<sp/>dimension<sp/>egale<sp/>au<sp/>nombre<sp/>total<sp/>de<sp/>sommets<sp/>du<sp/>domaine.</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*<sp/>Ce<sp/>tableau<sp/>a<sp/>des</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>valeurs<sp/>nulles<sp/>aux<sp/>sommets<sp/>qui<sp/>n&apos;appartiennent<sp/>pas<sp/>au<sp/>bord<sp/>ALE</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>traite.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>tps)<sp/>le<sp/>temps<sp/>de<sp/>mise<sp/>a<sp/>jour</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="classChamp__front__ALE_1a400d8d6406a6adb42aff80ad0e86635f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__ALE_1a400d8d6406a6adb42aff80ad0e86635f" kindref="member">Champ_front_ALE::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr<sp/>&lt;&lt;<sp/>&quot;Champ_front_ALE<sp/>::mettre_a_jour&quot;<sp/>&lt;&lt;<sp/>finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFrontiere__32__64" kindref="compound">Frontiere</ref>&amp;<sp/>front=<ref refid="classChamp__front__base_1a1ea44dff06c4eb5832ca409c46653669" kindref="member">la_frontiere_dis</ref>-&gt;frontiere();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_faces=front.<ref refid="classFrontiere__32__64_1aa7884654b521e9ff54f90af0f872550b" kindref="member">nb_faces</ref>();</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFaces__32__64" kindref="compound">Faces</ref>&amp;<sp/>faces=front.<ref refid="classFrontiere__32__64_1aeb2dadc639ee53d957479f8edb7341e1" kindref="member">faces</ref>();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbsf=faces.<ref refid="classFaces__32__64_1afac29457b959d3c8b5a4bd8dfcadb567" kindref="member">nb_som_faces</ref>();</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j,k;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab=<ref refid="classChamp__front__var__instationnaire_1ac37330145e6ef2afab414852c2339c9d" kindref="member">valeurs_au_temps</ref>(temps);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>tab=0.;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>appel<sp/>systematique<sp/>a<sp/>remplir_vit_som_bord_ALE()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><ref refid="classChamp__front__ALE_1a6963e96507519c34d22f923885d083ca" kindref="member">remplir_vit_som_bord_ALE</ref>(temps);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/>i=0;<sp/>i&lt;nb_faces;<sp/>i++)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/>j=0;<sp/>j&lt;<ref refid="classField__base_1a7f1a8a933594c9f73ac0b14260961fad" kindref="member">nb_comp</ref>();<sp/>j++)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/>k=0;<sp/>k&lt;nbsf;<sp/>k++)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tab(i,j)+=<ref refid="classChamp__front__ALE_1af0c3c26cbe26d5ca1378acd3a223aa42" kindref="member">vit_som_bord_ALE</ref>(faces.<ref refid="classFaces__32__64_1ae2c3938955523d3bf2b875b0e8dc892b" kindref="member">sommet</ref>(i,k),j);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/>tab/=nbsf;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/>tab.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="classChamp__front__ALE_1a6963e96507519c34d22f923885d083ca" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classChamp__front__ALE_1a6963e96507519c34d22f923885d083ca" kindref="member">Champ_front_ALE::remplir_vit_som_bord_ALE</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tps)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Cerr&lt;&lt;&quot;Champ_front_ALE::remplir_vit_som_bord_ALE&quot;&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFrontiere__32__64" kindref="compound">Frontiere</ref>&amp;<sp/>front=<ref refid="classChamp__front__base_1a1ea44dff06c4eb5832ca409c46653669" kindref="member">la_frontiere_dis</ref>-&gt;frontiere();</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_faces=front.<ref refid="classFrontiere__32__64_1aa7884654b521e9ff54f90af0f872550b" kindref="member">nb_faces</ref>();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>domaine=front.<ref refid="classFrontiere__32__64_1a5149012125e31aec17202b47a0e4b437" kindref="member">domaine</ref>();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFaces__32__64" kindref="compound">Faces</ref>&amp;<sp/>faces=front.<ref refid="classFrontiere__32__64_1aeb2dadc639ee53d957479f8edb7341e1" kindref="member">faces</ref>();</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x,y,z;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbsf=faces.<ref refid="classFaces__32__64_1afac29457b959d3c8b5a4bd8dfcadb567" kindref="member">nb_som_faces</ref>();</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j,k;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_som_tot=domaine.nb_som_tot();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="classChamp__front__ALE_1af0c3c26cbe26d5ca1378acd3a223aa42" kindref="member">vit_som_bord_ALE</ref>.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(nb_som_tot,<ref refid="classField__base_1a7f1a8a933594c9f73ac0b14260961fad" kindref="member">nb_comp</ref>());</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*if<sp/>(vit_som_bord_ALE.dimension(0)<sp/>!=<sp/>domaine.nb_som())</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>vit_som_bord_ALE.resize(domaine.nb_som(),nb_comp());</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MD_Vector&amp;<sp/>md<sp/>=<sp/>domaine.domaine().md_vector_sommets();</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>MD_Vector_tools::creer_tableau_distribue(md,<sp/>vit_som_bord_ALE);</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/>}*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><ref refid="classChamp__front__ALE_1af0c3c26cbe26d5ca1378acd3a223aa42" kindref="member">vit_som_bord_ALE</ref>=0.;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/>i=0;<sp/>i&lt;nb_faces;<sp/>i++)</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x=y=z=0;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/>k=0;<sp/>k&lt;nbsf;<sp/>k++)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x=domaine.coord(faces.<ref refid="classFaces__32__64_1ae2c3938955523d3bf2b875b0e8dc892b" kindref="member">sommet</ref>(i,k),0);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>&gt;1)</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y=domaine.coord(faces.<ref refid="classFaces__32__64_1ae2c3938955523d3bf2b875b0e8dc892b" kindref="member">sommet</ref>(i,k),1);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>&gt;2)</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z=domaine.coord(faces.<ref refid="classFaces__32__64_1ae2c3938955523d3bf2b875b0e8dc892b" kindref="member">sommet</ref>(i,k),2);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/>j=0;<sp/>j&lt;<ref refid="classField__base_1a7f1a8a933594c9f73ac0b14260961fad" kindref="member">nb_comp</ref>();<sp/>j++)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>[j].setVar(</highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,x);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>[j].setVar(</highlight><highlight class="stringliteral">&quot;y&quot;</highlight><highlight class="normal">,y);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>[j].setVar(</highlight><highlight class="stringliteral">&quot;z&quot;</highlight><highlight class="normal">,z);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>[j].setVar(</highlight><highlight class="stringliteral">&quot;t&quot;</highlight><highlight class="normal">,tps);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__front__ALE_1af0c3c26cbe26d5ca1378acd3a223aa42" kindref="member">vit_som_bord_ALE</ref>(faces.<ref refid="classFaces__32__64_1ae2c3938955523d3bf2b875b0e8dc892b" kindref="member">sommet</ref>(i,k),j)=<ref refid="classChamp__front__ALE_1afa3feb037a2e330a5ed8c56cefc818ff" kindref="member">fxyzt</ref>[j].eval();</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//cout<sp/>&lt;&lt;<sp/>&quot;<sp/>x<sp/>y<sp/><sp/>&quot;<sp/>&lt;&lt;<sp/>x<sp/>&lt;&lt;<sp/>&quot;<sp/>&quot;<sp/>&lt;&lt;<sp/>y<sp/>&lt;&lt;<sp/>&quot;<sp/>&quot;<sp/>&lt;&lt;<sp/>z<sp/>&lt;&lt;<sp/>&quot;<sp/>&quot;<sp/>&lt;&lt;<sp/>vit_som_bord_ALE(faces.sommet(i,k),j)<sp/>&lt;&lt;<sp/>endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//vit_som_bord_ALE.echange_espace_virtuel();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Fluid_Structure_Interaction/ALE/Champ_front_ALE.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,410 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Conduction_8cpp" kind="file" language="C++">
+    <compoundname>Conduction.cpp</compoundname>
+    <includes refid="Frontiere__dis__base_8h" local="no">Frontiere_dis_base.h</includes>
+    <includes refid="Discret__Thermique_8h" local="no">Discret_Thermique.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Conduction_8h" local="no">Conduction.h</includes>
+    <includes refid="Solide_8h" local="no">Solide.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Conduction_8cpp_1ab728aca7acae17cc7e1783790b6e0a3f" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Conductionbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Conductionbases</name>
+        <initializer>={   &amp;( <ref refid="classEquation__base" kindref="compound">Equation_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThSol/Conduction.cpp" line="23" column="81" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThSol/Conduction.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Frontiere_dis_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discret_Thermique.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Conduction.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Solide.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classConduction_1ab956b87519f94c9ac09b96a074cabd75" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classConduction" kindref="compound">Conduction</ref>,</highlight><highlight class="stringliteral">&quot;Conduction&quot;</highlight><highlight class="normal">,<ref refid="classEquation__base" kindref="compound">Equation_base</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>Conduction<sp/>eqn_base<sp/>Conduction<sp/>-1<sp/>Heat<sp/>equation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classConduction_1a6cd7bc777e39b45c00a65eb5ce218bb6" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classConduction_1a6cd7bc777e39b45c00a65eb5ce218bb6" kindref="member">Conduction::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="27"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classConduction_1a4127af7745e69cb475bb15502aaa0c2b" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classConduction_1a4127af7745e69cb475bb15502aaa0c2b" kindref="member">Conduction::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1ab63880d4511734d1b40c978e10870017" kindref="member">Equation_base::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>terme_diffusif.<ref refid="classOperateur_1adf6c5f02d4e0bd15282a628c4814d61f" kindref="member">set_fichier</ref>(</highlight><highlight class="stringliteral">&quot;Diffusion_chaleur&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>terme_diffusif.<ref refid="classOperateur_1abe53b54eda0c886809a704bf79b60aa9" kindref="member">set_description</ref>((<ref refid="classNom" kindref="compound">Nom</ref>)</highlight><highlight class="stringliteral">&quot;Conduction<sp/>heat<sp/>transfer<sp/>rate=Integral(lambda*grad(T)*ndS)<sp/>[W]<sp/>if<sp/>SI<sp/>units<sp/>used&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classConduction_1a29ffb7312d7196e46227616d00bb1e28" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConduction_1a29ffb7312d7196e46227616d00bb1e28" kindref="member">Conduction::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1a56e1c6f710cf92ffb54656bd4b5be32d" kindref="member">Equation_base::set_param</ref>(param);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;diffusion&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a6363f31c467c06512aee2f004abac69d" kindref="member">ajouter_condition</ref>(</highlight><highlight class="stringliteral">&quot;is_read_diffusion&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;The<sp/>diffusion<sp/>operator<sp/>must<sp/>be<sp/>read,<sp/>select<sp/>negligeable<sp/>type<sp/>if<sp/>you<sp/>want<sp/>to<sp/>neglect<sp/>it.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;Traitement_particulier&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Modification<sp/>par<sp/>rapport<sp/>a<sp/>Conduction::lire_motcle_non_standard()!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classConduction_1a571452b84155cd4779e29294bf67c0b3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConduction_1a571452b84155cd4779e29294bf67c0b3" kindref="member">Conduction::lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Motcle<sp/>motlu;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot==</highlight><highlight class="stringliteral">&quot;diffusion&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Reading<sp/>and<sp/>typing<sp/>of<sp/>the<sp/>diffusion<sp/>operator<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>terme_diffusif.<ref refid="classOperateur__Diff_1a9e560c15136324e71568e3087f3652b5" kindref="member">associer_diffusivite</ref>(<ref refid="classConduction_1a5fe984d5d0082092191c1534e7e14a6d" kindref="member">diffusivite_pour_transport</ref>());</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>terme_diffusif;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>le<sp/>champ<sp/>pour<sp/>le<sp/>dt_stab<sp/>est<sp/>le<sp/>meme<sp/>que<sp/>celui<sp/>de<sp/>l&apos;operateur.<sp/>On<sp/>prend<sp/>toujours<sp/>la<sp/>diffusivite()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>comme<sp/>dans<sp/>le<sp/>cas<sp/>de<sp/>Conduction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>terme_diffusif.<ref refid="classOperateur__Diff_1a75a11b9bc776e5de33c49f48e947f8be" kindref="member">associer_diffusivite_pour_pas_de_temps</ref>(<ref refid="classConduction_1ae187190c20405a548e0882d8cf0870af" kindref="member">milieu</ref>().diffusivite());</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEquation__base_1a4a336d2224772aeed3e3b3d1c448f6df" kindref="member">solveur_masse</ref>-&gt;<ref refid="classSolveur__Masse__base_1ae4ff14e481fd81ada32d8e93304f375f" kindref="member">set_name_of_coefficient_temporel</ref>(</highlight><highlight class="stringliteral">&quot;rho_cp_comme_T&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot==</highlight><highlight class="stringliteral">&quot;Traitement_particulier&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Reading<sp/>and<sp/>typing<sp/>of<sp/>the<sp/>Traitement_particulier<sp/>object<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type=</highlight><highlight class="stringliteral">&quot;Traitement_particulier_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motbidon;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>motbidon;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motbidon<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>le_cas;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>le_cas;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(le_cas<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>le_cas<sp/>=</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type+=<sp/>le_cas;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type+=<sp/></highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>discr=<ref refid="classEquation__base_1a440fc95363315082eddbef26dc76024e" kindref="member">discretisation</ref>().<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(discr<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;VEFPreP1B&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>discr<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;VEF&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type+=discr;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>type<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>.<ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(type);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>-&gt;<ref refid="classTraitement__particulier__Solide__base_1af09fd730e8738db900b1c36ae9229b17" kindref="member">associer_eqn</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>-&gt;<ref refid="classTraitement__particulier__Solide__base_1aabec25dd91a54e7b7c9600e69c787d1b" kindref="member">lire</ref>(is);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>-&gt;<ref refid="classTraitement__particulier__Solide__base_1a4c2d9afeab8e3ad2823bb686dce0ded8" kindref="member">preparer_calcul_particulier</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>while<sp/>reading<sp/>Traitement_particulier&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;A<sp/>{<sp/>is<sp/>expected.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1aaaada44548b29f2bb2b695445b11ba22" kindref="member">Equation_base::lire_motcle_non_standard</ref>(mot,is);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//<sp/>retourne<sp/>la<sp/>*conductivite*<sp/>et<sp/>non<sp/>la<sp/>diffusivite<sp/>comme<sp/>dans<sp/>Conduction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classConduction_1a5fe984d5d0082092191c1534e7e14a6d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Don__base" kindref="compound">Champ_Don_base</ref>&amp;<sp/><ref refid="classConduction_1a5fe984d5d0082092191c1534e7e14a6d" kindref="member">Conduction::diffusivite_pour_transport</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="106"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConduction_1ae187190c20405a548e0882d8cf0870af" kindref="member">milieu</ref>().<ref refid="classMilieu__base_1a9e026ba2b472be7943d787591c1c72ee" kindref="member">conductivite</ref>();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classConduction_1aa9a958c366690365d76ae21b6af778ca" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classConduction_1aa9a958c366690365d76ae21b6af778ca" kindref="member">Conduction::diffusivite_pour_pas_de_temps</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="111"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>terme_diffusif.<ref refid="classOperateur__Diff_1a684570cd736780e40fecef7696a227b6" kindref="member">diffusivite</ref>();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="115"><highlight class="comment">/*!<sp/>@brief<sp/>Associe<sp/>un<sp/>milieu<sp/>physique<sp/>a<sp/>l&apos;equation,<sp/>le<sp/>milieu<sp/>est<sp/>en<sp/>fait<sp/>caste<sp/>en<sp/>Solide.</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Milieu_base&amp;<sp/>un_milieu)</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classConduction_1a99ca3266a3c4ed23d2f015ada347d929" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConduction_1a99ca3266a3c4ed23d2f015ada347d929" kindref="member">Conduction::associer_milieu_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/>le_milieu)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><ref refid="classConduction_1a454f7012a5522de1621d1133b53bfe32" kindref="member">associer_solide</ref>(ref_cast(<ref refid="classSolide" kindref="compound">Solide</ref>,le_milieu));</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="124"><highlight class="comment">/*!<sp/>@brief<sp/>Associe<sp/>le<sp/>milieu<sp/>solide<sp/>a<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Solide&amp;<sp/>un_solide)<sp/>le<sp/>milieu<sp/>solide<sp/>a<sp/>associer<sp/>a<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="classConduction_1a454f7012a5522de1621d1133b53bfe32" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConduction_1a454f7012a5522de1621d1133b53bfe32" kindref="member">Conduction::associer_solide</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSolide" kindref="compound">Solide</ref>&amp;<sp/>un_solide)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>le_solide<sp/>=<sp/>un_solide;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="133"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nombre<sp/>d&apos;operateurs<sp/>de<sp/>l&apos;equation<sp/>pour<sp/>l&apos;equation<sp/>de<sp/>conduction<sp/>standart<sp/>renvoie<sp/>toujours<sp/>1.</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>nombre<sp/>d&apos;operateurs<sp/>de<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="classConduction_1a0fd252ce126843929bd9cb3202110c6f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConduction_1a0fd252ce126843929bd9cb3202110c6f" kindref="member">Conduction::nombre_d_operateurs</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="138"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="142"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;operateur<sp/>d&apos;index<sp/>specifie<sp/>de<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/>*<sp/>Renvoie<sp/>terme_diffusif<sp/>si<sp/>i=0</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>exit<sp/>si<sp/>i&gt;0</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>index<sp/>de<sp/>l&apos;operateur<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Operateur&amp;)<sp/>l&apos;operateur<sp/>d&apos;index<sp/>specifie<sp/>(uniquement<sp/>terme_diffusif)</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*<sp/>@throws<sp/>l&apos;equation<sp/>de<sp/>conduction<sp/>standard<sp/>ne<sp/>contient</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/>*<sp/>qu&apos;un<sp/>operateur</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153" refid="classConduction_1ac40cea483f117ab7f0dc92a2cf1f72a9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOperateur" kindref="compound">Operateur</ref>&amp;<sp/><ref refid="classConduction_1ac40cea483f117ab7f0dc92a2cf1f72a9" kindref="member">Conduction::operateur</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="154"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>terme_diffusif;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Conduction::operateur(&quot;</highlight><highlight class="normal">&lt;&lt;i&lt;&lt;</highlight><highlight class="stringliteral">&quot;)<sp/>!!<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Equation<sp/>Conduction<sp/>has<sp/>only<sp/>one<sp/>operator.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Pour<sp/>les<sp/>compilos!!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>terme_diffusif;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="167"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;operateur<sp/>d&apos;index<sp/>specifie<sp/>de<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/>*<sp/>Renvoie<sp/>terme_diffusif<sp/>si<sp/>i=0</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>exit<sp/>si<sp/>i&gt;0</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>index<sp/>de<sp/>l&apos;operateur<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Operateur&amp;)<sp/>l&apos;operateur<sp/>d&apos;index<sp/>specifie<sp/>(uniquement<sp/>terme_diffusif)</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/>*<sp/>@throws<sp/>l&apos;equation<sp/>de<sp/>conduction<sp/>standard<sp/>ne<sp/>contient</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/>*<sp/>qu&apos;un<sp/>operateur</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="classConduction_1a521086aa2489848e730bd8998b2ac9c8" refkind="member"><highlight class="normal"><ref refid="classOperateur" kindref="compound">Operateur</ref>&amp;<sp/><ref refid="classConduction_1ac40cea483f117ab7f0dc92a2cf1f72a9" kindref="member">Conduction::operateur</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>terme_diffusif;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Conduction::operateur(&quot;</highlight><highlight class="normal">&lt;&lt;i&lt;&lt;</highlight><highlight class="stringliteral">&quot;)<sp/>!!<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Equation<sp/>Conduction<sp/>has<sp/>only<sp/>one<sp/>operator.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Pour<sp/>les<sp/>compilos!!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>terme_diffusif;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="191"><highlight class="comment">/*!<sp/>@brief<sp/>Discretise<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="classConduction_1addbcf8583b7db6f3e0e366c11d74147e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConduction_1addbcf8583b7db6f3e0e366c11d74147e" kindref="member">Conduction::discretiser</ref>()</highlight></codeline>
+<codeline lineno="195"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDiscret__Thermique" kindref="compound">Discret_Thermique</ref>&amp;<sp/>dis=ref_cast(<ref refid="classDiscret__Thermique" kindref="compound">Discret_Thermique</ref>,<sp/><ref refid="classEquation__base_1a440fc95363315082eddbef26dc76024e" kindref="member">discretisation</ref>());</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Conduction<sp/>equation<sp/>discretization&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/>dis.<ref refid="classDiscret__Thermique_1ab9d2c858f85c7462ee0e0c02873d97b1" kindref="member">temperature</ref>(<ref refid="classEquation__base_1abc11e51aa75b4c7aa55c27f71eb2f2c4" kindref="member">schema_temps</ref>(),<sp/><ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>(),<sp/>la_temperature);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1ad687c312e72dcbc783cf597af5927b07" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1aa2bd9fb5b3b311863130fa0bbc404773" kindref="member">ajoute_champ</ref>(la_temperature);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1ac849b71b99dbe338b049a7728208c965" kindref="member">Equation_base::discretiser</ref>();</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="204"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>milieu<sp/>physique<sp/>associe<sp/>a<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/>*<sp/>Ici<sp/>Solide<sp/>upcaste<sp/>en<sp/>Milieu_base.</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Milieu_base&amp;)<sp/>le<sp/>milieu<sp/>physique<sp/>associe<sp/>a<sp/>l&apos;equation<sp/>(Solide<sp/>upcaste<sp/>en<sp/>Milieu_base)</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211" refid="classConduction_1ae187190c20405a548e0882d8cf0870af" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/><ref refid="classConduction_1ae187190c20405a548e0882d8cf0870af" kindref="member">Conduction::milieu</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="212"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConduction_1a27a989a02b76d25c4eb26d4f2c1002fd" kindref="member">solide</ref>();</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="216"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>milieu<sp/>physique<sp/>associe<sp/>a<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/>*<sp/>Ici<sp/>Solide<sp/>upcaste<sp/>en<sp/>Milieu_base.</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Milieu_base&amp;)<sp/>le<sp/>milieu<sp/>physique<sp/>associe<sp/>a<sp/>l&apos;equation<sp/>(Solide<sp/>upcaste<sp/>en<sp/>Milieu_base)</highlight></codeline>
+<codeline lineno="221"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="classConduction_1a197afbe8bc5067a1d14e84bb746f4027" refkind="member"><highlight class="normal"><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/><ref refid="classConduction_1ae187190c20405a548e0882d8cf0870af" kindref="member">Conduction::milieu</ref>()</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConduction_1a27a989a02b76d25c4eb26d4f2c1002fd" kindref="member">solide</ref>();</highlight></codeline>
+<codeline lineno="225"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="227"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>milieu<sp/>solide<sp/>associe<sp/>a<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/>*<sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="231"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Solide&amp;)<sp/>le<sp/>milieu<sp/>solide<sp/>associe<sp/>a<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/>*<sp/>@throws<sp/>pas<sp/>de<sp/>milieu<sp/>solide<sp/>associe<sp/>a<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="classConduction_1a27a989a02b76d25c4eb26d4f2c1002fd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSolide" kindref="compound">Solide</ref>&amp;<sp/><ref refid="classConduction_1a27a989a02b76d25c4eb26d4f2c1002fd" kindref="member">Conduction::solide</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="235"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(le_solide.<ref refid="classTRUST__Ref_1adc4cce400ce540f374d8e1152e57fee3" kindref="member">est_nul</ref>())</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>forgot<sp/>to<sp/>associate<sp/>the<sp/>solid<sp/>to<sp/>the<sp/>problem<sp/>named<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classEquation__base_1aa8151a96f63719523bf50ddd832e0f8f" kindref="member">probleme</ref>().<ref refid="classProbleme__U_1a43ca6fdaa9fd199851c93f689d957af7" kindref="member">le_nom</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>le_solide.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244" refid="classConduction_1a265c421fdd0634fa56d56cabedeff225" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConduction_1a265c421fdd0634fa56d56cabedeff225" kindref="member">Conduction::creer_champ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>motlu)</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;temperature_paroi&quot;</highlight><highlight class="normal"><sp/>||<sp/>motlu<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;wall_temperature&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(temperature_paroi_.<ref refid="classObjet__U__ptr_1a925076caa4d769fc4615d95c57ef711c" kindref="member">est_nul</ref>())</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDiscret__Thermique" kindref="compound">Discret_Thermique</ref>&amp;<sp/>dis<sp/>=<sp/>ref_cast(<ref refid="classDiscret__Thermique" kindref="compound">Discret_Thermique</ref>,<sp/><ref refid="classEquation__base_1a440fc95363315082eddbef26dc76024e" kindref="member">discretisation</ref>());</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dis.<ref refid="classDiscret__Thermique_1ab8d1ba14155d113bee5a3c18ea0b72dd" kindref="member">t_paroi</ref>(<ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>(),<sp/><ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>(),<sp/>la_temperature,<sp/>temperature_paroi_);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEquation__base_1ad687c312e72dcbc783cf597af5927b07" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1aa2bd9fb5b3b311863130fa0bbc404773" kindref="member">ajoute_champ</ref>(temperature_paroi_);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1ab9c5226bc9b23689b0945b50fd61890a" kindref="member">Equation_base::creer_champ</ref>(motlu);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259" refid="classConduction_1afac71f8cfa463cda33b314f6d232a610" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classConduction_1afac71f8cfa463cda33b314f6d232a610" kindref="member">Conduction::has_champ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>nom,<sp/>OBS_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)<sp/>&amp;ref_champ)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="260"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;temperature_paroi&quot;</highlight><highlight class="normal"><sp/>||<sp/>nom<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;wall_temperature&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ref_champ<sp/>=<sp/><ref refid="classConduction_1ab324c7cfdfabd0b0f545e6827d7b678d" kindref="member">Conduction::get_champ</ref>(nom);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEquation__base_1a8bd146a8053021e21df0ae6080f92532" kindref="member">Equation_base::has_champ</ref>(nom,<sp/>ref_champ))</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>-&gt;<ref refid="classTraitement__particulier__Solide__base_1ae94b91b176bcaffae3d19681b1814220" kindref="member">has_champ</ref>(nom,<sp/>ref_champ))</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">/*<sp/>rien<sp/>trouve<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277" refid="classConduction_1acbaca52019f7ab41a625af9b3ffe5301" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classConduction_1afac71f8cfa463cda33b314f6d232a610" kindref="member">Conduction::has_champ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>nom)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="278"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;temperature_paroi&quot;</highlight><highlight class="normal"><sp/>||<sp/>nom<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;wall_temperature&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEquation__base_1a8bd146a8053021e21df0ae6080f92532" kindref="member">Equation_base::has_champ</ref>(nom))</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>-&gt;<ref refid="classTraitement__particulier__Solide__base_1ae94b91b176bcaffae3d19681b1814220" kindref="member">has_champ</ref>(nom))</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">/*<sp/>rien<sp/>trouve<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292" refid="classConduction_1ab324c7cfdfabd0b0f545e6827d7b678d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classConduction_1ab324c7cfdfabd0b0f545e6827d7b678d" kindref="member">Conduction::get_champ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>nom)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="293"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/>OBS_PTR(<ref refid="classChamp__base" kindref="compound">Champ_base</ref>)<sp/>ref_champ;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nom<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;temperature_paroi&quot;</highlight><highlight class="normal"><sp/>||<sp/>nom<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;wall_temperature&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps_init<sp/>=<sp/><ref refid="classEquation__base_1abc11e51aa75b4c7aa55c27f71eb2f2c4" kindref="member">schema_temps</ref>().<ref refid="classSchema__Temps__base_1ac891af6f27184ae05fc33afcb625f44d" kindref="member">temps_init</ref>();</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>&amp;<sp/>ch_tp<sp/>=<sp/>ref_cast_non_const(<ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>,<sp/>temperature_paroi_.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(((ch_tp.<ref refid="classChamp__base_1a74560965ac18225959cd9457b3c8faa9" kindref="member">temps</ref>()<sp/>!=<sp/>la_temperature-&gt;<ref refid="classChamp__base_1a74560965ac18225959cd9457b3c8faa9" kindref="member">temps</ref>())<sp/>||<sp/>(ch_tp.<ref refid="classChamp__base_1a74560965ac18225959cd9457b3c8faa9" kindref="member">temps</ref>()<sp/>==<sp/>temps_init))<sp/>&amp;&amp;<sp/>((la_temperature-&gt;<ref refid="classMorEqn_1a0e90edfd0d89be7590d9a7afc1461bdc" kindref="member">mon_equation_non_nul</ref>())))</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ch_tp.<ref refid="classChamp__Fonc__base_1ab9c18e4ed594d73cae4ea02ff15dfd16" kindref="member">mettre_a_jour</ref>(la_temperature-&gt;<ref refid="classChamp__base_1a74560965ac18225959cd9457b3c8faa9" kindref="member">temps</ref>());</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1ad687c312e72dcbc783cf597af5927b07" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1a81e7ff823e570ba4432177e16035084a" kindref="member">get_champ</ref>(nom);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEquation__base_1a8bd146a8053021e21df0ae6080f92532" kindref="member">Equation_base::has_champ</ref>(nom,<sp/>ref_champ))</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ref_champ;</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>-&gt;<ref refid="classTraitement__particulier__Solide__base_1ae94b91b176bcaffae3d19681b1814220" kindref="member">has_champ</ref>(nom,<sp/>ref_champ))</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ref_champ;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::runtime_error(std::string(</highlight><highlight class="stringliteral">&quot;Field<sp/>&quot;</highlight><highlight class="normal">)<sp/>+<sp/>nom.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()<sp/>+<sp/>std::string(</highlight><highlight class="stringliteral">&quot;<sp/>not<sp/>found<sp/>!&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="313"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315" refid="classConduction_1abde425117235100e634fcca9bd15feca" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConduction_1abde425117235100e634fcca9bd15feca" kindref="member">Conduction::get_noms_champs_postraitables</ref>(<ref refid="classNoms" kindref="compound">Noms</ref>&amp;<sp/>nom,<sp/>Option<sp/>opt)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="316"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1a6dba1d00b00089f5083308173341a271" kindref="member">Equation_base::get_noms_champs_postraitables</ref>(nom,<sp/>opt);</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><ref refid="classNoms" kindref="compound">Noms</ref><sp/>noms_compris<sp/>=<sp/><ref refid="classEquation__base_1ad687c312e72dcbc783cf597af5927b07" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1a388ec0dd36a665b722df36a5c6300461" kindref="member">liste_noms_compris</ref>();</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/>noms_compris.<ref refid="classTRUST__Vector_1aa9e285b1a40b334ee274883f2ce7dbb9" kindref="member">add</ref>(</highlight><highlight class="stringliteral">&quot;TEMPERATURE_PAROI&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/>noms_compris.<ref refid="classTRUST__Vector_1aa9e285b1a40b334ee274883f2ce7dbb9" kindref="member">add</ref>(</highlight><highlight class="stringliteral">&quot;WALL_TEMPERATURE&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(opt<sp/>==<sp/>DESCRIPTION)</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Conduction<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>noms_compris<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>nom.<ref refid="classTRUST__Vector_1aa9e285b1a40b334ee274883f2ce7dbb9" kindref="member">add</ref>(noms_compris);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>-&gt;<ref refid="classTraitement__particulier__Solide__base_1a0d88d85d9b2ed050c7fa810e52f0823b" kindref="member">get_noms_champs_postraitables</ref>(nom,<sp/>opt);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="332"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>milieu<sp/>solide<sp/>associe<sp/>a<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="333"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="334"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Solide&amp;)<sp/>le<sp/>milieu<sp/>solide<sp/>associe<sp/>a<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="335"><highlight class="comment"><sp/>*<sp/>@throws<sp/>pas<sp/>de<sp/>milieu<sp/>solide<sp/>associe<sp/>a<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="336"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337" refid="classConduction_1acbe1eef6b69dfbb7be63b76d3fe22915" refkind="member"><highlight class="normal"><ref refid="classSolide" kindref="compound">Solide</ref>&amp;<sp/><ref refid="classConduction_1a27a989a02b76d25c4eb26d4f2c1002fd" kindref="member">Conduction::solide</ref>()</highlight></codeline>
+<codeline lineno="338"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!le_solide.<ref refid="classTRUST__Ref_1ae9b0cdf7e0ca42f09d339275e0b992e3" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;A<sp/>solide<sp/>medium<sp/>has<sp/>not<sp/>been<sp/>associated<sp/>to<sp/>a<sp/>Conduction<sp/>equation&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>le_solide.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="345"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="347"><highlight class="comment">/*!<sp/>@brief<sp/>Imprime<sp/>le<sp/>terme<sp/>diffusif<sp/>sur<sp/>un<sp/>flot<sp/>de<sp/>sortie.</highlight></codeline>
+<codeline lineno="348"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="349"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>os)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="350"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>renvoie<sp/>toujours<sp/>1</highlight></codeline>
+<codeline lineno="351"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="352" refid="classConduction_1aa04dcf83dc1f309d62a591c02d87ff39" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConduction_1aa04dcf83dc1f309d62a591c02d87ff39" kindref="member">Conduction::impr</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="353"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1a627afccc65b5c1031a9fdeaadb2c6e62" kindref="member">Equation_base::impr</ref>(os);</highlight></codeline>
+<codeline lineno="355"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="357"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nom<sp/>du<sp/>domaine<sp/>d&apos;application<sp/>de<sp/>l&apos;equation.</highlight></codeline>
+<codeline lineno="358"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="359"><highlight class="comment"><sp/>*<sp/>Ici<sp/>&quot;Thermique&quot;.</highlight></codeline>
+<codeline lineno="360"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="361"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Motcle&amp;)<sp/>le<sp/>nom<sp/>du<sp/>domaine<sp/>d&apos;application<sp/>de<sp/>l&apos;equation</highlight></codeline>
+<codeline lineno="362"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="363" refid="classConduction_1ac186c8519743f925bd66ae99cb6fa745" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/><ref refid="classConduction_1ac186c8519743f925bd66ae99cb6fa745" kindref="member">Conduction::domaine_application</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="364"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>domaine<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Thermique&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>domaine;</highlight></codeline>
+<codeline lineno="367"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369" refid="classConduction_1a258ab8e1558c9999a727eacff766e589" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConduction_1a258ab8e1558c9999a727eacff766e589" kindref="member">Conduction::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="370"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><ref refid="classEquation__base_1a62757c897af44f346e3a9e65e38aa122" kindref="member">Equation_base::mettre_a_jour</ref>(temps);</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classConduction_1a2054b9839f9a53e057be77c720a610f3" kindref="member">le_traitement_particulier</ref>-&gt;<ref refid="classTraitement__particulier__Solide__base_1a5c0abd13daef259e622b9a7638562617" kindref="member">post_traitement_particulier</ref>();</highlight></codeline>
+<codeline lineno="375"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThSol/Conduction.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="MD__Vector_8h" kind="file" language="C++">
+    <compoundname>MD_Vector.h</compoundname>
+    <includes refid="MD__Vector__base_8h" local="no">MD_Vector_base.h</includes>
+    <includes local="no">memory</includes>
+    <includedby refid="Champ__Fonc__reprise__IJK_8cpp" local="no">Champ_Fonc_reprise_IJK.cpp</includedby>
+    <includedby refid="Champ__Generique__Transformation_8cpp" local="no">Champ_Generique_Transformation.cpp</includedby>
+    <includedby refid="Descripteur__FT_8h" local="no">Descripteur_FT.h</includedby>
+    <includedby refid="MD__Vector_8cpp" local="no">MD_Vector.cpp</includedby>
+    <includedby refid="MD__Vector__composite_8h" local="no">MD_Vector_composite.h</includedby>
+    <includedby refid="MD__Vector__tools_8h" local="no">MD_Vector_tools.h</includedby>
+    <includedby refid="TRUSTVect_8h" local="no">TRUSTVect.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>MD_Vector.h</label>
+        <link refid="MD__Vector_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classMD__Vector" prot="public">MD_Vector</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="MD__Vector_8h_1a3616a15fe105ad6150819554ee8b11ca" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Mp_vect_options</name>
+        <enumvalue id="MD__Vector_8h_1a3616a15fe105ad6150819554ee8b11caa062d2da55e5c71ec3a38b1ebaeae57bd" prot="public">
+          <name>VECT_SEQUENTIAL_ITEMS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="MD__Vector_8h_1a3616a15fe105ad6150819554ee8b11caab47906d8d2e6c20f8ba32e4acb6edbe0" prot="public">
+          <name>VECT_REAL_ITEMS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="MD__Vector_8h_1a3616a15fe105ad6150819554ee8b11caad18680091a9f62247573cb3caa6450b9" prot="public">
+          <name>VECT_ALL_ITEMS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/MD_Vector.h" line="26" column="1" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/MD_Vector.h" bodystart="26" bodyend="26"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MD_Vector_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MD_Vector_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;MD_Vector_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Options<sp/>for<sp/>arithmetic<sp/>operations<sp/>on<sp/>vectors<sp/>(mp_min_vect_local,<sp/>apply_operator,<sp/>etc...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>VECT_SEQUENTIAL_ITEMS:<sp/>compute<sp/>requested<sp/>operation<sp/>only<sp/>on<sp/>sequential<sp/>items<sp/>(real<sp/>items<sp/>that<sp/>are<sp/>not<sp/>received<sp/>from<sp/>another<sp/>processor)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>(this<sp/>is<sp/>generally<sp/>slower<sp/>than<sp/>VECT_REAL_ITEMS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>VECT_REAL_ITEMS:<sp/>compute<sp/>requested<sp/>operation<sp/>on<sp/>real<sp/>items<sp/>if<sp/>size_reelle_ok(),<sp/>otherwise<sp/>on<sp/>all<sp/>items</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>VECT_ALL_ITEMS:<sp/>compute<sp/>requested<sp/>operation<sp/>on<sp/>all<sp/>items<sp/>(this<sp/>is<sp/>equivalent<sp/>to<sp/>a<sp/>call<sp/>to<sp/>the<sp/>Array<sp/>class<sp/>operator)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Mp_vect_options<sp/>{<sp/>VECT_SEQUENTIAL_ITEMS,<sp/>VECT_REAL_ITEMS,<sp/>VECT_ALL_ITEMS<sp/>};</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="28"><highlight class="comment">/*!<sp/>@brief<sp/>:<sp/>Cette<sp/>classe<sp/>est<sp/>un<sp/>OWN_PTR<sp/>mais<sp/>l&apos;objet<sp/>pointe<sp/>est<sp/>partage<sp/>entre<sp/>plusieurs</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/><sp/><sp/>instances<sp/>de<sp/>cette<sp/>classe.<sp/>L&apos;objet<sp/>pointe<sp/>ne<sp/>peut<sp/>etre<sp/>accede<sp/>qu&apos;en<sp/>&quot;const&quot;</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>et<sp/>n&apos;est<sp/>accessible<sp/>que<sp/>par<sp/>des<sp/>instances<sp/>de<sp/>MD_Vector.<sp/>Donc</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>il<sp/>n&apos;existe<sp/>pas<sp/>de<sp/>moyen<sp/>d&apos;y<sp/>acceder<sp/>en<sp/>&quot;non<sp/>const&quot;<sp/>autrement<sp/>qu&apos;avec<sp/>un<sp/>cast.</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/><sp/><sp/>La<sp/>methode<sp/>attach()<sp/>et<sp/>le<sp/>constructeur<sp/>par<sp/>copie<sp/>rattachent<sp/>le<sp/>pointeur<sp/>a<sp/>une</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>instance<sp/>existante<sp/>deja<sp/>attachee<sp/>a<sp/>un<sp/>pointeur.</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/><sp/><sp/>La<sp/>methode<sp/>attach_detach()<sp/>s&apos;approprie<sp/>l&apos;objet<sp/>pointe<sp/>par<sp/>le<sp/>OWN_PTR<sp/>et<sp/>detache</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>l&apos;objet<sp/>du<sp/>OWN_PTR.<sp/>C&apos;est<sp/>la<sp/>seule<sp/>facon<sp/>de<sp/>&quot;construire&quot;<sp/>les<sp/>objets<sp/>MD_Vector</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>(evite<sp/>une<sp/>copie,<sp/>et<sp/>permet<sp/>d&apos;assurer<sp/>que<sp/>le<sp/>MD_Vect<sp/>ne<sp/>peut<sp/>plus<sp/>etre<sp/>modifie</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>une<sp/>fois<sp/>que<sp/>qu&apos;il<sp/>a<sp/>ete<sp/>attache<sp/>a<sp/>un<sp/>MD_Vector)</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/><sp/><sp/>ATTENTION:<sp/>la<sp/>securite<sp/>de<sp/>la<sp/>methode<sp/>repose</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>sur<sp/>le<sp/>fait<sp/>que<sp/>l&apos;instance<sp/>pointee<sp/>par<sp/>MD_Vector<sp/>n&apos;est<sp/>accessible<sp/>nulle<sp/>part</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>ailleurs<sp/>que<sp/>par<sp/>des<sp/>objets<sp/>MD_Vector.<sp/>NE<sp/>PAS<sp/>AJOUTER<sp/>de<sp/>methode</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>attach(const<sp/>MD_Vector_base<sp/>&amp;),<sp/>cela<sp/>casse<sp/>la<sp/>securite<sp/>de<sp/>la<sp/>classe<sp/>!!!<sp/>(B.Mathieu)</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/><sp/><sp/>inline<sp/>d&apos;un<sp/>maximum<sp/>de<sp/>methodes<sp/>pour<sp/>ne<sp/>pas<sp/>penaliser<sp/>les<sp/>tableaux<sp/>non<sp/>distribues,</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>tout<sp/>en<sp/>evitant<sp/>d&apos;inclure<sp/>MD_Vector_base.h</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classMD__Vector" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMD__Vector" kindref="compound">MD_Vector</ref></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="50" refid="classMD__Vector_1aead5a61dd622d987776650a483081bfa" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classMD__Vector_1aead5a61dd622d987776650a483081bfa" kindref="member">MD_Vector</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector_1aead5a61dd622d987776650a483081bfa" kindref="member">MD_Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector" kindref="compound">MD_Vector</ref>&amp;);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector" kindref="compound">MD_Vector</ref>&amp;<sp/><ref refid="classMD__Vector_1a371c0a682738cd498eff29307f17c0bd" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector" kindref="compound">MD_Vector</ref>&amp;);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector_1af562e68d4e6dbcf1ad17acbfe8c37369" kindref="member">attach</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector" kindref="compound">MD_Vector</ref>&amp;);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector_1aa8b6d80c076feecf7373552d58489e22" kindref="member">detach</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classMD__Vector_1a036f2429ea40bd07b331500f6ff22b8f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector_1a036f2429ea40bd07b331500f6ff22b8f" kindref="member">non_nul</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="57"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LATATOOLS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(ptr_<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LATATOOLS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector_1a063644dd8ca62e707a2d059eedeb58a7" kindref="member">copy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector__base" kindref="compound">MD_Vector_base</ref>&amp;);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classMD__Vector_1a88b5a2d398314812f32a1dbc433cfe99" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector__base" kindref="compound">MD_Vector_base</ref>&amp;<sp/><ref refid="classMD__Vector_1a88b5a2d398314812f32a1dbc433cfe99" kindref="member">valeur</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="69"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(ptr_);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*ptr_;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classMD__Vector_1a1d7c3ccf86e1e4700421338fe00fe550" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector__base" kindref="compound">MD_Vector_base</ref>*<sp/><ref refid="classMD__Vector_1a1d7c3ccf86e1e4700421338fe00fe550" kindref="member">operator -&gt;</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/>assert(ptr_);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_.get();<sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector_1acdbe4df71f3ca57a322cd6f3432d87d6" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector" kindref="compound">MD_Vector</ref>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector_1ab5c5057935b0f028c781b4ccb9f6cc74" kindref="member">operator!=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector" kindref="compound">MD_Vector</ref>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;MD_Vector_base&gt;<sp/>ptr_;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="84"><highlight class="comment">/*!<sp/>@brief<sp/>constructeur<sp/>par<sp/>copie,<sp/>associe<sp/>le<sp/>pointeur<sp/>au<sp/>meme<sp/>objet<sp/>que<sp/>la<sp/>source</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classMD__Vector_1a534139123640c78f9824f5a251cbc00a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector_1aead5a61dd622d987776650a483081bfa" kindref="member">MD_Vector::MD_Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector" kindref="compound">MD_Vector</ref>&amp;<sp/>src)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="classMD__Vector_1af562e68d4e6dbcf1ad17acbfe8c37369" kindref="member">attach</ref>(src);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="91"><highlight class="comment">/*!<sp/>@brief<sp/>Detache<sp/>le<sp/>pointeur<sp/>de<sp/>l&apos;objet<sp/>pointe</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classMD__Vector_1aa8b6d80c076feecf7373552d58489e22" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector_1aa8b6d80c076feecf7373552d58489e22" kindref="member">MD_Vector::detach</ref>()</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LATATOOLS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>ptr_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="100"><highlight class="comment">/*!<sp/>@brief<sp/>Detache<sp/>le<sp/>pointeur<sp/>et<sp/>attache<sp/>au<sp/>meme<sp/>objet<sp/>que<sp/>src.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="classMD__Vector_1af562e68d4e6dbcf1ad17acbfe8c37369" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector_1af562e68d4e6dbcf1ad17acbfe8c37369" kindref="member">MD_Vector::attach</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector" kindref="compound">MD_Vector</ref>&amp;<sp/>src)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LATATOOLS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>==<sp/>&amp;src)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>sinon<sp/>ligne<sp/>suivante<sp/>detruit<sp/>le<sp/>pointeur<sp/>?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>ptr_<sp/>=<sp/>src.ptr_;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="111"><highlight class="comment">/*!<sp/>@brief<sp/>idem<sp/>que<sp/>attach(src)</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="classMD__Vector_1a371c0a682738cd498eff29307f17c0bd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector" kindref="compound">MD_Vector</ref>&amp;<sp/><ref refid="classMD__Vector_1a371c0a682738cd498eff29307f17c0bd" kindref="member">MD_Vector::operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMD__Vector" kindref="compound">MD_Vector</ref>&amp;<sp/>src)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><ref refid="classMD__Vector_1af562e68d4e6dbcf1ad17acbfe8c37369" kindref="member">attach</ref>(src);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Math/MD_Vector.h"/>
+  </compounddef>
+</doxygen>

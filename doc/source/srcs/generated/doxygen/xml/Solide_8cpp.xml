@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Solide_8cpp" kind="file" language="C++">
+    <compoundname>Solide.cpp</compoundname>
+    <includes refid="Discretisation__base_8h" local="no">Discretisation_base.h</includes>
+    <includes refid="Schema__Temps__base_8h" local="no">Schema_Temps_base.h</includes>
+    <includes refid="Champ__Uniforme_8h" local="no">Champ_Uniforme.h</includes>
+    <includes refid="Champ__Fonc__MED_8h" local="no">Champ_Fonc_MED.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Solide_8h" local="no">Solide.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Solide_8cpp_1a2efc409ccc8e0b5e802d23c8994250f2" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Solidebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Solidebases</name>
+        <initializer>={   &amp;( <ref refid="classMilieu__base" kindref="compound">Milieu_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThSol/Solide.cpp" line="25" column="65" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThSol/Solide.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discretisation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Temps_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Uniforme.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Fonc_MED.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Solide.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classSolide_1ad40ddd5eff9de3b9ee5d7336423ffafb" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classSolide" kindref="compound">Solide</ref>,</highlight><highlight class="stringliteral">&quot;Solide&quot;</highlight><highlight class="normal">,<ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>solide<sp/>milieu_base<sp/>solide<sp/>-1<sp/>Solid<sp/>with<sp/>cp<sp/>and/or<sp/>rho<sp/>non-uniform.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>rho<sp/>field_base<sp/>rho<sp/>1<sp/>Density<sp/>(kg.m-3).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>cp<sp/>field_base<sp/>cp<sp/>1<sp/>Specific<sp/>heat<sp/>(J.kg-1.K-1).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>lambda<sp/>field_base<sp/>lambda_u<sp/>1<sp/>Conductivity<sp/>(W.m-1.K-1).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>user_field<sp/>field_base<sp/>user_field<sp/>1<sp/>user<sp/>defined<sp/>field.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classSolide_1a45844661c37e4e0343656419c58064c8" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classSolide_1a45844661c37e4e0343656419c58064c8" kindref="member">Solide::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base_1a78bd960977cd9c8ec42b2932ac9ef79f" kindref="member">Milieu_base::printOn</ref>(os);<sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classSolide_1aedc407772f22520130e2931fd7e669db" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classSolide_1aedc407772f22520130e2931fd7e669db" kindref="member">Solide::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="classMilieu__base_1a4a82b866d462d1533bd8774fb9649b04" kindref="member">Milieu_base::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mon_champ_.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())<sp/><sp/><ref refid="classMilieu__base_1a0f09478874312ae5370c2a2a7a813903" kindref="member">champs_don_</ref>.<ref refid="classTRUST__List_1a8821a68929efa6b0c3e4139dc675538a" kindref="member">add</ref>(mon_champ_.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classSolide_1ac3ef09bef70ec228d780687be76d763a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolide_1ac3ef09bef70ec228d780687be76d763a" kindref="member">Solide::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><ref refid="classMilieu__base_1a29a37b324d6e531f4dcc7242da9b7243" kindref="member">Milieu_base::set_param</ref>(param);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a6363f31c467c06512aee2f004abac69d" kindref="member">ajouter_condition</ref>(</highlight><highlight class="stringliteral">&quot;is_read_rho&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;Density<sp/>(rho)<sp/>has<sp/>not<sp/>been<sp/>read<sp/>for<sp/>a<sp/>Solide<sp/>type<sp/>medium.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a6363f31c467c06512aee2f004abac69d" kindref="member">ajouter_condition</ref>(</highlight><highlight class="stringliteral">&quot;is_read_Cp&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;Heat<sp/>capacity<sp/>(Cp)<sp/>has<sp/>not<sp/>been<sp/>read<sp/>for<sp/>a<sp/>Solide<sp/>type<sp/>medium.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a6363f31c467c06512aee2f004abac69d" kindref="member">ajouter_condition</ref>(</highlight><highlight class="stringliteral">&quot;is_read_lambda&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;Conductivity<sp/>(lambda)<sp/>has<sp/>not<sp/>been<sp/>read<sp/>for<sp/>a<sp/>Solide<sp/>type<sp/>medium.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;user_field&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="50"><highlight class="comment">/*!<sp/>@brief<sp/>Verifie<sp/>que<sp/>les<sp/>champs<sp/>caracterisant<sp/>le<sp/>milieu<sp/>solide<sp/>qui<sp/>on<sp/>ete<sp/>lu<sp/>par<sp/>readOn(Entree&amp;)<sp/>sont<sp/>coherents.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@throws<sp/>la<sp/>conductivite<sp/>(lambda)<sp/>n&apos;est<sp/>pas<sp/>strictement<sp/>positive</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@throws<sp/>l&apos;une<sp/>des<sp/>proprietes<sp/>physique<sp/>du<sp/>solide:<sp/>masse<sp/>volumique<sp/>(rho),</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>capacite<sp/>calorifique<sp/>(Cp)<sp/>ou<sp/>conductivite<sp/>(lambda)<sp/>n&apos;a<sp/>pas</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>ete<sp/>definie.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classSolide_1a26c1966afe19b10d17815c11b485b06a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolide_1a26c1966afe19b10d17815c11b485b06a" kindref="member">Solide::verifier_coherence_champs</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>err,<ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>msg)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>msg=</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Uniforme" kindref="compound">Champ_Uniforme</ref>,<ref refid="classMilieu__base_1a295d557e43d5f7f7e3dd2767cefd01d2" kindref="member">ch_lambda_</ref>.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>()))</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMilieu__base_1a295d557e43d5f7f7e3dd2767cefd01d2" kindref="member">ch_lambda_</ref>-&gt;<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>()(0,0)<sp/>&lt;=<sp/>0)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>conductivity<sp/>lambda<sp/>is<sp/>not<sp/>striclty<sp/>positive.<sp/>\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="classMilieu__base_1aa882d63f36ddc94fd71fab634e5a27d2" kindref="member">Milieu_base::verifier_coherence_champs</ref>(err,msg);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classSolide_1a302a5a5b387be0d435a92f70af237a44" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSolide_1a302a5a5b387be0d435a92f70af237a44" kindref="member">Solide::lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;user_field&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>nom_champ_;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>mon_champ_;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base_1abcb808d4bb6bb68265a06b2d59b362db" kindref="member">Milieu_base::lire_motcle_non_standard</ref>(mot,is);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classSolide_1acd79604d8a1dc32d3711b81bb0b4478d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSolide_1acd79604d8a1dc32d3711b81bb0b4478d" kindref="member">Solide::discretiser</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/>pb,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDiscretisation__base" kindref="compound">Discretisation_base</ref>&amp;<sp/>dis)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMilieu__base_1aeea92006f5261591693db15e4c2aa4a3" kindref="member">has_hydr_diam</ref>())</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;WHAT<sp/>??<sp/>It<sp/>makes<sp/>no<sp/>sense<sp/>to<sp/>define<sp/>diametre_hyd_champ<sp/>in<sp/>a<sp/>Solid<sp/>medium<sp/>!!!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="classMilieu__base_1a76dffc16168f8e822fde763bfe60fb93" kindref="member">Milieu_base::discretiser</ref>(pb,dis);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mon_champ_.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is_user_defined_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__dis__base" kindref="compound">Domaine_dis_base</ref>&amp;<sp/>domaine_dis=pb.<ref refid="classProbleme__base_1acdfdb3499a491996c477ba8e2ce4b9db" kindref="member">equation</ref>(0).<ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps<sp/>=<sp/>pb.<ref refid="classProbleme__base_1ab478224fd233d4ef2fcd2b629108d14c" kindref="member">schema_temps</ref>().<ref refid="classSchema__Temps__base_1a1e573b93ad40c737ecb2da65b68f968a" kindref="member">temps_courant</ref>();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Fonc__MED" kindref="compound">Champ_Fonc_MED</ref>,mon_champ_.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>()))</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Convert<sp/>Champ_fonc_MED<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nom_champ_<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>to<sp/>a<sp/>OWN_PTR(Champ_Don_base)<sp/>...&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OWN_PTR(<ref refid="classChamp__Don__base" kindref="compound">Champ_Don_base</ref>)<sp/>tmp_fld;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dis.<ref refid="classDiscretisation__base_1afea05efdd1484bb9c80df965627c367f" kindref="member">discretiser_champ</ref>(</highlight><highlight class="stringliteral">&quot;champ_elem&quot;</highlight><highlight class="normal">,domaine_dis,</highlight><highlight class="stringliteral">&quot;neant&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;neant&quot;</highlight><highlight class="normal">,1,temps,tmp_fld);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tmp_fld-&gt;affecter(mon_champ_.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>());<sp/></highlight><highlight class="comment">//<sp/>interpolate<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mon_champ_.<ref refid="classObjet__U__ptr_1a43544afb6679e71aaf5487b399f5b93f" kindref="member">detach</ref>();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dis.<ref refid="classDiscretisation__base_1afea05efdd1484bb9c80df965627c367f" kindref="member">discretiser_champ</ref>(</highlight><highlight class="stringliteral">&quot;champ_elem&quot;</highlight><highlight class="normal">,domaine_dis,nom_champ_,</highlight><highlight class="stringliteral">&quot;neant&quot;</highlight><highlight class="normal">,1,temps,mon_champ_);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mon_champ_-&gt;<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>()<sp/>=<sp/>tmp_fld-&gt;valeurs();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classChamp__Uniforme" kindref="compound">Champ_Uniforme</ref>,mon_champ_.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>()))<sp/></highlight><highlight class="comment">//<sp/>blabla<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>val<sp/>=<sp/>mon_champ_-&gt;<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>()(0,0);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mon_champ_.<ref refid="classObjet__U__ptr_1a43544afb6679e71aaf5487b399f5b93f" kindref="member">detach</ref>();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dis.<ref refid="classDiscretisation__base_1afea05efdd1484bb9c80df965627c367f" kindref="member">discretiser_champ</ref>(</highlight><highlight class="stringliteral">&quot;champ_elem&quot;</highlight><highlight class="normal">,domaine_dis,nom_champ_,</highlight><highlight class="stringliteral">&quot;neant&quot;</highlight><highlight class="normal">,1,temps,mon_champ_);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mon_champ_-&gt;<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>()<sp/>=<sp/>val;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dis.<ref refid="classDiscretisation__base_1a17969ebd170a72f28d8cac002eb3f857" kindref="member">nommer_completer_champ_physique</ref>(domaine_dis,<sp/>nom_champ_,<sp/></highlight><highlight class="stringliteral">&quot;neant&quot;</highlight><highlight class="normal">,<sp/>mon_champ_.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>(),<sp/>pb);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMilieu__base_1ac23515c92999b5ee05f11d0a4603ec52" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1aa2bd9fb5b3b311863130fa0bbc404773" kindref="member">ajoute_champ</ref>(mon_champ_.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThSol/Solide.cpp"/>
+  </compounddef>
+</doxygen>

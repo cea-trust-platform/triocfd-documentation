@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Format__Post__XYZ_8cpp" kind="file" language="C++">
+    <compoundname>Format_Post_XYZ.cpp</compoundname>
+    <includes refid="Format__Post__XYZ_8h" local="no">Format_Post_XYZ.h</includes>
+    <includes refid="communications_8h" local="no">communications.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Format__Post__XYZ_8cpp_1a1137889f31ec77a06730186e720304d1" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Format_Post_XYZbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Format_Post_XYZbases</name>
+        <initializer>={   &amp;( <ref refid="classFormat__Post__base" kindref="compound">Format_Post_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Postraitement/Format_Post_XYZ.cpp" line="19" column="60" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Postraitement/Format_Post_XYZ.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Format_Post_XYZ.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;communications.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classFormat__Post__XYZ_1af75c4225963df75cdb55b137438e77fa" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<ref refid="classFormat__Post__XYZ" kindref="compound">Format_Post_XYZ</ref>,</highlight><highlight class="stringliteral">&quot;Format_Post_XYZ&quot;</highlight><highlight class="normal">,<ref refid="classFormat__Post__base" kindref="compound">Format_Post_base</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="22"><highlight class="comment">/////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"></highlight><highlight class="comment">//Parametre:<sp/>xyz_basename_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Signification:<sp/>debut<sp/>du<sp/>nom<sp/>du<sp/>fichier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//Extension<sp/>xyz</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//Specificites<sp/>de<sp/>ce<sp/>format</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//Ecriture<sp/>dans<sp/>un<sp/>seul<sp/>fichier<sp/>(sequentiel<sp/>ou<sp/>parallele)</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment">///////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="31"><highlight class="comment">/*!<sp/>@brief<sp/>Constructeur<sp/>par<sp/>defaut:<sp/>Specifier<sp/>dans<sp/>commentaire<sp/>ce<sp/>qui<sp/>est<sp/>fixe<sp/>par<sp/>defaut</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classFormat__Post__XYZ_1a57965964062110dcf2e2642444bc74db" refkind="member"><highlight class="normal"><ref refid="classFormat__Post__XYZ_1a57965964062110dcf2e2642444bc74db" kindref="member">Format_Post_XYZ::Format_Post_XYZ</ref>()</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__XYZ_1aa5719b24308d0f42fc68c662d7803f0d" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="40"><highlight class="comment">/*!<sp/>@brief<sp/>Remet<sp/>l&apos;objet<sp/>dans<sp/>l&apos;etat<sp/>obtenu<sp/>par<sp/>le<sp/>constructeur<sp/>par<sp/>defaut.</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classFormat__Post__XYZ_1aa5719b24308d0f42fc68c662d7803f0d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1aa5719b24308d0f42fc68c662d7803f0d" kindref="member">Format_Post_XYZ::reset</ref>()</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__XYZ_1a5c493732b7ea42eac09b30c119fda0a1" kindref="member">xyz_basename_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;??&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="48"><highlight class="comment">/*!<sp/>@brief<sp/>erreur<sp/>=&gt;<sp/>exit</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classFormat__Post__XYZ_1af4ce5bebc339d7451e618010ca107a10" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classFormat__Post__XYZ_1af4ce5bebc339d7451e618010ca107a10" kindref="member">Format_Post_XYZ::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="52"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Format_Post_XYZ::printOn<sp/>:<sp/>error&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="58"><highlight class="comment">/*!<sp/>@brief<sp/>Lecture<sp/>des<sp/>parametres<sp/>du<sp/>postraitement<sp/>au<sp/>format<sp/>&quot;jeu<sp/>de<sp/>donnees&quot;<sp/>Le<sp/>format<sp/>attendu<sp/>est<sp/>le<sp/>suivant:</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>nom_fichier<sp/>basename_sans_extension</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classFormat__Post__XYZ_1af8a1423016d3fa49357e54097cf10b7a" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classFormat__Post__XYZ_1af8a1423016d3fa49357e54097cf10b7a" kindref="member">Format_Post_XYZ::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__base_1a7de17922b436b37910dd87417cb27623" kindref="member">Format_Post_base::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classFormat__Post__XYZ_1a87aa50ed51f29f2354bec6199e732954" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1a87aa50ed51f29f2354bec6199e732954" kindref="member">Format_Post_XYZ::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;nom_fichier&quot;</highlight><highlight class="normal">,&amp;<ref refid="classFormat__Post__XYZ_1a5c493732b7ea42eac09b30c119fda0a1" kindref="member">xyz_basename_</ref>,<ref refid="classParam_1aa4ad0ca1d49bc5f2ebc5fc83ee9df384aaf5b6dfac1c5970478525407cc6ac572" kindref="member">Param::REQUIRED</ref>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="76"><highlight class="comment">/*!<sp/>@brief<sp/>Initialisation<sp/>de<sp/>la<sp/>classe<sp/>avec<sp/>des<sp/>parametres<sp/>par<sp/>defaut</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classFormat__Post__XYZ_1a4056a7bbcf462c0493af23c549ac7897" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1a4056a7bbcf462c0493af23c549ac7897" kindref="member">Format_Post_XYZ::initialize_by_default</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>file_basename)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__XYZ_1a5c493732b7ea42eac09b30c119fda0a1" kindref="member">xyz_basename_</ref>=<sp/>file_basename;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classFormat__Post__XYZ_1ac7831c13dded1523c52c30dc65083323" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1ac7831c13dded1523c52c30dc65083323" kindref="member">Format_Post_XYZ::initialize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>file_basename,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>format,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>option_para)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__XYZ_1a5c493732b7ea42eac09b30c119fda0a1" kindref="member">xyz_basename_</ref>=<sp/>file_basename;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classFormat__Post__XYZ_1ad1bcf7ce45f03fda284257061669d3fd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1ad1bcf7ce45f03fda284257061669d3fd" kindref="member">Format_Post_XYZ::ecrire_entete</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps_courant,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>reprise,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>est_le_premier_post)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_fich(<ref refid="classFormat__Post__XYZ_1a5c493732b7ea42eac09b30c119fda0a1" kindref="member">xyz_basename_</ref>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>format=</highlight><highlight class="stringliteral">&quot;xyz&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=<sp/>format;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__XYZ_1adee53b8d46f0986ea65693d5c082bba1" kindref="member">ecrire_entete_xyz</ref>(nom_fich,est_le_premier_post);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classFormat__Post__XYZ_1a67ca605081f90f6f9f279a9d3fcd7bb5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1a67ca605081f90f6f9f279a9d3fcd7bb5" kindref="member">Format_Post_XYZ::finir</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>est_le_dernier_post)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_fich(<ref refid="classFormat__Post__XYZ_1a5c493732b7ea42eac09b30c119fda0a1" kindref="member">xyz_basename_</ref>);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>format=</highlight><highlight class="stringliteral">&quot;xyz&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=<sp/>format;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__XYZ_1ad94b89e948cff9bab475ee0935d9479f" kindref="member">finir_xyz</ref>(nom_fich,est_le_dernier_post);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="classFormat__Post__XYZ_1a68be0b86b8a44976b4947b84b7c22e54" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1a68be0b86b8a44976b4947b84b7c22e54" kindref="member">Format_Post_XYZ::completer_post</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>dom,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>is_axi,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Nature_du_champ&amp;<sp/>nature,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_compo,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref>&amp;<sp/>noms_compo,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>loc_post,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>le_nom_champ_post)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__XYZ_1a8013940997bd5954abf27ab5869492a4" kindref="member">completer_post_xyz</ref>();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="classFormat__Post__XYZ_1a71d8f8f0f9d713ccf657cdd81de083fb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1a71d8f8f0f9d713ccf657cdd81de083fb" kindref="member">Format_Post_XYZ::preparer_post</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>id_du_domaine,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>est_le_premier_post,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>reprise,</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t_init)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__XYZ_1a007c6ab7eac43b74130e059b095948fa" kindref="member">preparer_post_xyz</ref>();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="138"><highlight class="comment">/*!<sp/>@brief<sp/>voir<sp/>Format_Post_base::ecrire_domaine</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="classFormat__Post__XYZ_1a80afac99539fa5a6ee1eaa4b844f521e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1a80afac99539fa5a6ee1eaa4b844f521e" kindref="member">Format_Post_XYZ::ecrire_domaine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>domaine,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>est_le_premier_post)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Appel<sp/>de<sp/>la<sp/>methode<sp/>statique<sp/>specifique<sp/>au<sp/>format<sp/>xyz</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_fich(<ref refid="classFormat__Post__XYZ_1a5c493732b7ea42eac09b30c119fda0a1" kindref="member">xyz_basename_</ref>);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>format=</highlight><highlight class="stringliteral">&quot;xyz&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=<sp/>format;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__XYZ_1ad9616f12d3e17d3bf7be4f0f90200057" kindref="member">ecrire_domaine_xyz</ref>(domaine,nom_fich);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;<sp/></highlight><highlight class="comment">//<sp/>ok<sp/>tout<sp/>va<sp/>bien</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="152"><highlight class="comment">/*!<sp/>@brief<sp/>commence<sp/>l&apos;ecriture<sp/>d&apos;un<sp/>nouveau<sp/>pas<sp/>de<sp/>temps<sp/>En<sp/>l&apos;occurence<sp/>pour<sp/>le<sp/>format<sp/>XYZ:</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Ouvre<sp/>le<sp/>fichier<sp/>maitre<sp/>en<sp/>mode<sp/>APPEND<sp/>et<sp/>ajoute<sp/>une<sp/>ligne</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>&quot;TEMPS<sp/>xxxxx&quot;</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="classFormat__Post__XYZ_1af27f4a7bbb96325d83a223c771f5d40d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1af27f4a7bbb96325d83a223c771f5d40d" kindref="member">Format_Post_XYZ::ecrire_temps</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_fich(<ref refid="classFormat__Post__XYZ_1a5c493732b7ea42eac09b30c119fda0a1" kindref="member">xyz_basename_</ref>);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>format=</highlight><highlight class="stringliteral">&quot;xyz&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=<sp/>format;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__XYZ_1a4934d24af18c41031f17354583692e62" kindref="member">ecrire_temps_xyz</ref>(temps,nom_fich);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="171"><highlight class="comment">/*!<sp/>@brief<sp/>voir<sp/>Format_Post_base::ecrire_champ</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="classFormat__Post__XYZ_1ad98a2e562759a60df5951ad103324c3a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1ad98a2e562759a60df5951ad103324c3a" kindref="member">Format_Post_XYZ::ecrire_champ2</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>domaine,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref>&amp;<sp/>unite_,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref>&amp;<sp/>noms_compo,</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ncomp,</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps_,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>id_champ,</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>id_du_domaine,</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>localisation,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><sp/><sp/>nature,</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>valeurs,</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>coord)</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Appel<sp/>de<sp/>la<sp/>methode<sp/>statique<sp/>specifique<sp/>au<sp/>format<sp/>XYZ</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_fich<sp/>=<sp/><ref refid="classFormat__Post__XYZ_1a63f056b873678b5cc5a8e4361b700a53" kindref="member">construire_nom_xyz</ref>(temps_,id_champ,id_du_domaine,localisation);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__XYZ_1aee0464353e71b765800ad9702f5c1874" kindref="member">ecrire_champ_xyz</ref>(domaine,unite_,noms_compo,ncomp,temps_,id_champ,id_du_domaine,localisation,valeurs,nom_fich,coord);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="194"><highlight class="comment">/*!<sp/>@brief</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="classFormat__Post__XYZ_1a04e8d3ab21118375e0eee5f5027dfd13" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1a04e8d3ab21118375e0eee5f5027dfd13" kindref="member">Format_Post_XYZ::ecrire_item_int</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><sp/><sp/><sp/><sp/>id_item,</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><sp/><sp/><sp/><sp/>id_du_domaine,</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><sp/><sp/><sp/><sp/>id_domaine,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><sp/><sp/><sp/><sp/>localisation,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><sp/><sp/><sp/><sp/>reference,</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">IntVect</ref>&amp;<sp/>valeurs,</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>reference_size)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_fich(<ref refid="classFormat__Post__XYZ_1a5c493732b7ea42eac09b30c119fda0a1" kindref="member">xyz_basename_</ref>);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>format=</highlight><highlight class="stringliteral">&quot;xyz&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=<sp/>format;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>id_domaine_dom(id_domaine);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>id_domaine_dom+=</highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>id_domaine_dom+=id_du_domaine;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><ref refid="classFormat__Post__XYZ_1a2662bbfb9aa0e4f7d349499180995473" kindref="member">ecrire_item_int_xyz</ref>(id_item,id_domaine,valeurs,nom_fich);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="216" refid="classFormat__Post__XYZ_1a63f056b873678b5cc5a8e4361b700a53" refkind="member"><highlight class="normal"><ref refid="classNom" kindref="compound">Nom</ref><sp/><ref refid="classFormat__Post__XYZ_1a63f056b873678b5cc5a8e4361b700a53" kindref="member">Format_Post_XYZ::construire_nom_xyz</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps_,</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>id_champ,</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>id_du_domaine,</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>localisation)</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>recup<sp/>de<sp/>lata<sp/><sp/>pour<sp/>construire<sp/>le<sp/>nom<sp/>du<sp/>fichier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Un<sp/>fichier<sp/>xyz<sp/>sera<sp/>cree<sp/>par<sp/>champs<sp/>et<sp/>par<sp/>pas<sp/>de<sp/>temps<sp/>de<sp/>post-traitement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>id_du_champ_modifie(id_champ);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>iddomaine(id_du_domaine);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//On<sp/>utilise<sp/>prefix<sp/>avec<sp/>un<sp/>argument<sp/>en<sp/>majuscule</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((<ref refid="classMotcle" kindref="compound">Motcle</ref>)localisation==</highlight><highlight class="stringliteral">&quot;SOM&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>id_du_champ_modifie.<ref refid="classNom_1aa296fc70f7abcf978968e09582d8fb06" kindref="member">prefix</ref>(id_du_domaine);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>id_du_champ_modifie.<ref refid="classNom_1aa296fc70f7abcf978968e09582d8fb06" kindref="member">prefix</ref>(iddomaine);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>////id_du_champ_modifie.prefix(&quot;_som_&quot;);</highlight></codeline>
+<codeline lineno="231"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>id_du_champ_modifie.<ref refid="classNom_1aa296fc70f7abcf978968e09582d8fb06" kindref="member">prefix</ref>(</highlight><highlight class="stringliteral">&quot;_SOM_&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((<ref refid="classMotcle" kindref="compound">Motcle</ref>)localisation==</highlight><highlight class="stringliteral">&quot;ELEM&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>id_du_champ_modifie.<ref refid="classNom_1aa296fc70f7abcf978968e09582d8fb06" kindref="member">prefix</ref>(id_du_domaine);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>id_du_champ_modifie.<ref refid="classNom_1aa296fc70f7abcf978968e09582d8fb06" kindref="member">prefix</ref>(iddomaine);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="237"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>////id_du_champ_modifie.prefix(&quot;_elem_&quot;);</highlight></codeline>
+<codeline lineno="238"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>id_du_champ_modifie.<ref refid="classNom_1aa296fc70f7abcf978968e09582d8fb06" kindref="member">prefix</ref>(</highlight><highlight class="stringliteral">&quot;_ELEM_&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((<ref refid="classMotcle" kindref="compound">Motcle</ref>)localisation==</highlight><highlight class="stringliteral">&quot;FACES&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>id_du_champ_modifie.<ref refid="classNom_1aa296fc70f7abcf978968e09582d8fb06" kindref="member">prefix</ref>(id_du_domaine);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>id_du_champ_modifie.<ref refid="classNom_1aa296fc70f7abcf978968e09582d8fb06" kindref="member">prefix</ref>(iddomaine);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>id_du_champ_modifie.<ref refid="classNom_1aa296fc70f7abcf978968e09582d8fb06" kindref="member">prefix</ref>(</highlight><highlight class="stringliteral">&quot;_FACES_&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Construction<sp/>du<sp/>nom<sp/>du<sp/>fichier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>extension_champ(id_du_champ_modifie);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/>extension_champ<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/>extension_champ<sp/>+=<sp/>localisation;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/>extension_champ<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/>extension_champ<sp/>+=<sp/>id_du_domaine;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/>extension_champ<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>str_temps[100]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;0.0&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(temps_<sp/>&gt;=<sp/>0.)</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>snprintf(str_temps,<sp/>100,<sp/></highlight><highlight class="stringliteral">&quot;%.10f&quot;</highlight><highlight class="normal">,<sp/>temps_);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/>extension_champ<sp/>+=<sp/>str_temps;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nom_fich(<ref refid="classFormat__Post__XYZ_1a5c493732b7ea42eac09b30c119fda0a1" kindref="member">xyz_basename_</ref>);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=<sp/>extension_champ;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>format=</highlight><highlight class="stringliteral">&quot;xyz&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/>nom_fich<sp/>+=<sp/>format;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nom_fich;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267" refid="classFormat__Post__XYZ_1adee53b8d46f0986ea65693d5c082bba1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1adee53b8d46f0986ea65693d5c082bba1" kindref="member">Format_Post_XYZ::ecrire_entete_xyz</ref>(<ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom_fich,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>est_le_premier_post)</highlight></codeline>
+<codeline lineno="268"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="classFormat__Post__XYZ_1ad94b89e948cff9bab475ee0935d9479f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1ad94b89e948cff9bab475ee0935d9479f" kindref="member">Format_Post_XYZ::finir_xyz</ref>(<ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom_fich,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>est_le_dernier_post)</highlight></codeline>
+<codeline lineno="273"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277" refid="classFormat__Post__XYZ_1a8013940997bd5954abf27ab5869492a4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1a8013940997bd5954abf27ab5869492a4" kindref="member">Format_Post_XYZ::completer_post_xyz</ref>()</highlight></codeline>
+<codeline lineno="278"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="classFormat__Post__XYZ_1a007c6ab7eac43b74130e059b095948fa" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1a007c6ab7eac43b74130e059b095948fa" kindref="member">Format_Post_XYZ::preparer_post_xyz</ref>()</highlight></codeline>
+<codeline lineno="283"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287" refid="classFormat__Post__XYZ_1ad9616f12d3e17d3bf7be4f0f90200057" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1ad9616f12d3e17d3bf7be4f0f90200057" kindref="member">Format_Post_XYZ::ecrire_domaine_xyz</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>domaine,<ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom_fich)</highlight></codeline>
+<codeline lineno="288"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292" refid="classFormat__Post__XYZ_1a4934d24af18c41031f17354583692e62" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1a4934d24af18c41031f17354583692e62" kindref="member">Format_Post_XYZ::ecrire_temps_xyz</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps,<ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom_fich)</highlight></codeline>
+<codeline lineno="293"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297" refid="classFormat__Post__XYZ_1aee0464353e71b765800ad9702f5c1874" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1aee0464353e71b765800ad9702f5c1874" kindref="member">Format_Post_XYZ::ecrire_champ_xyz</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>domaine,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref>&amp;<sp/>unite_,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNoms" kindref="compound">Noms</ref>&amp;<sp/>noms_compo,</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ncomp,</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps_,</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><sp/><sp/>id_du_champ,</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><sp/><sp/>id_du_domaine,</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><sp/><sp/>localisation,</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>data,<ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom_fich,</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>coord)</highlight></codeline>
+<codeline lineno="304"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="305"><highlight class="comment"><sp/><sp/>//////////////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="306"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><ref refid="classEcrFicPartage" kindref="compound">EcrFicPartage</ref><sp/>s;</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight><highlight class="comment">//<sp/>J&apos;ecris<sp/>tout<sp/>en<sp/>une<sp/>seule<sp/>fois<sp/>donc<sp/>pas<sp/>la<sp/>peine<sp/>d&apos;ouvrir<sp/>en<sp/>mode<sp/>append</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/>s.<ref refid="classEcrFicPartage_1a2f211ec98349b75e7445aaea0c1d27eb" kindref="member">ouvrir</ref>(nom_fich);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dim<sp/>=<sp/>coord.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_compo_=1;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(data.<ref refid="classTRUSTTab_1a829be3686b4cf6f076d1dc92870e18f9" kindref="member">nb_dim</ref>()&gt;1)</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/>nb_compo_=data.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>ecrit<sp/>uniquement<sp/>le<sp/>n<sp/>nombre<sp/>de<sp/>lignes<sp/>contenues<sp/>dans<sp/>le<sp/>fichier<sp/>xyz</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>il<sp/>correspond<sp/>au<sp/>nombre<sp/>de<sp/>coordonees</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>data.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classProcess_1acd052b99706c577f8a5b6656217cf4c2" kindref="member">je_suis_maitre</ref>())</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>&lt;&lt;<sp/>n<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;n;<sp/>j++)</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Les<sp/>coord<sp/>du<sp/>point<sp/>j</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ncomp2=0;<sp/>ncomp2&lt;dim;<sp/>ncomp2++)</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&lt;&lt;<sp/>coord(j,<sp/>ncomp2)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Les<sp/>val<sp/>du<sp/>champs<sp/>au<sp/>point<sp/>j</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nb_compo_==1)</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&lt;&lt;<sp/>data(j)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ncomp2=0;<sp/>ncomp2&lt;nb_compo_;<sp/>ncomp2++)</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&lt;&lt;<sp/>data(j,ncomp2)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/>s.<ref refid="classEcrFicPartage_1a5e9f808c1ea06406fff084bdc0571bce" kindref="member">unlockfile</ref>();</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/>s.<ref refid="classEcrFicPartage_1ae8b7380aa567fb1a387c61eb4cb2bba5" kindref="member">syncfile</ref>();</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="333"><highlight class="comment"><sp/><sp/>//////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="334"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/>s.<ref refid="classEcrFicPartage_1aada5cada0d0c228f139a7a9663c29300" kindref="member">flush</ref>();</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/>s.<ref refid="classEcrFicPartage_1ae8b7380aa567fb1a387c61eb4cb2bba5" kindref="member">syncfile</ref>();</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341" refid="classFormat__Post__XYZ_1a2662bbfb9aa0e4f7d349499180995473" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFormat__Post__XYZ_1a2662bbfb9aa0e4f7d349499180995473" kindref="member">Format_Post_XYZ::ecrire_item_int_xyz</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><sp/><sp/>id_item,</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/><sp/><sp/>id_domaine,</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTVect" kindref="compound">IntVect</ref>&amp;<sp/>vect,</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNom" kindref="compound">Nom</ref>&amp;<sp/>nom_fic)</highlight></codeline>
+<codeline lineno="345"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="347"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Postraitement/Format_Post_XYZ.cpp"/>
+  </compounddef>
+</doxygen>

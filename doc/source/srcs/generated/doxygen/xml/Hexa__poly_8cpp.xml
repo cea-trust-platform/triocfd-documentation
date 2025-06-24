@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Hexa__poly_8cpp" kind="file" language="C++">
+    <compoundname>Hexa_poly.cpp</compoundname>
+    <includes refid="Hexa__poly_8h" local="no">Hexa_poly.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Hexa__poly_8cpp_1ae5e57d6316ca9d1281a6bcc49d23e250" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Hexa_polybases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Hexa_polybases</name>
+        <initializer>={   &amp;( <ref refid="classElem__poly__base" kindref="compound">Elem_poly_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/VF/Geometrie/Hexa_poly.cpp" line="19" column="48" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/VF/Geometrie/Hexa_poly.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Hexa_poly.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classHexa__poly_1af4ca7c66dcaba96a796ed6c4fda59e55" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<ref refid="classHexa__poly" kindref="compound">Hexa_poly</ref>,</highlight><highlight class="stringliteral">&quot;Hexa_poly&quot;</highlight><highlight class="normal">,<ref refid="classElem__poly__base" kindref="compound">Elem_poly_base</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>printOn<sp/>et<sp/>readOn</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classHexa__poly_1af565854cd259bc7633d10a188440fce4" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classHexa__poly_1af565854cd259bc7633d10a188440fce4" kindref="member">Hexa_poly::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="24"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classHexa__poly_1aea92c3d60b9c024a7ee73bd49b5950ab" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classHexa__poly_1aea92c3d60b9c024a7ee73bd49b5950ab" kindref="member">Hexa_poly::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s<sp/>)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="33"><highlight class="comment">/*!<sp/>@brief<sp/>KEL_(0,fa7),KEL_(1,fa7)<sp/>sont<sp/><sp/>les<sp/>numeros<sp/>locaux<sp/>des<sp/>2<sp/>faces<sp/>qui<sp/>entourent<sp/>la<sp/>facette<sp/>de<sp/>numero<sp/>local<sp/>fa7</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/><sp/>le<sp/>numero<sp/>local<sp/>de<sp/>la<sp/>fa7<sp/>est<sp/>celui<sp/>du<sp/>sommet<sp/>qui<sp/>la<sp/>porte</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classHexa__poly_1ab4c63ba9f56f4c01fe9c465be02ff115" refkind="member"><highlight class="normal"><ref refid="classHexa__poly_1ab4c63ba9f56f4c01fe9c465be02ff115" kindref="member">Hexa_poly::Hexa_poly</ref>()</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="42"><highlight class="comment">/*!<sp/>@brief<sp/>remplit<sp/>le<sp/>tableau<sp/>face_normales<sp/>dans<sp/>le<sp/>Domaine_poly</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classHexa__poly_1afa61a5bfb8b14e47c0d10b945a488888" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classHexa__poly_1afa61a5bfb8b14e47c0d10b945a488888" kindref="member">Hexa_poly::normale</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_Face,<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>Face_normales,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>Face_sommets,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>Face_voisins,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/>elem_faces,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__32__64" kindref="compound">Domaine</ref>&amp;<sp/>domaine_geom)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="51"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>les_coords<sp/>=<sp/>domaine_geom.<ref refid="classDomaine__32__64_1ac38406cad4d4a168ff220bf1c3bfee72" kindref="member">coord_sommets</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x1,y1,z1,x2,y2,z2;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>nx,ny,nz;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>f0,no4;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>elem1;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>a<sp/>les<sp/>4<sp/>sommets<sp/>de<sp/>la<sp/>face</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n0<sp/>=<sp/>Face_sommets(num_Face,0);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n1<sp/>=<sp/>Face_sommets(num_Face,1);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n2<sp/>=<sp/>Face_sommets(num_Face,2);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n3<sp/>=<sp/>Face_sommets(num_Face,3);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>va<sp/>decouper<sp/>la<sp/>face<sp/>en<sp/>deux<sp/>triangles</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>initialise<sp/>Face_normales(num_face,dimension)<sp/>a<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>car<sp/>on<sp/>va<sp/>sommer<sp/>les<sp/>deux<sp/>face_normale<sp/>des<sp/>triangles</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>Face_normales(num_Face,0)<sp/>=<sp/><sp/>0;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>Face_normales(num_Face,1)<sp/>=<sp/><sp/>0;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>Face_normales(num_Face,2)<sp/>=<sp/><sp/>0;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>prend<sp/>les<sp/>sommet<sp/>S1,S2<sp/>et<sp/>S4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>x1<sp/>=<sp/>les_coords(n0,0)<sp/>-<sp/>les_coords(n1,0);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>y1<sp/>=<sp/>les_coords(n0,1)<sp/>-<sp/>les_coords(n1,1);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>z1<sp/>=<sp/>les_coords(n0,2)<sp/>-<sp/>les_coords(n1,2);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>x2<sp/>=<sp/>les_coords(n3,0)<sp/>-<sp/>les_coords(n1,0);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>y2<sp/>=<sp/>les_coords(n3,1)<sp/>-<sp/>les_coords(n1,1);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>z2<sp/>=<sp/>les_coords(n3,2)<sp/>-<sp/>les_coords(n1,2);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>nx<sp/>=<sp/>(y1*z2<sp/>-<sp/>y2*z1)/2;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>ny<sp/>=<sp/>(-x1*z2<sp/>+<sp/>x2*z1)/2;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>nz<sp/>=<sp/>(x1*y2<sp/>-<sp/>x2*y1)/2;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Orientation<sp/>de<sp/>la<sp/>normale<sp/>de<sp/>elem1<sp/>vers<sp/>elem2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>pour<sp/>cela<sp/>recherche<sp/>du<sp/>sommet<sp/>de<sp/>elem1<sp/>qui<sp/>n&apos;est<sp/>pas<sp/>sur<sp/>la<sp/>Face</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>elem1=Face_voisins(num_Face,0);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(f0<sp/>=<sp/>elem_faces(elem1,0))<sp/>==<sp/>num_Face<sp/>)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>f0<sp/>=<sp/>elem_faces(elem1,1);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(no4<sp/>=<sp/>Face_sommets(f0,0))<sp/>!=<sp/>n0<sp/><sp/><sp/><sp/>&amp;&amp;<sp/><sp/><sp/>no4<sp/>!=<sp/>n1</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/><sp/><sp/>no4<sp/>!=<sp/>n2<sp/>&amp;&amp;<sp/><sp/><sp/>no4<sp/>!=<sp/>n3)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">/*<sp/>Do<sp/>nothing<sp/>*/</highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(no4<sp/>=<sp/>Face_sommets(f0,1))<sp/>!=<sp/>n0<sp/>&amp;&amp;<sp/>no4<sp/>!=<sp/>n1</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>no4<sp/>!=<sp/>n2<sp/>&amp;&amp;<sp/><sp/><sp/>no4<sp/>!=<sp/>n3)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">/*<sp/>Do<sp/>nothing<sp/>*/</highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(no4<sp/>=<sp/>Face_sommets(f0,2))<sp/>!=<sp/>n0<sp/>&amp;&amp;<sp/>no4<sp/>!=<sp/>n1</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>no4<sp/>!=<sp/>n2<sp/>&amp;&amp;<sp/><sp/><sp/>no4<sp/>!=<sp/>n3)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">/*<sp/>Do<sp/>nothing<sp/>*/</highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>no4<sp/>=<sp/>Face_sommets(f0,3);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>x1<sp/>=<sp/>les_coords(no4,0)<sp/>-<sp/>les_coords(n0,0);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>y1<sp/>=<sp/>les_coords(no4,1)<sp/>-<sp/>les_coords(n0,1);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>z1<sp/>=<sp/>les_coords(no4,2)<sp/>-<sp/>les_coords(n0,2);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(nx*x1+ny*y1+nz*z1)<sp/>&gt;<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Face_normales(num_Face,0)<sp/>+=<sp/><sp/>-nx;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Face_normales(num_Face,1)<sp/>+=<sp/><sp/>-ny;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Face_normales(num_Face,2)<sp/>+=<sp/><sp/>-nz;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Face_normales(num_Face,0)<sp/>+=<sp/>nx;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Face_normales(num_Face,1)<sp/>+=<sp/>ny;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Face_normales(num_Face,2)<sp/>+=<sp/>nz;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>prend<sp/>les<sp/>sommet<sp/>S1,S4<sp/>et<sp/>S3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>x1<sp/>=<sp/>les_coords(n0,0)<sp/>-<sp/>les_coords(n2,0);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>y1<sp/>=<sp/>les_coords(n0,1)<sp/>-<sp/>les_coords(n2,1);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>z1<sp/>=<sp/>les_coords(n0,2)<sp/>-<sp/>les_coords(n2,2);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>x2<sp/>=<sp/>les_coords(n3,0)<sp/>-<sp/>les_coords(n2,0);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>y2<sp/>=<sp/>les_coords(n3,1)<sp/>-<sp/>les_coords(n2,1);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>z2<sp/>=<sp/>les_coords(n3,2)<sp/>-<sp/>les_coords(n2,2);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>nx<sp/>=<sp/>(y1*z2<sp/>-<sp/>y2*z1)/2;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>ny<sp/>=<sp/>(-x1*z2<sp/>+<sp/>x2*z1)/2;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>nz<sp/>=<sp/>(x1*y2<sp/>-<sp/>x2*y1)/2;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Orientation<sp/>de<sp/>la<sp/>normale<sp/>de<sp/>elem1<sp/>vers<sp/>elem2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>pour<sp/>cela<sp/>recherche<sp/>du<sp/>sommet<sp/>de<sp/>elem1<sp/>qui<sp/>n&apos;est<sp/>pas<sp/>sur<sp/>la<sp/>Face</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/>elem1=Face_voisins(num_Face,0);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(f0<sp/>=<sp/>elem_faces(elem1,0))<sp/>==<sp/>num_Face<sp/>)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>f0<sp/>=<sp/>elem_faces(elem1,1);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(no4<sp/>=<sp/>Face_sommets(f0,0))<sp/>!=<sp/>n0<sp/><sp/><sp/><sp/>&amp;&amp;<sp/><sp/><sp/>no4<sp/>!=<sp/>n1</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/><sp/><sp/>no4<sp/>!=<sp/>n2<sp/>&amp;&amp;<sp/><sp/><sp/>no4<sp/>!=<sp/>n3)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">/*<sp/>Do<sp/>nothing<sp/>*/</highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(no4<sp/>=<sp/>Face_sommets(f0,1))<sp/>!=<sp/>n0<sp/>&amp;&amp;<sp/>no4<sp/>!=<sp/>n1</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>no4<sp/>!=<sp/>n2<sp/>&amp;&amp;<sp/><sp/><sp/>no4<sp/>!=<sp/>n3)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">/*<sp/>Do<sp/>nothing<sp/>*/</highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(no4<sp/>=<sp/>Face_sommets(f0,2))<sp/>!=<sp/>n0<sp/>&amp;&amp;<sp/>no4<sp/>!=<sp/>n1</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>no4<sp/>!=<sp/>n2<sp/>&amp;&amp;<sp/><sp/><sp/>no4<sp/>!=<sp/>n3)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">/*<sp/>Do<sp/>nothing<sp/>*/</highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>no4<sp/>=<sp/>Face_sommets(f0,3);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>x1<sp/>=<sp/>les_coords(no4,0)<sp/>-<sp/>les_coords(n0,0);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>y1<sp/>=<sp/>les_coords(no4,1)<sp/>-<sp/>les_coords(n0,1);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>z1<sp/>=<sp/>les_coords(no4,2)<sp/>-<sp/>les_coords(n0,2);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(nx*x1+ny*y1+nz*z1)<sp/>&gt;<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Face_normales(num_Face,0)<sp/>+=<sp/><sp/>-nx;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Face_normales(num_Face,1)<sp/>+=<sp/><sp/>-ny;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Face_normales(num_Face,2)<sp/>+=<sp/><sp/>-nz;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Face_normales(num_Face,0)<sp/>+=<sp/>nx;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Face_normales(num_Face,1)<sp/>+=<sp/>ny;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Face_normales(num_Face,2)<sp/>+=<sp/>nz;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="177"><highlight class="comment">/*!<sp/>@brief</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="classHexa__poly_1a77565bb9e03846d37c6541eab774b2c9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classHexa__poly_1a77565bb9e03846d37c6541eab774b2c9" kindref="member">Hexa_poly::calcul_vc</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfInt</ref>&amp;<sp/>Face,<ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>vc,</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTArray" kindref="compound">ArrOfDouble</ref>&amp;<sp/>vs,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>vsom,</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>&amp;<sp/>vitesse,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type_cl)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="183"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>vc[0]<sp/>=<sp/>vs[0]/6;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/>vc[1]<sp/>=<sp/>vs[1]/6;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>vc[2]<sp/>=<sp/>vs[2]/6;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="190"><highlight class="comment">/*!<sp/>@brief<sp/>calcule<sp/>les<sp/>coord<sp/>xg<sp/>du<sp/>centre<sp/>d&apos;un<sp/>element<sp/>non<sp/>standard<sp/>calcule<sp/>aussi<sp/>idirichlet=nb<sp/>de<sp/>faces<sp/>de<sp/>Dirichlet<sp/>de<sp/>l&apos;element</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/>*<sp/><sp/>si<sp/>idirichlet=2,<sp/>n1<sp/>est<sp/>le<sp/>numero<sp/>du<sp/>sommet<sp/>confondu<sp/>avec<sp/>G</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195" refid="classHexa__poly_1ac939ee34d270124b58934b1a785440b2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classHexa__poly_1ac939ee34d270124b58934b1a785440b2" kindref="member">Hexa_poly::calcul_xg</ref>(<ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>xg,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>x,</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type_elem_Cl,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>idirichlet,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>n1,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="197"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j,dim=xg.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0;<sp/>j&lt;dim;<sp/>j++)</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>xg[j]=(x(0,j)+x(1,j)+x(2,j)+x(3,j)+x(4,j)+x(5,j)+x(6,j)+x(7,j))*0.125;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>idirichlet=0;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/VF/Geometrie/Hexa_poly.cpp"/>
+  </compounddef>
+</doxygen>

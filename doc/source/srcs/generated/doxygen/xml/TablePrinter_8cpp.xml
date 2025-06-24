@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="TablePrinter_8cpp" kind="file" language="C++">
+    <compoundname>TablePrinter.cpp</compoundname>
+    <includes refid="TablePrinter_8h" local="no">TablePrinter.h</includes>
+    <includes local="no">stdexcept</includes>
+    <includes local="no">iomanip</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>TablePrinter.cpp</label>
+        <link refid="TablePrinter_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>iomanip</label>
+      </node>
+      <node id="2">
+        <label>stdexcept</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacebprinter">bprinter</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2022,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TablePrinter.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iomanip&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="namespacebprinter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacebprinter" kindref="compound">bprinter</ref></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22" refid="classbprinter_1_1TablePrinter_1acaf9a1c4a57c3e43c54ea05294c6980c" refkind="member"><highlight class="normal"><ref refid="classbprinter_1_1TablePrinter_1acaf9a1c4a57c3e43c54ea05294c6980c" kindref="member">TablePrinter::TablePrinter</ref>(std::ostream<sp/>*<sp/>output,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>separator)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>out_stream_<sp/>=<sp/>output;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>i_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>j_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>separator_<sp/>=<sp/>separator;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>flush_left_<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classbprinter_1_1TablePrinter_1a3a2c769fa513aed05d23b32d6998ec7d" refkind="member"><highlight class="normal"><ref refid="classbprinter_1_1TablePrinter_1a3a2c769fa513aed05d23b32d6998ec7d" kindref="member">TablePrinter::~TablePrinter</ref>()</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classbprinter_1_1TablePrinter_1a45e8fb4a910a159e2acba9835b4528b8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classbprinter_1_1TablePrinter_1a45e8fb4a910a159e2acba9835b4528b8" kindref="member">TablePrinter::get_num_columns</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="37"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)column_headers_.size();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classbprinter_1_1TablePrinter_1addf91935927992b78c5f93c598561f20" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classbprinter_1_1TablePrinter_1addf91935927992b78c5f93c598561f20" kindref="member">TablePrinter::set_separator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>separator)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>separator_<sp/>=<sp/>separator;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classbprinter_1_1TablePrinter_1ad5375fd1ba9880895073c42e43df2c48" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classbprinter_1_1TablePrinter_1ad5375fd1ba9880895073c42e43df2c48" kindref="member">TablePrinter::set_flush_left</ref>()</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>flush_left_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classbprinter_1_1TablePrinter_1a7a7f06022ff96a3ef3e93c58feef4511" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classbprinter_1_1TablePrinter_1a7a7f06022ff96a3ef3e93c58feef4511" kindref="member">TablePrinter::set_flush_right</ref>()</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>flush_left_<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="56"><highlight class="comment">/**<sp/>\brief<sp/>Add<sp/>a<sp/>column<sp/>to<sp/>our<sp/>table</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>**</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>**<sp/>\param<sp/>header_name<sp/>Name<sp/>to<sp/>be<sp/>print<sp/>for<sp/>the<sp/>header</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>**<sp/>\param<sp/>column_width<sp/>the<sp/>width<sp/>of<sp/>the<sp/>column<sp/>(has<sp/>to<sp/>be<sp/>&gt;=5)</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>**<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classbprinter_1_1TablePrinter_1a271d4d46ec64e34f3b00093d0971101d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classbprinter_1_1TablePrinter_1a271d4d46ec64e34f3b00093d0971101d" kindref="member">TablePrinter::AddColumn</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>header_name,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>column_width)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(column_width<sp/>&lt;<sp/>4)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Column<sp/>size<sp/>has<sp/>to<sp/>be<sp/>&gt;=<sp/>4&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>column_headers_.push_back(header_name);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>column_widths_.push_back(column_width);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>TablePrinter::PrintHorizontalLine(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>updown)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>*out_stream_<sp/>&lt;&lt;<sp/>(updown<sp/>&gt;<sp/>0<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;┌&quot;</highlight><highlight class="normal"><sp/>:<sp/>updown<sp/>&lt;<sp/>0<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;└&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;├&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//<sp/>the<sp/>left<sp/>bar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>(int)<sp/>column_widths_.size();<sp/>i++)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>column_widths_[i];<sp/>j++)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*out_stream_<sp/>&lt;&lt;<sp/>(!i<sp/>||<sp/>j<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;─&quot;</highlight><highlight class="normal"><sp/>:<sp/>updown<sp/>&gt;<sp/>0<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;┬─&quot;</highlight><highlight class="normal"><sp/>:<sp/>updown<sp/>&lt;<sp/>0<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;┴─&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;┼─&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>*out_stream_<sp/>&lt;&lt;<sp/>(updown<sp/>&gt;<sp/>0<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;┐&quot;</highlight><highlight class="normal"><sp/>:<sp/>updown<sp/>&lt;<sp/>0<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;┘&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;┤&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//<sp/>the<sp/>right<sp/>bar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>*out_stream_<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classbprinter_1_1TablePrinter_1a4022eb59d90fec098cda994b147ce9b3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classbprinter_1_1TablePrinter_1a4022eb59d90fec098cda994b147ce9b3" kindref="member">TablePrinter::PrintHeader</ref>()</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>PrintHorizontalLine(1);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>*out_stream_<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;│&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<ref refid="classbprinter_1_1TablePrinter_1a45e8fb4a910a159e2acba9835b4528b8" kindref="member">get_num_columns</ref>();<sp/>++i)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(flush_left_)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*out_stream_<sp/>&lt;&lt;<sp/>std::left;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*out_stream_<sp/>&lt;&lt;<sp/>std::right;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*out_stream_<sp/>&lt;&lt;<sp/>std::setw(column_widths_.at(i))<sp/>&lt;&lt;<sp/>column_headers_.at(i).substr(0,<sp/>column_widths_.at(i));</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>!=<sp/><ref refid="classbprinter_1_1TablePrinter_1a45e8fb4a910a159e2acba9835b4528b8" kindref="member">get_num_columns</ref>()-1)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*out_stream_<sp/>&lt;&lt;<sp/>separator_;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>*out_stream_<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;│\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>PrintHorizontalLine();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classbprinter_1_1TablePrinter_1a65a6732835a36a34017ac41b708510ad" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classbprinter_1_1TablePrinter_1a65a6732835a36a34017ac41b708510ad" kindref="member">TablePrinter::PrintFooter</ref>()</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>PrintHorizontalLine(-1);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="classbprinter_1_1TablePrinter_1a58eb807ab40a0d148ed0df51558aae7e" refkind="member"><highlight class="normal"><ref refid="classbprinter_1_1TablePrinter" kindref="compound">TablePrinter</ref>&amp;<sp/><ref refid="classbprinter_1_1TablePrinter_1a00e730b07ad84ddf485891cba803ae8a" kindref="member">TablePrinter::operator&lt;&lt;</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>input)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>OutputDecimalNumber&lt;float&gt;(input);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classbprinter_1_1TablePrinter_1aca3ef362f8cdf47333c20ccef40453ef" refkind="member"><highlight class="normal"><ref refid="classbprinter_1_1TablePrinter" kindref="compound">TablePrinter</ref>&amp;<sp/><ref refid="classbprinter_1_1TablePrinter_1a00e730b07ad84ddf485891cba803ae8a" kindref="member">TablePrinter::operator&lt;&lt;</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>input)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>OutputDecimalNumber&lt;double&gt;(input);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Schemas_Temps/TablePrinter.cpp"/>
+  </compounddef>
+</doxygen>

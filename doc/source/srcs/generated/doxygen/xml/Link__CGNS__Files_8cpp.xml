@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Link__CGNS__Files_8cpp" kind="file" language="C++">
+    <compoundname>Link_CGNS_Files.cpp</compoundname>
+    <includes refid="Link__CGNS__Files_8h" local="no">Link_CGNS_Files.h</includes>
+    <includes refid="Motcle_8h" local="no">Motcle.h</includes>
+    <includes local="no">unistd.h</includes>
+    <includes local="no">cgns++.h</includes>
+    <includes local="no">fstream</includes>
+    <includes local="no">glob.h</includes>
+    <includes local="no">regex</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Link_CGNS_Files.cpp</label>
+        <link refid="Link__CGNS__Files_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cgns++.h</label>
+      </node>
+      <node id="4">
+        <label>fstream</label>
+      </node>
+      <node id="5">
+        <label>glob.h</label>
+      </node>
+      <node id="6">
+        <label>regex</label>
+      </node>
+      <node id="2">
+        <label>unistd.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Link__CGNS__Files_8cpp_1a9e870c3587fb820c4f67e8845db5f948" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Link_CGNS_Filesbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Link_CGNS_Filesbases</name>
+        <initializer>={   &amp;( <ref refid="classInterprete" kindref="compound">Interprete</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Postraitement/Link_CGNS_Files.cpp" line="34" column="101" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Postraitement/Link_CGNS_Files.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Link__CGNS__Files_8cpp_1a16ceb94212074ff8a253855064866f87" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool compare_strings_as_doubles</definition>
+        <argsstring>(const std::string &amp;a, const std::string &amp;b)</argsstring>
+        <name>compare_strings_as_doubles</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Postraitement/Link_CGNS_Files.cpp" line="42" column="13" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Postraitement/Link_CGNS_Files.cpp" bodystart="42" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Link_CGNS_Files.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Motcle.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cgns++.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;glob.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;regex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAS_CGNS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CGNS_STR_SIZE<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>push</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>__GNUC__<sp/>&gt;<sp/>5<sp/>||<sp/>__clang_major__<sp/>&gt;<sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>ignored<sp/>&quot;-Wsuggest-override&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cgnslib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>pop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classLink__CGNS__Files_1a1f6b6338cb1badae62ea599e094405a2" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classLink__CGNS__Files" kindref="compound">Link_CGNS_Files</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Link_CGNS_Files&quot;</highlight><highlight class="normal">,<sp/><ref refid="classInterprete" kindref="compound">Interprete</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>Link_CGNS_Files<sp/>interprete<sp/>Link_CGNS_Files<sp/>-1<sp/>Creates<sp/>a<sp/>single<sp/>CGNS<sp/>xxxx.cgns<sp/>file<sp/>that<sp/>links<sp/>to<sp/>a<sp/>xxxx.grid.cgns<sp/>and<sp/>xxxx.solution.*.cgns<sp/>files</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>base_name<sp/>chaine<sp/>base_name<sp/>0<sp/>Base<sp/>name<sp/>of<sp/>the<sp/>gid/solution<sp/>cgns<sp/>files.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>output_name<sp/>chaine<sp/>output_name<sp/>0<sp/>Name<sp/>of<sp/>the<sp/>output<sp/>cgns<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classLink__CGNS__Files_1a257aa3ae2957f438b224f1d819fa4309" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classLink__CGNS__Files_1a257aa3ae2957f438b224f1d819fa4309" kindref="member">Link_CGNS_Files::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classInterprete_1a4dc57ee68fca0ece3949ec2a307062e5" kindref="member">Interprete::printOn</ref>(os);<sp/>}</highlight></codeline>
+<codeline lineno="40" refid="classLink__CGNS__Files_1a989e521792a3ebff2303e921a547e373" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLink__CGNS__Files_1a989e521792a3ebff2303e921a547e373" kindref="member">Link_CGNS_Files::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classInterprete_1aa53181fde696cbb695f1db6aaabd75e3" kindref="member">Interprete::readOn</ref>(is);<sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>compare_strings_as_doubles(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>b)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::stod(a)<sp/>&lt;<sp/>std::stod(b);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classLink__CGNS__Files_1a68830db460dfd505b7f52768d737aac6" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLink__CGNS__Files_1a68830db460dfd505b7f52768d737aac6" kindref="member">Link_CGNS_Files::interpreter</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAS_CGNS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classProcess_1a48ea49c199fc8961be575e571038b79a" kindref="member">Process::is_parallel</ref>())</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Link_CGNS_Files::interpreter<sp/>=&gt;<sp/>PLEASE<sp/>USE<sp/>THIS<sp/>INTERPRET<sp/>ONLY<sp/>IN<sp/>SEQUENTIAL,<sp/>NOT<sp/>PARALLEL<sp/>!!!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Syntax<sp/>Link_CGNS_Files<sp/>base_name_cgns_files<sp/>output_single_cgns_file&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>base_name,<sp/>output_name;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>base_name<sp/>&gt;&gt;<sp/>output_name;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classMotcle" kindref="compound">Motcle</ref>(output_name).finit_par(</highlight><highlight class="stringliteral">&quot;.cgns&quot;</highlight><highlight class="normal">))<sp/>output_name<sp/>+=<sp/><ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;.cgns&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Step<sp/>1<sp/>:<sp/>Check<sp/>if<sp/>grid<sp/>file<sp/>exists<sp/>!!<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>base_name_modif(base_name);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>base_name_modif.<ref refid="classNom_1aa296fc70f7abcf978968e09582d8fb06" kindref="member">prefix</ref>(</highlight><highlight class="stringliteral">&quot;_SOM&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>base_name_modif.<ref refid="classNom_1aa296fc70f7abcf978968e09582d8fb06" kindref="member">prefix</ref>(</highlight><highlight class="stringliteral">&quot;_ELEM&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>std::string<sp/>tmp_file<sp/>=<sp/>base_name_modif.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.grid.cgns&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>std::ifstream<sp/>file(tmp_file.c_str());</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(file.good())<sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;OK<sp/>:<sp/>The<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tmp_file<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>is<sp/>found<sp/>!!!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>The<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tmp_file<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>is<sp/>not<sp/>found<sp/>!!!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Step<sp/>2<sp/>:<sp/>Check<sp/>if<sp/>solution<sp/>files<sp/>exist<sp/>!!<sp/>Fill<sp/>fileNames<sp/>vector<sp/>at<sp/>same<sp/>time<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>tmp_file<sp/>=<sp/>base_name.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.solution.*.cgns&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>std::vector&lt;std::string&gt;<sp/>fileNames;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__CYGWIN__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>glob_t<sp/>globResult;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>globStatus<sp/>=<sp/>glob(tmp_file.c_str(),<sp/>GLOB_TILDE,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;globResult);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(globStatus<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>globResult.gl_pathc;<sp/>++i)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fileNames.push_back(globResult.gl_pathv[i]);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fileNames.size()<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>static_cast&lt;int&gt;(fileNames.size())<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>files<sp/>found<sp/>with<sp/>the<sp/>pattern<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tmp_file<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>itr<sp/>:<sp/>fileNames)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/>-<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>itr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>files<sp/>found<sp/>with<sp/>the<sp/>pattern<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tmp_file<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>globfree(&amp;globResult);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(globStatus<sp/>==<sp/>GLOB_NOMATCH)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>matches<sp/>found<sp/>for<sp/>the<sp/>pattern<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tmp_file<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>during<sp/>globbing<sp/>in<sp/>Link_CGNS_Files::interpreter<sp/>!!!<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>Not<sp/>for<sp/>CYGWIN<sp/>!!!<sp/>Call<sp/>Gauthier<sp/>for<sp/>help<sp/>!!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Step<sp/>3<sp/>:<sp/>Extract<sp/>time<sp/>post<sp/>and<sp/>fill<sp/>time_post<sp/>vector<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>time_post_d;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>std::vector&lt;std::string&gt;<sp/>time_post_str;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>tmp_file<sp/>=<sp/>base_name.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\\.solution\\.([0-9]+\\.[0-9]+)\\.cgns&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>std::regex<sp/>doublePattern(tmp_file);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;itr<sp/>:<sp/>fileNames)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::smatch<sp/>match;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::regex_search(itr,<sp/>match,<sp/>doublePattern))</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>time_post_d.push_back(std::stod(match[1].str()));</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>time_post_str.push_back(match[1].str());</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>match<sp/>found<sp/>in<sp/>file<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>itr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>On<sp/>sort<sp/>les<sp/>vects<sp/>!!<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Sort<sp/>the<sp/>strings<sp/>as<sp/>doubles</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>std::sort(time_post_str.begin(),<sp/>time_post_str.end(),<sp/>compare_strings_as_doubles);<sp/></highlight><highlight class="comment">//<sp/>XXX<sp/>faut<sp/>ca</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>std::sort(time_post_d.begin(),<sp/>time_post_d.end());<sp/></highlight><highlight class="comment">//<sp/>la<sp/>facile</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>static_cast&lt;int&gt;(time_post_str.size())<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>post<sp/>times<sp/>are<sp/>extracted<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;itr<sp/>:<sp/>time_post_str)</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/>-<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>itr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Step<sp/>4<sp/>:<sp/>Open<sp/>grid<sp/>file<sp/>and<sp/>read<sp/>some<sp/>information<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>True_int<sp/>fileId,<sp/>baseId<sp/>=<sp/>1,<sp/>zoneId<sp/>=<sp/>1,<sp/>cell_dim,<sp/>phys_dim;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>tmp_file<sp/>=<sp/>base_name_modif.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.grid.cgns&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>cgsize_t<sp/>isize[3][1];</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>basename[33],<sp/>zonename[33],<sp/>sectionname[33];<sp/></highlight><highlight class="comment">/*<sp/>Elem<sp/>or<sp/>NGON_n*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/>std::vector&lt;std::string&gt;<sp/>connectname;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Reading<sp/>the<sp/>grid<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tmp_file<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>...&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_open(tmp_file.c_str(),<sp/>CG_MODE_READ,<sp/>&amp;fileId)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_open<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_base_read(fileId,<sp/>baseId,<sp/>basename,<sp/>&amp;cell_dim,<sp/>&amp;phys_dim)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_base_read<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_zone_read(fileId,<sp/>baseId,<sp/>zoneId,<sp/>zonename,<sp/>isize[0])<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_zone_read<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>True_int<sp/>nsections;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_nsections(fileId,<sp/>baseId,<sp/>zoneId,<sp/>&amp;nsections)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_nsections<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>CGNS_ENUMT(ElementType_t)<sp/>itype;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>cgsize_t<sp/>istart,<sp/>iend;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/>True_int<sp/>nbndry,<sp/>iparent_flag;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index_sect<sp/>=<sp/>1;<sp/>index_sect<sp/>&lt;=<sp/>nsections;<sp/>index_sect++)</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_section_read(fileId,<sp/>baseId,<sp/>zoneId,<sp/>index_sect,<sp/>sectionname,<sp/>&amp;itype,<sp/>&amp;istart,<sp/>&amp;iend,<sp/>&amp;nbndry,<sp/>&amp;iparent_flag)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_section_read<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>connectname.push_back(std::string(sectionname));</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_close(fileId)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_close<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>OK<sp/>!!<sp/><sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Step<sp/>5<sp/>:<sp/>Now<sp/>we<sp/>can<sp/>link<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>tmp_file<sp/>=<sp/>output_name.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>();<sp/></highlight><highlight class="comment">//<sp/>contient<sp/>deja<sp/>l&apos;extension<sp/>cgns<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/>unlink(tmp_file.c_str());</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Writing<sp/>the<sp/>link<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tmp_file<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_open(tmp_file.c_str(),<sp/>CG_MODE_WRITE,<sp/>&amp;fileId)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_open<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;****<sp/>CGNS<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tmp_file<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>opened<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_base_write(fileId,<sp/>basename,<sp/>cell_dim,<sp/>phys_dim,<sp/>&amp;baseId)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_base_write<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_zone_write(fileId,<sp/>baseId,<sp/>zonename,<sp/>isize[0],<sp/>CGNS_ENUMV(Unstructured),<sp/>&amp;zoneId)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_base_write<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/>std::string<sp/>linkfile<sp/>=<sp/>base_name_modif.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.grid.cgns&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>file<sp/>name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>std::string<sp/>linkpath<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::string(basename)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::string(zonename)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/GridCoordinates/&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_goto(fileId,<sp/>baseId,<sp/></highlight><highlight class="stringliteral">&quot;Zone_t&quot;</highlight><highlight class="normal">,<sp/>1,<sp/></highlight><highlight class="stringliteral">&quot;end&quot;</highlight><highlight class="normal">)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_goto<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_link_write(</highlight><highlight class="stringliteral">&quot;GridCoordinates&quot;</highlight><highlight class="normal">,<sp/>linkfile.c_str(),<sp/>linkpath.c_str())<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_link_write<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;itr<sp/>:<sp/>connectname)</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>linkpath<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::string(basename)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::string(zonename)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>+<sp/>itr<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_link_write(itr.c_str(),<sp/>linkfile.c_str(),<sp/>linkpath.c_str())<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_link_write<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>link<sp/>solutions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/>std::string<sp/>LOC;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(base_name.<ref refid="classNom_1a352790480327a4c89b75c59c4fd20b4a" kindref="member">finit_par</ref>(</highlight><highlight class="stringliteral">&quot;ELEM&quot;</highlight><highlight class="normal">))<sp/>LOC<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ELEM&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(base_name.<ref refid="classNom_1a352790480327a4c89b75c59c4fd20b4a" kindref="member">finit_par</ref>(</highlight><highlight class="stringliteral">&quot;SOM&quot;</highlight><highlight class="normal">))<sp/>LOC<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SOM&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>The<sp/>base_name<sp/>provided<sp/>(<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>base_name<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>)<sp/>should<sp/>finish<sp/>with<sp/>ELEM/SOM<sp/>!!<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Otherwise<sp/>we<sp/>dont<sp/>know<sp/>where<sp/>the<sp/>solutions<sp/>are<sp/>located.<sp/>Call<sp/>the<sp/>911<sp/>!!!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/>std::string<sp/>solname_all<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;itr<sp/>:<sp/>time_post_str)</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>solname<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;FlowSolution&quot;</highlight><highlight class="normal"><sp/>+<sp/>itr<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal"><sp/>+<sp/>LOC;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>linkfile<sp/>=<sp/>base_name.<ref refid="classNom_1ad71b1114cce16c93232450de03848dfc" kindref="member">getString</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.solution.&quot;</highlight><highlight class="normal"><sp/>+<sp/>itr<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.cgns&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>file<sp/>name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>linkpath<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::string(basename)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::string(zonename)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>+<sp/>solname<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_link_write(solname.c_str(),<sp/>linkfile.c_str(),<sp/>linkpath.c_str())<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_link_write<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>solname.resize(CGNS_STR_SIZE,<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>solname_all<sp/>+=<sp/>solname;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nsteps<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(time_post_d.size());</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_biter_write(fileId,<sp/>baseId,<sp/></highlight><highlight class="stringliteral">&quot;TimeIterValues&quot;</highlight><highlight class="normal">,<sp/>nsteps)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Ecrire_CGNS::cgns_write_link_file<sp/>:<sp/>cg_biter_write<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_goto(fileId,<sp/>baseId,<sp/></highlight><highlight class="stringliteral">&quot;BaseIterativeData_t&quot;</highlight><highlight class="normal">,<sp/>1,<sp/></highlight><highlight class="stringliteral">&quot;end&quot;</highlight><highlight class="normal">)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Ecrire_CGNS::cgns_write_link_file<sp/>:<sp/>cg_goto<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/>cgsize_t<sp/>nuse<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">cgsize_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(nsteps);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_array_write(</highlight><highlight class="stringliteral">&quot;TimeValues&quot;</highlight><highlight class="normal">,<sp/>CGNS_ENUMV(RealDouble),<sp/>1,<sp/>&amp;nuse,<sp/>time_post_d.data())<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Ecrire_CGNS::cgns_write_link_file<sp/>:<sp/>cg_array_write<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_ziter_write(fileId,<sp/>baseId,<sp/>zoneId,<sp/></highlight><highlight class="stringliteral">&quot;ZoneIterativeData&quot;</highlight><highlight class="normal">)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Ecrire_CGNS::cgns_write_link_file<sp/>:<sp/>cg_ziter_write<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_goto(fileId,<sp/>baseId,<sp/></highlight><highlight class="stringliteral">&quot;Zone_t&quot;</highlight><highlight class="normal">,<sp/>zoneId,<sp/></highlight><highlight class="stringliteral">&quot;ZoneIterativeData_t&quot;</highlight><highlight class="normal">,<sp/>1,<sp/></highlight><highlight class="stringliteral">&quot;end&quot;</highlight><highlight class="normal">)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Ecrire_CGNS::cgns_write_link_file<sp/>:<sp/>cg_goto<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/>cgsize_t<sp/>idata[2];</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/>idata[0]<sp/>=<sp/>CGNS_STR_SIZE;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/>idata[1]<sp/>=<sp/>nsteps;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_array_write(</highlight><highlight class="stringliteral">&quot;FlowSolutionPointers&quot;</highlight><highlight class="normal">,<sp/>CGNS_ENUMV(Character),<sp/>2,<sp/>idata,<sp/>solname_all.c_str())<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Ecrire_CGNS::cgns_write_iters_seq<sp/>:<sp/>cg_array_write<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_simulation_type_write(fileId,<sp/>baseId,<sp/>CGNS_ENUMV(TimeAccurate))<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Ecrire_CGNS::cgns_write_link_file<sp/>:<sp/>cg_simulation_type_write<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cg_close(fileId)<sp/>!=<sp/>CG_OK)</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>Link_CGNS_Files::interpreter<sp/>:<sp/>cg_close<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl,<sp/>cg_error_exit();</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;All<sp/>OK<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;****<sp/>CGNS<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>tmp_file<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>closed<sp/>!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Link_CGNS_Files::interpreter<sp/>should<sp/>not<sp/>be<sp/>called<sp/>since<sp/>TRUST<sp/>is<sp/>not<sp/>compiled<sp/>with<sp/>the<sp/>CGNS<sp/>library<sp/>!!!<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Postraitement/Link_CGNS_Files.cpp"/>
+  </compounddef>
+</doxygen>

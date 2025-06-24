@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="QDM__Multiphase_8h" kind="file" language="C++">
+    <compoundname>QDM_Multiphase.h</compoundname>
+    <includes refid="Operateur__Evanescence_8h" local="no">Operateur_Evanescence.h</includes>
+    <includes refid="Navier__Stokes__std_8h" local="no">Navier_Stokes_std.h</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="Dispersion__bulles__turbulente__Bazin_8cpp" local="no">Dispersion_bulles_turbulente_Bazin.cpp</includedby>
+    <includedby refid="Dispersion__bulles__turbulente__Burns_8cpp" local="no">Dispersion_bulles_turbulente_Burns.cpp</includedby>
+    <includedby refid="Dispersion__bulles__turbulente__Lavieville_8cpp" local="no">Dispersion_bulles_turbulente_Lavieville.cpp</includedby>
+    <includedby refid="Interface__base_8cpp" local="no">Interface_base.cpp</includedby>
+    <includedby refid="Loi__paroi__Ramstorfer_8cpp" local="no">Loi_paroi_Ramstorfer.cpp</includedby>
+    <includedby refid="Loi__paroi__adaptative_8cpp" local="no">Loi_paroi_adaptative.cpp</includedby>
+    <includedby refid="Loi__paroi__log_8cpp" local="no">Loi_paroi_log.cpp</includedby>
+    <includedby refid="Pb__Multiphase_8h" local="no">Pb_Multiphase.h</includedby>
+    <includedby refid="Perte__Charge__PolyMAC_8cpp" local="no">Perte_Charge_PolyMAC.cpp</includedby>
+    <includedby refid="Perte__Charge__VDF__base_8cpp" local="no">Perte_Charge_VDF_base.cpp</includedby>
+    <includedby refid="QDM__Multiphase_8cpp" local="no">QDM_Multiphase.cpp</includedby>
+    <includedby refid="SETS_8cpp" local="no">SETS.cpp</includedby>
+    <includedby refid="Saturation__base_8cpp" local="no">Saturation_base.cpp</includedby>
+    <includedby refid="Source__Diffusion__supplementaire__echelle__temp__turb_8cpp" local="no">Source_Diffusion_supplementaire_echelle_temp_turb.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>QDM_Multiphase.h</label>
+        <link refid="QDM__Multiphase_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classQDM__Multiphase" prot="public">QDM_Multiphase</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>QDM_Multiphase_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QDM_Multiphase_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur_Evanescence.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="23"><highlight class="comment">/*!<sp/>@brief<sp/>classe<sp/>QDM_Multiphase<sp/>Cette<sp/>classe<sp/>porte<sp/>les<sp/>termes<sp/>de<sp/>l&apos;equation<sp/>de<sp/>la<sp/>dynamique</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>pour<sp/>un<sp/>fluide<sp/>sans<sp/>modelisation<sp/>de<sp/>la<sp/>turbulence.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>On<sp/>suppose<sp/>l&apos;hypothese<sp/>de<sp/>fluide<sp/>quasi<sp/>compressible.</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Sous<sp/>ces<sp/>hypotheses,<sp/>on<sp/>utilise<sp/>la<sp/>forme<sp/>suivante<sp/>des<sp/>equations<sp/>de</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Navier_Stokes:</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DU/dt<sp/>=<sp/>div(terme<sp/>visqueux)<sp/>-<sp/>gradP/rho<sp/>+<sp/>sources/rho</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>div<sp/>U<sp/>=<sp/>W</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>avec<sp/>DU/dt<sp/>:<sp/>derivee<sp/>particulaire<sp/>de<sp/>la<sp/>vitesse</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rho<sp/><sp/><sp/>:<sp/>masse<sp/>volumique</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Rq<sp/>:<sp/>l&apos;implementation<sp/>de<sp/>la<sp/>classe<sp/>permet<sp/>bien<sp/>sur<sp/>de<sp/>negliger</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>certains<sp/>termes<sp/>de<sp/>l&apos;equation<sp/>(le<sp/>terme<sp/>visqueux,<sp/>le<sp/>terme</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>convectif,<sp/>tel<sp/>ou<sp/>tel<sp/>terme<sp/>source).</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>L&apos;inconnue<sp/>est<sp/>le<sp/>champ<sp/>de<sp/>vitesse.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@sa<sp/>Equation_base<sp/>Pb_Thermohydraulique_QC<sp/>Navier_Stokes_std</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classQDM__Multiphase" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classQDM__Multiphase" kindref="compound">QDM_Multiphase</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42" refid="classQDM__Multiphase_1aec0f094044fb829b42b1bcee3a05a0b1" refkind="member"><highlight class="normal"><sp/><sp/>Declare_instanciable(<ref refid="classQDM__Multiphase" kindref="compound">QDM_Multiphase</ref>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">public<sp/>:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1a6599cffb9326c381f2f384731df8162c" kindref="member">set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1af5bf15b3b523fafe25f5571cf2e06e85" kindref="member">lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1a1409206985c652c5343dc1368a762c49" kindref="member">completer</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1a3c4a23ff9cc63d2ce141d49e78e25f77" kindref="member">discretiser_vitesse</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1a4e53a9161aea8b9a2ad237da8c3e32dc" kindref="member">discretiser_grad_p</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1ab7c36b9443dc8fe4d7a46f61af7f8da5" kindref="member">mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52" refid="classQDM__Multiphase_1abce71f2e41088f1645fc4402b2567c67" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1abce71f2e41088f1645fc4402b2567c67" kindref="member">impr</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
+<codeline lineno="53"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEquation__base_1a627afccc65b5c1031a9fdeaadb2c6e62" kindref="member">Equation_base::impr</ref>(os);<sp/></highlight><highlight class="comment">//idem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1a1aac1db7b374ef9e9f5f135509b72419" kindref="member">initTimeStep</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1a6cabfcdadea13f7105634b0faf856d1d" kindref="member">abortTimeStep</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1ae9962fbeb75576a2a9639f6ba1e17943" kindref="member">dimensionner_matrice_sans_mem</ref>(<ref refid="classMatrice__Morse" kindref="compound">Matrice_Morse</ref>&amp;<sp/>matrice)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/>interface<sp/>{dimensionner,assembler}_blocs</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/>specificites<sp/>:<sp/>prend<sp/>en<sp/>compte<sp/>l&apos;evanescence<sp/>(en<sp/>dernier)</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1ac93d2c9f9243054bcb70b60220e0fb92" kindref="member">has_interface_blocs</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1a1561cd55d09c20fada811f0075a4a368" kindref="member">dimensionner_blocs</ref>(matrices_t<sp/>matrices,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>tabs_t&amp;<sp/>semi_impl<sp/>=<sp/>{})<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__Don__base" kindref="compound">Champ_Don_base</ref>&amp;<sp/><ref refid="classQDM__Multiphase_1a244839778421ab0d959ff01b49c08aa2" kindref="member">diffusivite_pour_transport</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classQDM__Multiphase_1acd8c2705e30cdb5d3a0c0b2775d5bf30" kindref="member">diffusivite_pour_pas_de_temps</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classChamp__base" kindref="compound">Champ_base</ref>&amp;<sp/><ref refid="classQDM__Multiphase_1a4627b35d158b7e66f3514d1554636e0d" kindref="member">vitesse_pour_transport</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1a7434d149a38184ddfeb27ba9d82ddd6b" kindref="member">assembler_blocs_avec_inertie</ref>(matrices_t<sp/>matrices,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>secmem,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>tabs_t&amp;<sp/>semi_impl<sp/>=<sp/>{})<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1a317626daed1651286d00792a06c24d56" kindref="member">creer_champ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>motlu)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1a1e2ad1b678ee561fab369dd23fa44341" kindref="member">get_noms_champs_postraitables</ref>(<ref refid="classNoms" kindref="compound">Noms</ref>&amp;<sp/>nom,Option<sp/>opt=NONE)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1a7ff746feef6f66ddff65fcb423f0d3a9" kindref="member">alpha_res</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classQDM__Multiphase_1aab04b198650a671453a5145a814b74af" kindref="member">lire_cond_init</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//pour<sp/>lire<sp/>la<sp/>pression</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classQDM__Multiphase_1a6e2f1858cac039ea8f7de1d612af908b" kindref="member">preparer_calcul</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//appelle<sp/>la<sp/>methode<sp/>de<sp/>Equation_base</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classQDM__Multiphase_1a4357fe97db8ea635ece6c2f4b03e1627" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;OWN_PTR(<ref refid="classChamp__Inc__base" kindref="compound">Champ_Inc_base</ref>)&gt;<sp/><ref refid="classQDM__Multiphase_1a4357fe97db8ea635ece6c2f4b03e1627" kindref="member">vit_phases_</ref>;<sp/></highlight><highlight class="comment">//vitesses<sp/>de<sp/>chaque<sp/>phase</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classQDM__Multiphase_1acc25b980cf71066480ba809f5885994d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classMotcles" kindref="compound">Motcles</ref><sp/><ref refid="classQDM__Multiphase_1acc25b980cf71066480ba809f5885994d" kindref="member">noms_vit_phases_</ref>;<sp/></highlight><highlight class="comment">//leurs<sp/>noms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classQDM__Multiphase_1a3085351deb3c038b5df9c097618972d1" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;OWN_PTR(<ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>)&gt;<sp/><ref refid="classQDM__Multiphase_1a3085351deb3c038b5df9c097618972d1" kindref="member">grad_vit_phases_</ref>;<sp/></highlight><highlight class="comment">//gradient<sp/>des<sp/>vitesses<sp/>de<sp/>chaque<sp/>phase</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classQDM__Multiphase_1a34388ea25c2afae0395364b1804e347b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classMotcles" kindref="compound">Motcles</ref><sp/><ref refid="classQDM__Multiphase_1a34388ea25c2afae0395364b1804e347b" kindref="member">noms_grad_vit_phases_</ref>;<sp/></highlight><highlight class="comment">//leurs<sp/>noms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classQDM__Multiphase_1a1d3a43f6a2f18f72ba6eec91ccda6f54" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__Evanescence" kindref="compound">Operateur_Evanescence</ref><sp/><ref refid="classQDM__Multiphase_1a1d3a43f6a2f18f72ba6eec91ccda6f54" kindref="member">evanescence_</ref>;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>QDM_Multiphase_included<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Equations/QDM_Multiphase.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Pb__Phase__field_8cpp" kind="file" language="C++">
+    <compoundname>Pb_Phase_field.cpp</compoundname>
+    <includes refid="Pb__Phase__field_8h" local="no">Pb_Phase_field.h</includes>
+    <includes refid="Fluide__Incompressible_8h" local="no">Fluide_Incompressible.h</includes>
+    <includes refid="Constituant_8h" local="no">Constituant.h</includes>
+    <includes refid="Verif__Cl_8h" local="no">Verif_Cl.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Pb__Phase__field_8cpp_1a1032077d89a5b13f86fca5c07573ae43" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Pb_Phase_fieldbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Pb_Phase_fieldbases</name>
+        <initializer>={   &amp;( <ref refid="classPb__Fluide__base" kindref="compound">Pb_Fluide_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Phase_field/Pb_Phase_field.cpp" line="28" column="97" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Phase_field/Pb_Phase_field.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>File:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Pb_Phase_field.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Directory:<sp/><sp/><sp/>$TRUST_ROOT/../Composants/TrioCFD/Phase_field/src</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version:<sp/><sp/><sp/><sp/><sp/>/main/14</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//////////////////////////////////////////////////////////////////////////////</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Pb_Phase_field.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Incompressible.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Constituant.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Verif_Cl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classPb__Phase__field_1a5a7619c7b0bcb008f66efa7b7b39096b" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classPb__Phase__field" kindref="compound">Pb_Phase_field</ref>,</highlight><highlight class="stringliteral">&quot;Pb_Phase_field&quot;</highlight><highlight class="normal">,<ref refid="classPb__Fluide__base" kindref="compound">Pb_Fluide_base</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>pb_phase_field<sp/>Pb_base<sp/>pb_phase_field<sp/>-1<sp/>Problem<sp/>to<sp/>solve<sp/>local<sp/>instantaneous<sp/>incompressible-two-phase-flows.<sp/>Complete<sp/>description<sp/>of<sp/>the<sp/>Phase<sp/>Field<sp/>model<sp/>for<sp/>incompressible<sp/>and<sp/>immiscible<sp/>fluids<sp/>can<sp/>be<sp/>found<sp/>into<sp/>this<sp/>PDF:<sp/>TRUST_ROOT/doc/TRUST/phase_field_non_miscible_manuel.pdf</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>fluide_incompressible<sp/>fluide_incompressible<sp/>fluide_incompressible<sp/>0<sp/>The<sp/>fluid<sp/>medium<sp/>associated<sp/>with<sp/>the<sp/>problem.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>constituant<sp/>constituant<sp/>constituant<sp/>1<sp/>Constituents.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>navier_stokes_phase_field<sp/>navier_stokes_phase_field<sp/>navier_stokes_phase_field<sp/>1<sp/>Navier<sp/>Stokes<sp/>equation<sp/>for<sp/>the<sp/>Phase<sp/>Field<sp/>problem.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>convection_diffusion_phase_field<sp/>convection_diffusion_phase_field<sp/>convection_diffusion_phase_field<sp/>1<sp/>Cahn-Hilliard<sp/>equation<sp/>of<sp/>the<sp/>Phase<sp/>Field<sp/>problem.<sp/>The<sp/>unknown<sp/>of<sp/>this<sp/>equation<sp/>is<sp/>the<sp/>concentration<sp/>C.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="35"><highlight class="comment">/*!<sp/>@brief<sp/>Simple<sp/>appel<sp/>a:<sp/>Pb_Fluide_base::printOn(Sortie&amp;)<sp/>Ecrit<sp/>le<sp/>probleme<sp/>sur<sp/>un<sp/>flot<sp/>de<sp/>sortie.</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>os)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Sortie&amp;)<sp/>le<sp/>flot<sp/>de<sp/>sortie<sp/>modifie</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classPb__Phase__field_1ad5b693b6e426474aa01146222262a0bc" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classPb__Phase__field_1ad5b693b6e426474aa01146222262a0bc" kindref="member">Pb_Phase_field::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="41"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Fluide__base_1ac68757b7d0963d934c6becc0b9d39788" kindref="member">Pb_Fluide_base::printOn</ref>(os);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="46"><highlight class="comment">/*!<sp/>@brief<sp/>Simple<sp/>appel<sp/>a:<sp/>Pb_Fluide_base::readOn(Entree&amp;)<sp/>Lit<sp/>le<sp/>probleme<sp/>a<sp/>partir<sp/>d&apos;un<sp/>flot<sp/>d&apos;entree.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>un<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Entree&amp;)<sp/>le<sp/>flot<sp/>d&apos;entree<sp/>modifie</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classPb__Phase__field_1af5ec7a481f0a821788a0fef63fcbd732" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classPb__Phase__field_1af5ec7a481f0a821788a0fef63fcbd732" kindref="member">Pb_Phase_field::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Fluide__base_1ab8bffa0c0f798bdcf34da74cc3732930" kindref="member">Pb_Fluide_base::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="56"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>le<sp/>nombre<sp/>d&apos;equation,<sp/>Renvoie<sp/>2<sp/>car<sp/>il<sp/>y<sp/>a<sp/>2<sp/>equations<sp/>a<sp/>un<sp/>probleme</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>hydraulique<sp/>avec<sp/>transport:</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>l&apos;equation<sp/>de<sp/>Navier<sp/>Stokes</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>une<sp/>equation<sp/>de<sp/>convection-diffusion<sp/>(eventuellement<sp/>vectorielle)</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>le<sp/>nombre<sp/>d&apos;equation</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classPb__Phase__field_1a07eb09376e6c20eecf911f5974cf14c7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPb__Phase__field_1a07eb09376e6c20eecf911f5974cf14c7" kindref="member">Pb_Phase_field::nombre_d_equations</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="65"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="69"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;equation<sp/>d&apos;hydraulique<sp/>de<sp/>type<sp/>Navier_Stokes_std<sp/>si<sp/>i=0<sp/>Renvoie<sp/>l&apos;equation<sp/>de<sp/>convection-diffusion<sp/>de<sp/>type</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Convection_Diffusion_Concentration<sp/>si<sp/>i=1</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(l&apos;equation<sp/>de<sp/>convection<sp/>diffusion<sp/>peut-etre<sp/>vectorielle)</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(version<sp/>const)</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>l&apos;index<sp/>de<sp/>l&apos;equation<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Equation_base&amp;)<sp/>l&apos;equation<sp/>correspondante<sp/>a<sp/>l&apos;index</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classPb__Phase__field_1afd6ac6bea5c5f1fcb0cdc8a8d01dca4e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/><ref refid="classPb__Phase__field_1afd6ac6bea5c5f1fcb0cdc8a8d01dca4e" kindref="member">Pb_Phase_field::equation</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="79"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>assert<sp/>((i==0)<sp/>||<sp/>(i==1));</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Phase__field_1a027a6408506a8a19e14d83806534c16f" kindref="member">eq_hydraulique</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Phase__field_1ad43b8fd34f230f851b13407a5e058b61" kindref="member">eq_concentration</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="91"><highlight class="comment">/*!<sp/>@brief<sp/>Renvoie<sp/>l&apos;equation<sp/>d&apos;hydraulique<sp/>de<sp/>type<sp/>Navier_Stokes<sp/>si<sp/>i=0<sp/>Renvoie<sp/>l&apos;equation<sp/>de<sp/>convection-diffusion<sp/>de<sp/>type</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Convection_Diffusion_Concentration<sp/>si<sp/>i=1</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>(l&apos;equation<sp/>de<sp/>convection<sp/>diffusion<sp/>peut-etre<sp/>vectorielle)</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>@param<sp/>(int<sp/>i)<sp/>l&apos;index<sp/>de<sp/>l&apos;equation<sp/>a<sp/>renvoyer</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*<sp/>@return<sp/>(Equation_base&amp;)<sp/>l&apos;equation<sp/>correspondante<sp/>a<sp/>l&apos;index</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="classPb__Phase__field_1aa4b2d53163f2811f74349664920df1dd" refkind="member"><highlight class="normal"><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/><ref refid="classPb__Phase__field_1afd6ac6bea5c5f1fcb0cdc8a8d01dca4e" kindref="member">Pb_Phase_field::equation</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>assert<sp/>((i==0)<sp/>||<sp/>(i==1));</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Phase__field_1a027a6408506a8a19e14d83806534c16f" kindref="member">eq_hydraulique</ref>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPb__Phase__field_1ad43b8fd34f230f851b13407a5e058b61" kindref="member">eq_concentration</ref>;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="113"><highlight class="comment">/*!<sp/>@brief<sp/>Associe<sp/>un<sp/>milieu<sp/>au<sp/>probleme,<sp/>Si<sp/>le<sp/>milieu<sp/>est<sp/>de<sp/>type</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>Fluide_Incompressible,<sp/>il<sp/>sera<sp/>associe<sp/>a<sp/>l&apos;equation<sp/>de<sp/>l&apos;hydraulique</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>Constituant,<sp/>il<sp/>sera<sp/>associe<sp/>a<sp/>l&apos;equation<sp/>de<sp/>convection-diffusion</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Un<sp/>autre<sp/>type<sp/>de<sp/>milieu<sp/>provoque<sp/>une<sp/>erreur</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Milieu_base&amp;<sp/>mil)<sp/>le<sp/>milieu<sp/>physique<sp/>a<sp/>associer<sp/>au<sp/>probleme</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*<sp/>@throws<sp/>mauvais<sp/>type<sp/>de<sp/>milieu<sp/>physique</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classPb__Phase__field_1a761276a052873e1b13a97ca0319c6caf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPb__Phase__field_1a761276a052873e1b13a97ca0319c6caf" kindref="member">Pb_Phase_field::associer_milieu_base</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMilieu__base" kindref="compound">Milieu_base</ref>&amp;<sp/>mil)</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>sub_type(<ref refid="classFluide__Incompressible" kindref="compound">Fluide_Incompressible</ref>,mil)<sp/>)</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPb__Phase__field_1a027a6408506a8a19e14d83806534c16f" kindref="member">eq_hydraulique</ref>.<ref refid="classNavier__Stokes__std_1ad65b48c356ad59a2277770f875b5b422" kindref="member">associer_milieu_base</ref>(mil);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>sub_type(<ref refid="classConstituant" kindref="compound">Constituant</ref>,mil)<sp/>)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPb__Phase__field_1ad43b8fd34f230f851b13407a5e058b61" kindref="member">eq_concentration</ref>.<ref refid="classConvection__Diffusion__Concentration_1ac332faaea21042251ecd8e6ab5a3595b" kindref="member">associer_milieu_base</ref>(mil);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Un<sp/>milieu<sp/>de<sp/>type<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mil.<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>ne<sp/>peut<sp/>etre<sp/>associe<sp/>a<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;un<sp/>probleme<sp/>de<sp/>type<sp/>Pb_Phase_field<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">Process::exit</ref>();</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="classPb__Phase__field_1a9c1ad65800ff01dbe242fcdce7a9b9f5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPb__Phase__field_1a9c1ad65800ff01dbe242fcdce7a9b9f5" kindref="member">Pb_Phase_field::typer_lire_milieu</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_milieu<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><ref refid="classProbleme__base_1a5c2d46e12fc101bcc054cee4dbcbe25b" kindref="member">le_milieu_</ref>.resize(nb_milieu);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nb_milieu;<sp/>i++)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classProbleme__base_1a5c2d46e12fc101bcc054cee4dbcbe25b" kindref="member">le_milieu_</ref>[i];<sp/></highlight><highlight class="comment">//<sp/>On<sp/>commence<sp/>par<sp/>la<sp/>lecture<sp/>du<sp/>milieu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPb__Phase__field_1a761276a052873e1b13a97ca0319c6caf" kindref="member">associer_milieu_base</ref>(<ref refid="classProbleme__base_1a5c2d46e12fc101bcc054cee4dbcbe25b" kindref="member">le_milieu_</ref>[i].valeur());<sp/></highlight><highlight class="comment">//<sp/>On<sp/>l&apos;associe<sp/>a<sp/>chaque<sp/>equations<sp/>(methode<sp/>virtuelle<sp/>pour<sp/>chaque<sp/>pb<sp/>...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="classProbleme__base_1a3234efba684d84bdd6db5895ae620ac7" kindref="member">Probleme_base::discretiser_equations</ref>();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>remontee<sp/>de<sp/>l&apos;inconnue<sp/>vers<sp/>le<sp/>milieu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="classPb__Phase__field_1a07eb09376e6c20eecf911f5974cf14c7" kindref="member">nombre_d_equations</ref>();<sp/>i++)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPb__Phase__field_1afd6ac6bea5c5f1fcb0cdc8a8d01dca4e" kindref="member">equation</ref>(i).<ref refid="classEquation__base_1a16b5af9ce66738d4d05d2567e417ff3d" kindref="member">associer_milieu_equation</ref>();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPb__Phase__field_1afd6ac6bea5c5f1fcb0cdc8a8d01dca4e" kindref="member">equation</ref>(i).<ref refid="classEquation__base_1a1ca88930cf00c12a910ad27ac840719c" kindref="member">milieu</ref>().<ref refid="classMilieu__base_1a76dffc16168f8e822fde763bfe60fb93" kindref="member">discretiser</ref>((*</highlight><highlight class="keyword">this</highlight><highlight class="normal">),<sp/><ref refid="classProbleme__base_1ab0b3e0a95ce2b2bf66c5149daadc7ef0" kindref="member">la_discretisation_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="156"><highlight class="comment">/*!<sp/>@brief<sp/>Teste<sp/>la<sp/>compatibilite<sp/>des<sp/>equations<sp/>de<sp/>convection-diffusion<sp/>et<sp/>de<sp/>l&apos;hydraulique.</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/>*<sp/>Le<sp/>test<sp/>se<sp/>fait<sp/>sur<sp/>les<sp/>conditions</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>aux<sp/>limites<sp/>discretisees<sp/>de<sp/>chaque<sp/>equation.</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Appel<sp/>la<sp/>fonction<sp/>de<sp/>librairie<sp/>hors<sp/>classe:</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>tester_compatibilite_hydr_concentration(const<sp/>Domaine_Cl_dis_base&amp;,const<sp/>Domaine_Cl_dis_base&amp;)</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>code<sp/>de<sp/>retour<sp/>propage</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="classPb__Phase__field_1ae719ec78efecb7e6593f893cb95a27dd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classPb__Phase__field_1ae719ec78efecb7e6593f893cb95a27dd" kindref="member">Pb_Phase_field::verifier</ref>()</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__dis__base" kindref="compound">Domaine_Cl_dis_base</ref>&amp;<sp/>domaine_Cl_hydr<sp/>=<sp/><ref refid="classPb__Phase__field_1a027a6408506a8a19e14d83806534c16f" kindref="member">eq_hydraulique</ref>.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>();</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__dis__base" kindref="compound">Domaine_Cl_dis_base</ref>&amp;<sp/>domaine_Cl_co<sp/>=<sp/><ref refid="classPb__Phase__field_1ad43b8fd34f230f851b13407a5e058b61" kindref="member">eq_concentration</ref>.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tester_compatibilite_hydr_concentration(domaine_Cl_hydr,domaine_Cl_co);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Phase_field/Pb_Phase_field.cpp"/>
+  </compounddef>
+</doxygen>

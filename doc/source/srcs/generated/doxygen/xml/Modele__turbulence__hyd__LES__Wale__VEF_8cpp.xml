@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Modele__turbulence__hyd__LES__Wale__VEF_8cpp" kind="file" language="C++">
+    <compoundname>Modele_turbulence_hyd_LES_Wale_VEF.cpp</compoundname>
+    <includes refid="Modele__turbulence__hyd__LES__Wale__VEF_8h" local="no">Modele_turbulence_hyd_LES_Wale_VEF.h</includes>
+    <includes refid="Schema__Temps__base_8h" local="no">Schema_Temps_base.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Domaine__VEF_8h" local="no">Domaine_VEF.h</includes>
+    <includes refid="Champ__P1NC_8h" local="no">Champ_P1NC.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+    <includes refid="Debog_8h" local="no">Debog.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Modele__turbulence__hyd__LES__Wale__VEF_8cpp_1a1d07831851dced48c98f8c10c27634d7" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Modele_turbulence_hyd_LES_Wale_VEFbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Modele_turbulence_hyd_LES_Wale_VEFbases</name>
+        <initializer>={   &amp;( <ref refid="classModele__turbulence__hyd__LES__VEF__base" kindref="compound">Modele_turbulence_hyd_LES_VEF_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Turbulence/Modele_turbulence_hyd_LES_Wale_VEF.cpp" line="25" column="98" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Turbulence/Modele_turbulence_hyd_LES_Wale_VEF.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Modele_turbulence_hyd_LES_Wale_VEF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Temps_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VEF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_P1NC.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Debog.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classModele__turbulence__hyd__LES__Wale__VEF_1a268c6b7d4e26483a8887c16bca71f485" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<ref refid="classModele__turbulence__hyd__LES__Wale__VEF" kindref="compound">Modele_turbulence_hyd_LES_Wale_VEF</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Modele_turbulence_hyd_sous_maille_Wale_VEF&quot;</highlight><highlight class="normal">,<sp/><ref refid="classModele__turbulence__hyd__LES__VEF__base" kindref="compound">Modele_turbulence_hyd_LES_VEF_base</ref>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classModele__turbulence__hyd__LES__Wale__VEF_1a2ae3af29c31f07619e4bf42d9d17adfc" refkind="member"><highlight class="normal"><ref refid="classModele__turbulence__hyd__LES__Wale__VEF_1a2ae3af29c31f07619e4bf42d9d17adfc" kindref="member">Modele_turbulence_hyd_LES_Wale_VEF::Modele_turbulence_hyd_LES_Wale_VEF</ref>()</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><ref refid="classSupport__Champ__Masse__Volumique_1a637260a3ed6c5020f0c99626c0f29ddf" kindref="member">declare_support_masse_volumique</ref>(1);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classModele__turbulence__hyd__LES__Wale__VEF_1a0d0db224f840454780b3c0b0fc8a8044" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__LES__Wale__VEF_1a0d0db224f840454780b3c0b0fc8a8044" kindref="member">Modele_turbulence_hyd_LES_Wale_VEF::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classModele__turbulence__hyd__LES__Wale__VEF_1ab5e22e200e66925fb19698cbd95032ac" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__LES__Wale__VEF_1ab5e22e200e66925fb19698cbd95032ac" kindref="member">Modele_turbulence_hyd_LES_Wale_VEF::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__LES__VEF__base_1afb0842db68aa399a71ccb9efd5fa9942" kindref="member">Modele_turbulence_hyd_LES_VEF_base::readOn</ref>(is);<sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classModele__turbulence__hyd__LES__Wale__VEF_1ab617478d422343b35ad9598711e8fa11" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__LES__Wale__VEF_1ab617478d422343b35ad9598711e8fa11" kindref="member">Modele_turbulence_hyd_LES_Wale_VEF::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__LES__base_1a1f845634af1f1a71b535a6967d2a0f11" kindref="member">Modele_turbulence_hyd_LES_VEF_base::set_param</ref>(param);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;cw&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classModele__turbulence__hyd__LES__Wale__VEF_1a51ecee24054f5682ac71268b4f22b2cd" kindref="member">cw_</ref>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a6363f31c467c06512aee2f004abac69d" kindref="member">ajouter_condition</ref>(</highlight><highlight class="stringliteral">&quot;value_of_cw_ge_0&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;sous_maille_Wale<sp/>model<sp/>constant<sp/>must<sp/>be<sp/>positive.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classModele__turbulence__hyd__LES__Wale__VEF_1aff71f405ead31621ececf09cc6c0b879" refkind="member"><highlight class="normal"><ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__LES__Wale__VEF_1aff71f405ead31621ececf09cc6c0b879" kindref="member">Modele_turbulence_hyd_LES_Wale_VEF::calculer_viscosite_turbulente</ref>()</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VEF" kindref="compound">Domaine_VEF</ref>&amp;<sp/>domaine_VEF<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VEF" kindref="compound">Domaine_VEF</ref>,<sp/><ref refid="classModele__turbulence__hyd__0__eq__base_1ae4f7169d85315e5edcaa8f332db1d202" kindref="member">le_dom_VF_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps<sp/>=<sp/><ref refid="classModele__turbulence__hyd__base_1ada26f55e92d2f323dcb549509c175661" kindref="member">mon_equation_</ref>-&gt;inconnue().temps();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>tab_visco_turb<sp/>=<sp/><ref refid="classModele__turbulence__hyd__base_1a229c914beb2afc1e28495427801560fa" kindref="member">la_viscosite_turbulente_</ref>-&gt;<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_elem<sp/>=<sp/>domaine_VEF.<ref refid="classDomaine__dis__base_1a49de34b29ab0d385811b3ff97d8e30d7" kindref="member">nb_elem</ref>();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>la_vitesse<sp/>=<sp/><ref refid="classModele__turbulence__hyd__base_1ada26f55e92d2f323dcb549509c175661" kindref="member">mon_equation_</ref>-&gt;inconnue().valeurs();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__VEF" kindref="compound">Domaine_Cl_VEF</ref>&amp;<sp/>domaine_Cl_VEF<sp/>=<sp/>ref_cast(<ref refid="classDomaine__Cl__VEF" kindref="compound">Domaine_Cl_VEF</ref>,<sp/><ref refid="classModele__turbulence__hyd__0__eq__base_1a5de654ffd945987a84842b690b613d34" kindref="member">le_dom_Cl_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tab_visco_turb.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()<sp/>!=<sp/>nb_elem)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Size<sp/>error<sp/>for<sp/>the<sp/>array<sp/>containing<sp/>the<sp/>values<sp/>of<sp/>the<sp/>turbulent<sp/>viscosity.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Modele_turbulence_hyd_LES_Wale_VEF::calculer_viscosite_turbulente<sp/>visco_turb<sp/>0&quot;</highlight><highlight class="normal">,<sp/>tab_visco_turb);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_elem_tot<sp/>=<sp/>domaine_VEF.<ref refid="classDomaine__dis__base_1a33e55ca05b2a53a3a5e1f844e2551824" kindref="member">nb_elem_tot</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTrav" kindref="compound">DoubleTrav</ref><sp/>tab_duidxj(nb_elem_tot,<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>,<ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Patrick<sp/>:<sp/>on<sp/>travaille<sp/>sur<sp/>le<sp/>champ<sp/>filtre.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//const<sp/>Champ_P1NC&amp;<sp/>ch=(const<sp/>Champ_P1NC&amp;)<sp/>mon_equation-&gt;inconnue();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//DoubleTab<sp/>ubar(la_vitesse);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//ch.filtrer_L2(ubar);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Champ_P1NC::calcul_gradient(ubar,duidxj,domaine_Cl_VEF);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="classChamp__P1NC_1a7a29e7491c3eb723c1075528321b618c" kindref="member">Champ_P1NC::calcul_gradient</ref>(la_vitesse,tab_duidxj,domaine_Cl_VEF);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cw<sp/>=<sp/><ref refid="classModele__turbulence__hyd__LES__Wale__VEF_1a51ecee24054f5682ac71268b4f22b2cd" kindref="member">cw_</ref>;<sp/></highlight><highlight class="comment">//<sp/>Necessary<sp/>to<sp/>avoid<sp/>kernel<sp/>crash</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dim<sp/>=<sp/><ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">Objet_U::dimension</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>CDoubleArrView<sp/>l<sp/>=<sp/><ref refid="classModele__turbulence__hyd__LES__base_1a211808067e1f1773ec4c52093451b73b" kindref="member">l_</ref>.<ref refid="classTRUSTArray_1ac0912f73a399cf73e8ed1fa2e74ebe3e" kindref="member">view_ro</ref>();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>CDoubleTabView3<sp/>duidxj<sp/>=<sp/>tab_duidxj.<ref refid="classTRUSTTab_1adf0bea6c5a359001de34e2925a8524a0" kindref="member">view_ro</ref>&lt;3&gt;();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>DoubleArrView<sp/>visco_turb<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(tab_visco_turb).view_rw();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>Kokkos::parallel_for(start_gpu_timer(__KERNEL_NAME__),</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nb_elem,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>KOKKOS_LAMBDA<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>elem)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>gij2[3][3]<sp/>{};</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sd[3][3]<sp/>{};</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>du<sp/>terme<sp/>gij2.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>dim;<sp/>i++)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>dim;<sp/>j++)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gij2[i][j]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>dim;<sp/>k++)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gij2[i][j]<sp/>+=<sp/>duidxj(elem,i,k)<sp/>*<sp/>duidxj(elem,k,j);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>du<sp/>terme<sp/>gkk2.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>gkk2<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>dim;<sp/>k++)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gkk2<sp/>+=<sp/>gij2[k][k];</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>de<sp/>sd.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>dim;<sp/>i++)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>dim;<sp/>j++)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sd[i][j]<sp/>=<sp/>0.5<sp/>*<sp/>(gij2[i][j]<sp/>+<sp/>gij2[j][i]);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>j)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sd[i][j]<sp/>-=<sp/>gkk2<sp/>/<sp/>3.;<sp/></highlight><highlight class="comment">//<sp/>Terme<sp/>derriere<sp/>le<sp/>tenseur<sp/>de<sp/>Kronecker.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>de<sp/>sd2<sp/>et<sp/>Sij2.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sd2<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Sij2<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>dim;<sp/>i++)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>dim;<sp/>j++)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sd2<sp/>+=<sp/>sd[i][j]<sp/>*<sp/>sd[i][j];</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Deplacement<sp/>du<sp/>calcul<sp/>de<sp/>Sij</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Sij<sp/>=<sp/>0.5<sp/>*<sp/>(duidxj(elem,i,j)<sp/>+<sp/>duidxj(elem,j,i));</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Sij2<sp/>+=<sp/>Sij<sp/>*<sp/>Sij;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>de<sp/>OP1<sp/>et<sp/>OP2.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Replace<sp/>pow<sp/>by<sp/>sqrt<sp/>and<sp/>multiply,<sp/>faster</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//OP1=pow(sd2,1.5);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>OP1<sp/>=<sp/>sd2<sp/>*<sp/>sqrt(sd2);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//OP2=pow(Sij2,2.5)+pow(sd2,1.25);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>OP2<sp/>=<sp/>Sij2<sp/>*<sp/>Sij2<sp/>*<sp/>sqrt(Sij2)<sp/>+<sp/>sd2<sp/>*<sp/>sqrt(sqrt(sd2));</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(OP1<sp/>!=<sp/>0.)<sp/></highlight><highlight class="comment">//<sp/>donc<sp/>sd2<sp/>et<sp/>OP2<sp/>par<sp/>voie<sp/>de<sp/>consequence<sp/>sont<sp/>differents<sp/>de<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>visco_turb(elem)<sp/>=<sp/>cw<sp/>*<sp/>cw<sp/>*<sp/>l(elem)<sp/>*<sp/>l(elem)<sp/>*<sp/>OP1<sp/>/<sp/>OP2;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>visco_turb(elem)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>});<sp/></highlight><highlight class="comment">//<sp/>fin<sp/>de<sp/>la<sp/>boucle<sp/>sur<sp/>les<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>end_gpu_timer(__KERNEL_NAME__);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Modele_turbulence_hyd_LES_Wale_VEF::calculer_viscosite_turbulente<sp/>visco_turb<sp/>1&quot;</highlight><highlight class="normal">,<sp/>tab_visco_turb);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__base_1a229c914beb2afc1e28495427801560fa" kindref="member">la_viscosite_turbulente_</ref>-&gt;<ref refid="classChamp__base_1a51c611d7c5754aaf1556c5f0e563c157" kindref="member">changer_temps</ref>(temps);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__base_1a229c914beb2afc1e28495427801560fa" kindref="member">la_viscosite_turbulente_</ref>;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Turbulence/Modele_turbulence_hyd_LES_Wale_VEF.cpp"/>
+  </compounddef>
+</doxygen>

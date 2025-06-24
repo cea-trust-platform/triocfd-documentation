@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Terme__Source__Th__TdivU__VEF__Face_8cpp" kind="file" language="C++">
+    <compoundname>Terme_Source_Th_TdivU_VEF_Face.cpp</compoundname>
+    <includes refid="Terme__Source__Th__TdivU__VEF__Face_8h" local="no">Terme_Source_Th_TdivU_VEF_Face.h</includes>
+    <includes refid="Convection__Diffusion__std_8h" local="no">Convection_Diffusion_std.h</includes>
+    <includes refid="Op__Conv__Muscl__VEF__Face_8h" local="no">Op_Conv_Muscl_VEF_Face.h</includes>
+    <includes refid="Echange__impose__base_8h" local="no">Echange_impose_base.h</includes>
+    <includes refid="Domaine__Cl__dis__base_8h" local="no">Domaine_Cl_dis_base.h</includes>
+    <includes refid="Dirichlet__homogene_8h" local="no">Dirichlet_homogene.h</includes>
+    <includes refid="Navier__Stokes__std_8h" local="no">Navier_Stokes_std.h</includes>
+    <includes refid="Neumann__homogene_8h" local="no">Neumann_homogene.h</includes>
+    <includes refid="Neumann__val__ext_8h" local="no">Neumann_val_ext.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Milieu__base_8h" local="no">Milieu_base.h</includes>
+    <includes refid="Periodique_8h" local="no">Periodique.h</includes>
+    <includes refid="Symetrie_8h" local="no">Symetrie.h</includes>
+    <includes refid="Neumann_8h" local="no">Neumann.h</includes>
+    <includes refid="EChaine_8h" local="no">EChaine.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Terme__Source__Th__TdivU__VEF__Face_8cpp_1aa6ba01633310272374dcd587983e5ca8" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Terme_Source_Th_TdivU_VEF_Facebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Terme_Source_Th_TdivU_VEF_Facebases</name>
+        <initializer>={   &amp;( <ref refid="classSource__base" kindref="compound">Source_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Sources/Terme_Source_Th_TdivU_VEF_Face.cpp" line="32" column="161" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Sources/Terme_Source_Th_TdivU_VEF_Face.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Terme_Source_Th_TdivU_VEF_Face.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Convection_Diffusion_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Op_Conv_Muscl_VEF_Face.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Echange_impose_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_Cl_dis_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Dirichlet_homogene.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Neumann_homogene.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Neumann_val_ext.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Milieu_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Periodique.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Symetrie.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Neumann.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;EChaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classTerme__Source__Th__TdivU__VEF__Face_1a05dca1a650a83f15e161477bba854966" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classTerme__Source__Th__TdivU__VEF__Face" kindref="compound">Terme_Source_Th_TdivU_VEF_Face</ref>,</highlight><highlight class="stringliteral">&quot;Source_Th_TdivU_VEF_P1NC&quot;</highlight><highlight class="normal">,<ref refid="classSource__base" kindref="compound">Source_base</ref>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>source_th_tdivu<sp/>source_base<sp/>source_th_tdivu<sp/>0<sp/>This<sp/>term<sp/>source<sp/>is<sp/>dedicated<sp/>for<sp/>any<sp/>scalar<sp/>(called<sp/>T)<sp/>transport.<sp/>Coupled<sp/>with<sp/>upwind<sp/>(amont)<sp/>or<sp/>muscl<sp/>scheme,<sp/>this<sp/>term<sp/>gives<sp/>for<sp/>final<sp/>expression<sp/>of<sp/>convection<sp/>:<sp/>div(U.T)-T.div<sp/>(U)=U.grad(T)<sp/>This<sp/>ensures,<sp/>in<sp/>incompressible<sp/>flow<sp/>when<sp/>divergence<sp/>free<sp/>is<sp/>badly<sp/>resolved,<sp/>to<sp/>stay<sp/>in<sp/>a<sp/>better<sp/>way<sp/>in<sp/>the<sp/>physical<sp/>boundaries.<sp/>NL2<sp/>Warning:<sp/>Only<sp/>available<sp/>in<sp/>VEF<sp/>discretization.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classTerme__Source__Th__TdivU__VEF__Face_1aa2e6e358f6008c8a9bbba0c8a9f1bc1e" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1aa2e6e358f6008c8a9bbba0c8a9f1bc1e" kindref="member">Terme_Source_Th_TdivU_VEF_Face::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="36"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classTerme__Source__Th__TdivU__VEF__Face_1a3cd1f2c16e4a50ec22cb7470f4696008" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a3cd1f2c16e4a50ec22cb7470f4696008" kindref="member">Terme_Source_Th_TdivU_VEF_Face::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s<sp/>)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classTerme__Source__Th__TdivU__VEF__Face_1afd8448126896bab95e0f2b056e415ef7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1afd8448126896bab95e0f2b056e415ef7" kindref="member">Terme_Source_Th_TdivU_VEF_Face::associer_pb</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/>pb)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_eqn<sp/>=<sp/>pb.<ref refid="classProbleme__base_1abefceb0ac0d0b35d42a4daaa82a95f59" kindref="member">nombre_d_equations</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ok_vit=0;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ok_temp=0;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb_eqn;<sp/>i++)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn<sp/>=<sp/>pb.<ref refid="classProbleme__base_1acdfdb3499a491996c477ba8e2ce4b9db" kindref="member">equation</ref>(i);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/><sp/>(sub_type(<ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>,eqn))</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ok_vit<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/><sp/>(sub_type(<ref refid="classConvection__Diffusion__std" kindref="compound">Convection_Diffusion_std</ref>,eqn))</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ok_temp<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ok_vit)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>TRUST<sp/>in<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Hydraulic<sp/>equation<sp/>not<sp/>found&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ok_temp)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>TRUST<sp/>in<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Thermal<sp/>equation<sp/>not<sp/>found&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76" refid="classTerme__Source__Th__TdivU__VEF__Face_1a700604171e3bcabba6b9c93b90b51b8b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a700604171e3bcabba6b9c93b90b51b8b" kindref="member">Terme_Source_Th_TdivU_VEF_Face::associer_eqn_t</ref>()</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a76a73322dfdf62607e08af8565a22602" kindref="member">eqn_t</ref><sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classTerme__Source__Th__TdivU__VEF__Face_1a96fdc7f2cca587b7db551939211568c3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a96fdc7f2cca587b7db551939211568c3" kindref="member">Terme_Source_Th_TdivU_VEF_Face::associer_domaines</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__dis__base" kindref="compound">Domaine_dis_base</ref>&amp;<sp/>domaine_dis,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__dis__base" kindref="compound">Domaine_Cl_dis_base</ref>&amp;<sp/>domaine_Cl_dis)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classTerme__Source__Th__TdivU__VEF__Face_1a4e32dab8673134b14b84720cb24680f1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a4e32dab8673134b14b84720cb24680f1" kindref="member">Terme_Source_Th_TdivU_VEF_Face::completer</ref>()</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="classSource__base_1ab78e5efb7493861ded5a6ae9a9a23683" kindref="member">Source_base::completer</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a700604171e3bcabba6b9c93b90b51b8b" kindref="member">associer_eqn_t</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classTerme__Source__Th__TdivU__VEF__Face_1a01daba5fc2eead6ff6b77bcf1c843eee" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a01daba5fc2eead6ff6b77bcf1c843eee" kindref="member">Terme_Source_Th_TdivU_VEF_Face::modifier_domaine_cl</ref>()</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a370ba33f7a8db4ffb801f62c293b41f0" kindref="member">domaine_cl_mod_</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a370ba33f7a8db4ffb801f62c293b41f0" kindref="member">domaine_cl_mod_</ref>=1;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a1411939c0407fa295058476559378605" kindref="member">mon_domcl_</ref>=<ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a76a73322dfdf62607e08af8565a22602" kindref="member">eqn_t</ref>-&gt;domaine_Cl_dis();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1ac7acd82f973c10ef9a05b6318fcdd8ab" kindref="member">domainecl_sa</ref>=<ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a76a73322dfdf62607e08af8565a22602" kindref="member">eqn_t</ref>-&gt;domaine_Cl_dis();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="classConds__lim" kindref="compound">Conds_lim</ref>&amp;<sp/>condlims=<ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a1411939c0407fa295058476559378605" kindref="member">mon_domcl_</ref>-&gt;<ref refid="classDomaine__Cl__dis__base_1ac61cb62c82e3db6c4b4553538d7a6b61" kindref="member">les_conditions_limites</ref>();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="classConds__lim" kindref="compound">Conds_lim</ref>&amp;<sp/>condlims_sa=<ref refid="classTerme__Source__Th__TdivU__VEF__Face_1ac7acd82f973c10ef9a05b6318fcdd8ab" kindref="member">domainecl_sa</ref>-&gt;les_conditions_limites();</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb=condlims.<ref refid="classTRUST__Vector_1afae0a388de57f1ab2a0d9127f7c0a5f9" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb*0;<sp/>i++)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>condlims[i]=<sp/>condlims_sa[i];</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Cerr&lt;&lt;(int)(<sp/>&amp;condlims[i].valeur())&lt;&lt;&quot;<sp/>addr<sp/>&quot;&lt;&lt;(int)<sp/>&amp;condlims_sa[i].valeur()&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;nb;<sp/>i++)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCond__lim__base" kindref="compound">Cond_lim_base</ref>&amp;<sp/>la_cl=condlims_sa[i].valeur();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>modif=0;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>new_cl;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classPeriodique" kindref="compound">Periodique</ref>,la_cl)||sub_type(<ref refid="classSymetrie" kindref="compound">Symetrie</ref>,la_cl))</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sub_type(<ref refid="classNeumann__homogene" kindref="compound">Neumann_homogene</ref>,la_cl)||sub_type(<ref refid="classNeumann" kindref="compound">Neumann</ref>,la_cl)||sub_type(<ref refid="classNeumann__val__ext" kindref="compound">Neumann_val_ext</ref>,la_cl)||sub_type(<ref refid="classEchange__impose__base" kindref="compound">Echange_impose_base</ref>,la_cl))</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>modif=1;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>new_cl=</highlight><highlight class="stringliteral">&quot;Frontiere_ouverte<sp/>T_ext<sp/>Champ_front_uniforme<sp/>1<sp/>1&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/><sp/>(sub_type(<ref refid="classDirichlet__homogene" kindref="compound">Dirichlet_homogene</ref>,la_cl)||sub_type(<ref refid="classDirichlet" kindref="compound">Dirichlet</ref>,la_cl))</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>modif=1;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>new_cl=</highlight><highlight class="stringliteral">&quot;Frontiere_ouverte_temperature_imposee<sp/>Champ_front_uniforme<sp/>1<sp/>1&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;surcharge<sp/>de<sp/>la<sp/>cl<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;la_cl.<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;pas<sp/>codee<sp/>dans<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;__FILE__&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(modif)</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEChaine" kindref="compound">EChaine</ref><sp/>cons(</highlight><highlight class="stringliteral">&quot;Frontiere_ouverte<sp/>T_ext<sp/>Champ_front_uniforme<sp/>1<sp/>1&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//EChaine<sp/>cons(&quot;symetrie&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFrontiere__dis__base" kindref="compound">Frontiere_dis_base</ref>&amp;<sp/>frdis=condlims[i]-&gt;frontiere_dis();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cons&gt;&gt;condlims[i];</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCond__lim__base" kindref="compound">Cond_lim_base</ref>&amp;<sp/>cl_m=condlims[i].valeur();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cl_m.<ref refid="classCond__lim__base_1a64f59bb4967d6bee01b42fa006797266" kindref="member">associer_fr_dis_base</ref>(frdis);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cl_m.<ref refid="classCond__lim__base_1ac3d1bcf8652b65f67a1c201082536c2f" kindref="member">completer</ref>();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="classTerme__Source__Th__TdivU__VEF__Face_1a225a35334f9bf8036f9afd65d0c70e44" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a225a35334f9bf8036f9afd65d0c70e44" kindref="member">Terme_Source_Th_TdivU_VEF_Face::ajouter</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>resu)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="148"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face" kindref="compound">Terme_Source_Th_TdivU_VEF_Face</ref>&amp;<sp/>me_non_const=ref_cast_non_const(<ref refid="classTerme__Source__Th__TdivU__VEF__Face" kindref="compound">Terme_Source_Th_TdivU_VEF_Face</ref>,*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/>me_non_const.<ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a01daba5fc2eead6ff6b77bcf1c843eee" kindref="member">modifier_domaine_cl</ref>();</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(resu.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>&gt;<sp/>1)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>source<sp/>term<sp/>Source_Th_TdivU_VEF_P1NC<sp/>is<sp/>only<sp/>dedicated<sp/>to<sp/>thermal<sp/>equation&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>temperature=<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_faces<sp/>=<sp/>temperature.<ref refid="classTRUSTTab_1ab6a60d41799bf143fad6ff74c6bb7253" kindref="member">dimension_tot</ref>(0);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Calcul<sp/>de<sp/>TdivU<sp/>d&apos;apres<sp/>le<sp/>schema<sp/>de<sp/>convection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>temp(temperature);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>TdivU(resu);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/>TdivU=0.;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/>temp=1.;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOperateur" kindref="compound">Operateur</ref>&amp;<sp/>Op_conv=<ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1ade7daf3cf58c49dd666f63b8911d4fe4" kindref="member">operateur</ref>(1);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><ref refid="classOperateur__base" kindref="compound">Operateur_base</ref>&amp;<sp/>optype=ref_cast_non_const(<ref refid="classOperateur__base" kindref="compound">Operateur_base</ref>,Op_conv.<ref refid="classOperateur_1a318f30b233e223685bb693c314554284" kindref="member">l_op_base</ref>());</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>save<sp/>the<sp/>boundary<sp/>fluxes:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>flux_bords_backup<sp/>=<sp/>optype.<ref refid="classOperateur__base_1af060fdc2a0e78147aa8588bfbde65c0b" kindref="member">flux_bords</ref>();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>optype.<ref refid="classOperateur__base_1a31a1b8d69db032746c4dabb22550646a" kindref="member">associer_domaine_cl_dis</ref>(<ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a1411939c0407fa295058476559378605" kindref="member">mon_domcl_</ref>.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>Op_conv.<ref refid="classOperateur_1ab7e29d348dd640d30821dc3a1b18b26d" kindref="member">ajouter</ref>(temp,TdivU);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>face=0;<sp/>face&lt;nb_faces;<sp/>face++)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TdivU[face]*=temperature(face);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mp_max_vect(TdivU)==0)</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;*******<sp/>Warning<sp/>*******&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>are<sp/>using<sp/>source<sp/>term<sp/>TdivU<sp/>into<sp/>one<sp/>transport<sp/>equation.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;It<sp/>seems<sp/>useless<sp/>cause<sp/>TdivU=0&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;May<sp/>be<sp/>the<sp/>advection<sp/>operator<sp/>is<sp/>calculated<sp/>with<sp/>the<sp/>non-conservative<sp/>formulation.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>la<sp/>partie<sp/>en<sp/>TdivU<sp/>est<sp/>un<sp/>bout<sp/>de<sp/>l&apos;operateur<sp/>de<sp/>convection<sp/>-&gt;<sp/>il<sp/>doit<sp/>etre<sp/>multiplie<sp/>par<sp/>rhoCp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rhoCp<sp/>=<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a1ca88930cf00c12a910ad27ac840719c" kindref="member">milieu</ref>().<ref refid="classMilieu__base_1a5f213810b7fa8ec62690f5112d7e4529" kindref="member">capacite_calorifique</ref>().<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>()(0,<sp/>0)<sp/>*<sp/><ref refid="classMorEqn_1a233c714209593acce7aec1f55640bca2" kindref="member">equation</ref>().<ref refid="classEquation__base_1a1ca88930cf00c12a910ad27ac840719c" kindref="member">milieu</ref>().<ref refid="classMilieu__base_1ab8ce0742ed6681306999931dca88a5b9" kindref="member">masse_volumique</ref>().<ref refid="classChamp__Proto_1a87dd9bef0380e547eb00afc0a9f47b6e" kindref="member">valeurs</ref>()(0,<sp/>0);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/>TdivU<sp/>*=<sp/>rhoCp;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>resu-=TdivU;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>remet<sp/>la<sp/>bonne<sp/>domaine_cl_dis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>optype.<ref refid="classOperateur__base_1a31a1b8d69db032746c4dabb22550646a" kindref="member">associer_domaine_cl_dis</ref>(<ref refid="classTerme__Source__Th__TdivU__VEF__Face_1ac7acd82f973c10ef9a05b6318fcdd8ab" kindref="member">domainecl_sa</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>reset<sp/>flux_bords</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/>optype.<ref refid="classOperateur__base_1af060fdc2a0e78147aa8588bfbde65c0b" kindref="member">flux_bords</ref>()<sp/>=<sp/>flux_bords_backup;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resu;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195" refid="classTerme__Source__Th__TdivU__VEF__Face_1ad02b2fcca23ae203bd7245dfe3ee1acb" refkind="member"><highlight class="normal"><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1ad02b2fcca23ae203bd7245dfe3ee1acb" kindref="member">Terme_Source_Th_TdivU_VEF_Face::calculer</ref>(<ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>resu)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="196"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>resu<sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a225a35334f9bf8036f9afd65d0c70e44" kindref="member">ajouter</ref>(resu);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="classTerme__Source__Th__TdivU__VEF__Face_1a852f3ed41cc2db2d7f49d148fb26b563" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTerme__Source__Th__TdivU__VEF__Face_1a852f3ed41cc2db2d7f49d148fb26b563" kindref="member">Terme_Source_Th_TdivU_VEF_Face::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VEF/Sources/Terme_Source_Th_TdivU_VEF_Face.cpp"/>
+  </compounddef>
+</doxygen>

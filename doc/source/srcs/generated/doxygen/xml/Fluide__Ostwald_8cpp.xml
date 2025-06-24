@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Fluide__Ostwald_8cpp" kind="file" language="C++">
+    <compoundname>Fluide_Ostwald.cpp</compoundname>
+    <includes refid="Fluide__Ostwald_8h" local="no">Fluide_Ostwald.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Discret__Thyd_8h" local="no">Discret_Thyd.h</includes>
+    <includes refid="Navier__Stokes__std_8h" local="no">Navier_Stokes_std.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Fluide__Ostwald_8cpp_1ac5121e7ade773ff32b69fac9b9f25ea7" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Fluide_Ostwaldbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Fluide_Ostwaldbases</name>
+        <initializer>={   &amp;( <ref refid="classFluide__Incompressible" kindref="compound">Fluide_Incompressible</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Milieu/Fluide_Ostwald.cpp" line="26" column="58" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Milieu/Fluide_Ostwald.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Nouveau<sp/>fluide.<sp/>c&apos;est<sp/>un<sp/>fluide<sp/>incompressible<sp/>non<sp/>newtonien.<sp/>Il<sp/>derive<sp/>donc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>de<sp/>fluide_Incompressible<sp/>et<sp/>possede<sp/>quelques<sp/>proprietes<sp/>de<sp/>plus<sp/>(K,<sp/>N)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>mu<sp/>depend<sp/>de<sp/>K,<sp/>N,<sp/>et<sp/>de<sp/>grad(U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Ostwald.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discret_Thyd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Navier_Stokes_std.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classFluide__Ostwald_1a7cd1b6345d673e56aea384d3b05163ce" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<ref refid="classFluide__Ostwald" kindref="compound">Fluide_Ostwald</ref>,</highlight><highlight class="stringliteral">&quot;Fluide_Ostwald&quot;</highlight><highlight class="normal">,<ref refid="classFluide__Incompressible" kindref="compound">Fluide_Incompressible</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>fluide_ostwald<sp/>fluide_incompressible<sp/>fluide_ostwald<sp/>-1<sp/>Non-Newtonian<sp/>fluids<sp/>governed<sp/>by<sp/>Ostwald\&apos;s<sp/>law.<sp/>The<sp/>law<sp/>applicable<sp/>to<sp/>stress<sp/>tensor<sp/>is:<sp/>NL2<sp/>tau=K(T)*(D:D/2)**((n-1)/2)*D<sp/>Where:<sp/>NL2<sp/>D<sp/>refers<sp/>to<sp/>the<sp/>deformation<sp/>tensor<sp/>NL2<sp/>K<sp/>refers<sp/>to<sp/>fluid<sp/>consistency<sp/>(may<sp/>be<sp/>a<sp/>function<sp/>of<sp/>the<sp/>temperature<sp/>T)<sp/>NL2<sp/>n<sp/>refers<sp/>to<sp/>the<sp/>fluid<sp/>structure<sp/>index<sp/>n=1<sp/>for<sp/>a<sp/>Newtonian<sp/>fluid,<sp/>n&lt;1<sp/>for<sp/>a<sp/>rheofluidifier<sp/>fluid,<sp/>n&gt;1<sp/>for<sp/>a<sp/>rheothickening<sp/>fluid.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>k<sp/>field_base<sp/>k<sp/>1<sp/>Fluid<sp/>consistency.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>n<sp/>field_base<sp/>n<sp/>1<sp/>Fluid<sp/>structure<sp/>index.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classFluide__Ostwald_1a187a9c8af95ec0b7bf8b7dc83125df58" refkind="member"><highlight class="normal"><ref refid="classFluide__Ostwald_1a187a9c8af95ec0b7bf8b7dc83125df58" kindref="member">Fluide_Ostwald::Fluide_Ostwald</ref>()<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classFluide__Ostwald_1a4718597b8069e8fef560f311f1667814" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classFluide__Ostwald_1a4718597b8069e8fef560f311f1667814" kindref="member">Fluide_Ostwald::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="34"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>s&lt;&lt;</highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>s&lt;&lt;</highlight><highlight class="stringliteral">&quot;K&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classFluide__Ostwald_1af378a489b889fe485054096cd9727433" kindref="member">K_</ref>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>s&lt;&lt;&quot;beta_co&quot;&lt;&lt;beta_co&lt;&lt;finl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>s&lt;&lt;</highlight><highlight class="stringliteral">&quot;N&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classFluide__Ostwald_1a2265cb84c3615b825205f9e091183248" kindref="member">N_</ref>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><ref refid="classMilieu__base_1a00811386edac16f3c5e7ca9d4b109b5b" kindref="member">Milieu_base::ecrire</ref>(s);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>s&lt;&lt;</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classFluide__Ostwald_1a3cc55c76a38343bc42769b470544c6fc" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classFluide__Ostwald_1a3cc55c76a38343bc42769b470544c6fc" kindref="member">Fluide_Ostwald::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><ref refid="classFluide__Incompressible_1adec355b7ca14e01a3cc0e47089bc2696" kindref="member">Fluide_Incompressible::readOn</ref>(is);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classFluide__Ostwald_1a98c8a984d2735a9a663f2d5cc3c4600d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFluide__Ostwald_1a98c8a984d2735a9a663f2d5cc3c4600d" kindref="member">Fluide_Ostwald::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="classFluide__Incompressible_1aef3199e37c438a294583a6bbd0b9c7fe" kindref="member">Fluide_Incompressible::set_param</ref>(param);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a6363f31c467c06512aee2f004abac69d" kindref="member">ajouter_condition</ref>(</highlight><highlight class="stringliteral">&quot;is_read_rho&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;Density<sp/>rho<sp/>has<sp/>not<sp/>been<sp/>read<sp/>for<sp/>a<sp/>Fluide_Ostwald<sp/>type<sp/>medium.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;K&quot;</highlight><highlight class="normal">,&amp;<ref refid="classFluide__Ostwald_1af378a489b889fe485054096cd9727433" kindref="member">K_</ref>,<ref refid="classParam_1aa4ad0ca1d49bc5f2ebc5fc83ee9df384aaf5b6dfac1c5970478525407cc6ac572" kindref="member">Param::REQUIRED</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;n&quot;</highlight><highlight class="normal">,&amp;<ref refid="classFluide__Ostwald_1a2265cb84c3615b825205f9e091183248" kindref="member">N_</ref>,<ref refid="classParam_1aa4ad0ca1d49bc5f2ebc5fc83ee9df384aaf5b6dfac1c5970478525407cc6ac572" kindref="member">Param::REQUIRED</ref>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classFluide__Ostwald_1aac1a27338844764b061d38c2e3de0b00" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFluide__Ostwald_1aac1a27338844764b061d38c2e3de0b00" kindref="member">Fluide_Ostwald::discretiser</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProbleme__base" kindref="compound">Probleme_base</ref>&amp;<sp/>pb,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><ref refid="classDiscretisation__base" kindref="compound">Discretisation_base</ref>&amp;<sp/>dis)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__dis__base" kindref="compound">Domaine_dis_base</ref>&amp;<sp/>domaine_dis=pb.<ref refid="classProbleme__base_1acdfdb3499a491996c477ba8e2ce4b9db" kindref="member">equation</ref>(0).<ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDiscret__Thyd" kindref="compound">Discret_Thyd</ref>&amp;<sp/>dis2=ref_cast(<ref refid="classDiscret__Thyd" kindref="compound">Discret_Thyd</ref>,<sp/>dis);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>avec<sp/>la<sp/>signature<sp/>de<sp/>Ostwald....</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>&amp;<sp/>eqn_hydr=ref_cast(<ref refid="classNavier__Stokes__std" kindref="compound">Navier_Stokes_std</ref>,pb.<ref refid="classProbleme__base_1acdfdb3499a491996c477ba8e2ce4b9db" kindref="member">equation</ref>(0));</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Typing<sp/>mu<sp/>field</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>dis_nam<sp/>=<sp/>dis.<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dis_nam.<ref refid="classNom_1a7d94eff3b27fea7103475613072a4553" kindref="member">debute_par</ref>(</highlight><highlight class="stringliteral">&quot;VEF&quot;</highlight><highlight class="normal">))<sp/>dis_nam<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;VEF&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="classFluide__base_1a6f0f3d8cd6e3a1c27531e8a15c4b7c61" kindref="member">ch_mu_</ref>.<ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(<ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;Champ_Ostwald_&quot;</highlight><highlight class="normal">)<sp/>+<sp/>dis_nam);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>dis2.<ref refid="classDiscret__Thyd_1a88c53950ab6c638db6133291740a120b" kindref="member">proprietes_physiques_fluide_Ostwald</ref>(eqn_hydr.<ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>(),(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">),eqn_hydr,eqn_hydr.<ref refid="classNavier__Stokes__std_1a3beaade39a0ca1d2cbd00fc7a6979364" kindref="member">inconnue</ref>());</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classFluide__Ostwald_1af378a489b889fe485054096cd9727433" kindref="member">K_</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>())</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dis.<ref refid="classDiscretisation__base_1a17969ebd170a72f28d8cac002eb3f857" kindref="member">nommer_completer_champ_physique</ref>(domaine_dis,</highlight><highlight class="stringliteral">&quot;consistance&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;kg/m/s&quot;</highlight><highlight class="normal">,<ref refid="classFluide__Ostwald_1af378a489b889fe485054096cd9727433" kindref="member">K_</ref>.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>(),pb);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMilieu__base_1ac23515c92999b5ee05f11d0a4603ec52" kindref="member">champs_compris_</ref>.<ref refid="classChamps__compris__T_1aa2bd9fb5b3b311863130fa0bbc404773" kindref="member">ajoute_champ</ref>(<ref refid="classFluide__Ostwald_1af378a489b889fe485054096cd9727433" kindref="member">K_</ref>.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="classFluide__base_1af4c5ec816edd85e3ee3dbc47058692f3" kindref="member">Fluide_Incompressible::discretiser</ref>(pb,dis);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classFluide__Ostwald_1a1b0e8e676a25693104c853b1154cb7d6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFluide__Ostwald_1a1b0e8e676a25693104c853b1154cb7d6" kindref="member">Fluide_Ostwald::creer_champs_non_lus</ref>()</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><ref refid="classMilieu__base_1a39c48badcec829100318f80b9be97870" kindref="member">Milieu_base::creer_champs_non_lus</ref>();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classFluide__Ostwald_1a68c9f150d5b7d6a2236572847a97fa75" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classFluide__Ostwald_1a68c9f150d5b7d6a2236572847a97fa75" kindref="member">Fluide_Ostwald::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tps)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><ref refid="classFluide__Ostwald_1af378a489b889fe485054096cd9727433" kindref="member">K_</ref>-&gt;<ref refid="classChamp__Don__base_1a10f8b9d20732f009ece35d064a71c699" kindref="member">mettre_a_jour</ref>(tps);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classFluide__Ostwald_1a2265cb84c3615b825205f9e091183248" kindref="member">N_</ref>.<ref refid="classObjet__U__ptr_1a2ae7b8a19db61f14ed61250b931228ae" kindref="member">non_nul</ref>()<sp/>)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFluide__Ostwald_1a2265cb84c3615b825205f9e091183248" kindref="member">N_</ref>-&gt;<ref refid="classChamp__Don__base_1a10f8b9d20732f009ece35d064a71c699" kindref="member">mettre_a_jour</ref>(tps);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><ref refid="classFluide__base_1a40e19bdd5e9f809f12e9a58757acea94" kindref="member">Fluide_Incompressible::mettre_a_jour</ref>(tps);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classFluide__Ostwald_1a4bfc03eab73ce4c58647fbe0b536d55b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFluide__Ostwald_1a4bfc03eab73ce4c58647fbe0b536d55b" kindref="member">Fluide_Ostwald::initialiser</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classFluide__base_1a7f78b3273df29578286b100aedc1bddd" kindref="member">Fluide_Incompressible::initialiser</ref>(temps);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Incompressible/Milieu/Fluide_Ostwald.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Changement__phase__Silver__Simpson_8cpp" kind="file" language="C++">
+    <compoundname>Changement_phase_Silver_Simpson.cpp</compoundname>
+    <includes refid="Changement__phase__Silver__Simpson_8h" local="no">Changement_phase_Silver_Simpson.h</includes>
+    <includes refid="Pb__Multiphase_8h" local="no">Pb_Multiphase.h</includes>
+    <includes refid="TRUSTTab_8h" local="no">TRUSTTab.h</includes>
+    <includes local="no">cmath</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Changement_phase_Silver_Simpson.cpp</label>
+        <link refid="Changement__phase__Silver__Simpson_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cmath</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Changement__phase__Silver__Simpson_8cpp_1a75fad7696c6b4d3e009e1cc7ddaa8784" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Changement_phase_Silver_Simpsonbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Changement_phase_Silver_Simpsonbases</name>
+        <initializer>={   &amp;( <ref refid="classChangement__phase__base" kindref="compound">Changement_phase_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Correlations/Changement_phase_Silver_Simpson.cpp" line="21" column="165" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Correlations/Changement_phase_Silver_Simpson.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2022,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Changement_phase_Silver_Simpson.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Pb_Multiphase.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTab.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classChangement__phase__Silver__Simpson_1a15d9e6090dd011bbf31c9868682049b7" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classChangement__phase__Silver__Simpson" kindref="compound">Changement_phase_Silver_Simpson</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Changement_phase_Silver_Simpson&quot;</highlight><highlight class="normal">,<sp/><ref refid="classChangement__phase__base" kindref="compound">Changement_phase_base</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classChangement__phase__Silver__Simpson_1a3d16ac66c518f65d1f25545dcd745567" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classChangement__phase__Silver__Simpson_1a3d16ac66c518f65d1f25545dcd745567" kindref="member">Changement_phase_Silver_Simpson::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="24"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classChangement__phase__Silver__Simpson_1aad8d74f5496eb3dbfecc37dc1eb9935f" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classChangement__phase__Silver__Simpson_1aad8d74f5496eb3dbfecc37dc1eb9935f" kindref="member">Changement_phase_Silver_Simpson::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;lambda_e&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classChangement__phase__Silver__Simpson_1a157cfac9b51e6a1773b00a906cfed80c" kindref="member">lambda_ec</ref>[0]);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;lambda_c&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classChangement__phase__Silver__Simpson_1a157cfac9b51e6a1773b00a906cfed80c" kindref="member">lambda_ec</ref>[1]);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;alpha_min&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classChangement__phase__Silver__Simpson_1ac32bd3a2504c714590fb27ab95e45bb3" kindref="member">alpha_min</ref>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;M&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classChangement__phase__Silver__Simpson_1a2fb0574e0915ed6b860f1eb4015802fa" kindref="member">M</ref>,<sp/><ref refid="classParam_1aa4ad0ca1d49bc5f2ebc5fc83ee9df384aaf5b6dfac1c5970478525407cc6ac572" kindref="member">Param::REQUIRED</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aa9d44fc51b4a08b357733a97dc7acaad" kindref="member">lire_avec_accolades_depuis</ref>(is);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classChangement__phase__Silver__Simpson_1a5768b28766bcd5d1052102ac59ad28f0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classChangement__phase__Silver__Simpson_1a5768b28766bcd5d1052102ac59ad28f0" kindref="member">Changement_phase_Silver_Simpson::calculer</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>l,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dh,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*alpha,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*T,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>p,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*nv,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*lambda,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*mu,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*rho,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*Cp,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classSaturation__base" kindref="compound">Saturation_base</ref>&amp;<sp/>sat,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>dT_G,<sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>da_G,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>dp_G)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="42"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>T0<sp/>=<sp/>273.15,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var_ak<sp/>=<sp/>std::max(alpha[k],<sp/><ref refid="classChangement__phase__Silver__Simpson_1ac32bd3a2504c714590fb27ab95e45bb3" kindref="member">alpha_min</ref>),<sp/>var_al<sp/>=<sp/>std::pow(std::max(alpha[l],<sp/><ref refid="classChangement__phase__Silver__Simpson_1ac32bd3a2504c714590fb27ab95e45bb3" kindref="member">alpha_min</ref>),<sp/>1.5),<sp/>var_a<sp/>=<sp/>var_ak<sp/>*<sp/>var_al,<sp/></highlight><highlight class="comment">//partie<sp/>variable<sp/>en<sp/>alpha</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var_T<sp/>=<sp/>sat.<ref refid="classSaturation__base_1a5e5059beeca005a7d5683b2a917ede58" kindref="member">Psat</ref>(T[k])<sp/>/<sp/>sqrt(T[k]<sp/>+<sp/>T0)<sp/>-<sp/>p<sp/>/<sp/>sqrt(T[l]<sp/>+<sp/>T0),<sp/></highlight><highlight class="comment">//partie<sp/>variable<sp/>en<sp/>(T,<sp/>p)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fac<sp/>=<sp/><ref refid="classChangement__phase__Silver__Simpson_1a157cfac9b51e6a1773b00a906cfed80c" kindref="member">lambda_ec</ref>[var_T<sp/>&lt;<sp/>0]<sp/>*<sp/>4<sp/>/<sp/>dh<sp/>*<sp/>sqrt(<ref refid="classChangement__phase__Silver__Simpson_1a2fb0574e0915ed6b860f1eb4015802fa" kindref="member">M</ref><sp/>/<sp/>(2<sp/>*<sp/>M_PI<sp/>*<sp/>8.314));<sp/></highlight><highlight class="comment">//partie<sp/>constante<sp/>-&gt;<sp/>G<sp/>=<sp/>fac<sp/>*<sp/>var</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>dT_G<sp/>=<sp/>0,<sp/>da_G<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>dT_G(k)<sp/>=<sp/>fac<sp/>*<sp/>var_a<sp/>*<sp/>(sat.<ref refid="classSaturation__base_1a89ab0719e79c29e38a4638f24009fe25" kindref="member">dT_Psat</ref>(T[k])<sp/>-<sp/>0.5<sp/>*<sp/>sat.<ref refid="classSaturation__base_1a5e5059beeca005a7d5683b2a917ede58" kindref="member">Psat</ref>(T[k])<sp/>/<sp/>(T[k]<sp/>+<sp/>T0))<sp/>/<sp/>sqrt(T[k]<sp/>+<sp/>T0);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>dT_G(l)<sp/>=<sp/>fac<sp/>*<sp/>var_a<sp/>*<sp/>0.5<sp/>*<sp/>p<sp/>*<sp/>std::pow(T[l]<sp/>+<sp/>T0,<sp/>-1.5);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>da_G(k)<sp/>=<sp/>alpha[k]<sp/>&gt;<sp/><ref refid="classChangement__phase__Silver__Simpson_1ac32bd3a2504c714590fb27ab95e45bb3" kindref="member">alpha_min</ref><sp/>?<sp/>fac<sp/>*<sp/>var_T<sp/>*<sp/>var_al<sp/>:<sp/>0;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>da_G(l)<sp/>=<sp/>alpha[l]<sp/>&gt;<sp/><ref refid="classChangement__phase__Silver__Simpson_1ac32bd3a2504c714590fb27ab95e45bb3" kindref="member">alpha_min</ref><sp/>?<sp/>fac<sp/>*<sp/>var_T<sp/>*<sp/>var_ak<sp/>*<sp/>1.5<sp/>*<sp/>sqrt(alpha[l])<sp/>:<sp/>0;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>dp_G<sp/>=<sp/>-<sp/>fac<sp/>*<sp/>var_a<sp/>/<sp/>sqrt(T[l]<sp/>+<sp/>T0);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fac<sp/>*<sp/>var_a<sp/>*<sp/>var_T;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Multiphase/Correlations/Changement_phase_Silver_Simpson.cpp"/>
+  </compounddef>
+</doxygen>

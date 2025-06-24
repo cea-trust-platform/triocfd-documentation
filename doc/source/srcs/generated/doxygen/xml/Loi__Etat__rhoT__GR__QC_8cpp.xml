@@ -1,0 +1,376 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Loi__Etat__rhoT__GR__QC_8cpp" kind="file" language="C++">
+    <compoundname>Loi_Etat_rhoT_GR_QC.cpp</compoundname>
+    <includes refid="Loi__Etat__rhoT__GR__QC_8h" local="no">Loi_Etat_rhoT_GR_QC.h</includes>
+    <includes refid="Motcle_8h" local="no">Motcle.h</includes>
+    <includes refid="Fluide__Quasi__Compressible_8h" local="no">Fluide_Quasi_Compressible.h</includes>
+    <includes refid="Champ__Uniforme_8h" local="no">Champ_Uniforme.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Loi__Etat__rhoT__GR__QC_8cpp_1a392dfa7c7f97e7c38e354a5b2576d571" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Loi_Etat_rhoT_GR_QCbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Loi_Etat_rhoT_GR_QCbases</name>
+        <initializer>={   &amp;( <ref refid="classLoi__Etat__GR__base" kindref="compound">Loi_Etat_GR_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Dilatable/Quasi_Compressible/Milieu/Loi_Etat_rhoT_GR_QC.cpp" line="21" column="117" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Dilatable/Quasi_Compressible/Milieu/Loi_Etat_rhoT_GR_QC.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2022,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Loi_Etat_rhoT_GR_QC.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Motcle.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Fluide_Quasi_Compressible.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Uniforme.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classLoi__Etat__rhoT__GR__QC_1a2e11236f8bdbeec76aa8ea01e55121fc" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classLoi__Etat__rhoT__GR__QC" kindref="compound">Loi_Etat_rhoT_GR_QC</ref>,</highlight><highlight class="stringliteral">&quot;Loi_Etat_rhoT_Gaz_Reel_QC&quot;</highlight><highlight class="normal">,<ref refid="classLoi__Etat__GR__base" kindref="compound">Loi_Etat_GR_base</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>rhoT_gaz_reel_QC<sp/>loi_etat_gaz_reel_base<sp/>rhoT_gaz_reel_QC<sp/>0<sp/>Class<sp/>for<sp/>real<sp/>gas<sp/>state<sp/>law<sp/>used<sp/>with<sp/>a<sp/>quasi-compressible<sp/>fluid.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>bloc<sp/>bloc_lecture<sp/>bloc<sp/>0<sp/>Description.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classLoi__Etat__rhoT__GR__QC_1a98458d9f0f48f32f490707ab2ab7e45d" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1a98458d9f0f48f32f490707ab2ab7e45d" kindref="member">Loi_Etat_rhoT_GR_QC::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="27"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classLoi__Etat__rhoT__GR__QC_1ad2ebf96873618f9b770334684916490d" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1ad2ebf96873618f9b770334684916490d" kindref="member">Loi_Etat_rhoT_GR_QC::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>PolyRho_lu=-1,<sp/>PolyT_lu=-1,<sp/>MMole_lu=-1,<sp/>Pr_lu=-1;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>accferme=</highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>accouverte=</highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motlu;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Lecture<sp/>de<sp/>la<sp/>loi<sp/>d&apos;etat<sp/>Gaz<sp/>Reel<sp/>rhoT&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motlu<sp/>!=<sp/>accouverte)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>On<sp/>attendait<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;accouverte&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>au<sp/>lieu<sp/>de<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;motlu&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">abort</ref>();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="classMotcles" kindref="compound">Motcles</ref><sp/>les_mots(4);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>les_mots[0]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Prandtl&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>les_mots[1]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;masse_molaire&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>les_mots[2]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Poly_rho&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>les_mots[3]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Poly_T&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>les_mots[4]<sp/>=<sp/>&quot;Cp&quot;;<sp/><sp/><sp/>//pour<sp/>debuggage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(motlu<sp/>!=<sp/>accferme<sp/>)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rang=les_mots.<ref refid="classMotcles_1abd4862b9c8552b88a48927e67bd48d9d" kindref="member">search</ref>(motlu);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(rang)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0<sp/>:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is&gt;&gt;<ref refid="classLoi__Etat__base_1a1cff6e1f3179d8edd86955bbfe49ab7f" kindref="member">Pr_</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Pr_lu=1;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1<sp/>:</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is&gt;&gt;<ref refid="classLoi__Etat__GR__base_1a0823f46bb02ee84b65ce8d8da0682d24" kindref="member">MMole_</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MMole_lu=1;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2<sp/>:</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j,im,jm;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is&gt;&gt;im;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is&gt;&gt;jm;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(im,jm);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0<sp/>;<sp/>i&lt;im<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0<sp/>;<sp/>j&lt;jm<sp/>;<sp/>j++)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is&gt;&gt;<ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>(i,j);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PolyRho_lu=1;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3<sp/>:</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j,im,jm;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is&gt;&gt;im;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is&gt;&gt;jm;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>.<ref refid="classTRUSTTab_1a9b2632fe559a20c048cbfddc5c40ed16" kindref="member">resize</ref>(im,jm);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0<sp/>;<sp/>i&lt;im<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0<sp/>;<sp/>j&lt;jm<sp/>;<sp/>j++)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is&gt;&gt;<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>(i,j);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PolyT_lu=1;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4<sp/>:</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is&gt;&gt;<ref refid="classLoi__Etat__GR__base_1a6b5322365a13c4d8e4001fcd7d9a5b30" kindref="member">Cp_</ref>;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PolyRho_lu=1;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PolyT_lu=1;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MMole_lu=1;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classLoi__Etat__GR__base_1a6b5322365a13c4d8e4001fcd7d9a5b30" kindref="member">Cp_</ref>&lt;0)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLoi__Etat__GR__base_1a6b5322365a13c4d8e4001fcd7d9a5b30" kindref="member">Cp_</ref><sp/>=<sp/>-<ref refid="classLoi__Etat__GR__base_1a6b5322365a13c4d8e4001fcd7d9a5b30" kindref="member">Cp_</ref>;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLoi__Etat__base_1af6822615d10d78324057c50c2d193d19" kindref="member">debug</ref>=1;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLoi__Etat__base_1af6822615d10d78324057c50c2d193d19" kindref="member">debug</ref>=0;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLoi__Etat__GR__base_1acc26342f71973a15dadc7eb34f5cb5c9" kindref="member">R</ref><sp/>=<sp/><ref refid="classLoi__Etat__GR__base_1a6b5322365a13c4d8e4001fcd7d9a5b30" kindref="member">Cp_</ref><sp/>*(1.-1./1.4);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Debogage<sp/>Gaz<sp/>Reel<sp/>:<sp/>Cp=&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classLoi__Etat__GR__base_1a6b5322365a13c4d8e4001fcd7d9a5b30" kindref="member">Cp_</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>R=&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classLoi__Etat__GR__base_1acc26342f71973a15dadc7eb34f5cb5c9" kindref="member">R</ref>&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>default<sp/>:</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Une<sp/>loi<sp/>d&apos;etat<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>n&apos;a<sp/>pas<sp/>la<sp/>propriete<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;motlu&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;On<sp/>attendait<sp/>un<sp/>mot<sp/>dans<sp/>:&quot;</highlight><highlight class="normal">&lt;&lt;finl&lt;&lt;les_mots&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">abort</ref>();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>motlu;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(Pr_lu==-1)</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;ERREUR<sp/>:<sp/>on<sp/>attendait<sp/>la<sp/>definition<sp/>du<sp/>nombre<sp/>de<sp/>Prandtl<sp/>(Prandtl<sp/>pr)&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">abort</ref>();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(PolyRho_lu==-1)</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;ERREUR<sp/>:<sp/>on<sp/>attendait<sp/>la<sp/>definition<sp/>du<sp/>polynome<sp/>de<sp/>la<sp/>masse<sp/>volumique<sp/>(Poly_Rho<sp/>nb_coeff1<sp/>nb_coeff2<sp/>a00<sp/>a01<sp/>a02<sp/>...)&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">abort</ref>();</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Polynome<sp/>de<sp/>rho<sp/>:&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0<sp/>;<sp/>i&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0)<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0<sp/>;<sp/>j&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1)<sp/>;<sp/>j++)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/>f(&quot;</highlight><highlight class="normal">&lt;&lt;i&lt;&lt;</highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">&lt;&lt;j&lt;&lt;</highlight><highlight class="stringliteral">&quot;)=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>(i,j);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(PolyT_lu==-1)</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;ERREUR<sp/>:<sp/>on<sp/>attendait<sp/>la<sp/>definition<sp/>du<sp/>polynome<sp/>de<sp/>la<sp/>temperature<sp/>(Poly_T<sp/>nb_coeff1<sp/>nb_coeff2<sp/>a00<sp/>a01<sp/>a02<sp/>...)&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">abort</ref>();</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Polynome<sp/>de<sp/>T<sp/>:&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0<sp/>;<sp/>i&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0)<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0<sp/>;<sp/>j&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(1)<sp/>;<sp/>j++)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/>f(&quot;</highlight><highlight class="normal">&lt;&lt;i&lt;&lt;</highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">&lt;&lt;j&lt;&lt;</highlight><highlight class="stringliteral">&quot;)=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>(i,j);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(MMole_lu==-1)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;ERREUR<sp/>:<sp/>on<sp/>attendait<sp/>la<sp/>definition<sp/>de<sp/>la<sp/>masse<sp/>molaire<sp/>(masse_molaire<sp/>m)&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">abort</ref>();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="173"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>la<sp/>masse<sp/>volumique<sp/>ponctuelle</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>P)<sp/>pression</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>h)<sp/>enthalpie</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/>*<sp/>@return<sp/>(double)<sp/>masse<sp/>volumique<sp/>correspondante</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="classLoi__Etat__rhoT__GR__QC_1a97bbee5abefa609a87b76f71b1f77623" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1af7ee03623b1b49bceea46347445dbca1" kindref="member">Loi_Etat_rhoT_GR_QC::calculer_masse_volumique</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>P,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>h)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="180"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>res<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classLoi__Etat__GR__base_1acc26342f71973a15dadc7eb34f5cb5c9" kindref="member">R</ref>==-1)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>H<sp/>=<sp/>h;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0<sp/>;<sp/>i&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0)<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0<sp/>;<sp/>j&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>;<sp/>j++)</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>+=<sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>(i,j)<sp/>*pow(P,j)<sp/>*pow(H,i);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//debuggage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>=<sp/>P*<ref refid="classLoi__Etat__GR__base_1a6b5322365a13c4d8e4001fcd7d9a5b30" kindref="member">Cp_</ref>/(<ref refid="classLoi__Etat__GR__base_1acc26342f71973a15dadc7eb34f5cb5c9" kindref="member">R</ref>*h);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="198"><highlight class="comment">/*!<sp/>@brief<sp/>Calcule<sp/>la<sp/>temperature<sp/>ponctuelle</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>P)<sp/>pression</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>h)<sp/>enthalpie</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/>*<sp/>@return<sp/>(double)<sp/>masse<sp/>volumique<sp/>correspondante</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="classLoi__Etat__rhoT__GR__QC_1ab877dee64feb728e26efed35006e8a40" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1ab877dee64feb728e26efed35006e8a40" kindref="member">Loi_Etat_rhoT_GR_QC::calculer_temperature</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>P,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>h)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>res<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classLoi__Etat__GR__base_1acc26342f71973a15dadc7eb34f5cb5c9" kindref="member">R</ref>==-1)</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>H<sp/>=<sp/>h;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0<sp/>;<sp/>i&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0)<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0<sp/>;<sp/>j&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>;<sp/>j++)</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>+=<sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>(i,j)<sp/>*pow(P,i)<sp/>*pow(H,j);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//debuggage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>=<sp/>h/<ref refid="classLoi__Etat__GR__base_1a6b5322365a13c4d8e4001fcd7d9a5b30" kindref="member">Cp_</ref>;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="223"><highlight class="comment">/*!<sp/>@brief<sp/>Cas<sp/>gaz<sp/>Reel<sp/>:<sp/>doit<sp/>recalculer<sp/>l&apos;enthalpie<sp/>a<sp/>partir<sp/>de<sp/>la<sp/>pression<sp/>et<sp/>la<sp/>temperature</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226" refid="classLoi__Etat__rhoT__GR__QC_1ac3715c7bd05ed5c50d7cc598dddd78f9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1ac3715c7bd05ed5c50d7cc598dddd78f9" kindref="member">Loi_Etat_rhoT_GR_QC::calculer_H</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Pth_,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>T_)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="227"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>res=0;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classLoi__Etat__GR__base_1acc26342f71973a15dadc7eb34f5cb5c9" kindref="member">R</ref>==-1)</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//il<sp/>faut<sp/>resoudre<sp/>c0-T_<sp/>+<sp/>c1.H<sp/>+<sp/>c2.H^2<sp/>+...=0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j,<sp/>it,max_iter<sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>eps<sp/>=<sp/>1.e-6;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>coef(<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>());</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>coef<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0<sp/>;<sp/>i&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0)<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0<sp/>;<sp/>j&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>;<sp/>j++)</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coef(j)<sp/>+=<sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>(i,j)<sp/>*<sp/>pow(Pth_,i);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>coef(0)<sp/>-=<sp/>T_;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dH,<sp/>H<sp/>=<sp/>-coef(0)/coef(1),<sp/>num=coef(0),<sp/>den=0;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=1<sp/>;<sp/>j&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>;<sp/>j++)</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num<sp/>+=<sp/>coef(j)<sp/>*<sp/>pow(H,j);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>den<sp/>+=<sp/>j*coef(j)<sp/>*<sp/>pow(H,j-1);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dH<sp/>=<sp/>num/den;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>H<sp/>-=<sp/>dH;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>it=0;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(dH/H&gt;eps<sp/>&amp;&amp;<sp/>it&lt;max_iter)</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num=coef(0);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>den=0;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=1<sp/>;<sp/>j&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>;<sp/>j++)</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num<sp/>+=<sp/>coef(j)<sp/>*<sp/>pow(H,j);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>den<sp/>+=<sp/>j*coef(j)<sp/>*<sp/>pow(H,j-1);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dH<sp/>=<sp/>num<sp/>/<sp/>den;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>H<sp/>-=<sp/>dH;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it++;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dH/H&gt;eps)</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;PB<sp/>Loi_Etat_rhoT_GR_QC::calculer_H:<sp/>resolution<sp/>Newton<sp/>impossible<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cerr&lt;&lt;</highlight><highlight class="stringliteral">&quot;Pth=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;Pth_&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>t=&quot;</highlight><highlight class="normal">&lt;&lt;T_&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>H=&quot;</highlight><highlight class="normal">&lt;&lt;H&lt;&lt;finl;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1a6a4b64571b10f150a70db229b839e881" kindref="member">abort</ref>();</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>=<sp/>H;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//debuggage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>=<sp/><ref refid="classLoi__Etat__GR__base_1a6b5322365a13c4d8e4001fcd7d9a5b30" kindref="member">Cp_</ref>*T_;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="classLoi__Etat__rhoT__GR__QC_1a86614b06921642c3bec2f9820f1bbc04" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1a86614b06921642c3bec2f9820f1bbc04" kindref="member">Loi_Etat_rhoT_GR_QC::Drho_DP</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>P,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>h)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="283"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>res<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classLoi__Etat__GR__base_1acc26342f71973a15dadc7eb34f5cb5c9" kindref="member">R</ref>==-1)</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>H<sp/>=h;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=1<sp/>;<sp/>i&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0)<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0<sp/>;<sp/>j&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>;<sp/>j++)</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>+=<sp/>i*<sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>(i,j)<sp/>*pow(P,i-1)<sp/>*pow(H,j);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//debuggage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>=<sp/>1/(<ref refid="classLoi__Etat__GR__base_1acc26342f71973a15dadc7eb34f5cb5c9" kindref="member">R</ref>*h/<ref refid="classLoi__Etat__GR__base_1a6b5322365a13c4d8e4001fcd7d9a5b30" kindref="member">Cp_</ref>);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="comment">//correspond<sp/>a<sp/>Drho_DH<sp/>en<sp/>fait</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302" refid="classLoi__Etat__rhoT__GR__QC_1aa3e8c3b89fc2e726be1e7f2693e5e218" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1aa3e8c3b89fc2e726be1e7f2693e5e218" kindref="member">Loi_Etat_rhoT_GR_QC::Drho_DT</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>P,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>h)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="303"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>res<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classLoi__Etat__GR__base_1acc26342f71973a15dadc7eb34f5cb5c9" kindref="member">R</ref>==-1)</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>H<sp/>=<sp/>h;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=1<sp/>;<sp/>i&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0)<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0<sp/>;<sp/>j&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>;<sp/>j++)</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>+=<sp/>i*<sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1adea6069a82473a732ef78776723c3cb1" kindref="member">PolyRho_</ref>(i,j)<sp/>*pow(P,j)<sp/>*pow(H,i-1);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//debuggage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>=<sp/>-P*<ref refid="classLoi__Etat__GR__base_1a6b5322365a13c4d8e4001fcd7d9a5b30" kindref="member">Cp_</ref>/(<ref refid="classLoi__Etat__GR__base_1acc26342f71973a15dadc7eb34f5cb5c9" kindref="member">R</ref>*h*h);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321" refid="classLoi__Etat__rhoT__GR__QC_1adb6ba57c6d8101212f20b89917c0a5b9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1adb6ba57c6d8101212f20b89917c0a5b9" kindref="member">Loi_Etat_rhoT_GR_QC::DT_DH</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>P,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>h)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="322"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>res<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classLoi__Etat__GR__base_1acc26342f71973a15dadc7eb34f5cb5c9" kindref="member">R</ref>==-1)</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>H<sp/>=<sp/>h;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0<sp/>;<sp/>i&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>.<ref refid="classTRUSTTab_1aee55d6851cd43d179ec3c46262fa0aad" kindref="member">dimension</ref>(0)<sp/>;<sp/>i++)</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=1<sp/>;<sp/>j&lt;<ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>;<sp/>j++)</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>+=<sp/>j*<sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1ade30b7351a8998ecd25c3a7fecf0e424" kindref="member">PolyT_</ref>(i,j)<sp/>*pow(P,i)<sp/>*pow(H,j-1);</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//debuggage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>=<sp/><ref refid="classLoi__Etat__GR__base_1a6b5322365a13c4d8e4001fcd7d9a5b30" kindref="member">Cp_</ref>-<ref refid="classLoi__Etat__GR__base_1acc26342f71973a15dadc7eb34f5cb5c9" kindref="member">R</ref>;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="340" refid="classLoi__Etat__rhoT__GR__QC_1af7ee03623b1b49bceea46347445dbca1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLoi__Etat__rhoT__GR__QC_1af7ee03623b1b49bceea46347445dbca1" kindref="member">Loi_Etat_rhoT_GR_QC::calculer_masse_volumique</ref>()</highlight></codeline>
+<codeline lineno="341"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><ref refid="classLoi__Etat__GR__base_1aa0f5fb4e7980b81ffd3ff61b0bfc6bb7" kindref="member">Loi_Etat_GR_base::calculer_masse_volumique</ref>();</highlight></codeline>
+<codeline lineno="343"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Dilatable/Quasi_Compressible/Milieu/Loi_Etat_rhoT_GR_QC.cpp"/>
+  </compounddef>
+</doxygen>

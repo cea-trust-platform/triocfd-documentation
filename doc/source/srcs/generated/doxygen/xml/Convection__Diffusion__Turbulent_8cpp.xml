@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Convection__Diffusion__Turbulent_8cpp" kind="file" language="C++">
+    <compoundname>Convection_Diffusion_Turbulent.cpp</compoundname>
+    <includes refid="Convection__Diffusion__Turbulent_8h" local="no">Convection_Diffusion_Turbulent.h</includes>
+    <includes refid="Modele__turbulence__scal__base_8h" local="no">Modele_turbulence_scal_base.h</includes>
+    <includes refid="Operateur__Diff__base_8h" local="no">Operateur_Diff_base.h</includes>
+    <includes refid="Discretisation__base_8h" local="no">Discretisation_base.h</includes>
+    <includes refid="Schema__Temps__base_8h" local="no">Schema_Temps_base.h</includes>
+    <includes refid="Champ__Uniforme_8h" local="no">Champ_Uniforme.h</includes>
+    <includes refid="Operateur__Diff_8h" local="no">Operateur_Diff.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Domaine_8h" local="no">Domaine.h</includes>
+    <includes refid="Avanc_8h" local="no">Avanc.h</includes>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2025,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Convection_Diffusion_Turbulent.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Modele_turbulence_scal_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur_Diff_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Discretisation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Schema_Temps_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Uniforme.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Operateur_Diff.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Avanc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classConvection__Diffusion__Turbulent_1a9151e99a20907f9400107dfc85b6cd10" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classConvection__Diffusion__Turbulent_1a9151e99a20907f9400107dfc85b6cd10" kindref="member">Convection_Diffusion_Turbulent::lire_modele</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Reading<sp/>and<sp/>typing<sp/>of<sp/>the<sp/>turbulence<sp/>model<sp/>:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>typ;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>typ;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>nom1(</highlight><highlight class="stringliteral">&quot;Modele_turbulence_scal_&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>nom1<sp/>+=<sp/>typ;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(typ<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;sous_maille_dyn&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nom1<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>disc<sp/>=<sp/>eqn.<ref refid="classEquation__base_1a440fc95363315082eddbef26dc76024e" kindref="member">discretisation</ref>().<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(disc<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;VEFPreP1B&quot;</highlight><highlight class="normal">)<sp/>disc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;VEF&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nom1<sp/>+=<sp/>disc;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>nom1<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>.<ref refid="classObjet__U__ptr_1af1441c90920c933ff845d91d3bd7b814" kindref="member">typer</ref>(nom1);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>-&gt;<ref refid="classModele__turbulence__scal__base_1a573df0bdf6fcc56796900a4805e8eb8d" kindref="member">associer_eqn</ref>(eqn);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>-&gt;<ref refid="classModele__turbulence__scal__base_1aa2822b27843da78c8f2d0a991600cf82" kindref="member">associer</ref>(eqn.<ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>(),<sp/>eqn.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>());</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();<sp/></highlight><highlight class="comment">//<sp/>On<sp/>lit<sp/>:-)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>-&gt;<ref refid="classModele__turbulence__scal__base_1ae89ab3b3bbe00fc7dc8c332278757e61" kindref="member">discretiser</ref>();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classConvection__Diffusion__Turbulent_1a49daf9a2910a0e02cc845b9685f8f830" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classConvection__Diffusion__Turbulent_1a49daf9a2910a0e02cc845b9685f8f830" kindref="member">Convection_Diffusion_Turbulent::lire_op_diff_turbulent</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn,<sp/><ref refid="classOperateur__Diff" kindref="compound">Operateur_Diff</ref>&amp;<sp/>terme_diffusif)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>accfermee<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Op_Dift_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref><sp/>motbidon;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>motbidon;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>assert(motbidon<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;{&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>motbidon;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motbidon<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;negligeable&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>+=<sp/>motbidon;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>motbidon;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>terme_diffusif.<ref refid="classOperateur__Diff_1acf6a9a9161578b16a6d8665f0a4bfc23" kindref="member">typer</ref>(type);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>terme_diffusif.<ref refid="classOperateur__Diff_1afe46b489af4b0c5560f3771c3ee8940b" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1addce89950be87e830970589f6aba37d3" kindref="member">associer_eqn</ref>(eqn);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>terme_diffusif-&gt;<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>terme_diffusif-&gt;<ref refid="classOperateur__Diff_1a9e560c15136324e71568e3087f3652b5" kindref="member">associer_diffusivite</ref>(terme_diffusif.<ref refid="classOperateur__Diff_1a684570cd736780e40fecef7696a227b6" kindref="member">diffusivite</ref>());</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>assert(motbidon<sp/>==<sp/>accfermee);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motbidon<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;stab&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>disc<sp/>=<sp/>eqn.<ref refid="classEquation__base_1a440fc95363315082eddbef26dc76024e" kindref="member">discretisation</ref>().<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(disc<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;VEFPreP1B&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>disc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;VEF&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nb_inc;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nb_inc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((terme_diffusif.<ref refid="classOperateur__Diff_1a684570cd736780e40fecef7696a227b6" kindref="member">diffusivite</ref>().<ref refid="classField__base_1a7f1a8a933594c9f73ac0b14260961fad" kindref="member">nb_comp</ref>()<sp/>!=<sp/>1)<sp/>&amp;&amp;<sp/>((disc<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;VDF&quot;</highlight><highlight class="normal">)))</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nb_inc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;_Multi_inco_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type_inco<sp/>=<sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>+=<sp/>disc;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>+=<sp/>nb_inc;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>+=<sp/>(type_inco.<ref refid="classNom_1acdb0a56b1654b0c37050be0ca9435706" kindref="member">suffix</ref>(</highlight><highlight class="stringliteral">&quot;Champ_&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classObjet__U_1ad9b82ace9d4c7902ec704b6a78f76991" kindref="member">Objet_U::axi</ref>)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;_Axi&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;_stab&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>terme_diffusif.<ref refid="classOperateur__Diff_1acf6a9a9161578b16a6d8665f0a4bfc23" kindref="member">typer</ref>(type);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>terme_diffusif.<ref refid="classOperateur__Diff_1afe46b489af4b0c5560f3771c3ee8940b" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1addce89950be87e830970589f6aba37d3" kindref="member">associer_eqn</ref>(eqn);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>terme_diffusif-&gt;<ref refid="classOperateur__Diff_1a9e560c15136324e71568e3087f3652b5" kindref="member">associer_diffusivite</ref>(terme_diffusif.<ref refid="classOperateur__Diff_1a684570cd736780e40fecef7696a227b6" kindref="member">diffusivite</ref>());</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>terme_diffusif.<ref refid="classTRUST__Deriv_1a0ab1eefc39fab1575fe0c62929652b46" kindref="member">valeur</ref>();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>disc<sp/>=<sp/>eqn.<ref refid="classEquation__base_1a440fc95363315082eddbef26dc76024e" kindref="member">discretisation</ref>().<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>les<sp/>operateurs<sp/>C_D_Turb_T<sp/>sont<sp/>communs<sp/>aux<sp/>discretisations<sp/>VEF<sp/>et<sp/>VEFP1B</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(disc<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;VEFPreP1B&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>disc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;VEF&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>+=<sp/>disc;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>nb_inc;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>nb_inc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((terme_diffusif.<ref refid="classOperateur__Diff_1a684570cd736780e40fecef7696a227b6" kindref="member">diffusivite</ref>().<ref refid="classField__base_1a7f1a8a933594c9f73ac0b14260961fad" kindref="member">nb_comp</ref>()<sp/>!=<sp/>1)<sp/>&amp;&amp;<sp/>((disc<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;VDF&quot;</highlight><highlight class="normal">)))</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nb_inc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;_Multi_inco_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>+=<sp/>nb_inc;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNom" kindref="compound">Nom</ref><sp/>type_inco<sp/>=<sp/>eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(type_inco<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;Champ_Q1_EF&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Q1&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>+=<sp/>(type_inco.<ref refid="classNom_1acdb0a56b1654b0c37050be0ca9435706" kindref="member">suffix</ref>(</highlight><highlight class="stringliteral">&quot;Champ_&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classObjet__U_1ad9b82ace9d4c7902ec704b6a78f76991" kindref="member">Objet_U::axi</ref>)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;_Axi&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(motbidon<sp/>!=<sp/>accfermee)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>+=<sp/><ref refid="classNom" kindref="compound">Nom</ref>(</highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal">)<sp/>+<sp/>motbidon,<sp/>is<sp/>&gt;&gt;<sp/>motbidon;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>assert(motbidon<sp/>==<sp/>accfermee);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>terme_diffusif.<ref refid="classOperateur__Diff_1acf6a9a9161578b16a6d8665f0a4bfc23" kindref="member">typer</ref>(type);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>terme_diffusif.<ref refid="classOperateur__Diff_1afe46b489af4b0c5560f3771c3ee8940b" kindref="member">l_op_base</ref>().<ref refid="classOperateur__base_1addce89950be87e830970589f6aba37d3" kindref="member">associer_eqn</ref>(eqn);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/>terme_diffusif-&gt;<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>terme_diffusif-&gt;<ref refid="classOperateur__Diff_1a9e560c15136324e71568e3087f3652b5" kindref="member">associer_diffusivite</ref>(terme_diffusif.<ref refid="classOperateur__Diff_1a684570cd736780e40fecef7696a227b6" kindref="member">diffusivite</ref>());</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="140"><highlight class="comment">/*!<sp/>@brief<sp/>Complete<sp/>le<sp/>modele<sp/>de<sp/>turbulence.</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="classConvection__Diffusion__Turbulent_1a40a9b3295ae1ca5d155c4ca7d6da6366" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Turbulent_1a40a9b3295ae1ca5d155c4ca7d6da6366" kindref="member">Convection_Diffusion_Turbulent::completer</ref>()</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>-&gt;<ref refid="classModele__turbulence__scal__base_1a1dc612e3d4b77fd1c94fb6c96d386bb4" kindref="member">completer</ref>();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>-&gt;<ref refid="classModele__turbulence__scal__base_1ab27e82caebb6f452336f3c06090e0cda" kindref="member">loi_paroi</ref>().<ref refid="classTurbulence__paroi__scal__base_1accbc451551716b8a33bdd7bf67e8aead" kindref="member">completer</ref>();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="classConvection__Diffusion__Turbulent_1a6b5bec13559d94bab540f7c2e6b10f39" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Turbulent_1a6b5bec13559d94bab540f7c2e6b10f39" kindref="member">Convection_Diffusion_Turbulent::initTimeStep</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>-&gt;<ref refid="classModele__turbulence__scal__base_1a6ade48fa6a8c8656ec950a1a1c8b71a2" kindref="member">initTimeStep</ref>(dt);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="154"><highlight class="comment">/*!<sp/>@brief<sp/>Prepare<sp/>le<sp/>calcul.</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>renvoie<sp/>toujours<sp/>1</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="classConvection__Diffusion__Turbulent_1a3eb8184ef2f50a7d874469d5af6a1096" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Turbulent_1a3eb8184ef2f50a7d874469d5af6a1096" kindref="member">Convection_Diffusion_Turbulent::preparer_calcul</ref>()</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>-&gt;<ref refid="classModele__turbulence__scal__base_1ae27fd7a645fbc46c61b5607f6ca10b1e" kindref="member">preparer_calcul</ref>();</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="164"><highlight class="comment">/*!<sp/>@brief<sp/>for<sp/>PDI<sp/>IO:<sp/>retrieve<sp/>name,<sp/>type<sp/>and<sp/>dimensions<sp/>of<sp/>the<sp/>fields<sp/>to<sp/>save/restore</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="classConvection__Diffusion__Turbulent_1ae588599c40d37434d560d1834346b982" refkind="member"><highlight class="normal">std::vector&lt;YAML_data&gt;<sp/><ref refid="classConvection__Diffusion__Turbulent_1ae588599c40d37434d560d1834346b982" kindref="member">Convection_Diffusion_Turbulent::data_a_sauvegarder</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="168"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>std::vector&lt;YAML_data&gt;<sp/>data<sp/>=<sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>-&gt;<ref refid="classModele__turbulence__scal__base_1ad3ce377cb9c3d3ad2bcda33f61cee9c9" kindref="member">data_a_sauvegarder</ref>();</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="173"><highlight class="comment">/*!<sp/>@brief<sp/>Simple<sp/>appel<sp/>a<sp/>Modele_turbulence_scal_base::sauvegarder(Sortie&amp;)<sp/>sur<sp/>le<sp/>membre<sp/>concerne.</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>Sauvegarde<sp/>le<sp/>modele<sp/>de<sp/>turbulence<sp/>sur<sp/>un<sp/>flot</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>de<sp/>sortie.</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Sortie&amp;<sp/>os)<sp/>un<sp/>flot<sp/>de<sp/>sortie</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>code<sp/>de<sp/>retour<sp/>propage</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="classConvection__Diffusion__Turbulent_1aa7f3ff4ca7a7e85beac7d2168394a2f4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Turbulent_1aa7f3ff4ca7a7e85beac7d2168394a2f4" kindref="member">Convection_Diffusion_Turbulent::sauvegarder</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="182"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>-&gt;<ref refid="classModele__turbulence__scal__base_1abe49bc922fe9378894306e811e5ba475" kindref="member">sauvegarder</ref>(os);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="186"><highlight class="comment">/*!<sp/>@brief<sp/>Reprise<sp/>(apres<sp/>une<sp/>sauvegarde)<sp/>a<sp/>partir<sp/>d&apos;un<sp/>flot<sp/>d&apos;entree.</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/>*<sp/>@param<sp/>(Entree&amp;<sp/>is)<sp/>un<sp/>flot<sp/>d&apos;entree</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/>*<sp/>@return<sp/>(int)<sp/>renvoie<sp/>toujours<sp/>1</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"><sp/>*<sp/>@throws<sp/>fin<sp/>de<sp/>fichier<sp/>atteinte<sp/>pendant<sp/>la<sp/>reprise</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192" refid="classConvection__Diffusion__Turbulent_1ad3ef340ead5f50d7bf1bffc766feb4d3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Turbulent_1ad3ef340ead5f50d7bf1bffc766feb4d3" kindref="member">Convection_Diffusion_Turbulent::reprendre</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>-&gt;<ref refid="classModele__turbulence__scal__base_1a8c0818db379dc44ec6aeea918b2ec223" kindref="member">reprendre</ref>(is);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="198"><highlight class="comment">/*!<sp/>@brief<sp/>Mise<sp/>a<sp/>jour<sp/>en<sp/>temps<sp/>du<sp/>modele<sp/>de<sp/>turbulence.</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/>*<sp/>@param<sp/>(double<sp/>temps)<sp/>le<sp/>temps<sp/>de<sp/>mise<sp/>a<sp/>jour</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="classConvection__Diffusion__Turbulent_1ac9c188b2acb36ecda03b3e9d10560bdf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Turbulent_1ac9c188b2acb36ecda03b3e9d10560bdf" kindref="member">Convection_Diffusion_Turbulent::mettre_a_jour</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps)</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><ref refid="classConvection__Diffusion__Turbulent_1aa1e3037451ac9e93b115db1781aa2e10" kindref="member">le_modele_turbulence</ref>-&gt;<ref refid="classModele__turbulence__scal__base_1a165c7c6da4bf5d5a3975829b921c4060" kindref="member">mettre_a_jour</ref>(temps);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/ThHyd/Turbulence/Equations/Convection_Diffusion_Turbulent.cpp"/>
+  </compounddef>
+</doxygen>

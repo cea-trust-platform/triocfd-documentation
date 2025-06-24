@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="RK3__MassRedistrib_8cpp" kind="file" language="C++">
+    <compoundname>RK3_MassRedistrib.cpp</compoundname>
+    <includes refid="Mass__Redistribution__Phase__Field_8h" local="no">Mass_Redistribution_Phase_Field.h</includes>
+    <includes refid="Convection__Diffusion__Phase__field_8h" local="no">Convection_Diffusion_Phase_field.h</includes>
+    <includes refid="Source__Con__Phase__field_8h" local="no">Source_Con_Phase_field.h</includes>
+    <includes refid="RK3__MassRedistrib_8h" local="no">RK3_MassRedistrib.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="RK3__MassRedistrib_8cpp_1ab695fbc8b628b41b51b079eb2c716638" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* RK3_MassRedistribbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>RK3_MassRedistribbases</name>
+        <initializer>={   &amp;( <ref refid="classRK3" kindref="compound">RK3</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Phase_field/RK3_MassRedistrib.cpp" line="22" column="109" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Phase_field/RK3_MassRedistrib.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2015<sp/>-<sp/>2016,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Mass_Redistribution_Phase_Field.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Convection_Diffusion_Phase_field.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Source_Con_Phase_field.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;RK3_MassRedistrib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classRK3__MassRedistrib_1a9ab2dda20e360992cf70cb4ab0da4440" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classRK3__MassRedistrib" kindref="compound">RK3_MassRedistrib</ref>,</highlight><highlight class="stringliteral">&quot;Runge_Kutta_ordre_3_MassRedistrib&quot;</highlight><highlight class="normal">,<ref refid="classRK3" kindref="compound">RK3</ref>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classRK3__MassRedistrib_1ab14f656bb442cfa40376e6f72e3eeeb8" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classRK3__MassRedistrib_1ab14f656bb442cfa40376e6f72e3eeeb8" kindref="member">RK3_MassRedistrib::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><sp/><ref refid="classRK3_1a8a12221d2d846b9de36e07be55c489a9" kindref="member">RK3::printOn</ref>(s);<sp/>}</highlight></codeline>
+<codeline lineno="25" refid="classRK3__MassRedistrib_1a46497eec296491e6519ce2bab375046f" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classRK3__MassRedistrib_1a46497eec296491e6519ce2bab375046f" kindref="member">RK3_MassRedistrib::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classRK3_1a151c80be45007e4aedd977867dd332bb" kindref="member">RK3::readOn</ref>(s)<sp/>;<sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classRK3__MassRedistrib_1a4bfebf4fddddbff40667efab5e8315cd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRK3__MassRedistrib_1a4bfebf4fddddbff40667efab5e8315cd" kindref="member">RK3_MassRedistrib::faire_un_pas_de_temps_eqn_base</ref>(<ref refid="classEquation__base" kindref="compound">Equation_base</ref>&amp;<sp/>eqn)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classSchema__Temps__base_1ab32e23a4b61dfec4803446bace0256e6" kindref="member">nb_pas_dt</ref>()&gt;=0<sp/>&amp;&amp;<sp/><ref refid="classSchema__Temps__base_1ab32e23a4b61dfec4803446bace0256e6" kindref="member">nb_pas_dt</ref>()&lt;=100<sp/>&amp;&amp;<sp/><ref refid="classSchema__Temps__base_1a8cdc40f1adfd8ff29d7f9c75330920ee" kindref="member">facsec_</ref><sp/>==<sp/>1<sp/>)<sp/><ref refid="classTRUSTSchema__RK_1a4cc2ff46bc2afa9d5f2fcbcb38ffd7aa" kindref="member">print_warning</ref>(100);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>a2<sp/>=<sp/>-5.<sp/>/<sp/>9.,<sp/>a3<sp/>=<sp/>-153.<sp/>/<sp/>128.;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>b1<sp/>=<sp/>1.<sp/>/<sp/>3.,<sp/>b2<sp/>=<sp/>15.<sp/>/<sp/>16.,<sp/>b3<sp/>=<sp/>8.<sp/>/<sp/>15.;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>xi=eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a8c225229cff16292a3b78f075d93a26d" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>xipls1=eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>().<ref refid="classChamp__Inc__base_1a246d9aabb57dbccef0ca304c87abf870" kindref="member">futur</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>qi(xi)<sp/>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>present(xi);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VDF" kindref="compound">Domaine_VDF</ref>&amp;<sp/>zvdf<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VDF" kindref="compound">Domaine_VDF</ref>,<sp/>eqn.<ref refid="classEquation__base_1aee9aeebf76d9f659f7032cf7fb0b8a02" kindref="member">domaine_dis</ref>());</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classConvection__Diffusion__Phase__field" kindref="compound">Convection_Diffusion_Phase_field</ref>&amp;<sp/>eq_c=ref_cast(<ref refid="classConvection__Diffusion__Phase__field" kindref="compound">Convection_Diffusion_Phase_field</ref>,<sp/><ref refid="classSchema__Temps__base_1a0847b3275766860b5a21caf47e285994" kindref="member">mon_probleme</ref>-&gt;equation(1));</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><ref refid="classSources" kindref="compound">Sources</ref>&amp;<sp/>list_sources<sp/>=<sp/>ref_cast_non_const(<ref refid="classSources" kindref="compound">Sources</ref>,<sp/>eq_c.<ref refid="classEquation__base_1a3c8ac50e3e7b6ed29024a43e828a5396" kindref="member">sources</ref>());</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><ref refid="classSource__Con__Phase__field" kindref="compound">Source_Con_Phase_field</ref>&amp;<sp/>source_pf<sp/>=<sp/>ref_cast(<ref refid="classSource__Con__Phase__field" kindref="compound">Source_Con_Phase_field</ref>,<sp/>list_sources(0).valeur());</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>minnX<sp/>=<sp/>source_pf.<ref refid="classSource__Con__Phase__field_1a8a7729268519b3fd89ba66283c1fda13" kindref="member">get_minX</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref><sp/>maxxX<sp/>=<sp/>source_pf.<ref refid="classSource__Con__Phase__field_1a8331f823589fa4d06ce3c305d5b1cb35" kindref="member">get_maxX</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><ref refid="classMass__Redistribution__Phase__Field_1a9a890913f39b8c5422f7e1c9562e223f" kindref="member">Mass_Redistribution_Phase_Field::impose_mass_redistribution</ref>(zvdf,<sp/>xi,<sp/>minnX,<sp/>maxxX);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>q1<sp/>=<sp/>f(x0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a97aa87b0cf6205ef437a6774adf1bd47" kindref="member">derivee_en_temps_inco</ref>(qi);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>q1<sp/>=<sp/>h<sp/>f(x0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>qi<sp/>*=<sp/><ref refid="classSchema__Temps__base_1a41d96b9bfd9ead46031343c31f9bfe5d" kindref="member">dt_</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>x1<sp/>=<sp/>x0<sp/>+<sp/>b1<sp/>q1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>xi.<ref refid="classTRUSTVect_1ab13a422634103e4b33357f35dd281473" kindref="member">ajoute</ref>(b1,<sp/>qi);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>xipls1<sp/>=<sp/>f(x1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Mass_Redistribution_Phase_Field::impose_mass_redistribution(zvdf,<sp/>xi,<sp/>minnX,<sp/>maxxX);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a97aa87b0cf6205ef437a6774adf1bd47" kindref="member">derivee_en_temps_inco</ref>(xipls1);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>q2<sp/>=<sp/>h<sp/>f(x1)<sp/>+<sp/>a2<sp/>q1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>qi<sp/>*=<sp/>a2;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>qi.<ref refid="classTRUSTVect_1ab13a422634103e4b33357f35dd281473" kindref="member">ajoute</ref>(<ref refid="classSchema__Temps__base_1a41d96b9bfd9ead46031343c31f9bfe5d" kindref="member">dt_</ref>,xipls1);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>x2<sp/>=<sp/>x1<sp/>+<sp/>b2<sp/>q2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>xi.<ref refid="classTRUSTVect_1ab13a422634103e4b33357f35dd281473" kindref="member">ajoute</ref>(b2,<sp/>qi);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>xipls1<sp/>=<sp/>f(x2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Mass_Redistribution_Phase_Field::impose_mass_redistribution(zvdf,<sp/>xi,<sp/>minnX,<sp/>maxxX);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a97aa87b0cf6205ef437a6774adf1bd47" kindref="member">derivee_en_temps_inco</ref>(xipls1);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>q3<sp/>=<sp/>h<sp/>f(x2)<sp/>+<sp/>a3<sp/>q2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>qi<sp/>*=<sp/>a3;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>qi.<ref refid="classTRUSTVect_1ab13a422634103e4b33357f35dd281473" kindref="member">ajoute</ref>(<ref refid="classSchema__Temps__base_1a41d96b9bfd9ead46031343c31f9bfe5d" kindref="member">dt_</ref>,xipls1);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>x3<sp/>=<sp/>x2<sp/>+<sp/>b3<sp/>q3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>xi.<ref refid="classTRUSTVect_1ab13a422634103e4b33357f35dd281473" kindref="member">ajoute</ref>(b3,<sp/>qi);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Mass_Redistribution_Phase_Field::impose_mass_redistribution(zvdf,<sp/>xi,<sp/>minnX,<sp/>maxxX);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>futur<sp/>=<sp/>x3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>xipls1<sp/>=<sp/>xi;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="classMass__Redistribution__Phase__Field_1a9a890913f39b8c5422f7e1c9562e223f" kindref="member">Mass_Redistribution_Phase_Field::impose_mass_redistribution</ref>(zvdf,<sp/>xipls1,<sp/>minnX,<sp/>maxxX);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>xi<sp/>=<sp/>(x3-x0)/dt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>xi<sp/>-=<sp/>present;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>xi<sp/>/=<sp/><ref refid="classSchema__Temps__base_1a41d96b9bfd9ead46031343c31f9bfe5d" kindref="member">dt_</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><ref refid="classSchema__Temps__base_1ae688058ec9592383f84aeb6de1d56158" kindref="member">update_critere_statio</ref>(xi,<sp/>eqn);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Mass_Redistribution_Phase_Field::impose_mass_redistribution(zvdf,<sp/>xi,<sp/>minnX,<sp/>maxxX);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>boundary<sp/>condition<sp/>on<sp/>futur:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>eqn.<ref refid="classEquation__base_1a9dd19036ab6bf1d01b103c6f609b8efe" kindref="member">domaine_Cl_dis</ref>().<ref refid="classDomaine__Cl__dis__base_1a52d23ed7c6da1e9557e93f99cbdcd822" kindref="member">imposer_cond_lim</ref>(eqn.<ref refid="classEquation__base_1a4d7d97501ebeb67828d6ee7dcedb2682" kindref="member">inconnue</ref>(),<ref refid="classSchema__Temps__base_1a1e573b93ad40c737ecb2da65b68f968a" kindref="member">temps_courant</ref>()+<ref refid="classSchema__Temps__base_1a816fca9a75adfb2501a68b08652a08fb" kindref="member">pas_de_temps</ref>());</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>xipls1.<ref refid="classTRUSTVect_1aec6e70a97843771fdfa1cefe575141b7" kindref="member">echange_espace_virtuel</ref>();</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>Mass_Redistribution_Phase_Field::impose_mass_redistribution(zvdf,<sp/>xi,<sp/>minnX,<sp/>maxxX);*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>xi<sp/>=<sp/>x0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>xi<sp/>=<sp/>present;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/src/Multiphase/Phase_field/RK3_MassRedistrib.cpp"/>
+  </compounddef>
+</doxygen>

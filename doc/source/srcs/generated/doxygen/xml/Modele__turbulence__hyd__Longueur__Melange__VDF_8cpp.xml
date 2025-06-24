@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Modele__turbulence__hyd__Longueur__Melange__VDF_8cpp" kind="file" language="C++">
+    <compoundname>Modele_turbulence_hyd_Longueur_Melange_VDF.cpp</compoundname>
+    <includes refid="Modele__turbulence__hyd__Longueur__Melange__VDF_8h" local="no">Modele_turbulence_hyd_Longueur_Melange_VDF.h</includes>
+    <includes refid="Domaine__Cl__VDF_8h" local="no">Domaine_Cl_VDF.h</includes>
+    <includes refid="Champ__Face__VDF_8h" local="no">Champ_Face_VDF.h</includes>
+    <includes refid="Equation__base_8h" local="no">Equation_base.h</includes>
+    <includes refid="Probleme__base_8h" local="no">Probleme_base.h</includes>
+    <includes refid="Domaine__VDF_8h" local="no">Domaine_VDF.h</includes>
+    <includes refid="TRUSTTrav_8h" local="no">TRUSTTrav.h</includes>
+    <includes refid="Debog_8h" local="no">Debog.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Modele__turbulence__hyd__Longueur__Melange__VDF_8cpp_1a44d4067d3aa6eb7c930415c970539db6" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Modele_turbulence_hyd_Longueur_Melange_VDFbases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Modele_turbulence_hyd_Longueur_Melange_VDFbases</name>
+        <initializer>={   &amp;( <ref refid="classModele__turbulence__hyd__Longueur__Melange__base" kindref="compound">Modele_turbulence_hyd_Longueur_Melange_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VDF/Turbulence/Modele_turbulence_hyd_Longueur_Melange_VDF.cpp" line="27" column="209" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VDF/Turbulence/Modele_turbulence_hyd_Longueur_Melange_VDF.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Modele_turbulence_hyd_Longueur_Melange_VDF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_Cl_VDF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Champ_Face_VDF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Equation_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Probleme_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VDF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUSTTrav.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Debog.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a1df26e6a46582ac3e6d2e8287268f01d" refkind="member"><highlight class="normal">Implemente_instanciable(<ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF" kindref="compound">Modele_turbulence_hyd_Longueur_Melange_VDF</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Modele_turbulence_hyd_Longueur_Melange_VDF&quot;</highlight><highlight class="normal">,<sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__base" kindref="compound">Modele_turbulence_hyd_Longueur_Melange_base</ref>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1aaec7c30419e2e9291a084e6b3bb6b439" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1aaec7c30419e2e9291a084e6b3bb6b439" kindref="member">Modele_turbulence_hyd_Longueur_Melange_VDF::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="30"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s<sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classObjet__U_1a93dacab7253df3f9df63d1aca21b1dd5" kindref="member">le_nom</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1aade6e2866df17d603f555a5d0a149d36" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1aade6e2866df17d603f555a5d0a149d36" kindref="member">Modele_turbulence_hyd_Longueur_Melange_VDF::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__base_1a5345e84c74eb3e0bfbae7c36bc01d041" kindref="member">Modele_turbulence_hyd_Longueur_Melange_base::readOn</ref>(s);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1afd8e2072bff97549b585e1d7a86e3e31" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1afd8e2072bff97549b585e1d7a86e3e31" kindref="member">Modele_turbulence_hyd_Longueur_Melange_VDF::set_param</ref>(<ref refid="classParam" kindref="compound">Param</ref>&amp;<sp/>param)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__0__eq__base_1aae5c7b295ba3325561dd54494dca0fc9" kindref="member">Modele_turbulence_hyd_Longueur_Melange_base::set_param</ref>(param);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;canal_hmin&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a19f51c2aaf578f0cabebd0d45d140981" kindref="member">alt_min_</ref>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;canal_hmax&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a000f7f7c94b9bf601eeeb0259ca8344f" kindref="member">alt_max_</ref>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;direction_normale_canal&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a2d50b6777145e90a8983facd8810566c" kindref="member">direction_</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a8452f93157a78b881f790eb78a6b46ab" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a8452f93157a78b881f790eb78a6b46ab" kindref="member">Modele_turbulence_hyd_Longueur_Melange_VDF::preparer_calcul</ref>()</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__base_1a3d4ebe6aa10bf7525abb5a3a71ad55bd" kindref="member">Modele_turbulence_hyd_base::preparer_calcul</ref>();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__0__eq__base_1a569836a47a9ad42440bd6ce5863e70c3" kindref="member">mettre_a_jour</ref>(0.);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a68775623fddb0f66a3a23728b42e4c67" refkind="member"><highlight class="normal"><ref refid="classChamp__Fonc__base" kindref="compound">Champ_Fonc_base</ref>&amp;<sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a68775623fddb0f66a3a23728b42e4c67" kindref="member">Modele_turbulence_hyd_Longueur_Melange_VDF::calculer_viscosite_turbulente</ref>()</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>hauteur<sp/>=<sp/>std::fabs(<ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a000f7f7c94b9bf601eeeb0259ca8344f" kindref="member">alt_max_</ref><sp/>-<sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a19f51c2aaf578f0cabebd0d45d140981" kindref="member">alt_min_</ref>);<sp/></highlight><highlight class="comment">//<sp/>test<sp/>alt_max&gt;alt_min<sp/>a<sp/>faire,<sp/>plutot<sp/>que<sp/>de<sp/>prendre<sp/>fabs<sp/>??</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//Attention,<sp/>ici<sp/>&quot;hauteur&quot;<sp/>est<sp/>la<sp/>hauteur<sp/>reelle<sp/>du<sp/>canal<sp/>(pas<sp/>la<sp/>demi-hauteur)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Kappa<sp/>=<sp/>0.415;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Cmu<sp/>=<sp/>CMU;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temps<sp/>=<sp/><ref refid="classModele__turbulence__hyd__base_1ada26f55e92d2f323dcb549509c175661" kindref="member">mon_equation_</ref>-&gt;inconnue().temps();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VDF" kindref="compound">Domaine_VDF</ref>&amp;<sp/>domaine_VDF<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VDF" kindref="compound">Domaine_VDF</ref>,<sp/><ref refid="classModele__turbulence__hyd__0__eq__base_1ae4f7169d85315e5edcaa8f332db1d202" kindref="member">le_dom_VF_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>visco_turb<sp/>=<sp/><ref refid="classModele__turbulence__hyd__base_1a229c914beb2afc1e28495427801560fa" kindref="member">la_viscosite_turbulente_</ref>-&gt;<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTVect" kindref="compound">DoubleVect</ref>&amp;<sp/>k<sp/>=<sp/><ref refid="classModele__turbulence__hyd__0__eq__base_1a333b8020eca1e992bdad3c9d7d4d26cb" kindref="member">energie_cinetique_turb_</ref>-&gt;<ref refid="classChamp__Don__base_1abb194455f5439d74ce449f1bd937486a" kindref="member">valeurs</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_elem<sp/>=<sp/>domaine_VDF.<ref refid="classDomaine__dis__base_1a49de34b29ab0d385811b3ff97d8e30d7" kindref="member">nb_elem</ref>();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_elem_tot<sp/>=<sp/>domaine_VDF.<ref refid="classDomaine__dis__base_1a33e55ca05b2a53a3a5e1f844e2551824" kindref="member">nb_elem_tot</ref>();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>xp<sp/>=<sp/>domaine_VDF.<ref refid="classDomaine__VF_1ab7331ae644b09336ef8c3e480c3078f0" kindref="member">xp</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__base_1a1a7eda661352e2acbe2e781929453722" kindref="member">Sij2_</ref>.<ref refid="classTRUSTVect_1ae68bc2c6cfd7016c9c209cddd41e51d4" kindref="member">resize</ref>(nb_elem_tot);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1ad0c101626c048e3884c9b4285c3ace3b" kindref="member">calculer_Sij2</ref>();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(visco_turb.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()<sp/>!=<sp/>nb_elem)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Size<sp/>error<sp/>for<sp/>the<sp/>array<sp/>containing<sp/>the<sp/>values<sp/>of<sp/>the<sp/>turbulent<sp/>viscosity.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Modele_turbulence_hyd_Longueur_Melange_VDF::calculer_viscosite_turbulente<sp/>visco_turb<sp/>0&quot;</highlight><highlight class="normal">,<sp/>visco_turb);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(k.<ref refid="classTRUSTVect_1a0a3b16fb39def99371b91ec218ef138b" kindref="member">size</ref>()<sp/>!=<sp/>nb_elem)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Size<sp/>error<sp/>for<sp/>the<sp/>array<sp/>containing<sp/>the<sp/>values<sp/>of<sp/>the<sp/>turbulent<sp/>kinetic<sp/>energy.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>finl;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProcess_1acc2fbbe761e08e5870ae605c0705491c" kindref="member">exit</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>CANAL<sp/>PLAN<sp/>suivant<sp/>(Ox<sp/>-<sp/>h=2)<sp/>**********************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>elem<sp/>=<sp/>0;<sp/>elem<sp/>&lt;<sp/>nb_elem;<sp/>elem++)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>xp(elem,<sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a2d50b6777145e90a8983facd8810566c" kindref="member">direction_</ref>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>y<sp/>=<sp/>std::fabs(y<sp/>-<sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a19f51c2aaf578f0cabebd0d45d140981" kindref="member">alt_min_</ref>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(y<sp/>&gt;<sp/>(hauteur<sp/>/<sp/>2.))</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y<sp/>=<sp/>std::fabs(<ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1a000f7f7c94b9bf601eeeb0259ca8344f" kindref="member">alt_max_</ref><sp/>-<sp/>y);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>visco_turb(elem)<sp/>=<sp/>Kappa<sp/>*<sp/>Kappa<sp/>*<sp/>y<sp/>*<sp/>y<sp/>*<sp/>(1.<sp/>-<sp/>2<sp/>*<sp/>y<sp/>/<sp/>hauteur)<sp/>*<sp/>sqrt(2.<sp/>*<sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__base_1a1a7eda661352e2acbe2e781929453722" kindref="member">Sij2_</ref>(elem));</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>k(elem)<sp/>=<sp/>pow(visco_turb(elem)<sp/>/<sp/>(Cmu<sp/>*<sp/>y),<sp/>2);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="classDebog_1aa228f7e951ef67b9e9bb31ced928652f" kindref="member">Debog::verifier</ref>(</highlight><highlight class="stringliteral">&quot;Modele_turbulence_hyd_Longueur_Melange_VDF::calculer_viscosite_turbulente<sp/>visco_turb<sp/>1&quot;</highlight><highlight class="normal">,<sp/>visco_turb);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__base_1a229c914beb2afc1e28495427801560fa" kindref="member">la_viscosite_turbulente_</ref>-&gt;<ref refid="classChamp__base_1a51c611d7c5754aaf1556c5f0e563c157" kindref="member">changer_temps</ref>(temps);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__base_1a229c914beb2afc1e28495427801560fa" kindref="member">la_viscosite_turbulente_</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1ad0c101626c048e3884c9b4285c3ace3b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__VDF_1ad0c101626c048e3884c9b4285c3ace3b" kindref="member">Modele_turbulence_hyd_Longueur_Melange_VDF::calculer_Sij2</ref>()</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref>&amp;<sp/>vitesse<sp/>=<sp/><ref refid="classModele__turbulence__hyd__base_1ada26f55e92d2f323dcb549509c175661" kindref="member">mon_equation_</ref>-&gt;inconnue().valeurs();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><ref refid="classChamp__Face__VDF" kindref="compound">Champ_Face_VDF</ref>&amp;<sp/>ch<sp/>=<sp/>ref_cast(<ref refid="classChamp__Face__VDF" kindref="compound">Champ_Face_VDF</ref>,<sp/><ref refid="classModele__turbulence__hyd__base_1ada26f55e92d2f323dcb549509c175661" kindref="member">mon_equation_</ref>-&gt;inconnue());</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__Cl__VDF" kindref="compound">Domaine_Cl_VDF</ref>&amp;<sp/>domaine_Cl_VDF<sp/>=<sp/>ref_cast(<ref refid="classDomaine__Cl__VDF" kindref="compound">Domaine_Cl_VDF</ref>,<sp/><ref refid="classModele__turbulence__hyd__0__eq__base_1a5de654ffd945987a84842b690b613d34" kindref="member">le_dom_Cl_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDomaine__VDF" kindref="compound">Domaine_VDF</ref>&amp;<sp/>domaine_VDF<sp/>=<sp/>ref_cast(<ref refid="classDomaine__VDF" kindref="compound">Domaine_VDF</ref>,<sp/><ref refid="classModele__turbulence__hyd__0__eq__base_1ae4f7169d85315e5edcaa8f332db1d202" kindref="member">le_dom_VF_</ref>.<ref refid="classTRUST__Ref_1a0287e7d70d82bb7926609fdbc932b984" kindref="member">valeur</ref>());</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_elem<sp/>=<sp/>domaine_VDF.<ref refid="classDomaine__dis__base_1a33e55ca05b2a53a3a5e1f844e2551824" kindref="member">nb_elem_tot</ref>();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>assert(vitesse.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/>duidxj(nb_elem,<sp/><ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>,<sp/><ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>,<sp/>vitesse.<ref refid="classTRUSTVect_1a233c6efc2617385174d5b4b0b29f9a96" kindref="member">line_size</ref>());</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/>j;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Sij;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__base_1a1a7eda661352e2acbe2e781929453722" kindref="member">Sij2_</ref><sp/>=<sp/>0.;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>ch.<ref refid="classChamp__Face__VDF_1ab16dd4ad65d38cd5157e64d2a2462363" kindref="member">calcul_duidxj</ref>(vitesse,<sp/>duidxj,<sp/>domaine_Cl_VDF);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>elem<sp/>=<sp/>0;<sp/>elem<sp/>&lt;<sp/>nb_elem;<sp/>elem++)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/><ref refid="classObjet__U_1a3e23491c01f2f39245fb6f3b6d6d9b17" kindref="member">dimension</ref>;<sp/>j++)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Deplacement<sp/>du<sp/>calcul<sp/>de<sp/>Sij</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Sij<sp/>=<sp/>0.5<sp/>*<sp/>(duidxj(elem,<sp/>i,<sp/>j,<sp/>0)<sp/>+<sp/>duidxj(elem,<sp/>j,<sp/>i,<sp/>0));</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classModele__turbulence__hyd__Longueur__Melange__base_1a1a7eda661352e2acbe2e781929453722" kindref="member">Sij2_</ref>(elem)<sp/>+=<sp/>Sij<sp/>*<sp/>Sij;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/VDF/Turbulence/Modele_turbulence_hyd_Longueur_Melange_VDF.cpp"/>
+  </compounddef>
+</doxygen>

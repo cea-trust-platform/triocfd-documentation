@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Parametre__diffusion__implicite_8cpp" kind="file" language="C++">
+    <compoundname>Parametre_diffusion_implicite.cpp</compoundname>
+    <includes refid="Parametre__diffusion__implicite_8h" local="no">Parametre_diffusion_implicite.h</includes>
+    <includes refid="Param_8h" local="no">Param.h</includes>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Parametre__diffusion__implicite_8cpp_1ad543ac17ceaab0afa6cc057343d342a7" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classType__info" kindref="compound">Type_info</ref> *</type>
+        <definition>const Type_info* Parametre_diffusion_implicitebases[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>Parametre_diffusion_implicitebases</name>
+        <initializer>={   &amp;( <ref refid="classParametre__equation__base" kindref="compound">Parametre_equation_base</ref> ::info_obj)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Solveurs/Parametre_diffusion_implicite.cpp" line="19" column="88" bodyfile="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Solveurs/Parametre_diffusion_implicite.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Parametre_diffusion_implicite.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Param.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classParametre__diffusion__implicite_1a420e4e68acc21ec0e61b016ccb9721b2" refkind="member"><highlight class="normal">Implemente_instanciable_sans_constructeur(<ref refid="classParametre__diffusion__implicite" kindref="compound">Parametre_diffusion_implicite</ref>,</highlight><highlight class="stringliteral">&quot;Parametre_diffusion_implicite&quot;</highlight><highlight class="normal">,<ref refid="classParametre__equation__base" kindref="compound">Parametre_equation_base</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Par<sp/>defaut<sp/>les<sp/>seuils<sp/>sont<sp/>negatifs<sp/>(donc<sp/>pas<sp/>utilisables!!)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classParametre__diffusion__implicite_1a4b77a9d3600b92fcecd1a0e0063f27b1" refkind="member"><highlight class="normal"><ref refid="classParametre__diffusion__implicite_1a4b77a9d3600b92fcecd1a0e0063f27b1" kindref="member">Parametre_diffusion_implicite::Parametre_diffusion_implicite</ref>()</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><ref refid="classParametre__diffusion__implicite_1a326e002e7a07e468b74ea41dc6c83be7" kindref="member">preconditionnement_diag_</ref>=0;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><ref refid="classParametre__diffusion__implicite_1a67eb620cc896ef715bdac21c0142316b" kindref="member">crank_</ref>=0;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><ref refid="classParametre__diffusion__implicite_1a1a43ac6504ce8df362491cab62be8cee" kindref="member">nb_it_max_</ref>=-1;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><ref refid="classParametre__diffusion__implicite_1a2da50b722fc3bf0456c427b3f9835c93" kindref="member">seuil_diffusion_implicite_</ref>=-1;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classParametre__diffusion__implicite_1a43e773ae6f2cc9e09196e8ac7129e9f6" refkind="member"><highlight class="normal"><ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/><ref refid="classParametre__diffusion__implicite_1a43e773ae6f2cc9e09196e8ac7129e9f6" kindref="member">Parametre_diffusion_implicite::printOn</ref>(<ref refid="classSortie" kindref="compound">Sortie</ref>&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="32"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>parametre_diffusion_implicite<sp/>parametre_equation_base<sp/>parametre_diffusion_implicite<sp/>-1<sp/>To<sp/>specify<sp/>additional<sp/>parameters<sp/>for<sp/>the<sp/>equation<sp/>when<sp/>using<sp/>impliciting<sp/>diffusion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>crank<sp/>entier(into=[0,1])<sp/>crank<sp/>1<sp/>Use<sp/>(1)<sp/>or<sp/>not<sp/>(0,<sp/>default)<sp/>a<sp/>Crank<sp/>Nicholson<sp/>method<sp/>for<sp/>the<sp/>diffusion<sp/>implicitation<sp/>algorithm.<sp/>Setting<sp/>crank<sp/>to<sp/>1<sp/>increases<sp/>the<sp/>order<sp/>of<sp/>the<sp/>algorithm<sp/>from<sp/>1<sp/>to<sp/>2.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>preconditionnement_diag<sp/>entier(into=[0,1])<sp/>preconditionnement_diag<sp/>1<sp/>The<sp/>CG<sp/>used<sp/>to<sp/>solve<sp/>the<sp/>implicitation<sp/>of<sp/>the<sp/>equation<sp/>diffusion<sp/>operator<sp/>is<sp/>not<sp/>preconditioned<sp/>by<sp/>default.<sp/>If<sp/>this<sp/>option<sp/>is<sp/>set<sp/>to<sp/>1,<sp/>a<sp/>diagonal<sp/>preconditionning<sp/>is<sp/>used.<sp/>Warning:<sp/>this<sp/>option<sp/>is<sp/>not<sp/>necessarily<sp/>more<sp/>efficient,<sp/>depending<sp/>on<sp/>the<sp/>treated<sp/>case.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>niter_max_diffusion_implicite<sp/>entier<sp/>niter_max_diffusion_implicite<sp/>1<sp/>Change<sp/>the<sp/>maximum<sp/>number<sp/>of<sp/>iterations<sp/>for<sp/>the<sp/>CG<sp/>(Conjugate<sp/>Gradient)<sp/>algorithm<sp/>when<sp/>solving<sp/>the<sp/>diffusion<sp/>implicitation<sp/>of<sp/>the<sp/>equation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>seuil_diffusion_implicite<sp/>floattant<sp/>seuil_diffusion_implicite<sp/>1<sp/>Change<sp/>the<sp/>threshold<sp/>convergence<sp/>value<sp/>used<sp/>by<sp/>default<sp/>for<sp/>the<sp/>CG<sp/>resolution<sp/>for<sp/>the<sp/>diffusion<sp/>implicitation<sp/>of<sp/>this<sp/>equation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XD<sp/>attr<sp/>solveur<sp/>solveur_sys_base<sp/>solveur<sp/>1<sp/>Method<sp/>(different<sp/>from<sp/>the<sp/>default<sp/>one,<sp/>Conjugate<sp/>Gradient)<sp/>to<sp/>solve<sp/>the<sp/>linear<sp/>system.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classParametre__diffusion__implicite_1a132ca451b614a910a4432dad4bf10c7e" refkind="member"><highlight class="normal"><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/><ref refid="classParametre__diffusion__implicite_1a132ca451b614a910a4432dad4bf10c7e" kindref="member">Parametre_diffusion_implicite::readOn</ref>(<ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><ref refid="classParam" kindref="compound">Param</ref><sp/>param(<ref refid="classObjet__U_1a58289bb63283588d31dc69b87b3f1d55" kindref="member">que_suis_je</ref>());</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;crank&quot;</highlight><highlight class="normal">,&amp;<ref refid="classParametre__diffusion__implicite_1a67eb620cc896ef715bdac21c0142316b" kindref="member">crank_</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;niter_max_diffusion_implicite&quot;</highlight><highlight class="normal">,&amp;<ref refid="classParametre__diffusion__implicite_1a1a43ac6504ce8df362491cab62be8cee" kindref="member">nb_it_max_</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;preconditionnement_diag&quot;</highlight><highlight class="normal">,&amp;<ref refid="classParametre__diffusion__implicite_1a326e002e7a07e468b74ea41dc6c83be7" kindref="member">preconditionnement_diag_</ref>);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1affb8a0102361201ba896bac7ca8bc21c" kindref="member">ajouter</ref>(</highlight><highlight class="stringliteral">&quot;seuil_diffusion_implicite&quot;</highlight><highlight class="normal">,&amp;<ref refid="classParametre__diffusion__implicite_1a2da50b722fc3bf0456c427b3f9835c93" kindref="member">seuil_diffusion_implicite_</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1a8d8bcddfd8087e577ffbb170c68e4f88" kindref="member">ajouter_non_std</ref>(</highlight><highlight class="stringliteral">&quot;solveur&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>param.<ref refid="classParam_1aa9d44fc51b4a08b357733a97dc7acaad" kindref="member">lire_avec_accolades_depuis</ref>(is);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classParametre__diffusion__implicite_1a3ed8a53b2de538aed56e23d2be320035" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classParametre__diffusion__implicite_1a3ed8a53b2de538aed56e23d2be320035" kindref="member">Parametre_diffusion_implicite::lire_motcle_non_standard</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMotcle" kindref="compound">Motcle</ref>&amp;<sp/>mot,<sp/><ref refid="classEntree" kindref="compound">Entree</ref>&amp;<sp/>is)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mot==</highlight><highlight class="stringliteral">&quot;solveur&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/><ref refid="classParametre__diffusion__implicite_1a8878d687c5266159565e6fc838528b77" kindref="member">solveur_</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classParametre__diffusion__implicite_1a8878d687c5266159565e6fc838528b77" kindref="member">solveur_</ref>.<ref refid="classSolveurSys_1a8dc69a794250d2a64d5126507c2349db" kindref="member">nommer</ref>(</highlight><highlight class="stringliteral">&quot;solveur_diffusion_implicite&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/Solveurs/Parametre_diffusion_implicite.cpp"/>
+  </compounddef>
+</doxygen>

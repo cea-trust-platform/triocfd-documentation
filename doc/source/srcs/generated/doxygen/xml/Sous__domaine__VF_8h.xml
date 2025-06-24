@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.3" xml:lang="en-US">
+  <compounddef id="Sous__domaine__VF_8h" kind="file" language="C++">
+    <compoundname>Sous_domaine_VF.h</compoundname>
+    <includes refid="Sous__domaine__dis__base_8h" local="no">Sous_domaine_dis_base.h</includes>
+    <includes refid="Domaine__VF_8h" local="no">Domaine_VF.h</includes>
+    <includes refid="TRUST__Ref_8h" local="no">TRUST_Ref.h</includes>
+    <includedby refid="Op__Conv__EF__VEF__P1NC__Stab_8cpp" local="no">Op_Conv_EF_VEF_P1NC_Stab.cpp</includedby>
+    <includedby refid="Op__Conv__Muscl__New__VEF__Face_8cpp" local="no">Op_Conv_Muscl_New_VEF_Face.cpp</includedby>
+    <includedby refid="Perte__Charge__Circulaire__PolyMAC__Face_8cpp" local="no">Perte_Charge_Circulaire_PolyMAC_Face.cpp</includedby>
+    <includedby refid="Perte__Charge__Circulaire__VEF__P1NC_8cpp" local="no">Perte_Charge_Circulaire_VEF_P1NC.cpp</includedby>
+    <includedby refid="Perte__Charge__VEF_8cpp" local="no">Perte_Charge_VEF.cpp</includedby>
+    <includedby refid="Sous__domaine__VF_8cpp" local="no">Sous_domaine_VF.cpp</includedby>
+    <innerclass refid="classSous__domaine__VF" prot="public">Sous_domaine_VF</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/****************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>CEA</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>Sous_domaine_VF_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>Sous_domaine_VF_included</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Sous_domaine_dis_base.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Domaine_VF.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TRUST_Ref.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="23"><highlight class="comment">//!<sp/>Cette<sp/>classe<sp/>abstraite<sp/>contient<sp/>les<sp/>informations<sp/>geometrique<sp/>de<sp/>sous-domaine<sp/>communes<sp/>aux<sp/>methodes<sp/>de<sp/>volumes<sp/>finis<sp/>(VDF<sp/>et<sp/>VEF<sp/>par<sp/>exemple)</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"></highlight><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/><sp/><sp/>On<sp/>suppose<sp/>que<sp/>chaque<sp/>face<sp/>a<sp/>au<sp/>plus<sp/>deux<sp/>elements<sp/>voisins<sp/>dans<sp/>la</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/><sp/><sp/>domaine,<sp/>ce<sp/>qui<sp/>est<sp/>toujours<sp/>le<sp/>cas<sp/>en<sp/>maillage<sp/>conforme.</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"></highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/><sp/><sp/>Le<sp/>tableau<sp/>les_faces<sp/>contient<sp/>l&apos;ensemble<sp/>des<sp/>faces<sp/>du<sp/>Domaine_dis<sp/>qui</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>appartiennent<sp/>a<sp/>ce<sp/>sous-domaine,<sp/>classees<sp/>de<sp/>la<sp/>facon<sp/>suivante<sp/>:</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Les<sp/>faces<sp/>internes<sp/>au<sp/>sous-domaine</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Les<sp/>faces<sp/>internes<sp/>au<sp/>domaine,<sp/>mais<sp/>dont<sp/>seul<sp/>le<sp/>premier<sp/>element<sp/>voisin</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/><sp/><sp/>appartient<sp/>au<sp/>sous-domaine</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Les<sp/>faces<sp/>internes<sp/>au<sp/>domaine,<sp/>mais<sp/>dont<sp/>seul<sp/>le<sp/>deuxieme<sp/>element<sp/>voisin</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/><sp/><sp/>appartient<sp/>au<sp/>sous-domaine</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Les<sp/>faces<sp/>qui<sp/>ne<sp/>presentent<sp/>qu&apos;un<sp/>element<sp/>dans<sp/>le<sp/>domaine.</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/>Les<sp/>separations<sp/>sont<sp/>indiquees<sp/>respectivement<sp/>par<sp/>les<sp/>variables</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/>premiere_face_bord_0,<sp/>premiere_face_bord_1,<sp/>et<sp/>premiere_face_bord.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"></highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/>les_faces<sp/>:<sp/>nb_dim=1</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/>dimension(0)<sp/>=<sp/>le<sp/>nombre<sp/>de<sp/>faces<sp/>du<sp/>sous_domaine</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/>valeur<sp/>de<sp/>l&apos;entier<sp/>=<sp/>indice<sp/>dans<sp/>les<sp/>tableaux<sp/>le_dom_VF-&gt;face_voisins_,</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/>le_dom_VF-&gt;face_sommets_,...</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"></highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/>volumes_entrelaces(int<sp/>face)<sp/>renvoie<sp/>le<sp/>volume<sp/>entrelace<sp/>restreint</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/>au<sp/>sous-domaine.<sp/>Le<sp/>numero<sp/>de<sp/>la<sp/>face<sp/>fait<sp/>reference<sp/>au<sp/>tableau</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/>les_faces.<sp/>Seuls<sp/>sont<sp/>stockes<sp/>localement<sp/>les<sp/>volumes<sp/>entrelaces</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/>differents<sp/>de<sp/>ceux<sp/>du<sp/>domaine.</highlight></codeline>
+<codeline lineno="48"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classSous__domaine__VF" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classSous__domaine__VF" kindref="compound">Sous_domaine_VF</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__dis__base" kindref="compound">Sous_domaine_dis_base</ref></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classSous__domaine__VF_1a598a611a2fa66bcee0d173f333769621" refkind="member"><highlight class="normal"><sp/><sp/>Declare_instanciable(<ref refid="classSous__domaine__VF" kindref="compound">Sous_domaine_VF</ref>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Methodes<sp/>d&apos;acces</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classSous__domaine__VF_1a27d2612dba355f882ca9241cb4039cdc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/><ref refid="classSous__domaine__VF_1a27d2612dba355f882ca9241cb4039cdc" kindref="member">les_faces</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="59"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1a9894fb32d630cf956ae2f1c714d4e42b" kindref="member">les_faces_</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62" refid="classSous__domaine__VF_1a8101998bc8d8d8cf08df6e504bba6bf4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref>&amp;<sp/><ref refid="classSous__domaine__VF_1a8101998bc8d8d8cf08df6e504bba6bf4" kindref="member">les_faces</ref>()</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1a9894fb32d630cf956ae2f1c714d4e42b" kindref="member">les_faces_</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66" refid="classSous__domaine__VF_1ac61311ed00d1f388fca064a20fd7f1ea" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1ac61311ed00d1f388fca064a20fd7f1ea" kindref="member">premiere_face_bord_0</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="67"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1ae980f96321c58f911cf5d5968b4ce415" kindref="member">premiere_face_bord_0_</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70" refid="classSous__domaine__VF_1a6ea23ba732058be13be82f5e99156a6d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1a6ea23ba732058be13be82f5e99156a6d" kindref="member">premiere_face_bord_1</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="71"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1a8e2c8c74b9557f65f0b4e41b909a3b41" kindref="member">premiere_face_bord_1_</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74" refid="classSous__domaine__VF_1acac285f460ec8495de8136fd92bb54cc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1acac285f460ec8495de8136fd92bb54cc" kindref="member">premiere_face_bord</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="75"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1afeb33afa99416df97d12569f075512a2" kindref="member">premiere_face_bord_</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/>//!<sp/>Renvoie<sp/>le<sp/>volume<sp/>entrelace<sp/>restreint<sp/>au<sp/>sous-domaine.<sp/>face<sp/>est<sp/>l&apos;indice<sp/>dans<sp/>le<sp/>tableau<sp/>les_faces_.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1a679fcce88207dc3d23546a87bb014ee1" kindref="member">volumes_entrelaces</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Methodes<sp/>propres</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/>//!<sp/>Genere<sp/>les_faces<sp/>en<sp/>parcourant<sp/>les<sp/>faces<sp/>du<sp/>domaine_dis<sp/>et<sp/>en<sp/>cherchant<sp/>quels<sp/>voisins<sp/>appartiennent<sp/>a<sp/>le_sous_domaine.</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1ac05eb6b33b3877e47eca21775c264241" kindref="member">discretiser</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="87" refid="classSous__domaine__VF_1a605cab5dcbdbd07af847562b597edf27" refkind="member"><highlight class="normal"><sp/><sp/>OBS_PTR(<ref refid="classDomaine__VF" kindref="compound">Domaine_VF</ref>)<sp/><ref refid="classSous__domaine__VF_1a605cab5dcbdbd07af847562b597edf27" kindref="member">le_dom_VF</ref>;</highlight></codeline>
+<codeline lineno="88" refid="classSous__domaine__VF_1a9894fb32d630cf956ae2f1c714d4e42b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">IntTab</ref><sp/><ref refid="classSous__domaine__VF_1a9894fb32d630cf956ae2f1c714d4e42b" kindref="member">les_faces_</ref>;</highlight></codeline>
+<codeline lineno="89" refid="classSous__domaine__VF_1ae980f96321c58f911cf5d5968b4ce415" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1ae980f96321c58f911cf5d5968b4ce415" kindref="member">premiere_face_bord_0_</ref><sp/>=<sp/>-10;</highlight></codeline>
+<codeline lineno="90" refid="classSous__domaine__VF_1a8e2c8c74b9557f65f0b4e41b909a3b41" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1a8e2c8c74b9557f65f0b4e41b909a3b41" kindref="member">premiere_face_bord_1_</ref>=<sp/>-10;</highlight></codeline>
+<codeline lineno="91" refid="classSous__domaine__VF_1afeb33afa99416df97d12569f075512a2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1afeb33afa99416df97d12569f075512a2" kindref="member">premiere_face_bord_</ref>=<sp/>-10;</highlight></codeline>
+<codeline lineno="92" refid="classSous__domaine__VF_1a4e2885fd11b9fc4fb75510d1b476a8ef" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classTRUSTTab" kindref="compound">DoubleTab</ref><sp/><ref refid="classSous__domaine__VF_1a4e2885fd11b9fc4fb75510d1b476a8ef" kindref="member">volumes_entrelaces_</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classSous__domaine__VF_1a679fcce88207dc3d23546a87bb014ee1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1a679fcce88207dc3d23546a87bb014ee1" kindref="member">Sous_domaine_VF::volumes_entrelaces</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>face)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="96"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(face&lt;premiere_face_bord_0_<sp/>||<sp/>face&gt;=<ref refid="classSous__domaine__VF_1afeb33afa99416df97d12569f075512a2" kindref="member">premiere_face_bord_</ref>)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1a605cab5dcbdbd07af847562b597edf27" kindref="member">le_dom_VF</ref>-&gt;volumes_entrelaces(<ref refid="classSous__domaine__VF_1a9894fb32d630cf956ae2f1c714d4e42b" kindref="member">les_faces_</ref>(face));</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSous__domaine__VF_1a4e2885fd11b9fc4fb75510d1b476a8ef" kindref="member">volumes_entrelaces_</ref>(face-<ref refid="classSous__domaine__VF_1ae980f96321c58f911cf5d5968b4ce415" kindref="member">premiere_face_bord_0_</ref>);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/volatile/catA/tb266682/triocfd_workspace/integ/trust-code/src/Kernel/VF/Geometrie/Sous_domaine_VF.h"/>
+  </compounddef>
+</doxygen>
