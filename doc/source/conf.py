@@ -112,6 +112,8 @@ html_theme_options = {
     ),
     "repository_url": "https://github.com/cea-trust-platform/triocfd-documentation",
     "use_repository_button": True,
+    "use_download_button": True,
+    "max_navbar_depth": 3,
 }
 
 
