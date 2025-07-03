@@ -28,20 +28,20 @@ extensions = [
     'sphinx.ext.autosummary',       # Automatically generates summary tables for modules, classes, and functions.
     'sphinx.ext.graphviz',          # Enables the inclusion of Graphviz diagrams in your documentation.
     'sphinx.ext.ifconfig',          # Allows conditional inclusion of content based on configuration values.
-    'sphinx_copybutton',            #add copy button on code blocks
+    'sphinx_copybutton',            # add copy button on code blocks
     # Stopped using autosectionlabel because it causes problems with doyxgen. also changing titles is a pain, I rather set fixed targets to each titles
     # 'sphinx.ext.autosectionlabel',  # Automatically adds section labels to all sections.
     'sphinx.ext.napoleon',          # Support for Google style docstrings
     'sphinxcontrib.bibtex',         # To manage citations with bibtex
     'myst_parser',                  # Allows you to use Markdown in your Sphinx documentation.
-    'sphinx_design'                 # For dropdown 
+    'sphinx_design'                 # For dropdown
 ]
 
-autosectionlabel_prefix_document=True
+autosectionlabel_prefix_document = True
 
 
 myst_enable_extensions = ["dollarmath", "amsmath", "colon_fence",]
-myst_heading_anchors=1
+myst_heading_anchors = 1
 htmlhelp_basename = 'TrioCFD'
 bibtex_bibfiles = ['bibliography.bib']
 
@@ -105,6 +105,3 @@ suppress_warnings = ["config.cache"]
 
 # To allow mardown pages
 source_suffix = {'.rst': 'restructuredtext', '.md': 'markdown'}
-
-
-
