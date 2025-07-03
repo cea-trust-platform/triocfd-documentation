@@ -28,17 +28,19 @@ extensions = [
     'sphinx.ext.autosummary',       # Automatically generates summary tables for modules, classes, and functions.
     'sphinx.ext.graphviz',          # Enables the inclusion of Graphviz diagrams in your documentation.
     'sphinx.ext.ifconfig',          # Allows conditional inclusion of content based on configuration values.
-    'sphinx.ext.autosectionlabel',  # Automatically adds section labels to all sections.
+    'sphinx_copybutton',            #add copy button on code blocks
+    # Stopped using autosectionlabel because it causes problems with doyxgen. also changing titles is a pain, I rather set fixed targets to each titles
+    # 'sphinx.ext.autosectionlabel',  # Automatically adds section labels to all sections.
     'sphinx.ext.napoleon',          # Support for Google style docstrings
     'myst_parser',                  # Allows you to use Markdown in your Sphinx documentation.
-    'breathe'                       # To include doxygen.
+    'sphinx_design'                 # For dropdown 
 ]
 
-breathe_projects = {"triocfd": "/volatile/catA/tb266682/triocfd_workspace/integ/triocfd-code/build/xml"}
-breathe_default_project = "triocfd"
+autosectionlabel_prefix_document=True
+
 
 myst_enable_extensions = ["dollarmath", "amsmath", "colon_fence",]
-myst_heading_anchors=3
+myst_heading_anchors=1
 htmlhelp_basename = 'TrioCFD'
 
 # To show or not private members
@@ -90,10 +92,15 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = []
+html_static_path = ["_static"]
+
+html_js_files = ["highlight.js"]
 
 # To avoid cache error
 suppress_warnings = ["config.cache"]
 
 # To allow mardown pages
 source_suffix = {'.rst': 'restructuredtext', '.md': 'markdown'}
+
+
+

@@ -1,3 +1,5 @@
+.. _multiphase_cfd:
+
 Multiphase CFD
 ==============================
 

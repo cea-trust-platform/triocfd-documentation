@@ -1,3 +1,4 @@
+(get-started-target)=
 # Get started
 
 Welcome to the TrioCFD user guide !
