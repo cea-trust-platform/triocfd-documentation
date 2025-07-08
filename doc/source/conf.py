@@ -8,7 +8,29 @@ import sys
 import os
 from datetime import datetime
 
-sys.path.insert(0, os.path.abspath('..'))
+
+print(sys.argv)
+
+# -- Generate RST from Doxygen XML -------------------------------------------
+print("Building RST from Doxygen")
+
+# if not os.path.exists("../DoxygenToRST"):
+os.system("git submodule update --init --recursive --remote")
+
+sys.path.append("../DoxygenToRST/src/DoxygenToRST")
+import DoxygenToRST
+
+
+keeprst=(os.environ.get("CLEAN", "0")=="0")
+
+    
+
+DoxygenToRST.run(input="./srcs/generated/doxygen/xml",
+                output="./srcs/generated/doxygen/rst",
+                keeprst=keeprst)
+
+
+
 
 # -- Project information -----------------------------------------------------
 
