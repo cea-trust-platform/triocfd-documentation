@@ -111,10 +111,10 @@ Default value:
 ### The general equation
 Two separated size-group methods are popular for the prediction of interfacial area
 concentration. One based on having an arbitrary number of groups to reproduce a distribution,
-referred as MUSIG or i-MUSIG {cite}`Wang2005a,Das2010a,Liao2011` and the other reproducing the
+referred as MUSIG or i-MUSIG {cite}`Wang2005,Das2010,Liao2011` and the other reproducing the
 distribution thanks to the Mean Sauter diameter referred as IATE. The generalized Interfacial Area
 Transport Equation (IATE) developed by Kocamustafaogullari and Ishii
-{cite}`Kocamustafaogullari,Kocamustafaogullari1994b`.
+{cite}`Kocamustafaogullari1994a,Kocamustafaogullari1994b`.
 
 The general expression for adiabatic flows with $\psi^{internal}_{j}$ a source term and
 $\psi^{intergroup}_j$ an intergroup term is then:
@@ -213,7 +213,7 @@ For the other source terms, refer to the models.
 
 
 ### The Yao Morel model
-The model is described in {cite:t}`YAO2004307`.
+The model is described in {cite:t}`Yao2004`.
 
 The equation is:
 \begin{align}
@@ -478,11 +478,11 @@ break-up bubbles. The SO is a break-up phenomenon that source from the shearing-
 bubbles. The SI is due to the break-up of large bubbles due to their surface instability.
 
 The number of processes and the dimensionless coefficient can strongly differ from one model to another:
-- The {cite:t}`SUN2` model was developed for a $2$ group configuration with a $200 \times  10$ $mm^2$ confined rectangular channel data. The effect of the wall is then very significant. It was performed for liquid superficial velocity between $0.32$ and $2.84$ m/s and gas velocity between $0.39$ and $2.01$ m/s. It deals with cap-bubbly and churn-turbulent flows.
-- The {cite:t}`Smith1` model was developed for a $2$ group configuration with $0.102$ mm and $0.152$ mm diameter pipes. It deals with bubbly, cap-bubbly and churn-turbulent flows.
-- The {cite:t}`Schlegel1` model was developed for a $2$ group configuration with large diameter channels. It deals with bubbly and cap-bubbly flows. Several constitutive relations and correlations were used to tune this model.
+- The {cite:t}`Sun2004` model was developed for a $2$ group configuration with a $200 \times  10$ $mm^2$ confined rectangular channel data. The effect of the wall is then very significant. It was performed for liquid superficial velocity between $0.32$ and $2.84$ m/s and gas velocity between $0.39$ and $2.01$ m/s. It deals with cap-bubbly and churn-turbulent flows.
+- The {cite:t}`Smith2012` model was developed for a $2$ group configuration with $0.102$ mm and $0.152$ mm diameter pipes. It deals with bubbly, cap-bubbly and churn-turbulent flows.
+- The {cite:t}`Schlegel2015` model was developed for a $2$ group configuration with large diameter channels. It deals with bubbly and cap-bubbly flows. Several constitutive relations and correlations were used to tune this model.
 - The {cite:t}`Fu2002` model was developed for a $2$ group configuration for small round pipe.
-- {cite:t}`Dave2016a` proposed new Smith coefficient based on optimization with genetic algorithm on all TOPFLOW DN200 (pipe $195.3$ mm).
+- {cite:t}`Dave2016` proposed new Smith coefficient based on optimization with genetic algorithm on all TOPFLOW DN200 (pipe $195.3$ mm).
 
 \begin{figure}[!ht]
     \centering
@@ -493,7 +493,7 @@ The number of processes and the dimensionless coefficient can strongly differ fr
 
 The coefficients of the previous models are summarized in the following table:
 
-| Coefficient       | Sun {cite}`SUN2`      | Smith {cite}`Smith1`  | Schlegel {cite}`Schlegel1` | Fu {cite}`Fu2002` | Dave {cite}`Dave2016a` |
+| Coefficient       | Sun {cite}`Sun2004`      | Smith {cite}`Smith2012`  | Schlegel {cite}`Schlegel2015` | Fu {cite}`Fu2002` | Dave {cite}`Dave2016` |
 |-------------------|----------------------|----------------------|---------------------------|------------------|-----------------------|
 | $C^{(1)}_{RC}$    | $0.005$              | $0.01$               | $0.01$                    | $0.0041$         | $0.26$                |
 | $C^{(12,2)}_{RC}$ | $0.005$              | $0.01$               | $0.05$                    | $0.005$          | $0.41$                |

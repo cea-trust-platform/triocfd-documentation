@@ -130,7 +130,7 @@ If saturation is activated, then in the energy equation we get:
 with $c$ the minority phase side to respect the energy conservation in case of evanescence.
 
 (sec:phyical_modeling_interface_heat_flux)=
-### Interfacial heat flux
+## Interfacial heat flux
 The general expression of the interfacial heat flux is:
 \begin{equation}
     \phi_{kl}=h_{kl}(T_k - T_l)
@@ -182,7 +182,7 @@ Availability of drift models in TrioCFD/CMFD.
 | Zeitoun          | Yes  | No        |                                                                                                                                                          |
 
 
-#### Constant
+### Constant
 The model is implemented in:
 ```{code} c++
 void Flux_interfacial_Coef_Constant::set_param(Param& param)
@@ -197,7 +197,7 @@ The model implemented is:
     \texttt{hi}(k, l) = \texttt{h_phase}(k);
 \end{equation}
 
-#### Chen and Mayinger
+### Chen and Mayinger
 The model is implemented in:
 ```{code} c++
 void Flux_interfacial_Chen_Mayinger::set_param(Param& param)
@@ -223,7 +223,7 @@ with
 - $Re_b=\frac{\rho_l d_b (u_g-u_l)}{\mu_l}$
 - $Pr\frac{\mu_l Cp_l}{\lambda_l}$
 
-#### Kim and park
+### Kim and park
 The model is also described in REFNEC and is implemented in:
 ```{code} c++
 void Flux_interfacial_Kim_Park::set_param(Param& param)
@@ -250,7 +250,7 @@ with
 - $Pr\frac{\mu_l Cp_l}{\lambda_l}$
 - $Ja=\frac{\rho_lCp_l(T_g-T_l)}{\rho_gL_{vap}}$
 
-#### Ranz Marshall
+### Ranz Marshall
 The model is also described in REFNEC and is implemented in:
 ```{code} c++
 void Flux_interfacial_Ranz_Marshall::set_param(Param& param)
@@ -280,7 +280,7 @@ with
 - $Re_b=\frac{\rho_l d (u_g-u_l)}{\mu_l}$
 - $Pr = \frac{\mu_l Cp_l}{\lambda_l}$
 
-#### Wolfert
+### Wolfert
 The model is also described in REFNEC and is implemented in:
 ```{code} c++
 void Flux_interfacial_Wolfert::set_param(Param& param)
@@ -308,7 +308,7 @@ with
 - $Pe\frac{\rho_l Cp_l (u_g-u_l)d}{\lambda_l}$
 - \texttt{M_PI} = $\pi$
 
-#### Wolfert compsant (To be erased)
+### Wolfert compsant (To be erased)
 The model is also described in REFNEC and is implemented in:
 ```{code} c++
 void Flux_interfacial_Wolfert_composant::set_param(Param& param)
@@ -339,7 +339,7 @@ with
 - $\lambda_t = 0.06Pr_t  U_\tau D_h $
 - \texttt{M_PI} = $\pi$
 
-#### Zeitoun
+### Zeitoun
 The model is also described in REFNEC and is implemented in:
 ```{code} c++
 void Flux_interfacial_Zeitoun::set_param(Param& param)
@@ -425,7 +425,7 @@ with
 - $dT_{gNu} = 2.04Re_b^{0.61} \max(\alpha_g, \texttt{a_min_coeff})^{0.328} -0.308dT_{Ja} Ja^{-1.308}$
 - $dT_{lNu} = 2.04Re_b^{0.61} \max(\alpha_g, \texttt{a_min_coeff})^{0.328} -0.308dT_{Ja} Ja^{-1.308}$
 
-### Wall heat flux
+## Wall heat flux
 The general expression of the wall heat flux is:
 \begin{equation}
   q_{pk}
@@ -479,8 +479,8 @@ Availability of interfacial heat flux partitioning models in TrioCFD/CMFD:
 | Kurul-Podowski | Yes  | Yes       | TrioCFD/CoolProp |
 
 
-#### Kommajosyula (to be erased)
-The model is described in {cite:t}`Ravik2020` and is implemented in:
+### Kommajosyula (to be erased)
+The model is described in {cite:t}`Kommajosyula2020` and is implemented in:
 ```{code} c++
 void Flux_parietal_Kommajosyula::set_param(Param& param)
 {
@@ -490,13 +490,13 @@ void Flux_parietal_Kommajosyula::set_param(Param& param)
 ```
 {\color{red} Warning}: the model was implemented but dropped because we could not fit the original data and so is not validated.
 
-#### Kurul Podowski
-The model is described in {cite:t}`kurul1991modeling` and depicted in Figure~\ref{kurul}.
+### Kurul Podowski
+The model is described in {cite:t}`Kurul1991` and depicted in Figure~\ref{kurul}.
 
 \begin{figure}[!ht]
     \centering
     \includegraphics{Figure/Kurul.jpg}
-    \caption{Depiction of the wall heat flux partitioning model for subcooled flow boiling from {cite:t}`ZHOU2021121295`.}
+    \caption{Depiction of the wall heat flux partitioning model for subcooled flow boiling from {cite:t}`Zhou2021`.}
     \label{kurul}
 \end{figure}
 
@@ -536,7 +536,7 @@ with
 - Departure frequency $f_dep=\sqrt{\frac{4}{3}\frac{9.81(\rho_l-\rho_g)}{\rho_l}}d_b^{-0.5}$.
 - Departure frequency derivative regarding wall temperature $\frac{d f_dep}{d T_p}=-0.5\frac{dd_b}{dT_p}d^{-1.5}\sqrt{\frac{4}{3}\frac{9.81(\rho_l-rho_g)}{\rho_l}}$
 
-### Phase change
+## Phase change
 The general expression of the phase change mass flux is:
 \begin{equation}
     G(\alpha,p,T)
@@ -567,7 +567,7 @@ The phase change mass flux operator must fill `dT_G`, `da_G`, `dp_G` tabs and th
 - $\texttt{dp_G }$ mass flux derivative regarding pressure
 - $\texttt{da_G}$ mass flux derivative regarding void fraction
 
-#### Silver Simpson
+### Silver Simpson
 The model is also described in  Silver and Simpson (1949, not found) and is implemented as:
 ```{code} c++
 void Changement_phase_Silver_Simpson::set_param(Param& param)

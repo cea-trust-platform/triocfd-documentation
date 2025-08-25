@@ -22,7 +22,7 @@ with $X$ a variable which can be related to the turbulent kinetic energy dissipa
 ## The $k$-$\varepsilon$ models family
 
 ### Standard model
-The standard $k$-$\varepsilon$ model was introduced by {cite:t}`Launder-Spalding_NumCompTurbFlow1974`. The turbulent viscosity is defined by
+The standard $k$-$\varepsilon$ model was introduced by {cite:t}`Launder1974`. The turbulent viscosity is defined by
 \begin{equation}
 \nu_t = C_{\mu}\frac{k^2}{\varepsilon}
 \end{equation}
@@ -40,14 +40,14 @@ C'_{\eta}=0.09, \quad C_{\epsilon_{1}}=1.44, \quad C_{\epsilon_{2}}=1.92, \quad 
 
 For specific type of flows, some authors suggest modifying the two coefficiens $C_{\varepsilon_1}$ and $C_{\varepsilon_2}$:
 
-| Reference                            | $C_{\epsilon_{1}}$ | $C_{\epsilon_{2}}$ | Flows         |
-|--------------------------------------|--------------------|--------------------|---------------|
-| {cite:t}`Jones-Launder_IJHMT1972`    | 1.55               | 2.00               | High Reynolds |
-| {cite:t}`Launder-Sharma_LettHMT1974` | 1.44               | 1.92               | Rotating      |
-| {cite:t}`Chien_AIAA1982`             | 1.35               | 1.92               | Low Reynolds  |
-| {cite:t}`Fan_etal_AIAA1993`          | 1.39               | 1.80               | Low Reynolds  |
-| {cite:t}`Morgans-etal_Conf1999`      | 1.60               | 1.92               | Jet           |
-| {cite:t}`Bahari-Hejazi_IJPMS2009`    | 1.40               | 1.92               | Buoyancy      |
+| Reference                    | $C_{\epsilon_{1}}$ | $C_{\epsilon_{2}}$ | Flows         |
+|------------------------------|--------------------|--------------------|---------------|
+| {cite:t}`Jones1972`          | 1.55               | 2.00               | High Reynolds |
+| {cite:t}`Launder-Sharma1974` | 1.44               | 1.92               | Rotating      |
+| {cite:t}`Chien1982`          | 1.35               | 1.92               | Low Reynolds  |
+| {cite:t}`Fan1993`            | 1.39               | 1.80               | Low Reynolds  |
+| {cite:t}`Morgans1999`        | 1.60               | 1.92               | Jet           |
+| {cite:t}`Bahari2009`         | 1.40               | 1.92               | Buoyancy      |
 
 One must keep in mind that the $C_{\varepsilon_2}$ constant was set to reproduce the decay of
 turbulent kinetic energy in homogeneous isotropic turbulence. Those values must be modified with
@@ -55,7 +55,7 @@ caution. Details about modeling and the constants can be found in {cite:t}`Schie
 
 ### Realizable model
 
-{cite:t}`Shi_etal_keps-realisable_CF1995` proposed a modification of the $k$-$\varepsilon$ model to ensure realizability of the turbulent kinetic energy using the Schwarz inequality. The two equations writes
+{cite:t}`Shih1995` proposed a modification of the $k$-$\varepsilon$ model to ensure realizability of the turbulent kinetic energy using the Schwarz inequality. The two equations writes
 
 \begin{equation}
 \frac{\partial\overline{k}}{\partial t}+\overline{U}_{j}\frac{\partial\overline{k}}{\partial x_{j}} = \frac{\partial}{\partial x_{j}}\left(\frac{\nu_{T}}{\sigma_{k}}\frac{\partial\overline{k}}{\partial x_{j}}\right)+\left(2\nu_{T}S_{ij}-\frac{2}{3}\overline{k}\delta_{ij}\right)\frac{\partial\overline{U}_{i}}{\partial x_{j}}-\overline{\epsilon},
@@ -72,7 +72,7 @@ with
 \end{align}
 where $\overline{\Omega}_{ij}$ is the mean rotation rate and $\overline{S}_{ij}$ the mean shear rate.
 
-The validation of this model was done by {cite:t}`Angeli_Leterrier_keps-real_NT2018`.
+The validation of this model was done by {cite:t}`Angeli2019`.
 
 
 ### Low-Reynolds models
@@ -110,7 +110,7 @@ expensive than the standard $k$-$\varepsilon$ model.
 \end{equation}
 
 #### Launder & Spalding model
-The model is defined in by equations (2.3-4) and (2.3-5) in {cite}`Launder-Spalding_NumCompTurbFlow1974`.
+The model is defined in by equations (2.3-4) and (2.3-5) in {cite}`Launder1974`.
 
 The two extra terms $\overline{\mathcal{K}}$ and $\overline{\mathcal{E}}$ are defined by
 \begin{equation}
@@ -127,7 +127,7 @@ C_{\eta}=0.09 \quad C_{\epsilon_{1}}=1.44 \quad C_{\epsilon_{2}}=1.92 \quad \sig
 \end{equation}
 
 #### Jones & Launder model
-The model is defined in {cite}`Jones-Launder_IJHMT1972` and is very closed to the Launder & Spalding one. The terms $\mathcal{K}$ and $\mathcal{E}$ are defined by
+The model is defined in {cite}`Jones1972` and is very closed to the Launder & Spalding one. The terms $\mathcal{K}$ and $\mathcal{E}$ are defined by
 \begin{equation}
 \overline{\mathcal{K}}=2\nu\left(\frac{\partial\overline{k}^{1/2}}{\partial y}\right)^{2},\quad\overline{\mathcal{E}} = 2.0\,\nu\,\nu_{T}\left(\frac{\partial^{2}\overline{U}_{i}}{\partial y^{2}}\right).
 \end{equation}
@@ -137,7 +137,7 @@ C_{\eta}=0.09,\quad C_{\epsilon_{1}}=1.55,\quad C_{\epsilon_{2}}=2, \quad \sigma
 \end{equation}
 
 #### Lam & Bremhorst model
-The model is defined in {cite}`Lam-Bremhorst_JFE1981`.
+The model is defined in {cite}`Lam1981`.
 
 In this model, the extra terms $\mathcal{K}$ and $\mathcal{E}$ are nulls. The three functions $f_{\epsilon_{1}}$, $f_{\epsilon_{2}}$, $f_{\eta}$ are defined by
 \begin{align}
@@ -152,7 +152,7 @@ with $Re_y=\overline{k}^{1/2}y/\nu$ the wall-based Reynolds number. The five coe
 \end{align}
 
 #### Launder & Sharma model
-The model is defined in {cite}`Launder-Sharma_LettHMT1974`.
+The model is defined in {cite}`Launder-Sharma1974`.
 
 This model was established for rotating flows using a rotating disc. The independent coordinates in this configuration are the radial distance to the disc axis $r$ and the normal distance to the disc surface $y$. In this case, additionnal terms which depend on the gradient of $V_{\theta}/r$ appear in the equations for $\overline{k}$ and $\overline{\varepsilon}$.
 
