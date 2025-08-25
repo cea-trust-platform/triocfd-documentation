@@ -1,6 +1,5 @@
+(sec:interfa-forces)=
 # Interfacial forces models
-
-\chapter{Two-fluid physical modeling\label{sec:phyical_modeling}}
 
 This chapter details the physical models for the Two-fluid approach. First, the definition of fluid
 properties is defined using two methods, through the dataset (section~\ref{sec:fluid_properties} and
@@ -9,13 +8,11 @@ described in section~\ref{sec:interfa-forces}. Some particular source terms for 
 (section~\ref{sec:analytical}) and the mass equations (section~\ref{sec:injection}). The management
 of the dispersed phase diameter is described in section~\ref{sec:diam-mgmt}.
 
-(sec:interfa-forces)=
-## Interfacial forces
 The interfacial forces defined below are source terms that can be added to the momentum equation and
 represent the mechanical interactions between the phases. Then the equations of motion for each
 phase velocities are coupled by the interfacial forces.
 
-### The Drag force
+## The Drag force
 The general expression of the drag force is:
 
 \begin{equation}
@@ -75,7 +72,7 @@ Availability of drag force models in TrioCFD/CMFD.
 | Simmonet               | Yes  | No        |                                                  |
 | Zenit                  | Yes  | No        |                                                  |
 
-#### Constant drag coefficient
+### Constant drag coefficient
 The model is implemented in :
 ```{code} c++
 void Frottement_interfacial_bulles_constant::set_param(Param& param)
@@ -95,7 +92,7 @@ The model implemented is :
    f^{D}=\frac{3}{4}\frac{C_d\alpha_g\rho_l}{d_b}.
 \end{equation}
 
-#### Composant drag coefficient
+### Composant drag coefficient
 The model is implemented in :
 ```{code} c++
 void Frottement_interfacial_bulles_composant::set_param(Param& param)
@@ -114,7 +111,7 @@ The model implemented is:
 \end{equation}
 with $\rho_m=\sum_k \alpha_k \rho_k$ and $i \neq j$.
 
-#### Ishii-Zuber : viscous regime
+### Ishii-Zuber : viscous regime
 The model is described in {cite:t}`IshiiZuber` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Ishii_Zuber_Deformable::set_param(Param& param)
@@ -133,7 +130,7 @@ The model implemented is:
 \end{equation}
 If $\alpha_l < 10^{-6}$, then $f^D\times{}\alpha_l\times{}10^{-6}$.
 
-#### Ishii-Zuber : viscous regime and particle regime
+### Ishii-Zuber : viscous regime and particle regime
 The model is also described in {cite:t}`IshiiZuber` and is implemented as:
 ```{code} c++
 void Frottement_interfacial_Ishii_Zuber::set_param(Param& param)
@@ -152,7 +149,7 @@ The model implemented is:
 \end{equation}
 with $Re_b=\frac{\rho_l d (u_g-u_l)}{\mu_l}$.
 
-#### Tomiyama : contaminated drag coefficient
+### Tomiyama : contaminated drag coefficient
 The model is described in {cite:t}`Tomiyama1998` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Tomiyama::set_param(Param& param)
@@ -182,7 +179,7 @@ If $\alpha_l < \num{1.e-6}$, then $f^D\times{}\alpha_l\times{}\num{1e6}$.
 This formulation was chosen as shown in {cite:t}`Sugrue2017`, it yields similar results as other
 closures and one can adjust the level of contamination.
 
-#### Bubble critical diameter (incoming)
+### Bubble critical diameter (incoming)
 The model is described partially in {cite:t}`KUO1988547` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Weber::set_param(Param& param)
@@ -201,7 +198,7 @@ with $d_b^*= \frac{\sigma}{\rho_l(u_g-u_l)^2}We_c$, $Re_b=\frac{\rho_l d_b^* (u_
 
 {\color{red} Warning}: not homogeneous
 
-#### Wallis: annular flow
+### Wallis: annular flow
 The model is described in {cite:t}`wallis` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Wallis::set_param(Param& param)
@@ -211,7 +208,7 @@ The model implemented is:
    f^{D}=\num{5e-3}\times{}\rho_g\frac{4\sqrt{\alpha_g}}{D_h}\parent{1+300\frac{1-\sqrt{1-\alpha_g}}{2}}
 \end{equation}
 
-#### Sonnenburg: drift flux ?
+### Sonnenburg: drift flux ?
 The model is described in REFNEC and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Sonnenburg::set_param(Param& param)
@@ -222,7 +219,7 @@ The model implemented is:
 \end{equation}
 with $\alpha_g^*=min(max(\alpha_g,0.001),0.999)$
 
-#### Garnier: bubble swarm correction
+### Garnier: bubble swarm correction
 The model is described in {cite:t}`GARNIER2002811` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Garnier::set_param(Param& param)
@@ -235,7 +232,7 @@ The model implemented is:
 \end{equation}
 {\color{red} Warning}: Validated for $\alpha_g  < 0.35$, $D_{sm} < 5.5mm$.
 
-#### Rusche: swarm correction
+### Rusche: swarm correction
 The model is described in {cite:t}`Rusche` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Rusche::set_param(Param& param)
@@ -246,7 +243,7 @@ The model implemented is:
 \end{equation}
 {\color{red} Warning}: Validated for $\alpha_g  < 0.5$.
 
-#### Simonnet: bubble swarm correction
+### Simonnet: bubble swarm correction
 The model is described in {cite:t}`SIMONNET2007858` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Simonnet::set_param(Param& param)
@@ -257,7 +254,7 @@ The model implemented is:
 \end{equation}
 {\color{red} Warning}: Validated for $\alpha_g  < 0.3$, $D_{sm} < 10 mm$.
 
-#### Zenit: bubble swarm correction
+### Zenit: bubble swarm correction
 The model is described in {cite:t}`zenit` and is implemented in:
 ```{code} c++
 void Frottement_interfacial_Zenit::set_param(Param& param)
@@ -268,7 +265,7 @@ The model implemented is:
 \end{equation}
 {\color{red} Warning}: Validated for  $\alpha_g  < 0.18$.
 
-### The Lift force
+## The Lift force
 The general expression of the lift force is:
 \begin{equation}
 	\overrightarrow{F_{l\rightarrow v}^L}
@@ -318,7 +315,7 @@ Availability of lift force models in TrioCFD/CMFD:
 | Sugrue   | Yes  | Yes       | TrioCFD/CoolProp, TrioCFD/Gabillet                               |
 | Tomiyama | Yes  | No        |                                                                  |
 
-#### Constant lift coefficient
+### Constant lift coefficient
 The model is implemented in:
 ```{code} c++
 void Portance_interfaciale_Constante::set_param(Param& param)
@@ -336,7 +333,7 @@ The model implemented is:
 The void fraction correction is used to damp the lift at too high void fractions.
 
 
-#### Sugrue
+### Sugrue
 The model is described in REFNEC and is implemented in:
 ```{code} c++
 void Portance_interfaciale_Sugrue::set_param(Param& param)
@@ -355,7 +352,7 @@ with
 - the wobbling number $\mathit{Wo}=\min\parent{\frac{k_lEo}{\max\parent{\parent{u_g-u_l}^2,\ 10^{-8}}},\ 6.}$
 - the Eotvos number $\mathit{Eo}=\frac{g\parent{\rho_l-\rho_g}d_b^2}{\sigma}$
 
-#### Tomiyama: lift sign reversal
+### Tomiyama: lift sign reversal
 The model is described in {cite:t}`Tomiyama2002` and is implemented in:
 ```{code} c++
 void Portance_interfaciale_Tomiyama::set_param(Param& param)
@@ -376,7 +373,7 @@ with
 - the Eotvos number $\mathit{Eo}=\frac{g\parent{\rho_l-\rho_g}d_b^2}{\sigma}$
 - $f\parent{\mathit{Eo}} = 0.00105\times{}\mathit{Eo}^3 - 0.0159\times{}\mathit{Eo}^2 - 0.0204\times{} \mathit{Eo} + 0.474$.
 
-### The Added mass force
+## The Added mass force
 The general expression of the added mass force is:
 \begin{equation}
 
@@ -420,7 +417,7 @@ Availability of added mass force models in TrioCFD/CMFD
 | Zuber       | Yes | No        |                                                |
 
 
-#### Constant added mass coefficient
+### Constant added mass coefficient
 The model is implemented in:
 ```{code} c++
 void Masse_ajoutee_Coef_Constant::set_param(Param& param)
@@ -452,7 +449,7 @@ For the injected mass flux $\dot{m}_{inj}$,
 \end{equation}
 If $\alpha_g< 0.0001$, no limiter part.
 
-#### Wijngaarden: two bubbles interaction
+### Wijngaarden: two bubbles interaction
 The model is described in {cite:t}`Biesheuvel1984` and is implemented in:
 ```{code} c++
 void Masse_ajoutee_Wijngaarden::set_param(Param& param)
@@ -489,7 +486,7 @@ If $\alpha_g< 0.0001$, no limiter part.
 
 {\color{red} Warning}: Corrected value in {cite:t}`Biesheuvel1984` is 3.32 instead of 2.78.
 
-#### Zuber: swarm of compliant bubbles
+### Zuber: swarm of compliant bubbles
 The model is described in {cite:t}`ZUBER1964897` and is implemented in:
 ```{code} c++
 void Masse_ajoutee_Zuber::set_param(Param& param)
@@ -529,7 +526,7 @@ For the injected mass flux $\dot{m}_{inj}$,
 If $\alpha_g< 0.0001$, no limiter part.
 
 
-### The Dispersion force
+## The Dispersion force
 The general expression of the turbulent dispersion force is:
 \begin{equation}
 \overrightarrow{F_{l\rightarrow v}^T}= - f^T \nabla \alpha_g
@@ -571,7 +568,7 @@ Availability of dispersion force models in TrioCFD/CMFD.
 | Burns              | Yes  | Yes       | TrioCFD/CoolProp, TrioCFD/Gabillet             |
 
 
-#### Constant bubble dispersion coefficient
+### Constant bubble dispersion coefficient
 The model is described in {cite:t}`MARFAING2016579` and is implemented in:
 ```{code} c++
 void Dispersion_bulles_turbulente_constante::set_param(Param& param)
@@ -584,7 +581,7 @@ The model implemented is:
    f^{T}=D_{td}\rho_l (u_g-u_l)^2
 \end{equation}
 
-#### Constant turbulent dispersion coefficient
+### Constant turbulent dispersion coefficient
 The model is described in {cite:t}`LOPEZDEBERTODANO1994805` and is implemented in:
 ```{code} c++
 void Dispersion_bulles_turbulente_constante::set_param(Param& param)
@@ -600,7 +597,7 @@ The model implemented is:
    f^{T} = C_{td}\rho_l k_l
 \end{equation}
 
-#### Lopez de Bertodano: Stokes regime
+### Lopez de Bertodano: Stokes regime
 The model is described in {cite:t}`LOPEZDEBERTODANO199865` and is implemented in:
 ```{code} c++
 void Dispersion_bulles_turbulente_Bertodano::set_param(Param& param)
@@ -624,7 +621,7 @@ with
 \end{equation}
 with $\tau^t=C_{\mu}^{3/4}\frac{k_l}{\varepsilon_l}$.
 
-#### Burns: Favre averaged drag
+### Burns: Favre averaged drag
 The model is described in {cite:t}`burns2004favre` and is implemented in:
 ```{code} c++
 void Dispersion_bulles_turbulente_constante::set_param(Param& param)
@@ -659,8 +656,8 @@ with
    f^{T}=\frac{f^D\norm{\vec{u_g} - \vec{u_l}}\nu_t}{\mathit{Pr}_t}\parent{\frac{1}{\alpha_g} + \frac{1}{1 - \alpha_g}}
 \end{equation}
 
-### The Wall force
-#### Antal: wall lubrication
+## The Wall force
+### Antal: wall lubrication
 The model is described in {cite:t}`ANTAL1991635` and is implemented in:
 ```{code} c++
 void Correction_Antal_PolyMAC_P0::set_param(Param& param)
@@ -684,7 +681,7 @@ with
 
 {\color{red} Warning} This force was developped for fully developed laminar bubbly two-phase flows.
 
-#### Lubchenko: wall force dumping
+### Lubchenko: wall force dumping
 
 WARNING: ONLY IN POLYMAC
 
@@ -726,7 +723,7 @@ $\underline{\nabla}\alpha_g$ by:
 The last part aims to cancel the BIF contribution $0.5d$ away from the wall.
 Test cases are available in TrioCFD/CoolProp and TrioCFD/Gabillet.
 
-### The Tchen force
+## The Tchen force
 {\color{red} Warning}: This force is a good example of implementation but we discourage its use.
 
 The general expression of the Tchen force {cite}`Tchen1947` is:
