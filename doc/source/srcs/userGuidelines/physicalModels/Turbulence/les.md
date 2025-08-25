@@ -11,7 +11,7 @@ The Algo\_QC module in TrioCFD the low mach number equations in the context of q
 equations, aswell as many Thermal-Large Eddy Simulation (T-LES) models.  This approximation aims to
 narrow the gap between incompressible and compressible Navier-Stokes equations and is suitable for
 the computation of convection in a fluid in the presence of large density gradients
-{cite}`paolucci_filtering_1982`. The low Mach number equations consider internal wave propagation,
+{cite}`Paolucci1982`. The low Mach number equations consider internal wave propagation,
 but they do not take into account acoustic waves. Thus, the numerical methods developed for
 incompressible flow can be used. This approximation conducts to divide the pressure into two terms:
 the thermodynamical pressure which is homogeneous and the mechanical pressure. The Stokes hypothesis
@@ -66,7 +66,7 @@ The shear-stress tensor and the conductive heat flux are respectively computed w
 \end{equation}
 
 where $\mu(T)$ is the dynamic viscosity, $\lambda(T)$ is the thermal conductivity, and $\delta_{ij}$ the Kronecker symbol.
-The fluid passing through the channel is air. Sutherland's law {cite}`sutherland_viscosity_1893` is used to compute viscosity from temperature:
+The fluid passing through the channel is air. Sutherland's law {cite}`Sutherland1893` is used to compute viscosity from temperature:
 
 \begin{equation}
     \mu(T) = \mu_0 \frac{T}{T_0}^{3/2} \frac{T_0 + S}{T + S}
@@ -102,14 +102,14 @@ with $a$ the mesh dilatation parameter.
 <!-- \label{label-pa} -->
 
 We consider the large-eddy simulation of the low Mach number equations in two formulations as
-introduced in {cite}`dupuy2018study`. The Velocity formulation expresses the filtered low Mach
+introduced in {cite}`Dupuy2018`. The Velocity formulation expresses the filtered low Mach
 number equations in terms of variables filtered with the unweighted classical filter
 ($\overline{\,\,\cdot\,\,}$).  The Favre formulation expresses the filtered low Mach number
 equations using Favre-filtered variables, that is based on the density-weighted Favre filter
 ($\widetilde{\,\,\,\cdot\,\,}$) defined for any field $\psi$ as $\widetilde{\psi} = \overline{\rho
 \psi} / \overline{\rho}$.  The two formulations involve a different set of subgrid terms.  However,
-the two most significant subgrid terms are similar in the two formulations {cite}`dupuy2016,
-dupuy2017sft, dupuy2018study`.  In both cases, a subgrid term is related to the nonlinearity of
+the two most significant subgrid terms are similar in the two formulations {cite}`Dupuy2016,
+Dupuy2017, Dupuy2018`.  In both cases, a subgrid term is related to the nonlinearity of
 momentum convection and another related to the correlation of density and velocity.  Excluding all
 other subgrid terms, the filtered low Mach number equations are given in the Velocity formulation
 by:
@@ -199,7 +199,7 @@ The two formulations are related by the relation
 \end{equation}
 
 
-The fluid is air. We use Sutherland's law {cite}`sutherland1893lii` to compute the viscosity,
+The fluid is air. We use Sutherland's law {cite}`Sutherland1893` to compute the viscosity,
 \begin{equation}
 \mu(T) = \mu_0 \left(\frac{T}{T_0}\right)^{\frac{3}{2}} \frac{T_0 + S}{T + S},
 \end{equation}
@@ -215,7 +215,7 @@ The ideal gas specific constant is~$r=287$~J~kg$^{-1}$~K$^{-1}$.
 
 These equations can be solved through the keyword `large_eddy_simulation_formulation`, with either the `favre` or `velocity` values.
 
-The following section is directly taken from {cite}`dupuy2016,dupuy2017sft,dupuy2018study`.
+The following section is directly taken from {cite}`Dupuy2016,Dupuy2017,Dupuy2018`.
 
 ### Subgrid-scale models
 
@@ -250,13 +250,13 @@ The eddy-viscosity $\nu_e^{\mathrm{mod}}(\vv{g}, \vv{\f{\Delta}})$
 is given by the model used.
 The following models from the literature are investigated in this paper using a priori tests:
 
-- Smagorinsky model {cite}`smagorinsky1963general`: $\nu_e^{\mathrm{Smag.}}(\vv{g}, \vv{\f{\Delta}}) = \left( C^{\mathrm{Smag.}} \f{\Delta} \right)^2 \left|\vv{S}\right|,\label{sma}$
-- WALE model {cite}`nicoud99b`: $\nu_e^{\mathrm{WALE}} (\vv{g}, \vv{\f{\Delta}}) = \left( C^{\mathrm{WALE}} \f{\Delta} \right)^2 \frac{\left(\mathcal{S}^d_{ij} \mathcal{S}^d_{ij}\right)^{\tfrac{3}{2}}}{\left(S_{mn} S_{mn}\right)^{\tfrac{5}{2}} + \left(\mathcal{S}^d_{mn} \mathcal{S}^d_{mn}\right)^{\tfrac{5}{4}}}, $
-- Vreman model {cite}`vreman2004eddy`: $\nu_e^{\mathrm{Vreman}} (\vv{g}, \vv{\f{\Delta}}) = C^{\mathrm{Vreman}} \sqrt{\frac{\mathrm{II}_G}{g_{mn}g_{mn}}},$
-- Sigma model {cite}`nicoud2011using`: $\nu_e^{\mathrm{Sigma}} (\vv{g}, \vv{\f{\Delta}}) = \left( C^{\mathrm{Sigma}} \f{\Delta} \right)^2 \frac{\sigma_3\left(\sigma_1 - \sigma_2\right)\left(\sigma_2 - \sigma_3\right)}{\sigma_1^2}$
-- AMD model {cite}`rozema2015minimum`: $\nu_e^{\mathrm{AMD}} (\vv{g}, \vv{\f{\Delta}}) = C^{\mathrm{AMD}} \frac{\max(0, - G_{ij} S_{ij})}{g_{mn}g_{mn}},$
-- VSS model {cite}`ryu2014subgrid`: $\nu_e^{\mathrm{VSS}} (\vv{g}, \vv{\f{\Delta}}) = \left( C^{\mathrm{VSS}} \f{\Delta} \right)^2  \frac{\left(R_{ij} R_{ij}\right)^{\frac{3}{2}}}{\left(S_{mn}S_{mn}\right)^{\frac{5}{2}}},$
-- Kobayashi model {cite}`kobayashi2005subgrid`: $\nu_e^{\mathrm{Koba.}} (\vv{g}, \vv{\f{\Delta}}) = C^{\mathrm{Koba.}} \f{\Delta}^2 \left|F_g\right|^{\frac{3}{2}} (1-F_g) \left|\vv{S}\right|, \label{koba}$
+- Smagorinsky model {cite}`Smagorinsky1963`: $\nu_e^{\mathrm{Smag.}}(\vv{g}, \vv{\f{\Delta}}) = \left( C^{\mathrm{Smag.}} \f{\Delta} \right)^2 \left|\vv{S}\right|,\label{sma}$
+- WALE model {cite}`Nicoud1999`: $\nu_e^{\mathrm{WALE}} (\vv{g}, \vv{\f{\Delta}}) = \left( C^{\mathrm{WALE}} \f{\Delta} \right)^2 \frac{\left(\mathcal{S}^d_{ij} \mathcal{S}^d_{ij}\right)^{\tfrac{3}{2}}}{\left(S_{mn} S_{mn}\right)^{\tfrac{5}{2}} + \left(\mathcal{S}^d_{mn} \mathcal{S}^d_{mn}\right)^{\tfrac{5}{4}}}, $
+- Vreman model {cite}`Vreman2004`: $\nu_e^{\mathrm{Vreman}} (\vv{g}, \vv{\f{\Delta}}) = C^{\mathrm{Vreman}} \sqrt{\frac{\mathrm{II}_G}{g_{mn}g_{mn}}},$
+- Sigma model {cite}`Nicoud2011`: $\nu_e^{\mathrm{Sigma}} (\vv{g}, \vv{\f{\Delta}}) = \left( C^{\mathrm{Sigma}} \f{\Delta} \right)^2 \frac{\sigma_3\left(\sigma_1 - \sigma_2\right)\left(\sigma_2 - \sigma_3\right)}{\sigma_1^2}$
+- AMD model {cite}`Rozema2015`: $\nu_e^{\mathrm{AMD}} (\vv{g}, \vv{\f{\Delta}}) = C^{\mathrm{AMD}} \frac{\max(0, - G_{ij} S_{ij})}{g_{mn}g_{mn}},$
+- VSS model {cite}`Ryu2014`: $\nu_e^{\mathrm{VSS}} (\vv{g}, \vv{\f{\Delta}}) = \left( C^{\mathrm{VSS}} \f{\Delta} \right)^2  \frac{\left(R_{ij} R_{ij}\right)^{\frac{3}{2}}}{\left(S_{mn}S_{mn}\right)^{\frac{5}{2}}},$
+- Kobayashi model {cite}`Kobayashi2005`: $\nu_e^{\mathrm{Koba.}} (\vv{g}, \vv{\f{\Delta}}) = C^{\mathrm{Koba.}} \f{\Delta}^2 \left|F_g\right|^{\frac{3}{2}} (1-F_g) \left|\vv{S}\right|, \label{koba}$
 
 where
 - $\left|\vv{S}\right|=\sqrt{2 S_{ij} S_{ij}}$ is a norm of $\vv{S}$,
@@ -264,7 +264,7 @@ where
   \tfrac{1}{3}g_{kp}g_{pk} \delta_{ij}$ the traceless symmetric part of the squared velocity
   gradient tensor,
 - $\sigma_1 \geq \sigma_2 \geq \sigma_3$ the three singular values of $\vv{g}$,
-- $G_{ij} = \f{\Delta}_k^2 g_{ik} g_{jk}$ the gradient model for the subgrid term associated with momentum convection {cite}`leonard74`,
+- $G_{ij} = \f{\Delta}_k^2 g_{ik} g_{jk}$ the gradient model for the subgrid term associated with momentum convection {cite}`Leonard1974`,
 - $\DeclareMathOperator{\tr}{tr} \mathrm{II}_G = \tfrac{1}{2}\left(\tr^2\left(G\right) - \tr\left(G^2\right)\right)$ its second invariant,
 - $R_{ij}=\beta_i g_{jj}$ the volumetric strain-stretching, with $\beta=\left(S_{23}, S_{13}, S_{12}\right)$,
 - and $F_g = \left(\varOmega_{ij}\varOmega_{ij} -
@@ -277,10 +277,10 @@ The typical value of the coefficients from the literature is $C^{\mathrm{Smag.}}
 $C^{\mathrm{WALE}} = 0.55$, $C^{\mathrm{Vreman}}=0.07$, $C^{\mathrm{Sigma}}=1.5$,
 $C^{\mathrm{AMD}}=0.3$, $C^{\mathrm{VSS}}=1.3$ and $C^{\mathrm{Koba.}}=0.045$.  The corresponding
 dynamic versions of these models are not considered in order to assess the relevance of the models
-before any dynamic correction {cite}`germano91, lilly1992proposed, park2006dynamic`.  The filter
-length scale is computed following {cite}`deardorff1970numerical` as
+before any dynamic correction {cite}`Germano1991, Lilly1992, Park2006`.  The filter
+length scale is computed following {cite}`Deardorff1970` as
 $\f{\Delta}=(\f{\Delta}_x\f{\Delta}_y\f{\Delta}_z)^{1/3}$.  A review of alternative possible
-definitions may be found in {cite}`trias2017new`.
+definitions may be found in {cite}`Trias2017`.
 
 Following the same rationale, eddy-diffusivity models for the density-velocity
 correlation subgrid term may be written in the form
@@ -304,10 +304,10 @@ term in the Velocity and Favre formulation and the ideal gas law
 (\ref{idealgaslawn}) which relates density and temperature, it is presumed that
 the same value may be used in the two formulations.
 Alternatively, some specific eddy-diffusivity models have been suggested in
-the literature {cite}`ghaisas2014priori, abkar2016minimum`.
+the literature {cite}`Ghaisas2014, Abkar2016`.
 
 We investigate using a priori tests the eddy-diffusivity models associated with equations (\ref{sma}--\ref{koba}) and the following specific model:
-- Scalar AMD model {cite}`abkar2016minimum`: $\kappa_e^{\mathrm{SAMD}} (\vv{g}, \vv{d}, \vv{\f{\Delta}}) = C^{\mathrm{SAMD}} \frac{\max(0, - D_j d_j)}{d_m d_m},$
+- Scalar AMD model {cite}`Abkar2016`: $\kappa_e^{\mathrm{SAMD}} (\vv{g}, \vv{d}, \vv{\f{\Delta}}) = C^{\mathrm{SAMD}} \frac{\max(0, - D_j d_j)}{d_m d_m},$
 with $D_j = \f{\Delta}_k^2 g_{jk} d_k$ the gradient model for the density-velocity correlation subgrid term.
 
 In addition, we devised two new eddy-viscosity and eddy-diffusivity models
@@ -333,21 +333,21 @@ The eddy-viscosity and eddy-diffusivity are computed using equations (\ref{sma})
 A similar procedure could be applied to obtain an anisotropic version of the WALE, Sigma, VSS and Kobayashi models.
 
 Besides, we study the multiplicative mixed model based on the gradient model (MMG model), a functional model constructed such that
-its magnitude is determined by the gradient model {cite}`leonard74` and
+its magnitude is determined by the gradient model {cite}`Leonard1974` and
 its orientation is aligned with the rate of deformation tensor or the scalar
 gradient depending on the subgrid term.
 This procedure is reminiscent of the multiplicative mixed model
-of {cite}`ghaisas2014priori, ghaisas2016dynamic` which had an opposite purpose.
+of {cite}`Ghaisas2014, Ghaisas2016` which had an opposite purpose.
 The eddy-viscosity and eddy-diffusivity according to the MMG model are given
 by,
 - MMG model: $\nu_e^{\mathrm{MMG}} (\vv{g}, \vv{\f{\Delta}}) = - C^{\mathrm{MMG}} \frac{G_{kk}}{\left|\vv{S}\right|},$
 - Scalar MMG model: $\kappa_e^{\mathrm{SMMG}} (\vv{g}, \vv{d}, \vv{\f{\Delta}}) = - C^{\mathrm{SMMG}} \frac{\sqrt{D_i D_i}}{\sqrt{d_m d_m}}$
 
 A similar procedure can be applied to other structural
-models, such as the scale-similarity model {cite}`bardina1980improved`.
+models, such as the scale-similarity model {cite}`Bardina1980`.
 We may also view the MMG model as a multiplicative mixed model.
 Using the the Smagorinsky model and the isotropic part modelling of
-{cite}`yoshizawa1986statistical`,
+{cite}`Yoshizawa1986`,
 \begin{equation}
 \tau_{mm}^{\mathrm{Yosh.}} (\vv{U}, \vv{\f{\Delta}}) = 2 C^{\mathrm{Yosh.}} \f{\Delta}^2 \left|\vv{S}\right|^2,
 \end{equation}
@@ -359,7 +359,7 @@ can be reformulated as
 emphasising that the MMG model combines the magnitude of the gradient model
 and the structure of the Smagorinsky model.
 This leads by identification $C^{\mathrm{MMG}} = (C^{\mathrm{Smag.}})^2/(2C^{\mathrm{Yosh.}})$.
-Note that the Vreman, AMD and scalar AMD models also directly involve the gradient model {cite}`leonard74`.
+Note that the Vreman, AMD and scalar AMD models also directly involve the gradient model {cite}`Leonard1974`.
 
 ### Keywords
 Keywords for most LES models include
@@ -404,13 +404,13 @@ Since models can also be mixed, there are keywords associated to dynamically cha
 \tau_{ij}=\alpha \tau_{ij}^{func} + \beta \tau_{ij}^{struct}
 \label{eq_tau}
 \end{equation}
-where $\alpha$ and $\beta$ are used by applying a hyperbolic tangent law, as proposed in {cite:t}`streher_mixed_2021`,
+where $\alpha$ and $\beta$ are used by applying a hyperbolic tangent law, as proposed in {cite:t}`Streher2021`,
 
 \begin{equation}
 C_i^{func}=C^{func}+\left(0,5+0,5 tanh \left(\frac{y_i-s_c}{s_f}\right) \right) (C_c-C^{func})
 \label{eq_Streher}
 \end{equation}
-where $i$ is the number of the $i^{th}$ cell in the wall normal direction, and $y$ the distance to the boundary, $s_f=0,00016252$, $s_c=0,00023217$ et $C_c=0$ (values directly taken from {cite:t}`streher_mixed_2021`). The constant decreases the further we are from the boundary.
+where $i$ is the number of the $i^{th}$ cell in the wall normal direction, and $y$ the distance to the boundary, $s_f=0,00016252$, $s_c=0,00023217$ et $C_c=0$ (values directly taken from {cite:t}`Streher2021`). The constant decreases the further we are from the boundary.
 
 - `variation_cste_modele_fonctionnel`: is the indicator of two-layered mixed model.
 - `smoothing_center_fr`: corresponds to the smoothing center, noted $s_c$ above, for the cold side
