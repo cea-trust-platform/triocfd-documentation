@@ -3,8 +3,6 @@
 Multiphase CFD
 ==============================
 
-We do bubbles in rans
-
 .. toctree::
    :maxdepth: 1
 
