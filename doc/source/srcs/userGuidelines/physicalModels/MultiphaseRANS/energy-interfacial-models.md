@@ -106,24 +106,6 @@ if there is no evanescence then:
 \end{equation}
 
 If saturation is activated, then in the energy equation we get:
-\begin{equation}
-    \texttt{secmem} \minuseq \parent{\texttt{signflux}\times h_c(T_c-T_{sat}) + Gh_c}\times \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases} + \begin{cases} q_p,\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
-\end{equation}
-\begin{equation}
-\begin{aligned}
-    M_\alpha \pluseq \parent{\texttt{signflux}\times \frac{dh_c}{d\alpha}(T_c-T_{sat})+h_c\frac{dG}{d\alpha}\begin{cases} 0,\text{ if evanescent},\\ 1,\text{ otherwise}. \end{cases}}\times & \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases} & \\- \begin{cases} \frac{dq_p}{d\alpha},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
-\end{aligned}
-\end{equation}
-\begin{equation}
-\begin{aligned}
-    M_T \pluseq \parent{\texttt{signflux}\times \Big(\frac{dh_c}{dT}(T_c-T_{sat})+h_c\begin{cases} 1, if\ n_c,\\ 0,\text{ otherwise}. \end{cases}\Big)& + & \\h_c\frac{dG}{dT}\begin{cases} 0, if\ evanescent,\\ 1,\text{ otherwise}. \end{cases} + G\frac{dh_c}{dT}\begin{cases} \frac{dq_p}{d\alpha},\ if\ n_c, \\ 0,\text{ otherwise}. \end{cases}}\times &\begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}& \\ - \begin{cases} \frac{dq_p}{dT},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
-\end{aligned}
-\end{equation}
-\begin{equation}
-\begin{aligned}
-    M_P \pluseq \parent{\texttt{signflux}\times \Big(\frac{dh_c}{dP}(T_c-T_{sat})+h_c\frac{dT_{sat}}{dP}\Big)+h_c\frac{dG}{dP}\begin{cases} 0,\text{ if evanescent},\\ 1,\text{ otherwise}. \end{cases}& +& \\G\frac{dh_c}{dP}}\times \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}-\begin{cases} \frac{dq_p}{d\alpha},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
-\end{aligned}
-\end{equation}
 
 \begin{equation}
     \texttt{secmem} \minuseq \parent{\texttt{signflux}\times h_c(T_c-T_{sat}) + Gh_c}\times \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases} + \begin{cases} q_p,\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
@@ -135,7 +117,7 @@ If saturation is activated, then in the energy equation we get:
 \end{equation}
 \begin{equation}
 \begin{aligned}
-    M_T \pluseq \parent{\texttt{signflux}\times \Big(\frac{dh_c}{dT}(T_c-T_{sat})+h_c\begin{cases} 1, if\ n_c,\\ 0,\text{ otherwise}. \end{cases}\Big)& + & \\h_c\frac{dG}{dT}\begin{cases} 0, if\ evanescent,\\ 1,\text{ otherwise}. \end{cases} + G\frac{dh_c}{dT}\begin{cases} \frac{dq_p}{d\alpha},\ if\ n_c, \\ 0,\text{ otherwise}. \end{cases}}\times &\begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}& \\ - \begin{cases} \frac{dq_p}{dT},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
+    M_T \pluseq \parent{\texttt{signflux}\times \parent{\frac{dh_c}{dT}(T_c-T_{sat})+h_c\begin{cases} 1, if\ n_c,\\ 0,\text{ otherwise}. \end{cases}}& + & \\h_c\frac{dG}{dT}\begin{cases} 0, if\ evanescent,\\ 1,\text{ otherwise}. \end{cases} + G\frac{dh_c}{dT}\begin{cases} \frac{dq_p}{d\alpha},\ if\ n_c, \\ 0,\text{ otherwise}. \end{cases}}\times &\begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}& \\ - \begin{cases} \frac{dq_p}{dT},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
 \end{aligned}
 \end{equation}
 \begin{equation}
