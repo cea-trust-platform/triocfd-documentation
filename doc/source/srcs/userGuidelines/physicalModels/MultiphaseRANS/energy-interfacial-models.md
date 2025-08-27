@@ -82,30 +82,27 @@ These fluxes are then distributed to the following equations:
 
 The model is implemented as follows:
 - In the energy equation:
-\begin{equation}
-    h_m=\frac{1}{\frac{1}{h_g}+\frac{1}{h_l}}
-\end{equation}
-\begin{equation}
-    secmem \minuseq h_m(T_g-T_l)\times \begin{cases} -1,\ for\ the\ liquid, \\ 1,\ \text{otherwise}. \end{cases}.
-\end{equation}
-\begin{equation}
-    M_T \minuseq h_m\times \begin{cases} -1,\ for\ the\ liquid, \\ 1,\ otherwise. \end{cases}\times \begin{cases} 1,\ regarding\ the\ same\ phase, \\ -1,\ otherwise. \end{cases}.
-\end{equation}
+
+\begin{align}
+    &h_m=\frac{1}{\frac{1}{h_g} + \frac{1}{h_l}} \\
+    &\text{secmem} \minuseq h_m(T_g-T_l)\times \begin{cases} -1,\text{ for the liquid,} \\ 1,\ \text{otherwise}. \end{cases}.\\
+    &M_T \minuseq h_m\times \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}\times \begin{cases} 1,\text{ regarding the same phase}, \\ -1,\text{ otherwise}. \end{cases}.
+\end{align}
 
 If saturation is activated, then in the mass equation we get:
 \begin{equation}
-    \texttt{secmem} \minuseq G\times \begin{cases} -1,\ for\ the\ liquid, \\ 1,\ otherwise. \end{cases}.
+    \texttt{secmem} \minuseq G\times \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}.
 \end{equation}
 
 if there is no evanescence then:
 \begin{equation}
-    M_\alpha \pluseq \frac{dG}{d\alpha}\times \begin{cases} -1,\ for\ the\ liquid, \\ 1,\ otherwise. \end{cases}.
+    M_\alpha \pluseq \frac{dG}{d\alpha}\times \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}.
 \end{equation}
 \begin{equation}
-    M_T \pluseq \frac{dG}{dT}\times \begin{cases} -1,\ for\ the\ liquid, \\ 1,\ otherwise. \end{cases}.
+    M_T \pluseq \frac{dG}{dT}\times \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}.
 \end{equation}
 \begin{equation}
-    M_P \pluseq \frac{dG}{dP}\times \begin{cases} -1,\ for\ the\ liquid, \\ 1,\ otherwise. \end{cases}.
+    M_P \pluseq \frac{dG}{dP}\times \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}.
 \end{equation}
 
 If saturation is activated, then in the energy equation we get:
@@ -114,17 +111,36 @@ If saturation is activated, then in the energy equation we get:
 \end{equation}
 \begin{equation}
 \begin{aligned}
-    M_\alpha \pluseq \parent{\texttt{signflux}\times \frac{dh_c}{d\alpha}(T_c-T_{sat})+h_c\frac{dG}{d\alpha}\begin{cases} 0,\text{ if evanescent},\\ 1,\text{ otherwise}. \end{cases}}\times & \begin{cases} -1,\ for\ the\ liquid, \\ 1,\text{ otherwise}. \end{cases} & \\- \begin{cases} \frac{dq_p}{d\alpha},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
+    M_\alpha \pluseq \parent{\texttt{signflux}\times \frac{dh_c}{d\alpha}(T_c-T_{sat})+h_c\frac{dG}{d\alpha}\begin{cases} 0,\text{ if evanescent},\\ 1,\text{ otherwise}. \end{cases}}\times & \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases} & \\- \begin{cases} \frac{dq_p}{d\alpha},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
 \end{aligned}
 \end{equation}
 \begin{equation}
 \begin{aligned}
-    M_T \pluseq \parent{\texttt{signflux}\times \Big(\frac{dh_c}{dT}(T_c-T_{sat})+h_c\begin{cases} 1, if\ n_c,\\ 0,\text{ otherwise}. \end{cases}\Big)& + & \\h_c\frac{dG}{dT}\begin{cases} 0, if\ evanescent,\\ 1,\ otherwise. \end{cases} + G\frac{dh_c}{dT}\begin{cases} \frac{dq_p}{d\alpha},\ if\ n_c, \\ 0,\ otherwise. \end{cases}}\times &\begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}& \\ - \begin{cases} \frac{dq_p}{dT},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
+    M_T \pluseq \parent{\texttt{signflux}\times \Big(\frac{dh_c}{dT}(T_c-T_{sat})+h_c\begin{cases} 1, if\ n_c,\\ 0,\text{ otherwise}. \end{cases}\Big)& + & \\h_c\frac{dG}{dT}\begin{cases} 0, if\ evanescent,\\ 1,\text{ otherwise}. \end{cases} + G\frac{dh_c}{dT}\begin{cases} \frac{dq_p}{d\alpha},\ if\ n_c, \\ 0,\text{ otherwise}. \end{cases}}\times &\begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}& \\ - \begin{cases} \frac{dq_p}{dT},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
 \end{aligned}
 \end{equation}
 \begin{equation}
 \begin{aligned}
-    M_P \pluseq \parent{\texttt{signflux}\times \Big(\frac{dh_c}{dP}(T_c-T_{sat})+h_c\frac{dT_{sat}}{dP}\Big)+h_c\frac{dG}{dP}\begin{cases} 0,\text{ if evanescent},\\ 1,\text{ otherwise}. \end{cases}& +& \\G\frac{dh_c}{dP}}\times \begin{cases} -1,\text{ for the liquid}, \\ 1,\ otherwise. \end{cases}-\begin{cases} \frac{dq_p}{d\alpha},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
+    M_P \pluseq \parent{\texttt{signflux}\times \Big(\frac{dh_c}{dP}(T_c-T_{sat})+h_c\frac{dT_{sat}}{dP}\Big)+h_c\frac{dG}{dP}\begin{cases} 0,\text{ if evanescent},\\ 1,\text{ otherwise}. \end{cases}& +& \\G\frac{dh_c}{dP}}\times \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}-\begin{cases} \frac{dq_p}{d\alpha},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+    \texttt{secmem} \minuseq \parent{\texttt{signflux}\times h_c(T_c-T_{sat}) + Gh_c}\times \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases} + \begin{cases} q_p,\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
+\end{equation}
+\begin{equation}
+\begin{aligned}
+    M_\alpha \pluseq \parent{\texttt{signflux}\times \frac{dh_c}{d\alpha}(T_c-T_{sat})+h_c\frac{dG}{d\alpha}\begin{cases} 0,\text{ if evanescent},\\ 1,\text{ otherwise}. \end{cases}}\times & \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases} & \\- \begin{cases} \frac{dq_p}{d\alpha},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+    M_T \pluseq \parent{\texttt{signflux}\times \Big(\frac{dh_c}{dT}(T_c-T_{sat})+h_c\begin{cases} 1, if\ n_c,\\ 0,\text{ otherwise}. \end{cases}\Big)& + & \\h_c\frac{dG}{dT}\begin{cases} 0, if\ evanescent,\\ 1,\text{ otherwise}. \end{cases} + G\frac{dh_c}{dT}\begin{cases} \frac{dq_p}{d\alpha},\ if\ n_c, \\ 0,\text{ otherwise}. \end{cases}}\times &\begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}& \\ - \begin{cases} \frac{dq_p}{dT},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+    M_P \pluseq \parent{\texttt{signflux}\times \Big(\frac{dh_c}{dP}(T_c-T_{sat})+h_c\frac{dT_{sat}}{dP}\Big)+h_c\frac{dG}{dP}\begin{cases} 0,\text{ if evanescent},\\ 1,\text{ otherwise}. \end{cases}& +& \\G\frac{dh_c}{dP}}\times \begin{cases} -1,\text{ for the liquid}, \\ 1,\text{ otherwise}. \end{cases}-\begin{cases} \frac{dq_p}{d\alpha},\text{ if not c}, \\ 0,\text{ otherwise}. \end{cases}.
 \end{aligned}
 \end{equation}
 with $c$ the minority phase side to respect the energy conservation in case of evanescence.
@@ -209,7 +225,7 @@ The model implemented is:
 Nu=0.185Re_b^{0.7}Pr^{0.5},
 \end{equation}
 \begin{equation}
-\texttt{hi(n_l, k)} = Nu\times\frac{\lambda_l}{d_b} \frac{6\times \max(\alpha_g,\num{1e-4})}{d_b},
+\texttt{hi(n_l, k)} = Nu\times\frac{\lambda_l}{d_b} \frac{6\times \max(\alpha_g, 1e-4)}{d_b},
 \end{equation}
 \begin{equation}
 \texttt{da_hi(n_l, k, k)}= \begin{cases}
@@ -329,7 +345,7 @@ Nu = \frac{12}{\texttt{M_{PI}}} Ja  +\frac{2}{\sqrt{\texttt{M_{PI}}}}(1+\lambda_
 \end{equation}
 \begin{equation}
 \texttt{da_hi(n_l, k, k)} = \begin{cases}
-  Nu \frac{6\lambda_l}{d^2},\ if\ \alpha_g> 1e-4,\\ 0,\ otherwise
+  Nu \frac{6\lambda_l}{d^2},\ if\ \alpha_g> 1e-4,\\ 0,\text{ otherwise}
 \end{cases}
 \end{equation}
 with
@@ -368,7 +384,7 @@ If $( T_g >  T_l)$ then:
 \end{equation}
 \begin{equation}
 \texttt{da_ hi(n_l, k, k)} = da_{Nu} \frac{6\lambda_l}{d_b^2}max(\alpha_g,\texttt{a_min}) \begin{cases}
-    Nu \frac{6\lambda_l}{d_b^2},\ if\ \alpha_g> \texttt{a_ min},\\ 0,\ otherwise
+    Nu \frac{6\lambda_l}{d_b^2},\ if\ \alpha_g> \texttt{a_ min},\\ 0,\text{ otherwise}
 \end{cases}
 \end{equation}
 \begin{equation}
@@ -491,14 +507,16 @@ void Flux_parietal_Kommajosyula::set_param(Param& param)
 {\color{red} Warning}: the model was implemented but dropped because we could not fit the original data and so is not validated.
 
 ### Kurul Podowski
-The model is described in {cite:t}`Kurul1991` and depicted in Figure~\ref{kurul}.
+The model is described in {cite:t}`Kurul1991` and depicted in {numref}`Figure %s <kurul>`.
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics{Figure/Kurul.jpg}
-    \caption{Depiction of the wall heat flux partitioning model for subcooled flow boiling from {cite:t}`Zhou2021`.}
-    \label{kurul}
-\end{figure}
+```{figure} /images/Kurul.jpg
+:scale: 80 %
+:name: kurul
+:align: center
+:alt: wall heat fluw from Kurul
+
+Depiction of the wall heat flux partitioning model for subcooled flow boiling from {cite:t}`Zhou2021`.
+```
 
 The model is implemented in:
 ```{code} c++
@@ -587,7 +605,7 @@ The model implemented is:
 \begin{align}
   &\texttt{dT_G}_g = \texttt{fac} \times \texttt{var_a} \times \frac{dT_{Psat}(T_g) - 0.5 \times \frac{Psat(T_g)}{T_g + T_0}}{\sqrt{T_g + T_0}}\\
   &\texttt{dT_G}_l = \texttt{fac} \times \texttt{var_a} \times 0.5 \times P \times (T_l + T_0)^{-1.5}\\
-  &\texttt{da_G}_g = \begin{cases} \texttt{fac} \times \texttt{var_T} \times \texttt{var_al}, if\  \alpha_g > \text{alpha_min}, \\ 0,\ otherwise.\end{cases}\\
+  &\texttt{da_G}_g = \begin{cases} \texttt{fac} \times \texttt{var_T} \times \texttt{var_al}, if\  \alpha_g > \text{alpha_min}, \\ 0,\text{ otherwise}.\end{cases}\\
   &\texttt{da_G}_l = \begin{cases} \texttt{fac} \times \texttt{var_T} \times \texttt{var_ak} \times 1.5 \times \sqrt{\alpha_l}, if\ \alpha_l > \texttt{alpha_min},\\ 0,\ \text{otherwise}.
   \end{cases}\\
   &\texttt{dp_G} = - \texttt{fac} \times \frac{\texttt{var_a}}{\sqrt{T_l + T_0}}\\

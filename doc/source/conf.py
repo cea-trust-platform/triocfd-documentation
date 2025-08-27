@@ -56,6 +56,15 @@ autodoc_default_options = {"members": True,
 # autosummary_generate = False
 # autosummary_imported_members = False
 
+# Figure numerotation
+numfig = True
+numfig_format = {
+    'code-block': 'Listing %s',
+    'figure': 'Fig. %s',
+    'section': 'Section',
+    'table': 'Table %s',
+}
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
