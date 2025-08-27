@@ -28,27 +28,25 @@ where $\Delta$ is the filter width and $C_{S}$ a positive constant which can be 
 
 ## Wale
 
-Le modèle alternatif est le modèle LES-WALE (Wall Adaptative Local
-Eddy-viscosity) {cite}`Nicoud1999` :
+The alternative model is LES-WALE (Wall Adaptative Local
+Eddy-viscosity) {cite}`Nicoud1999`:
 
 \begin{equation}
 \nu_{T}=(C_{W}\Delta)^{2}\frac{(\tilde{S}_{ij}^{d}\tilde{S}_{ij}^{d})^{3/2}}{(\tilde{S}_{ij}\tilde{S}_{ij})^{5/2}+(\tilde{S}_{ij}^{d}\tilde{S}_{ij}^{d})^{5/4}}\label{eq:nu_WALE}
 \end{equation}
-avec
+with
 \begin{equation}
 \tilde{S}_{ij}^{d}=\tilde{S}_{ik}\tilde{S}_{kj}+\tilde{\Omega}_{ik}\tilde{\Omega}_{kj}-\frac{1}{3}\delta_{ij}\parent{\tilde{S}_{mn}\tilde{S}_{mn}-\tilde{\Omega}_{mn}\tilde{\Omega}_{mn}}
 \end{equation}
-où $\tilde{\Omega}{}_{ij}$ est défini par
+where $\tilde{\Omega}{}_{ij}$ is defined by
 \begin{equation}
 \tilde{\Omega}_{ij}=\frac{1}{2}\parent{\frac{\partial\tilde{u}_{i}}{\partial x_{j}}-\frac{\partial\tilde{u}_{j}}{\partial x_{i}}}
 \end{equation}
 
-Dans l'Eq. (\ref{eq:nu_WALE}), $\Delta$ est choisi à la taille de
-maille. Lorsque la valeur $C_{S}$ est égale à 0.18, une valeur appropriée
-de $C_{w}$ est comprise entre $0.55\leq C_{w}\leq0.6$ {cite}`Nicoud1999{p. 170}`.
-Dans certaines conditions d'écoulements décrites dans {cite}`Nicoud1999{sec 3.1}`,
-la valeur la plus adaptée est $C_{w}=0.5$, et c'est celle choisie
-dans les simulations ({cite}`Nicoud1999{pp. 191 and 192}`).
+In Eq. (\ref{eq:nu_WALE}), $\Delta$ is chosen equal to the grid size. When $C_{S}$ is equal to 0.18,
+an approximated value of $C_{w}$ is defined between $0.55\leq C_{w}\leq0.6$
+{cite}`Nicoud1999{p. 170}`.  In some flows defined in {cite:t}`Nicoud1999{sec 3.1}`, the best value
+is $C_{w}=0.5$, and it is the one they choose ({cite}`Nicoud1999{pp. 191 and 192}`).
 
 
 ## Thermal LES with Algo-QC
