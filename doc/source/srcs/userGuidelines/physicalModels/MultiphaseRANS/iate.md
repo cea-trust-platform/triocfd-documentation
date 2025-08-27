@@ -242,9 +242,8 @@ with
 - $\alpha_\text{max} = \frac{\pi}{6}$.
 
 The Coalescence model is implemented as
-
 \begin{equation}
-\frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2\Phi_{\text{Coal}} = f_1\parent{\alpha,\ ai,\ k,\ \varepsilon}} f_2\parent{\alpha,\ ai,\ k,\ \varepsilon}}
+\frac{36\pi}{3}\parent{\frac{\alpha}{a_i}}^2\Phi_{\text{Coal}} = f_1 \parent{\alpha,\ ai,\ k,\ \varepsilon} f_2\parent{\alpha,\ ai,\ k,\ \varepsilon}
 \end{equation}
 so that for the sake of simplicity
 \begin{equation}
@@ -471,7 +470,7 @@ The different mass transfer are:
 ### The source terms
 All source term models are based on five categories of mechanism: the Random Collisions (RC), the
 Wake Entrainment (WE), the Turbulent Impacts (TI), the Shearing-off (SO) and the Surface Instability
-(SI) (see Figure \ref{bulles}). The RC is a bubble coalescence phenomenon where $2$ bubbles collide
+(SI) (see {numref}`Figure %s <2group>`). The RC is a bubble coalescence phenomenon where $2$ bubbles collide
 and merge because of a turbulent eddy of comparable size. The WE happens when one smaller bubble is
 in the wake of a bigger one, accelerates and collides it. The TI is due to turbulent eddies that
 break-up bubbles. The SO is a break-up phenomenon that source from the shearing-off of cap
@@ -484,12 +483,14 @@ The number of processes and the dimensionless coefficient can strongly differ fr
 - The {cite:t}`Fu2002` model was developed for a $2$ group configuration for small round pipe.
 - {cite:t}`Dave2016` proposed new Smith coefficient based on optimization with genetic algorithm on all TOPFLOW DN200 (pipe $195.3$ mm).
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[scale=1]{Figure/bulles2.png}
-    \caption{Representation of 2 group bubble mechanisms.}
-    \label{bulles}
-\end{figure}
+```{figure} /images/bulles2.png
+:width: 800px
+:name: 2group
+:align: center
+:alt: 2-groupe bubble mechanisms.
+
+Representation of 2 group bubble mechanisms.
+```
 
 The coefficients of the previous models are summarized in the following table:
 

@@ -174,7 +174,7 @@ with
 - $Eo = \frac{g(\rho_l-\rho_v)d^2}{\sigma}$,
 - $Re_b=\frac{\rho_l d_b (u_g-u_l)}{\mu_l}$.
 
-If $\alpha_l < \num{1.e-6}$, then $f^D\times{}\alpha_l\times{}\num{1e6}$.
+If $\alpha_l < 10^{-6}$, then $f^D\times{}\alpha_l\times{}10^{6}$.
 
 This formulation was chosen as shown in {cite:t}`Sugrue2017`, it yields similar results as other
 closures and one can adjust the level of contamination.
@@ -205,7 +205,7 @@ void Frottement_interfacial_Wallis::set_param(Param& param)
 ```
 The model implemented is:
 \begin{equation}
-   f^{D}=\num{5e-3}\times{}\rho_g\frac{4\sqrt{\alpha_g}}{D_h}\parent{1+300\frac{1-\sqrt{1-\alpha_g}}{2}}
+   f^{D}=5\times{}10^{-3}\times{}\rho_g\frac{4\sqrt{\alpha_g}}{D_h}\parent{1+300\frac{1-\sqrt{1-\alpha_g}}{2}}
 \end{equation}
 
 ### Sonnenburg: drift flux ?

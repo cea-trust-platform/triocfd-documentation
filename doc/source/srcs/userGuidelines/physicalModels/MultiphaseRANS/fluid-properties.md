@@ -84,14 +84,14 @@ void Fluide_stiffened_gas::set_param(Param& param)
 }
 ```
 The model implemented is:
-- `rho_` $=\frac{p+\texttt{pinf_}}{\left(\texttt{gamma_} -1.0\right)\left(T+\num{273.15}\right)\texttt{Cv_}}$, the density
-- `dP_ rho_` $=\frac{1.0}{\left(\texttt{gamma_} -1.0\right)\left(T+\num{273.15}\right)\left(\texttt{Cv_} \right)}$, the density derivative regarding pressure
-- `dT_ rho_`$ =-\frac{p+\texttt{pinf_}}{\left(\texttt{gamma_} - 1.0\right)\left(T+\num{273.15}\right)^2\texttt{Cv_}}$, the density derivative regarding temperature
-- `h_ ` $=\texttt{ gamma_ Cv_}\left(T+\num{273.15}\right)+\texttt{q_}$, the enthalpy
+- `rho_` $=\frac{p+\texttt{pinf_}}{\left(\texttt{gamma_} -1.0\right)\left(T+273.15\right)\texttt{Cv_}}$, the density
+- `dP_ rho_` $=\frac{1.0}{\left(\texttt{gamma_} -1.0\right)\left(T+273.15\right)\left(\texttt{Cv_} \right)}$, the density derivative regarding pressure
+- `dT_ rho_`$ =-\frac{p+\texttt{pinf_}}{\left(\texttt{gamma_} - 1.0\right)\left(T+273.15\right)^2\texttt{Cv_}}$, the density derivative regarding temperature
+- `h_ ` $=\texttt{ gamma_ Cv_}\left(T+273.15\right)+\texttt{q_}$, the enthalpy
 - `dP_ h_` $=0.$, the enthalpy derivative regarding pressure
 - `dT_ h_`$ = \texttt{cp_} \left(T,P\right)$, the enthalpy derivative regarding temperature
 - `cp_` $ = \texttt{gamma_ Cv_}$, the heat capacity
-- `beta_`$ = \frac{1.0}{T+\num{273.15}}$
+- `beta_`$ = \frac{1.0}{T+273.15}$
 - `mu_`$ = \texttt{mu_ _}$
 - `lambda_`$ = \texttt{lambda_ _}$
 
@@ -119,15 +119,16 @@ are available in Cathare code. For example, in {cite:t}`Krepper2011`, one can fi
 ### MUSIG fluid and medium
 In homogeneous MUlti-SIze Group (MUSIG), a distribution of bubbles or droplets between $r_{min}$ and
 $r_{max}$ is characterized by a statistical law (linear, exponential or log) and its discretization
-in $n$ sub groups with the same velocity, as depicted in Figures \ref{msgdis} from
-{cite:t}`Cheung2008`.
+in $n$ sub groups with the same velocity, as depicted in {numref}`Figure %s <msgdis>` from {cite:t}`Cheung2008`.
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[scale =0.8]{Figure/musigdistri.jpg}
-    \caption{Schema of the standard MUSIG and i-MUSIG models. In MUSIG, all size groups move with the same velocity field, whereas i-MUSIG displays an arbitrary number of velocity groups.}
-    \label{msgdis}
-\end{figure}
+```{figure} /images/musigdistri.jpg
+:scale: 80 %
+:name: msgdis
+:align: center
+:alt: Musig distribution
+
+Schema of the standard MUSIG and i-MUSIG models. In MUSIG, all size groups move with the same velocity field, whereas i-MUSIG displays an arbitrary number of velocity groups.
+```
 
 All bubbles from sub groups share the same velocity as the velocity of the mean Sauter diameter of
 the distribution $D_{sm}$. Thus, they share the same common total void fraction equation (mass),
