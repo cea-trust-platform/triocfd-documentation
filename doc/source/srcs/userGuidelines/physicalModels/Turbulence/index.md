@@ -22,8 +22,8 @@ WORK IN PROGRESS!
 ```{toctree}
 :hidden:
 turb-bibliography.md
-les.rst
+les.md
 rans.md
-wall-function.rst
-best-practices.rst
+wall-function.md
+best-practices-turbulence.md
 ```
