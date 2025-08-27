@@ -1,8 +1,55 @@
 # Large-eddy simulation
 
+## Quick recap in theory
+
+:::{note}
+Work in progress
+:::
+
+## Smagorinsky
+
+The subgrid stress tensor $\tilde{R}_{ij}$ can be written:
+\begin{equation}
+\tilde{R}_{ij}=\tilde{T}_{ij}+\frac{1}{3}\tilde{R}_{kk}\delta_{ij}
+\end{equation}
+
+One of the most used model is the one from Smagorinsky which assumes a linear relation between the anisotropy tensor $\tilde{T}_{ij}$ with the filtered field of strain
+$\tilde{S}_{ij}$ by
+\begin{equation}
+\tilde{T}_{ij}=-2\nu_{T}\tilde{S}_{ij}
+\end{equation}
+
+The subgrid turbulent viscosity $\nu_{T}$ is chosen as:
+\begin{equation}
+\nu_{T}=(C_{S}\Delta)^{2}\sqrt{\sum_{ij}\tilde{S}_{ij}\tilde{S}_{ij}}\label{eq:nu_T_smago}
+\end{equation}
+
+where $\Delta$ is the filter width and $C_{S}$ a positive constant which can be adapted. Dans {cite:t}`Weickert2010{p. 2203}`, the authors says it can vary between $C_{S}=0.05$ and $C_{S}=0.16$. In TrioCFD, the default value is set at $C_{S}=0.18$.
+
 ## Wale
 
-TODO
+Le modèle alternatif est le modèle LES-WALE (Wall Adaptative Local
+Eddy-viscosity) {cite}`Nicoud1999` :
+
+\begin{equation}
+\nu_{T}=(C_{W}\Delta)^{2}\frac{(\tilde{S}_{ij}^{d}\tilde{S}_{ij}^{d})^{3/2}}{(\tilde{S}_{ij}\tilde{S}_{ij})^{5/2}+(\tilde{S}_{ij}^{d}\tilde{S}_{ij}^{d})^{5/4}}\label{eq:nu_WALE}
+\end{equation}
+avec
+\begin{equation}
+\tilde{S}_{ij}^{d}=\tilde{S}_{ik}\tilde{S}_{kj}+\tilde{\Omega}_{ik}\tilde{\Omega}_{kj}-\frac{1}{3}\delta_{ij}\parent{\tilde{S}_{mn}\tilde{S}_{mn}-\tilde{\Omega}_{mn}\tilde{\Omega}_{mn}}
+\end{equation}
+où $\tilde{\Omega}{}_{ij}$ est défini par
+\begin{equation}
+\tilde{\Omega}_{ij}=\frac{1}{2}\parent{\frac{\partial\tilde{u}_{i}}{\partial x_{j}}-\frac{\partial\tilde{u}_{j}}{\partial x_{i}}}
+\end{equation}
+
+Dans l'Eq. (\ref{eq:nu_WALE}), $\Delta$ est choisi à la taille de
+maille. Lorsque la valeur $C_{S}$ est égale à 0.18, une valeur appropriée
+de $C_{w}$ est comprise entre $0.55\leq C_{w}\leq0.6$ {cite}`Nicoud1999{p. 170}`.
+Dans certaines conditions d'écoulements décrites dans {cite}`Nicoud1999{sec 3.1}`,
+la valeur la plus adaptée est $C_{w}=0.5$, et c'est celle choisie
+dans les simulations ({cite}`Nicoud1999{pp. 191 and 192}`).
+
 
 ## Thermal LES with Algo-QC
 
