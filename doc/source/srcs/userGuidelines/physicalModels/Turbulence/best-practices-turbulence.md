@@ -30,3 +30,8 @@ version of the $k$-$\omega$ SST in `Pb_hydraulique_turbulent`.
 
 As of 2025, a complete redesign of the turbulence-related code is under consideration to reduce code
 duplication and to allow for an easier extension. But workforce is limited and the project is huge.
+
+## Recommandations
+The most used model in TrioCFD was historically the $k$-$\varepsilon$ one with a wall function. This
+is robust and fast. Some low-Reynolds models are available but not yet fully validated. The
+$k$-$\omega$ SST model being the most widely used one in the litterature, we recommand using it.
