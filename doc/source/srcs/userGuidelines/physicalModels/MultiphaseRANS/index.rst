@@ -6,7 +6,7 @@ Multiphase CFD
 .. toctree::
    :maxdepth: 1
 
-   ./turbulence.rst
+   ./turbulence.md
    ./fluid-properties.md
    ./momentum-interfacial-models.md
    ./iate.md
