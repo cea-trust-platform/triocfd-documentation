@@ -1,5 +1,5 @@
-(get-started-target)=
-# Get started
+(quickstart-target)=
+# Quick Start
 
 Welcome to the TrioCFD user guide !
 

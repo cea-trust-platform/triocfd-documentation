@@ -1,3 +1,6 @@
+
+.. _physical-models-target:
+
 Physical Models
 ===============
 

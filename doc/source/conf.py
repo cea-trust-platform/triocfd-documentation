@@ -42,7 +42,14 @@ autosectionlabel_prefix_document = True
 
 myst_enable_extensions = ["dollarmath", "amsmath", "colon_fence",]
 myst_heading_anchors = 1
-htmlhelp_basename = 'TrioCFD'
+
+
+extlinks = {
+    'github': ('https://github.com/cea-trust-platform/trust-code/%s', 'GitHub: %s'),
+    'trust': ('https://trust-platform.org/%s', 'TRUST: %s'),
+}
+
+htmlhelp_basename = 'TrioCFD Documentation'
 bibtex_bibfiles = ['bibliography.bib']
 
 # To show or not private members
@@ -58,11 +65,11 @@ autodoc_default_options = {"members": True,
 
 # Figure numerotation
 numfig = True
+numfig_secnum_depth = 2
 numfig_format = {
-    'code-block': 'Listing %s',
-    'figure': 'Fig. %s',
-    'section': 'Section',
+    'figure': 'Figure %s',
     'table': 'Table %s',
+    'code-block': 'Code %s',
 }
 
 # Add any paths that contain templates here, relative to this directory.
@@ -93,12 +100,25 @@ html_logo = "images/tcfd.png"
 html_favicon = "images/tcfd.png"
 
 html_theme_options = {
+    "show_toc_level": 2,
+    "navigation_depth": 1,
+    "collapse_navigation": True, 
+    "navigation_with_keys": True,  
+    "show_navbar_depth": 1,
+    "show_prev_next": False,
     "home_page_in_toc": True,
-    "announcement": (
-        "Welcome to the new TrioCFD documentation !"
-    ),
-    "repository_url": "https://github.com/cea-trust-platform/triocfd-documentation",
+    # "announcement": (
+    #     "Welcome to the new TrioCFD documentation !"
+    # ),
+    "repository_url": "https://github.com/cea-trust-platform/triocfd-code",
+    "repository_branch": "master",
     "use_repository_button": True,
+    "use_edit_page_button": False,  # True si tu veux permettre l'édition directe
+    "use_issues_button": True,      # True pour afficher un lien vers les issues
+    "use_download_button": True,    # True pour permettre le téléchargement
+    # Search and content options
+    "use_sidenotes": True,          # Pour de meilleures annotations
+    "show_toc_level": 2,           # Profondeur d'affichage dans la TOC
 }
 
 
@@ -108,6 +128,7 @@ html_theme_options = {
 html_static_path = ["_static"]
 
 html_js_files = ["highlight.js"]
+html_css_files = ['custom.css']
 
 # To avoid cache error
 suppress_warnings = ["config.cache"]
