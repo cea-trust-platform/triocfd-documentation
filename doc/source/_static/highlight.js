@@ -19,6 +19,8 @@ function setfocus(){
         elem.animate(animateBackground,animateTiming)
     }
 
+    // TODO : if empty elem, find next nonempty (for cases where we have multiple targets using empty span elements for id location)
+
 }
 
 _ready(function() {

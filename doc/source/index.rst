@@ -67,7 +67,7 @@ Table Of Contents
 
    srcs/developer_guide/index.rst
    srcs/developer_guide/FAQ/index.md
-   srcs/generated/doxygen/index.rst
+   srcs/developer_guide/doxygen/index.rst
 
 
 .. toctree::
