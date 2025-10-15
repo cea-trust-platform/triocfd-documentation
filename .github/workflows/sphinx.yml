@@ -26,15 +26,22 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Install git
-      run: sudo apt install git
+    - name: Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.12'
+        cache: 'pip' # caching pip dependencies
     - name: Setup Pages
       id: pages
       uses: actions/configure-pages@v5
-    - name: Sphinx
-      uses: ammaraskar/sphinx-action@8.2.3
-      with:
-        docs-folder: "doc/"
+    - name: Build Sphinx
+      run: |
+        pip install -r doc/requirements.txt
+        cd doc && make html
+    # - name: Sphinx
+    #   uses: ammaraskar/sphinx-action@8.2.3
+    #   with:
+    #     docs-folder: "doc/"
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
