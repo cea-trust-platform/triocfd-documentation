@@ -29,11 +29,11 @@ doxygen_build_path="./srcs/developer_guide/doxygen"
 
 
 CLEAN_DOXYGEN=(os.environ.get("CLEAN_DOXYGEN", "0")!="0") # true if CLEAN_DOXYGEN env var is set to anything other than "0"
+CLEAN_RST=(os.environ.get("CLEAN_RST", "0")!="0") # true if CLEAN_RST env var is set to anything other than "0"
 if CLEAN_DOXYGEN:
     print("Cleaning doxygen related files")
     shutil.rmtree(f"{doxygen_build_path}/xml")
     shutil.rmtree(f"{doxygen_build_path}/html")
-    shutil.rmtree(f"{doxygen_build_path}/rst")
 else:
     print("Keeping doxygen related files (if they exist)")
 
@@ -66,7 +66,7 @@ if not os.path.exists(f"{doxygen_build_path}/html"):
 
 DoxygenToRST.run(input="./srcs/developer_guide/doxygen/xml",
                 output="./srcs/developer_guide/doxygen/rst",
-                keeprst=not(CLEAN_DOXYGEN))
+                keeprst=not(CLEAN_RST))
 
 
 
