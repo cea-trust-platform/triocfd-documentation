@@ -18,55 +18,50 @@ import tarfile
 print(sys.argv)
 
 # -- Generate RST from Doxygen XML -------------------------------------------
-print("Building RST from Doxygen")
 
 
 
 
 
 
-doxygen_build_path="./srcs/developer_guide/doxygen"
+
+doxygen_build_dir="./srcs/developer_guide/doxygen"
+doxygen_build_path=f"{doxygen_build_dir}/doxygen"
 
 
 CLEAN_DOXYGEN=(os.environ.get("CLEAN_DOXYGEN", "0")!="0") # true if CLEAN_DOXYGEN env var is set to anything other than "0"
 CLEAN_RST=(os.environ.get("CLEAN_RST", "0")!="0") # true if CLEAN_RST env var is set to anything other than "0"
+TEST_RST=(os.environ.get("TEST_RST", "0")!="0") # true if TEST_RST env var is set to anything other than "0"
+
 if CLEAN_DOXYGEN:
     print("Cleaning doxygen related files")
-    shutil.rmtree(f"{doxygen_build_path}/xml")
-    shutil.rmtree(f"{doxygen_build_path}/html")
+    shutil.rmtree(f"{doxygen_build_path}")
 else:
     print("Keeping doxygen related files (if they exist)")
 
 
 # Download doxygen outputs from last release
 version="v1.9.6"
-print(f"Downloading doxygen data from {version}")
 
-xml_url=f"https://github.com/cea-trust-platform/TrioCFD-code/releases/download/{version}/doxygen_xml_{version}.tar.gz"
-xml_path=f"{doxygen_build_path}/doxygen_xml_{version}.tar.gz"
+if not os.path.exists(f"{doxygen_build_path}"):
+    print(f"Downloading doxygen data from {version}")
 
-html_url=f"https://github.com/cea-trust-platform/TrioCFD-code/releases/download/{version}/doxygen_html_{version}.tar.gz"
-html_path=f"{doxygen_build_path}/doxygen_html_{version}.tar.gz"
+    doxy_tar_url=f"https://github.com/cea-trust-platform/TrioCFD-code/releases/download/{version}/doxygen.tar.gz"
+    doxy_tar_path=f"doxygen_{version}.tar.gz"
 
-
-if not os.path.exists(f"{doxygen_build_path}/xml"):
-    print("Download and extract xml:", xml_url)
-    urlretrieve(xml_url, xml_path)
-    with tarfile.open(xml_path) as tar:
-        tar.extractall(path="./srcs/developer_guide/doxygen")
-
-
-if not os.path.exists(f"{doxygen_build_path}/html"):
-    print("Download and extract html:", html_url)
-    urlretrieve(html_url, html_path)
-    with tarfile.open(html_path) as tar:
-        tar.extractall(path="./srcs/developer_guide/doxygen")
+    print("Download doxygen from:", doxy_tar_url, "to", doxy_tar_path)
+    urlretrieve(doxy_tar_url, doxy_tar_path)
+    print("Extract",doxy_tar_path,"to", doxygen_build_dir)
+    with tarfile.open(doxy_tar_path) as tar:
+        tar.extractall(path=doxygen_build_dir)
 
 
 
-DoxygenToRST.run(input="./srcs/developer_guide/doxygen/xml",
-                output="./srcs/developer_guide/doxygen/rst",
-                keeprst=not(CLEAN_RST))
+print("Building RST from Doxygen")
+DoxygenToRST.run(input=doxygen_build_path,
+                output=f"{doxygen_build_dir}/rst",
+                keeprst=not(CLEAN_RST or TEST_RST),
+                test=TEST_RST)
 
 
 
