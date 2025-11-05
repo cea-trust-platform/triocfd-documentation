@@ -54,6 +54,8 @@ if not os.path.exists(f"{doxygen_build_path}"):
     print("Extract",doxy_tar_path,"to", doxygen_build_dir)
     with tarfile.open(doxy_tar_path) as tar:
         tar.extractall(path=doxygen_build_dir)
+    # remove tar.gz to save space
+    shutil.rmtree(doxy_tar_path)
 
 
 
