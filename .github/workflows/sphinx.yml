@@ -27,17 +27,38 @@ jobs:
     - uses: actions/setup-python@v6
       with:
         python-version: '3.12'
+
     - name: Setup Pages
       id: pages
       uses: actions/configure-pages@v5
+
     - name: Build Sphinx
       run: |
-        pip install -r doc/requirements.txt
-        cd doc && CLEAN_RST=1 make html
-    - name: Upload artifact
+        pip install -I -r doc/requirements.txt
+        cd doc && TEST_RST=1 make clean html
+
+    - name: Upload pages artifact
       uses: actions/upload-pages-artifact@v3
       with:
+        name: github-pages
         path: doc/build/html
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v5
+      with:
+        name: html${{ github.sha }}
+        path: doc/build/html
+
+    - name: Trigger RTDs build
+      run: |
+        curl -X POST -d "branches=${{ github.ref_name }}" -d "token=${{ secrets.RTDS_WEBHOOK_TOKEN }}" -d "default_branch=master" ${{ secrets.RTDS_WEBHOOK_URL }}
+
+    # - name: Trigger RTDs build
+    #   uses: dfm/rtds-action@v1
+    #   with:
+    #     webhook_url: ${{ secrets.RTDS_WEBHOOK_URL }}
+    #     webhook_token: ${{ secrets.RTDS_WEBHOOK_TOKEN }}
+    #     commit_ref: ${{ github.ref }}
 
   # Deployment job
   deploy:
