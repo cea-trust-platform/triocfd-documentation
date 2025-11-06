@@ -92,8 +92,14 @@ extensions = [
     'sphinx.ext.napoleon',          # Support for Google style docstrings
     'sphinxcontrib.bibtex',         # To manage citations with bibtex
     'myst_parser',                  # Allows you to use Markdown in your Sphinx documentation.
-    'sphinx_design'                 # For dropdown
+    'sphinx_design',                # For dropdown, cards, etc.
+    "rtds_action"
 ]
+
+rtds_action_github_repo = "cea-trust-platform/triocfd-documentation"
+rtds_action_path = "tutorials"
+rtds_action_artifact_prefix = "notebooks-for-"
+rtds_action_github_token = os.environ.get("GITHUB_TOKEN", None)
 
 autosectionlabel_prefix_document = True
 
