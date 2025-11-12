@@ -53,13 +53,6 @@ jobs:
       run: |
         curl -X POST -d "branches=${{ github.ref_name }}" -d "token=${{ secrets.RTDS_WEBHOOK_TOKEN }}" -d "default_branch=master" ${{ secrets.RTDS_WEBHOOK_URL }}
 
-    # - name: Trigger RTDs build
-    #   uses: dfm/rtds-action@v1
-    #   with:
-    #     webhook_url: ${{ secrets.RTDS_WEBHOOK_URL }}
-    #     webhook_token: ${{ secrets.RTDS_WEBHOOK_TOKEN }}
-    #     commit_ref: ${{ github.ref }}
-
   # Deployment job
   deploy:
     environment:

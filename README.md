@@ -6,7 +6,6 @@ Hi there 👋 and welcome to the **[TrioCFD Documentation](https://triocfd-docum
 
 The documentation is built with the the open source **[Sphinx](https://www.sphinx-doc.org/en/master/)** and **[Doxygen](https://www.doxygen.nl/)** projects.
 
-Credits for the open-source **[Sphinx Material Theme](https://github.com/bashtage/sphinx-material/blob/main/LICENSE.md)**, **[Doxygen Awesome Theme](https://jothepro.github.io/doxygen-awesome-css/)** and **[Read The Docs](https://blog.readthedocs.com/website-migration/)** projects.
 
 ## Installation
 ```bash
@@ -17,7 +16,7 @@ pip install -r doc/requirements.txt
 cd doc
 make html
 ```
-Use your web browser to open the index file located at `build/html/index.html`.
+Use your web browser to open the index file located at `build/html/index.html`. When rebuilding after modifications, the browser may cache the files and refuse to update the pages. In this case, use `make clean html`.
 
 To produce a pdf, one must have `latexmk` installed and run `make latexpdf`.
 
@@ -42,27 +41,28 @@ The Doxygen documentation of TRUST and TrioCFD is included in this doc. Document
 To ease the further development and testing of DoxygenToRST, a local version can be created and edited using `make updateDoxygenToRST` (in the source subdirectory). The first use of this makefile target will create the local copy and install it. After editing DoxygenToRST sources, it can be reinstalled with the same target (updateDoxygenToRST).
 
 To shorten build time when editing DoxygenToRST, a test mode can be enabled by setting the env variable TEST_RST to 1. A common usage while developing will be:
-```
-TEST_RST=1 make updateDoxygenToRST html
+```bash
+TEST_RST=1 make updateDoxygenToRST clean html
 ```
 which will update the python package, create the rst files from Doxygen data (in test mode) and rebuild the html website all at once.
 
 Test mode works by filtering the Doxygen files that will be included in the final website. A file named `.doxygen_test_list` must be present beside the `conf.py` file that contains patterns of class/file names that will be included in the test build. In this mode, there will be warning of missing references if the whole inheritance family of a class is not included. This mode is meant mostly to test the visual aspect of the resulting rst files.
 
-## Deployment
+## ReadTheDocs
 
-The website is deployed on [github-pages](https://cea-trust-platform.github.io/triocfd-documentation/).
+The website is deployed on readthedocs, with the latest version [here](https://triocfd-documentation.readthedocs.io/en/latest/).
 
-Build and deploy is triggered automatically when pushing on master branch, and can also be triggered manually (useful if only DoxygenToRST has changed).
+Build and deploy is triggered automatically from the github workflow that runs on pushes to `master`.
+
+Build status is available [here](https://app.readthedocs.org/projects/triocfd-documentation/builds/).
+
+## GitHub Pages
+
+The website is also deployed on [github-pages](https://cea-trust-platform.github.io/triocfd-documentation/).
+
+Build and deploy is triggered automatically when pushing on master branch, and can also be triggered manually (useful if only DoxygenToRST has changed for example).
 
 Build status is available [here](https://github.com/cea-trust-platform/triocfd-documentation/actions).
 
-## ReadTheDocs
+The full build procedure and configuration is explained [here](rtd/README.md).
 
-No longer applies, because build time limitations too strict.
-
-The website is deployed on readthedocs.
-
-Build and deploy is triggered automatically when pushing on master branch.
-
-Build status is available at https://app.readthedocs.org/projects/triocfd-documentation/builds/.
