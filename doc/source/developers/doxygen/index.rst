@@ -20,7 +20,7 @@ Access the doxygen documentation here:
 
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     ./rst/index.rst
 

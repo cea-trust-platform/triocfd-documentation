@@ -25,7 +25,7 @@ print(sys.argv)
 
 
 
-doxygen_build_dir="./srcs/developer_guide/doxygen"
+doxygen_build_dir="./developers/doxygen"
 doxygen_build_path=f"{doxygen_build_dir}/doxygen"
 
 
@@ -158,11 +158,12 @@ html_logo = "images/tcfd.png"
 html_favicon = "images/tcfd.png"
 
 html_theme_options = {
-    "show_toc_level": 2,
+    "show_toc_level": 2, # levels shown in secondary(right) sidebar, see https://sphinx-book-theme.readthedocs.io/en/stable/sections/sidebar-secondary.html
     "navigation_depth": 1,
     "collapse_navigation": True, 
     "navigation_with_keys": True,  
-    "show_navbar_depth": 1,
+    "show_navbar_depth": 2, # levels of toc always expanded on primary sidebar (left)
+    "max_navbar_depth": 5, # max level of toc on primary sidebar (left)
     "show_prev_next": False,
     "home_page_in_toc": True,
     # "announcement": (
@@ -176,8 +177,6 @@ html_theme_options = {
     "use_download_button": True,    # True pour permettre le téléchargement
     # Search and content options
     "use_sidenotes": True,          # Pour de meilleures annotations
-    "show_toc_level": 2,           # Profondeur d'affichage dans la TOC
-    "max_navbar_depth": 3,
 }
 
 

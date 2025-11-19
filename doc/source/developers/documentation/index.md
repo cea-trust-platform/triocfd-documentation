@@ -1,6 +1,6 @@
 :::{index} single: documentation
 :::
-# Writing documentation
+# Contributing to documentation
 
 
 * [XDATA](./xdata.md): for documenting the syntax of TrioCFD input files (.data)
@@ -11,4 +11,5 @@
 :maxdepth: 1
 
 ./xdata.md
+./sphinx/index.md
 ```

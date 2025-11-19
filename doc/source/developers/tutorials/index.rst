@@ -8,6 +8,5 @@ Developper tutorials
 
    setup-git.md
    testing/index.md
-   documentation/index.md
    code-syntax/index.md
    git-tutorial/index.rst

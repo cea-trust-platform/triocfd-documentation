@@ -3,7 +3,7 @@
 ..    :width: 600px
 ..    :align: center
 
-TrioCFD Documentation
+Home Page
 ---------------------
 
 
@@ -20,9 +20,9 @@ Some important pages:
    - :ref:`Numerical methods<numerical-methods-target>`
 - To help navigating the doc:
    - :ref:`Index<genindex>`
-   - :ref:`Search feature<search>`
+   - :ref:`Search page<search>`
 - References:
-   - :ref:`bibliography`: history of PhD thesis using TrioCFD.
+   - history of :ref:`thesis-bibliography`.
 
 
 Here are some useful links that you can visit too:
@@ -37,44 +37,19 @@ Table Of Contents
 -----------------
 
 .. toctree::
-   :titlesonly:
-
-   srcs/user_guide/quickstart.md
-
-.. toctree::
    :maxdepth: 2
-   :caption: TrioCFD User Guide
    :titlesonly:
    :includehidden:
 
-   srcs/user_guide/howto/index.rst
-   srcs/user_guide/physicalModels/index.rst
-   srcs/user_guide/numerical_methods/index.md
-   srcs/user_guide/kw-reference/index.md
-
-.. toctree::
-   :maxdepth: 2
-   :caption: TrioCFD Tutorials
-   :titlesonly:
-   :includehidden:
-
-   srcs/tutorials/index.rst
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Developer Corner
-   :titlesonly:
-
-   srcs/developer_guide/index.rst
-   srcs/developer_guide/FAQ/index.md
-   srcs/developer_guide/doxygen/index.rst
-
+   users/index.rst
+   tutorials/index.rst
+   developers/index.rst
+   Bibliography/index
 
 .. toctree::
    :maxdepth: 2
    :caption: Navigation
    :includehidden:
 
-   srcs/Bibliography/index
    genindex
    search

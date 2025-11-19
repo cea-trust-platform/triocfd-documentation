@@ -13,7 +13,7 @@ Note: this reference manual can be generated from the TrioCFD source code using 
 You can use the [search](search) feature (on the left menu or shortcut {kbd}`Ctrl` + {kbd}`K`) to find info about a specific keyword.
 
 ```{toctree}
-:maxdepth: 1
+:maxdepth: 0
 
 ./all.rst
 ```
