@@ -12,3 +12,28 @@ This will allow you to start a TrioCFD simulation from the command line by using
 The triocfd executable must be provided a data file describing the physical problem you want to simulate and the numerical tools you want to use. This file uses an in-house format which allows to interface with the C++ implementation by specifying directives to execute and objects to instanciate.
 
 See in Section [How to write a data file](./howto/index) for some guidelines on writing this file. The [](keywords-target) lists all valid keywords that can be used in a .data file, and describes the arguments they must be given.
+
+
+## TRUST and TrioCFD Environment Setup
+
+The open-source TrioCFD software is a Baltik of TRUST. It is therefore based on TRUST. One of the main application of [TrioCFD](https://triocfd.cea.fr/) is turbulent flow modelling. You will need it for this tutorial. Therefore, we will show you how to link your **TRUST** environment to the TrioCFD one.
+
+### Environment Initialization
+
+First, you'll need to install TrioCFD from the [GitHub repository](https://github.com/cea-trust-platform/TrioCFD-code):
+
+```bash
+git clone https://github.com/cea-trust-platform/TrioCFD-code.git $MY_TRIOCFD_REPO
+cd $MY_TRIOCFD_REPO
+source PathToTRUST/env_TRUST.sh
+baltik_build_configure -execute
+make optim
+make debug 
+```
+Note that you will need to have build **TRUST** in optim and debug.
+
+Verification of the environment setup can be done by checking the environment variables:
+```bash
+echo $exec
+echo $project_directory
+```
