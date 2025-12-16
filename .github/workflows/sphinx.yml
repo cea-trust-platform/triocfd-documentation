@@ -21,7 +21,7 @@ concurrency:
 jobs:
   # Build job
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v6
@@ -32,10 +32,11 @@ jobs:
       id: pages
       uses: actions/configure-pages@v5
 
+    # need -j 2 to not run out of ram on gh runners. (each process will take approx 5Gb, 4proc and 14Gb on free runners)
     - name: Build Sphinx
       run: |
         pip install -I -r doc/requirements.txt
-        cd doc && CLEAN_RST=1 make clean html
+        cd doc && CLEAN_RST=1 SPHINXOPTS="-j 2" make clean html
 
     - name: Upload pages artifact
       uses: actions/upload-pages-artifact@v3
