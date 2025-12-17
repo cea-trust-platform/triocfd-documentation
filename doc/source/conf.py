@@ -41,7 +41,7 @@ else:
 
 
 # Download doxygen outputs from last release
-version="v1.9.6"
+version="v1.9.7"
 
 if not os.path.exists(f"{doxygen_build_path}"):
     print(f"Downloading doxygen data from {version}")
