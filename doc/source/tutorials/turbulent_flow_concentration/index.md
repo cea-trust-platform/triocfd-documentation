@@ -1,4 +1,4 @@
-# Turbulent Flow with Concentration
+# Turbulent Flow with Concentration (2D)
 
 This tutorial demonstrates how to simulate a 2D incompressible turbulent flow with constituent transport using TrioCFD's k-ε model. {numref}`fig:marche` shows the geometry of the test case you will run in this tutorial.
 
@@ -31,9 +31,9 @@ Geometry of the downward march case
 
 ### Study Template Preparation
 
-To start, copy the base **Marche** study, which provides a foundation for 2D incompressible turbulent flow using the k-ε model. 
+To start, copy the base **Marche** study, which provides a foundation for 2D incompressible turbulent flow using the k-ε model.
 
-Navigate to your working directory: `$MY_TRUST_TUTORIAL` and execute:
+For this tutorial, start from an empty directory, e.g. `TrioCFD_tutorial_turb_concentration` and source the TrioCFD environment (see [quickstart](quickstart-target)). Then, execute the following command:
 
 ```bash
 triocfd -copy Marche
@@ -72,7 +72,7 @@ Use the Schmidt model to close the turbulence model in the concentration equatio
 
 ### Turbulence Model Modification
 
-Chage the Navier-Stokes turbulence model to an anisotropic concentration-coupled version: **Source_Transport_K_Eps_aniso_concen { C1_eps 1.44 C2_eps 1.92 C3_eps 1. }**
+Change the Navier-Stokes turbulence model to an anisotropic concentration-coupled version: **Source_Transport_K_Eps_aniso_concen { C1_eps 1.44 C2_eps 1.92 C3_eps 1. }**
 
 
 This modification ensures proper coupling between the flow field and concentration transport. 
@@ -81,7 +81,7 @@ Additionally, the fluid definition must include a volume expansion coefficient f
 
 ### Initial Validation and Sub-domain Definition
 
-Try to run your update test case:
+Try to run your updated test case:
 ```bash
 triocfd marche
 ```
@@ -103,7 +103,7 @@ The second constituent requires a specific source term (S₂ = 1 m⁻³) applied
 
 Now, add a source term for the second constituent only ($S_2 = 1 m^{-3}) applied on the sub domain thanks to the keyword **Champ_Uniforme_Morceaux**.
 
-Change post-processing format to lata in the post-processing block.
+Change post-processing format from lml to lata in the post-processing block.
 
 Add the keywords **concentration0**, **concentration1**, **concentration2** in the fields of the post-processing block to write the 3 concentrations into the .lata file.
 
