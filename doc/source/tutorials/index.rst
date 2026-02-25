@@ -13,8 +13,8 @@ For every tutorial, you are expected to start from an empty directory and to hav
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :titlesonly:
 
-   turbulent_flow_concentration/index
-   turbulent_flow_curved_pipe/index
+   turb/index
+   front_tracking/index
