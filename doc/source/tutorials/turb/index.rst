@@ -14,6 +14,6 @@ In this section, you will find tutorials for the single phase turbulence module 
    :maxdepth: 1
    :titlesonly:
 
-   turbulent_flow_concentration/index
-   turbulent_flow_curved_pipe/index
-   backward_step/index
+   turbulent_flow_concentration.md
+   turbulent_flow_curved_pipe.md
+   backward_step.md

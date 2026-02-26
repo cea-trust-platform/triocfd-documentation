@@ -14,4 +14,4 @@ In this section, you will find tutorials for the front-tracking module of TrioCF
    :maxdepth: 1
    :titlesonly:
 
-   tank_filling/index
+   tank_filling.md
