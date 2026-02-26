@@ -49,45 +49,40 @@ First, go to an empty directory and copy the base TrioCFD test case from which w
 triocfd -copy FTD_all_VDF && cd FTD_all_VDF
 ```
 
-Two remarks:
+Open the datafile `FTD_all_VDF.data` in a text editor of your choice.
+
+A few remarks:
 
 - The Front-tracking module of TrioCFD is not extensively tested in 2D. It may not be reliable.
 - The use of the front tracking module is indicated by the type of problem: `Probleme_FT_Disc_gen` is used here
 - In the Navier-Stokes equation of `Probleme_FT_Disc_gen`, the use of the keyword `modele_turbulence` is mandatory. For a laminar problem, specify `modele_turbulence nul`.
 
 
-## Running the simulation
+## Modifying the test case
 
 
 Start by making some changes in the file `FTD_all_VDF.data`:
 
-- Increase the height of the tank from 0.06 to 0.12
+- Increase the height of the tank from 0.06 to **0.12**
+    - Do not forget to adapt boundary definitions
 
-- Increase the max time `tmax` in `Scheme_euler_explicit` to 1. (or more)
+- Increase the max time `tmax` in `Scheme_euler_explicit` to **0.5** (or more)
 
-- Add a second droplet above the first one, at z=0.08.
+- Add a second droplet above the first one, at **z=0.08**.
     - keyword `ajout_phase0` could be useful. Look in the [Keyword Reference Manual](keywords-target) for `ajout_phase0`/`ajout_phase1`
     - It is also possible to access the reference manual with `triocfd -index`
     - Do not forget commas between the two definition of each droplet
 
-- Change the postprocessing period `dt_post` of each postprocessing block from 0.05 to 0.01
+- Change the postprocessing period `dt_post` of each postprocessing block from 0.05 to **0.01**
     - in the first one, add `format lata`
 
 - The first postprocessing block (`Post_processing`) is the classical block for post-processing probes and fields.
   Here, we want to see the concentration field and the `indicatrice_interf` field.
   Value of this field is 0 for liquid and 1 for gas, so the interface is located at `indicatrice` value 0.5
 
-- Change the interpolation location of `indicatrice_interf` and the `concentration` fields in the first post-processing block, by adding the keyword `elem` just after the fields.
+- Change the interpolation location of `indicatrice_interf` and the `concentration` fields in the first post-processing block, by **adding** the keyword `elem` just after the fields.
     - the values in the post-processing tool will be plotted at the center of each element of the mesh.
-    - this is done in the block right before `liste_postraitements`:
-      ```
-        fields dt_post 0.05
-        {
-            indicatrice_interf
-            concentration
-            masse_volumique
-        }
-      ```
+    - this is done in the block right before `liste_postraitements`.
 
 - The second postprocessing block (`postraitement_ft_lata` in `liste_postraitements`) allows to visualize the moving mesh of the interface.
   It can be visualized with visit.
@@ -95,33 +90,40 @@ Start by making some changes in the file `FTD_all_VDF.data`:
 - For each interface, several fields can be obtained:
     - curvature, with the `courbure` keyword
     - velocity interface, with the `vitesse` keyword
-    - `pe` is for debugging purposes
+    - `pe`, used here, is for debugging purposes
     - locations can be `som` for mesh nodes or `elem` for mesh cells
 
 
+## Running and visualizing the simulation
 
 Now, you can run the calculation:
 ```
 triocfd FTD_all_VDF
 ```
 
-Follow the time step evolution by having a look at the `FTD_all_VDF.dt_ev` file. It contains on each line the physical time, the time step, security factor and residuals.
+You can follow the time step evolution by having a look at the `FTD_all_VDF.dt_ev` file. It contains on each line the physical time, the time step, security factor and residuals.
 
 Using visit, visualize the interface and the concentration field. For that, you have to open the lata from the `liste_postraitements` block: `body.lata` and `liquid_gas.lata`. See below for detailed instructions:
 
 Open visit, then in visit:
 
-- **Open**, set filter to \*lata and select `body.lata`
+- Click **Open**, set filter to **\*lata** and select `body.lata`
 - set `body.lata` as active source
-    - In plots, add **Mesh** -> **INTERFACES**
-    - Draw
-- **Open** and select `liquid_gas.lata`
+    - In *Plots*, click **add**, then **Mesh** and finally **INTERFACES**
+    - Click **Draw**
+- Click **Open** and select `liquid_gas.lata`
 - set `liquid_gas.lata` as active source
-    - In plots, add **Mesh** -> **INTERFACES**
-    - In popup window *Correlate databases*, select **Yes**
-- Draw
-- Using the Time Slider `Correlation1`, you should be able to see the droplet fall, the solid rotate and the surface oscillate.
+    - In *Plots*, click **add**, then **Mesh** and finally **INTERFACES**
+    - In popup window *Correlate databases*, select **Yes**. If the popup does not show, close visit and restart from beginning. Or add the correlation manually if you know how to.
+    - Click **Draw**
+- Using the Time Slider `Correlation1`, you should be able to see the droplets fall, the solid rotate and the surface oscillate.
 
+```{dropdown} Click to display expected result
 
-Now try adding the concentration field on that.
+:::{figure} ./FIGURES/visit0102.png
+
+:::
+```
+
+Now try visualizing the concentration field.
 
