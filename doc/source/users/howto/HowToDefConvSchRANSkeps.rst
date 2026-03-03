@@ -1,2 +1,2 @@
-HOW TO DEFINE CONVECTION SCHEMES FOR RANS k-epsilon MODELLING ?
+How to define convection schemes for rans k-epsilon modelling ?
 ====================================================================================

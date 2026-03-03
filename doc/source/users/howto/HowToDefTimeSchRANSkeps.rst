@@ -1,2 +1,2 @@
-HOW TO DEFINE TIME SCHEMES FOR RANS k-epsilon MODELLING ?
+How to define time schemes for rans k-epsilon modelling ?
 ================================================================================

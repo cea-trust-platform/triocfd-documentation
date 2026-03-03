@@ -1,2 +1,2 @@
-HOW TO VISUALISE RESULTS ?
+How to visualise results ?
 ======================================

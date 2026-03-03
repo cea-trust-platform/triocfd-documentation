@@ -1,2 +1,2 @@
-HOW TO DEFINE BOUNDARY CONDITIONS ?
+How to define boundary conditions ?
 ======================================

@@ -10,7 +10,7 @@
 
 .. role:: red
 
-HOW TO DEFINE AN UNSTEADY TEST-CASE ?
+How to define an unsteady test-case ?
 ==============================================================
 
 L'objectif ici est de mettre en place un cas-test **instationnaire**, c'est a dire qu'on pretera attention aux resultats obtenus pendant le transitoire. Ceux-ci devront etre justes puisqu'ici, nous ne nous interesserons pas seulement a ce qui se passe une fois que le regime stationnaire est etabli. Nous chercherons a comprendre et a analyser les resultats obtenus durant l'etablissement et l'evolution des phenomenes physiques.

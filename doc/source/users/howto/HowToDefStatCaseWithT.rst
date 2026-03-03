@@ -10,7 +10,7 @@
 
 .. role:: red
 
-HOW TO DEFINE A STATIONNARY TEST-CASE WITH THERMAL EFFECTS ?
+How to define a stationnary test-case with thermal effects ?
 ==============================================================
 
 

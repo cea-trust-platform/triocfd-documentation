@@ -1,2 +1,2 @@
-HOW TO DEFINE INITIAL CONDITIONS ?
+How to define initial conditions ?
 ======================================

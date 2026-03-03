@@ -1,2 +1,2 @@
-HOW TO DEFINE PRESSURE SOLVER ?
+How to define pressure solver ?
 ======================================

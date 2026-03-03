@@ -1,4 +1,4 @@
-HOW TO DEFINE MESHING ?
+How to define meshing ?
 ======================================
 
 **Mesh refinement**

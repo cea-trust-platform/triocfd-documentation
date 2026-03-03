@@ -8,10 +8,10 @@ This section will describe the various physical models available to use in TrioC
 
 .. toctree::
 
-   ./Turbulence/index
-   ./MultiphaseRANS/index
+    ./Turbulence/index
+    ./MultiphaseRANS/index
 
 References
 
 .. bibliography::
-   :cited:
+    :cited:

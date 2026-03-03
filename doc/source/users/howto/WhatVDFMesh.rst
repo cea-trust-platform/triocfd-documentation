@@ -1,2 +1,2 @@
-WHAT ARE DIFFERENCES BETWEEN VDF MESH OPTIONS ?
+What are differences between vdf mesh options ?
 ================================================

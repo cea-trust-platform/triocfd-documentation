@@ -10,7 +10,7 @@
 
 .. role:: red
 
-HOW TO DEFINE A STATIONNARY TEST-CASE ?
+How to define a stationnary test-case ?
 ==========================================
 
 L'objectif ici est de mettre en place un cas-test **stationnaire**. Par stationnaire, on entend que seul le resultat stabilise
