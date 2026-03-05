@@ -21,3 +21,4 @@ For every tutorial, you are expected to start from an empty directory and to hav
 
    turb/index
    front_tracking/index
+   IFS/index
