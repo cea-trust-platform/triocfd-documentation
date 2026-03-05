@@ -15,3 +15,4 @@ In this section, you will find tutorials for the Fluid-Structure Interaction mod
    :titlesonly:
 
    two_cylinders.md
+   translating_square.md
