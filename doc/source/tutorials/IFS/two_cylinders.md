@@ -34,7 +34,7 @@ Open the datafile `TwoCylindersALE_jdd1.data` in a text editor of your choice.
 ## Modifying the test case
 
 
-Start by making the following changes in the file `FTD_all_VDF.data`. The goal is to have a simulation fast enough so that you will be able to visualize what happens. The results will probably not be very valid physically.
+Start by making the following changes in the file `TwoCylindersALE_jdd1.data`. The goal is to have a simulation fast enough so that you will be able to visualize what happens. The results will probably not be very valid physically.
 
 - In the `Scheme_euler_implicit` block:
     - Set `nb_pas_dt_max` to a large number.
